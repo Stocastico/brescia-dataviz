@@ -35,63 +35,74 @@ Questo cambia tre cose nel modo di costruirlo:
    l'asse con il dato migliore *e* con il significato più immediato per chi ci
    vive. Merita un posto di primo piano, non un capitolo ambientale di
    cortesia.
-4. **Molti assi sono comunali, non di quartiere.** Lavoro, imprese,
-   pendolarismo, reddito, sicurezza: il dato migliore si ferma al comune. È una
-   differenza sostanziale rispetto a Donostia, dove quasi tutto era per barrio.
-   Metà del progetto sarà quindi fatta di **serie temporali e scomposizioni**,
-   non di mappe — e la mappa dei 33 quartieri resta per ciò che è davvero
-   misurato lì: censimento, abitazioni, origini, aria.
+4. **La mappa cambia soggetto, non sparisce.** Portare l'unità di analisi al
+   comune e alla provincia non toglie la coropletica: la sposta sui **205
+   comuni della provincia**, un territorio molto più eterogeneo della città —
+   Garda, Val Trompia, Franciacorta, Bassa, Valle Camonica. E scioglie i limiti
+   che pesavano prima: i reati sono provinciali, le forze di lavoro sono
+   provinciali, l'export è provinciale. Erano ripieghi; ora sono la grana
+   giusta.
 
-## Geometria di riferimento
+## Unità di analisi
 
-**33 quartieri**, raggruppati in **5 zone** (Centro, Nord, Est, Sud, Ovest).
-Chiave di join `quartiere_id` (slug stabile, minuscolo, senza accenti). Sotto,
-disponibile e da sfruttare, la **sezione di censimento** ISTAT: la grana
-sub-quartiere che in Donostia si è dovuta inventare a metà progetto qui c'è
-dall'inizio.
+Tre livelli, in quest'ordine:
 
-Un solo join in ingestione, come nel progetto originale. Il pezzo che lo rende
-rigoroso è l'**indirizzario comunale**, che lega indirizzo → sezione →
-quartiere → zona: con quello l'aggregazione sezioni→quartieri è esatta, senza
-quello è una sovrapposizione geometrica approssimata (da dichiarare come tale).
+1. **Comune di Brescia** (`017029`) — l'unità principale. Quasi tutte le fonti
+   buone arrivano qui.
+2. **Provincia di Brescia** (`ITC47`) — l'aggregato, per ciò che a livello
+   comunale non esiste (reati, forze di lavoro, export) e per ciò che è
+   provinciale per natura (distretti industriali, turismo del Garda).
+3. **I 205 comuni della provincia** — il dettaglio interno. Molte fonti li
+   coprono tutti; dove il dato è rado, si tengono i maggiori.
 
-Dettagli e stato di accesso: [`FONTI.md`](FONTI.md) §1.
+Chiave di join: il **codice ISTAT del comune** a sei cifre, che è già la chiave
+nativa di quasi ogni fonte italiana — nessun crosswalk da inventare, a
+differenza del `barrio_id` di Donostia.
+
+I 33 quartieri della città restano documentati e disponibili, ma **non sono
+l'unità portante**: la grana sub-comunale si usa solo dove è davvero misurata
+(censimento, abitazioni, origini) e solo se aggiunge qualcosa.
+
+Dettagli e stato di accesso: [`FONTI.md`](FONTI.md) §1 e §1-bis.
 
 ## Assi tematici
 
 Ordinati per **qualità del dato disponibile**, non per interesse presunto. È
 l'ordine in cui conviene costruire.
 
-| # | Asse | Grana migliore | Profondità | Solidità |
+| # | Asse | Grana disponibile | Profondità | Solidità |
 |---|---|---|---|---|
-| 1 | **Lavoro e imprese** — unità locali per classe di addetti e settore, occupati, pendolarismo | comune | 2018–2023 (ASIA), 2021 (censimento) | forte: è la risposta diretta alla domanda sulla struttura produttiva |
-| 2 | **Aria** — PM10, PM2.5, NO₂, ozono | 5 stazioni georeferenziate | dal 1992 | forte: API aperta, serie continue |
-| 3 | **Popolazione e origini** — residenti, cittadinanza, seconde generazioni, italiani per acquisizione | comune (censimento annuale) + sezione → quartiere | 2018→ annuale; 1991·2001·2011·2021 per sezione | forte, e più ricca di quanto sembrasse |
+| 1 | **Lavoro e imprese** — unità locali per classe di addetti e settore, occupati, pendolarismo | **205 comuni** + comune + provincia | 2018–2023 (ASIA), 2021 (censimento) | forte: risposta diretta alla domanda sulla struttura produttiva, e mappabile su tutta la provincia |
+| 2 | **Aria** — PM10, PM2.5, NO₂, ozono | stazioni in tutta la provincia | dal 1992 | forte: API aperta, serie continue |
+| 3 | **Popolazione e origini** — cittadinanza, seconde generazioni, italiani per acquisizione | **comune** (tutti) | 2018→ annuale; censimenti per sezione | forte, e più ricca di quanto sembrasse |
 | 4 | **Istruzione** — titolo di studio per età e cittadinanza, università | comune; ateneo | 2018→; iscritti dal 1998/99 | forte |
-| 5 | **Clima** — temperatura, precipitazioni, giorni caldi | 2 stazioni | dal 1990 | forte |
-| 6 | **Abitazioni** — stock, **affitto vs proprietà**, vuote, epoca | sezione di censimento → quartiere | 2011 → 2021 | forte come stock, muta sui prezzi |
-| 7 | **Reddito** — livello e **distribuzione per classi** | comune + CAP | serie annuale fino a imposta 2024 | media: i CAP non sono i quartieri |
-| 8 | **Prezzi della casa** | zona OMI / zona urbana | semestrale dal 2004 (OMI), mensile recente (offerta) | media: due geometrie estranee ai quartieri, una dietro login, una proxy |
-| 9 | **Riqualificazione** — PNRR, opere, PGT | progetto georeferenziato | 2021→ | media: dato buono, finestra corta |
-| 10 | **Sicurezza** — percezione (comune) e reati (provincia) | comune / provincia | percezione 2022–2024; reati 2006–2024 | **debole a grana urbana: nessun dato per quartiere** |
-| 11 | **Rumore** | isofone dell'agglomerato | 2022 | da recuperare i layer, non solo il PDF |
-| 12 | **Turismo** — arrivi, presenze, ricettività | comune | 2019–2024 (+ 2005–2013 comunale) | **asse minore**: serve solo come contro-prova dello shock 2023 |
+| 5 | **Clima** — temperatura, precipitazioni, giorni caldi | stazioni | dal 1990 | forte |
+| 6 | **Reddito** — livello e **distribuzione per classi** | **comune** (tutti) | serie annuale fino a imposta 2024 | forte a grana comunale; il dettaglio per CAP resta un extra |
+| 7 | **Turismo** — arrivi, presenze per tipo di struttura e cittadinanza | **comuni della provincia** | 2019–2024 | forte *come storia provinciale*: il Garda contro tutto il resto |
+| 8 | **Abitazioni** — stock, **affitto vs proprietà**, vuote, epoca | comune + sezione | 2011 → 2021 + censimento permanente | forte come stock, muta sui prezzi |
+| 9 | **Sicurezza** — percezione (comune) e reati (provincia) | comune / provincia | percezione 2022–2024; reati 2006–2024, 56 tipologie | ora coerente con l'impostazione: due grane, due finestre |
+| 10 | **Prezzi della casa** | zona OMI / comune | semestrale dal 2004 (OMI) | media: geometria propria, dietro login; il resto è offerta (proxy) |
+| 11 | **Riqualificazione** — PNRR, opere, PGT | progetto georeferenziato | 2021→ | media: dato buono, finestra corta |
+| 12 | **Commercio estero** — import/export per paese e merce | provincia | dal 1991 | **da verificare**, ma per una provincia manifatturiera sarebbe di prima grandezza |
+| 13 | **Rumore** | isofone dell'agglomerato | 2022 | da recuperare i layer, non solo il PDF |
 
 ## Storie candidate
 
 Ipotesi di narrazione, da confermare o smentire con i dati. Nessuna è una tesi
 da difendere.
 
-1. **Il vertice che si assottiglia.** La domanda diretta: Brescia è ancora la
-   città della meccanica fatta di piccole aziende? I dati ASIA dicono che fra
-   2018 e 2023 l'occupazione totale è rimasta ferma (~101 mila addetti) ma le
-   unità locali con **almeno 250 addetti sono scese da 35 a 28**, e gli addetti
-   in quella classe da 20.111 a 13.775 — dal 19,9 % al 13,6 % del totale.
-   Contemporaneamente la fascia 10–249 ne ha guadagnati quasi 5.000 e le
-   micro-unità restano il 94 % del totale. Non è la concentrazione che ci si
-   aspetterebbe: è il contrario, un ammorbidimento del vertice con un centro
-   che si ispessisce. Questa è, per come stanno i numeri oggi, **la storia
-   principale del progetto**.
+1. **Il vertice che si assottiglia — ma solo in città.** La domanda diretta:
+   Brescia è ancora la terra della meccanica fatta di piccole aziende? I dati
+   ASIA dicono di sì, e aggiungono una torsione. **In città** fra 2018 e 2023
+   l'occupazione è ferma (~101 mila addetti) ma le unità locali con almeno 250
+   addetti scendono da **35 a 28** e i loro addetti da 20.111 a 13.775 (dal
+   19,9 % al 13,6 %). **In provincia** succede il contrario: +29.421 addetti
+   (+6,5 %), la classe ≥250 tiene (75 → 82 unità) e le micro-unità restano
+   stabilmente il 92,7 % del totale, con il 42,9 % degli addetti. Il peso delle
+   grandi unità è la metà di quello urbano: 7,0 % contro 13,6 %.
+   L'assottigliamento del vertice è quindi un fenomeno **del capoluogo**, non
+   del territorio. Questa asimmetria è, per come stanno i numeri oggi, **la
+   storia principale del progetto**.
 2. **Dove lavora chi vive a Brescia.** Occupati per settore (2021: 86.788, di
    cui solo il 22,8 % nell'industria in senso lato) e per posizione nella
    professione. Una città che si racconta industriale e che nei numeri dei
@@ -126,9 +137,19 @@ da difendere.
    Cartografia dei progetti con importi, sovrapposta agli assi
    socio-demografici: dove si investe rispetto a dove il disagio è misurato.
 10. **Paura e reati.** Percezione a livello di città (2022–2024) contro reati a
-    livello provinciale (2006–2024). Due grane e due finestre diverse: la
-    storia va raccontata **come serie temporale, non come mappa**, e
+    livello provinciale (2006–2024, 56 tipologie). Due grane e due finestre
+    diverse: la storia va raccontata **come serie temporale, non come mappa**, e
     l'asimmetria va spiegata al lettore, non nascosta.
+11. **Due province in una.** Il Garda contro il resto: nel 2024 la provincia fa
+    12,2 milioni di presenze turistiche e i primi dieci comuni ne concentrano
+    il 68,8 %, otto dei quali sul lago. Sirmione da sola (1,4 milioni) ne fa più
+    di Brescia città (883 mila, il 7,2 % del totale). Un territorio con due
+    economie che si toccano poco — manifattura a ovest e a nord, turismo a est —
+    e una mappa che lo rende evidente al primo sguardo.
+12. **La provincia che esporta.** Se il commercio estero provinciale si rivela
+    accessibile (v. `FONTI.md`, asse 12), la serie dal 1991 per paese e merce è
+    il modo più diretto di raccontare cosa produce davvero questo territorio, e
+    verso chi.
 
 ## Principi (ereditati, e uno in più)
 
@@ -142,11 +163,14 @@ Dal progetto Donostia, senza modifiche:
 
 Uno in più, che nasce da questa ricognizione:
 
-- **La grana disponibile detta la forma del grafico.** Se un dato esiste solo a
-  livello di città o di provincia, non diventa una mappa. Se una serie copre
-  sei anni, non si disegna accanto a una trentennale sullo stesso asse senza
-  dirlo. Le mappe coropletiche sono per ciò che è misurato per quartiere — e
-  su alcuni assi (sicurezza in testa) non lo è.
+- **La grana disponibile detta la forma del grafico.** Le coropletiche sono per
+  ciò che è misurato sui 205 comuni; ciò che esiste solo come aggregato
+  provinciale diventa serie o scomposizione, non mappa. E una serie di sei anni
+  non si disegna accanto a una trentennale sullo stesso asse senza dirlo.
+- **Città e provincia si leggono insieme.** Il confronto fra le due è già, nei
+  primi numeri, la cosa più informativa emersa: quasi ogni indicatore vale la
+  pena di essere mostrato su entrambi i livelli, perché è nella differenza che
+  sta la storia.
 
 ## Stato
 
@@ -154,18 +178,19 @@ Ricognizione delle fonti: **fatta** ([`FONTI.md`](FONTI.md)).
 Nessun dato scaricato, nessuna pipeline, nessun codice. I passi successivi
 naturali, in ordine:
 
-1. Scaricare la serie ASIA completa per Brescia (unità locali e addetti per
-   classe dimensionale × Ateco 2 cifre, 2018–2023) e verificare la storia
-   dell'asse 1 settore per settore: dove si sono persi i grandi stabilimenti, e
-   se la meccanica si comporta diversamente dal resto.
-2. Recuperare da una macchina con accesso normale i pezzi dietro
-   `dati.comune.brescia.it` e l'Osservatorio migrazioni: indirizzario con il
-   crosswalk sezione→quartiere, popolazione per quartiere, dati sugli stranieri
-   a grana di quartiere.
-3. Validare i confini OSM dei 33 quartieri contro il dato comunale ufficiale.
-4. Costruire l'aggregazione sezioni di censimento → quartieri, fondamento degli
-   assi 3, 4 e 6.
-5. Scaricare gli open data MUR sui due atenei (host non raggiungibile
+1. Scaricare la serie ASIA completa (unità locali e addetti per classe
+   dimensionale × Ateco 2 cifre, 2018–2023, 205 comuni) e sviluppare l'asse 1
+   settore per settore: dove sono spariti i grandi stabilimenti urbani, e se la
+   meccanica si comporta diversamente dal resto.
+2. Montare la base geografica: confini comunali ISTAT generalizzati + elenco
+   comuni, filtrati sui 205 della provincia. È mezz'ora di lavoro e sblocca
+   ogni coropletica.
+3. Verificare l'accesso al commercio estero provinciale (Coeweb o bulk
+   `DF_BULK_COE*`): è l'unico asse importante ancora incerto.
+4. Scaricare gli open data MUR sui due atenei (host non raggiungibile
    dall'ambiente di ricognizione).
+5. Recuperare da una macchina con accesso normale i pezzi dietro
+   `dati.comune.brescia.it`: turismo cittadino 2005–2013 e i materiali
+   dell'Osservatorio migrazioni.
 6. Registrarsi all'area riservata dell'Agenzia delle Entrate per quotazioni,
    perimetri zone OMI e compravendite NTN.

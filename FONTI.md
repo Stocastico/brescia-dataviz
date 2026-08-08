@@ -25,23 +25,32 @@ turistica a monte.
 
 ---
 
-## 1. Geometria di riferimento
+## 1. Unità di analisi e geometria di riferimento
 
-Il principio del progetto Donostia — *una sola geometria, un solo join in
-ingestione* — vale identico qui. Brescia ha una struttura ufficiale a due
-livelli: **33 quartieri** raggruppati in **5 zone** (Centro, Nord, Est, Sud,
-Ovest). Le circoscrizioni sono state abolite, ma alcune pubblicazioni comunali
-citano ancora il termine.
+Il progetto lavora su **tre livelli**, in quest'ordine di priorità:
+
+| Livello | Codice | Cos'è | Perché |
+|---|---|---|---|
+| **1. Comune di Brescia** | `017029` | La città | L'unità principale. Quasi tutte le fonti buone arrivano a questa grana. |
+| **2. Provincia di Brescia** | `ITC47` (SDMX), `017` (codice provincia) | L'aggregato | Dove il dato comunale non esiste (reati, forze di lavoro, export) e dove il fenomeno è per natura provinciale (distretti industriali, turismo del Garda). |
+| **3. I 205 comuni della provincia** | `017001`…`017206` | Il dettaglio interno | **Verificata ✓**: sono **205** (elenco ISTAT, colonna «Codice Provincia (Storico)» = `017`). Molte fonti li coprono tutti; dove il dato è rado, si tengono i maggiori. |
+
+I 33 quartieri della città restano disponibili (v. sotto) ma **non sono più
+l'unità portante**: la grana sub-comunale serve solo per gli assi dove è
+davvero misurata (censimento, abitazioni, origini) e dove aggiunge qualcosa.
+
+### Geometrie
 
 | Risorsa | Fonte | Endpoint | Stato | Note |
 |---|---|---|---|---|
-| Quartieri (33) + zone (5) | OpenStreetMap | Overpass API, `area(3600045144)` → `rel[boundary=administrative][admin_level=10]` (quartieri) e `admin_level=9` (zone) | **verificata ✓** | 33 relazioni `admin_level=10` e 5 `admin_level=9` restituite; 29/33 quartieri portano un `wikidata`. Licenza ODbL. Geometria poligonale completa via `out geom`. |
-| Confini quartieri ufficiali | Comune di Brescia — open data / geoportale | `dati.comune.brescia.it`, `geoportale.comune.brescia.it` | **non raggiungibile da qui** | Da usare come **fonte primaria** e OSM come ripiego/controllo: i confini amministrativi vanno validati contro il dato comunale prima di pubblicare qualsiasi mappa. |
-| Sezioni di censimento (grana sub-quartiere) | ISTAT — Basi territoriali | `istat.it/storage/cartografia/basi_territoriali/2021/R03_21.zip` (Lombardia 2021, 62 MB) · `.../WGS_84_UTM/2011/R03_11_WGS84.zip` (2011, 46 MB) | **verificata ✓** | HTTP 200, `application/zip`, dimensioni sopra. Anche 1991 e 2001. Proiezione WGS84/UTM32N → riproiettare a EPSG:4326. |
-| Crosswalk indirizzo → sezione → quartiere → zona | Comune di Brescia — *Indirizzario completo* (2015) | `dati.comune.brescia.it/.../25-viario-completo-del-comune-di-brescia` | **non raggiungibile da qui** | **Pezzo chiave.** Contiene indirizzi con civici *insieme a* sezione di censimento, quartiere e zona: rende l'aggregazione sezioni→quartieri **esatta** invece che approssimata per sovrapposizione geometrica. È l'analogo del callejero municipale che in Donostia ha sbloccato la grana «via». |
+| **Confini comunali** (tutti i comuni d'Italia, quindi i 205 della provincia) | ISTAT — Limiti amministrativi | `istat.it/storage/cartografia/confini_amministrativi/generalizzati/2025/Limiti01012025_g.zip` (10,4 MB) | **verificata ✓** | La versione **generalizzata** è quella giusta per il web: 10 MB contro 99 MB della non generalizzata (`…/non_generalizzati/2025/Limiti01012025.zip`, anch'essa verificata ✓). Contiene anche i confini provinciali e regionali. |
+| **Elenco dei comuni** con codici, provincia, sigla, flag capoluogo | ISTAT | `istat.it/storage/codici-unita-amministrative/Elenco-comuni-italiani.csv` (1,1 MB, `;`, latin-1) | **verificata ✓** | Da qui i 205 codici della provincia. È anche il crosswalk fra codice ISTAT, denominazione e sigla — chiave di join per tutto il resto. |
+| Sezioni di censimento (grana sub-comunale) | ISTAT — Basi territoriali | `istat.it/storage/cartografia/basi_territoriali/2021/R03_21.zip` (Lombardia 2021, 62 MB) · `.../WGS_84_UTM/2011/R03_11_WGS84.zip` (46 MB) | **verificata ✓** | Copre **tutta la Lombardia**, quindi anche i comuni della provincia, non solo la città. WGS84/UTM32N → riproiettare a EPSG:4326. |
+| Quartieri di Brescia (33) + zone (5) | OpenStreetMap | Overpass, `area(3600045144)` → `rel[admin_level=10]` e `[admin_level=9]` | **verificata ✓** | 33 + 5 relazioni con geometria poligonale, licenza ODbL. **Opzionale** nella nuova impostazione. |
+| Confini quartieri ufficiali · crosswalk indirizzo→sezione→quartiere | Comune di Brescia | `dati.comune.brescia.it` | **non raggiungibile da qui** | Serve solo se si decide di sviluppare la grana sub-comunale. |
 
-**Elenco dei 33 quartieri** (nomi come restituiti da OSM, da normalizzare in
-`quartiere_id` slug stabile):
+<details>
+<summary>I 33 quartieri, se serviranno</summary>
 
 Borgo Trento · Brescia Antica · Buffalora-Bettole · Caionvico · Casazza ·
 Centro Storico Nord · Centro Storico Sud · Chiesanuova · Chiusure · Crocifissa
@@ -51,10 +60,73 @@ Bartolomeo · San Polo Case · San Polo Cimabue · San Polo Parco · San
 Rocchino-Costalunga · Sanpolino · Sant'Eufemia · Sant'Eustacchio · Urago Mella
 · Villaggio Badia · Villaggio Prealpino · Villaggio Sereno · Villaggio Violino
 
-> ⚠️ Le tre partizioni di San Polo (Case / Cimabue / Parco) più Sanpolino sono
-> quartieri distinti ma contigui e demograficamente affini: nelle mappe
-> conviene tenerli separati (sono l'esempio più chiaro di edilizia pubblica
-> pianificata in città) ma citarli come blocco nei testi.
+</details>
+
+### Cosa cambia rispetto all'impostazione precedente
+
+Lo spostamento da «città per quartieri» a «comune + provincia» **non è una
+riduzione di ambizione: è un allargamento**. Gran parte delle fonti verificate
+(ISTAT SDMX, ASIA, MEF, turismo regionale) copre **tutti i comuni italiani**:
+filtrare sui 205 della provincia costa una riga di codice e produce mappe
+coropletiche vere, su un territorio che è molto più eterogeneo della città —
+lago di Garda, Val Trompia metalmeccanica, Franciacorta, Bassa agricola, Valle
+Camonica. La coropletica non sparisce: cambia soggetto.
+
+E i tre limiti che pesavano nella versione precedente si sciolgono quasi tutti:
+i reati sono provinciali (ora è la grana giusta, non un ripiego), le forze di
+lavoro sono provinciali, l'export è provinciale. Restava fuori solo il quartiere,
+che ora non è più il punto.
+
+---
+
+## 1-bis. Il livello provinciale: cosa c'è, verificato
+
+Riepilogo di ciò che ho interrogato realmente a grana provinciale o
+comuni-della-provincia, per non doverlo ricercare.
+
+| Fonte | Grana | Copertura | Esito della verifica |
+|---|---|---|---|
+| **ASIA — unità locali e addetti** per classe di addetti e Ateco 2 cifre | tutti i **205 comuni** | 2018–2023 | **✓ 205/205 comuni con dato**, 4.744 righe per la provincia |
+| **Delitti / tasso di delittuosità** per tipo di reato | **provincia** `ITC47` | 2006–2024, 56 tipologie | **✓ 1.057 righe** per Brescia |
+| **Percezione di sicurezza** e benessere soggettivo | **comune** + provincia | 2022–2024 | **✓** `017029` presente |
+| **Flussi turistici** arrivi/presenze, per tipo di struttura e cittadinanza | **comuni** della provincia | 2019–2024 (mensile e annuale) | **✓ 133 comuni con dato**, 45 con «Dato riservato» |
+| **Tasso di occupazione** (e famiglia RCFL) | **provincia** | serie storica | **✓** `ITC47` fra i 133 territori di `150_915_DF_DCCV_TAXOCCU1_YOUTH_1` |
+| **Redditi IRPEF** per classi di importo | **comune** | serie storica | **✓** 261.331 osservazioni nazionali, filtrabili |
+| **Censimento permanente** (lavoro, istruzione, origini, abitazioni) | **comune** | 2018/2021→ | **✓** su tutta la famiglia `DF_DCSS_*` |
+| **Qualità dell'aria e meteo** ARPA | **stazione**, in tutta la provincia | dal 1983/1990 | **✓** anagrafica con `lat`/`lng`, filtrabile per `provincia='BS'` |
+| **Commercio estero** (import/export per paese e merce) | provincia | dal 1991 | ⚠️ **da verificare**: nell'SDMX il dataflow provinciale risulta pubblicato per il solo Lazio; la via è il portale **Coeweb** (`coeweb.istat.it`) o i bulk `DF_BULK_COE*` |
+
+### Il tessuto produttivo della provincia — numeri estratti in verifica
+
+Aggregando ASIA sui 205 comuni:
+
+| | 2018 | 2023 |
+|---|---|---|
+| Unità locali | 110.207 | 119.565 |
+| Addetti | 449.997 | 479.418 |
+| UL 0–9 addetti | 102.277 (92,8 %) | 110.791 (92,7 %) |
+| UL ≥250 addetti | 75 | 82 |
+| Addetti in UL 0–9 | 198.759 (44,2 %) | 205.602 (42,9 %) |
+| Addetti in UL 10–49 | 127.112 (28,2 %) | 143.264 (29,9 %) |
+| Addetti in UL 50–249 | 89.538 (19,9 %) | 97.225 (20,3 %) |
+| Addetti in UL **≥250** | 34.588 (7,7 %) | 33.328 (**7,0 %**) |
+
+**Top 15 comuni per addetti, 2023**: Brescia 100.939 · Desenzano del Garda
+11.040 · Montichiari 10.880 · Lumezzane 8.227 · Rovato 7.899 · Lonato del Garda
+7.594 · Palazzolo sull'Oglio 7.391 · Gussago 6.558 · Darfo Boario Terme 6.489 ·
+Travagliato 6.144 · Rezzato 6.024 · Orzinuovi 6.015 · Manerbio 5.725 · Chiari
+5.593 · Roncadelle 5.571.
+
+> **Il confronto città/provincia è la cosa più interessante emersa finora.**
+> La provincia **cresce** (+29.421 addetti, +6,5 %) mentre la città è **ferma**
+> (−197). E la classe ≥250 addetti si comporta in modo opposto: nella provincia
+> tiene (75 → 82 unità, addetti sostanzialmente stabili), nella città crolla
+> (35 → 28 unità, −6.335 addetti). L'assottigliamento del vertice è un fenomeno
+> **urbano**, non provinciale. In più, il peso delle grandi unità è molto
+> diverso: 7,0 % degli addetti in provincia contro 13,6 % in città. Brescia
+> città vale il 21 % dell'occupazione provinciale.
+
+
 
 ---
 
@@ -370,11 +442,44 @@ San Polo).
 
 ## 6. Turismo e ricettività
 
-**Asse minore.** Brescia non è una città turistica e il progetto non ci
-costruisce sopra una storia. Resta utile per una ragione sola: **Capitale
-italiana della cultura 2023** con Bergamo è uno shock datato e identificabile,
-e serve come contro-prova in altre serie (commercio, ricettività, occupazione
-nei servizi). Va tenuto come capitolo breve, non come pilastro.
+**Asse minore per la città, tutt'altro per la provincia.** Brescia città non è
+una meta turistica e il progetto non ci costruisce sopra. Ma appena si sale al
+livello provinciale il quadro si ribalta: la provincia di Brescia comprende la
+**sponda bresciana del lago di Garda**, che è una delle concentrazioni
+turistiche più forti d'Italia.
+
+**Verificata ✓** — presenze 2024 per comune (filtro corretto:
+`tipo_struttura='Totale'` **e** `cittadinanza_turisti='Totale'`, altrimenti si
+contano tre volte le stesse notti):
+
+| Comune | Presenze 2024 | Quota provinciale |
+|---|---|---|
+| Sirmione | 1.406.590 | 11,5 % |
+| Limone sul Garda | 1.235.789 | 10,1 % |
+| Desenzano del Garda | 1.156.392 | 9,4 % |
+| **Brescia (città)** | **883.531** | **7,2 %** |
+| San Felice del Benaco | 820.700 | 6,7 % |
+| Manerba del Garda | 812.650 | 6,6 % |
+| Toscolano-Maderno | 626.780 | 5,1 % |
+| Moniga del Garda | 610.746 | 5,0 % |
+| Iseo | 451.188 | 3,7 % |
+| Tignale | 419.716 | 3,4 % |
+
+Totale provinciale **12.246.854 presenze**; i primi dieci comuni ne fanno il
+**68,8 %**, e otto su dieci sono sul Garda. Brescia città è quarta ma vale meno
+di un quattordicesimo del totale: la provincia è turistica, il capoluogo no. È
+un contrasto che vale la pena mostrare, e che riabilita l'asse — non come
+storia sulla città, ma come storia **sull'asimmetria interna alla provincia**.
+
+> ⚠️ **45 comuni su 178 riportano «Dato riservato»** al posto del numero
+> (soppressione per riservatezza statistica quando le strutture sono poche). Il
+> parser deve trattarlo come dato mancante, non come zero, e le mappe devono
+> mostrarlo come «non disponibile» — altrimenti si disegnano buchi che sembrano
+> assenza di turismo.
+
+Resta valido il gancio temporale: **Capitale italiana della cultura 2023** con
+Bergamo è uno shock datato e identificabile, utile come contro-prova in altre
+serie (commercio, ricettività, occupazione nei servizi).
 
 | Tema | Fonte | Endpoint | Grana | Copertura | Stato |
 |---|---|---|---|---|---|
@@ -474,26 +579,30 @@ dietro sigle opache in un elenco di 4.896 dataflow.
 - **Percezione della sicurezza a livello di città** (2022–2024), che a Donostia
   esisteva solo per una zona statistica sovracomunale.
 
+- **Il livello provinciale**, che a Donostia semplicemente non era un tema
+  (Gipuzkoa era un ripiego imbarazzante), qui è un'unità di analisi legittima e
+  ricca: 205 comuni coperti da quasi tutte le fonti principali, su un
+  territorio molto più eterogeneo della città.
+
 **Più debole a Brescia**
 
-- **Prezzi della casa per quartiere**: nessun equivalente aperto dell'EMA/EMAL
-  basco. L'OMI ha la serie ma su una geometria propria e dietro login; il resto
-  è offerta scrapata (proxy).
-- **Affitti brevi**: nessuna copertura Inside Airbnb, nessun censimento
-  comunale di viviendas turísticas. Solo ricettività ufficiale e CIN
-  (dal 2024).
-- **Criminalità**: nessun dato per quartiere. Comune nel migliore dei casi,
-  spesso provincia.
-- **Il portale comunale è il collo di bottiglia**: i pezzi più preziosi
-  (indirizzario con crosswalk sezione→quartiere, popolazione per quartiere,
-  turismo 2005–2013) stanno lì, in PDF o in un CKAN che da qui non risponde.
-  Vanno scaricati a mano e versionati come input curati.
+- **Prezzi della casa**: nessun equivalente aperto dell'EMA/EMAL basco. L'OMI ha
+  la serie ma su una geometria propria e dietro login; il resto è offerta
+  scrapata (proxy).
+- **Affitti brevi**: nessuna copertura Inside Airbnb, nessun censimento comunale
+  di alloggi turistici. Solo ricettività ufficiale e CIN (dal 2024).
+- **Criminalità**: solo provinciale. Con la nuova impostazione pesa molto meno —
+  è la grana di lavoro — ma resta vero che nel comune non si scende.
+- **Il portale comunale**: i pezzi che restano preziosi (turismo 2005–2013,
+  Osservatorio migrazioni) stanno lì, in PDF o in un CKAN che da qui non
+  risponde. Vanno scaricati a mano e versionati come input curati.
 
-**Serie temporali più corte da tenere presente**: flussi turistici regionali
-solo 2019–2024 (buco 2014–2018 da colmare con ISTAT), variabili censuarie a
-fotografie decennali, CIN dal 2024. Il «negli ultimi anni» del brief è quindi
-un orizzonte **disomogeneo per asse**: aria e clima 30 anni, censimento due
-punti, turismo 6 anni. Va reso esplicito nella grafica, non appiattito.
+**Serie temporali di lunghezza molto diversa**, da non appiattire: aria dal
+1992 e clima dal 1990 (30+ anni) · reati provinciali dal 2006 · redditi e
+istruzione con serie lunghe · ASIA 2018–2023 · turismo 2019–2024 · censimento
+permanente dal 2018/2021 · percezione di sicurezza dal 2022 · CIN dal 2024. Il
+«negli ultimi anni» del brief è quindi un orizzonte **disomogeneo per asse**, e
+va reso esplicito nella grafica.
 
 ---
 

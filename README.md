@@ -1,9 +1,10 @@
 # Brescia Dataviz
 
 Ricognizione preliminare per un progetto di data visualization sull'evoluzione
-della città di **Brescia** (comune ISTAT 017029), modellato sull'architettura di
-`donostia-dataviz` ma con una domanda di ricerca diversa: *come è cambiata la
-città*, senza una tesi turistica a monte.
+di **Brescia** — il comune (ISTAT `017029`), la **provincia** (`ITC47`) e i suoi
+**205 comuni** — modellato sull'architettura di `donostia-dataviz` ma con una
+domanda di ricerca diversa: *come è cambiato questo territorio*, senza una tesi
+turistica a monte.
 
 **Stato: solo documentazione.** Nessun codice, nessuna pipeline, nessun dato
 scaricato. Questa cartella contiene il lavoro che nel progetto Donostia
@@ -49,16 +50,24 @@ il clima dal 1990 su due stazioni. Il terzo sono le **basi territoriali e
 variabili censuarie ISTAT**, che portano popolazione, istruzione, origini e
 abitazioni a grana di sezione di censimento, aggregabile ai 33 quartieri.
 
-Tre limiti da mettere in conto subito: **nessun dato aperto di criminalità per
-quartiere** (percezione al massimo comunale e solo dal 2022, reati provinciali);
-**nessuna copertura Inside Airbnb per Brescia**; e **molti assi si fermano al
-comune**, quindi buona parte del progetto sarà fatta di serie temporali e
-scomposizioni, non di mappe.
+L'unità di analisi è il **comune**, con la **provincia** come aggregato e i
+**205 comuni** come dettaglio interno: quasi tutte queste fonti coprono tutti i
+comuni italiani, quindi la coropletica si sposta dai quartieri della città al
+territorio provinciale — molto più eterogeneo (Garda, Val Trompia, Franciacorta,
+Bassa, Valle Camonica).
 
-Il collo di bottiglia resta **`dati.comune.brescia.it`**, che da questo ambiente
-non risponde: ci stanno i pezzi più preziosi, in particolare l'indirizzario che
-lega indirizzo → sezione di censimento → quartiere → zona, e che è ciò che rende
-esatta l'aggregazione del censimento sui quartieri.
+Il confronto città/provincia è già la cosa più informativa emersa: fra 2018 e
+2023 la provincia guadagna 29 mila addetti mentre la città è ferma, e le unità
+locali con almeno 250 addetti crollano in città (35 → 28) ma tengono in
+provincia (75 → 82). Sul turismo l'asimmetria è ancora più netta: 12,2 milioni
+di presenze provinciali nel 2024, di cui il 68,8 % nei primi dieci comuni, otto
+dei quali sul Garda — Sirmione da sola fa più del capoluogo.
+
+Limiti da mettere in conto: i **reati** esistono solo a grana provinciale (la
+percezione arriva al comune ma solo dal 2022); **nessuna copertura Inside
+Airbnb**; i **prezzi delle case** sono dietro un login gratuito (OMI) o sono
+prezzi di offerta; e il **commercio estero provinciale** è l'unico asse
+importante ancora da verificare.
 
 Dettagli, prove e tabella completa di raggiungibilità in [`FONTI.md`](FONTI.md).
 Se lavori con l'SDMX di ISTAT, leggi prima la nota tecnica in fondo a quel
