@@ -41,14 +41,15 @@ per cittadinanza, pendolarismo, background migratorio — inclusa la distinzione
 fra stranieri, seconde generazioni e italiani per acquisizione — abitazioni per
 titolo di godimento e persino la **percezione della sicurezza a livello di
 città**. Accanto, il registro **ASIA** dà unità locali e addetti per classe
-dimensionale e settore, 2018–2023: è la fonte che risponde direttamente alla
-domanda se Brescia sia ancora una città di microimprese.
+dimensionale e settore, per **tutti i comuni**, 2018–2023: è la fonte che
+risponde direttamente alla domanda se questo sia ancora un territorio di
+microimprese.
 
 Il secondo canale è **`dati.lombardia.it`** (API Socrata aperta, senza chiave):
-trent'anni di qualità dell'aria su cinque stazioni bresciane georeferenziate e
-il clima dal 1990 su due stazioni. Il terzo sono le **basi territoriali e
-variabili censuarie ISTAT**, che portano popolazione, istruzione, origini e
-abitazioni a grana di sezione di censimento, aggregabile ai 33 quartieri.
+trent'anni di qualità dell'aria su stazioni georeferenziate in tutta la
+provincia, il clima dal 1990, e i flussi turistici per comune. Il terzo sono i
+**confini e le variabili censuarie ISTAT**, che danno la base geografica dei
+comuni e, sotto, la grana di sezione di censimento per gli assi dove serve.
 
 L'unità di analisi è il **comune**, con la **provincia** come aggregato e i
 **205 comuni** come dettaglio interno: quasi tutte queste fonti coprono tutti i
