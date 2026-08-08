@@ -8,10 +8,18 @@ Non c'è una tesi a monte. È la differenza principale rispetto a
 `donostia-dataviz`, che partiva da una domanda con un imputato già in scena
 («il turismo sta facendo salire i prezzi?») e ha passato mesi a dimostrare che
 non poteva rispondere in modo causale. Qui la domanda è descrittiva e più
-larga: prezzi delle case, quantità di case in affitto, sicurezza percepita e
-reale, riqualificazione dei quartieri, clima, aria, popolazione. Il prodotto
-non è una tesi ma un **ritratto della trasformazione**, quartiere per
-quartiere, con le sue asimmetrie.
+larga: **lavoro e struttura produttiva**, chi vive in città e da dove viene,
+studi e università, casa e affitti, sicurezza percepita e reale,
+riqualificazione dei quartieri, clima e aria. Il prodotto non è una tesi ma un
+**ritratto della trasformazione**, quartiere per quartiere dove i dati lo
+consentono, con le sue asimmetrie.
+
+Il baricentro è **economico e sociale, non turistico**. Brescia non è una città
+turistica e il progetto non ci costruisce sopra: il turismo resta un capitolo
+breve, utile soprattutto come contro-prova dello shock 2023 (Capitale italiana
+della cultura). Al suo posto, al centro, c'è la domanda sulla città
+industriale: una provincia storicamente di meccanica e di piccole aziende — è
+ancora così, o si è concentrata?
 
 Questo cambia tre cose nel modo di costruirlo:
 
@@ -27,6 +35,12 @@ Questo cambia tre cose nel modo di costruirlo:
    l'asse con il dato migliore *e* con il significato più immediato per chi ci
    vive. Merita un posto di primo piano, non un capitolo ambientale di
    cortesia.
+4. **Molti assi sono comunali, non di quartiere.** Lavoro, imprese,
+   pendolarismo, reddito, sicurezza: il dato migliore si ferma al comune. È una
+   differenza sostanziale rispetto a Donostia, dove quasi tutto era per barrio.
+   Metà del progetto sarà quindi fatta di **serie temporali e scomposizioni**,
+   non di mappe — e la mappa dei 33 quartieri resta per ciò che è davvero
+   misurato lì: censimento, abitazioni, origini, aria.
 
 ## Geometria di riferimento
 
@@ -50,48 +64,71 @@ l'ordine in cui conviene costruire.
 
 | # | Asse | Grana migliore | Profondità | Solidità |
 |---|---|---|---|---|
-| 1 | **Aria** — PM10, PM2.5, NO₂, ozono | 5 stazioni georeferenziate | dal 1992 | forte: API aperta, serie continue |
-| 2 | **Clima** — temperatura, precipitazioni, giorni caldi | 2 stazioni | dal 1990 | forte |
-| 3 | **Popolazione** — residenti, cittadinanza, età, istruzione | sezione di censimento → quartiere | 1991·2001·2011·2021 + PDF comunali annuali | forte sulla struttura, a fotografie |
-| 4 | **Abitazioni** — stock, **affitto vs proprietà**, vuote, epoca | sezione di censimento → quartiere | 2011 → 2021 | forte come stock, muta sui prezzi |
-| 5 | **Reddito** | comune + CAP | serie annuale fino a imposta 2024 | media: i CAP non sono i quartieri |
-| 6 | **Prezzi della casa** | zona OMI / zona urbana | semestrale dal 2004 (OMI), mensile recente (offerta) | media: due geometrie estranee ai quartieri, una dietro login, una proxy |
-| 7 | **Riqualificazione** — PNRR, opere, PGT | progetto georeferenziato | 2021→ | media: dato buono, finestra corta |
-| 8 | **Turismo** — arrivi, presenze, ricettività | comune | 2019–2024 (+ 2005–2013 comunale) | media: buco 2014–2018 |
-| 9 | **Sicurezza** — reati e percezione | **comune / provincia** | serie storica | **debole a grana urbana: nessun dato per quartiere** |
-| 10 | **Rumore** | isofone dell'agglomerato | 2022 | da recuperare i layer, non solo il PDF |
+| 1 | **Lavoro e imprese** — unità locali per classe di addetti e settore, occupati, pendolarismo | comune | 2018–2023 (ASIA), 2021 (censimento) | forte: è la risposta diretta alla domanda sulla struttura produttiva |
+| 2 | **Aria** — PM10, PM2.5, NO₂, ozono | 5 stazioni georeferenziate | dal 1992 | forte: API aperta, serie continue |
+| 3 | **Popolazione e origini** — residenti, cittadinanza, seconde generazioni, italiani per acquisizione | comune (censimento annuale) + sezione → quartiere | 2018→ annuale; 1991·2001·2011·2021 per sezione | forte, e più ricca di quanto sembrasse |
+| 4 | **Istruzione** — titolo di studio per età e cittadinanza, università | comune; ateneo | 2018→; iscritti dal 1998/99 | forte |
+| 5 | **Clima** — temperatura, precipitazioni, giorni caldi | 2 stazioni | dal 1990 | forte |
+| 6 | **Abitazioni** — stock, **affitto vs proprietà**, vuote, epoca | sezione di censimento → quartiere | 2011 → 2021 | forte come stock, muta sui prezzi |
+| 7 | **Reddito** — livello e **distribuzione per classi** | comune + CAP | serie annuale fino a imposta 2024 | media: i CAP non sono i quartieri |
+| 8 | **Prezzi della casa** | zona OMI / zona urbana | semestrale dal 2004 (OMI), mensile recente (offerta) | media: due geometrie estranee ai quartieri, una dietro login, una proxy |
+| 9 | **Riqualificazione** — PNRR, opere, PGT | progetto georeferenziato | 2021→ | media: dato buono, finestra corta |
+| 10 | **Sicurezza** — percezione (comune) e reati (provincia) | comune / provincia | percezione 2022–2024; reati 2006–2024 | **debole a grana urbana: nessun dato per quartiere** |
+| 11 | **Rumore** | isofone dell'agglomerato | 2022 | da recuperare i layer, non solo il PDF |
+| 12 | **Turismo** — arrivi, presenze, ricettività | comune | 2019–2024 (+ 2005–2013 comunale) | **asse minore**: serve solo come contro-prova dello shock 2023 |
 
 ## Storie candidate
 
 Ipotesi di narrazione, da confermare o smentire con i dati. Nessuna è una tesi
 da difendere.
 
-1. **L'aria che si è ripulita (o no).** Trent'anni di PM10 e NO₂ su cinque
-   punti della città. È la serie più lunga e più leggibile del progetto, e
-   probabilmente la storia con il finale meno scontato: i limiti europei
-   restano superati anche dopo un miglioramento reale.
-2. **La città che si scalda.** Warming stripes su Brescia dal 1995, giorni
-   ≥30 °C, e — se il calcolo Landsat si replica — l'isola di calore per
-   quartiere. In pianura padana il contrasto centro/periferia verde è più
-   marcato che sulla costa.
-3. **Chi abita Brescia.** Cittadinanza, età, istruzione per quartiere, con le
-   due fotografie censuarie 2011 → 2021. Il decennio in cui la città è
-   cambiata demograficamente, quartiere per quartiere.
-4. **Affittare o possedere.** Il titolo di godimento delle abitazioni per
+1. **Il vertice che si assottiglia.** La domanda diretta: Brescia è ancora la
+   città della meccanica fatta di piccole aziende? I dati ASIA dicono che fra
+   2018 e 2023 l'occupazione totale è rimasta ferma (~101 mila addetti) ma le
+   unità locali con **almeno 250 addetti sono scese da 35 a 28**, e gli addetti
+   in quella classe da 20.111 a 13.775 — dal 19,9 % al 13,6 % del totale.
+   Contemporaneamente la fascia 10–249 ne ha guadagnati quasi 5.000 e le
+   micro-unità restano il 94 % del totale. Non è la concentrazione che ci si
+   aspetterebbe: è il contrario, un ammorbidimento del vertice con un centro
+   che si ispessisce. Questa è, per come stanno i numeri oggi, **la storia
+   principale del progetto**.
+2. **Dove lavora chi vive a Brescia.** Occupati per settore (2021: 86.788, di
+   cui solo il 22,8 % nell'industria in senso lato) e per posizione nella
+   professione. Una città che si racconta industriale e che nei numeri dei
+   *residenti* è già in larga parte terziaria. Da incrociare con il rapporto di
+   concentrazione del lavoro (~1,16: la città importa lavoratori) e con il
+   pendolarismo (26.425 residenti escono ogni giorno dal comune).
+3. **Chi abita Brescia, e da quanto.** La famiglia censuaria sul background
+   migratorio permette di distinguere stranieri arrivati, **stranieri nati in
+   Italia** e **italiani per acquisizione** — cioè di separare l'immigrazione
+   dalla popolazione di origine straniera, che è la distinzione che quasi tutte
+   le narrazioni pubbliche sbagliano. Con la cittadinanza per sezione di
+   censimento si porta il quadro a grana di quartiere.
+4. **Studiare a Brescia.** Titolo di studio per età e cittadinanza a livello
+   comunale, più i due atenei (statale +29 % di iscritti dal 2000/01, e la
+   sede della Cattolica). Quanti laureati vivono in città, in che settori
+   lavorano, e se la città trattiene o esporta i suoi laureati.
+5. **L'aria che si è ripulita (o no).** Trent'anni di PM10 e NO₂ su cinque
+   punti della città. La serie più lunga del progetto, e probabilmente quella
+   con il finale meno scontato: i limiti europei restano superati anche dopo un
+   miglioramento reale.
+6. **La città che si scalda.** Warming stripes dal 1995, giorni ≥30 °C, e — se
+   il calcolo Landsat si replica — l'isola di calore per quartiere. In pianura
+   padana il contrasto centro/periferia verde è più marcato che sulla costa.
+7. **Affittare o possedere.** Il titolo di godimento delle abitazioni per
    sezione di censimento: dove si è ampliato l'affitto, dove le case vuote,
-   dove lo stock più vecchio. È la risposta più solida disponibile alla
-   domanda «quante case in affitto», e non passa per i prezzi.
-5. **Quanto costa, e dove.** Prezzi OMI per zona, incrociati con il reddito
-   per CAP. Da costruire con il crosswalk dichiarato e senza pretendere una
-   coropletica per quartiere che i dati non sostengono.
-6. **I quartieri che vengono rifatti.** PNRR, opere pubbliche, tram, San Polo.
-   Cartografia dei progetti con importi, sovrapposta agli assi socio-demografici:
-   dove si investe rispetto a dove il disagio è misurato.
-7. **Paura e reati.** Serie di città e provincia, percezione a grana
-   provinciale. È la storia che va raccontata **come serie temporale, non come
-   mappa** — e il perché va spiegato al lettore, non nascosto.
-8. **2023, l'anno della Capitale della cultura.** Uno shock datato e
-   identificabile nelle serie turistiche: si vede? è rimasto?
+   dove lo stock più vecchio. La risposta più solida alla domanda «quante case
+   in affitto», e non passa per i prezzi.
+8. **Quanto costa, e quanto si guadagna.** Prezzi OMI per zona incrociati con
+   il reddito per CAP e con la **distribuzione** del reddito per classi di
+   importo — che consente di parlare di disuguaglianza, non solo di livello.
+9. **I quartieri che vengono rifatti.** PNRR, opere pubbliche, tram, San Polo.
+   Cartografia dei progetti con importi, sovrapposta agli assi
+   socio-demografici: dove si investe rispetto a dove il disagio è misurato.
+10. **Paura e reati.** Percezione a livello di città (2022–2024) contro reati a
+    livello provinciale (2006–2024). Due grane e due finestre diverse: la
+    storia va raccontata **come serie temporale, non come mappa**, e
+    l'asimmetria va spiegata al lettore, non nascosta.
 
 ## Principi (ereditati, e uno in più)
 
@@ -117,11 +154,18 @@ Ricognizione delle fonti: **fatta** ([`FONTI.md`](FONTI.md)).
 Nessun dato scaricato, nessuna pipeline, nessun codice. I passi successivi
 naturali, in ordine:
 
-1. Recuperare da una macchina con accesso normale i tre pezzi che stanno dietro
-   `dati.comune.brescia.it`: indirizzario con crosswalk, popolazione per
-   quartiere, turismo 2005–2013.
-2. Validare i confini OSM dei 33 quartieri contro il dato comunale ufficiale.
-3. Registrarsi all'area riservata dell'Agenzia delle Entrate per quotazioni,
+1. Scaricare la serie ASIA completa per Brescia (unità locali e addetti per
+   classe dimensionale × Ateco 2 cifre, 2018–2023) e verificare la storia
+   dell'asse 1 settore per settore: dove si sono persi i grandi stabilimenti, e
+   se la meccanica si comporta diversamente dal resto.
+2. Recuperare da una macchina con accesso normale i pezzi dietro
+   `dati.comune.brescia.it` e l'Osservatorio migrazioni: indirizzario con il
+   crosswalk sezione→quartiere, popolazione per quartiere, dati sugli stranieri
+   a grana di quartiere.
+3. Validare i confini OSM dei 33 quartieri contro il dato comunale ufficiale.
+4. Costruire l'aggregazione sezioni di censimento → quartieri, fondamento degli
+   assi 3, 4 e 6.
+5. Scaricare gli open data MUR sui due atenei (host non raggiungibile
+   dall'ambiente di ricognizione).
+6. Registrarsi all'area riservata dell'Agenzia delle Entrate per quotazioni,
    perimetri zone OMI e compravendite NTN.
-4. Costruire l'aggregazione sezioni di censimento → quartieri, che è il
-   fondamento degli assi 3 e 4.

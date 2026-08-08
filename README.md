@@ -30,22 +30,36 @@ pipeline mezza costruita, davanti a una fonte che sulla carta esisteva.
 
 ## In sintesi
 
-Il canale di accesso principale è **`dati.lombardia.it`** (API Socrata aperta,
-senza chiave): da lì arrivano trent'anni di qualità dell'aria su cinque
-stazioni bresciane georeferenziate, il clima dal 1990 su due stazioni, e i
-flussi turistici mensili per comune. Il secondo pilastro è **ISTAT**: basi
-territoriali e variabili censuarie danno popolazione, istruzione e abitazioni
-— incluso **affitto contro proprietà** — a grana di sezione di censimento,
-aggregabile ai 33 quartieri.
+Il baricentro del progetto è **economico e sociale, non turistico**: lavoro e
+struttura produttiva, chi vive in città e da dove viene, studi, casa, aria.
 
-Le due assenze da mettere in conto subito: **nessun dato aperto di criminalità
-per quartiere** (comune nel migliore dei casi, spesso provincia) e **nessuna
-copertura Inside Airbnb per Brescia**, quindi niente equivalente della densità
-di alloggi turistici per quartiere che regge metà del progetto basco.
+Il ritrovamento principale è il **Censimento permanente ISTAT via SDMX**: una
+famiglia di tabelle `DF_DCSS_*` con grana **comunale e annuale** (non decennale)
+che copre occupazione per settore e posizione professionale, titolo di studio
+per cittadinanza, pendolarismo, background migratorio — inclusa la distinzione
+fra stranieri, seconde generazioni e italiani per acquisizione — abitazioni per
+titolo di godimento e persino la **percezione della sicurezza a livello di
+città**. Accanto, il registro **ASIA** dà unità locali e addetti per classe
+dimensionale e settore, 2018–2023: è la fonte che risponde direttamente alla
+domanda se Brescia sia ancora una città di microimprese.
 
-Il collo di bottiglia è **`dati.comune.brescia.it`**, che da questo ambiente non
-risponde: ci stanno i pezzi più preziosi, in particolare l'indirizzario che lega
-indirizzo → sezione di censimento → quartiere → zona, e che è ciò che rende
+Il secondo canale è **`dati.lombardia.it`** (API Socrata aperta, senza chiave):
+trent'anni di qualità dell'aria su cinque stazioni bresciane georeferenziate e
+il clima dal 1990 su due stazioni. Il terzo sono le **basi territoriali e
+variabili censuarie ISTAT**, che portano popolazione, istruzione, origini e
+abitazioni a grana di sezione di censimento, aggregabile ai 33 quartieri.
+
+Tre limiti da mettere in conto subito: **nessun dato aperto di criminalità per
+quartiere** (percezione al massimo comunale e solo dal 2022, reati provinciali);
+**nessuna copertura Inside Airbnb per Brescia**; e **molti assi si fermano al
+comune**, quindi buona parte del progetto sarà fatta di serie temporali e
+scomposizioni, non di mappe.
+
+Il collo di bottiglia resta **`dati.comune.brescia.it`**, che da questo ambiente
+non risponde: ci stanno i pezzi più preziosi, in particolare l'indirizzario che
+lega indirizzo → sezione di censimento → quartiere → zona, e che è ciò che rende
 esatta l'aggregazione del censimento sui quartieri.
 
 Dettagli, prove e tabella completa di raggiungibilità in [`FONTI.md`](FONTI.md).
+Se lavori con l'SDMX di ISTAT, leggi prima la nota tecnica in fondo a quel
+documento: un parametro sbagliato fa sembrare vuoti dataset che sono pieni.

@@ -101,6 +101,7 @@ metrica, come in Donostia (`observed` / `derived` / `proxy`).
 | Bilancio demografico; stranieri residenti per cittadinanza | ISTAT — `demo.istat.it` | `demo.istat.it/app/?i=P02` (bilancio), `?i=P03` (bilancio stranieri) | comune | annuale, serie lunga | **verificata ✓** (host 200) |
 | Popolazione residente al 1° gennaio | ISTAT SDMX | `esploradati.istat.it/SDMXWS/rest/data/IT1,22_289_DF_DCIS_POPRES1_1,1.0/…` | comune | serie lunga | **da verificare** — l'endpoint risponde ma la chiave dimensionale va ricostruita dal DSD (il mio primo tentativo ha dato `NoRecordsFound`) |
 | Reddito IRPEF: imponibile, imposta netta, addizionali | MEF — Dipartimento delle Finanze, *Open data comunale* | `finanze.gov.it/it/statistiche-fiscali/open-data-comunale-principali-variabili-irpef/` | **comune + sub-comunale per CAP** | serie storica fino a imposta **2024** | **verificata ✓** (host 200) |
+| **Contribuenti e reddito complessivo per classi di importo** | MEF via ISTAT SDMX | dataflow `30_1008_DF_MEF_REDDITIIRPEF_COM_2` | **comune** | serie storica | **verificata ✓** — 261.331 osservazioni. Dà la **distribuzione** del reddito, non solo la media: è ciò che serve per parlare di disuguaglianza invece che di livello |
 
 **Il reddito per CAP è il ritrovamento più interessante di questa sezione.**
 Brescia ha i CAP 25121–25136: non coincidono con i quartieri, ma danno un
@@ -118,22 +119,183 @@ Per Brescia la situazione è simile ma non identica.
 
 | Tema | Fonte | Endpoint | Grana | Copertura | Stato |
 |---|---|---|---|---|---|
-| Delitti denunciati dalle forze di polizia, per tipo di reato — **grandi comuni** | ISTAT | dataflow `73_67_DF_DCCV_DELITTIPS_2` e tasso di delittuosità `_8` | **comune capoluogo** | serie storica | ⚠️ **dataflow presente ma vuoto** via SDMX: la richiesta restituisce l'intestazione e zero osservazioni. Ripiego: le **tavole XLSX** su `istat.it/tavole-di-dati/…delitti-denunciati…` |
-| Delitti denunciati per tipologia | ISTAT | `73_67_DF_DCCV_DELITTIPS_1`, tasso provinciale `_9` | provincia | serie storica | idem (SDMX vuoto → tavole) |
-| Infrazioni penali per tipologia | Ministero dell'Interno — Portale Statistico della Criminalità | `estadisticasdecriminalidad`-equivalente italiano: *Portale Statistico della Criminalità* / Banca Dati | provincia (BS) | serie annuale | **da verificare** — è la fonte che in Donostia ha chiuso il buco della serie totale; qui l'equivalente è provinciale, quindi Brescia città ≈ una frazione della provincia: da dichiarare |
-| Percezione di sicurezza (camminare da soli al buio), 67 indicatori di benessere | ISTAT — **BesT, Benessere equo e sostenibile dei territori** | report regionali + serie storiche provinciali | **provincia (NUTS3)** | serie storica, ed. 2025 | **verificata ✓** (pagine 200) — include la percezione di sicurezza rilevata dal Censimento |
-| Inquinamento, **criminalità e rumore percepiti nella zona in cui si vive** | ISTAT — *Aspetti della vita quotidiana* | dataflow `33_291` | regione | serie storica | **da verificare** (dataflow esiste nell'elenco) |
+| **Percezione della sicurezza camminando al buio da soli** nella zona in cui si abita | ISTAT — Censimento permanente | dataflow `DF_DCSS_BEST_PPC_6_GC` | **comune** | **2022–2024**, annuale | **verificata ✓** — 11.640 osservazioni, e fra i territori c'è `017029: Brescia` (oltre alla provincia `ITC47`). Popolazione 14+ per classe di risposta e sesso: le quote si derivano dai conteggi |
+| **Percezione del rischio di criminalità** nella zona in cui si abita | ISTAT — Censimento permanente | `DF_DCSS_BEST_PPC_1_GC` | **comune** | 2022–2024 | **verificata ✓** (2.446 osservazioni) |
+| Soddisfazione di vita, reti di sostegno (parenti, amici, vicini) | ISTAT — Censimento permanente | `DF_DCSS_BEST_PPC_2_GC` … `_5_GC` | comune | 2022–2024 | **verificata ✓** (stessa famiglia) |
+| Tasso di delittuosità, per tipo di reato — **grandi comuni** | ISTAT | `73_67_DF_DCCV_DELITTIPS_8` | 12 città | 2006–2024 | ⚠️ **verificata ✓ l'esclusione di Brescia**: il dataflow ha dati (12.684 osservazioni) ma i «grandi comuni» sono solo Torino, Genova, Milano, Verona, Venezia, Bologna, Firenze, Roma, Napoli, Bari, Palermo, Catania. **Brescia non c'è.** |
+| Tasso di delittuosità per tipo di reato — **province** | ISTAT | `73_67_DF_DCCV_DELITTIPS_9` | **provincia (BS)** | **2006–2024**, 56 tipologie di reato | **verificata ✓** — 1.057 righe per Brescia. È la serie lunga utilizzabile |
+| Delitti denunciati per tipologia | ISTAT | `73_67_DF_DCCV_DELITTIPS_1`, `_4`, `_7` | provincia | serie storica | **da verificare** (stessa famiglia, dati presenti) |
+| Infrazioni penali per tipologia | Ministero dell'Interno — Portale Statistico della Criminalità | Banca Dati Interforze | provincia (BS) | serie annuale | **da verificare** — conferma indipendente della serie ISTAT |
+| Inquinamento, criminalità e rumore **percepiti** nella zona in cui si vive | ISTAT — *Aspetti della vita quotidiana* | dataflow `33_291` | regione | serie storica lunga | **da verificare** — utile per estendere indietro la percezione, che nel censimento parte dal 2022 |
 | Incidenti stradali per fascia d'età | Comune di Brescia via Regione Lombardia | `dati.lombardia.it/resource/6y9w-g8ff` | città | 2015–2018 | **da verificare** (schema non letto) |
 
-**Onestà metodologica obbligata su questo asse.** La percezione è disponibile a
-grana **provinciale o regionale**, il reato a grana **comunale nel migliore dei
-casi**. Non esiste, per Brescia, un dato aperto di criminalità *per quartiere*.
-Qualunque mappa che colori i quartieri per «sicurezza» sarebbe inventata: il
-confronto percezione-vs-realtà va tenuto a livello di città/provincia, come
-serie temporale, esattamente come `analysis/perception_vs_crime.py` nel
-progetto Donostia. Se serve un segnale intra-urbano, l'unica via legittima è
-un'indagine comunale di percezione (v. §7, l'analogo dell'indagine sul rumore
-usata in Donostia).
+**Correzione rispetto alla prima stesura di questo documento.** Avevo concluso
+che i dataflow ISTAT sulla criminalità fossero vuoti. Era un errore mio di
+client, non un problema della fonte: v. la nota SDMX in §10. I dati ci sono.
+
+**Cosa resta comunque vero.** Il **reato** per Brescia è disponibile solo a
+grana **provinciale** — la città non rientra nei dodici «grandi comuni» — mentre
+la **percezione** è disponibile a grana **comunale** ma solo dal 2022. Non
+esiste, per Brescia, un dato aperto di criminalità *per quartiere*: una mappa
+dei quartieri colorata per «sicurezza» sarebbe inventata. Il confronto
+percezione-vs-realtà va costruito come serie temporale città/provincia, come
+`analysis/perception_vs_crime.py` nel progetto Donostia, con l'asimmetria di
+grana e di finestra dichiarata a schermo.
+
+---
+
+## 4-bis. Lavoro, imprese e tessuto produttivo
+
+L'asse centrale della riformulazione. La domanda di fondo — *Brescia è ancora la
+città della meccanica fatta di piccole aziende, o si è concentrata?* — ha una
+risposta misurabile, e i dati per darla sono aperti e a grana comunale.
+
+### Il registro delle imprese (ASIA)
+
+**`183_1163_DF_DICA_ASIAULP_TERRIFDATA_7`** — *Unità locali e addetti per
+classe di addetti e settore economico (Ateco 2 cifre), **comuni***.
+**Verificata ✓** con chiave `A.017029...`: 4.266 osservazioni per Brescia,
+**2018–2023**, con due indicatori (numero di unità locali `LU` e addetti in
+media annua `LUEMPDAA`) incrociati per classe dimensionale
+(`W0_9`, `W10_49`, `W50_249`, `W_GE250`).
+
+È **il** dataset per la domanda sulla microimpresa. I totali estratti durante
+la verifica:
+
+| | 2018 | 2023 |
+|---|---|---|
+| Unità locali totali | 24.311 | 26.287 |
+| di cui 0–9 addetti | 22.913 (94,2 %) | 24.726 (94,1 %) |
+| di cui 10–49 | 1.180 | 1.335 |
+| di cui 50–249 | 183 | 198 |
+| di cui **≥250** | **35** | **28** |
+| Addetti totali | 101.136 | 100.939 |
+| addetti in unità 0–9 | 40.149 (39,7 %) | 41.315 (40,9 %) |
+| addetti in unità 10–49 | 22.016 | 25.415 |
+| addetti in unità 50–249 | 18.860 | 20.434 |
+| addetti in unità **≥250** | **20.111 (19,9 %)** | **13.775 (13,6 %)** |
+
+Letto così, in cinque anni: occupazione complessiva **ferma** (~101 mila), ma
+**il vertice si assottiglia** — sette unità locali grandi in meno e 6.335
+addetti in meno nella classe ≥250, mentre la fascia 10–249 ne guadagna quasi
+5.000. La quota di addetti nelle micro-unità sale. Non è ancora una storia
+verificata (2020–21 sono anni Covid, e «unità locale» non è «impresa»: lo
+stabilimento di un gruppo con sede altrove conta qui), ma è esattamente la
+domanda che hai posto, con i numeri che servono per rispondere.
+
+> ⚠️ Due avvertenze da portarsi dietro. **Unità locale ≠ impresa**: una sede
+> secondaria conta come unità locale nel comune dove sta. E la grana è
+> **comunale**, non di quartiere: questo asse produce serie e barre, non
+> coropletiche.
+
+Altri tagli della stessa famiglia: `..._TERRIFDATA_6` (classe di addetti ×
+Ateco 3 cifre, **provincia**), `_3` (Ateco 3 cifre, comuni), `_9` (per sistema
+locale del lavoro 2021). Sulle imprese in senso proprio — forma giuridica, età
+dell'impresa, sesso e **paese di nascita del titolare** — c'è la famiglia
+`183_203_DF_DICA_ACDP_*`, da verificare per la grana.
+
+### Occupazione dal Censimento permanente
+
+| Dataflow | Cosa dà | Grana | Stato |
+|---|---|---|---|
+| `DF_DCSS_EMPLP_2_COM` | Occupati per sesso e **settore di attività economica** | comune | **verificata ✓** |
+| `DF_DCSS_EMPLP_1_COM` | Occupati per sesso e **posizione nella professione** (dipendente/autonomo) | comune | **verificata ✓** (stessa famiglia) |
+| `DF_DCSS_ISTR_LAV_PEN_2_TV_3` | Popolazione 15+ per **condizione professionale** ed età | comune | **verificata ✓** |
+| `DF_DCSS_ISTR_LAV_PEN_2_TV_4` | Popolazione 15+ per **condizione professionale e cittadinanza** | comune | **verificata ✓** |
+| `DF_DCSS_ISTR_LAV_PEN_2_TV_5` | Popolazione che si sposta giornalmente per **studio o lavoro** | comune | **verificata ✓** |
+| `DF_DCSS_LCAS_FRISC_1`, `_2` | Occupati per utilizzo del **lavoro da casa**, sesso e età | comune | **verificata ✓** (famiglia `_GC`, che include Brescia) |
+| `DF_DCSS_LCAS_FRISC_3` | Frequenza di corsi di formazione professionale | comune | idem |
+
+Numeri estratti in verifica, **Brescia 2021** (occupati 15+ per settore):
+**86.788 occupati** totali (48.469 uomini, 38.319 donne), di cui industria in
+senso lato (B–F) **19.769 (22,8 %)**, commercio-alberghi-ristorazione 15.886,
+servizi finanziari/professionali/immobiliari 18.351, altre attività 25.576,
+agricoltura 674.
+
+**Pendolarismo, Brescia 2019** (verificato): 108.034 residenti si spostano ogni
+giorno, di cui **75.652 per lavoro** e 32.382 per studio; **26.425 escono dal
+comune** (23.699 per lavoro). Solo 2018 e 2019 disponibili.
+
+> **Un indicatore derivabile e interessante.** Gli addetti nelle unità locali
+> *situate* a Brescia (100.939 nel 2023, ASIA) contro gli occupati *residenti*
+> a Brescia (86.788 nel 2021, censimento) danno un rapporto di concentrazione
+> del lavoro ≈ **1,16**: la città importa lavoratori. È lo stesso
+> `job_concentration_ratio` costruito per Donostia. Da usare con cautela — anni
+> e definizioni diversi — ma il segno è robusto e la matrice origine-destinazione
+> vera non esiste come dato aperto.
+
+### Altre fonti sul lavoro
+
+| Tema | Fonte | Grana | Stato |
+|---|---|---|---|
+| Lavoratori dipendenti per attività economica e provincia di lavoro; retribuzioni per classi di importo **e cittadinanza** | INPS — Osservatori statistici (SDMX) | provincia | **da verificare** — serie dal 2008; il taglio per cittadinanza è raro e prezioso |
+| Cassa integrazione, precariato, assunzioni | INPS — Open Data | provincia | **da verificare** |
+| Forze di lavoro: tasso di occupazione, disoccupazione, attività | ISTAT — RCFL | provincia | **da verificare** |
+| Avviamenti e cessazioni, tipologia contrattuale | Regione Lombardia — Comunicazioni Obbligatorie | provincia | **da verificare** |
+| **Esportazioni e importazioni per paese e merce** | ISTAT — Coeweb, dataflow `139_176` | provincia | **da verificare** — per una provincia manifatturiera ed esportatrice come Brescia è un asse narrativo di prima grandezza |
+| Infortuni sul lavoro | INAIL — Open Data | provincia/settore | **da verificare** — pertinente in una città industriale |
+
+---
+
+## 4-ter. Istruzione e università
+
+| Tema | Fonte | Endpoint | Grana | Copertura | Stato |
+|---|---|---|---|---|---|
+| Grado di istruzione della popolazione 9+ per età | ISTAT — Censimento permanente | `DF_DCSS_ISTR_LAV_PEN_2_TV_1` | **comune** | dal 2018 | **verificata ✓** |
+| Grado di istruzione **per cittadinanza** | idem | `DF_DCSS_ISTR_LAV_PEN_2_TV_2` | **comune** | dal 2018 | **verificata ✓** |
+| Grado di istruzione | ISTAT — variabili censuarie | v. §2 | **sezione di censimento** | 2021, 2011 | **verificata ✓** |
+| Iscritti, immatricolati, laureati per ateneo, corso, classe di laurea, sesso | MUR — USTAT Open Data | `dati-ustat.mur.gov.it` (CKAN) · portale `ustat.mur.gov.it/opendata/` | **ateneo** | iscritti **1998/99–2025/26**; laureati **2001–2024** | **non raggiungibile da qui** (`dati-ustat` non risponde, `ustat.mur.gov.it` 503 al momento della prova) — ma i dataset sono pubblici in CSV/XLSX |
+| Scheda dell'Università degli Studi di Brescia | MUR — USTAT | `ustat.mur.gov.it/dati/didattica/italia/atenei-statali/brescia` | ateneo | serie storica | **da verificare** |
+
+**Nota sui due atenei.** Brescia ha l'**Università degli Studi di Brescia**
+(statale: ~12.200 iscritti nel 2000/01 → ~15.700 nel 2023/24, +29 %) e la sede
+bresciana dell'**Università Cattolica del Sacro Cuore**. Entrambe compaiono
+nell'anagrafica MUR: una lettura onesta della «Brescia che studia» le tiene
+insieme, e la statale da sola sottostima la popolazione universitaria.
+
+Il gancio più interessante non è il conteggio degli iscritti ma
+l'**incrocio istruzione × lavoro × cittadinanza a livello comunale**, che il
+censimento permanente rende possibile: quanti laureati vivono a Brescia, in che
+settori lavorano, e come cambia il quadro fra italiani e stranieri.
+
+---
+
+## 4-quater. Stranieri: chi vive a Brescia e da dove viene
+
+Brescia è una delle città italiane a più alta incidenza di popolazione
+straniera, e questo è l'asse dove il Censimento permanente è
+**inaspettatamente ricco**: pubblica a grana **comunale** una famiglia di
+tabelle sul *background migratorio* che va molto oltre il semplice conteggio
+degli stranieri.
+
+| Dataflow (famiglia `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM`) | Cosa dà |
+|---|---|
+| `_1_COM` | Popolazione italiana dalla nascita / italiana **per acquisizione** / straniera, per luogo di nascita dei genitori |
+| `_2_COM`, `_3_COM` | Italiani nati in Italia e italiani nati all'estero, per luogo di nascita dei genitori |
+| `_4_COM`, `_5_COM` | Italiani **per acquisizione**, per **cittadinanza precedente** e luogo di nascita dei genitori |
+| `_6_COM`, `_7_COM` | **Stranieri nati in Italia** (seconde generazioni) e stranieri nati all'estero, per **cittadinanza** |
+| `_8_COM`, `_9_COM`, `_10_COM` | Le stesse popolazioni incrociate con il **grado di istruzione** |
+
+**Verificata ✓**: `_7_COM` restituisce 72.792 osservazioni. La famiglia dà, a
+livello di comune, la distinzione fra chi è arrivato, chi è nato qui da
+genitori stranieri e chi è diventato italiano — cioè la differenza fra
+*immigrazione* e *popolazione di origine straniera*, che è la distinzione che
+quasi tutte le narrazioni sbagliano.
+
+| Altre fonti | Endpoint | Grana | Stato |
+|---|---|---|---|
+| Popolazione straniera per stato civile, posizione in famiglia, nel nucleo | `DF_DCSS_FORPOP_1_GC` … `_3_GC` | comune | **verificata ✓** (famiglia `_GC`) |
+| Famiglie con almeno uno straniero / con tutti i componenti stranieri | `DF_DCSS_FAMIGLIE_TV_2`, `_3` | comune | **verificata ✓** |
+| Nuclei con almeno uno straniero per **area geografica di cittadinanza** della persona di riferimento | `DF_DCSS_FPHH_FNCL_3_GC` | comune | **verificata ✓** |
+| Bilancio demografico della popolazione straniera; **stranieri residenti per cittadinanza** | `demo.istat.it/app/?i=P03` | comune | **verificata ✓** (host 200) — è la serie annuale per singolo paese di cittadinanza |
+| Acquisizioni di cittadinanza | ISTAT / `demo.istat.it` | comune | **da verificare** |
+| Cittadinanza per sezione di censimento | variabili censuarie (§2) | **sezione** | **verificata ✓** — l'unica via per portare l'origine a grana di quartiere |
+| Rapporti, ricerche e dossier sulla popolazione di origine straniera in città | **Comune di Brescia — Osservatorio sulle migrazioni e l'inclusione** | `comune.brescia.it/aree-tematiche/immigrazione/osservatorio-sulle-migrazioni-e-linclusione/dati-aperti-open-data` | quartiere, famiglie, seconde generazioni, acquisizioni | **non raggiungibile da qui** — **da recuperare a mano: è la fonte più vicina alla grana di quartiere su questo tema**, con rilevazioni su quartieri, famiglie, matrimoni, prime e seconde generazioni |
+
+> ⚠️ Vale qui la stessa cautela che il progetto Donostia dichiara come MET-5: il
+> **paese di origine non è un proxy** di reddito, di disagio o di
+> trasformazione urbana. La rappresentazione è descrittiva, e il testo deve
+> dirlo.
 
 ---
 
@@ -208,9 +370,11 @@ San Polo).
 
 ## 6. Turismo e ricettività
 
-L'asse è secondario nella riformulazione bresciana, ma serve: Brescia è stata
-**Capitale italiana della cultura 2023** con Bergamo, e quello è uno shock
-datato che si deve vedere nelle serie.
+**Asse minore.** Brescia non è una città turistica e il progetto non ci
+costruisce sopra una storia. Resta utile per una ragione sola: **Capitale
+italiana della cultura 2023** con Bergamo è uno shock datato e identificabile,
+e serve come contro-prova in altre serie (commercio, ricettività, occupazione
+nei servizi). Va tenuto come capitolo breve, non come pilastro.
 
 | Tema | Fonte | Endpoint | Grana | Copertura | Stato |
 |---|---|---|---|---|---|
@@ -278,6 +442,15 @@ una macchina normale. È lo stesso limite che il progetto Donostia documenta per
 
 ## 9. Sintesi: cosa è più forte e cosa è più debole rispetto a Donostia
 
+**Il ritrovamento principale: il Censimento permanente a grana comunale.**
+ISTAT pubblica via SDMX una famiglia larghissima di tabelle `DF_DCSS_*` con
+grana **comune** (e per alcune `_GC` «province e grandi comuni», dove Brescia
+**c'è**). Copre lavoro, istruzione, condizione professionale, pendolarismo,
+background migratorio, abitazioni, famiglie, percezione di sicurezza e
+soddisfazione di vita — annuale dal 2018/2021 anziché decennale. È la fonte che
+regge quasi tutti gli assi di questa riformulazione, e non era ovvia: sta
+dietro sigle opache in un elenco di 4.896 dataflow.
+
 **Più forte a Brescia**
 
 - **Qualità dell'aria**: serie dal 1992, 5 stazioni attive georeferenziate,
@@ -289,8 +462,17 @@ una macchina normale. È lo stesso limite che il progetto Donostia documenta per
   confrontabili (2011 → 2021). Donostia lavorava a grana barrio e ha dovuto
   costruire a mano la grana «via».
 - **Clima**: due stazioni con serie trentennali invece di una.
-- **Reddito sub-comunale** per CAP.
+- **Reddito sub-comunale** per CAP, più la **distribuzione** per classi di
+  importo a livello comunale.
 - **Elezioni per sezione**: serie lunga a grana fine.
+- **Tessuto produttivo**: ASIA dà unità locali e addetti per classe
+  dimensionale e settore, a livello comunale, 2018–2023. Donostia doveva
+  accontentarsi di un proxy sugli esercizi commerciali.
+- **Background migratorio**: dieci tabelle censuarie che distinguono stranieri,
+  seconde generazioni e italiani per acquisizione, a livello comunale. In
+  Donostia c'era il solo conteggio per nazionalità.
+- **Percezione della sicurezza a livello di città** (2022–2024), che a Donostia
+  esisteva solo per una zona statistica sovracomunale.
 
 **Più debole a Brescia**
 
@@ -315,7 +497,47 @@ punti, turismo 6 anni. Va reso esplicito nella grafica, non appiattito.
 
 ---
 
-*Ricognizione effettuata ad agosto 2026. Ogni riga marcata «verificata ✓» è
-stata interrogata realmente; le altre portano lo stato di accesso che le
-descrive. Nessun dato è ancora stato scaricato o elaborato: questo documento
-precede la pipeline.*
+---
+
+## 10. Nota tecnica: come si interroga l'SDMX di ISTAT
+
+Va scritta perché mi ha già fatto sbagliare una conclusione, e farebbe perdere
+tempo a chiunque riparta da qui.
+
+**Il parametro `format=` nella query string non funziona.** Una richiesta come
+`…/data/IT1,<dataflow>,1.0/<chiave>?format=csvfilewithlabels` restituisce
+**l'intestazione CSV e zero righe**, anche quando i dati esistono. Sembra un
+dataset vuoto e non lo è. Il formato va negoziato con l'header:
+
+```bash
+curl -H 'Accept: application/vnd.sdmx.data+csv;version=1.0.0;labels=both' \
+  'https://esploradati.istat.it/SDMXWS/rest/data/IT1,DF_DCSS_EMPLP_2_COM,1.0/A.017029.....'
+```
+
+Le altre regole imparate sul campo:
+
+1. **La chiave è posizionale**, un campo per dimensione, separati da punti.
+   L'ordine e il numero esatto si leggono dal dataflow:
+   `…/rest/dataflow/IT1/<dataflow>?references=all`, poi i tag
+   `<structure:Dimension id="…">`. Un punto in più o in meno → zero righe,
+   senza errore.
+2. **Per sapere cosa esiste davvero**, prima dei dati, si usa
+   `…/rest/availableconstraint/IT1,<dataflow>,1.0`: elenca i valori realmente
+   presenti per ogni dimensione. È così che si scopre in dieci secondi che i
+   «grandi comuni» della criminalità sono solo dodici città e Brescia non c'è.
+3. **Il codice di Brescia comune è `017029`** nella codelist `CL_ITTER107`;
+   la provincia è `ITC47`, il sistema locale del lavoro `SLL_66`.
+4. **I pull a caratteri jolly su tutta Italia sono pesanti** (il tasso di
+   delittuosità provinciale supera i 120 MB e va in timeout a 220 s): filtrare
+   sempre per `REF_AREA` quando la dimensione lo consente.
+5. Le etichette leggibili arrivano solo con `labels=both`; senza, si ottengono
+   i codici nudi.
+
+---
+
+*Ricognizione effettuata ad agosto 2026, in due passate: la prima sugli assi
+casa/sicurezza/clima/turismo, la seconda su lavoro, imprese, istruzione e
+cittadinanze. Ogni riga marcata «verificata ✓» è stata interrogata realmente e
+porta la sua prova; le altre dichiarano lo stato di accesso che le descrive.
+Nessun dato è ancora stato scaricato o elaborato: questo documento precede la
+pipeline.*
