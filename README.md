@@ -15,8 +15,9 @@ corrisponde a `docs/PROJECT-BRIEF-v2.md` + `docs/SOURCES.md` +
 
 | Documento | Cos'è |
 |---|---|
-| [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, la geometria di riferimento, i dieci assi tematici ordinati per qualità del dato, le otto storie candidate, i principi. |
-| [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. Include la tabella di raggiungibilità dei portali e la sintesi di cosa è più forte e più debole rispetto a Donostia. |
+| [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, le unità di analisi, i tredici assi tematici ordinati per qualità del dato, le storie candidate, i principi. |
+| [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e cosa portarsi dietro in caso di repo separato (§12). |
+| [`dati/`](dati/README.md) | La tabella anagrafica dei **205 comuni** della provincia, con popolazione, unità locali, addetti e presenze turistiche già valorizzati. |
 
 ## Come leggere il registro
 

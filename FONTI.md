@@ -90,11 +90,12 @@ comuni-della-provincia, per non doverlo ricercare.
 | **Delitti / tasso di delittuosità** per tipo di reato | **provincia** `ITC47` | 2006–2024, 56 tipologie | **✓ 1.057 righe** per Brescia |
 | **Percezione di sicurezza** e benessere soggettivo | **comune** + provincia | 2022–2024 | **✓** `017029` presente |
 | **Flussi turistici** arrivi/presenze, per tipo di struttura e cittadinanza | **comuni** della provincia | 2019–2024 (mensile e annuale) | **✓ 133 comuni con dato**, 45 con «Dato riservato» |
-| **Tasso di occupazione** (e famiglia RCFL) | **provincia** | serie storica | **✓** `ITC47` fra i 133 territori di `150_915_DF_DCCV_TAXOCCU1_YOUTH_1` |
+| **Tasso di occupazione** per sesso, età, titolo di studio e **cittadinanza** | **provincia** | **2018–2025** | **✓ 384 righe** per `ITC47` (`150_915_DF_DCCV_TAXOCCU1_YOUTH_1`) |
+| **Popolazione residente** e famiglie | **tutti i comuni** | **2018–2024** | **✓ 205/205** (`DF_DCSS_FAM_POP_TV_1`); provincia 1.265.884 ab. nel 2024, di cui Brescia città 199.853 |
 | **Redditi IRPEF** per classi di importo | **comune** | serie storica | **✓** 261.331 osservazioni nazionali, filtrabili |
 | **Censimento permanente** (lavoro, istruzione, origini, abitazioni) | **comune** | 2018/2021→ | **✓** su tutta la famiglia `DF_DCSS_*` |
 | **Qualità dell'aria e meteo** ARPA | **stazione**, in tutta la provincia | dal 1983/1990 | **✓** anagrafica con `lat`/`lng`, filtrabile per `provincia='BS'` |
-| **Commercio estero** (import/export per paese e merce) | provincia | dal 1991 | ⚠️ **da verificare**: nell'SDMX il dataflow provinciale risulta pubblicato per il solo Lazio; la via è il portale **Coeweb** (`coeweb.istat.it`) o i bulk `DF_BULK_COE*` |
+| **Commercio estero** (import/export per paese e merce) | **regione** (ripiego) | **1991–2025** | ⚠️ **provincia non raggiungibile, regione sì** — v. §1-ter |
 
 ### Il tessuto produttivo della provincia — numeri estratti in verifica
 
@@ -127,6 +128,48 @@ Travagliato 6.144 · Rezzato 6.024 · Orzinuovi 6.015 · Manerbio 5.725 · Chiar
 > città vale il 21 % dell'occupazione provinciale.
 
 
+
+---
+
+## 1-ter. Commercio estero: esito della verifica
+
+Era l'unico asse importante rimasto incerto. L'ho chiuso: **a metà**.
+
+**Cosa non funziona.** I dati del commercio estero a **grana provinciale** non
+sono sul nodo SDMX principale di ISTAT. Nell'elenco dei 4.896 dataflow ne
+esistono di provinciali per il **solo Lazio**
+(`DF_DCSE_CPA_AT2007_COE_OPT_A_REG_ALL_PROV_LAZIO`); l'equivalente Lombardia
+non esiste (404 su tutte le varianti di nome provate). Il portale storico
+`coeweb.istat.it` **non risponde più** (è stato dismesso il 30 settembre 2025) e
+il suo sostituto, `esploradati.istat.it/coeweb/databrowser/`, è una single-page
+app il cui endpoint SDMX non sono riuscito a determinare: tutte le richieste ai
+percorsi plausibili (`/coeweb/SDMXWS/rest/…`, i vari `config.json`) vengono
+riscritte sull'indice o su una pagina di errore. **Dal browser è consultabile**;
+via API, da qui, no.
+
+**Cosa funziona, e non è poco.** Sul nodo principale c'è
+`DF_DCSE_CPA_AT2007_COE_OPT_A_REG_ALL_REG` a **grana regionale**, ed è ricco:
+
+- **verificata ✓**: 35 osservazioni annuali per la Lombardia (`ITC4`),
+  **1991–2025**, esportazioni totali verso il mondo — 162,2 mld € nel 2022,
+  163,0 nel 2023, 164,1 nel 2024, 167,1 nel 2025;
+- dimensioni disponibili: `DATA_TYPE` export/import (`EV`/`IV`), **320 paesi
+  partner**, 10 raggruppamenti merceologici CPA Ateco 2007.
+
+Trentacinque anni di serie per settore e per paese di destinazione sono materia
+narrativa vera, solo su una geografia più larga di quella che serviva.
+
+**Come procedere.** Tre opzioni, in ordine di costo crescente:
+
+1. **Usare la Lombardia** e dichiararlo. Brescia è la seconda provincia
+   manifatturiera della regione: la serie regionale è un contesto onesto, non un
+   surrogato mascherato.
+2. **Estrarre a mano il provinciale** dal databrowser Coeweb via browser
+   (esportazione CSV dall'interfaccia) e versionarlo come input curato — lo
+   stesso trattamento riservato ai prezzi immobiliari.
+3. **Camera di Commercio di Brescia**, che pubblica report periodici sul
+   commercio estero provinciale: da verificare se in formato tabellare o solo
+   PDF.
 
 ---
 
@@ -644,9 +687,122 @@ Le altre regole imparate sul campo:
 
 ---
 
-*Ricognizione effettuata ad agosto 2026, in due passate: la prima sugli assi
-casa/sicurezza/clima/turismo, la seconda su lavoro, imprese, istruzione e
-cittadinanze. Ogni riga marcata «verificata ✓» è stata interrogata realmente e
-porta la sua prova; le altre dichiarano lo stato di accesso che le descrive.
-Nessun dato è ancora stato scaricato o elaborato: questo documento precede la
-pipeline.*
+## 11. Ricette verificate
+
+Comandi che ho eseguito realmente e che funzionano. Copiabili così come sono.
+Sono la parte di questo documento che fa risparmiare più tempo.
+
+```bash
+CSV='Accept: application/vnd.sdmx.data+csv;version=1.0.0;labels=both'
+SDMX='https://esploradati.istat.it/SDMXWS/rest'
+```
+
+**Base geografica** — confini e anagrafica dei comuni:
+
+```bash
+curl -O https://www.istat.it/storage/cartografia/confini_amministrativi/generalizzati/2025/Limiti01012025_g.zip
+curl -O https://www.istat.it/storage/codici-unita-amministrative/Elenco-comuni-italiani.csv
+# i 205 comuni della provincia: colonna 2 (Codice Provincia Storico) == '017'
+# il file e' in latin-1 con separatore ';', non UTF-8
+```
+
+**Imprese e addetti (ASIA), tutti i comuni** — filtrare in locale è più
+robusto che costruire chiavi lunghe (v. la trappola in §10):
+
+```bash
+curl -H "$CSV" "$SDMX/data/IT1,183_1163_DF_DICA_ASIAULP_TERRIFDATA_7,1.0/A..LU.0010."      -o ul.csv
+curl -H "$CSV" "$SDMX/data/IT1,183_1163_DF_DICA_ASIAULP_TERRIFDATA_7,1.0/A..LUEMPDAA.0010." -o addetti.csv
+# ~190k righe ciascuno; NACE '0010' = TOTAL; classi: TOTAL, W0_9, W10_49, W50_249, W_GE250
+```
+
+**Solo il comune di Brescia** — qui la chiave puntuale conviene:
+
+```bash
+curl -H "$CSV" "$SDMX/data/IT1,DF_DCSS_EMPLP_2_COM,1.0/A.017029....."          # occupati per settore
+curl -H "$CSV" "$SDMX/data/IT1,DF_DCSS_ISTR_LAV_PEN_2_TV_5,1.0/A.017029.RP_COM_DAY.T......"  # pendolarismo
+```
+
+**Popolazione di tutti i comuni** (poi si filtra su `017…`):
+
+```bash
+curl -H "$CSV" "$SDMX/data/IT1,DF_DCSS_FAM_POP_TV_1,1.0/" -o pop.csv   # indicatore RESPOP_AV
+```
+
+**Provincia**:
+
+```bash
+curl -H "$CSV" "$SDMX/data/IT1,73_67_DF_DCCV_DELITTIPS_9,1.0/"                  # reati, 2006-2024
+curl -H "$CSV" "$SDMX/data/IT1,150_915_DF_DCCV_TAXOCCU1_YOUTH_1,1.0/"           # tasso occupazione
+# entrambi restituiscono tutta Italia: filtrare REF_AREA su ITC47.
+# ATTENZIONE: il primo supera i 120 MB e va in timeout sotto i ~250 s.
+```
+
+**Export della Lombardia**, 1991–2025:
+
+```bash
+curl -H "$CSV" "$SDMX/data/IT1,DF_DCSE_CPA_AT2007_COE_OPT_A_REG_ALL_REG,1.0/A.ITC4.EV.N.ALL.WORLD"
+# EV=export, IV=import; 320 partner; 10 raggruppamenti CPA Ateco
+```
+
+**Regione Lombardia (Socrata)** — niente chiave, SoQL pieno:
+
+```bash
+BASE='https://www.dati.lombardia.it/resource'
+curl -G "$BASE/vyxt-7jdx.json" \
+  --data-urlencode "\$where=provincia='BS' AND anno='2024' AND tipo_struttura='Totale' AND cittadinanza_turisti='Totale'" \
+  --data-urlencode '$limit=500'
+# senza il doppio filtro Totale/Totale si contano tre volte le stesse notti
+
+curl -G "$BASE/ib47-atvt.json" --data-urlencode "\$where=comune='Brescia'"   # sensori aria + lat/lng
+curl -G "$BASE/nf78-nj6b.json" --data-urlencode "\$where=provincia='BS'"     # stazioni meteo
+# nota: l'anagrafica meteo NON ha il campo 'comune', solo 'provincia' e 'nomestazione'
+```
+
+### Trappole già incontrate, in breve
+
+| Sintomo | Causa | Rimedio |
+|---|---|---|
+| CSV con la sola intestazione | `format=` nella query string | header `Accept` (§10) |
+| Zero righe con chiave apparentemente giusta | numero di punti sbagliato | contare le dimensioni nel dataflow |
+| HTTP 400 su chiavi multi-comune | URL troppo lungo | scaricare tutto e filtrare in locale |
+| Timeout a 120–220 s | pull nazionale non filtrato | alzare `--max-time` a 280 s o filtrare |
+| Presenze turistiche gonfiate ×3 | `tipo_struttura` e `cittadinanza_turisti` non filtrati | `= 'Totale'` su entrambi |
+| `could not convert string to float` | valori `«Dato riservato»` e migliaia con la virgola | parser tollerante, e **mai** convertire in zero |
+| 502 sporadici sul proxy | transitorio | riprovare dopo qualche secondo |
+
+---
+
+## 12. Se si decide di creare un repo separato
+
+Nota di servizio, per la decisione. Questa cartella è **autoconclusiva**: non
+dipende da nulla del progetto Donostia se non dall'ispirazione architetturale.
+Spostarla significa copiare `brescia/` e riscrivere il `README` di radice.
+
+Cosa vale la pena portarsi dietro da `donostia-dataviz`, quando ci sarà del
+codice:
+
+- **Il contratto dati** (`docs/DATA-CONTRACT.md`): la forma stabile per metrica
+  che tiene generico il codice della mappa. Va riadattato — la chiave diventa
+  il codice ISTAT del comune e servirà un livello `provincia` — ma l'idea di
+  «aggiungere un dataset = un JSON in più e una riga nel registro» è ciò che ha
+  reso il progetto originale estendibile.
+- **Lo schema della pipeline**: un modulo per dataset che espone
+  `build(ctx) -> list[Metric]`, registrato in un unico punto.
+- **Le schede di confidenza** (`observed` / `derived` / `proxy` + assunzioni a
+  vista): qui servono ancora di più, perché il progetto mescola grane e anni
+  diversi molto più del precedente.
+- **Il principio di provenance esplicita** e i test di integrità dei join.
+
+Cosa **non** va portato: la geometria per barrios, l'impianto narrativo sul
+turismo, e l'assunto che tutto sia misurato alla stessa grana.
+
+---
+
+*Ricognizione effettuata ad agosto 2026, in tre passate: la prima sugli assi
+casa/sicurezza/clima/turismo; la seconda su lavoro, imprese, istruzione e
+cittadinanze; la terza per spostare l'unità di analisi su comune e provincia,
+chiudere il commercio estero e mettere per iscritto le ricette funzionanti. Ogni
+riga marcata «verificata ✓» è stata interrogata realmente e porta la sua prova;
+le altre dichiarano lo stato di accesso che le descrive. L'unico dato prodotto
+finora è la tabella anagrafica in [`dati/`](dati/README.md); la pipeline non
+esiste ancora.*
