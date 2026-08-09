@@ -15,7 +15,8 @@ Indice:
 5. [Come analizzare i dati](#5-come-analizzare-i-dati)
 6. [Come si costruisce il sito statico](#6-come-si-costruisce-il-sito-statico)
 7. [Il deploy su GitHub Pages](#7-il-deploy-su-github-pages)
-8. [Le lezioni del progetto precedente](#8-le-lezioni-del-progetto-precedente)
+8. [I due documenti da scrivere alla fine](#8-i-due-documenti-da-scrivere-alla-fine)
+9. [Le lezioni del progetto precedente](#9-le-lezioni-del-progetto-precedente)
 
 ---
 
@@ -46,8 +47,11 @@ contenuto è lo stesso e si perde solo la cronologia della ricognizione.
 - il branch principale si chiama **`main`** (`git branch -M main` se serve, e
   su GitHub *Settings → Branches → Default branch*);
 - spostare i file di `brescia/` nella radice del nuovo repo — `FONTI.md`,
-  `BRIEF.md`, `PROSSIMI-PASSI.md`, `pipeline/`, `dati/` — e riscrivere il
-  `README.md` di radice partendo da quello attuale;
+  `BRIEF.md`, `METODOLOGIA.md`, `WORKING-PAPER.md`, `PROSSIMI-PASSI.md`,
+  `pipeline/`, `dati/` — e riscrivere il `README.md` di radice partendo da
+  quello attuale;
+- ⚠️ `METODOLOGIA.md` e `WORKING-PAPER.md` sono **bozze scritte in anticipo**:
+  portarle dietro con il loro avviso in testa e riscriverle alla fine (§8);
 - portarsi dietro il `.gitignore` (esclude `dati/raw/`, che pesa quasi 1 GB ed
   è rigenerabile);
 - **verificare che `dati/processed/` sia versionata**: sono le tabelle pulite,
@@ -411,7 +415,67 @@ script è l'unica rete di sicurezza che regge.
 
 ---
 
-## 8. Le lezioni del progetto precedente
+## 8. I due documenti da scrivere alla fine
+
+Non ora: **quando i dati saranno completi, le visualizzazioni costruite e le
+storie scelte.** Esistono già come bozze in questo repository, e le bozze
+vanno riscritte, non ampliate.
+
+### La nota metodologica — [`METODOLOGIA.md`](METODOLOGIA.md)
+
+Le regole che governano il progetto, ciascuna con il proprio perché: è la base
+di credibilità, e qualunque grafico o titolo deve esserle coerente. Nel
+progetto Donostia si chiamava `NOTA-METODOLOGICA.md` e numerava le decisioni
+(MET-1…MET-8); qui la bozza ne conta undici.
+
+**Perché va scritta alla fine.** Buona parte delle regole nasce da problemi
+incontrati *facendo* l'analisi, non prima. Nel progetto precedente le tre più
+importanti — fallacia ecologica, distinzione fra stato, cambio e traiettoria, e
+il bias del proxy turistico — sono arrivate dalle revisioni esterne, cioè dopo
+che i relati erano scritti. Qui è già successo una volta: MET-9 («decomporre
+prima di titolare») esiste solo perché un titolo sbagliato è stato scoperto e
+corretto.
+
+Cosa mancherà finché non si chiude l'analisi: le regole su **come si scelgono e
+si raccontano le storie** — quando un indicatore merita una narrazione, quali
+soglie, come si trattano i casi limite che i dati faranno emergere.
+
+### Il working paper — [`WORKING-PAPER.md`](WORKING-PAPER.md)
+
+L'esposizione autocontenuta del metodo per un lettore esterno, pensata perché
+qualcuno possa **replicare, criticare o riutilizzare** il lavoro: motivazione,
+disegno dei dati, decisioni metodologiche, indicatori derivati, strategia
+inferenziale, risultati, limiti, regola di arresto, cosa è riutilizzabile
+altrove. Nel progetto Donostia era `docs/WORKING-PAPER.md` e veniva convertito
+in HTML a ogni deploy da uno script (`scripts/build_working_paper.py`), così da
+non divergere mai dal markdown.
+
+**Perché va scritto alla fine.** Un paper metodologico che non può riportare
+risultati è mezzo paper: la sezione più utile è quella in cui il metodo viene
+messo alla prova dai dati veri. Nella bozza attuale la sezione dei risultati è
+esplicitamente provvisoria, e persino il titolo cambierà quando sarà chiaro
+qual è la tesi.
+
+Due cose che nel progetto precedente hanno fatto la differenza e vanno
+riprodotte:
+
+- **includere gli analisi che hanno smontato i propri risultati.** È la parte
+  che quasi nessuno pubblica ed è quella che dà credibilità a tutto il resto.
+  Qui c'è già il primo candidato (§6.1 della bozza).
+- **una sezione esplicita su cosa i dati non permettono di dire.** Nel progetto
+  Donostia è stata la più apprezzata dai revisori esterni.
+
+### Ordine consigliato
+
+1. completare i download e le analisi;
+2. scegliere le storie e costruire le visualizzazioni;
+3. **poi** riscrivere la nota metodologica, che a quel punto descrive decisioni
+   davvero prese;
+4. **infine** il working paper, che le sintetizza per un lettore esterno.
+
+---
+
+## 9. Le lezioni del progetto precedente
 
 Cose imparate a caro prezzo, che non sono ovvie.
 

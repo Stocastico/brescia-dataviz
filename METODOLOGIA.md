@@ -6,9 +6,23 @@
 > progetto gemello su Donostia, in parte dai problemi specifici incontrati sui
 > dati bresciani.
 >
-> **Stato:** MET-1…MET-8 sono attive dalla costruzione della pipeline; MET-9 è
-> nata da un errore reale commesso in agosto 2026 (§MET-9); MET-10 e MET-11
-> sono preventive.
+> ## ⚠️ BOZZA — lavori in corso
+>
+> **Questo documento è stato scritto in anticipo e non è definitivo.** Va
+> riscritto e completato **alla fine**, quando i dati saranno tutti scaricati,
+> le analisi fatte e le storie scelte: solo allora si saprà davvero quali
+> decisioni metodologiche hanno governato il progetto, perché diverse
+> nasceranno da problemi che ancora non abbiamo incontrato.
+>
+> Cosa vale già oggi: le undici regole qui elencate sono reali, applicate nella
+> pipeline e in parte coperte da test. MET-9 in particolare nasce da un errore
+> effettivamente commesso (§MET-9) e ha già cambiato un titolo del progetto.
+>
+> Cosa mancherà finché non si chiude l'analisi: le regole che riguardano
+> **come si scelgono e si raccontano le storie** — soglie, criteri di
+> inclusione di un indicatore in una narrazione, trattamento dei casi limite
+> che emergeranno dai dati. Nel progetto Donostia queste sono arrivate dalle
+> revisioni esterne, cioè dopo aver scritto i relati.
 
 ---
 

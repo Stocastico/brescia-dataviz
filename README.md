@@ -16,8 +16,8 @@ puliti.** Manca la parte di analisi e visualizzazione: il piano sta in
 |---|---|
 | [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, le unità di analisi, i tredici assi tematici ordinati per qualità del dato, le storie candidate, i principi. |
 | [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e cosa portarsi dietro in caso di repo separato (§12). |
-| [`METODOLOGIA.md`](METODOLOGIA.md) | **Le undici regole** che governano il progetto: perché misuriamo come misuriamo. La più importante, MET-9, nasce da un errore reale. |
-| [`WORKING-PAPER.md`](WORKING-PAPER.md) | **Il working paper**: metodo completo per un lettore esterno — disegno dei dati, strategia inferenziale, risultati provvisori, limiti, cosa è riutilizzabile su un'altra provincia. |
+| [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza.** Le undici regole che governano il progetto: perché misuriamo come misuriamo. MET-9 nasce da un errore reale. Da completare a fine progetto. |
+| [`WORKING-PAPER.md`](WORKING-PAPER.md) | ⚠️ **Bozza.** Il working paper: metodo per un lettore esterno. La sezione dei risultati è provvisoria — si riscrive quando le storie saranno chiuse. |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **La consegna.** Come separare il repository, cosa resta da scaricare, le decisioni aperte, le dimensioni non ancora considerate, e — soprattutto — come si costruiscono l'analisi, il sito statico e il deploy. Scritto per essere autosufficiente in un repo nuovo. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 16 CSV su territorio, imprese, lavoro, popolazione, redditi, ambiente, sicurezza e turismo. Versionate; le risposte grezze no. |

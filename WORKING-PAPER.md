@@ -9,11 +9,22 @@
 > referenzia. Ogni numero citato è riproducibile da
 > [`pipeline/`](pipeline/README.md).
 >
-> **Stato: versione 0, agosto 2026.** La ricognizione delle fonti è chiusa, la
-> pipeline funziona e i dati sono scaricati e puliti. **L'analisi non è ancora
-> stata fatta**: la sezione dei risultati (§7) contiene solo ciò che è emerso
-> durante la costruzione, ed è dichiaratamente provvisoria. Questo paper
-> documenta il *metodo* al punto in cui è, non delle conclusioni.
+> ## ⚠️ BOZZA — lavori in corso
+>
+> **Versione 0, agosto 2026, scritta in anticipo.** Il working paper vero si
+> scrive **alla fine**, quando i dati saranno completi, le visualizzazioni
+> costruite e le storie scelte: un paper metodologico che non può riportare
+> risultati è mezzo paper.
+>
+> Cosa è già solido: il disegno dei dati (§3), le decisioni metodologiche (§4)
+> e il caso documentato in §6.1, che è un errore reale corretto e regge da
+> solo.
+>
+> Cosa è provvisorio: **la §7 (risultati)** contiene solo ciò che è emerso
+> costruendo la pipeline, non un'analisi sistematica; **la §6.2** elenca
+> controlli non ancora eseguiti; la §2 e la §5 andranno riscritte in base agli
+> assi che verranno effettivamente scelti. Il titolo stesso del paper cambierà
+> quando sarà chiaro qual è la tesi.
 
 ---
 
