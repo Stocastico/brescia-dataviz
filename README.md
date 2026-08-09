@@ -1,10 +1,10 @@
 # Brescia Dataviz
 
-Progetto di data visualization sull'evoluzione
-di **Brescia** — il comune (ISTAT `017029`), la **provincia** (`ITC47`) e i suoi
-**205 comuni** — modellato sull'architettura di `donostia-dataviz` ma con una
-domanda di ricerca diversa: *come è cambiato questo territorio*, senza una tesi
-turistica a monte.
+Progetto di data visualization sull'evoluzione del **bresciano**: soggetto la
+**provincia di Brescia** (`ITC47`) raccontata attraverso i suoi **205 comuni**,
+con il capoluogo (`017029`) come caso privilegiato. Modellato sull'architettura
+di `donostia-dataviz` ma con una domanda di ricerca diversa: *come è cambiato
+questo territorio*, senza una tesi turistica a monte.
 
 **Stato: ricognizione completata, pipeline funzionante, dati scaricati e
 puliti.** Manca la parte di analisi e visualizzazione: il piano sta in
@@ -14,11 +14,11 @@ puliti.** Manca la parte di analisi e visualizzazione: il piano sta in
 
 | Documento | Cos'è |
 |---|---|
-| [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, le unità di analisi, i tredici assi tematici ordinati per qualità del dato, le storie candidate, i principi. |
+| [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, il soggetto e i **quattro assi scelti**, le due analisi dedicate al capoluogo, le storie candidate, i principi. |
 | [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e cosa portarsi dietro in caso di repo separato (§12). |
 | [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza.** Le undici regole che governano il progetto: perché misuriamo come misuriamo. MET-9 nasce da un errore reale. Da completare a fine progetto. |
 | [`WORKING-PAPER.md`](WORKING-PAPER.md) | ⚠️ **Bozza.** Il working paper: metodo per un lettore esterno. La sezione dei risultati è provvisoria — si riscrive quando le storie saranno chiuse. |
-| [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **La consegna.** Come separare il repository, cosa resta da scaricare, le decisioni aperte, le dimensioni non ancora considerate, e — soprattutto — come si costruiscono l'analisi, il sito statico e il deploy. Scritto per essere autosufficiente in un repo nuovo. |
+| [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **La consegna.** Come separare il repository, cosa resta da scaricare, le decisioni prese e quelle aperte, le dimensioni non ancora considerate, e — soprattutto — come si costruiscono l'analisi, il sito statico e il deploy. Scritto per essere autosufficiente in un repo nuovo. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 16 CSV su territorio, imprese, lavoro, popolazione, redditi, ambiente, sicurezza e turismo. Versionate; le risposte grezze no. |
 
@@ -35,8 +35,8 @@ pipeline mezza costruita, davanti a una fonte che sulla carta esisteva.
 
 ## In sintesi
 
-Il baricentro del progetto è **economico e sociale, non turistico**: lavoro e
-struttura produttiva, chi vive in città e da dove viene, studi, casa, aria.
+Il baricentro del progetto è **economico e sociale**: lavoro e struttura
+produttiva, chi ci vive e da dove viene, redditi, aria e clima.
 
 Il ritrovamento principale è il **Censimento permanente ISTAT via SDMX**: una
 famiglia di tabelle `DF_DCSS_*` con grana **comunale e annuale** (non decennale)
@@ -55,11 +55,11 @@ provincia, il clima dal 1990, e i flussi turistici per comune. Il terzo sono i
 **confini e le variabili censuarie ISTAT**, che danno la base geografica dei
 comuni e, sotto, la grana di sezione di censimento per gli assi dove serve.
 
-L'unità di analisi è il **comune**, con la **provincia** come aggregato e i
-**205 comuni** come dettaglio interno: quasi tutte queste fonti coprono tutti i
-comuni italiani, quindi la coropletica si sposta dai quartieri della città al
-territorio provinciale — molto più eterogeneo (Garda, Val Trompia, Franciacorta,
-Bassa, Valle Camonica).
+**Soggetto e assi sono decisi** (agosto 2026): la provincia attraverso i 205
+comuni, il capoluogo come caso privilegiato, e quattro assi portanti — lavoro e
+imprese, chi vive nel bresciano, le due economie (manifattura e Garda), aria e
+clima. Il resto resta materiale di contorno. Dettaglio in
+[`BRIEF.md`](BRIEF.md).
 
 Il confronto città/provincia è la cosa più informativa emersa: fra 2018 e 2023
 la provincia guadagna 29 mila addetti mentre la città è ferma. Attenzione però

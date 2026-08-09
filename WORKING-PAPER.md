@@ -104,12 +104,16 @@ I 205 comuni della provincia si ricavano dall'elenco ufficiale ISTAT filtrando
 sul codice provincia `017`. La geometria di riferimento sono i confini
 comunali generalizzati ISTAT.
 
+**Il soggetto è la provincia**, raccontata attraverso i suoi 205 comuni; il
+capoluogo è un caso privilegiato con due approfondimenti dedicati. La scelta è
+guidata dai dati: quasi tutte le fonti buone sono comunali e coprono l'Italia
+intera, quindi filtrare sui 205 comuni costa una riga di codice e produce mappe
+su un territorio molto più eterogeneo della città.
+
 Sotto il comune esiste una grana più fine — le sezioni di censimento — che il
 progetto ha verificato come accessibile ma **non usa**: i 33 quartieri del
 capoluogo erano l'unità di analisi nella prima impostazione e sono stati
-abbandonati quando è diventato chiaro che quasi tutte le fonti buone sono
-comunali e coprono l'Italia intera. Filtrare sui 205 comuni costa una riga di
-codice e produce mappe su un territorio molto più eterogeneo della città.
+abbandonati con lo spostamento del soggetto.
 
 ### 3.2 Registro completo, finestra parziale o proxy
 
@@ -327,9 +331,10 @@ prova, precisa o smentisce una domanda già posta** — non perché esiste, non
 perché sarebbe interessante, non perché il portale lo pubblica.
 
 Il rischio specifico qui è opposto a quello di Donostia: non l'ostinazione su
-una tesi, ma la **dispersione**. Il brief elenca tredici assi e una dozzina di
-storie candidate; il progetto gemello ne ha portati a compimento sette in mesi
-di lavoro. Tre o quattro assi ben fatti valgono più di tredici abbozzati.
+una tesi, ma la **dispersione**. La ricognizione aveva individuato tredici assi
+possibili; ne sono stati scelti **quattro** (lavoro e imprese, chi vive nel
+bresciano, le due economie, aria e clima), e il resto resta materiale di
+contorno che entra solo se un asse portante lo richiama.
 
 ## 10. Cosa è riutilizzabile di questo metodo
 

@@ -97,39 +97,38 @@ sezione da Eligendo.
 
 ---
 
-## 3. Le decisioni da prendere
+## 3. Le decisioni
 
-Sono le uniche cose che non posso decidere io.
+### 3.1 Il soggetto — ✅ deciso (agosto 2026)
 
-### 3.1 Quanti assi tenere
+**La provincia di Brescia è il soggetto principale**, con il **capoluogo come
+caso privilegiato**: gli si dedicano una o due analisi tutte sue, ma il fuoco
+resta sul territorio.
 
-Il brief ne elenca **tredici**, con una dozzina di storie candidate. È troppo:
-il progetto Donostia ne ha portati a compimento sette e sono stati mesi di
-lavoro. **Sceglierne tre o quattro** e lasciare gli altri come materiale di
-contorno.
+Conseguenze operative:
 
-La proposta, in base a quanto sono buoni i dati oggi:
+- l'unità di default di ogni mappa e di ogni classifica sono i **205 comuni**;
+- il capoluogo compare come *uno dei* comuni, non come protagonista implicito —
+  e siccome è un ordine di grandezza sopra tutti gli altri, va gestito come
+  outlier dichiarato nelle scale di colore e nelle correlazioni (MET-5);
+- gli aggregati provinciali servono da riferimento, non da soggetto;
+- le due analisi dedicate al capoluogo sono indicate in `BRIEF.md`.
 
-| Priorità | Asse | Perché |
+### 3.2 Gli assi — ✅ scelti (agosto 2026)
+
+Quattro assi portanti, il resto come materiale di contorno. Il criterio è
+duplice: qualità del dato **e** coerenza con il soggetto provinciale.
+Motivazione e forma di ciascuno in [`BRIEF.md`](BRIEF.md).
+
+| | Asse | Forma prevalente |
 |---|---|---|
-| **1** | Imprese e struttura produttiva | I dati ci sono tutti, già puliti, e c'è già una domanda aperta e concreta: perché l'occupazione nelle grandi unità locali del capoluogo crolla, se non è la manifattura (vedi `WORKING-PAPER.md` §6.1). |
-| **2** | Aria e clima | Trent'anni di serie continue, significato immediato per chi vive lì, nessun problema di accesso. |
-| **3** | Chi vive qui — origini, istruzione, redditi | Manca un solo download (background migratorio) e il resto è già scaricato. |
-| 4 | Casa e affitti | Richiede il passaggio OMI e un crosswalk dichiarato: più costoso. |
-| — | Sicurezza | Tienilo come capitolo breve: due grane, due finestre, nessun dato sub-comunale. |
-| — | Turismo | Una sola pagina sull'asimmetria Garda/resto. Non di più. |
+| **1** | Il lavoro e le imprese | coropletica sui 205 comuni + serie |
+| **2** | Chi vive nel bresciano | coropletica + composizioni |
+| **3** | Le due economie: manifattura e Garda | mappa bivariata + concentrazione |
+| **4** | L'aria e il clima | **non una mappa**: 7 stazioni come sezione territoriale, più 52 stazioni meteo |
 
-### 3.2 Quale unità di analisi domina
-
-Oggi il progetto ne ha tre — comune, provincia, 205 comuni. Funziona, ma il
-sito ha bisogno di **un** soggetto principale. Le due strade:
-
-- **«Brescia città»**, con la provincia come contesto. Più coeso, più vicino
-  alla domanda originale, ma metà dei dati migliori (ASIA per comune, turismo,
-  redditi) resta inutilizzata.
-- **«La provincia di Brescia»**, con il capoluogo come caso dentro. Sfrutta
-  tutto, produce mappe vere, e il confronto città/territorio diventa il filo
-  narrativo. È la strada che i dati suggeriscono.
+Di contorno, non abbandonati: sicurezza, casa e prezzi, commercio estero,
+riqualificazione. Entrano se un asse portante li richiama, non per completezza.
 
 ### 3.3 Lingua
 

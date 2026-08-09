@@ -2,26 +2,26 @@
 
 ## La domanda
 
-**Come è cambiata Brescia negli ultimi anni?**
+**Come è cambiato il bresciano negli ultimi anni?**
 
 Non c'è una tesi a monte. È la differenza principale rispetto a
 `donostia-dataviz`, che partiva da una domanda con un imputato già in scena
 («il turismo sta facendo salire i prezzi?») e ha passato mesi a dimostrare che
-non poteva rispondere in modo causale. Qui la domanda è descrittiva e più
-larga: **lavoro e struttura produttiva**, chi vive in città e da dove viene,
-studi e università, casa e affitti, sicurezza percepita e reale,
-riqualificazione dei quartieri, clima e aria. Il prodotto non è una tesi ma un
-**ritratto della trasformazione**, quartiere per quartiere dove i dati lo
-consentono, con le sue asimmetrie.
+non poteva rispondere in modo causale. Qui la domanda è descrittiva: **lavoro e
+struttura produttiva**, chi ci vive e da dove viene, redditi, aria e clima. Il
+prodotto non è una tesi ma un **ritratto del territorio**, comune per comune,
+con le sue asimmetrie.
 
-Il baricentro è **economico e sociale, non turistico**. Brescia non è una città
-turistica e il progetto non ci costruisce sopra: il turismo resta un capitolo
-breve, utile soprattutto come contro-prova dello shock 2023 (Capitale italiana
-della cultura). Al suo posto, al centro, c'è la domanda sulla città
-industriale: una provincia storicamente di meccanica e di piccole aziende — è
-ancora così, o si è concentrata?
+Sotto, una domanda di fondo che il disegno dei dati privilegia esplicitamente:
+**è ancora la terra della meccanica fatta di piccole aziende, o si è
+concentrata?**
 
-Questo cambia tre cose nel modo di costruirlo:
+Il soggetto è la **provincia**, non il capoluogo. Brescia città è un caso
+privilegiato — ha due approfondimenti dedicati — ma non è il protagonista: la
+provincia è molto più eterogenea e molto più interessante, e quasi tutte le
+fonti buone la coprono per intero.
+
+Questo cambia quattro cose nel modo di costruirlo:
 
 1. **Nessun indicatore va costruito per dimostrare qualcosa.** Nel progetto
    basco l'Indice di Trasformazione Urbana serviva a dare corpo a un'ipotesi.
@@ -31,44 +31,91 @@ Questo cambia tre cose nel modo di costruirlo:
    L'aria ha trent'anni di serie, il censimento due fotografie, il turismo sei
    anni. Un progetto senza tesi può permettersi di mostrare gli assi con la
    profondità che hanno, invece di tagliarli tutti alla finestra più corta.
-3. **La città padana ha un asse che la costa basca non aveva**: l'aria. È
-   l'asse con il dato migliore *e* con il significato più immediato per chi ci
-   vive. Merita un posto di primo piano, non un capitolo ambientale di
-   cortesia.
-4. **La mappa cambia soggetto, non sparisce.** Portare l'unità di analisi al
-   comune e alla provincia non toglie la coropletica: la sposta sui **205
-   comuni della provincia**, un territorio molto più eterogeneo della città —
-   Garda, Val Trompia, Franciacorta, Bassa, Valle Camonica. E scioglie i limiti
-   che pesavano prima: i reati sono provinciali, le forze di lavoro sono
-   provinciali, l'export è provinciale. Erano ripieghi; ora sono la grana
-   giusta.
+3. **La pianura padana ha un asse che la costa basca non aveva**: l'aria.
+   Trent'anni di serie e un significato immediato per chi ci vive. Merita un
+   posto di primo piano, non un capitolo ambientale di cortesia.
+4. **La mappa è dei 205 comuni.** Il territorio provinciale — Garda, Val
+   Trompia, Franciacorta, Bassa, Valle Camonica — è abbastanza eterogeneo da
+   rendere la coropletica informativa invece che decorativa. E i limiti che
+   pesavano nella prima impostazione si sciolgono: reati, forze di lavoro ed
+   export sono provinciali, che ora è la grana giusta invece che un ripiego.
 
-## Unità di analisi
+## Unità di analisi — decisa
 
-Tre livelli, in quest'ordine:
+**Il soggetto è la provincia di Brescia**, raccontata attraverso i suoi **205
+comuni**. Il capoluogo è un **caso privilegiato**: ha una o due analisi tutte
+sue, ma non è il protagonista.
 
-1. **Comune di Brescia** (`017029`) — l'unità principale. Quasi tutte le fonti
-   buone arrivano qui.
-2. **Provincia di Brescia** (`ITC47`) — l'aggregato, per ciò che a livello
-   comunale non esiste (reati, forze di lavoro, export) e per ciò che è
-   provinciale per natura (distretti industriali, turismo del Garda).
-3. **I 205 comuni della provincia** — il dettaglio interno. Molte fonti li
-   coprono tutti; dove il dato è rado, si tengono i maggiori.
+| Livello | Ruolo |
+|---|---|
+| **205 comuni** (`017001`…`017206`) | L'unità di default di ogni mappa e ogni classifica. È qui che il territorio mostra la propria eterogeneità. |
+| **Provincia** (`ITC47`) | Il riferimento: totali, medie e tutto ciò che a grana comunale non esiste (reati, forze di lavoro, commercio estero). |
+| **Comune di Brescia** (`017029`) | Un comune fra i 205, più due approfondimenti dedicati (vedi sotto). |
+
+> ⚠️ Il capoluogo è **un ordine di grandezza sopra tutti gli altri**: 199.853
+> abitanti contro una mediana attorno ai 2.000, e da solo il 21 %
+> dell'occupazione provinciale. In una coropletica satura la scala; in una
+> correlazione la guida. Va trattato come outlier dichiarato — leave-one-out
+> nelle correlazioni (MET-5), scale robuste o classi nelle mappe.
+
+### Le due analisi dedicate al capoluogo
+
+1. **Il vertice che si assottiglia, e perché non è quel che sembra** — la
+   decomposizione del crollo delle grandi unità locali, che è un fenomeno
+   esclusivamente urbano e un caso di scuola metodologico
+   ([`WORKING-PAPER.md`](WORKING-PAPER.md) §6.1).
+2. **Brescia importa lavoro** — rapporto di concentrazione (~1,16 addetti
+   localizzati per occupato residente), pendolarismo in uscita (26.425
+   residenti al giorno) e composizione settoriale degli occupati residenti
+   (2021: solo il 22,8 % nell'industria in senso lato). È l'unico punto in cui
+   la grana censuaria comunale dice qualcosa che i 205 comuni non dicono.
 
 Chiave di join: il **codice ISTAT del comune** a sei cifre, che è già la chiave
 nativa di quasi ogni fonte italiana — nessun crosswalk da inventare, a
 differenza del `barrio_id` di Donostia.
 
-I 33 quartieri della città restano documentati e disponibili, ma **non sono
-l'unità portante**: la grana sub-comunale si usa solo dove è davvero misurata
-(censimento, abitazioni, origini) e solo se aggiunge qualcosa.
+I 33 quartieri del capoluogo restano documentati in [`FONTI.md`](FONTI.md) §1
+ma **fuori dal progetto**: con il soggetto provinciale non hanno più un ruolo.
 
 Dettagli e stato di accesso: [`FONTI.md`](FONTI.md) §1 e §1-bis.
 
-## Assi tematici
+## Assi tematici — scelti
 
-Ordinati per **qualità del dato disponibile**, non per interesse presunto. È
-l'ordine in cui conviene costruire.
+**Quattro assi portanti**, scelti su qualità del dato *e* coerenza con il
+soggetto provinciale. Gli altri restano materiale di contorno: entrano se un
+asse portante li richiama, non per completezza. La regola di arresto vale
+soprattutto qui — tre o quattro assi ben fatti valgono più di tredici
+abbozzati.
+
+### I quattro portanti
+
+| | Asse | Perché questo | Forma prevalente | Cosa manca |
+|---|---|---|---|---|
+| **1** | **Il lavoro e le imprese** — unità locali per classe di addetti e settore | È la domanda che ha originato il progetto, ed è l'unico asse con dati completi su tutti i 205 comuni e sei anni. La struttura dimensionale è stabile (micro-unità al 92,7 %) e la crescita sta nella fascia intermedia: il fenomeno da spiegare c'è. | coropletica sui comuni + serie per classe | niente: già scaricato |
+| **2** | **Chi vive nel bresciano** — popolazione, origini, istruzione, redditi | Completamente mappabile, serie annuale, e la distinzione fra stranieri, seconde generazioni e italiani per acquisizione è materiale che nessuno racconta bene. Il reddito per classi di importo permette di parlare di disuguaglianza, non solo di livello. | coropletica + composizioni | il background migratorio (un download) |
+| **3** | **Le due economie: manifattura e Garda** | È *la* storia della provincia: 12,2 milioni di presenze concentrate al 68,8 % in dieci comuni, otto sul lago, mentre la manifattura sta a ovest e a nord. Due economie che si toccano poco, sullo stesso territorio. Nasce dall'incrocio di dati già scaricati. | mappa bivariata, indici di concentrazione | niente |
+| **4** | **L'aria e il clima** | Profondità che nessun altro asse ha: PM10 dal 2000, NO₂ dal 1992, temperature dal 1990. In pianura padana è l'asse con il significato più immediato per chi ci vive. | ⚠️ **non una coropletica** | niente |
+
+> **Nota sull'asse 4.** In tutta la provincia ci sono **sette comuni con
+> sensori di qualità dell'aria attivi** — Brescia, Darfo Boario Terme, Odolo,
+> Sarezzo, Rezzato, Lonato del Garda, Gambara — non 205. Non è però un limite
+> quanto sembra: quei sette sono una **sezione territoriale quasi perfetta**
+> (capoluogo, Valle Camonica, Val Trompia metalmeccanica ×2, cintura
+> industriale, Garda, Bassa agricola). L'asse va costruito come **confronto fra
+> tipi di territorio**, non come mappa. Il meteo invece ha 52 stazioni attive e
+> regge una copertura spaziale vera.
+
+### Di contorno
+
+Sicurezza (due grane e due finestre, nessun dato sub-comunale) · casa e prezzi
+(richiede il passaggio OMI) · commercio estero (solo regionale) ·
+riqualificazione e PNRR (finestra corta) · istruzione e università (comune e
+ateneo, fuori dalla grana provinciale) · rumore.
+
+### Il quadro completo delle fonti
+
+Ordinato per **qualità del dato disponibile**, indipendentemente dalla scelta
+sopra.
 
 | # | Asse | Grana disponibile | Profondità | Solidità |
 |---|---|---|---|---|

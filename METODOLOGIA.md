@@ -44,13 +44,21 @@ locali. Quindi:
   cambia i numeri **senza che sia cambiato nulla nel mondo reale**. È la
   causa più probabile di variazioni brusche e isolate.
 
-## MET-2 — Tre livelli territoriali, sempre dichiarati
+## MET-2 — Il soggetto è la provincia; i livelli si dichiarano sempre
 
-Il progetto lavora su **comune di Brescia** (`017029`), **provincia**
-(`ITC47`) e **205 comuni** della provincia. Non sono intercambiabili e la
-scelta non è mai neutra: il capoluogo pesa il 21 % dell'occupazione
-provinciale e il 16 % della popolazione, quindi «Brescia» e «il bresciano»
-danno risposte diverse alla stessa domanda.
+**Decisione presa (agosto 2026): il soggetto è la provincia**, raccontata
+attraverso i suoi 205 comuni; il capoluogo è un caso privilegiato con due
+approfondimenti dedicati, non il protagonista.
+
+I tre livelli — 205 comuni, provincia (`ITC47`), comune di Brescia (`017029`)
+— non sono intercambiabili e la scelta non è mai neutra: il capoluogo pesa il
+21 % dell'occupazione provinciale e il 16 % della popolazione, quindi
+«Brescia» e «il bresciano» danno risposte diverse alla stessa domanda.
+
+**Il capoluogo va trattato come outlier dichiarato.** Con 199.853 abitanti
+contro una mediana attorno ai 2.000, in una coropletica satura la scala e in
+una correlazione la guida: servono classi o scale robuste nelle mappe e il
+leave-one-out nelle correlazioni (MET-5).
 
 Regole operative:
 
