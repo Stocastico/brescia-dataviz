@@ -1,0 +1,11 @@
+# Risposte grezze delle fonti: rigenerabili con `python -m brescia_pipeline.build`
+# e pesanti (centinaia di MB, perche' diverse serie ISTAT non si possono
+# filtrare lato server). Le tabelle in dati/processed/ sono invece versionate:
+# sono il prodotto del progetto.
+dati/raw/
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/

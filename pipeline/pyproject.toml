@@ -1,0 +1,22 @@
+[project]
+name = "brescia-pipeline"
+version = "0.1.0"
+description = "Fonti pubbliche -> tabelle tidy sull'evoluzione di Brescia (comune, provincia, 205 comuni)."
+requires-python = ">=3.11"
+# Volutamente minimale: stdlib + requests. Niente pandas, niente build step —
+# la pipeline gira ovunque ci sia un Python recente.
+dependencies = ["requests>=2.31"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

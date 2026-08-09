@@ -1,0 +1,692 @@
+territorio,anno,flusso,settore,codice_settore,partner,codice_partner,valore_euro
+ITC4,1991,export,[A],A,All countries of the world,WORLD,136582240
+ITC4,1992,export,[A],A,All countries of the world,WORLD,135147035
+ITC4,1993,export,[A],A,All countries of the world,WORLD,198901084
+ITC4,1994,export,[A],A,All countries of the world,WORLD,209993923
+ITC4,1995,export,[A],A,All countries of the world,WORLD,264973688
+ITC4,1996,export,[A],A,All countries of the world,WORLD,246865328
+ITC4,1997,export,[A],A,All countries of the world,WORLD,269907144
+ITC4,1998,export,[A],A,All countries of the world,WORLD,274903853
+ITC4,1999,export,[A],A,All countries of the world,WORLD,255599240
+ITC4,2000,export,[A],A,All countries of the world,WORLD,270075504
+ITC4,2001,export,[A],A,All countries of the world,WORLD,304788411
+ITC4,2002,export,[A],A,All countries of the world,WORLD,310162672
+ITC4,2003,export,[A],A,All countries of the world,WORLD,287971879
+ITC4,2004,export,[A],A,All countries of the world,WORLD,238237717
+ITC4,2005,export,[A],A,All countries of the world,WORLD,231091109
+ITC4,2006,export,[A],A,All countries of the world,WORLD,248719012
+ITC4,2007,export,[A],A,All countries of the world,WORLD,333530679
+ITC4,2008,export,[A],A,All countries of the world,WORLD,357985078
+ITC4,2009,export,[A],A,All countries of the world,WORLD,322744170
+ITC4,2010,export,[A],A,All countries of the world,WORLD,334797843
+ITC4,2011,export,[A],A,All countries of the world,WORLD,329233148
+ITC4,2012,export,[A],A,All countries of the world,WORLD,340472618
+ITC4,2013,export,[A],A,All countries of the world,WORLD,367892690
+ITC4,2014,export,[A],A,All countries of the world,WORLD,401290702
+ITC4,2015,export,[A],A,All countries of the world,WORLD,418500092
+ITC4,2016,export,[A],A,All countries of the world,WORLD,415455691
+ITC4,2017,export,[A],A,All countries of the world,WORLD,412697518
+ITC4,2018,export,[A],A,All countries of the world,WORLD,432083399
+ITC4,2019,export,[A],A,All countries of the world,WORLD,476393762
+ITC4,2020,export,[A],A,All countries of the world,WORLD,496115368
+ITC4,2021,export,[A],A,All countries of the world,WORLD,565789954
+ITC4,2022,export,[A],A,All countries of the world,WORLD,646326973
+ITC4,2023,export,[A],A,All countries of the world,WORLD,690884231
+ITC4,2024,export,[A],A,All countries of the world,WORLD,669297087
+ITC4,2025,export,[A],A,All countries of the world,WORLD,712845028
+ITC4,1991,export,all items,ALL,All countries of the world,WORLD,33200010511
+ITC4,1992,export,all items,ALL,All countries of the world,WORLD,35441920627
+ITC4,1993,export,all items,ALL,All countries of the world,WORLD,42025537895
+ITC4,1994,export,all items,ALL,All countries of the world,WORLD,48217463892
+ITC4,1995,export,all items,ALL,All countries of the world,WORLD,59514543943
+ITC4,1996,export,all items,ALL,All countries of the world,WORLD,59960676993
+ITC4,1997,export,all items,ALL,All countries of the world,WORLD,61833536131
+ITC4,1998,export,all items,ALL,All countries of the world,WORLD,63665482273
+ITC4,1999,export,all items,ALL,All countries of the world,WORLD,63256035464
+ITC4,2000,export,all items,ALL,All countries of the world,WORLD,73481041203
+ITC4,2001,export,all items,ALL,All countries of the world,WORLD,78408173524
+ITC4,2002,export,all items,ALL,All countries of the world,WORLD,75736546954
+ITC4,2003,export,all items,ALL,All countries of the world,WORLD,75994549923
+ITC4,2004,export,all items,ALL,All countries of the world,WORLD,79202295814
+ITC4,2005,export,all items,ALL,All countries of the world,WORLD,85315438060
+ITC4,2006,export,all items,ALL,All countries of the world,WORLD,93257942008
+ITC4,2007,export,all items,ALL,All countries of the world,WORLD,102083476443
+ITC4,2008,export,all items,ALL,All countries of the world,WORLD,104101926413
+ITC4,2009,export,all items,ALL,All countries of the world,WORLD,82268974327
+ITC4,2010,export,all items,ALL,All countries of the world,WORLD,94022190164
+ITC4,2011,export,all items,ALL,All countries of the world,WORLD,104217944218
+ITC4,2012,export,all items,ALL,All countries of the world,WORLD,108143540414
+ITC4,2013,export,all items,ALL,All countries of the world,WORLD,108095820257
+ITC4,2014,export,all items,ALL,All countries of the world,WORLD,109546487041
+ITC4,2015,export,all items,ALL,All countries of the world,WORLD,111341283378
+ITC4,2016,export,all items,ALL,All countries of the world,WORLD,111961338760
+ITC4,2017,export,all items,ALL,All countries of the world,WORLD,120786501795
+ITC4,2018,export,all items,ALL,All countries of the world,WORLD,127252622891
+ITC4,2019,export,all items,ALL,All countries of the world,WORLD,127487880784
+ITC4,2020,export,all items,ALL,All countries of the world,WORLD,114062925644
+ITC4,2021,export,all items,ALL,All countries of the world,WORLD,136513235227
+ITC4,2022,export,all items,ALL,All countries of the world,WORLD,162248700479
+ITC4,2023,export,all items,ALL,All countries of the world,WORLD,162991248022
+ITC4,2024,export,all items,ALL,All countries of the world,WORLD,164117274535
+ITC4,2025,export,all items,ALL,All countries of the world,WORLD,167082192041
+ITC4,1991,export,[B],B,All countries of the world,WORLD,34715552
+ITC4,1992,export,[B],B,All countries of the world,WORLD,42886262
+ITC4,1993,export,[B],B,All countries of the world,WORLD,59327305
+ITC4,1994,export,[B],B,All countries of the world,WORLD,73173068
+ITC4,1995,export,[B],B,All countries of the world,WORLD,63503653
+ITC4,1996,export,[B],B,All countries of the world,WORLD,53996220
+ITC4,1997,export,[B],B,All countries of the world,WORLD,52864202
+ITC4,1998,export,[B],B,All countries of the world,WORLD,55887105
+ITC4,1999,export,[B],B,All countries of the world,WORLD,59847610
+ITC4,2000,export,[B],B,All countries of the world,WORLD,89525489
+ITC4,2001,export,[B],B,All countries of the world,WORLD,128063865
+ITC4,2002,export,[B],B,All countries of the world,WORLD,123101223
+ITC4,2003,export,[B],B,All countries of the world,WORLD,187073011
+ITC4,2004,export,[B],B,All countries of the world,WORLD,230267157
+ITC4,2005,export,[B],B,All countries of the world,WORLD,251992263
+ITC4,2006,export,[B],B,All countries of the world,WORLD,150405928
+ITC4,2007,export,[B],B,All countries of the world,WORLD,283722360
+ITC4,2008,export,[B],B,All countries of the world,WORLD,622393003
+ITC4,2009,export,[B],B,All countries of the world,WORLD,450675177
+ITC4,2010,export,[B],B,All countries of the world,WORLD,414180380
+ITC4,2011,export,[B],B,All countries of the world,WORLD,266327571
+ITC4,2012,export,[B],B,All countries of the world,WORLD,189009911
+ITC4,2013,export,[B],B,All countries of the world,WORLD,198465925
+ITC4,2014,export,[B],B,All countries of the world,WORLD,246008169
+ITC4,2015,export,[B],B,All countries of the world,WORLD,244129351
+ITC4,2016,export,[B],B,All countries of the world,WORLD,231978244
+ITC4,2017,export,[B],B,All countries of the world,WORLD,253315542
+ITC4,2018,export,[B],B,All countries of the world,WORLD,235228795
+ITC4,2019,export,[B],B,All countries of the world,WORLD,224699821
+ITC4,2020,export,[B],B,All countries of the world,WORLD,207961077
+ITC4,2021,export,[B],B,All countries of the world,WORLD,323974285
+ITC4,2022,export,[B],B,All countries of the world,WORLD,1103927681
+ITC4,2023,export,[B],B,All countries of the world,WORLD,341137236
+ITC4,2024,export,[B],B,All countries of the world,WORLD,290183917
+ITC4,2025,export,[B],B,All countries of the world,WORLD,239892801
+ITC4,1991,export,[C],C,All countries of the world,WORLD,32693640964
+ITC4,1992,export,[C],C,All countries of the world,WORLD,34899212765
+ITC4,1993,export,[C],C,All countries of the world,WORLD,41298126265
+ITC4,1994,export,[C],C,All countries of the world,WORLD,47417170907
+ITC4,1995,export,[C],C,All countries of the world,WORLD,58558385090
+ITC4,1996,export,[C],C,All countries of the world,WORLD,59050698369
+ITC4,1997,export,[C],C,All countries of the world,WORLD,60882092934
+ITC4,1998,export,[C],C,All countries of the world,WORLD,62684824628
+ITC4,1999,export,[C],C,All countries of the world,WORLD,62227176563
+ITC4,2000,export,[C],C,All countries of the world,WORLD,72263751731
+ITC4,2001,export,[C],C,All countries of the world,WORLD,76759832826
+ITC4,2002,export,[C],C,All countries of the world,WORLD,74157904160
+ITC4,2003,export,[C],C,All countries of the world,WORLD,73632171199
+ITC4,2004,export,[C],C,All countries of the world,WORLD,77785248228
+ITC4,2005,export,[C],C,All countries of the world,WORLD,83799384863
+ITC4,2006,export,[C],C,All countries of the world,WORLD,91693990316
+ITC4,2007,export,[C],C,All countries of the world,WORLD,100137750321
+ITC4,2008,export,[C],C,All countries of the world,WORLD,101454274513
+ITC4,2009,export,[C],C,All countries of the world,WORLD,80268804234
+ITC4,2010,export,[C],C,All countries of the world,WORLD,91670469176
+ITC4,2011,export,[C],C,All countries of the world,WORLD,101450293570
+ITC4,2012,export,[C],C,All countries of the world,WORLD,105028440638
+ITC4,2013,export,[C],C,All countries of the world,WORLD,105243889652
+ITC4,2014,export,[C],C,All countries of the world,WORLD,106959270597
+ITC4,2015,export,[C],C,All countries of the world,WORLD,108935067574
+ITC4,2016,export,[C],C,All countries of the world,WORLD,109750433987
+ITC4,2017,export,[C],C,All countries of the world,WORLD,118252781555
+ITC4,2018,export,[C],C,All countries of the world,WORLD,124010992656
+ITC4,2019,export,[C],C,All countries of the world,WORLD,123876972931
+ITC4,2020,export,[C],C,All countries of the world,WORLD,111522845890
+ITC4,2021,export,[C],C,All countries of the world,WORLD,133514047667
+ITC4,2022,export,[C],C,All countries of the world,WORLD,157554904786
+ITC4,2023,export,[C],C,All countries of the world,WORLD,158838389209
+ITC4,2024,export,[C],C,All countries of the world,WORLD,159401028414
+ITC4,2025,export,[C],C,All countries of the world,WORLD,162292984818
+ITC4,1991,export,[D],D,All countries of the world,WORLD,249368
+ITC4,1992,export,[D],D,All countries of the world,WORLD,45312
+ITC4,1993,export,[D],D,All countries of the world,WORLD,649515
+ITC4,1994,export,[D],D,All countries of the world,WORLD,49595
+ITC4,1995,export,[D],D,All countries of the world,WORLD,1864220
+ITC4,1996,export,[D],D,All countries of the world,WORLD,47426
+ITC4,1997,export,[D],D,All countries of the world,WORLD,27783
+ITC4,1999,export,[D],D,All countries of the world,WORLD,5974236
+ITC4,2000,export,[D],D,All countries of the world,WORLD,12709922
+ITC4,2001,export,[D],D,All countries of the world,WORLD,33940235
+ITC4,2002,export,[D],D,All countries of the world,WORLD,10405031
+ITC4,2003,export,[D],D,All countries of the world,WORLD,3102943
+ITC4,2004,export,[D],D,All countries of the world,WORLD,3860080
+ITC4,2005,export,[D],D,All countries of the world,WORLD,37861947
+ITC4,2006,export,[D],D,All countries of the world,WORLD,61157861
+ITC4,2007,export,[D],D,All countries of the world,WORLD,54127832
+ITC4,2008,export,[D],D,All countries of the world,WORLD,145
+ITC4,2009,export,[D],D,All countries of the world,WORLD,44480568
+ITC4,2010,export,[D],D,All countries of the world,WORLD,42484
+ITC4,2011,export,[D],D,All countries of the world,WORLD,170035
+ITC4,2012,export,[D],D,All countries of the world,WORLD,111192
+ITC4,2013,export,[D],D,All countries of the world,WORLD,10515
+ITC4,2014,export,[D],D,All countries of the world,WORLD,3643
+ITC4,2015,export,[D],D,All countries of the world,WORLD,7640
+ITC4,2016,export,[D],D,All countries of the world,WORLD,3790
+ITC4,2017,export,[D],D,All countries of the world,WORLD,37813
+ITC4,2018,export,[D],D,All countries of the world,WORLD,448
+ITC4,2019,export,[D],D,All countries of the world,WORLD,38
+ITC4,2020,export,[D],D,All countries of the world,WORLD,1047
+ITC4,2021,export,[D],D,All countries of the world,WORLD,23530
+ITC4,2022,export,[D],D,All countries of the world,WORLD,100
+ITC4,2023,export,[D],D,All countries of the world,WORLD,519
+ITC4,2024,export,[D],D,All countries of the world,WORLD,54539
+ITC4,2025,export,[D],D,All countries of the world,WORLD,3251
+ITC4,1991,export,[E],E,All countries of the world,WORLD,37930003
+ITC4,1992,export,[E],E,All countries of the world,WORLD,38737891
+ITC4,1993,export,[E],E,All countries of the world,WORLD,44491533
+ITC4,1994,export,[E],E,All countries of the world,WORLD,56225322
+ITC4,1995,export,[E],E,All countries of the world,WORLD,93331094
+ITC4,1996,export,[E],E,All countries of the world,WORLD,77191291
+ITC4,1997,export,[E],E,All countries of the world,WORLD,106765456
+ITC4,1998,export,[E],E,All countries of the world,WORLD,83088516
+ITC4,1999,export,[E],E,All countries of the world,WORLD,131208922
+ITC4,2000,export,[E],E,All countries of the world,WORLD,220201218
+ITC4,2001,export,[E],E,All countries of the world,WORLD,174357491
+ITC4,2002,export,[E],E,All countries of the world,WORLD,173776843
+ITC4,2003,export,[E],E,All countries of the world,WORLD,188776127
+ITC4,2004,export,[E],E,All countries of the world,WORLD,307543786
+ITC4,2005,export,[E],E,All countries of the world,WORLD,327949854
+ITC4,2006,export,[E],E,All countries of the world,WORLD,427727860
+ITC4,2007,export,[E],E,All countries of the world,WORLD,548926000
+ITC4,2008,export,[E],E,All countries of the world,WORLD,505091869
+ITC4,2009,export,[E],E,All countries of the world,WORLD,404107753
+ITC4,2010,export,[E],E,All countries of the world,WORLD,650693749
+ITC4,2011,export,[E],E,All countries of the world,WORLD,700737580
+ITC4,2012,export,[E],E,All countries of the world,WORLD,919273797
+ITC4,2013,export,[E],E,All countries of the world,WORLD,702283460
+ITC4,2014,export,[E],E,All countries of the world,WORLD,610273666
+ITC4,2015,export,[E],E,All countries of the world,WORLD,609348243
+ITC4,2016,export,[E],E,All countries of the world,WORLD,605618667
+ITC4,2017,export,[E],E,All countries of the world,WORLD,747367182
+ITC4,2018,export,[E],E,All countries of the world,WORLD,765109793
+ITC4,2019,export,[E],E,All countries of the world,WORLD,774773254
+ITC4,2020,export,[E],E,All countries of the world,WORLD,756727198
+ITC4,2021,export,[E],E,All countries of the world,WORLD,1109965756
+ITC4,2022,export,[E],E,All countries of the world,WORLD,1249667293
+ITC4,2023,export,[E],E,All countries of the world,WORLD,1188069737
+ITC4,2024,export,[E],E,All countries of the world,WORLD,1304264259
+ITC4,2025,export,[E],E,All countries of the world,WORLD,1390154398
+ITC4,1991,export,[J],J,All countries of the world,WORLD,236652492
+ITC4,1992,export,[J],J,All countries of the world,WORLD,242494159
+ITC4,1993,export,[J],J,All countries of the world,WORLD,318382704
+ITC4,1994,export,[J],J,All countries of the world,WORLD,384176414
+ITC4,1995,export,[J],J,All countries of the world,WORLD,475260401
+ITC4,1996,export,[J],J,All countries of the world,WORLD,459637369
+ITC4,1997,export,[J],J,All countries of the world,WORLD,454933679
+ITC4,1998,export,[J],J,All countries of the world,WORLD,500966138
+ITC4,1999,export,[J],J,All countries of the world,WORLD,501420711
+ITC4,2000,export,[J],J,All countries of the world,WORLD,572705356
+ITC4,2001,export,[J],J,All countries of the world,WORLD,591273208
+ITC4,2002,export,[J],J,All countries of the world,WORLD,594497053
+ITC4,2003,export,[J],J,All countries of the world,WORLD,558248029
+ITC4,2004,export,[J],J,All countries of the world,WORLD,569864546
+ITC4,2005,export,[J],J,All countries of the world,WORLD,607558946
+ITC4,2006,export,[J],J,All countries of the world,WORLD,617933930
+ITC4,2007,export,[J],J,All countries of the world,WORLD,602035551
+ITC4,2008,export,[J],J,All countries of the world,WORLD,675634875
+ITC4,2009,export,[J],J,All countries of the world,WORLD,522613038
+ITC4,2010,export,[J],J,All countries of the world,WORLD,556420801
+ITC4,2011,export,[J],J,All countries of the world,WORLD,626976988
+ITC4,2012,export,[J],J,All countries of the world,WORLD,557165715
+ITC4,2013,export,[J],J,All countries of the world,WORLD,491703517
+ITC4,2014,export,[J],J,All countries of the world,WORLD,473482662
+ITC4,2015,export,[J],J,All countries of the world,WORLD,437534818
+ITC4,2016,export,[J],J,All countries of the world,WORLD,426017900
+ITC4,2017,export,[J],J,All countries of the world,WORLD,387593605
+ITC4,2018,export,[J],J,All countries of the world,WORLD,392274612
+ITC4,2019,export,[J],J,All countries of the world,WORLD,421671441
+ITC4,2020,export,[J],J,All countries of the world,WORLD,287027829
+ITC4,2021,export,[J],J,All countries of the world,WORLD,343053703
+ITC4,2022,export,[J],J,All countries of the world,WORLD,395417636
+ITC4,2023,export,[J],J,All countries of the world,WORLD,356164552
+ITC4,2024,export,[J],J,All countries of the world,WORLD,424305898
+ITC4,2025,export,[J],J,All countries of the world,WORLD,426715560
+ITC4,1991,export,[M],M,All countries of the world,WORLD,10251009
+ITC4,1992,export,[M],M,All countries of the world,WORLD,12239208
+ITC4,1993,export,[M],M,All countries of the world,WORLD,10576631
+ITC4,1994,export,[M],M,All countries of the world,WORLD,9182192
+ITC4,1995,export,[M],M,All countries of the world,WORLD,11046029
+ITC4,1996,export,[M],M,All countries of the world,WORLD,10960124
+ITC4,1997,export,[M],M,All countries of the world,WORLD,10258767
+ITC4,1998,export,[M],M,All countries of the world,WORLD,10604775
+ITC4,1999,export,[M],M,All countries of the world,WORLD,9467006
+ITC4,2000,export,[M],M,All countries of the world,WORLD,10527419
+ITC4,2001,export,[M],M,All countries of the world,WORLD,11357626
+ITC4,2002,export,[M],M,All countries of the world,WORLD,9317264
+ITC4,2003,export,[M],M,All countries of the world,WORLD,8148410
+ITC4,2004,export,[M],M,All countries of the world,WORLD,5474090
+ITC4,2005,export,[M],M,All countries of the world,WORLD,6088157
+ITC4,2006,export,[M],M,All countries of the world,WORLD,4479643
+ITC4,2007,export,[M],M,All countries of the world,WORLD,3897838
+ITC4,2008,export,[M],M,All countries of the world,WORLD,15085738
+ITC4,2009,export,[M],M,All countries of the world,WORLD,31976215
+ITC4,2010,export,[M],M,All countries of the world,WORLD,32582708
+ITC4,2011,export,[M],M,All countries of the world,WORLD,28068854
+ITC4,2012,export,[M],M,All countries of the world,WORLD,30215379
+ITC4,2013,export,[M],M,All countries of the world,WORLD,34700243
+ITC4,2014,export,[M],M,All countries of the world,WORLD,35676153
+ITC4,2015,export,[M],M,All countries of the world,WORLD,35220689
+ITC4,2016,export,[M],M,All countries of the world,WORLD,28280237
+ITC4,2017,export,[M],M,All countries of the world,WORLD,27571684
+ITC4,2018,export,[M],M,All countries of the world,WORLD,28084483
+ITC4,2019,export,[M],M,All countries of the world,WORLD,28234124
+ITC4,2020,export,[M],M,All countries of the world,WORLD,22454284
+ITC4,2021,export,[M],M,All countries of the world,WORLD,25040508
+ITC4,2022,export,[M],M,All countries of the world,WORLD,28818691
+ITC4,2023,export,[M],M,All countries of the world,WORLD,25378276
+ITC4,2024,export,[M],M,All countries of the world,WORLD,19751564
+ITC4,2025,export,[M],M,All countries of the world,WORLD,22005631
+ITC4,1991,export,[R],R,All countries of the world,WORLD,12141772
+ITC4,1992,export,[R],R,All countries of the world,WORLD,15713438
+ITC4,1993,export,[R],R,All countries of the world,WORLD,46643254
+ITC4,1994,export,[R],R,All countries of the world,WORLD,10880519
+ITC4,1995,export,[R],R,All countries of the world,WORLD,11037969
+ITC4,1996,export,[R],R,All countries of the world,WORLD,15679788
+ITC4,1997,export,[R],R,All countries of the world,WORLD,18635928
+ITC4,1998,export,[R],R,All countries of the world,WORLD,19443627
+ITC4,1999,export,[R],R,All countries of the world,WORLD,19365731
+ITC4,2000,export,[R],R,All countries of the world,WORLD,25446862
+ITC4,2001,export,[R],R,All countries of the world,WORLD,22601810
+ITC4,2002,export,[R],R,All countries of the world,WORLD,25276798
+ITC4,2003,export,[R],R,All countries of the world,WORLD,19519540
+ITC4,2004,export,[R],R,All countries of the world,WORLD,34169744
+ITC4,2005,export,[R],R,All countries of the world,WORLD,30155771
+ITC4,2006,export,[R],R,All countries of the world,WORLD,26448186
+ITC4,2007,export,[R],R,All countries of the world,WORLD,36566337
+ITC4,2008,export,[R],R,All countries of the world,WORLD,43614210
+ITC4,2009,export,[R],R,All countries of the world,WORLD,31514760
+ITC4,2010,export,[R],R,All countries of the world,WORLD,52893837
+ITC4,2011,export,[R],R,All countries of the world,WORLD,70904172
+ITC4,2012,export,[R],R,All countries of the world,WORLD,174922509
+ITC4,2013,export,[R],R,All countries of the world,WORLD,221696583
+ITC4,2014,export,[R],R,All countries of the world,WORLD,251429634
+ITC4,2015,export,[R],R,All countries of the world,WORLD,129609121
+ITC4,2016,export,[R],R,All countries of the world,WORLD,91742684
+ITC4,2017,export,[R],R,All countries of the world,WORLD,128887024
+ITC4,2018,export,[R],R,All countries of the world,WORLD,108582069
+ITC4,2019,export,[R],R,All countries of the world,WORLD,122837727
+ITC4,2020,export,[R],R,All countries of the world,WORLD,109230147
+ITC4,2021,export,[R],R,All countries of the world,WORLD,156927504
+ITC4,2022,export,[R],R,All countries of the world,WORLD,212294734
+ITC4,2023,export,[R],R,All countries of the world,WORLD,182210572
+ITC4,2024,export,[R],R,All countries of the world,WORLD,175521896
+ITC4,2025,export,[R],R,All countries of the world,WORLD,160780877
+ITC4,1995,export,[S],S,All countries of the world,WORLD,14
+ITC4,1996,export,[S],S,All countries of the world,WORLD,2421
+ITC4,1997,export,[S],S,All countries of the world,WORLD,33408
+ITC4,1998,export,[S],S,All countries of the world,WORLD,1347
+ITC4,1999,export,[S],S,All countries of the world,WORLD,6954
+ITC4,2000,export,[S],S,All countries of the world,WORLD,13538
+ITC4,2001,export,[S],S,All countries of the world,WORLD,16821
+ITC4,2002,export,[S],S,All countries of the world,WORLD,390
+ITC4,2003,export,[S],S,All countries of the world,WORLD,58420
+ITC4,2004,export,[S],S,All countries of the world,WORLD,30343
+ITC4,2005,export,[S],S,All countries of the world,WORLD,134828
+ITC4,2006,export,[S],S,All countries of the world,WORLD,26178
+ITC4,2007,export,[S],S,All countries of the world,WORLD,17745
+ITC4,2008,export,[S],S,All countries of the world,WORLD,321398
+ITC4,2009,export,[S],S,All countries of the world,WORLD,202629
+ITC4,2010,export,[S],S,All countries of the world,WORLD,289948
+ITC4,2011,export,[S],S,All countries of the world,WORLD,109706
+ITC4,2012,export,[S],S,All countries of the world,WORLD,25475
+ITC4,2013,export,[S],S,All countries of the world,WORLD,34548
+ITC4,2014,export,[S],S,All countries of the world,WORLD,40130
+ITC4,2015,export,[S],S,All countries of the world,WORLD,4335
+ITC4,2016,export,[S],S,All countries of the world,WORLD,3533
+ITC4,2017,export,[S],S,All countries of the world,WORLD,1472
+ITC4,2018,export,[S],S,All countries of the world,WORLD,2833
+ITC4,2019,export,[S],S,All countries of the world,WORLD,12303
+ITC4,2020,export,[S],S,All countries of the world,WORLD,4862
+ITC4,2021,export,[S],S,All countries of the world,WORLD,7766
+ITC4,2022,export,[S],S,All countries of the world,WORLD,2597
+ITC4,2024,export,[S],S,All countries of the world,WORLD,6891
+ITC4,2025,export,[S],S,All countries of the world,WORLD,37465
+ITC4,1991,import,[A],A,All countries of the world,WORLD,1199865070
+ITC4,1992,import,[A],A,All countries of the world,WORLD,1199786717
+ITC4,1993,import,[A],A,All countries of the world,WORLD,1221822310
+ITC4,1994,import,[A],A,All countries of the world,WORLD,1395395407
+ITC4,1995,import,[A],A,All countries of the world,WORLD,1677215373
+ITC4,1996,import,[A],A,All countries of the world,WORLD,1611512752
+ITC4,1997,import,[A],A,All countries of the world,WORLD,1686311171
+ITC4,1998,import,[A],A,All countries of the world,WORLD,1691516575
+ITC4,1999,import,[A],A,All countries of the world,WORLD,1545511754
+ITC4,2000,import,[A],A,All countries of the world,WORLD,1730036959
+ITC4,2001,import,[A],A,All countries of the world,WORLD,1692016155
+ITC4,2002,import,[A],A,All countries of the world,WORLD,1660175807
+ITC4,2003,import,[A],A,All countries of the world,WORLD,1692007964
+ITC4,2004,import,[A],A,All countries of the world,WORLD,1617734049
+ITC4,2005,import,[A],A,All countries of the world,WORLD,1640300349
+ITC4,2006,import,[A],A,All countries of the world,WORLD,1769545802
+ITC4,2007,import,[A],A,All countries of the world,WORLD,1799475156
+ITC4,2008,import,[A],A,All countries of the world,WORLD,1910547633
+ITC4,2009,import,[A],A,All countries of the world,WORLD,1727917045
+ITC4,2010,import,[A],A,All countries of the world,WORLD,1897817858
+ITC4,2011,import,[A],A,All countries of the world,WORLD,2262352180
+ITC4,2012,import,[A],A,All countries of the world,WORLD,2146450825
+ITC4,2013,import,[A],A,All countries of the world,WORLD,2254315216
+ITC4,2014,import,[A],A,All countries of the world,WORLD,2184339591
+ITC4,2015,import,[A],A,All countries of the world,WORLD,2409601737
+ITC4,2016,import,[A],A,All countries of the world,WORLD,2411412246
+ITC4,2017,import,[A],A,All countries of the world,WORLD,2547361629
+ITC4,2018,import,[A],A,All countries of the world,WORLD,2492467585
+ITC4,2019,import,[A],A,All countries of the world,WORLD,2491870443
+ITC4,2020,import,[A],A,All countries of the world,WORLD,2381224427
+ITC4,2021,import,[A],A,All countries of the world,WORLD,2703196851
+ITC4,2022,import,[A],A,All countries of the world,WORLD,3436870671
+ITC4,2023,import,[A],A,All countries of the world,WORLD,3400020151
+ITC4,2024,import,[A],A,All countries of the world,WORLD,3663613345
+ITC4,2025,import,[A],A,All countries of the world,WORLD,4179237390
+ITC4,1991,import,all items,ALL,All countries of the world,WORLD,42622001351
+ITC4,1992,import,all items,ALL,All countries of the world,WORLD,43490671393
+ITC4,1993,import,all items,ALL,All countries of the world,WORLD,44887214443
+ITC4,1994,import,all items,ALL,All countries of the world,WORLD,52748151874
+ITC4,1995,import,all items,ALL,All countries of the world,WORLD,64643700951
+ITC4,1996,import,all items,ALL,All countries of the world,WORLD,61487567044
+ITC4,1997,import,all items,ALL,All countries of the world,WORLD,68139855367
+ITC4,1998,import,all items,ALL,All countries of the world,WORLD,74210777948
+ITC4,1999,import,all items,ALL,All countries of the world,WORLD,79336419735
+ITC4,2000,import,all items,ALL,All countries of the world,WORLD,96168790633
+ITC4,2001,import,all items,ALL,All countries of the world,WORLD,98633324280
+ITC4,2002,import,all items,ALL,All countries of the world,WORLD,96484686867
+ITC4,2003,import,all items,ALL,All countries of the world,WORLD,98256883015
+ITC4,2004,import,all items,ALL,All countries of the world,WORLD,105813252576
+ITC4,2005,import,all items,ALL,All countries of the world,WORLD,111241534864
+ITC4,2006,import,all items,ALL,All countries of the world,WORLD,119103177239
+ITC4,2007,import,all items,ALL,All countries of the world,WORLD,124178322423
+ITC4,2008,import,all items,ALL,All countries of the world,WORLD,120022224112
+ITC4,2009,import,all items,ALL,All countries of the world,WORLD,97030915648
+ITC4,2010,import,all items,ALL,All countries of the world,WORLD,118263471997
+ITC4,2011,import,all items,ALL,All countries of the world,WORLD,124843886927
+ITC4,2012,import,all items,ALL,All countries of the world,WORLD,116154765787
+ITC4,2013,import,all items,ALL,All countries of the world,WORLD,110247683533
+ITC4,2014,import,all items,ALL,All countries of the world,WORLD,110387326212
+ITC4,2015,import,all items,ALL,All countries of the world,WORLD,116161848807
+ITC4,2016,import,all items,ALL,All countries of the world,WORLD,115379907797
+ITC4,2017,import,all items,ALL,All countries of the world,WORLD,125496913694
+ITC4,2018,import,all items,ALL,All countries of the world,WORLD,134583882357
+ITC4,2019,import,all items,ALL,All countries of the world,WORLD,134106829732
+ITC4,2020,import,all items,ALL,All countries of the world,WORLD,120663046684
+ITC4,2021,import,all items,ALL,All countries of the world,WORLD,150974588764
+ITC4,2022,import,all items,ALL,All countries of the world,WORLD,184982239622
+ITC4,2023,import,all items,ALL,All countries of the world,WORLD,173250475471
+ITC4,2024,import,all items,ALL,All countries of the world,WORLD,172240214884
+ITC4,2025,import,all items,ALL,All countries of the world,WORLD,178950382228
+ITC4,1991,import,[B],B,All countries of the world,WORLD,2288165535
+ITC4,1992,import,[B],B,All countries of the world,WORLD,2097506290
+ITC4,1993,import,[B],B,All countries of the world,WORLD,3018144640
+ITC4,1994,import,[B],B,All countries of the world,WORLD,2883896150
+ITC4,1995,import,[B],B,All countries of the world,WORLD,2736690448
+ITC4,1996,import,[B],B,All countries of the world,WORLD,3229879632
+ITC4,1997,import,[B],B,All countries of the world,WORLD,3457114117
+ITC4,1998,import,[B],B,All countries of the world,WORLD,2969714256
+ITC4,1999,import,[B],B,All countries of the world,WORLD,3371734234
+ITC4,2000,import,[B],B,All countries of the world,WORLD,7305156498
+ITC4,2001,import,[B],B,All countries of the world,WORLD,7841106924
+ITC4,2002,import,[B],B,All countries of the world,WORLD,7569904524
+ITC4,2003,import,[B],B,All countries of the world,WORLD,8016178643
+ITC4,2004,import,[B],B,All countries of the world,WORLD,8468023512
+ITC4,2005,import,[B],B,All countries of the world,WORLD,11859951597
+ITC4,2006,import,[B],B,All countries of the world,WORLD,9682588532
+ITC4,2007,import,[B],B,All countries of the world,WORLD,8350027780
+ITC4,2008,import,[B],B,All countries of the world,WORLD,8722926248
+ITC4,2009,import,[B],B,All countries of the world,WORLD,7238998987
+ITC4,2010,import,[B],B,All countries of the world,WORLD,8298508489
+ITC4,2011,import,[B],B,All countries of the world,WORLD,8603228186
+ITC4,2012,import,[B],B,All countries of the world,WORLD,8614197062
+ITC4,2013,import,[B],B,All countries of the world,WORLD,5786656408
+ITC4,2014,import,[B],B,All countries of the world,WORLD,3980815896
+ITC4,2015,import,[B],B,All countries of the world,WORLD,3054394605
+ITC4,2016,import,[B],B,All countries of the world,WORLD,2574062054
+ITC4,2017,import,[B],B,All countries of the world,WORLD,2913619640
+ITC4,2018,import,[B],B,All countries of the world,WORLD,3408099436
+ITC4,2019,import,[B],B,All countries of the world,WORLD,3703953730
+ITC4,2020,import,[B],B,All countries of the world,WORLD,1835882662
+ITC4,2021,import,[B],B,All countries of the world,WORLD,3415193590
+ITC4,2022,import,[B],B,All countries of the world,WORLD,5952029488
+ITC4,2023,import,[B],B,All countries of the world,WORLD,5078060810
+ITC4,2024,import,[B],B,All countries of the world,WORLD,4587759491
+ITC4,2025,import,[B],B,All countries of the world,WORLD,3852678214
+ITC4,1991,import,[C],C,All countries of the world,WORLD,38380508111
+ITC4,1992,import,[C],C,All countries of the world,WORLD,39418126915
+ITC4,1993,import,[C],C,All countries of the world,WORLD,39704181329
+ITC4,1994,import,[C],C,All countries of the world,WORLD,47287662108
+ITC4,1995,import,[C],C,All countries of the world,WORLD,58700746741
+ITC4,1996,import,[C],C,All countries of the world,WORLD,55378156022
+ITC4,1997,import,[C],C,All countries of the world,WORLD,61557912558
+ITC4,1998,import,[C],C,All countries of the world,WORLD,67722542156
+ITC4,1999,import,[C],C,All countries of the world,WORLD,72055965337
+ITC4,2000,import,[C],C,All countries of the world,WORLD,84780516055
+ITC4,2001,import,[C],C,All countries of the world,WORLD,86282390639
+ITC4,2002,import,[C],C,All countries of the world,WORLD,84519639575
+ITC4,2003,import,[C],C,All countries of the world,WORLD,84912364212
+ITC4,2004,import,[C],C,All countries of the world,WORLD,93253977751
+ITC4,2005,import,[C],C,All countries of the world,WORLD,95161162722
+ITC4,2006,import,[C],C,All countries of the world,WORLD,104629320116
+ITC4,2007,import,[C],C,All countries of the world,WORLD,111128217304
+ITC4,2008,import,[C],C,All countries of the world,WORLD,106743323836
+ITC4,2009,import,[C],C,All countries of the world,WORLD,86341161030
+ITC4,2010,import,[C],C,All countries of the world,WORLD,105730714208
+ITC4,2011,import,[C],C,All countries of the world,WORLD,111094854527
+ITC4,2012,import,[C],C,All countries of the world,WORLD,102687308360
+ITC4,2013,import,[C],C,All countries of the world,WORLD,99661446285
+ITC4,2014,import,[C],C,All countries of the world,WORLD,101763692891
+ITC4,2015,import,[C],C,All countries of the world,WORLD,108387103210
+ITC4,2016,import,[C],C,All countries of the world,WORLD,108410033176
+ITC4,2017,import,[C],C,All countries of the world,WORLD,117611716583
+ITC4,2018,import,[C],C,All countries of the world,WORLD,125421963622
+ITC4,2019,import,[C],C,All countries of the world,WORLD,125232234406
+ITC4,2020,import,[C],C,All countries of the world,WORLD,113991032763
+ITC4,2021,import,[C],C,All countries of the world,WORLD,140965721714
+ITC4,2022,import,[C],C,All countries of the world,WORLD,170808729467
+ITC4,2023,import,[C],C,All countries of the world,WORLD,160663685611
+ITC4,2024,import,[C],C,All countries of the world,WORLD,160387201714
+ITC4,2025,import,[C],C,All countries of the world,WORLD,166507472092
+ITC4,1992,import,[D],D,All countries of the world,WORLD,9041
+ITC4,1993,import,[D],D,All countries of the world,WORLD,57498458
+ITC4,1994,import,[D],D,All countries of the world,WORLD,5632
+ITC4,1995,import,[D],D,All countries of the world,WORLD,15999
+ITC4,1996,import,[D],D,All countries of the world,WORLD,14419
+ITC4,1997,import,[D],D,All countries of the world,WORLD,27992
+ITC4,1998,import,[D],D,All countries of the world,WORLD,241195599
+ITC4,1999,import,[D],D,All countries of the world,WORLD,864314873
+ITC4,2000,import,[D],D,All countries of the world,WORLD,519120828
+ITC4,2001,import,[D],D,All countries of the world,WORLD,568696855
+ITC4,2002,import,[D],D,All countries of the world,WORLD,569671181
+ITC4,2003,import,[D],D,All countries of the world,WORLD,550777046
+ITC4,2004,import,[D],D,All countries of the world,WORLD,412827325
+ITC4,2005,import,[D],D,All countries of the world,WORLD,476829534
+ITC4,2006,import,[D],D,All countries of the world,WORLD,204461849
+ITC4,2007,import,[D],D,All countries of the world,WORLD,266977506
+ITC4,2008,import,[D],D,All countries of the world,WORLD,634
+ITC4,2009,import,[D],D,All countries of the world,WORLD,179407713
+ITC4,2010,import,[D],D,All countries of the world,WORLD,5548
+ITC4,2011,import,[D],D,All countries of the world,WORLD,17060
+ITC4,2012,import,[D],D,All countries of the world,WORLD,37827
+ITC4,2013,import,[D],D,All countries of the world,WORLD,65972
+ITC4,2014,import,[D],D,All countries of the world,WORLD,13911
+ITC4,2015,import,[D],D,All countries of the world,WORLD,1809
+ITC4,2016,import,[D],D,All countries of the world,WORLD,11847
+ITC4,2017,import,[D],D,All countries of the world,WORLD,880
+ITC4,2018,import,[D],D,All countries of the world,WORLD,12044
+ITC4,2020,import,[D],D,All countries of the world,WORLD,11984
+ITC4,2021,import,[D],D,All countries of the world,WORLD,41942
+ITC4,2022,import,[D],D,All countries of the world,WORLD,7324
+ITC4,2024,import,[D],D,All countries of the world,WORLD,2481
+ITC4,2025,import,[D],D,All countries of the world,WORLD,2504
+ITC4,1991,import,[E],E,All countries of the world,WORLD,489147718
+ITC4,1992,import,[E],E,All countries of the world,WORLD,484245086
+ITC4,1993,import,[E],E,All countries of the world,WORLD,508332450
+ITC4,1994,import,[E],E,All countries of the world,WORLD,757596661
+ITC4,1995,import,[E],E,All countries of the world,WORLD,942997140
+ITC4,1996,import,[E],E,All countries of the world,WORLD,676244800
+ITC4,1997,import,[E],E,All countries of the world,WORLD,768334459
+ITC4,1998,import,[E],E,All countries of the world,WORLD,833232844
+ITC4,1999,import,[E],E,All countries of the world,WORLD,622504416
+ITC4,2000,import,[E],E,All countries of the world,WORLD,786636283
+ITC4,2001,import,[E],E,All countries of the world,WORLD,784085319
+ITC4,2002,import,[E],E,All countries of the world,WORLD,689585886
+ITC4,2003,import,[E],E,All countries of the world,WORLD,703451505
+ITC4,2004,import,[E],E,All countries of the world,WORLD,977391225
+ITC4,2005,import,[E],E,All countries of the world,WORLD,1064418021
+ITC4,2006,import,[E],E,All countries of the world,WORLD,1694370148
+ITC4,2007,import,[E],E,All countries of the world,WORLD,1584896504
+ITC4,2008,import,[E],E,All countries of the world,WORLD,1574941791
+ITC4,2009,import,[E],E,All countries of the world,WORLD,660729638
+ITC4,2010,import,[E],E,All countries of the world,WORLD,1408784728
+ITC4,2011,import,[E],E,All countries of the world,WORLD,1976797425
+ITC4,2012,import,[E],E,All countries of the world,WORLD,1920005003
+ITC4,2013,import,[E],E,All countries of the world,WORLD,1789886778
+ITC4,2014,import,[E],E,All countries of the world,WORLD,1788549842
+ITC4,2015,import,[E],E,All countries of the world,WORLD,1625749037
+ITC4,2016,import,[E],E,All countries of the world,WORLD,1377782268
+ITC4,2017,import,[E],E,All countries of the world,WORLD,1826143716
+ITC4,2018,import,[E],E,All countries of the world,WORLD,2171619276
+ITC4,2019,import,[E],E,All countries of the world,WORLD,1900349091
+ITC4,2020,import,[E],E,All countries of the world,WORLD,1599175201
+ITC4,2021,import,[E],E,All countries of the world,WORLD,2943760261
+ITC4,2022,import,[E],E,All countries of the world,WORLD,3176025949
+ITC4,2023,import,[E],E,All countries of the world,WORLD,2523502021
+ITC4,2024,import,[E],E,All countries of the world,WORLD,2554150976
+ITC4,2025,import,[E],E,All countries of the world,WORLD,2777424616
+ITC4,1991,import,[J],J,All countries of the world,WORLD,210610454
+ITC4,1992,import,[J],J,All countries of the world,WORLD,245614759
+ITC4,1993,import,[J],J,All countries of the world,WORLD,358370519
+ITC4,1994,import,[J],J,All countries of the world,WORLD,403982122
+ITC4,1995,import,[J],J,All countries of the world,WORLD,570572566
+ITC4,1996,import,[J],J,All countries of the world,WORLD,575112753
+ITC4,1997,import,[J],J,All countries of the world,WORLD,654692411
+ITC4,1998,import,[J],J,All countries of the world,WORLD,737260178
+ITC4,1999,import,[J],J,All countries of the world,WORLD,854391902
+ITC4,2000,import,[J],J,All countries of the world,WORLD,996282615
+ITC4,2001,import,[J],J,All countries of the world,WORLD,1002689482
+ITC4,2002,import,[J],J,All countries of the world,WORLD,982307696
+ITC4,2003,import,[J],J,All countries of the world,WORLD,1039669185
+ITC4,2004,import,[J],J,All countries of the world,WORLD,1041073048
+ITC4,2005,import,[J],J,All countries of the world,WORLD,992131918
+ITC4,2006,import,[J],J,All countries of the world,WORLD,1070360169
+ITC4,2007,import,[J],J,All countries of the world,WORLD,979558815
+ITC4,2008,import,[J],J,All countries of the world,WORLD,982999222
+ITC4,2009,import,[J],J,All countries of the world,WORLD,815985407
+ITC4,2010,import,[J],J,All countries of the world,WORLD,853350889
+ITC4,2011,import,[J],J,All countries of the world,WORLD,832829616
+ITC4,2012,import,[J],J,All countries of the world,WORLD,710859771
+ITC4,2013,import,[J],J,All countries of the world,WORLD,668130851
+ITC4,2014,import,[J],J,All countries of the world,WORLD,596120104
+ITC4,2015,import,[J],J,All countries of the world,WORLD,576798930
+ITC4,2016,import,[J],J,All countries of the world,WORLD,523679389
+ITC4,2017,import,[J],J,All countries of the world,WORLD,490043156
+ITC4,2018,import,[J],J,All countries of the world,WORLD,438074599
+ITC4,2019,import,[J],J,All countries of the world,WORLD,436795044
+ITC4,2020,import,[J],J,All countries of the world,WORLD,337384678
+ITC4,2021,import,[J],J,All countries of the world,WORLD,315993657
+ITC4,2022,import,[J],J,All countries of the world,WORLD,366283792
+ITC4,2023,import,[J],J,All countries of the world,WORLD,382874015
+ITC4,2024,import,[J],J,All countries of the world,WORLD,368272036
+ITC4,2025,import,[J],J,All countries of the world,WORLD,351245368
+ITC4,1991,import,[M],M,All countries of the world,WORLD,2552416
+ITC4,1992,import,[M],M,All countries of the world,WORLD,3277635
+ITC4,1993,import,[M],M,All countries of the world,WORLD,3920940
+ITC4,1994,import,[M],M,All countries of the world,WORLD,4730351
+ITC4,1995,import,[M],M,All countries of the world,WORLD,2754678
+ITC4,1996,import,[M],M,All countries of the world,WORLD,2385609
+ITC4,1997,import,[M],M,All countries of the world,WORLD,2412015
+ITC4,1998,import,[M],M,All countries of the world,WORLD,2240067
+ITC4,1999,import,[M],M,All countries of the world,WORLD,1439396
+ITC4,2000,import,[M],M,All countries of the world,WORLD,1956355
+ITC4,2001,import,[M],M,All countries of the world,WORLD,2091351
+ITC4,2002,import,[M],M,All countries of the world,WORLD,1561578
+ITC4,2003,import,[M],M,All countries of the world,WORLD,993560
+ITC4,2004,import,[M],M,All countries of the world,WORLD,1159765
+ITC4,2005,import,[M],M,All countries of the world,WORLD,1130185
+ITC4,2006,import,[M],M,All countries of the world,WORLD,1171238
+ITC4,2007,import,[M],M,All countries of the world,WORLD,1083023
+ITC4,2008,import,[M],M,All countries of the world,WORLD,4272116
+ITC4,2009,import,[M],M,All countries of the world,WORLD,7444922
+ITC4,2010,import,[M],M,All countries of the world,WORLD,6965533
+ITC4,2011,import,[M],M,All countries of the world,WORLD,7241236
+ITC4,2012,import,[M],M,All countries of the world,WORLD,8440439
+ITC4,2013,import,[M],M,All countries of the world,WORLD,5842814
+ITC4,2014,import,[M],M,All countries of the world,WORLD,4376253
+ITC4,2015,import,[M],M,All countries of the world,WORLD,7145706
+ITC4,2016,import,[M],M,All countries of the world,WORLD,5186303
+ITC4,2017,import,[M],M,All countries of the world,WORLD,5395931
+ITC4,2018,import,[M],M,All countries of the world,WORLD,4351668
+ITC4,2019,import,[M],M,All countries of the world,WORLD,3714879
+ITC4,2020,import,[M],M,All countries of the world,WORLD,2573307
+ITC4,2021,import,[M],M,All countries of the world,WORLD,4114334
+ITC4,2022,import,[M],M,All countries of the world,WORLD,3571391
+ITC4,2023,import,[M],M,All countries of the world,WORLD,5437260
+ITC4,2024,import,[M],M,All countries of the world,WORLD,4775934
+ITC4,2025,import,[M],M,All countries of the world,WORLD,6017258
+ITC4,1991,import,[R],R,All countries of the world,WORLD,17025760
+ITC4,1992,import,[R],R,All countries of the world,WORLD,13516579
+ITC4,1993,import,[R],R,All countries of the world,WORLD,10692366
+ITC4,1994,import,[R],R,All countries of the world,WORLD,12531774
+ITC4,1995,import,[R],R,All countries of the world,WORLD,10137503
+ITC4,1996,import,[R],R,All countries of the world,WORLD,13555316
+ITC4,1997,import,[R],R,All countries of the world,WORLD,10776284
+ITC4,1998,import,[R],R,All countries of the world,WORLD,12607151
+ITC4,1999,import,[R],R,All countries of the world,WORLD,17991961
+ITC4,2000,import,[R],R,All countries of the world,WORLD,15656734
+ITC4,2001,import,[R],R,All countries of the world,WORLD,16198272
+ITC4,2002,import,[R],R,All countries of the world,WORLD,19955293
+ITC4,2003,import,[R],R,All countries of the world,WORLD,15159927
+ITC4,2004,import,[R],R,All countries of the world,WORLD,12317640
+ITC4,2005,import,[R],R,All countries of the world,WORLD,22976910
+ITC4,2006,import,[R],R,All countries of the world,WORLD,21130062
+ITC4,2007,import,[R],R,All countries of the world,WORLD,33936651
+ITC4,2008,import,[R],R,All countries of the world,WORLD,29683968
+ITC4,2009,import,[R],R,All countries of the world,WORLD,17810274
+ITC4,2010,import,[R],R,All countries of the world,WORLD,33751032
+ITC4,2011,import,[R],R,All countries of the world,WORLD,38265353
+ITC4,2012,import,[R],R,All countries of the world,WORLD,37148974
+ITC4,2013,import,[R],R,All countries of the world,WORLD,42905356
+ITC4,2014,import,[R],R,All countries of the world,WORLD,34495126
+ITC4,2015,import,[R],R,All countries of the world,WORLD,57496145
+ITC4,2016,import,[R],R,All countries of the world,WORLD,33953863
+ITC4,2017,import,[R],R,All countries of the world,WORLD,51392846
+ITC4,2018,import,[R],R,All countries of the world,WORLD,84693698
+ITC4,2019,import,[R],R,All countries of the world,WORLD,64864265
+ITC4,2020,import,[R],R,All countries of the world,WORLD,36494227
+ITC4,2021,import,[R],R,All countries of the world,WORLD,68984962
+ITC4,2022,import,[R],R,All countries of the world,WORLD,94181691
+ITC4,2023,import,[R],R,All countries of the world,WORLD,115452421
+ITC4,2024,import,[R],R,All countries of the world,WORLD,94483906
+ITC4,2025,import,[R],R,All countries of the world,WORLD,137555578
+ITC4,1991,import,[S],S,All countries of the world,WORLD,21677
+ITC4,1992,import,[S],S,All countries of the world,WORLD,44340
+ITC4,1993,import,[S],S,All countries of the world,WORLD,16884
+ITC4,1994,import,[S],S,All countries of the world,WORLD,47123
+ITC4,1995,import,[S],S,All countries of the world,WORLD,121743
+ITC4,1996,import,[S],S,All countries of the world,WORLD,104262
+ITC4,1997,import,[S],S,All countries of the world,WORLD,108620
+ITC4,1998,import,[S],S,All countries of the world,WORLD,109485
+ITC4,1999,import,[S],S,All countries of the world,WORLD,118609
+ITC4,2000,import,[S],S,All countries of the world,WORLD,155738
+ITC4,2001,import,[S],S,All countries of the world,WORLD,69447
+ITC4,2002,import,[S],S,All countries of the world,WORLD,101905
+ITC4,2003,import,[S],S,All countries of the world,WORLD,55560
+ITC4,2004,import,[S],S,All countries of the world,WORLD,194552
+ITC4,2005,import,[S],S,All countries of the world,WORLD,158134
+ITC4,2006,import,[S],S,All countries of the world,WORLD,106379
+ITC4,2007,import,[S],S,All countries of the world,WORLD,113491
+ITC4,2008,import,[S],S,All countries of the world,WORLD,205727
+ITC4,2009,import,[S],S,All countries of the world,WORLD,53880
+ITC4,2010,import,[S],S,All countries of the world,WORLD,262188
+ITC4,2011,import,[S],S,All countries of the world,WORLD,91319
+ITC4,2012,import,[S],S,All countries of the world,WORLD,107478
+ITC4,2013,import,[S],S,All countries of the world,WORLD,88188
+ITC4,2014,import,[S],S,All countries of the world,WORLD,61062
+ITC4,2015,import,[S],S,All countries of the world,WORLD,82695
+ITC4,2016,import,[S],S,All countries of the world,WORLD,51648
+ITC4,2017,import,[S],S,All countries of the world,WORLD,115881
+ITC4,2018,import,[S],S,All countries of the world,WORLD,62484
+ITC4,2019,import,[S],S,All countries of the world,WORLD,10560
+ITC4,2020,import,[S],S,All countries of the world,WORLD,30300
+ITC4,2021,import,[S],S,All countries of the world,WORLD,38193
+ITC4,2022,import,[S],S,All countries of the world,WORLD,19655
+ITC4,2023,import,[S],S,All countries of the world,WORLD,27882
+ITC4,2024,import,[S],S,All countries of the world,WORLD,24461
+ITC4,2025,import,[S],S,All countries of the world,WORLD,5425

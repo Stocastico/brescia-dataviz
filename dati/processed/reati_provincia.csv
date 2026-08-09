@@ -1,0 +1,1058 @@
+territorio,anno,indicatore,tipo_reato,codice_reato,valore
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,13.70
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,2.80
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.80
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,3.60
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,25.90
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,11.10
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,35.90
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,305.00
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,306.20
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.30
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,2.10
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,1.50
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,117.60
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,7.40
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,800.20
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,9.20
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,58.40
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,5.60
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,3.50
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,4.60
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.90
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,9.00
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,4.20
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,135.10
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,1.90
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,72.10
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,21.50
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",offences,OFFENCE,116.20
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,652.30
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,126.70
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.30
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,2.80
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,2.50
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,6.30
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,0.70
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,46.30
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,9.10
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,70.30
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,10.10
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,172.20
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.30
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,24.30
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,192.30
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,2843.90
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,5149.10
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,4.70
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,9.60
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.50
+ITC47,2006,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,553.30
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,14.70
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,1.70
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.70
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,3.90
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,16.20
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,8.90
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,35.50
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,359.60
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,266.90
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.10
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,1.60
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,1.40
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,117.80
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,9.40
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,870.50
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,8.10
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,57.20
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,10.30
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,6.30
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,4.80
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.80
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,11.20
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,4.20
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.30
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,159.30
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,1.90
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,70.10
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,22.30
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",offences,OFFENCE,124.30
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,755.60
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,150.10
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,1.30
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,1.30
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,3.80
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,10.00
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,0.60
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,43.80
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,8.20
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,69.10
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.10
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,13.00
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,213.00
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.70
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,25.30
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,202.90
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,2949.40
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,5479.40
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,4.50
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,8.50
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.30
+ITC47,2007,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,528.90
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,10.80
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,1.60
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,1.00
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,3.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,18.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,6.40
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,39.30
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,356.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,227.90
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.40
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,1.60
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,1.20
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,121.30
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,26.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,962.20
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,7.70
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,72.80
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,8.60
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,2.60
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,5.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.70
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,8.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,4.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.20
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,154.00
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,2.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,53.40
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,16.60
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",offences,OFFENCE,130.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,838.40
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,126.20
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.70
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,1.00
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,4.60
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,10.40
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,1.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,37.40
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,6.30
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,64.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,11.50
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,174.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,25.80
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,173.70
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,2593.70
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,5286.60
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,3.10
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,6.60
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.60
+ITC47,2008,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,510.30
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,10.40
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,1.80
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.60
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,2.70
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,11.70
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,4.20
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,38.50
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,324.50
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,192.10
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.60
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,1.60
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,1.10
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,123.40
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,9.10
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,995.60
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,5.70
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,72.50
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,9.30
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,2.90
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,3.60
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.40
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,6.50
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,3.80
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,154.90
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,1.40
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,62.10
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,16.90
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",offences,OFFENCE,135.00
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,836.00
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,118.20
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.60
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.70
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,3.40
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,10.00
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,1.80
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,36.70
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,4.70
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,45.90
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,8.30
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,162.90
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.00
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,18.40
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,153.10
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,2426.40
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,5092.70
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,3.40
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,5.10
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.60
+ITC47,2009,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,477.50
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,9.50
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,1.50
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,1.10
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,2.50
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,15.20
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,1.80
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,37.20
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,344.10
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,164.40
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.20
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,10.40
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,1.30
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,124.30
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,10.90
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,989.10
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,7.40
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,66.20
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,8.70
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,1.30
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,2.30
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.50
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,3.40
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,3.80
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,151.60
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,1.90
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,49.80
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,15.60
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",offences,OFFENCE,127.50
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,861.50
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,133.00
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.30
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.40
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,5.10
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,10.10
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,1.90
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,31.20
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,2.90
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,38.40
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,8.10
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,195.70
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.10
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,17.20
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,161.30
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,2417.10
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,5087.60
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,4.40
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,3.20
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.20
+ITC47,2010,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,450.10
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,11.70
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,1.10
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,1.40
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,1.70
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,15.50
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,3.20
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,41.30
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,415.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,132.20
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.20
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,8.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.90
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,126.30
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,12.80
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,923.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,6.70
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,71.90
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,11.40
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,4.30
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,4.90
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.10
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,1.10
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,2.20
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,2.80
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.10
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,167.30
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,1.80
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,42.10
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,17.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",offences,OFFENCE,138.60
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,690.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,174.20
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.70
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.70
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,4.60
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,8.50
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,0.90
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,34.40
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,3.60
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,54.70
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,10.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,199.80
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,24.90
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,170.70
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,2533.10
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,5034.00
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,2.90
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,4.20
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.80
+ITC47,2011,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,410.40
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,10.60
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,1.00
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.90
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,1.10
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,23.90
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,1.80
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,38.50
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,499.90
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,137.20
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.10
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,7.90
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.50
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,124.60
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,12.00
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,821.50
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,6.50
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,64.60
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,10.40
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,4.50
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,5.40
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.90
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,1.40
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,2.90
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.10
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,153.70
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,2.80
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,43.10
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,16.60
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",offences,OFFENCE,133.30
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,661.10
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,192.40
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.60
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.20
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,2.30
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,9.00
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,1.10
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,32.90
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,3.30
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,55.30
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,8.00
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,216.30
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.00
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,29.70
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,252.50
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,2574.60
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,4988.20
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,2.30
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,3.80
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.80
+ITC47,2012,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,343.10
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,6.70
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,0.90
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,1.50
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,1.40
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,20.40
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,1.30
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,37.90
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,529.20
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,143.10
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.10
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,7.00
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.80
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,115.50
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,12.80
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,785.20
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,7.10
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,70.70
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,8.80
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,1.80
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,6.10
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.60
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,1.40
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,2.20
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.20
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,146.40
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,3.60
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,34.20
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,10.70
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",offences,OFFENCE,132.60
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,739.70
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,184.70
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.30
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.70
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,1.70
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,7.70
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,1.30
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,37.10
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,2.50
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,52.00
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.10
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,10.00
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,223.60
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.00
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,23.30
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,195.50
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,2565.50
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,4946.30
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,1.90
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,2.80
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.60
+ITC47,2013,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,345.40
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,6.40
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,0.60
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.40
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,1.40
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,19.10
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,0.80
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,34.30
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,503.70
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,113.10
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.10
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,5.90
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.50
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,110.90
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,18.80
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,582.40
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,3.90
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,66.30
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,10.40
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,2.00
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,4.60
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.30
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,0.50
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,1.80
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.10
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.10
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,142.90
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,2.90
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,26.60
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,12.10
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",offences,OFFENCE,117.40
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,656.70
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,198.70
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.90
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.10
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,1.80
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,5.30
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,0.80
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,33.40
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,5.30
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,45.50
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,9.50
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,215.30
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.10
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,21.20
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,186.40
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,2417.80
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,4462.40
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,2.40
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,5.50
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.60
+ITC47,2014,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,342.70
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,12.90
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,1.40
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.30
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,1.60
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,18.40
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,1.40
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,33.90
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,447.30
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,107.30
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.20
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,9.10
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.50
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,98.20
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,16.50
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,613.60
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,7.30
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,65.70
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,11.60
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,6.90
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,5.00
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.80
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,0.80
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,1.70
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.10
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,135.40
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,3.70
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,19.10
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,10.20
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",offences,OFFENCE,109.00
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,626.50
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,188.70
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.60
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.70
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,1.80
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,6.20
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,0.60
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,35.50
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,3.70
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,45.30
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,8.20
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,195.90
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.10
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,22.60
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,197.90
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,2268.70
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,4310.60
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,0.80
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,4.10
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.40
+ITC47,2015,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,362.20
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,10.00
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,1.10
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.60
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,1.00
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,15.20
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,0.90
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,30.80
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,460.10
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,97.20
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.10
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,12.60
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.60
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,104.10
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,25.30
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,526.40
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,7.40
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,65.50
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,13.40
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,5.70
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,4.50
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.20
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,0.60
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,1.20
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.10
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,126.70
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,2.70
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,11.40
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,7.70
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",offences,OFFENCE,26.30
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,616.50
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,177.00
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.90
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.60
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,2.00
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,5.50
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,0.60
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,27.90
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,2.20
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,37.60
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,7.30
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,170.80
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.10
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,17.50
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,224.70
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,2039.20
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,3913.80
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,1.30
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,2.60
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.60
+ITC47,2016,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,339.50
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,9.30
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,1.00
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.80
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,0.90
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,13.20
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,0.30
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,31.40
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,346.40
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,78.20
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.30
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,4.40
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.60
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,105.90
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,47.30
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,496.50
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,7.20
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,75.70
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,10.30
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,4.70
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,2.80
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.30
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,0.30
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,1.70
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,118.30
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,2.30
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,9.10
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,8.60
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",offences,OFFENCE,2.60
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,631.70
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,182.90
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.50
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.50
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,1.20
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,5.40
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,0.20
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,23.20
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,2.30
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,32.90
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,5.30
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,157.70
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.00
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,17.80
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,278.60
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,1798.60
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,3691.40
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,0.50
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,2.60
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.20
+ITC47,2017,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,288.20
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,6.10
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,0.80
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.20
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,1.50
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,13.50
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,0.40
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,29.20
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,398.50
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,81.90
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,3.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.30
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,108.60
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,71.50
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,510.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,6.90
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,60.70
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,13.50
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,1.80
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,3.60
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.60
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,0.20
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,1.60
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.10
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,118.30
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,1.80
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,8.60
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,9.10
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,596.50
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,151.70
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.70
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.50
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,0.30
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,7.30
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,0.50
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,18.90
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,3.10
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,35.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,5.30
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,141.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,18.50
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,306.50
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,1721.00
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,3624.60
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,0.60
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,3.60
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.20
+ITC47,2018,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,270.70
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,8.10
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,0.80
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.50
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,1.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,13.10
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,0.10
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,29.20
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,326.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,78.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,3.60
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.20
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,106.20
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,80.70
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,515.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,6.80
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,59.70
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,10.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,4.20
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,3.70
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.20
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,0.10
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,1.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,113.90
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,2.50
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,6.10
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,6.70
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,576.60
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,136.70
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,1.40
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,0.90
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,7.80
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,0.70
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,22.20
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,2.60
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,28.70
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,4.60
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,127.40
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,14.70
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,337.20
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,1537.80
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,3455.40
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,0.80
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,3.10
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.20
+ITC47,2019,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,248.30
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,5.90
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,0.40
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.30
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,1.10
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,10.00
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,0.30
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,28.80
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,194.40
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,47.90
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.10
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,1.80
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.20
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,81.40
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,107.40
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,405.20
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,5.50
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,49.40
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,13.90
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,2.50
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,3.30
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.80
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,0.00
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,0.90
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.10
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.10
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,102.80
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,2.50
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,4.80
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,3.90
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,520.70
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,87.30
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,1.00
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.50
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,0.60
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,5.30
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,1.20
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,11.50
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,2.20
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,23.70
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,4.10
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,92.70
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.00
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,11.40
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,386.50
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,968.50
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,2730.20
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,0.50
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,2.80
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.40
+ITC47,2020,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,143.50
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,4.90
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,0.60
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.40
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,1.70
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,14.50
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,0.60
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,29.30
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,252.20
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,49.80
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.20
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,1.40
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.90
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,112.70
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,144.00
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,487.70
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,4.30
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,46.50
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,14.70
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,2.10
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,2.40
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.30
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,0.00
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,1.30
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.20
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,111.00
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,2.60
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,5.20
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,3.90
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,524.30
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,113.80
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,1.80
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.10
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,1.70
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,9.20
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,1.00
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,13.60
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,1.50
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,38.50
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,5.60
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,114.20
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.00
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,22.70
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,519.50
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,1114.40
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,3190.80
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,0.30
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,2.60
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.20
+ITC47,2021,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,106.50
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,10.10
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,0.30
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.20
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,0.90
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,17.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,0.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,28.40
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,292.10
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,47.20
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.20
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,2.90
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.50
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,112.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,141.50
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,509.90
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,5.70
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,45.10
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,15.90
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,7.20
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,3.40
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.10
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.10
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,0.20
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,1.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.10
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,109.50
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,1.80
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,6.50
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,3.80
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,538.50
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,134.90
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,1.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,0.10
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,12.60
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,0.60
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,15.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,2.70
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,36.60
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,6.80
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,119.60
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,19.50
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,501.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,1294.40
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,3389.40
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,0.60
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,3.40
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.20
+ITC47,2022,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,156.50
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,5.50
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,0.10
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.20
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,1.40
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,15.90
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,0.70
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,36.30
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,356.00
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,50.60
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.20
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,2.10
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.30
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,118.60
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,108.20
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,518.20
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,6.10
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,44.80
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,16.00
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,1.40
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,2.70
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.50
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,0.10
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,2.00
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.00
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.10
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,114.30
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,1.70
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,6.90
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,5.40
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,547.50
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,169.50
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,0.90
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.10
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,0.30
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,12.10
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,1.00
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,16.50
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,1.80
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,45.10
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,9.60
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,152.30
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.00
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,24.10
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,534.50
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,1410.10
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,3547.20
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,0.20
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,2.70
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.10
+ITC47,2023,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,139.60
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",arson,ARSON,4.30
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of art objets,ARTTHEF,0.90
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attacks,ATTACK,0.70
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",attempted homicides,ATTEMPHOM,1.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bag-snatching,BAGTHEF,12.60
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",bank robbery,BANKROB,0.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",blows,BLOWS,33.10
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",burglary,BURGTHEF,370.40
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",car theft,CARTHEF,51.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",corruption of a minor,CORRUPUN18,0.20
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",counterfeiting of goods and industrial products,COUNTER,1.30
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",criminal association,CRIMASS,0.50
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",culpable injuries,CULPINJU,120.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",cybercrime,CYBERCRIM,62.90
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damages,DAMAGE,505.10
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",damage followed by arson,DAMARS,5.20
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",trafficking and drugs possession,DRUG,43.70
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",extortions,EXTORT,16.50
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",forest arson,FOREARS,1.20
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",house robbery,HOUSEROB,4.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",infanticides,INFANTHOM,0.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intentional homicides,INTENHOM,0.20
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",intellectual property violations,INTPROP,0.10
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",kidnappings,KIDNAPP,1.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides of mafia,MAFIAHOM,0.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mafia criminal association,MAFIASS,0.20
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",manslaughter,MANSHOM,0.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",mass murder,MASSMURD,0.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",menaces,MENACE,101.20
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",money laundering,MONEYLAU,4.10
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",moped theft,MOPETHEF,5.50
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",motorcycle theft,MOTORTHEF,5.80
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",other crimes,OTHCRIM,595.40
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",pickpocketing,PICKTHEF,159.10
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",child pornography and possession of paedo-pornographic materials,PORNO,1.50
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",post office robbery,POSTROB,0.20
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",exploitation and abetting prostitution,PROSTI,0.20
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual violence,RAPE,10.40
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",sexual activity with a minor,RAPEUN18,1.30
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",receiving stolen goods,RECEIV,17.10
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides from road accident,ROADHOM,1.50
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",robberies,ROBBER,41.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",homicides for theft or robbery,ROBBHOM,0.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shop robbery,SHOPROB,6.10
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",shoplifting,SHOPTHEF,162.40
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",smuggling,SMUGGL,0.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",street robbery,STREETROB,23.20
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",swindles and cyber frauds,SWINCYB,489.40
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",terrorist homicides,TERRORHOM,0.00
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",thefts,THEFT,1467.10
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",total,TOT,3527.30
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft of cargo trucks carrying freights,TRUCKTHEF,0.20
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",unintentional homicides,UNINTHOM,2.10
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",usury,USURY,0.20
+ITC47,2024,"crimes reported by the police forces to the judicial authority (per 100,000 population)",theft from vehicle,VEHITHEF,145.60

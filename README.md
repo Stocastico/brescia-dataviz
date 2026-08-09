@@ -6,10 +6,8 @@ di **Brescia** — il comune (ISTAT `017029`), la **provincia** (`ITC47`) e i su
 domanda di ricerca diversa: *come è cambiato questo territorio*, senza una tesi
 turistica a monte.
 
-**Stato: solo documentazione.** Nessun codice, nessuna pipeline, nessun dato
-scaricato. Questa cartella contiene il lavoro che nel progetto Donostia
-corrisponde a `docs/PROJECT-BRIEF-v2.md` + `docs/SOURCES.md` +
-`datos/input/FUENTES.md`, cioè la fase che precede la pipeline.
+**Stato: ricognizione completata, pipeline funzionante, dati scaricati e
+puliti.** Manca la parte di analisi e visualizzazione.
 
 ## I documenti
 
@@ -17,7 +15,8 @@ corrisponde a `docs/PROJECT-BRIEF-v2.md` + `docs/SOURCES.md` +
 |---|---|
 | [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, le unità di analisi, i tredici assi tematici ordinati per qualità del dato, le storie candidate, i principi. |
 | [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e cosa portarsi dietro in caso di repo separato (§12). |
-| [`dati/`](dati/README.md) | La tabella anagrafica dei **205 comuni** della provincia, con popolazione, unità locali, addetti e presenze turistiche già valorizzati. |
+| [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
+| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 16 CSV su territorio, imprese, lavoro, popolazione, redditi, ambiente, sicurezza e turismo. Versionate; le risposte grezze no. |
 
 ## Come leggere il registro
 
