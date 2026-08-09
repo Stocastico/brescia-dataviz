@@ -7,7 +7,8 @@ domanda di ricerca diversa: *come è cambiato questo territorio*, senza una tesi
 turistica a monte.
 
 **Stato: ricognizione completata, pipeline funzionante, dati scaricati e
-puliti.** Manca la parte di analisi e visualizzazione.
+puliti.** Manca la parte di analisi e visualizzazione: il piano sta in
+[`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md).
 
 ## I documenti
 
@@ -15,6 +16,7 @@ puliti.** Manca la parte di analisi e visualizzazione.
 |---|---|
 | [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, le unità di analisi, i tredici assi tematici ordinati per qualità del dato, le storie candidate, i principi. |
 | [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e cosa portarsi dietro in caso di repo separato (§12). |
+| [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **La consegna.** Come separare il repository, cosa resta da scaricare, le decisioni aperte, le dimensioni non ancora considerate, e — soprattutto — come si costruiscono l'analisi, il sito statico e il deploy. Scritto per essere autosufficiente in un repo nuovo. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 16 CSV su territorio, imprese, lavoro, popolazione, redditi, ambiente, sicurezza e turismo. Versionate; le risposte grezze no. |
 
