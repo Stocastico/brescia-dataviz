@@ -89,7 +89,10 @@ def write_csv(name: str, rows: Iterable[dict[str, Any]], columns: list[str]) -> 
     dest = PROCESSED_DIR / name
     materialised = list(rows)
     with dest.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=columns, extrasaction="ignore")
+        # csv scrive CRLF di default: qui i file nascono gia' con fine riga LF.
+        writer = csv.DictWriter(
+            handle, fieldnames=columns, extrasaction="ignore", lineterminator="\n"
+        )
         writer.writeheader()
         writer.writerows(materialised)
     print(f"  scritto {name}: {len(materialised):,} righe")

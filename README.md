@@ -1,6 +1,6 @@
 # Brescia Dataviz
 
-Ricognizione preliminare per un progetto di data visualization sull'evoluzione
+Progetto di data visualization sull'evoluzione
 di **Brescia** — il comune (ISTAT `017029`), la **provincia** (`ITC47`) e i suoi
 **205 comuni** — modellato sull'architettura di `donostia-dataviz` ma con una
 domanda di ricerca diversa: *come è cambiato questo territorio*, senza una tesi
@@ -67,8 +67,8 @@ dei quali sul Garda — Sirmione da sola fa più del capoluogo.
 Limiti da mettere in conto: i **reati** esistono solo a grana provinciale (la
 percezione arriva al comune ma solo dal 2022); **nessuna copertura Inside
 Airbnb**; i **prezzi delle case** sono dietro un login gratuito (OMI) o sono
-prezzi di offerta; e il **commercio estero provinciale** è l'unico asse
-importante ancora da verificare.
+prezzi di offerta; e il **commercio estero** è disponibile solo a grana
+regionale, come ripiego dichiarato.
 
 Dettagli, prove e tabella completa di raggiungibilità in [`FONTI.md`](FONTI.md).
 Se lavori con l'SDMX di ISTAT, leggi prima la nota tecnica in fondo a quel
