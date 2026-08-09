@@ -91,18 +91,23 @@ l'ordine in cui conviene costruire.
 Ipotesi di narrazione, da confermare o smentire con i dati. Nessuna è una tesi
 da difendere.
 
-1. **Il vertice che si assottiglia — ma solo in città.** La domanda diretta:
-   Brescia è ancora la terra della meccanica fatta di piccole aziende? I dati
-   ASIA dicono di sì, e aggiungono una torsione. **In città** fra 2018 e 2023
-   l'occupazione è ferma (~101 mila addetti) ma le unità locali con almeno 250
-   addetti scendono da **35 a 28** e i loro addetti da 20.111 a 13.775 (dal
-   19,9 % al 13,6 %). **In provincia** succede il contrario: +29.421 addetti
-   (+6,5 %), la classe ≥250 tiene (75 → 82 unità) e le micro-unità restano
-   stabilmente il 92,7 % del totale, con il 42,9 % degli addetti. Il peso delle
-   grandi unità è la metà di quello urbano: 7,0 % contro 13,6 %.
-   L'assottigliamento del vertice è quindi un fenomeno **del capoluogo**, non
-   del territorio. Questa asimmetria è, per come stanno i numeri oggi, **la
-   storia principale del progetto**.
+1. **Il vertice che si assottiglia — o forse no.** La domanda diretta: Brescia
+   è ancora la terra della meccanica fatta di piccole aziende? La struttura
+   dimensionale dice di sì e non si muove: in provincia le unità locali sotto i
+   dieci addetti restano il **92,7 %** del totale e occupano il **42,9 %** degli
+   addetti, quasi identico al 2018. La crescita è tutta nella fascia intermedia
+   (+13 mila addetti fra 10 e 249).
+
+   Sui grandi, invece, c'è una trappola. I totali dicono che nel capoluogo gli
+   addetti in unità locali con almeno 250 addetti crollano da 20.111 a 13.775
+   mentre in provincia tengono — e sembra deindustrializzazione urbana. **Non lo
+   è**: scomponendo per settore, la perdita è quasi tutta nella somministrazione
+   di lavoro (−4.167) e nei servizi per edifici (−3.123), mentre la manifattura
+   grande della città resta ferma (4.448 → 4.397). Il racconto vero è ancora da
+   costruire, e passa dal capire se quel crollo sia un fenomeno del mercato del
+   lavoro o un artefatto di come vengono attribuiti i lavoratori somministrati.
+   Vedi [`WORKING-PAPER.md`](WORKING-PAPER.md) §6.1.
+
 2. **Dove lavora chi vive a Brescia.** Occupati per settore (2021: 86.788, di
    cui solo il 22,8 % nell'industria in senso lato) e per posizione nella
    professione. Una città che si racconta industriale e che nei numeri dei

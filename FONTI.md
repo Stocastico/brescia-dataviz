@@ -122,10 +122,14 @@ Travagliato 6.144 · Rezzato 6.024 · Orzinuovi 6.015 · Manerbio 5.725 · Chiar
 > La provincia **cresce** (+29.421 addetti, +6,5 %) mentre la città è **ferma**
 > (−197). E la classe ≥250 addetti si comporta in modo opposto: nella provincia
 > tiene (75 → 82 unità, addetti sostanzialmente stabili), nella città crolla
-> (35 → 28 unità, −6.335 addetti). L'assottigliamento del vertice è un fenomeno
-> **urbano**, non provinciale. In più, il peso delle grandi unità è molto
-> diverso: 7,0 % degli addetti in provincia contro 13,6 % in città. Brescia
-> città vale il 21 % dell'occupazione provinciale.
+> (35 → 28 unità, −6.335 addetti). Il peso delle grandi unità resta molto
+> diverso fra i due livelli: 7,0 % degli addetti in provincia contro 13,6 % in
+> città, e Brescia città vale il 21 % dell'occupazione provinciale.
+>
+> ⚠️ **Attenzione a come si legge il crollo urbano.** Scomposto per settore, è
+> quasi interamente somministrazione di lavoro e servizi esternalizzati, non
+> industria: la manifattura in unità ≥250 addetti passa da 4.448 a 4.397, cioè
+> non si muove. Vedi `WORKING-PAPER.md` §6.1 e `METODOLOGIA.md` §MET-9.
 
 
 
@@ -293,10 +297,15 @@ la verifica:
 Letto così, in cinque anni: occupazione complessiva **ferma** (~101 mila), ma
 **il vertice si assottiglia** — sette unità locali grandi in meno e 6.335
 addetti in meno nella classe ≥250, mentre la fascia 10–249 ne guadagna quasi
-5.000. La quota di addetti nelle micro-unità sale. Non è ancora una storia
-verificata (2020–21 sono anni Covid, e «unità locale» non è «impresa»: lo
-stabilimento di un gruppo con sede altrove conta qui), ma è esattamente la
-domanda che hai posto, con i numeri che servono per rispondere.
+5.000. La quota di addetti nelle micro-unità sale.
+
+⚠️ **Ma il titolo facile è sbagliato.** Scomponendo la classe ≥250 per settore,
+la perdita è quasi tutta in somministrazione di lavoro (−4.167) e servizi per
+edifici (−3.123), mentre la manifattura grande resta ferma (4.448 → 4.397) e
+sanità e trasporti crescono. Non è deindustrializzazione: è, con ogni
+probabilità, un cambiamento nella registrazione dei lavoratori somministrati.
+Il caso è documentato per esteso in `WORKING-PAPER.md` §6.1 ed è all'origine
+della regola `METODOLOGIA.md` §MET-9.
 
 > ⚠️ Due avvertenze da portarsi dietro. **Unità locale ≠ impresa**: una sede
 > secondaria conta come unità locale nel comune dove sta. E la grana è

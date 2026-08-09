@@ -108,7 +108,7 @@ La proposta, in base a quanto sono buoni i dati oggi:
 
 | Priorità | Asse | Perché |
 |---|---|---|
-| **1** | Imprese e struttura produttiva | I dati ci sono tutti, già puliti, e c'è già un risultato non ovvio: il vertice si assottiglia in città ma non in provincia. |
+| **1** | Imprese e struttura produttiva | I dati ci sono tutti, già puliti, e c'è già una domanda aperta e concreta: perché l'occupazione nelle grandi unità locali del capoluogo crolla, se non è la manifattura (vedi `WORKING-PAPER.md` §6.1). |
 | **2** | Aria e clima | Trent'anni di serie continue, significato immediato per chi vive lì, nessun problema di accesso. |
 | **3** | Chi vive qui — origini, istruzione, redditi | Manca un solo download (background migratorio) e il resto è già scaricato. |
 | 4 | Casa e affitti | Richiede il passaggio OMI e un crosswalk dichiarato: più costoso. |

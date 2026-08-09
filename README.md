@@ -16,6 +16,8 @@ puliti.** Manca la parte di analisi e visualizzazione: il piano sta in
 |---|---|
 | [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, le unità di analisi, i tredici assi tematici ordinati per qualità del dato, le storie candidate, i principi. |
 | [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e cosa portarsi dietro in caso di repo separato (§12). |
+| [`METODOLOGIA.md`](METODOLOGIA.md) | **Le undici regole** che governano il progetto: perché misuriamo come misuriamo. La più importante, MET-9, nasce da un errore reale. |
+| [`WORKING-PAPER.md`](WORKING-PAPER.md) | **Il working paper**: metodo completo per un lettore esterno — disegno dei dati, strategia inferenziale, risultati provvisori, limiti, cosa è riutilizzabile su un'altra provincia. |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **La consegna.** Come separare il repository, cosa resta da scaricare, le decisioni aperte, le dimensioni non ancora considerate, e — soprattutto — come si costruiscono l'analisi, il sito statico e il deploy. Scritto per essere autosufficiente in un repo nuovo. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 16 CSV su territorio, imprese, lavoro, popolazione, redditi, ambiente, sicurezza e turismo. Versionate; le risposte grezze no. |
@@ -59,12 +61,16 @@ comuni italiani, quindi la coropletica si sposta dai quartieri della città al
 territorio provinciale — molto più eterogeneo (Garda, Val Trompia, Franciacorta,
 Bassa, Valle Camonica).
 
-Il confronto città/provincia è già la cosa più informativa emersa: fra 2018 e
-2023 la provincia guadagna 29 mila addetti mentre la città è ferma, e le unità
-locali con almeno 250 addetti crollano in città (35 → 28) ma tengono in
-provincia (75 → 82). Sul turismo l'asimmetria è ancora più netta: 12,2 milioni
-di presenze provinciali nel 2024, di cui il 68,8 % nei primi dieci comuni, otto
-dei quali sul Garda — Sirmione da sola fa più del capoluogo.
+Il confronto città/provincia è la cosa più informativa emersa: fra 2018 e 2023
+la provincia guadagna 29 mila addetti mentre la città è ferma. Attenzione però
+al titolo facile — il crollo delle grandi unità locali del capoluogo, scomposto
+per settore, è quasi tutto somministrazione di lavoro e servizi esternalizzati,
+non industria: la manifattura grande non si muove. È il caso che ha dato
+origine alla regola MET-9 e sta in [`WORKING-PAPER.md`](WORKING-PAPER.md) §6.1.
+
+Sul turismo l'asimmetria è più netta e più semplice: 12,2 milioni di presenze
+provinciali nel 2024, di cui il 68,8 % nei primi dieci comuni, otto dei quali
+sul Garda — Sirmione da sola fa più del capoluogo.
 
 Limiti da mettere in conto: i **reati** esistono solo a grana provinciale (la
 percezione arriva al comune ma solo dal 2022); **nessuna copertura Inside
