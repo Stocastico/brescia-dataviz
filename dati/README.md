@@ -1,9 +1,11 @@
 # Dati
 
-Due cartelle:
+Tre cartelle:
 
 - **`processed/`** — le tabelle tidy, **versionate**: sono il prodotto del
   progetto. Circa 8 MB in tutto.
+- **`geo/`** — la geometria di riferimento, **versionata**: i confini dei 205
+  comuni in GeoJSON (320 KB). È la base di ogni coropletica.
 - **`raw/`** — le risposte grezze delle fonti, **non versionate** (centinaia di
   MB) e rigenerabili con `python -m brescia_pipeline.build` da
   [`../pipeline/`](../pipeline/README.md).
@@ -33,6 +35,24 @@ Tutto è ricostruibile: nessun file qui è stato scritto a mano.
 |---|---|---|
 | `comuni.csv` | 205 | Anagrafica: codice ISTAT, denominazione, sigla, flag capoluogo. |
 | `comuni_sintesi.csv` | 205 | Una riga per comune con gli indicatori principali affiancati: popolazione 2024, unità locali e addetti 2023, addetti per 100 abitanti, presenze turistiche 2024. È la vista da aprire per prima. |
+| `comuni_geometria.csv` | 205 | Superficie in km² e centroide (longitudine, latitudine) di ogni comune. Serve alle densità senza dover caricare la geometria, e rende verificabile con un CSV ciò che sta nel GeoJSON. |
+
+### La geometria
+
+| File | Contenuto |
+|---|---|
+| `geo/comuni_brescia.geojson` | I confini dei 205 comuni, **in gradi WGS84** (EPSG:4326), pronti per una mappa. Fonte: ISTAT, limiti amministrativi generalizzati al 01/01/2025. Ogni feature ha `id` = codice ISTAT e porta `comune`, `capoluogo`, `area_kmq`. |
+
+È l'**unica geometria di riferimento** del progetto, e la chiave è il codice
+ISTAT a sei cifre: nessuno slug inventato, nessun crosswalk (`BRIEF.md`).
+Verifiche fatte alla costruzione, e ripetute dai test: la superficie
+provinciale torna 4.785,3 km² contro i 4.785,6 noti, e le aree per comune
+coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
+
+> ⚠️ La fonte si chiama `_WGS84` ma è **in metri UTM 32N**, non in gradi. La
+> pipeline riproietta (`pipeline/src/brescia_pipeline/geo.py`); chi riscarica
+> lo shapefile a mano deve ricordarsene, perché l'errore non solleva nulla —
+> disegna solo la provincia in mezzo all'oceano.
 
 ### Lavoro e imprese
 
@@ -49,6 +69,24 @@ Tutto è ricostruibile: nessun file qui è stato scritto a mano.
 |---|---|---|
 | `popolazione_comuni.csv` | 5.302 | Popolazione residente, in famiglia, in convivenza e numero di famiglie, per comune, 2018–2024. |
 | `redditi_comuni.csv` | 36.952 | Contribuenti e reddito complessivo per **classe di importo** (8 classi, da «≤ 0 €» a «oltre 120.000 €»), per comune, 2012–2023. Dà la distribuzione, non solo la media: è ciò che serve per parlare di disuguaglianza. |
+
+### Chi vive nel bresciano — ⏳ pipeline pronta, tabelle non ancora prodotte
+
+| File | Contenuto |
+|---|---|
+| `migrazioni_comuni.csv` | Background migratorio per comune: **stranieri immigrati**, **stranieri nati in Italia** e **italiani per acquisizione**, per sesso, età, cittadinanza, luogo di nascita dei genitori e titolo di studio. Dieci tavole censuarie in una tabella, distinte dalla colonna `tavola`. |
+| `abitazioni_comuni.csv` | Abitazioni occupate e non occupate, e quelle occupate per **proprietà, affitto, altro titolo**. È la risposta a «quante case in affitto» che non passa per i prezzi. |
+| `famiglie_comuni.csv` | Famiglie per numero di componenti, con **almeno uno** o **tutti** i componenti stranieri. Le due situazioni restano separate come le tiene la fonte. |
+
+> Il codice c'è ed è testato sul parsing; manca solo lo scarico, che non è mai
+> andato a buon fine perché `esploradati.istat.it` ha smesso di accettare
+> connessioni (agosto 2026). Si producono con
+> `python -m brescia_pipeline.build migrazioni abitazioni famiglie`.
+>
+> A differenza di `censimento_lavoro_brescia.csv`, queste tabelle tengono
+> **una riga per osservazione con tutte le dimensioni in colonna**: dentro
+> ciascuna famiglia le dimensioni sono fisse, e appiattirle distruggerebbe la
+> distribuzione congiunta — che è l'informazione per cui valgono la pena.
 
 ### Ambiente
 

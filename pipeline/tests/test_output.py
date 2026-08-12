@@ -7,11 +7,13 @@ saltati, così il repo resta testabile anche appena clonato.
 from __future__ import annotations
 
 import csv
+import json
 from pathlib import Path
 
 import pytest
 
 from brescia_pipeline.config import PROCESSED_DIR, PROVINCIA_BRESCIA_ISTAT
+from brescia_pipeline.datasets.confini import GEOJSON_PATH
 
 pytestmark = pytest.mark.skipif(
     not (PROCESSED_DIR / "comuni.csv").exists(),
@@ -96,6 +98,36 @@ def test_turismo_i_dati_riservati_restano_vuoti() -> None:
     assert any(r["stato"] == "zero_fittizio" for r in zeri), (
         "atteso almeno uno zero fittizio: la fonte ne contiene (Gottolengo 2024)"
     )
+
+
+def test_ogni_comune_ha_la_sua_geometria() -> None:
+    """Invariante 1 di PROSSIMI-PASSI §6.2: nessun codice senza geometria."""
+    geojson = GEOJSON_PATH
+    if not geojson.exists():
+        pytest.skip("confini non ancora costruiti")
+    features = json.loads(geojson.read_text(encoding="utf-8"))["features"]
+    assert {f["id"] for f in features} == codici_comuni()
+    assert len(features) == 205
+
+
+def test_la_geometria_e_in_gradi_e_cade_nel_bresciano() -> None:
+    """Metri UTM passati per gradi disegnerebbero la provincia nell'oceano."""
+    righe = leggi("comuni_geometria.csv")
+    lon = [float(r["centroide_lon"]) for r in righe]
+    lat = [float(r["centroide_lat"]) for r in righe]
+    assert 9.7 < min(lon) and max(lon) < 11.0
+    assert 45.1 < min(lat) and max(lat) < 46.5
+
+
+def test_la_superficie_provinciale_e_quella_nota() -> None:
+    """La provincia misura 4.785,6 km²: uno scarto grosso è un errore di area."""
+    totale = sum(float(r["area_kmq"]) for r in leggi("comuni_geometria.csv"))
+    assert totale == pytest.approx(4785.6, rel=0.001)
+
+
+def test_nessuna_area_e_nulla_o_negativa() -> None:
+    for riga in leggi("comuni_geometria.csv"):
+        assert float(riga["area_kmq"]) > 0, riga["comune"]
 
 
 def test_nessuna_tabella_e_vuota() -> None:

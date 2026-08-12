@@ -43,7 +43,7 @@ davvero misurata (censimento, abitazioni, origini) e dove aggiunge qualcosa.
 
 | Risorsa | Fonte | Endpoint | Stato | Note |
 |---|---|---|---|---|
-| **Confini comunali** (tutti i comuni d'Italia, quindi i 205 della provincia) | ISTAT — Limiti amministrativi | `istat.it/storage/cartografia/confini_amministrativi/generalizzati/2025/Limiti01012025_g.zip` (10,4 MB) | **verificata ✓** | La versione **generalizzata** è quella giusta per il web: 10 MB contro 99 MB della non generalizzata (`…/non_generalizzati/2025/Limiti01012025.zip`, anch'essa verificata ✓). Contiene anche i confini provinciali e regionali. |
+| **Confini comunali** (tutti i comuni d'Italia, quindi i 205 della provincia) | ISTAT — Limiti amministrativi | `istat.it/storage/cartografia/confini_amministrativi/generalizzati/2025/Limiti01012025_g.zip` (10,4 MB) | **in pipeline ✓✓** | La versione **generalizzata** è quella giusta per il web: 10 MB contro 99 MB della non generalizzata (`…/non_generalizzati/2025/Limiti01012025.zip`, anch'essa verificata ✓). Contiene anche i confini provinciali e regionali. **Scaricata e lavorata** da `datasets/confini.py` → `dati/geo/comuni_brescia.geojson`. Dettagli del file: 7.896 record, chiave `PRO_COM_T` a sei cifre, testo in UTF-8, tipo geometria 5 (Polygon), e **coordinate in metri UTM 32N nonostante il nome `_WGS84`** — vedi §10-bis. |
 | **Elenco dei comuni** con codici, provincia, sigla, flag capoluogo | ISTAT | `istat.it/storage/codici-unita-amministrative/Elenco-comuni-italiani.csv` (1,1 MB, `;`, latin-1) | **verificata ✓** | Da qui i 205 codici della provincia. È anche il crosswalk fra codice ISTAT, denominazione e sigla — chiave di join per tutto il resto. |
 | Sezioni di censimento (grana sub-comunale) | ISTAT — Basi territoriali | `istat.it/storage/cartografia/basi_territoriali/2021/R03_21.zip` (Lombardia 2021, 62 MB) · `.../WGS_84_UTM/2011/R03_11_WGS84.zip` (46 MB) | **verificata ✓** | Copre **tutta la Lombardia**, quindi anche i comuni della provincia, non solo la città. WGS84/UTM32N → riproiettare a EPSG:4326. |
 | Quartieri di Brescia (33) + zone (5) | OpenStreetMap | Overpass, `area(3600045144)` → `rel[admin_level=10]` e `[admin_level=9]` | **verificata ✓** | 33 + 5 relazioni con geometria poligonale, licenza ODbL. **Opzionale** nella nuova impostazione. |
@@ -693,6 +693,43 @@ Le altre regole imparate sul campo:
    sempre per `REF_AREA` quando la dimensione lo consente.
 5. Le etichette leggibili arrivano solo con `labels=both`; senza, si ottengono
    i codici nudi.
+6. **Più codici nella stessa dimensione non si possono chiedere.** La sintassi
+   SDMX `017001+017002+…` riceve `400`, e **non per la lunghezza dell'URL**:
+   con 50 codici (430 caratteri) fallisce esattamente come con 205 (1.515).
+   Dove il punto 4 dice «filtrare per `REF_AREA`» va letto come *un* valore
+   solo: per un insieme di comuni l'unica strada è scaricare l'Italia e
+   filtrare in locale.
+7. **L'host può sparire.** Ad agosto 2026, a metà lavorazione,
+   `esploradati.istat.it` ha smesso di accettare connessioni TCP (timeout in
+   `connect`, non in lettura) mentre `www.istat.it` continuava a rispondere
+   `200`. Non è un errore di chiave né di header: se le richieste che
+   funzionavano dieci minuti prima vanno in connect-timeout, conviene
+   verificare i due host separatamente prima di mettere mano al codice.
+
+---
+
+## 10-bis. Nota tecnica: lo shapefile dei confini ISTAT
+
+Tre cose che il file non dichiara e che costano tempo.
+
+1. **Si chiama `_WGS84` ma non è in gradi.** Il `.prj` dice
+   `WGS_1984_UTM_Zone_32N`: sono **metri proiettati** (EPSG:32632). Passarli a
+   una mappa web senza riproiettare mette la provincia al largo dell'Africa, e
+   l'errore è silenzioso perché i numeri restano numeri. La pipeline
+   riproietta in `geo.py` (serie inversa di Snyder, libreria standard).
+2. **Le aree si calcolano prima di riproiettare.** In UTM sono metri e l'area
+   è una moltiplicazione; in gradi no — e un'area in gradi quadrati resta un
+   numero plausibile.
+3. **L'appartenenza degli anelli non è dichiarata: si deduce dal verso.**
+   Anello orario = contorno esterno, antiorario = buco. Serve per non
+   trasformare le exclave in buchi: in provincia di Brescia il file
+   generalizzato dà un solo anello per tutti e 205 i comuni, ma in Italia 468
+   comuni ne hanno più di uno, quindi la regola va implementata comunque.
+   Attenzione al verso opposto richiesto dal GeoJSON (RFC 7946).
+
+Verifiche fatte sul risultato, e ora nei test: superficie provinciale 4.785,3
+km² contro i 4.785,6 noti (0,007 %), e aree per comune coincidenti con lo
+`Shape_Area` del DBF ISTAT entro lo 0,01 %.
 
 ---
 
