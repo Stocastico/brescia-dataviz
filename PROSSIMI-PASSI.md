@@ -20,9 +20,22 @@ Indice:
 
 ---
 
-## 1. Creare il repository nuovo
+## 1. Creare il repository nuovo — ✅ fatto (agosto 2026)
 
-Il lavoro vive oggi nella cartella `brescia/` di un branch del repo
+Il repository esiste, è su GitHub come `brescia-dataviz`, il branch principale
+è `main` e i file stanno in radice. Della lista qui sotto resta aperta **solo
+la licenza**: le fonti sono aperte ma con obblighi di citazione diversi
+(ISTAT e Regione Lombardia CC-BY, OpenStreetMap ODbL, Agenzia delle Entrate
+con «Agenzia Entrate - OMI» obbligatorio), quindi la scelta va fatta con gli
+occhi aperti e non è stata fatta al posto di nessuno. La combinazione usuale
+per un progetto così è **codice MIT + dati e testi CC-BY-4.0**, che soddisfa
+gli obblighi di attribuzione delle fonti attuali; ODbL entrerebbe in gioco
+solo se si aggiungessero dati OpenStreetMap, che oggi non ci sono.
+
+Il resto di questa sezione resta come traccia storica di com'è stata fatta la
+separazione.
+
+Il lavoro viveva nella cartella `brescia/` di un branch del repo
 `donostia-dataviz`. È autoconclusiva: non importa nulla da quel progetto se non
 l'ispirazione architetturale, che è interamente riassunta in questo documento.
 
@@ -69,12 +82,32 @@ che manca, in ordine di rapporto valore/fatica.
 
 ### Immediato — fonti già verificate, pipeline da scrivere
 
-| Cosa | Fonte | Perché conviene |
+| Cosa | Fonte | Stato |
 |---|---|---|
-| **Confini comunali** | `istat.it/storage/cartografia/confini_amministrativi/generalizzati/2025/Limiti01012025_g.zip` (10 MB) | Senza questi non esiste nessuna mappa. È l'unico pezzo davvero bloccante. Serve `pyshp` per leggere lo shapefile e convertirlo in GeoJSON, filtrando sui 205 comuni. |
-| **Background migratorio** | 10 dataflow `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM` | Distinguono stranieri, seconde generazioni e italiani per acquisizione a grana comunale. È l'asse «chi vive qui» e il modulo si scrive in mezz'ora copiando `datasets/lavoro.py`. |
-| **Abitazioni** | `DF_DCSS_ABITAZIONI_TV_1` e `_TV_2` | Stock, occupate/non occupate e **affitto contro proprietà**, per comune. Risponde alla domanda «quante case in affitto» senza passare per i prezzi. |
-| **Famiglie con stranieri** | `DF_DCSS_FAMIGLIE_TV_2`, `_TV_3` | Completa il quadro demografico. |
+| **Confini comunali** | `istat.it/storage/cartografia/confini_amministrativi/generalizzati/2025/Limiti01012025_g.zip` (10 MB) | ✅ **fatto** (agosto 2026). `datasets/confini.py` + `geo.py`, con lettore di shapefile e riproiezione in libreria standard: niente `pyshp`, per lo stesso motivo per cui §5 reimplementa k-means. Prodotti `dati/geo/comuni_brescia.geojson` e `comuni_geometria.csv`, verificati contro l'area nota della provincia e contro lo `Shape_Area` di ISTAT. **Non è più il pezzo bloccante.** |
+| **Background migratorio** | 10 dataflow `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM` | ⏳ modulo scritto (`datasets/migrazioni.py`), scarico da rifare |
+| **Abitazioni** | `DF_DCSS_ABITAZIONI_TV_1` e `_TV_2` | ⏳ modulo scritto (`datasets/abitazioni.py`), scarico da rifare |
+| **Famiglie con stranieri** | `DF_DCSS_FAMIGLIE_TV_1`, `_TV_2`, `_TV_3` | ⏳ modulo scritto (`datasets/famiglie.py`), scarico da rifare |
+
+I tre ⏳ hanno gli ID dei dataflow verificati contro l'elenco reale di ISTAT
+(4.896 dataflow) e le chiavi che si compongono; manca solo lo scarico, perché
+`esploradati.istat.it` ha smesso di accettare connessioni TCP a metà lavoro
+mentre `www.istat.it` restava su. Basta rilanciare:
+
+```bash
+python -m brescia_pipeline.build migrazioni abitazioni famiglie
+```
+
+Se il primo tentativo va a vuoto, non è un bug del modulo: è quel host. Vale la
+pena lanciarlo e lasciarlo correre, perché scarica l'Italia intera per ognuna
+delle 15 tavole (il filtro territoriale lato server non esiste — vedi sotto).
+
+> **Scoperta che vale la pena mettere per iscritto.** La chiave SDMX con più
+> codici nella stessa dimensione **non** fallisce per lunghezza dell'URL, come
+> diceva il commento nel codice: `REF_AREA` con 50 codici (430 caratteri)
+> riceve `400` esattamente come con 205. Il server proprio non accetta la
+> sintassi `codice+codice` lì. Scaricare tutto e filtrare in locale non è una
+> comodità, è l'unica strada.
 
 ### Richiede un passaggio manuale
 

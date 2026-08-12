@@ -9,7 +9,7 @@ step, niente chiavi API — tutte le fonti sono aperte.
 ## Eseguire
 
 ```bash
-cd brescia/pipeline
+cd pipeline
 python -m pip install -e ".[dev]"        # oppure: export PYTHONPATH=src
 python -m brescia_pipeline.build         # tutti i dataset
 python -m brescia_pipeline.build imprese turismo
@@ -31,6 +31,7 @@ src/brescia_pipeline/
   fetch.py      scarico con cache su disco e ritentativi
   sdmx.py       costruzione delle chiavi SDMX dalla struttura del dataflow
   tidy.py       parsing dei numeri, lettura delle risposte, scrittura dei CSV
+  geo.py        lettura di shapefile e riproiezione UTM 32N -> WGS84
   datasets/     un modulo per tema, ciascuno con un `build(comuni)`
   build.py      orchestratore
 ```
@@ -56,23 +57,49 @@ risultati plausibili invece di fallire.
    `567,391` come 567,391: sbagliato di mille volte, ma perfettamente
    plausibile. (`tidy.to_number`, con i suoi test)
 
-A queste si aggiungono due vincoli operativi: le chiavi con molti codici
-sfondano la lunghezza massima dell'URL e il server risponde `400` — meglio
-scaricare tutto e filtrare in locale; e i valori mancanti (`Dato riservato`,
-`-9999`) non vanno **mai** convertiti in zero.
+A queste si aggiungono tre vincoli operativi.
+
+- **Le chiavi con più valori per dimensione non funzionano**, e non è una
+  questione di lunghezza: `REF_AREA` con 50 codici (430 caratteri di URL)
+  riceve `400` esattamente come con 205. Il server non accetta la sintassi
+  `codice+codice` su questa dimensione, quindi l'unica strada è scaricare
+  l'Italia intera e filtrare in locale — che è il motivo per cui il primo
+  build è lungo e per cui la cache di `dati/raw/` conta.
+- **I valori mancanti** (`Dato riservato`, `-9999`) non vanno **mai**
+  convertiti in zero.
+- **I confini ISTAT si chiamano `_WGS84` ma sono in metri UTM 32N.** Passarli a
+  una mappa senza riproiettare disegna la provincia al largo dell'Africa, e
+  l'errore è silenzioso perché i numeri restano numeri. (`geo.py`)
 
 ## Dataset
 
 | Nome | Tabelle prodotte | Grana | Fonte |
 |---|---|---|---|
+| `confini` | `../dati/geo/comuni_brescia.geojson`, `comuni_geometria.csv` | 205 comuni | ISTAT limiti amministrativi 2025 |
 | `popolazione` | `popolazione_comuni.csv` | 205 comuni, 2018–2024 | ISTAT Censimento permanente |
 | `imprese` | `imprese_classe_addetti.csv`, `imprese_settore.csv` | comuni + provincia, 2018–2023 | ISTAT ASIA |
 | `turismo` | `turismo_comuni_annuale.csv`, `turismo_comuni_mensile.csv` | comuni, 2019–2024 | Regione Lombardia |
 | `lavoro` | `censimento_lavoro_brescia.csv`, `tasso_occupazione_provincia.csv` | comune / provincia | ISTAT |
+| `migrazioni` ⏳ | `migrazioni_comuni.csv` | 205 comuni | ISTAT Censimento permanente (10 tavole) |
+| `abitazioni` ⏳ | `abitazioni_comuni.csv` | 205 comuni | ISTAT Censimento permanente |
+| `famiglie` ⏳ | `famiglie_comuni.csv` | 205 comuni | ISTAT Censimento permanente |
 | `sicurezza` | `reati_provincia.csv`, `percezione_sicurezza.csv` | provincia / comune | ISTAT |
 | `ambiente` | `stazioni_arpa.csv`, `aria_mensile.csv`, `meteo_mensile.csv` | stazione, dal 1990 | ARPA Lombardia |
 | `redditi` | `redditi_comuni.csv` | comuni | MEF via ISTAT |
 | `commercio_estero` | `commercio_estero_lombardia.csv` | **regione** (ripiego) | ISTAT |
+
+⏳ = **modulo scritto, tabella non ancora prodotta.** I dataflow sono
+verificati e le chiavi si compongono, ma il primo scarico non è mai andato a
+buon fine: `esploradati.istat.it` ha smesso di accettare connessioni durante
+la scrittura (agosto 2026) mentre `www.istat.it` restava raggiungibile. Non
+c'è niente da correggere nel codice, serve solo rilanciare:
+
+```bash
+python -m brescia_pipeline.build migrazioni abitazioni famiglie
+```
+
+La forma delle tabelle è comunque coperta dai test (`tests/test_censimento.py`)
+su una risposta SDMX di prova, quindi il parsing non è materiale non provato.
 
 Il dettaglio delle fonti, con lo stato di accesso verificato riga per riga, sta
 in [`../FONTI.md`](../FONTI.md). La descrizione delle tabelle prodotte sta in

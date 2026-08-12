@@ -17,11 +17,15 @@ from collections.abc import Callable
 
 from .config import PROCESSED_DIR, RAW_DIR, ensure_dirs
 from .datasets import (
+    abitazioni,
     ambiente,
     anagrafica,
     commercio_estero,
+    confini,
+    famiglie,
     imprese,
     lavoro,
+    migrazioni,
     popolazione,
     redditi,
     sicurezza,
@@ -31,10 +35,15 @@ from .datasets import (
 
 # Ogni voce riceve la mappa dei comuni della provincia e scrive in processed/.
 DATASETS: dict[str, Callable[[dict[str, str]], None]] = {
+    # apre la fila: e' la geometria di riferimento su cui tutto il resto mappa
+    "confini": confini.build,
     "popolazione": popolazione.build,
     "imprese": imprese.build,
     "turismo": turismo.build,
     "lavoro": lavoro.build,
+    "migrazioni": migrazioni.build,
+    "abitazioni": abitazioni.build,
+    "famiglie": famiglie.build,
     "sicurezza": sicurezza.build,
     "ambiente": ambiente.build,
     "redditi": redditi.build,
