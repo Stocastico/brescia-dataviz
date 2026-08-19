@@ -53,7 +53,7 @@ sue, ma non è il protagonista.
 | **Comune di Brescia** (`017029`) | Un comune fra i 205, più due approfondimenti dedicati (vedi sotto). |
 
 > ⚠️ Il capoluogo è **un ordine di grandezza sopra tutti gli altri**: 199.853
-> abitanti contro una mediana attorno ai 2.000, e da solo il 21 %
+> abitanti contro una mediana comunale di 3.671, e da solo il 21 %
 > dell'occupazione provinciale. In una coropletica satura la scala; in una
 > correlazione la guida. Va trattato come outlier dichiarato — leave-one-out
 > nelle correlazioni (MET-5), scale robuste o classi nelle mappe.
@@ -143,7 +143,7 @@ da difendere.
    dimensionale dice di sì e non si muove: in provincia le unità locali sotto i
    dieci addetti restano il **92,7 %** del totale e occupano il **42,9 %** degli
    addetti, quasi identico al 2018. La crescita è tutta nella fascia intermedia
-   (+13 mila addetti fra 10 e 249).
+   (+23.840 addetti fra 10 e 249, cioè l'81 % dei +29.421 provinciali).
 
    Sui grandi, invece, c'è una trappola. I totali dicono che nel capoluogo gli
    addetti in unità locali con almeno 250 addetti crollano da 20.111 a 13.775
