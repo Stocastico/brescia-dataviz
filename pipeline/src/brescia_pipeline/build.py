@@ -61,6 +61,12 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="brescia_pipeline.build")
     parser.add_argument("datasets", nargs="*", help="dataset da costruire (default: tutti)")
     parser.add_argument("--list", action="store_true", help="elenca i dataset disponibili")
+    parser.add_argument(
+        "--offline",
+        action="store_true",
+        help="non tocca la rete: usa le tabelle già in dati/processed/ "
+        "(serve a chi ricostruisce solo l'export per il sito, e alla CI)",
+    )
     args = parser.parse_args(argv)
 
     if args.list:
@@ -80,7 +86,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"processed: {PROCESSED_DIR}\n")
 
     print("anagrafica dei comuni")
-    comuni = anagrafica.build()
+    comuni = anagrafica.build(solo_locale=args.offline)
     print(f"  {len(comuni)} comuni nella provincia di Brescia\n")
 
     failures: list[str] = []

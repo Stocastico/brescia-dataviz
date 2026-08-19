@@ -9,7 +9,7 @@ from __future__ import annotations
 import csv
 import io
 
-from ..config import ELENCO_COMUNI_URL, PROVINCIA_BRESCIA_ISTAT
+from ..config import ELENCO_COMUNI_URL, PROCESSED_DIR, PROVINCIA_BRESCIA_ISTAT
 from ..fetch import fetch
 from ..tidy import write_csv
 
@@ -30,7 +30,22 @@ def comuni_provincia() -> dict[str, str]:
     }
 
 
-def build() -> dict[str, str]:
+def build(solo_locale: bool = False) -> dict[str, str]:
+    """Con `solo_locale` rilegge `comuni.csv` invece di interrogare ISTAT.
+
+    Serve a ricostruire i JSON per il sito — e a far girare la CI — senza che il
+    risultato dipenda dal fatto che `istat.it` risponda quel giorno. La tabella
+    è versionata, quindi c'è sempre; se manca, l'errore lo dice.
+    """
+    if solo_locale:
+        locale = PROCESSED_DIR / "comuni.csv"
+        if not locale.exists():
+            raise FileNotFoundError(
+                f"manca {locale.name}: con --offline serve la tabella già costruita"
+            )
+        with locale.open(encoding="utf-8") as handle:
+            return {r["codice_istat"]: r["comune"] for r in csv.DictReader(handle)}
+
     path = fetch(ELENCO_COMUNI_URL, "istat_elenco_comuni.csv")
     text = path.read_bytes().decode("latin-1")
     reader = csv.reader(io.StringIO(text), delimiter=";")

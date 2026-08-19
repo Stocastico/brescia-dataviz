@@ -1,0 +1,42 @@
+# I controlli che girano a ogni push: i test della pipeline e il ricalcolo di
+# ogni cifra citata nei documenti. Nessuna richiesta alle fonti — i test che
+# hanno bisogno della rete non esistono, e quelli che hanno bisogno delle
+# tabelle si saltano da soli se non ci sono.
+
+name: Verifica
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Serve la storia: la data dei dati viene dall'ultimo commit che ha
+          # toccato dati/processed/, e con un checkout superficiale non c'è.
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ./pipeline pytest
+      - name: Test della pipeline
+        run: python -m pytest pipeline/tests -q
+      - name: Le cifre citate nei documenti tornano
+        run: python analysis/verifica_cifre.py
+      - name: Gli script di analisi girano
+        run: |
+          python analysis/variazione_popolazione.py --code 3 > /dev/null
+          python analysis/velocita_di_cambio.py --code 3 > /dev/null
+          python analysis/livelli_e_variazioni.py > /dev/null
+          python analysis/autocorrelazione_spaziale.py --permutazioni 99 > /dev/null
+          python analysis/decomposizione_capoluogo.py > /dev/null
+          python analysis/due_economie.py > /dev/null
+          python analysis/tipologia_comuni.py > /dev/null
+          python analysis/dove_si_lavora.py > /dev/null
+      - name: Il sito si costruisce
+        run: |
+          python -m brescia_pipeline.build --offline web
+          python sito/costruisci.py --uscita _site

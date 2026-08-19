@@ -34,7 +34,6 @@ from __future__ import annotations
 import csv
 import json
 import shutil
-from datetime import date
 from pathlib import Path
 from typing import Any, Callable
 
@@ -469,7 +468,10 @@ def build(comuni: dict[str, str]) -> None:
         WEB_DATA_DIR / "manifest.json",
         {
             "progetto": "brescia-dataviz",
-            "costruito_il": date.today().isoformat(),
+            # Niente data qui dentro: il file è versionato, e una data che cambia
+            # a ogni esecuzione produrrebbe un diff a ogni build senza che sia
+            # cambiato un numero. La data dei dati la ricava il sito dall'ultimo
+            # commit che ha toccato `dati/processed/` — che è anche più vera.
             "comuni": len(comuni),
             "indicatori": len(registro),
             "tabelle": tabelle,

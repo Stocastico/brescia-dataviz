@@ -20,8 +20,10 @@ mantenute qui apposta:
    invece che ai documenti di lavoro.
 
 Le date non si scrivono a mano per lo stesso motivo: `{{BUILD_DATE}}` viene da
-oggi (o da `--data-build`, che il workflow di deploy passa dal commit) e
-`{{DATA_DATE}}` dal `manifest.json` scritto dalla pipeline.
+oggi (o da `--data-build`, che il workflow di deploy passa dalla data del
+commit) e `{{DATA_DATE}}` dall'**ultimo commit che ha toccato
+`dati/processed/`**, cioè da quando i numeri sono cambiati davvero. Senza questo
+meccanismo le date invecchiano in silenzio e il sito mente.
 """
 
 from __future__ import annotations
@@ -31,8 +33,9 @@ import json
 import math
 import re
 import shutil
+import subprocess
 import sys
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -442,6 +445,26 @@ def sostituisci(testo: str, valori_cifre: dict[str, str], comuni_pagina: str) ->
     return risultato
 
 
+def data_dei_dati() -> str:
+    """Quando le tabelle sono cambiate l'ultima volta.
+
+    L'ultimo commit che ha toccato `dati/processed/`; fuori da un repository
+    (un tarball, uno zip scaricato) si ripiega sulla data di modifica del file
+    più recente, che è la migliore approssimazione disponibile.
+    """
+    try:
+        uscita = subprocess.run(
+            ["git", "log", "-1", "--format=%cs", "--", "dati/processed"],
+            cwd=RADICE, capture_output=True, text=True, timeout=10, check=True,
+        )
+        if uscita.stdout.strip():
+            return uscita.stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        pass
+    piu_recente = max(p.stat().st_mtime for p in PROCESSED.glob("*.csv"))
+    return datetime.fromtimestamp(piu_recente, timezone.utc).date().isoformat()
+
+
 def costruisci(uscita: Path, data_build: str | None) -> int:
     if not (DATI_WEB / "metrics.json").exists():
         print("manca web/src/data/: lanciare `python -m brescia_pipeline.build web`", file=sys.stderr)
@@ -477,7 +500,7 @@ def costruisci(uscita: Path, data_build: str | None) -> int:
             .replace("/*{{GRAFICI}}*/", grafici)
             .replace("/*{{DATI}}*/", f"window.DATI={dati};")
             .replace("{{BUILD_DATE}}", data_build or date.today().isoformat())
-            .replace("{{DATA_DATE}}", manifesto["costruito_il"])
+            .replace("{{DATA_DATE}}", data_dei_dati())
             .replace("{{N_INDICATORI}}", str(manifesto["indicatori"]))
             .replace("{{N_TABELLE}}", str(len(manifesto["tabelle"])))
         )
