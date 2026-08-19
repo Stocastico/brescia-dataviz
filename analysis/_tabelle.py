@@ -123,6 +123,49 @@ def serie_reddito() -> Serie:
     return per_comune
 
 
+def quote_sezioni(anno: str | None = None) -> tuple[str, dict[str, dict[str, float]]]:
+    """Quota di addetti per sezione Ateco, comune per comune.
+
+    Restituisce `(anno, {codice: {sezione: quota}})`. Due decisioni che vanno
+    prese qui una volta sola, perché prese in due modi diversi in due script
+    producono due numeri diversi per la stessa cosa — ed è successo:
+
+    - **il denominatore è il totale ASIA riportato** (`classe_addetti = totale`
+      in `imprese_classe_addetti.csv`), non la somma delle sezioni. In pratica i
+      due coincidono a meno dello 0,01 %, ma il totale riportato è quello che la
+      fonte dichiara e non dipende da quali sezioni siano presenti;
+    - **una sezione assente resta assente**, non diventa zero (MET-3). ASIA non
+      pubblica la sezione di un comune quando la cella è troppo piccola, e
+      «nessun addetto nella manifattura» è un'affermazione diversa da «non lo
+      sappiamo». Chi usa queste quote deve decidere cosa fare dei `None`, e
+      dichiararlo: gli script del progetto **escludono** il comune.
+    """
+    righe = leggi("imprese_sezioni_comuni.csv")
+    scelto = anno or max(r["anno"] for r in righe)
+
+    per_comune: dict[str, dict[str, float]] = {}
+    for riga in righe:
+        if riga["anno"] != scelto or riga["indicatore"] != "addetti":
+            continue
+        valore = numero(riga["valore"])
+        if valore is not None:
+            per_comune.setdefault(riga["codice_istat"], {})[riga["sezione"]] = valore
+
+    totali = {
+        riga["codice_istat"]: numero(riga["valore"])
+        for riga in leggi("imprese_classe_addetti.csv")
+        if riga["anno"] == scelto
+        and riga["indicatore"] == "addetti"
+        and riga["classe_addetti"] == "totale"
+    }
+
+    return scelto, {
+        codice: {sezione: valore / totali[codice] * 100 for sezione, valore in sezioni.items()}
+        for codice, sezioni in per_comune.items()
+        if totali.get(codice)
+    }
+
+
 SERIE_DISPONIBILI = {
     "popolazione": ("Popolazione residente", "abitanti", serie_popolazione),
     "addetti": ("Addetti delle unità locali", "addetti", lambda: serie_imprese("addetti")),

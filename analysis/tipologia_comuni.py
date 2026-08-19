@@ -46,7 +46,6 @@ import argparse
 import math
 import random
 import sys
-from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -56,9 +55,8 @@ from _tabelle import (  # noqa: E402
     RADICE,
     anagrafica,
     geometria,
-    leggi,
     media,
-    numero,
+    quote_sezioni,
     scrivi_csv,
     serie_imprese,
     serie_popolazione,
@@ -79,19 +77,10 @@ COLONNE = ["codice_istat", "comune", "gruppo", "profilo", *VARIABILI]
 
 
 def costruisci_tabella() -> tuple[list[str], dict[str, list[float]]]:
-    sezioni = leggi("imprese_sezioni_comuni.csv")
-    anno = max(r["anno"] for r in sezioni)
-
-    per_sezione: dict[str, dict[str, float]] = defaultdict(dict)
-    totale_sezioni: dict[str, float] = defaultdict(float)
-    for riga in sezioni:
-        if riga["anno"] != anno or riga["indicatore"] != "addetti":
-            continue
-        valore = numero(riga["valore"])
-        if valore is None:
-            continue
-        per_sezione[riga["codice_istat"]][riga["sezione"]] = valore
-        totale_sezioni[riga["codice_istat"]] += valore
+    # Le quote settoriali arrivano dalla definizione condivisa: un comune senza
+    # la riga di una delle due sezioni resta fuori invece di entrare con uno
+    # zero che la fonte non ha mai scritto (MET-3).
+    _, quote = quote_sezioni()
 
     addetti = serie_imprese("addetti")
     unita = serie_imprese("unita_locali")
@@ -100,18 +89,22 @@ def costruisci_tabella() -> tuple[list[str], dict[str, list[float]]]:
     geo = geometria()
 
     righe: dict[str, list[float]] = {}
-    for codice, totale in totale_sezioni.items():
+    for codice, sezioni_comune in quote.items():
         anni_addetti = addetti.get(codice, {})
         anni_unita = unita.get(codice, {})
         anni_pop = popolazione.get(codice, {})
         anni_reddito = reddito.get(codice, {})
-        if not (totale and anni_addetti and anni_unita and anni_pop and anni_reddito):
+        quota_manifattura = sezioni_comune.get("C")
+        quota_alloggio = sezioni_comune.get("I")
+        if quota_manifattura is None or quota_alloggio is None:
+            continue
+        if not (anni_addetti and anni_unita and anni_pop and anni_reddito):
             continue
         ultimo_asia = max(anni_addetti)
         area = float(geo[codice]["area_kmq"])
         righe[codice] = [
-            per_sezione[codice].get("C", 0.0) / totale * 100,
-            per_sezione[codice].get("I", 0.0) / totale * 100,
+            quota_manifattura,
+            quota_alloggio,
             anni_addetti[ultimo_asia] / anni_unita[ultimo_asia],
             anni_addetti[ultimo_asia] / anni_pop[max(anni_pop)] * 100,
             anni_reddito[max(anni_reddito)],

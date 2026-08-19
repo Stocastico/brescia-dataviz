@@ -23,6 +23,13 @@ servizi domestici. Il denominatore di ogni quota è **l'economia che il registro
 osserva**, non tutta l'economia del comune: nella Bassa agricola questo conta,
 e va detto ogni volta.
 
+⚠️ E una sezione **assente** non è una sezione a zero (MET-3): ASIA non pubblica
+la cella quando è troppo piccola. Tre comuni non hanno la riga della manifattura
+e restano fuori da questa analisi invece di comparire con lo 0 %. La definizione
+sta in `_tabelle.quote_sezioni()`, una sola volta, perché prendere questa
+decisione in due script separati produce due numeri diversi per la stessa cosa
+— ed è già successo.
+
 Confidenza: `derivato` (MET-4).
 """
 
@@ -38,10 +45,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _tabelle import (  # noqa: E402
     RADICE,
     anagrafica,
-    leggi,
-    numero,
     pearson,
+    quote_sezioni,
     scrivi_csv,
+    serie_imprese,
     spearman,
 )
 
@@ -62,21 +69,6 @@ COLONNE = [
 ]
 
 
-def quote(anno: str) -> tuple[dict[str, float], dict[str, dict[str, float]]]:
-    """Addetti per comune e sezione, più il totale delle sezioni osservate."""
-    per_sezione: dict[str, dict[str, float]] = defaultdict(dict)
-    totali: dict[str, float] = defaultdict(float)
-    for riga in leggi("imprese_sezioni_comuni.csv"):
-        if riga["anno"] != anno or riga["indicatore"] != "addetti":
-            continue
-        valore = numero(riga["valore"])
-        if valore is None:
-            continue
-        per_sezione[riga["codice_istat"]][riga["sezione"]] = valore
-        totali[riga["codice_istat"]] += valore
-    return dict(totali), dict(per_sezione)
-
-
 def profilo(quota_manifattura: float, quota_alloggio: float) -> str:
     """Un'etichetta descrittiva, non una classificazione ufficiale."""
     if quota_manifattura >= 50:
@@ -95,21 +87,28 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--quanti", type=int, default=8, help="quanti comuni per coda")
     args = parser.parse_args(argv)
 
-    righe_tabella = leggi("imprese_sezioni_comuni.csv")
-    anno = args.anno or max(r["anno"] for r in righe_tabella)
-    totali, per_sezione = quote(anno)
+    anno, quote = quote_sezioni(args.anno)
     comuni = anagrafica()
+    addetti = serie_imprese("addetti")
+    totali = {codice: serie[anno] for codice, serie in addetti.items() if anno in serie}
 
     totale_provinciale = sum(totali.values())
-    manifattura_provinciale = sum(s.get(MANIFATTURA, 0.0) for s in per_sezione.values()) / totale_provinciale * 100
-    alloggio_provinciale = sum(s.get(ALLOGGIO, 0.0) for s in per_sezione.values()) / totale_provinciale * 100
+    manifattura_provinciale = sum(
+        quote[c].get(MANIFATTURA, 0.0) / 100 * totali[c] for c in quote if c in totali
+    ) / totale_provinciale * 100
+    alloggio_provinciale = sum(
+        quote[c].get(ALLOGGIO, 0.0) / 100 * totali[c] for c in quote if c in totali
+    ) / totale_provinciale * 100
 
+    esclusi: list[str] = []
     righe: list[dict[str, str]] = []
-    for codice, totale in totali.items():
-        if totale <= 0:
+    for codice, sezioni_comune in quote.items():
+        quota_m = sezioni_comune.get(MANIFATTURA)
+        quota_a = sezioni_comune.get(ALLOGGIO)
+        totale = totali.get(codice)
+        if quota_m is None or quota_a is None or not totale:
+            esclusi.append(comuni[codice]["comune"])
             continue
-        quota_m = per_sezione[codice].get(MANIFATTURA, 0.0) / totale * 100
-        quota_a = per_sezione[codice].get(ALLOGGIO, 0.0) / totale * 100
         righe.append(
             {
                 "codice_istat": codice,
@@ -127,6 +126,9 @@ def main(argv: list[str] | None = None) -> int:
     righe.sort(key=lambda r: float(r["specializzazione"]), reverse=True)
 
     print(f"Sezioni Ateco per comune, {anno} — {len(righe)} comuni")
+    if esclusi:
+        print(f"Fuori {len(esclusi)} comuni senza una delle due sezioni: {', '.join(sorted(esclusi))}.")
+        print("Non è uno zero: è una cella che la fonte non pubblica (MET-3).")
     print(f"In provincia: manifattura {manifattura_provinciale:.1f} %, "
           f"alloggio e ristorazione {alloggio_provinciale:.1f} % degli addetti osservati da ASIA.\n")
 

@@ -319,6 +319,10 @@ def _sezioni_disponibili() -> list[dict[str, Any]]:
     totale = _serie(imprese, lambda r: r["indicatore"] == "addetti" and r["classe_addetti"] == "totale")
 
     def quota(sezione: str) -> Valori:
+        # Una sezione assente resta assente: ASIA non pubblica la cella quando è
+        # troppo piccola, e «zero addetti nella manifattura» è un'affermazione
+        # diversa da «non lo sappiamo» (stessa regola di
+        # `analysis/_tabelle.quote_sezioni()`, che è dove è scritta per esteso).
         parte = _serie(righe, lambda r: r["indicatore"] == "addetti" and r["sezione"] == sezione)
         return _rapporto(parte, totale, 100)
 
