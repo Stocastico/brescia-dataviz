@@ -92,20 +92,22 @@ A queste si aggiungono tre vincoli operativi.
 
 ⏳ = **modulo scritto, tabella non ancora prodotta.** `famiglie` e
 `abitazioni` sono state prodotte ad agosto 2026, quando
-`esploradati.istat.it` è tornato ad accettare connessioni; `migrazioni` no, e
-il motivo è la dimensione: dieci tavole nazionali da centinaia di MB l'una, su
-un host che lascia cadere la connessione a metà. Ogni caduta fa **ripartire il
-download da zero**, perché la cache è per file intero e non c'è ripresa
-parziale. Si rilancia con:
+`esploradati.istat.it` è tornato ad accettare connessioni. `migrazioni` no, e
+il motivo è la dimensione: dieci tavole nazionali che pesano fra 0,5 e **1,8 GB
+l'una** e impiegano da venti minuti a un'ora. Sette sono arrivate (6,9 GB in
+cache, non si riscaricano); l'ottava fallisce perché l'host lascia cadere la
+connessione, e **ogni caduta fa ripartire da zero** — la cache è per file
+intero, non c'è ripresa parziale. Il modulo scrive la tabella solo quando tutte
+e dieci sono a posto.
 
 ```bash
-python -m brescia_pipeline.build migrazioni
+python -m brescia_pipeline.build migrazioni   # riparte dall'ottava
 ```
 
-e conviene lanciarlo quando si ha tempo di lasciarlo correre. Se cade sempre
-nello stesso punto, l'alternativa è **una richiesta per comune** invece di una
-per l'Italia intera: funziona (verificato) ed è descritta in
-[`../FONTI.md`](../FONTI.md) §10 punto 6.
+Conviene lanciarlo quando si ha tempo di lasciarlo correre. La soluzione
+strutturale è **una richiesta per comune** invece di una per l'Italia intera:
+funziona (verificato), dà 205 risposte da qualche decina di KB invece di una da
+1,8 GB, ed è descritta in [`../FONTI.md`](../FONTI.md) §10 punto 6.
 
 La forma delle tabelle è comunque coperta dai test (`tests/test_censimento.py`)
 su una risposta SDMX di prova, quindi il parsing non è materiale non provato.

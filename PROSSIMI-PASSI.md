@@ -80,7 +80,7 @@ che manca.
 | Cosa | Stato |
 |---|---|
 | **Confini comunali** | ✅ `datasets/confini.py` + `geo.py`, con lettore di shapefile e riproiezione in libreria standard: niente `pyshp`, per lo stesso motivo per cui §5 reimplementa k-means. Prodotti `dati/geo/comuni_brescia.geojson` e `comuni_geometria.csv`, verificati contro l'area nota della provincia e contro lo `Shape_Area` di ISTAT |
-| **Background migratorio** | ⏳ `migrazioni_comuni.csv` — dieci tavole `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM`, scarico in corso: sono le più pesanti di tutte (centinaia di MB l'una) |
+| **Background migratorio** | ⏳ `migrazioni_comuni.csv` — dieci tavole `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM`, **sette scaricate su dieci**, vedi sotto |
 | **Abitazioni** | ✅ `abitazioni_comuni.csv` — `DF_DCSS_ABITAZIONI_TV_1` e `_TV_2` |
 | **Famiglie con stranieri** | ✅ `famiglie_comuni.csv` — `DF_DCSS_FAMIGLIE_TV_1`, `_TV_2`, `_TV_3` |
 
@@ -92,6 +92,29 @@ di attesa:
 ```bash
 python -m brescia_pipeline.build migrazioni abitazioni famiglie
 ```
+
+**Il caso `migrazioni`, che è quello aperto.** Le dieci tavole del background
+migratorio sono le più pesanti del progetto: scaricate senza filtro
+territoriale pesano fra 0,5 e **1,8 GB l'una**, e ci mettono da venti minuti a
+un'ora. Ad agosto 2026 ne sono arrivate **sette su dieci** (6,9 GB in
+`dati/raw/`, che è cache: non si riscaricano); l'ottava —
+`DF_DCSS_MIGR_BACKG_PAR_TV_8_COM`, titolo di studio degli italiani — ha
+fallito quattro tentativi di fila perché l'host lascia cadere la connessione, e
+**ogni caduta fa ripartire il download da zero**: non c'è ripresa parziale.
+
+Il modulo scrive la tabella solo quando tutte e dieci sono a posto, quindi
+finché l'ottava non passa non esce niente. Tre strade, in ordine di fatica:
+
+1. **rilanciare** `python -m brescia_pipeline.build migrazioni` — le sette in
+   cache non si riscaricano, quindi ogni tentativo riparte dall'ottava;
+2. **una richiesta per comune** invece di una per l'Italia (§10 punto 6 di
+   `FONTI.md`): 205 risposte da qualche decina di KB al posto di una da 1,8 GB,
+   ognuna ritentabile da sola. È la soluzione strutturale;
+3. accontentarsi delle sette tavole, cambiando `migrazioni.py` perché scriva
+   ciò che ha e dichiari quali tavole mancano. Le tre che mancano sono quelle
+   sull'**istruzione** (8, 9, 10): le sette presenti coprono già la
+   distinzione fra stranieri, seconde generazioni e italiani per acquisizione,
+   che è il cuore dell'asse 2.
 
 > **Scoperta che vale la pena tenere per iscritto.** La chiave SDMX con più
 > codici nella stessa dimensione **non** fallisce per lunghezza dell'URL, come

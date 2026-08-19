@@ -141,10 +141,11 @@ esplicite. Un indicatore senza scheda non entra nel sito. Dettaglio in
 
 La pipeline dipende da `requests` e dalla libreria standard: niente pandas,
 niente passo di compilazione, nessuna chiave API. Le risposte grezze restano in
-una cache su disco non versionata (quasi 1 GB), le tabelle pulite sono
-versionate (8 MB). Un build completo da cache impiega venti secondi; da zero,
-alcune decine di minuti, perché diverse serie ISTAT non si possono filtrare
-lato server.
+una cache su disco non versionata (**oltre 7 GB**), le tabelle pulite sono
+versionate (12 MB). Un build completo da cache impiega venti secondi; da zero,
+diverse ore, perché quasi nessuna serie ISTAT si può filtrare lato server: le
+tavole censuarie sul background migratorio arrivano non filtrate, l'Italia
+intera per volta, e la più grande da sola pesa 1,8 GB.
 
 Tre trappole tecniche delle fonti sono gestite dalla pipeline e coperte da
 test, perché **sbagliano in silenzio** — producono risultati plausibili invece
