@@ -635,6 +635,127 @@
       voci.map(function (v) { return [v.nome, num(v.valore, opzioni.decimali === undefined ? 0 : opzioni.decimali)]; }));
   }
 
+  // --- sciame: una distribuzione, non una classifica -------------------
+
+  function sciame(contenitore, opzioni) {
+    const ALTEZZA = 200;
+    const riquadro = { sinistra: 24, alto: 40, larghezza: LARGHEZZA - 48, altezza: 92 };
+    const codici = Object.keys(opzioni.valori);
+    if (!codici.length) return;
+
+    const lista = codici.map(function (c) { return opzioni.valori[c]; });
+    const minimo = Math.min.apply(null, lista);
+    const massimo = Math.max.apply(null, lista);
+    const margine = (massimo - minimo) * 0.04 || 1;
+
+    function sx(valore) {
+      return riquadro.sinistra +
+        ((valore - minimo + margine) / (massimo - minimo + 2 * margine)) * riquadro.larghezza;
+    }
+
+    const svg = el("svg", {
+      viewBox: "0 0 " + LARGHEZZA + " " + ALTEZZA,
+      role: "img", "aria-label": opzioni.descrizione,
+    });
+    contenitore.appendChild(svg);
+
+    // Impilamento: i punti vicini si scostano in verticale invece di
+    // sovrapporsi. La posizione verticale non significa niente — è l'unico
+    // modo onesto di mostrare 107 valori su una riga sola.
+    const RAGGIO = 5;
+    const occupati = [];
+    const disposti = codici.map(function (codice) {
+      const x = sx(opzioni.valori[codice]);
+      let livello = 0;
+      while (occupati.some(function (p) {
+        return p.livello === livello && Math.abs(p.x - x) < RAGGIO * 1.7;
+      })) livello++;
+      occupati.push({ x: x, livello: livello });
+      return { codice: codice, x: x, livello: livello };
+    });
+    const massimoLivello = Math.max.apply(null, disposti.map(function (d) { return d.livello; }));
+    const passoY = Math.min(RAGGIO * 1.8, riquadro.altezza / (massimoLivello + 1));
+    const base = riquadro.alto + riquadro.altezza;
+
+    if (opzioni.mediana !== undefined) {
+      const x = sx(opzioni.mediana);
+      el("line", { x1: x, x2: x, y1: riquadro.alto - 10, y2: base + 6,
+        stroke: css("--asse"), "stroke-dasharray": "3 3" }, svg);
+      const etichetta = el("text", { x: x, y: riquadro.alto - 15, "text-anchor": "middle",
+        fill: css("--inchiostro-3"), "font-size": 11 }, svg);
+      etichetta.textContent = "mediana " + num(opzioni.mediana, opzioni.decimali);
+    }
+
+    // Le etichette dei punti evidenziati si scalano in verticale quando i punti
+    // sono vicini: due province gemelle finiscono per forza una accanto
+    // all'altra, ed è proprio il caso che va letto.
+    const evidenziatiOrdinati = disposti
+      .filter(function (d) { return opzioni.evidenziati && opzioni.evidenziati[d.codice]; })
+      .sort(function (a, b) { return a.x - b.x; });
+
+    disposti.forEach(function (punto) {
+      const evidenziato = opzioni.evidenziati && opzioni.evidenziati[punto.codice];
+      const cerchio = el("circle", {
+        cx: punto.x, cy: base - punto.livello * passoY, r: evidenziato ? 6.5 : RAGGIO,
+        fill: evidenziato
+          ? (punto.codice === "017" ? css("--serie-2") : css("--superficie"))
+          : css("--serie-1"),
+        "fill-opacity": evidenziato ? 1 : 0.4,
+        stroke: evidenziato ? css("--serie-2") : "none",
+        "stroke-width": evidenziato ? 2 : 0,
+      }, svg);
+      const nome = opzioni.nomi[punto.codice] || punto.codice;
+      cerchio.addEventListener("mousemove", function (evento) {
+        mostraSuggerimento(evento, "<b>" + nome + "</b>" +
+          num(opzioni.valori[punto.codice], opzioni.decimali) + " " + (opzioni.etichetta || ""));
+      });
+      cerchio.addEventListener("mouseleave", nascondiSuggerimento);
+      if (evidenziato) {
+        const indice = evidenziatiOrdinati.indexOf(punto);
+        const vicino = evidenziatiOrdinati.some(function (altro, i) {
+          return i < indice && Math.abs(altro.x - punto.x) < 60;
+        });
+        const cy = base - punto.livello * passoY;
+        const alzata = vicino ? 32 : 14;
+        el("line", {
+          x1: punto.x, x2: punto.x, y1: cy - 7, y2: cy - alzata + 4,
+          stroke: css("--inchiostro-3"), "stroke-width": 1,
+        }, svg);
+        const testo = el("text", {
+          x: punto.x, y: cy - alzata, "text-anchor": "middle",
+          fill: css("--inchiostro"), "font-size": 11.5, "font-weight": 600,
+        }, svg);
+        testo.textContent = evidenziato;
+      }
+    });
+
+    [minimo, massimo].forEach(function (valore, indice) {
+      const nomeEstremo = opzioni.nomi[codici.reduce(function (migliore, c) {
+        const scelto = indice === 0
+          ? (opzioni.valori[c] < opzioni.valori[migliore] ? c : migliore)
+          : (opzioni.valori[c] > opzioni.valori[migliore] ? c : migliore);
+        return scelto;
+      }, codici[0])];
+      const testo = el("text", {
+        x: sx(valore), y: base + 22, "text-anchor": indice === 0 ? "start" : "end",
+        fill: css("--inchiostro-3"), "font-size": 11,
+      }, svg);
+      testo.textContent = num(valore, opzioni.decimali) + " · " + nomeEstremo;
+    });
+
+    const asse = el("text", {
+      x: riquadro.sinistra + riquadro.larghezza / 2, y: ALTEZZA - 6,
+      "text-anchor": "middle", fill: css("--inchiostro-2"), "font-size": 11.5,
+    }, svg);
+    asse.textContent = opzioni.etichetta;
+
+    const righe = codici
+      .sort(function (a, b) { return opzioni.valori[b] - opzioni.valori[a]; })
+      .map(function (c) { return [opzioni.nomi[c] || c, num(opzioni.valori[c], opzioni.decimali)]; });
+    tabellaSpecchio(contenitore, ["provincia", opzioni.etichetta], righe,
+      "Le " + codici.length + " province in tabella");
+  }
+
   // --- scrollytelling ---------------------------------------------------
 
   function scrollytelling(radice, alCambio) {
@@ -690,7 +811,7 @@
 
   window.GRAFICI = {
     el: el, css: css, num: num, nomeComune: nomeComune, metrica: metrica, valoriDi: valoriDi,
-    mappa: mappa, scatter: scatter, serie: serie, barre: barre,
+    mappa: mappa, scatter: scatter, serie: serie, barre: barre, sciame: sciame,
     scrollytelling: scrollytelling, comandi: comandi, tabellaSpecchio: tabellaSpecchio,
   };
 })();

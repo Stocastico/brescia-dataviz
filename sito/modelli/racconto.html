@@ -13,12 +13,14 @@
   <p class="occhiello">Provincia di Brescia · {{c:comuni}} comuni · dati aperti</p>
   <h1>Come cambia il bresciano</h1>
   <p class="sommario">Un ritratto in numeri costruito solo con fonti pubbliche, comune per comune.
-  Quattro storie che i dati reggono, e una lista di cose che non permettono di dire.</p>
+  Quattro storie che i dati reggono, una che ne corregge una nostra, e una lista di
+  cose che questi dati non permettono di dire.</p>
   <nav class="navigazione">
     <a href="#svuota">Dove si svuota</a>
     <a href="#redditi">I redditi</a>
     <a href="#crollo">Il crollo che non c'è stato</a>
     <a href="#economie">Le due economie</a>
+    <a href="#diversa">Brescia è diversa?</a>
     <a href="#limiti">Cosa non si può dire</a>
     <a href="metodologia.html">Metodo</a>
     <a href="dati.html">Dati</a>
@@ -283,6 +285,77 @@
   </div>
 </section>
 
+<section id="diversa">
+  <h2>Brescia è diversa?</h2>
+  <p>Fin qui abbiamo misurato Brescia contro sé stessa. È il modo in cui si
+  scrivono quasi tutti i ritratti di territorio, ed è il modo in cui si prende
+  per caratteristica di un posto quello che è la normalità di un paese.</p>
+
+  <p>Le fonti usate qui coprono l'Italia intera, quindi la verifica costa poco:
+  gli stessi indicatori, tutte le {{c:province_italiane}} province. Il risultato
+  ci ha costretto a riscrivere una frase che questo progetto ripeteva dal primo
+  giorno.</p>
+
+  <figure class="figura">
+    <figcaption><b>Dove sta Brescia fra le province italiane.</b> Ogni punto è una
+    provincia; il punto arancione è Brescia, quello vuoto Bergamo. La linea è la
+    mediana.</figcaption>
+    <div id="comandi-province"></div>
+    <div id="grafico-province"></div>
+  </figure>
+
+  <div class="in-chiaro avvertenza">
+    <b>La frase da riscrivere</b>
+    <p>«Brescia è un territorio di microimprese» è vera in assoluto — il
+    {{c:ul_micro_brescia}} delle unità locali ha meno di dieci addetti — e
+    fuorviante come descrizione. La provincia mediana italiana sta al
+    {{c:ul_micro_mediana}}, e Brescia è la <b>{{c:ul_micro_rango}}ª più
+    frammentata su {{c:province_italiane}}</b>: cioè fra le meno frammentate del
+    paese. Il 92 % descrive l'Italia, non Brescia.</p>
+  </div>
+
+  <p>Sugli addetti la distanza è più larga: nelle unità sotto i dieci addetti ne
+  lavora il {{c:addetti_micro_brescia}}, contro una mediana provinciale del
+  {{c:addetti_micro_mediana}}. E l'unità locale bresciana media ha
+  {{c:dimensione_brescia}} addetti contro {{c:dimensione_mediana}}. Non è una
+  provincia di piccolissimi: è una provincia di medi, in un paese di
+  piccolissimi.</p>
+
+  <p>Quello che <b>sì</b> distingue Brescia è il settore: la manifattura vale il
+  {{c:manifattura_confronto_brescia}} degli addetti contro una mediana del
+  {{c:manifattura_confronto_mediana}}, ed è la
+  {{c:manifattura_confronto_rango}}ª provincia d'Italia. Brescia somiglia meno
+  all'Italia che a Vicenza, Treviso, Reggio Emilia, Modena — e naturalmente a
+  Bergamo, che le sta accanto su quasi ogni riga.</p>
+
+  <p>Infine la crescita. Fra il 2018 e il 2023 gli addetti bresciani crescono
+  dell'{{c:crescita_confronto_brescia}} l'anno, e sembra molto finché non si
+  guarda la mediana: {{c:crescita_confronto_mediana}}. Brescia è la
+  {{c:crescita_confronto_rango}}ª su {{c:province_italiane}}. Cresce come
+  l'Italia, non più dell'Italia.</p>
+
+  <h3>E il crollo delle grandi unità?</h3>
+  <p>Anche quello va guardato da fuori. Nei {{c:capoluoghi_confrontati}} comuni
+  capoluogo che nel 2018 avevano almeno duemila addetti in unità da 250 in su,
+  la classe si è svuotata in <b>{{c:capoluoghi_in_calo}} casi</b>, con una
+  mediana del {{c:capoluoghi_mediana}}. I cali più forti:
+  {{c:capoluoghi_peggiori}}.</p>
+
+  <p>Brescia è il {{c:capoluoghi_rango_brescia}}º calo più forte: sopra la
+  mediana, ma dentro un movimento che riguarda quasi tutti. È il sostegno più
+  solido alla lettura del capitolo precedente — <b>un movimento così diffuso è,
+  fino a prova contraria, un cambiamento di come si conta</b>, non una vicenda
+  industriale che accade contemporaneamente in quaranta città diverse.</p>
+
+  <div class="in-chiaro">
+    <b>Perché questa sezione esiste</b>
+    <p>Un numero senza termine di paragone non è un risultato: è una cifra che
+    sembra dire qualcosa. Questa sezione ha corretto una nostra affermazione e
+    rafforzato un'altra, e ci è costata un filtro su file che erano già sul
+    disco.</p>
+  </div>
+</section>
+
 <section id="limiti">
   <h2>Cosa questi dati non permettono di dire</h2>
   <p>È la sezione che di solito non si scrive, ed è quella che rende leggibile
@@ -307,6 +380,12 @@
     <li><b>Niente agricoltura, e non è un dettaglio.</b> Il registro delle
     imprese non la osserva, quindi in tutta la parte settoriale i comuni della
     Bassa appaiono meno specializzati di quanto siano.</li>
+    <li><b>Il confronto si ferma alle imprese.</b> Il capitolo precedente
+    colloca Brescia fra le province italiane sul registro delle imprese, che è
+    l'unica fonte per cui abbiamo i dati nazionali già in casa. Sulla
+    convergenza dei redditi, sullo spopolamento e sul turismo il termine di
+    paragone non c'è ancora: quelle tre storie restano misurate contro sé
+    stesse.</li>
     <li><b>Niente cause.</b> Nessuna correlazione di questa pagina dimostra che
     una cosa ne provochi un'altra. Con {{c:comuni}} comuni e sei anni si
     descrive; non si stabilisce un meccanismo.</li>
@@ -425,6 +504,39 @@
       { etichetta: "reddito finale (" + annoF + ") — l'artefatto", quale: "finale" }
     ], function (voce) { disegnaReddito(voce.quale); });
     disegnaReddito("iniziale");
+  }
+
+  // --- il confronto con le altre province ------------------------------
+  var confronto = DATI.confronto;
+  if (confronto && confronto.misure) {
+    var contenitoreProvince = document.getElementById("grafico-province");
+    var vociProvince = [
+      { etichetta: "unità locali sotto i 10", chiave: "ul_micro", unita: "%", decimali: 1 },
+      { etichetta: "addetti sotto i 10", chiave: "addetti_micro", unita: "%", decimali: 1 },
+      { etichetta: "addetti per unità locale", chiave: "dimensione", unita: "addetti", decimali: 2 },
+      { etichetta: "manifattura", chiave: "manifattura", unita: "%", decimali: 1 },
+      { etichetta: "crescita 2018–2023", chiave: "crescita", unita: "%/anno", decimali: 2 }
+    ];
+
+    function disegnaProvince(voce) {
+      contenitoreProvince.innerHTML = "";
+      var misura = confronto.misure[voce.chiave];
+      if (!misura) return;
+      G.sciame(contenitoreProvince, {
+        valori: misura.valori,
+        nomi: confronto.nomi,
+        evidenziati: { "017": "Brescia", "016": "Bergamo" },
+        mediana: misura.mediana,
+        etichetta: voce.etichetta + (voce.unita ? " (" + voce.unita + ")" : ""),
+        decimali: voce.decimali,
+        descrizione: "Distribuzione delle province italiane per " + voce.etichetta
+      });
+    }
+
+    G.comandi(document.getElementById("comandi-province"), vociProvince.map(function (v) {
+      return { etichetta: v.etichetta, voce: v };
+    }), function (scelta) { disegnaProvince(scelta.voce); });
+    disegnaProvince(vociProvince[0]);
   }
 
   // --- storia 4: le due economie --------------------------------------

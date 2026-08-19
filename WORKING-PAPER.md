@@ -45,7 +45,7 @@ fermano alla provincia, altri arrivano al comune, nessuno scende sotto), la
 soprattutto la **fragilità semantica degli aggregati amministrativi**, che
 cambiano per ragioni contabili senza che cambi nulla nel mondo.
 
-I risultati metodologicamente più utili sono **tre errori corretti**, tutti
+I risultati metodologicamente più utili sono **quattro errori corretti**, tutti
 trovati sui dati e non previsti a tavolino.
 
 1. **§6.1 — decomporre prima di titolare.** Una variazione aggregata
@@ -63,9 +63,15 @@ trovati sui dati e non previsti a tavolino.
    un errore di calcolo ma perché ciascuna aveva deciso per conto suo cosa fare
    di una cella che la fonte non pubblica. L'ha trovato lo script che ricalcola
    ogni cifra citata, che è precisamente il motivo per cui esiste.
+4. **§7.1 — un numero senza termine di paragone non è un risultato.** La frase
+   che il progetto ripeteva dal primo giorno — «Brescia è un territorio di
+   microimprese» — è vera in assoluto e fuorviante come descrizione: la
+   provincia italiana mediana è **più** frammentata di Brescia, non meno.
+   Misurare un territorio solo contro sé stesso fa scambiare la normalità di un
+   paese per la caratteristica di un luogo.
 
-Nessuno dei tre è un errore di programmazione: sono tre modi diversi di far
-dire a un dato corretto una cosa falsa.
+Nessuno dei quattro è un errore di programmazione: sono quattro modi diversi di
+far dire a un dato corretto una cosa falsa.
 
 ---
 
@@ -334,9 +340,10 @@ che i dati non sostengono.
 
 **Non ancora eseguiti**, in ordine di importanza:
 
-- **Confronto con Bergamo.** È il controllo che manca a tutto: nessun risultato
-  di questo paper dice se Brescia sia diversa da una provincia italiana
-  qualunque. Costa un filtro, perché tutte le fonti coprono l'Italia intera.
+- ✅ **Confronto fra province, sulle imprese** (`analysis/confronto_province.py`).
+  Fatto, ed è il controllo che ha cambiato di più il testo: la §7.1 diceva il
+  contrario prima di averlo. Da estendere a redditi, popolazione e turismo, che
+  richiedono un download in più ciascuno.
 - **Rottura Covid**, testata in modo sistematico. Oggi è dichiarata (MET-8) e
   mostrata su un caso solo — la serie della classe ≥250 del capoluogo, dove la
   discontinuità del 2020 è visibile a occhio.
@@ -350,19 +357,40 @@ che i dati non sostengono.
 Quattro risultati, con i loro controlli. Nessuno è causale: sono descrizioni di
 un territorio, e la §8 dice cosa non permettono di affermare.
 
-### 7.1 La struttura dimensionale è stabile, e la crescita sta nel mezzo
+### 7.1 La domanda di partenza era mal posta
 
-In provincia le unità locali sotto i dieci addetti restano il **92,7 %** del
-totale (era 92,8 % nel 2018) e occupano il **42,9 %** degli addetti (era
-44,2 %). Cinque anni non hanno spostato la struttura: alla domanda originale —
-*è ancora un territorio di microimprese?* — la risposta è sì.
+La domanda che ha originato il progetto era: *Brescia è ancora il territorio
+della meccanica fatta di piccole aziende?* Presa alla lettera, la risposta è sì:
+le unità locali sotto i dieci addetti sono il **92,7 %** del totale (erano il
+92,8 % nel 2018) e occupano il **42,9 %** degli addetti (44,2 % nel 2018).
+Cinque anni non hanno spostato la struttura.
 
-Ma la crescita non è lì. Degli **29.421** addetti guadagnati fra 2018 e 2023,
-**23.840** sono in unità da 10 a 249 addetti: l'81 %. Le micro-unità ne
-aggiungono 6.842, le grandi ne perdono 1.260. Il territorio si muove nella
-fascia intermedia, non agli estremi — ed è un risultato che nessuna delle due
-narrazioni consuete (l'apologia della piccola impresa, il lamento sulla
-mancanza di grandi gruppi) racconta.
+**Ma il confronto con le altre province rovescia il senso della frase.** La
+provincia italiana mediana ha il **94,4 %** di unità locali sotto i dieci
+addetti: Brescia è la **101ª su 107**, cioè fra le meno frammentate del paese.
+Sugli addetti la distanza è più larga ancora — 42,9 % contro una mediana del
+51,0 % — e l'unità locale bresciana media ha **4,01** addetti contro 3,44.
+
+| Indicatore, 2023 | Brescia | mediana | rango |
+|---|---|---|---|
+| unità locali sotto i 10 addetti | 92,7 % | 94,4 % | 101ª |
+| addetti in unità sotto i 10 | 42,9 % | 51,0 % | 85ª |
+| addetti per unità locale | 4,01 | 3,44 | 21ª |
+| addetti nella manifattura | 32,4 % | 20,7 % | **15ª** |
+| crescita degli addetti 2018–2023 | 1,27 %/anno | 1,43 %/anno | 65ª |
+
+Il 92,7 % descrive **l'Italia**, non Brescia. Quello che distingue davvero questa
+provincia è il **settore**: 15ª d'Italia per quota manifatturiera, in un grumo
+di province che sono i distretti industriali del nord — Vicenza, Treviso, Reggio
+Emilia, Modena, e Bergamo, che le sta accanto su quasi ogni riga.
+
+Anche la crescita va ridimensionata dallo stesso confronto. Degli **29.421**
+addetti guadagnati fra 2018 e 2023, **23.840** sono in unità da 10 a 249: l'81 %,
+e il movimento nella fascia intermedia è reale. Ma l'1,27 % l'anno complessivo è
+**sotto** la mediana provinciale italiana (1,43 %): Brescia cresce come l'Italia,
+non più dell'Italia, e sull'aggregato provinciale da solo sembrava il contrario.
+
+È l'esempio più costoso di MET-14, ed è il motivo per cui quella regola esiste.
 
 ### 7.2 Il capoluogo diverge dal territorio, ma non per il motivo che sembrava
 
@@ -377,6 +405,13 @@ cambiato forma societaria o comune di registrazione.
 enunciarlo in forma generale: in un registro di unità locali, una variazione
 aggregata grande e improvvisa è **fino a prova contraria un cambiamento di come
 si conta**. La prova contraria costa una query.
+
+Il confronto con gli altri capoluoghi lo conferma dall'esterno. Nei **64** comuni
+capoluogo che nel 2018 avevano almeno duemila addetti in unità da 250 in su, la
+classe si è svuotata in **44 casi**, con una mediana del **−11,9 %**; i cali più
+forti sono Matera (−72 %), Biella (−55 %), Pisa (−48 %). Brescia (−31,5 %) è il
+13º. Un movimento così diffuso non è una vicenda industriale che accade
+contemporaneamente in quaranta città diverse.
 
 ### 7.3 I redditi convergono; i luoghi restano diversi
 
@@ -457,13 +492,15 @@ non sono 205 osservazioni indipendenti.
 - **Gli aggregati amministrativi sono fragili** (§6.1): il registro delle unità
   locali misura dove le cose sono *registrate*, che non sempre è dove
   accadono.
-- **Manca un termine di paragone, ed è il limite più serio.** Tutti i risultati
-  della §7 descrivono Brescia senza dire se Brescia sia diversa da una provincia
-  italiana qualunque. La convergenza dei redditi in particolare potrebbe essere
-  un fatto nazionale: converge anche il resto d'Italia? Il confronto costa un
-  filtro — tutte le fonti coprono l'Italia intera — e finché non è fatto ogni
-  frase della §7 va letta come «a Brescia succede questo», mai come «a Brescia,
-  a differenza di altrove, succede questo».
+- **Il termine di paragone c'è solo sulle imprese.** Il confronto con le 107
+  province (§7.1) e con i capoluoghi (§7.2) è stato fatto sul registro ASIA, ed
+  è servito: ha corretto la §7.1 e rafforzato la §7.2. Ma **sulla convergenza
+  dei redditi, sullo spopolamento e sul turismo non esiste**, e quelle tre
+  sezioni restano misurate contro sé stesse. La convergenza in particolare
+  potrebbe essere un fatto italiano prima che bresciano: finché non lo si
+  verifica, la §7.3 va letta come «a Brescia succede questo», mai come «a
+  Brescia, a differenza di altrove, succede questo». Estenderla costa un
+  download dei redditi per almeno una seconda provincia.
 - **La variazione di popolazione è netta**: non distingue saldo naturale da
   migrazione, quindi «spopolamento montano» qui è una descrizione e non una
   spiegazione.

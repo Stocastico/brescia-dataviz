@@ -58,15 +58,15 @@ Indice:
 | Repository separato | ✅ esiste, `main`, file in radice |
 | Pipeline | ✅ funzionante, `requests` + libreria standard, 167 test verdi |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
-| Tabelle tidy | ✅ 21 CSV in [`dati/processed/`](dati/README.md), versionati; manca solo `migrazioni_comuni.csv` |
-| Analisi | ✅ otto script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo |
-| Storie scelte | ✅ **quattro**, scritte e pubblicate nel documento narrativo. Le altre candidate restano in `BRIEF.md` |
+| Tabelle tidy | ✅ 23 CSV in [`dati/processed/`](dati/README.md), versionati; manca solo `migrazioni_comuni.csv` |
+| Analisi | ✅ dieci script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province |
+| Storie scelte | ✅ **cinque**, scritte e pubblicate nel documento narrativo — l'ultima delle quali corregge le altre. Le candidate rimaste stanno in `BRIEF.md` |
 | Contratto dati per il sito | ✅ `metric_*.json` + registro, con i cinque invarianti come test |
 | Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega |
 | Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
 | Deploy | 🤖 workflow scritto e pronto; 🙋 serve il tuo passaggio su Pages (§7) |
 | Licenza | 🙋 **non scelta** (§3.3) |
-| `METODOLOGIA.md` | ⚠️ bozza avanzata: tredici regole, MET-9 chiusa, due nuove nate da questa tornata |
+| `METODOLOGIA.md` | ⚠️ bozza avanzata: quattordici regole, MET-9 chiusa, tre nuove nate da questa tornata |
 | `WORKING-PAPER.md` | ⚠️ bozza, la sezione dei risultati va riscritta con le quattro storie (§8) |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
@@ -382,8 +382,13 @@ Riadattate al caso bresciano. La prima è fatta, le altre no.
   della prima storia del sito, ed è la domanda che quella storia dichiara di non
   poter rispondere. Servono le tavole del bilancio demografico, non ancora
   scaricate.
-- 🤖 **Bergamo come controllo**: le fonti coprono l'Italia intera, quindi costa
-  un filtro. È il controllo naturale per MET-9 e per la convergenza dei redditi.
+- ✅ **Il confronto fra province** (`analysis/confronto_province.py`), che è
+  andato oltre Bergamo: gli stessi indicatori su tutte e 107 le province, perché
+  i file grezzi nazionali erano già su disco e il costo era il tempo di
+  rileggerli. Ha corretto la frase più ripetuta del progetto (MET-14) e
+  rafforzato MET-9. ⏳ Resta da estendere a **redditi, popolazione e turismo**,
+  che richiedono un download in più ciascuno: la convergenza dei redditi
+  potrebbe essere un fatto italiano prima che bresciano, e oggi non lo sappiamo.
 
 ### 5.3 La convenzione di `analysis/`
 
@@ -741,7 +746,7 @@ entra nel tempo che hai, non a fare un piano.
 | 🙋 Rileggere i testi del sito | **1 h** | è il tuo nome sopra |
 | 🤖 Scarico delle migrazioni + riscarico in italiano delle tre tavole censuarie (§2.4) | **una notte di attesa** | l'unico dataset previsto che manchi, e tre tabelle oggi non pubblicabili |
 | 🤖 Decomposizione della popolazione: saldo naturale contro migrazione | **mezza giornata** | rispondere alla domanda che la prima storia del sito dichiara di non poter rispondere |
-| 🤖 Bergamo come controllo | **mezza giornata** | chiudere l'ultimo pezzo aperto di MET-9 |
+| 🤖 Estendere il confronto fra province a redditi, popolazione e turismo | **mezza giornata** | oggi il termine di paragone c'è solo sulle imprese, e senza non si sa se la convergenza dei redditi sia bresciana o italiana |
 | 🤖 Riscrivere la §7 del working paper con le quattro storie | **mezza giornata** | il documento per un lettore esterno |
 | 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |
 | 🙋 I download manuali (§2.2) | **2–4 h in tutto** | estensioni, nessun asse portante |
@@ -767,11 +772,12 @@ una tabella.
 
 ### Se hai un weekend
 
-Bergamo. Tutte le fonti usate qui coprono l'Italia intera, quindi aggiungere
-una provincia gemella costa un filtro — e chiude l'ultimo pezzo aperto di MET-9,
-oltre a dire se la convergenza dei redditi sia bresciana o generale. È anche il
-lavoro con il miglior rapporto fra fatica e originalità che resti in questa
-lista.
+Estendere il confronto fra province oltre le imprese. Sul registro ASIA è già
+fatto, ed è servito più di qualunque altra analisi: ha smontato la frase che il
+progetto ripeteva dal primo giorno. Sui redditi, sulla popolazione e sul turismo
+il termine di paragone non c'è, e la convergenza dei redditi — che nel sito è
+una storia intera — potrebbe benissimo essere un fatto italiano. Costa un
+download per fonte, e lo schema è già scritto in `datasets/province.py`.
 
 **Da dove ripartire in ogni caso**: `python analysis/verifica_cifre.py`. Se le
 verifiche passano, le tabelle sono a posto e i documenti dicono il

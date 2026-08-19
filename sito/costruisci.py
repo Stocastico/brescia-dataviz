@@ -155,6 +155,120 @@ def moran(valori_indicatore: dict[str, float]) -> float:
     return numeratore / denominatore if denominatore else 0.0
 
 
+def confronto_province() -> dict[str, Any]:
+    """Dove sta Brescia fra le 107 province, sugli stessi indicatori.
+
+    Come la scomposizione qui sotto, non è un indicatore comunale e non passa
+    dal contratto del §6.2: è una tabella a un livello diverso, e piegarla a
+    fingersi un `metric_*.json` peggiorerebbe entrambe le cose.
+    """
+    import csv
+
+    path = PROCESSED / "imprese_province.csv"
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as handle:
+        righe = list(csv.DictReader(handle))
+
+    nomi: dict[str, str] = {}
+    valori: dict[tuple[str, str, str, str, str], float] = {}
+    for riga in righe:
+        if not riga["valore"]:
+            continue
+        nomi[riga["codice_provincia"]] = riga["provincia"]
+        valori[(riga["codice_provincia"], riga["anno"], riga["dimensione"],
+                riga["modalita"], riga["indicatore"])] = float(riga["valore"])
+
+    anni = sorted({c[1] for c in valori})
+    primo, ultimo = anni[0], anni[-1]
+
+    def quota(codice: str, sopra: tuple, sotto: tuple) -> float | None:
+        alto = valori.get((codice, ultimo) + sopra)
+        basso = valori.get((codice, ultimo) + sotto)
+        return None if not basso else alto / basso * 100
+
+    misure: dict[str, dict[str, float]] = {}
+    for codice in nomi:
+        totale_ul = valori.get((codice, ultimo, "classe_addetti", "totale", "unita_locali"))
+        totale_add = valori.get((codice, ultimo, "classe_addetti", "totale", "addetti"))
+        iniziale_add = valori.get((codice, primo, "classe_addetti", "totale", "addetti"))
+        if not (totale_ul and totale_add and iniziale_add):
+            continue
+        misure.setdefault("ul_micro", {})[codice] = quota(
+            codice, ("classe_addetti", "0-9", "unita_locali"),
+            ("classe_addetti", "totale", "unita_locali"))
+        misure.setdefault("addetti_micro", {})[codice] = quota(
+            codice, ("classe_addetti", "0-9", "addetti"),
+            ("classe_addetti", "totale", "addetti"))
+        misure.setdefault("dimensione", {})[codice] = totale_add / totale_ul
+        manifattura = valori.get((codice, ultimo, "sezione", "C", "addetti"))
+        if manifattura is not None:
+            misure.setdefault("manifattura", {})[codice] = manifattura / totale_add * 100
+        durata = int(ultimo) - int(primo)
+        misure.setdefault("crescita", {})[codice] = (
+            (totale_add / iniziale_add) ** (1 / durata) - 1
+        ) * 100
+
+    def rango(nome_misura: str, codice: str) -> int:
+        ordinati = sorted(misure[nome_misura].items(), key=lambda kv: -kv[1])
+        return [c for c, _ in ordinati].index(codice) + 1
+
+    return {
+        "primo": primo,
+        "ultimo": ultimo,
+        "province": len(misure["dimensione"]),
+        "misure": {
+            nome_misura: {
+                "brescia": per_provincia["017"],
+                "bergamo": per_provincia.get("016"),
+                "mediana": mediana(list(per_provincia.values())),
+                "rango": rango(nome_misura, "017"),
+                "estremo_basso": min(per_provincia.items(), key=lambda kv: kv[1]),
+                "estremo_alto": max(per_provincia.items(), key=lambda kv: kv[1]),
+                # I valori di tutte le province: sono 107 numeri, e servono a
+                # disegnare la distribuzione invece di riassumerla.
+                "valori": {codice: round(valore, 3) for codice, valore in sorted(per_provincia.items())},
+            }
+            for nome_misura, per_provincia in misure.items()
+            if "017" in per_provincia
+        },
+        "nomi": nomi,
+    }
+
+
+def controllo_capoluoghi() -> dict[str, Any]:
+    """La classe ≥250 nei comuni capoluogo: il controllo di MET-9."""
+    import csv
+
+    path = PROCESSED / "imprese_capoluoghi.csv"
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as handle:
+        righe = list(csv.DictReader(handle))
+
+    grandi: dict[str, dict[str, float]] = {}
+    nomi: dict[str, str] = {}
+    for riga in righe:
+        if riga["indicatore"] != "addetti" or riga["classe_addetti"] != "250+" or not riga["valore"]:
+            continue
+        grandi.setdefault(riga["codice_istat"], {})[riga["anno"]] = float(riga["valore"])
+        nomi[riga["codice_istat"]] = riga["capoluogo"]
+
+    variazioni = []
+    for codice, serie in grandi.items():
+        anni = sorted(serie)
+        iniziale, finale = serie[anni[0]], serie[anni[-1]]
+        if iniziale < 2000:
+            continue
+        variazioni.append({"nome": nomi[codice], "variazione": (finale / iniziale - 1) * 100})
+    variazioni.sort(key=lambda v: v["variazione"])
+    return {
+        "capoluoghi": variazioni,
+        "mediana": mediana([v["variazione"] for v in variazioni]),
+        "in_calo": sum(1 for v in variazioni if v["variazione"] < 0),
+    }
+
+
 def decomposizione() -> dict[str, Any]:
     """La scomposizione settore × classe del capoluogo, per la terza storia.
 
@@ -341,6 +455,41 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
                 if confronto["totale_provincia"][0] else 0.0
             )
 
+    confronto = confronto_province()
+    if confronto:
+        fuori["province_italiane"] = numero_it(confronto["province"])
+        etichette = {
+            "ul_micro": "ul_micro",
+            "addetti_micro": "addetti_micro",
+            "dimensione": "dimensione",
+            "manifattura": "manifattura_confronto",
+            "crescita": "crescita_confronto",
+        }
+        decimali = {"dimensione": 2}
+        for chiave, prefisso in etichette.items():
+            misura = confronto["misure"][chiave]
+            quanti = decimali.get(chiave, 1)
+            fuori[f"{prefisso}_brescia"] = numero_it(misura["brescia"], quanti)
+            fuori[f"{prefisso}_mediana"] = numero_it(misura["mediana"], quanti)
+            fuori[f"{prefisso}_rango"] = numero_it(misura["rango"])
+            if misura["bergamo"] is not None:
+                fuori[f"{prefisso}_bergamo"] = numero_it(misura["bergamo"], quanti)
+            fuori[f"{prefisso}_max_nome"] = confronto["nomi"][misura["estremo_alto"][0]]
+            fuori[f"{prefisso}_max"] = numero_it(misura["estremo_alto"][1], quanti)
+            fuori[f"{prefisso}_min_nome"] = confronto["nomi"][misura["estremo_basso"][0]]
+            fuori[f"{prefisso}_min"] = numero_it(misura["estremo_basso"][1], quanti)
+
+    controllo = controllo_capoluoghi()
+    if controllo:
+        fuori["capoluoghi_confrontati"] = numero_it(len(controllo["capoluoghi"]))
+        fuori["capoluoghi_in_calo"] = numero_it(controllo["in_calo"])
+        fuori["capoluoghi_mediana"] = f"{numero_it(controllo['mediana'], 1)} %"
+        posizione = [v["nome"] for v in controllo["capoluoghi"]].index("Brescia") + 1
+        fuori["capoluoghi_rango_brescia"] = numero_it(posizione)
+        fuori["capoluoghi_peggiori"] = ", ".join(
+            f"{v['nome']} ({numero_it(v['variazione'], 0)} %)" for v in controllo["capoluoghi"][:4]
+        )
+
     fuori["moran_crescita_popolazione"] = numero_it(moran(crescita_pop), 2)
     fuori["moran_reddito"] = numero_it(moran(red_f), 2)
 
@@ -409,6 +558,8 @@ def dati_incorporati(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict
         },
         "geo": geometria_compatta(),
         "decomposizione": decomposizione(),
+        "confronto": confronto_province(),
+        "capoluoghi": controllo_capoluoghi(),
         "metriche": {
             id_metrica: {
                 "label": metrica["label"],

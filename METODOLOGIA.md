@@ -1,4 +1,4 @@
-# Nota metodologica (MET-1…MET-13)
+# Nota metodologica (MET-1…MET-14)
 
 > **Cos'è.** Le decisioni che governano il progetto: *perché* misuriamo come
 > misuriamo. È la base di credibilità — qualunque grafico, testo o titolo deve
@@ -8,11 +8,11 @@
 >
 > ## ⚠️ Bozza avanzata — non ancora definitiva
 >
-> **Aggiornata ad agosto 2026, dopo il primo giro di analisi.** Le tredici
-> regole qui elencate sono tutte reali e applicate; tre di esse (MET-9, MET-12,
-> MET-13) nascono da errori o incoerenze **effettivamente trovati sui dati
-> bresciani**, non da principi scelti a tavolino, e le ultime due sono nuove di
-> questa tornata.
+> **Aggiornata ad agosto 2026, dopo il primo giro di analisi.** Le quattordici
+> regole qui elencate sono tutte reali e applicate; quattro di esse (MET-9,
+> MET-12, MET-13, MET-14) nascono da errori o incoerenze **effettivamente
+> trovati sui dati bresciani**, non da principi scelti a tavolino, e le ultime
+> tre sono nuove di questa tornata.
 >
 > Cosa è cambiato in questa revisione: **MET-9 non è più una questione aperta.**
 > L'incrocio fra settore e classe dimensionale — la tabella che mancava — ha
@@ -342,6 +342,45 @@ numeri tornerebbero lo stesso.
 E quando un comune viene escluso, **va nominato**: nel sito i tre comuni senza
 la riga della manifattura sono scritti per nome, con il loro peso, invece di
 sparire dalla mappa in silenzio.
+
+## MET-14 — Un numero senza termine di paragone non è un risultato
+
+> L'ultima nata, e quella che ha corretto più affermazioni in una volta sola.
+
+Per quasi tutto il progetto Brescia è stata misurata **contro sé stessa**. È il
+modo in cui si scrivono quasi tutti i ritratti di territorio, ed è il modo in cui
+si prende per caratteristica di un luogo quello che è la normalità di un paese.
+
+La verifica costava poco — le fonti coprono l'Italia intera, e i file grezzi
+nazionali erano già su disco — e il risultato è questo:
+
+| Indicatore, 2023 | Brescia | mediana delle 107 province | rango |
+|---|---|---|---|
+| unità locali sotto i 10 addetti | 92,7 % | **94,4 %** | 101ª |
+| addetti in unità sotto i 10 | 42,9 % | **51,0 %** | 85ª |
+| addetti per unità locale | 4,01 | **3,44** | 21ª |
+| addetti nella manifattura | 32,4 % | **20,7 %** | **15ª** |
+| crescita degli addetti 2018–2023 | 1,27 %/anno | **1,43 %/anno** | 65ª |
+
+**La frase che il progetto ripeteva dal primo giorno — «Brescia è un territorio
+di microimprese» — è vera in assoluto e fuorviante come descrizione.** Il 92,7 %
+descrive l'Italia; Brescia è fra le **meno** frammentate del paese, in un grumo
+di province che sono i distretti industriali del nord (Vicenza, Treviso, Reggio
+Emilia, Modena, Bergamo). Quello che la distingue davvero è il **settore**, non
+la dimensione: 15ª d'Italia per quota manifatturiera. E la crescita, che
+sull'aggregato provinciale sembrava notevole, è sotto la mediana.
+
+Lo stesso controllo ha rafforzato MET-9 invece di indebolirla: nei 64 comuni
+capoluogo con una classe grande significativa, quella classe si è svuotata in 44
+casi, con una mediana del −11,9 %. Brescia (−31,5 %) è il 13º calo più forte. Un
+movimento così diffuso non è una vicenda industriale che accade
+contemporaneamente in quaranta città diverse: è, fino a prova contraria, un
+cambiamento di come si conta.
+
+**La regola.** *Prima di dire che un valore caratterizza il territorio, guardare
+quanto fa altrove.* Dove il confronto non c'è — qui manca su redditi, popolazione
+e turismo — va **dichiarato**, e la frase va scritta come «a Brescia succede
+questo», mai come «a Brescia, a differenza di altrove, succede questo».
 
 ---
 

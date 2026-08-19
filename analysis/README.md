@@ -20,10 +20,11 @@ il punto.
 | `tipologia_comuni.py` | k-means++ con seme fisso su sei variabili strutturali. Dichiara anche i comuni che nessun gruppo descrive bene. |
 | `dove_si_lavora.py` | Addetti ogni 100 abitanti, e il settore prevalente che spiega perché i due estremi non sono lo stesso fenomeno. |
 | `rottura_covid.py` | La discontinuità del 2020, testata dove si può e dichiarata non testabile dove non si può. |
+| `confronto_province.py` | Gli stessi indicatori su tutte e 107 le province italiane: dove sta Brescia, e il controllo esterno di MET-9. |
 | `_tabelle.py` | Non è un'analisi: è la lettura delle tabelle e la statistica di base che gli script hanno in comune. |
 
 ```bash
-python analysis/verifica_cifre.py                    # cinquanta verifiche, agosto 2026
+python analysis/verifica_cifre.py                    # cinquantasette verifiche, agosto 2026
 python analysis/variazione_popolazione.py --save     # + CSV in analysis/output/
 python analysis/velocita_di_cambio.py reddito
 python analysis/livelli_e_variazioni.py
@@ -33,6 +34,7 @@ python analysis/due_economie.py
 python analysis/tipologia_comuni.py --gruppi 5
 python analysis/dove_si_lavora.py
 python analysis/rottura_covid.py
+python analysis/confronto_province.py
 ```
 
 Il numero delle verifiche è scritto **solo qui**, e di proposito: una cifra

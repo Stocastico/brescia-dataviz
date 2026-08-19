@@ -6,7 +6,7 @@ con il capoluogo (`017029`) come caso privilegiato. Modellato sull'architettura
 di `donostia-dataviz` ma con una domanda di ricerca diversa: *come è cambiato
 questo territorio*, senza una tesi turistica a monte.
 
-**Stato: il sito esiste.** Dati scaricati e puliti, otto analisi fatte, quattro
+**Stato: il sito esiste.** Dati scaricati e puliti, dieci analisi fatte, cinque
 storie scritte in un documento narrativo autocontenuto
 ([`sito/`](sito/README.md)) che si costruisce da solo e ha già il suo workflow
 di pubblicazione. Quello che manca per pubblicare non è più tecnico: **una
@@ -21,13 +21,13 @@ fare una sessione di lavoro e cosa richiede te**.
 |---|---|
 | [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, il soggetto e i **quattro assi scelti**, le due analisi dedicate al capoluogo, le storie candidate, i principi. |
 | [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e la traccia storica della separazione del repository (§12). |
-| [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza avanzata.** Le **tredici** regole che governano il progetto: perché misuriamo come misuriamo. Tre nascono da errori veri trovati sui dati — MET-9 (un titolo sbagliato), MET-12 (una correlazione con il segno rovesciato), MET-13 (due script che rispondevano numeri diversi alla stessa domanda). |
+| [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza avanzata.** Le **quattordici** regole che governano il progetto: perché misuriamo come misuriamo. Quattro nascono da errori veri trovati sui dati — MET-9 (un titolo sbagliato), MET-12 (una correlazione con il segno rovesciato), MET-13 (due script che rispondevano numeri diversi alla stessa domanda) e MET-14 (una frase che questo progetto ripeteva dal primo giorno e che il confronto con le altre province ha smontato). |
 | [`WORKING-PAPER.md`](WORKING-PAPER.md) | ⚠️ **Bozza.** Il working paper: metodo per un lettore esterno. La sezione dei risultati è provvisoria — si riscrive quando le storie saranno chiuse. |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco delle cose che **richiedono te** (una licenza da scegliere, un login SPID, una macchina italiana), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
-| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 21 CSV su territorio, imprese, lavoro, popolazione, famiglie e abitazioni, redditi, ambiente, sicurezza e turismo, più i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
+| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 23 CSV su territorio, imprese, lavoro, popolazione, famiglie e abitazioni, redditi, ambiente, sicurezza e turismo, più i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
 | [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: uno script per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
-| [`sito/`](sito/README.md) | **Il documento narrativo**: quattro storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
+| [`sito/`](sito/README.md) | **Il documento narrativo**: cinque storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
 ## Come leggere il registro
 
@@ -78,7 +78,7 @@ unità locali in più) o comune (la somministrazione esce dalla città ma resta 
 provincia). È MET-9, che era la questione aperta più importante del progetto ed
 è chiusa.
 
-Le altre tre storie del sito: **93 comuni su 205 perdono abitanti**, e non sono
+Le altre storie del sito: **93 comuni su 205 perdono abitanti**, e non sono
 sparsi a caso ma contigui, tutta la montagna; i **redditi convergono** — chi
 partiva sotto cresce più in fretta, correlazione −0,45 — anche se il comune più
 ricco dichiara ancora 2,5 volte il più povero, ed era 2,2 undici anni prima; e
@@ -87,6 +87,16 @@ Bassa e l'alloggio sul Garda, divise così nettamente che la specializzazione
 settoriale (Moran 0,44) è la variabile economica più raggruppata nello spazio
 fra quelle misurate — dietro solo alla densità abitativa, che però è geografia,
 non economia.
+
+**La quinta storia corregge le altre**, e vale la pena leggerla per prima: fino
+a poco fa questo progetto misurava Brescia solo contro sé stessa, e ripeteva che
+è «un territorio di microimprese». Confrontata con le altre 106 province, Brescia
+è la **101ª per frammentazione**, cioè fra le meno frammentate d'Italia: il
+92,7 % di unità locali sotto i dieci addetti descrive il paese, non questa
+provincia. Quello che la distingue è il settore — 15ª d'Italia per quota
+manifatturiera — non la dimensione. E il confronto ha anche rafforzato MET-9: la
+classe con almeno 250 addetti si è svuotata in 44 capoluoghi su 64, con una
+mediana del −11,9 %.
 
 Sul turismo l'asimmetria è più netta e più semplice: 12,2 milioni di presenze
 provinciali nel 2024, di cui il 68,8 % nei primi dieci comuni, otto dei quali

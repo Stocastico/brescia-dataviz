@@ -56,6 +56,8 @@ popolazione = leggi("popolazione_comuni.csv")
 redditi = leggi("redditi_comuni.csv")
 settore_classe = leggi("imprese_settore_classe.csv")
 sezioni = leggi("imprese_sezioni_comuni.csv")
+province = leggi("imprese_province.csv")
+capoluoghi = leggi("imprese_capoluoghi.csv")
 
 PROVINCIA = "ITC47"
 
@@ -257,6 +259,56 @@ def scarto_stagionale_turismo(anno: str, base: str = "2019") -> float:
     mesi = {m[5:7] for m in per_mese if m[:4] == anno}
     atteso = sum(v for m, v in per_mese.items() if m[:4] == base and m[5:7] in mesi)
     return (osservato / atteso - 1) * 100
+
+
+def per_provincia(anno: str, dimensione: str, modalita: str, indicatore: str) -> dict[str, float]:
+    fuori: dict[str, float] = {}
+    for riga in province:
+        if (riga["anno"], riga["dimensione"], riga["modalita"], riga["indicatore"]) == (
+            anno, dimensione, modalita, indicatore
+        ):
+            valore = numero(riga["valore"])
+            if valore is not None:
+                fuori[riga["codice_provincia"]] = valore
+    return fuori
+
+
+def quota_provinciale(
+    anno: str, dimensione: str, parte: str, indicatore: str,
+    dimensione_totale: str = "classe_addetti", tutto: str = "totale",
+) -> dict[str, float]:
+    """Quota sul totale provinciale. Il denominatore sta sempre fra le classi
+    dimensionali, anche quando il numeratore è una sezione Ateco: il «totale»
+    della dimensione settoriale non esiste in questa tabella."""
+    sopra = per_provincia(anno, dimensione, parte, indicatore)
+    sotto = per_provincia(anno, dimensione_totale, tutto, indicatore)
+    return {c: sopra[c] / sotto[c] * 100 for c in sopra if sotto.get(c)}
+
+
+def mediana_lista(valori: list[float]) -> float:
+    ordinati = sorted(valori)
+    meta = len(ordinati) // 2
+    return ordinati[meta] if len(ordinati) % 2 else (ordinati[meta - 1] + ordinati[meta]) / 2
+
+
+def rango_brescia(valori: dict[str, float]) -> int:
+    ordinati = sorted(valori.items(), key=lambda kv: -kv[1])
+    return [c for c, _ in ordinati].index("017") + 1
+
+
+def variazioni_capoluoghi() -> list[float]:
+    grandi: dict[str, dict[str, float]] = defaultdict(dict)
+    for riga in capoluoghi:
+        if riga["indicatore"] == "addetti" and riga["classe_addetti"] == "250+":
+            valore = numero(riga["valore"])
+            if valore is not None:
+                grandi[riga["codice_istat"]][riga["anno"]] = valore
+    fuori = []
+    for serie in grandi.values():
+        anni = sorted(serie)
+        if serie[anni[0]] >= 2000:
+            fuori.append((serie[anni[-1]] / serie[anni[0]] - 1) * 100)
+    return sorted(fuori)
 
 
 def vicini() -> dict[str, set[str]]:
@@ -670,6 +722,59 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         0.43,
         lambda: moran(reddito_medio("2023")),
         0.01,
+    ),
+    # --- il confronto fra province (MET-14) ------------------------------
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.1",
+        "unità locali sotto i 10: mediana provinciale italiana 94,4 %",
+        94.4,
+        lambda: mediana_lista(list(quota_provinciale(
+            "2023", "classe_addetti", "0-9", "unita_locali").values())),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.1",
+        "Brescia è la 101ª provincia su 107 per frammentazione",
+        101,
+        lambda: rango_brescia(quota_provinciale(
+            "2023", "classe_addetti", "0-9", "unita_locali")),
+        0,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.1",
+        "addetti in unità sotto i 10: mediana provinciale 51,0 %",
+        51.0,
+        lambda: mediana_lista(list(quota_provinciale(
+            "2023", "classe_addetti", "0-9", "addetti").values())),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.1",
+        "manifattura: Brescia 15ª provincia d'Italia",
+        15,
+        lambda: rango_brescia(quota_provinciale("2023", "sezione", "C", "addetti")),
+        0,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.1",
+        "manifattura: mediana provinciale 20,7 %",
+        20.7,
+        lambda: mediana_lista(list(quota_provinciale("2023", "sezione", "C", "addetti").values())),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.2",
+        "la classe ≥250 cala in 44 capoluoghi su 64",
+        44,
+        lambda: sum(1 for v in variazioni_capoluoghi() if v < 0),
+        0,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.2",
+        "mediana dei capoluoghi sulla classe ≥250: −11,9 %",
+        -11.9,
+        lambda: mediana_lista(variazioni_capoluoghi()),
+        0.05,
     ),
     (
         "METODOLOGIA MET-8",
