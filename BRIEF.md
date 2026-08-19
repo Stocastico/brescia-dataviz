@@ -226,23 +226,23 @@ Uno in più, che nasce da questa ricognizione:
 
 ## Stato
 
-Ricognizione delle fonti: **fatta** ([`FONTI.md`](FONTI.md)).
-Nessun dato scaricato, nessuna pipeline, nessun codice. I passi successivi
-naturali, in ordine:
+Ricognizione delle fonti: **fatta** ([`FONTI.md`](FONTI.md)). Pipeline in
+piedi, tabelle scaricate e pulite, base geografica dei 205 comuni costruita
+([`dati/`](dati/README.md)). I quattro assi portanti hanno tutti i dati che
+servono; manca l'analisi, e manca il sito.
 
-1. Scaricare la serie ASIA completa (unità locali e addetti per classe
-   dimensionale × Ateco 2 cifre, 2018–2023, 205 comuni) e sviluppare l'asse 1
-   settore per settore: dove sono spariti i grandi stabilimenti urbani, e se la
-   meccanica si comporta diversamente dal resto.
-2. Montare la base geografica: confini comunali ISTAT generalizzati + elenco
-   comuni, filtrati sui 205 della provincia. È mezz'ora di lavoro e sblocca
-   ogni coropletica.
-3. Verificare l'accesso al commercio estero provinciale (Coeweb o bulk
-   `DF_BULK_COE*`): è l'unico asse importante ancora incerto.
-4. Scaricare gli open data MUR sui due atenei (host non raggiungibile
-   dall'ambiente di ricognizione).
-5. Recuperare da una macchina con accesso normale i pezzi dietro
-   `dati.comune.brescia.it`: turismo cittadino 2005–2013 e i materiali
-   dell'Osservatorio migrazioni.
-6. Registrarsi all'area riservata dell'Agenzia delle Entrate per quotazioni,
-   perimetri zone OMI e compravendite NTN.
+I passi successivi, in ordine, con il dettaglio in
+[`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md):
+
+1. **Le analisi dell'asse 1**, settore per settore: dove sono spariti i grandi
+   stabilimenti urbani e se la meccanica si comporta diversamente dal resto.
+   I dati ci sono già tutti (`imprese_settore.csv`), e la domanda è aperta da
+   MET-9.
+2. **Le altre analisi di `PROSSIMI-PASSI.md` §5**: velocità di cambio, livelli
+   contro variazioni, tipologia di comuni, autocorrelazione spaziale, rottura
+   Covid. La prima è scritta (`analysis/variazione_popolazione.py`).
+3. **Scegliere le storie** fra le dodici candidate qui sopra — dopo aver visto
+   i dati, non prima — e costruire il documento narrativo.
+4. Quel che resta da scaricare richiede un passaggio manuale (OMI, atenei,
+   open data del Comune, commercio estero provinciale): è tutto elencato in
+   [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) §2, marcato come tale.

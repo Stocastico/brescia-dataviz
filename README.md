@@ -9,7 +9,9 @@ questo territorio*, senza una tesi turistica a monte.
 **Stato: ricognizione completata, pipeline funzionante, dati scaricati e
 puliti, base geografica in piedi.** I confini dei 205 comuni ci sono
 ([`dati/geo/`](dati/README.md)): da qui in poi ogni coropletica è possibile.
-Manca la parte di analisi e visualizzazione: il piano sta in
+Manca la parte di analisi e visualizzazione — e le prime due analisi sono in
+[`analysis/`](analysis/README.md). Il piano, con l'indicazione di **cosa può
+fare una sessione di lavoro e cosa richiede te**, sta in
 [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md).
 
 ## I documenti
@@ -17,12 +19,13 @@ Manca la parte di analisi e visualizzazione: il piano sta in
 | Documento | Cos'è |
 |---|---|
 | [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, il soggetto e i **quattro assi scelti**, le due analisi dedicate al capoluogo, le storie candidate, i principi. |
-| [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e cosa portarsi dietro in caso di repo separato (§12). |
+| [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e la traccia storica della separazione del repository (§12). |
 | [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza.** Le undici regole che governano il progetto: perché misuriamo come misuriamo. MET-9 nasce da un errore reale. Da completare a fine progetto. |
 | [`WORKING-PAPER.md`](WORKING-PAPER.md) | ⚠️ **Bozza.** Il working paper: metodo per un lettore esterno. La sezione dei risultati è provvisoria — si riscrive quando le storie saranno chiuse. |
-| [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **La consegna.** Come separare il repository, cosa resta da scaricare, le decisioni prese e quelle aperte, le dimensioni non ancora considerate, e — soprattutto — come si costruiscono l'analisi, il sito statico e il deploy. Scritto per essere autosufficiente in un repo nuovo. |
+| [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco delle cose che **richiedono te** (una licenza da scegliere, un login SPID, una macchina italiana), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
-| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 17 CSV su territorio, imprese, lavoro, popolazione, redditi, ambiente, sicurezza e turismo, più i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
+| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 19 CSV su territorio, imprese, lavoro, popolazione, famiglie e abitazioni, redditi, ambiente, sicurezza e turismo, più i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
+| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: uno script per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati ogni cifra citata in questi documenti. |
 
 ## Come leggere il registro
 

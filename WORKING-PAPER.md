@@ -35,8 +35,9 @@ provincia e i suoi 205 comuni — a partire da fonti esclusivamente aperte:
 ISTAT (censimento permanente, registro ASIA delle unità locali, criminalità,
 forze di lavoro, commercio estero), MEF (dichiarazioni dei redditi per classi
 di importo), ARPA Lombardia (qualità dell'aria dal 1992 e clima dal 1990),
-Regione Lombardia (flussi turistici). Sedici tabelle tidy, tutte ricostruibili
-con `requests` e la libreria standard di Python, senza chiavi API.
+Regione Lombardia (flussi turistici). Diciannove tabelle tidy, tutte
+ricostruibili con `requests` e la libreria standard di Python, senza chiavi
+API.
 
 Il problema metodologico centrale **non** è l'N piccolo — 205 comuni sono
 abbastanza — ma tre altre cose: la **eterogeneità delle grane** (alcuni assi si
@@ -367,7 +368,7 @@ trasferibile è quasi tutta:
 | [`BRIEF.md`](BRIEF.md) | La domanda, gli assi, le storie candidate |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | Consegna: cosa resta da scaricare, decisioni aperte, come si costruiscono analisi e sito |
 | [`pipeline/`](pipeline/README.md) | Il codice, con le trappole documentate |
-| [`dati/`](dati/README.md) | Le sedici tabelle prodotte |
+| [`dati/`](dati/README.md) | Le diciannove tabelle prodotte |
 
 *Versione 0 — agosto 2026. Da rivedere quando l'analisi sarà stata fatta: la
 §7 è provvisoria e la §6.2 elenca controlli non ancora eseguiti.*

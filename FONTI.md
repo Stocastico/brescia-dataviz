@@ -569,27 +569,36 @@ proxy debole.
 
 ## 8. Portali: stato di raggiungibilità da questo ambiente
 
-Tabella di servizio, per non ripetere tentativi inutili. «Non raggiungibile da
-qui» **non** significa che la fonte non esista: significa che va scaricata da
-una macchina normale. È lo stesso limite che il progetto Donostia documenta per
-`opendata.gipuzkoa.eus` e per idealista.
+Tabella di servizio, per non ripetere tentativi inutili. **Riverificata ad
+agosto 2026** insieme alla pipeline: le righe cambiate rispetto alla prima
+ricognizione sono `esploradati.istat.it` (tornato su, e le tre tavole censuarie
+mancanti sono state scaricate), `comune.brescia.it` (era misto, ora 403) e
+`finanze.gov.it` (403 sulla radice).
+
+«Non raggiungibile da qui» **non** significa che la fonte non esista: significa
+che va scaricata da una macchina normale. È lo stesso limite che il progetto
+Donostia documenta per `opendata.gipuzkoa.eus` e per idealista.
 
 | Host | Esito | Nota |
 |---|---|---|
 | `dati.lombardia.it` | ✓ 200 | API Socrata piena (SoQL, `$where`, `$select`, `$group`). **Il canale di accesso principale.** |
-| `dati.gov.it` | ✓ 200 | CKAN nazionale, `api/3/action/package_search` funziona; fa harvesting anche del catalogo bresciano (115 risultati per «brescia») |
+| `dati.gov.it` | ✓ 302 | CKAN nazionale, `api/3/action/package_search` funziona; fa harvesting anche del catalogo bresciano (115 risultati per «brescia») |
 | `esploradati.istat.it` | ✓ 200 | SDMX: 4.896 dataflow. Le strutture rispondono; alcune serie tornano vuote (v. §4) |
 | `istat.it` (storage cartografia) | ✓ 200 | Basi territoriali e variabili censuarie scaricabili direttamente |
 | `demo.istat.it` | ✓ 200 | — |
-| `finanze.gov.it` | ✓ 200 | — |
+| `finanze.gov.it` | ~ 403 sulla radice | i file dei redditi si scaricano lo stesso (§3): è la home a rifiutare, non il percorso dei dati |
 | `overpass-api.de` | ✓ 200 | Geometrie OSM |
 | `planetarycomputer.microsoft.com` | ✓ 200 | Landsat |
 | `openpnrr.it` | ✓ 200 | — |
-| `elezioni.interno.gov.it` | ✓ 200 | — |
+| `elezioni.interno.gov.it` | ✓ 200 | risultati elettorali per sezione (Eligendo); `eligendo.interno.gov.it` invece non risponde |
+| `servizi2.inps.it` | ~ 200 ma HTML | gli osservatori statistici INPS rispondono con la pagina del portale, non con JSON: l'endpoint dati va trovato dentro l'applicazione, **non è un'API pubblica documentata** |
+| `bancadaticsa.inail.it`, `dati.inail.it` | ✓ 301 | INAIL: **da testare davvero**, finora solo il redirect |
 | `insideairbnb.com` | ✓ 200 | (ma senza Brescia) |
 | `agenziaentrate.gov.it` | ✓ 200 | portale sì, dati OMI dietro login |
-| `dati.comune.brescia.it` | ✗ timeout / 503 | **il portale del Comune**: esiste, è indicizzato, ma l'host non risponde da qui né in HTTP né in HTTPS |
-| `comune.brescia.it` | ~ misto | `/it/documenti_pubblici/statistica-demografica` risponde 200; molti vecchi percorsi danno 410 (sito ristrutturato) |
+| `dati.comune.brescia.it` | ✗ connessione azzerata | **il portale del Comune**: esiste, è indicizzato, ma l'host non risponde da qui né in HTTP né in HTTPS. Riprovato ad agosto 2026: identico |
+| `comune.brescia.it` | ✗ 403 | risponde ma rifiuta: nella prima ricognizione `/it/documenti_pubblici/statistica-demografica` dava 200, ora l'anti-bot blocca anche quello |
+| `coeweb.istat.it` | ✗ nessuna risposta | portale dismesso, confermato (§1-ter) |
+| `dati-ustat.mur.gov.it` | ✗ connessione azzerata | open data MUR sugli atenei |
 | `geoportale.comune.brescia.it` | ✗ nessuna risposta | — |
 | `immobiliare.it`, `idealista.it` | ✗ 403 | anti-bot |
 | `opencoesione.gov.it`, `italiadomani.gov.it` | ✗ 403 | — |
@@ -692,14 +701,32 @@ Le altre regole imparate sul campo:
    delittuosità provinciale supera i 120 MB e va in timeout a 220 s): filtrare
    sempre per `REF_AREA` quando la dimensione lo consente.
 5. Le etichette leggibili arrivano solo con `labels=both`; senza, si ottengono
-   i codici nudi.
+   i codici nudi. In che **lingua** siano le etichette è un'altra questione:
+   vedi il punto 7.
 6. **Più codici nella stessa dimensione non si possono chiedere.** La sintassi
    SDMX `017001+017002+…` riceve `400`, e **non per la lunghezza dell'URL**:
    con 50 codici (430 caratteri) fallisce esattamente come con 205 (1.515).
    Dove il punto 4 dice «filtrare per `REF_AREA`» va letto come *un* valore
-   solo: per un insieme di comuni l'unica strada è scaricare l'Italia e
-   filtrare in locale.
-7. **L'host può sparire.** Ad agosto 2026, a metà lavorazione,
+   solo.
+
+   Restano quindi due strade, e la pipeline ha scelto la prima:
+   **scaricare l'Italia e filtrare in locale** (una richiesta da centinaia di
+   MB e venti minuti per tavola), oppure **205 richieste da un comune
+   ciascuna**, che funzionano — verificato:
+   `data/IT1,DF_DCSS_FAMIGLIE_TV_3,1.0/A.017029....` risponde `200` con 15 KB.
+   La seconda strada non è stata provata a fondo e potrebbe essere molto più
+   rapida e leggera; il rischio è il rate limiting, che con 205 × 15 = 3.075
+   richieste diventa una questione seria. Vale un esperimento su una tavola
+   sola prima di riscrivere `_censimento.py`.
+7. **Le etichette si chiedono in italiano con `Accept-Language: it`.** Senza
+   quell'header ISTAT risponde in inglese, e nelle tabelle finiscono modalità
+   come `private households on 31st December` o `4 and over` — che è ciò che è
+   successo qui, in un progetto che ha deciso di stare tutto in italiano. La
+   verifica è diretta: stessa richiesta, stesso URL, con l'header le stesse
+   righe diventano `famiglie con tutti i componenti stranieri al 31 dicembre` e
+   `6 e più`. Rimediare costa una riga in `fetch.py` **e un riscarico
+   completo**, perché la cache in `dati/raw/` è in inglese.
+8. **L'host può sparire.** Ad agosto 2026, a metà lavorazione,
    `esploradati.istat.it` ha smesso di accettare connessioni TCP (timeout in
    `connect`, non in lettura) mentre `www.istat.it` continuava a rispondere
    `200`. Non è un errore di chiave né di header: se le richieste che
@@ -844,11 +871,16 @@ turismo, e l'assunto che tutto sia misurato alla stessa grana.
 
 ---
 
-*Ricognizione effettuata ad agosto 2026, in tre passate: la prima sugli assi
-casa/sicurezza/clima/turismo; la seconda su lavoro, imprese, istruzione e
+*Ricognizione effettuata ad agosto 2026, in quattro passate: la prima sugli
+assi casa/sicurezza/clima/turismo; la seconda su lavoro, imprese, istruzione e
 cittadinanze; la terza per spostare l'unità di analisi su comune e provincia,
-chiudere il commercio estero e mettere per iscritto le ricette funzionanti. Ogni
-riga marcata «verificata ✓» è stata interrogata realmente e porta la sua prova;
-le altre dichiarano lo stato di accesso che le descrive. L'unico dato prodotto
-finora è la tabella anagrafica in [`dati/`](dati/README.md); la pipeline non
-esiste ancora.*
+chiudere il commercio estero e mettere per iscritto le ricette funzionanti; la
+quarta per costruire la pipeline, la base geografica dei 205 comuni e le
+tabelle censuarie rimaste indietro. Ogni riga marcata «verificata ✓» è stata
+interrogata realmente e porta la sua prova; le altre dichiarano lo stato di
+accesso che le descrive.*
+
+*Lo stato dei dati prodotti è in [`dati/README.md`](dati/README.md), quello
+della pipeline in [`pipeline/README.md`](pipeline/README.md). La sezione §12,
+sulla separazione del repository, è ormai **traccia storica**: la separazione è
+avvenuta e questo è il repository nuovo.*
