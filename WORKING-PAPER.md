@@ -286,8 +286,9 @@ sistematica.** Vanno letti come indizi da verificare, non come conclusioni.
    hanno spostato la struttura: la risposta preliminare alla domanda
    originale è che sì, resta un territorio di microimprese.
 2. **La crescita è nella fascia intermedia.** Gli addetti in unità da 10 a 249
-   crescono di circa 13 mila in provincia; è lì che il territorio si muove, non
-   agli estremi.
+   crescono di 23.840 in provincia — l'81 % dei 29.421 guadagnati in tutto —
+   mentre le micro-unità ne aggiungono 6.842 e le grandi ne perdono 1.260. È lì
+   che il territorio si muove, non agli estremi.
 3. **Il capoluogo e il territorio divergono**, ma il perché non è quello che
    sembrava (§6.1). La divergenza dei totali è reale; la sua interpretazione
    industriale non regge.

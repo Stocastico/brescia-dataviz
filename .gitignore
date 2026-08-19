@@ -9,3 +9,6 @@ __pycache__/
 .pytest_cache/
 *.egg-info/
 .venv/
+
+# Uscite degli script di analisi: si rigenerano con `--save`.
+analysis/output/

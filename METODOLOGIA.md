@@ -56,7 +56,7 @@ I tre livelli — 205 comuni, provincia (`ITC47`), comune di Brescia (`017029`)
 «Brescia» e «il bresciano» danno risposte diverse alla stessa domanda.
 
 **Il capoluogo va trattato come outlier dichiarato.** Con 199.853 abitanti
-contro una mediana attorno ai 2.000, in una coropletica satura la scala e in
+contro una mediana comunale di 3.671, in una coropletica satura la scala e in
 una correlazione la guida: servono classi o scale robuste nelle mappe e il
 leave-one-out nelle correlazioni (MET-5).
 
@@ -104,8 +104,8 @@ non entra nel sito.
 
 Con 205 comuni si sta meglio che con i 19 barrios di Donostia, ma la
 distribuzione è fortemente asimmetrica: **Brescia città è un ordine di
-grandezza sopra tutto il resto** (199.853 abitanti contro una mediana attorno
-ai 2.000) e i comuni del Garda sono estremi su qualunque cosa tocchi il
+grandezza sopra tutto il resto** (199.853 abitanti contro una mediana comunale
+di 3.671) e i comuni del Garda sono estremi su qualunque cosa tocchi il
 turismo.
 
 Quindi ogni correlazione pubblicata porta:
