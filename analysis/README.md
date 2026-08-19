@@ -12,11 +12,30 @@ il punto.
 |---|---|
 | `verifica_cifre.py` | Ricalcola dai CSV **ogni cifra citata nei documenti** e la confronta con quella scritta. Esce con codice 1 se una diverge. |
 | `variazione_popolazione.py` | Tasso annualizzato di variazione della popolazione per comune, 2018–2024. La prima delle analisi previste in §5. |
+| `velocita_di_cambio.py` | Lo stesso tasso su **addetti, unità locali e reddito**, ciascuno sulla sua finestra. |
+| `livelli_e_variazioni.py` | I quattro quadranti livello/crescita, e il test di convergenza fatto sul livello **iniziale** — che sul reddito cambia segno al risultato. |
+| `autocorrelazione_spaziale.py` | Indice di Moran sui 205 comuni, con la contiguità ricavata dal GeoJSON e la significatività per permutazione. |
+| `_tabelle.py` | Non è un'analisi: è la lettura delle tabelle e la statistica di base che gli script hanno in comune. |
 
 ```bash
-python analysis/verifica_cifre.py                 # 24 verifiche
-python analysis/variazione_popolazione.py --save  # + CSV in analysis/output/
+python analysis/verifica_cifre.py                    # 24 verifiche
+python analysis/variazione_popolazione.py --save     # + CSV in analysis/output/
+python analysis/velocita_di_cambio.py reddito
+python analysis/livelli_e_variazioni.py
+python analysis/autocorrelazione_spaziale.py --save
 ```
+
+## Il modulo condiviso, e l'unico script che non lo usa
+
+`_tabelle.py` esiste perché ogni script rifarebbe le stesse tre cose: aprire un
+CSV di `dati/processed/`, ricavarne una serie per comune e anno, e calcolare le
+due correlazioni che MET-6 impone di riportare in coppia. Il trattino basso dice
+che non è un'analisi.
+
+**`verifica_cifre.py` non lo usa, ed è deliberato.** Un verificatore che
+condivide il codice con ciò che verifica non verifica niente: se la lettura del
+CSV avesse un errore, lo avrebbero entrambi e i numeri tornerebbero lo stesso.
+Rilegge i file per conto suo, ed è l'unico script a cui la duplicazione fa bene.
 
 ## Perché `verifica_cifre.py` esiste
 
