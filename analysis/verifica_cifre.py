@@ -30,6 +30,7 @@ PROCESSED = RADICE / "dati" / "processed"
 OUTPUT = Path(__file__).resolve().parent / "output"
 
 CAPOLUOGO = "017029"
+IMPONIBILE = "AGGINCR"  # codice MEF, non etichetta: le etichette cambiano lingua
 
 
 def leggi(nome: str) -> list[dict[str, str]]:
@@ -150,7 +151,7 @@ def reddito_medio(anno: str) -> dict[str, float]:
         valore = numero(riga["valore"])
         if valore is None:
             continue
-        deposito = imponibile if riga["indicatore"].startswith("income") else contribuenti
+        deposito = imponibile if riga["codice_indicatore"] == IMPONIBILE else contribuenti
         deposito[riga["codice_istat"]] += valore
     return {c: imponibile[c] / contribuenti[c] for c in imponibile if contribuenti.get(c)}
 
@@ -309,6 +310,36 @@ def variazioni_capoluoghi() -> list[float]:
         if serie[anni[0]] >= 2000:
             fuori.append((serie[anni[-1]] / serie[anni[0]] - 1) * 100)
     return sorted(fuori)
+
+
+def decili(valori: dict[str, float]) -> float:
+    """p90/p10: la dispersione senza farla decidere a due comuni su duecento."""
+    ordinati = sorted(valori.values())
+    return ordinati[int(len(ordinati) * 0.9)] / ordinati[int(len(ordinati) * 0.1)]
+
+
+def convergenza_bergamo() -> float:
+    """Lo stesso conto della convergenza, sui comuni della provincia di Bergamo."""
+    righe = leggi("redditi_comuni_confronto.csv")
+    imponibile: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    contribuenti: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    for riga in righe:
+        valore = numero(riga["valore"])
+        if valore is None:
+            continue
+        deposito = imponibile if riga["codice_indicatore"] == IMPONIBILE else contribuenti
+        deposito[riga["codice_istat"]][riga["anno"]] += valore
+    medi: dict[str, dict[str, float]] = {}
+    for codice, per_anno in imponibile.items():
+        for anno, totale in per_anno.items():
+            teste = contribuenti[codice].get(anno)
+            if teste:
+                medi.setdefault(codice, {})[anno] = totale / teste
+    codici = [c for c in medi if "2012" in medi[c] and "2023" in medi[c]]
+    return correlazione(
+        [medi[c]["2012"] for c in codici],
+        [tasso(medi[c]["2012"], medi[c]["2023"], 11) for c in codici],
+    )
 
 
 def vicini() -> dict[str, set[str]]:
@@ -724,6 +755,27 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         0.01,
     ),
     # --- il confronto fra province (MET-14) ------------------------------
+    (
+        "WORKING-PAPER §7.3 / sito §I redditi",
+        "la convergenza dei redditi a Bergamo: Pearson −0,48",
+        -0.48,
+        convergenza_bergamo,
+        0.01,
+    ),
+    (
+        "WORKING-PAPER §7.3 / sito §I redditi",
+        "rapporto fra decili del reddito, 2012: 1,34",
+        1.345,
+        lambda: decili(reddito_medio("2012")),
+        0.005,
+    ),
+    (
+        "WORKING-PAPER §7.3 / sito §I redditi",
+        "rapporto fra decili del reddito, 2023: 1,26 (si stringe)",
+        1.265,
+        lambda: decili(reddito_medio("2023")),
+        0.005,
+    ),
     (
         "METODOLOGIA MET-14 / WORKING-PAPER §7.1",
         "unità locali sotto i 10: mediana provinciale italiana 94,4 %",

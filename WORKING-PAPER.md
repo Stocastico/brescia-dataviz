@@ -341,9 +341,11 @@ che i dati non sostengono.
 **Non ancora eseguiti**, in ordine di importanza:
 
 - ✅ **Confronto fra province, sulle imprese** (`analysis/confronto_province.py`).
-  Fatto, ed è il controllo che ha cambiato di più il testo: la §7.1 diceva il
-  contrario prima di averlo. Da estendere a redditi, popolazione e turismo, che
-  richiedono un download in più ciascuno.
+  È il controllo che ha cambiato di più il testo: la §7.1 diceva il contrario
+  prima di averlo.
+- ✅ **Replicazione della convergenza dei redditi su Bergamo**
+  (`analysis/convergenza_confronto.py`). Il risultato regge identico fuori da
+  Brescia, il che lo rende più solido e meno bresciano.
 - **Rottura Covid**, testata in modo sistematico. Oggi è dichiarata (MET-8) e
   mostrata su un caso solo — la serie della classe ≥250 del capoluogo, dove la
   discontinuità del 2020 è visibile a occhio.
@@ -427,9 +429,22 @@ dove partiva basso**.
 | *(livello 2023 contro crescita — l'artefatto di MET-12)* | *+0,12* | *+0,07* |
 
 Togliere gli outlier rafforza il risultato invece di scioglierlo, che è il verso
-rassicurante. Ma **convergenza non è uguaglianza**: nel 2023 il comune più ricco
-dichiara 2,51 volte il più povero, e nel 2012 erano 2,17. La distanza si è
-ridotta di poco e resta grande.
+rassicurante.
+
+**La dispersione si riduce, gli estremi no.** Sono due fatti diversi e vanno
+tenuti separati: la distribuzione si stringe su ogni misura robusta — deviazione
+standard dei logaritmi da 0,123 a 0,110, rapporto fra decili da 1,34 a 1,26 —
+mentre il rapporto fra il comune più ricco e il più povero **cresce**, da 2,17 a
+2,51. Quel rapporto lo decidono due comuni su duecentocinque, e sono sempre gli
+stessi due (Padenghe sul Garda e Magasa): descrive quei due, non la provincia.
+Una versione precedente di questa sezione scriveva che «la distanza si è ridotta
+di poco» citando proprio quel rapporto, ed era sbagliata.
+
+**E la convergenza non è bresciana.** Rifatto identico sui 240 comuni della
+provincia di Bergamo, il coefficiente vale **−0,48** contro il −0,45 di Brescia:
+la stessa cosa con la stessa forza (`analysis/convergenza_confronto.py`). Due
+province non sono l'Italia, ma bastano a escludere che sia un artefatto locale e
+a togliere a questo risultato l'aggettivo «bresciano».
 
 Tre avvertenze che il testo pubblicato ripete e che vanno ripetute anche qui:
 sono **euro correnti** (nessun deflatore è entrato nel progetto, quindi parte
@@ -492,15 +507,19 @@ non sono 205 osservazioni indipendenti.
 - **Gli aggregati amministrativi sono fragili** (§6.1): il registro delle unità
   locali misura dove le cose sono *registrate*, che non sempre è dove
   accadono.
-- **Il termine di paragone c'è solo sulle imprese.** Il confronto con le 107
-  province (§7.1) e con i capoluoghi (§7.2) è stato fatto sul registro ASIA, ed
-  è servito: ha corretto la §7.1 e rafforzato la §7.2. Ma **sulla convergenza
-  dei redditi, sullo spopolamento e sul turismo non esiste**, e quelle tre
-  sezioni restano misurate contro sé stesse. La convergenza in particolare
-  potrebbe essere un fatto italiano prima che bresciano: finché non lo si
-  verifica, la §7.3 va letta come «a Brescia succede questo», mai come «a
-  Brescia, a differenza di altrove, succede questo». Estenderla costa un
-  download dei redditi per almeno una seconda provincia.
+- **Il termine di paragone copre imprese e redditi, non il resto.** Il confronto
+  con le 107 province (§7.1), con i capoluoghi (§7.2) e la replicazione della
+  convergenza su Bergamo (§7.3) sono stati fatti, e hanno corretto una sezione e
+  rafforzato le altre due. Ma **sullo spopolamento montano e sul turismo non
+  esiste**: quelle due letture restano misurate contro sé stesse, e vanno scritte
+  come «a Brescia succede questo», mai come «a Brescia, a differenza di altrove,
+  succede questo».
+- **Due province non sono l'Italia.** La replicazione su Bergamo esclude che la
+  convergenza dei redditi sia un artefatto locale; non stabilisce che sia
+  generale. Bergamo è per giunta la provincia **più simile** a Brescia fra
+  quelle disponibili, il che rende il controllo il più debole possibile fra
+  quelli sensati: un controllo forte sarebbe una provincia diversa per
+  struttura.
 - **La variazione di popolazione è netta**: non distingue saldo naturale da
   migrazione, quindi «spopolamento montano» qui è una descrizione e non una
   spiegazione.

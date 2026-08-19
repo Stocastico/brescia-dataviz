@@ -148,12 +148,33 @@
     grafici uno accanto all'altro perché la differenza si veda.</p>
   </div>
 
-  <p>Convergenza non vuol dire uguaglianza. Nel
-  {{c:anno_reddito_finale}} il comune più ricco dichiara
-  {{c:reddito_massimo}} euro per contribuente e il più povero
-  {{c:reddito_minimo}}: un rapporto di {{c:reddito_rapporto}} a uno, che
-  {{c:anno_reddito_iniziale}} anni prima era {{c:reddito_rapporto_iniziale}} a
-  uno. La distanza si è ridotta di poco, e resta grande.</p>
+  <p>Convergenza non vuol dire uguaglianza, e nemmeno che tutti si avvicinino.
+  La distribuzione si è stretta davvero — fra il comune che sta al novantesimo
+  percentile e quello che sta al decimo il rapporto scende da
+  {{c:reddito_decili_iniziale}} a {{c:reddito_decili}} — ma <b>i due estremi si
+  sono allontanati</b>: {{c:reddito_massimo_comune}} dichiara
+  {{c:reddito_massimo}} euro per contribuente e {{c:reddito_minimo_comune}}
+  {{c:reddito_minimo}}, cioè {{c:reddito_rapporto}} a uno contro i
+  {{c:reddito_rapporto_iniziale}} di undici anni prima.</p>
+
+  <div class="in-chiaro">
+    <b>La metrica, in chiaro</b>
+    <p>Il rapporto fra il massimo e il minimo lo decidono due comuni su
+    duecentocinque, e qui sono sempre gli stessi due: cambia perché a uno dei
+    due è successo qualcosa, non perché sia cambiata la provincia. Il rapporto
+    fra decili guarda la stessa distanza saltando le code, e dice il
+    contrario.</p>
+    <p>Sono due risposte diverse alla stessa domanda, ed entrambe sono vere:
+    il grosso dei comuni si è avvicinato, la cima si è staccata.</p>
+  </div>
+
+  <p>La convergenza, però, non è una specialità bresciana. Rifatto identico sui
+  {{c:comuni_bergamo}} comuni della provincia di Bergamo — la gemella per dimensione e storia
+  industriale — il conto dà {{c:convergenza_bergamo}} contro i
+  {{c:convergenza_pearson}} di Brescia: la stessa cosa, con la stessa forza.
+  Quello che succede qui succede anche lì, e forse in tutta Italia: due province
+  non bastano a dirlo, ma bastano a togliere a questa storia la parola
+  «bresciana».</p>
 
   <p>E il reddito è ancorato alla geografia quanto la popolazione: l'indice di
   Moran sul livello del {{c:anno_reddito_finale}} vale {{c:moran_reddito}}, più

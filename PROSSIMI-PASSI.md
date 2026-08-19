@@ -59,7 +59,7 @@ Indice:
 | Pipeline | ✅ funzionante, `requests` + libreria standard, 167 test verdi |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
 | Tabelle tidy | ✅ 23 CSV in [`dati/processed/`](dati/README.md), versionati; manca solo `migrazioni_comuni.csv` |
-| Analisi | ✅ dieci script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province |
+| Analisi | ✅ undici script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province |
 | Storie scelte | ✅ **cinque**, scritte e pubblicate nel documento narrativo — l'ultima delle quali corregge le altre. Le candidate rimaste stanno in `BRIEF.md` |
 | Contratto dati per il sito | ✅ `metric_*.json` + registro, con i cinque invarianti come test |
 | Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega |
@@ -386,9 +386,9 @@ Riadattate al caso bresciano. La prima è fatta, le altre no.
   andato oltre Bergamo: gli stessi indicatori su tutte e 107 le province, perché
   i file grezzi nazionali erano già su disco e il costo era il tempo di
   rileggerli. Ha corretto la frase più ripetuta del progetto (MET-14) e
-  rafforzato MET-9. ⏳ Resta da estendere a **redditi, popolazione e turismo**,
-  che richiedono un download in più ciascuno: la convergenza dei redditi
-  potrebbe essere un fatto italiano prima che bresciano, e oggi non lo sappiamo.
+  rafforzato MET-9. ✅ Esteso ai **redditi** con `convergenza_confronto.py`: la
+  convergenza regge identica a Bergamo (−0,48 contro −0,45), quindi è solida e
+  non è bresciana. ⏳ Restano fuori **popolazione e turismo**.
 
 ### 5.3 La convenzione di `analysis/`
 
@@ -746,7 +746,7 @@ entra nel tempo che hai, non a fare un piano.
 | 🙋 Rileggere i testi del sito | **1 h** | è il tuo nome sopra |
 | 🤖 Scarico delle migrazioni + riscarico in italiano delle tre tavole censuarie (§2.4) | **una notte di attesa** | l'unico dataset previsto che manchi, e tre tabelle oggi non pubblicabili |
 | 🤖 Decomposizione della popolazione: saldo naturale contro migrazione | **mezza giornata** | rispondere alla domanda che la prima storia del sito dichiara di non poter rispondere |
-| 🤖 Estendere il confronto fra province a redditi, popolazione e turismo | **mezza giornata** | oggi il termine di paragone c'è solo sulle imprese, e senza non si sa se la convergenza dei redditi sia bresciana o italiana |
+| 🤖 Estendere il confronto fra province a popolazione e turismo | **mezza giornata** | imprese e redditi il termine di paragone ce l'hanno; lo spopolamento montano no, ed è una storia intera del sito |
 | 🤖 Riscrivere la §7 del working paper con le quattro storie | **mezza giornata** | il documento per un lettore esterno |
 | 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |
 | 🙋 I download manuali (§2.2) | **2–4 h in tutto** | estensioni, nessun asse portante |
@@ -772,12 +772,14 @@ una tabella.
 
 ### Se hai un weekend
 
-Estendere il confronto fra province oltre le imprese. Sul registro ASIA è già
-fatto, ed è servito più di qualunque altra analisi: ha smontato la frase che il
-progetto ripeteva dal primo giorno. Sui redditi, sulla popolazione e sul turismo
-il termine di paragone non c'è, e la convergenza dei redditi — che nel sito è
-una storia intera — potrebbe benissimo essere un fatto italiano. Costa un
-download per fonte, e lo schema è già scritto in `datasets/province.py`.
+Estendere il confronto fra province a **popolazione e turismo**. Sulle imprese e
+sui redditi è fatto, ed è servito più di qualunque altra analisi: ha smontato una
+frase che il progetto ripeteva dal primo giorno e ha tolto un aggettivo a
+un'altra. Sullo spopolamento montano — che nel sito è la prima storia — il
+termine di paragone non c'è: si svuota anche il resto delle Alpi, e quanto? Lo
+schema è già scritto in `datasets/province.py` e in
+`datasets/redditi_confronto.py`, che sono i due modi diversi di farlo a seconda
+che la fonte si possa filtrare in locale o no.
 
 **Da dove ripartire in ogni caso**: `python analysis/verifica_cifre.py`. Se le
 verifiche passano, le tabelle sono a posto e i documenti dicono il

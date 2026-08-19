@@ -80,8 +80,9 @@ provincia). È MET-9, che era la questione aperta più importante del progetto e
 
 Le altre storie del sito: **93 comuni su 205 perdono abitanti**, e non sono
 sparsi a caso ma contigui, tutta la montagna; i **redditi convergono** — chi
-partiva sotto cresce più in fretta, correlazione −0,45 — anche se il comune più
-ricco dichiara ancora 2,5 volte il più povero, ed era 2,2 undici anni prima; e
+partiva sotto cresce più in fretta, correlazione −0,45, e lo stesso conto su
+Bergamo dà −0,48, quindi non è una specialità locale — anche se mentre il grosso
+dei comuni si avvicina i due estremi si allontanano; e
 la provincia è **davvero due economie**, con la manifattura nelle valli e nella
 Bassa e l'alloggio sul Garda, divise così nettamente che la specializzazione
 settoriale (Moran 0,44) è la variabile economica più raggruppata nello spazio

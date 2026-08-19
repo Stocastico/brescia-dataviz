@@ -377,10 +377,19 @@ movimento così diffuso non è una vicenda industriale che accade
 contemporaneamente in quaranta città diverse: è, fino a prova contraria, un
 cambiamento di come si conta.
 
+Il terzo uso della stessa regola ha invece **confermato** un risultato e gli ha
+tolto un aggettivo: la convergenza dei redditi comunali, che è il risultato più
+netto delle analisi, rifatta identica sui 240 comuni di Bergamo dà −0,48 contro
+il −0,45 di Brescia. Il risultato regge fuori da qui, il che lo rende più solido
+e non più bresciano.
+
 **La regola.** *Prima di dire che un valore caratterizza il territorio, guardare
-quanto fa altrove.* Dove il confronto non c'è — qui manca su redditi, popolazione
-e turismo — va **dichiarato**, e la frase va scritta come «a Brescia succede
-questo», mai come «a Brescia, a differenza di altrove, succede questo».
+quanto fa altrove.* Un confronto può correggere una frase (le microimprese),
+rafforzarne un'altra (le grandi unità locali) o toglierle un aggettivo (la
+convergenza): sono tre esiti diversi e tutti e tre utili. Dove il confronto non
+c'è — qui manca su spopolamento e turismo — va **dichiarato**, e la frase va
+scritta come «a Brescia succede questo», mai come «a Brescia, a differenza di
+altrove, succede questo».
 
 ---
 

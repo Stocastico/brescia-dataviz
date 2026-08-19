@@ -404,8 +404,20 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
     fuori["reddito_minimo"] = numero_it(min(red_f.values()))
     fuori["reddito_massimo"] = numero_it(max(red_f.values()))
     fuori["reddito_rapporto"] = numero_it(max(red_f.values()) / min(red_f.values()), 1)
-    rapporto_iniziale = max(red_i.values()) / min(red_i.values())
-    fuori["reddito_rapporto_iniziale"] = numero_it(rapporto_iniziale, 1)
+    fuori["reddito_rapporto_iniziale"] = numero_it(max(red_i.values()) / min(red_i.values()), 1)
+
+    def decili(valori: dict[str, float]) -> float:
+        """p90/p10: la stessa domanda del rapporto fra gli estremi, ma senza
+        farla decidere a due comuni su duecento."""
+        ordinati = sorted(valori.values())
+        return ordinati[int(len(ordinati) * 0.9)] / ordinati[int(len(ordinati) * 0.1)]
+
+    fuori["reddito_decili"] = numero_it(decili(red_f), 2)
+    fuori["reddito_decili_iniziale"] = numero_it(decili(red_i), 2)
+    estremo_alto = max(red_f, key=lambda c: red_f[c])
+    estremo_basso = min(red_f, key=lambda c: red_f[c])
+    fuori["reddito_massimo_comune"] = comuni[estremo_alto]["comune"]
+    fuori["reddito_minimo_comune"] = comuni[estremo_basso]["comune"]
 
     crescita_red = valori(metriche["crescita_reddito"])
     comuni_comuni = [c for c in crescita_red if c in red_i]
@@ -454,6 +466,41 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
                 (confronto["totale_provincia"][1] / confronto["totale_provincia"][0] - 1) * 100
                 if confronto["totale_provincia"][0] else 0.0
             )
+
+    # La convergenza dei redditi nella provincia di confronto: serve a dire se
+    # il risultato più netto delle analisi sia bresciano (MET-14).
+    percorso_confronto = PROCESSED / "redditi_comuni_confronto.csv"
+    if percorso_confronto.exists():
+        import csv as _csv
+
+        imponibile_bg: dict[str, dict[str, float]] = {}
+        contribuenti_bg: dict[str, dict[str, float]] = {}
+        with percorso_confronto.open(encoding="utf-8") as handle:
+            for riga in _csv.DictReader(handle):
+                if not riga["valore"]:
+                    continue
+                deposito = imponibile_bg if riga["codice_indicatore"] == "AGGINCR" else contribuenti_bg
+                anni = deposito.setdefault(riga["codice_istat"], {})
+                anni[riga["anno"]] = anni.get(riga["anno"], 0.0) + float(riga["valore"])
+        medi: dict[str, dict[str, float]] = {}
+        for codice, per_anno in imponibile_bg.items():
+            for anno, totale in per_anno.items():
+                teste = contribuenti_bg.get(codice, {}).get(anno)
+                if teste:
+                    medi.setdefault(codice, {})[anno] = totale / teste
+        anni_bg = sorted({a for v in medi.values() for a in v})
+        primo_bg, ultimo_bg = anni_bg[0], anni_bg[-1]
+        codici_bg = [c for c in medi if primo_bg in medi[c] and ultimo_bg in medi[c]]
+        durata_bg = int(ultimo_bg) - int(primo_bg)
+        fuori["convergenza_bergamo"] = numero_it(
+            pearson(
+                [medi[c][primo_bg] for c in codici_bg],
+                [((medi[c][ultimo_bg] / medi[c][primo_bg]) ** (1 / durata_bg) - 1) * 100
+                 for c in codici_bg],
+            ),
+            2,
+        )
+        fuori["comuni_bergamo"] = numero_it(len(codici_bg))
 
     confronto = confronto_province()
     if confronto:

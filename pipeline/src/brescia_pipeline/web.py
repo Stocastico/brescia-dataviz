@@ -101,6 +101,7 @@ def _crescita(serie: Valori, etichetta_periodo: str) -> Valori:
 FONTE_ASIA = "ISTAT — ASIA, unità locali delle imprese attive"
 FONTE_POP = "ISTAT — popolazione residente comunale"
 FONTE_MEF = "MEF — dichiarazioni dei redditi delle persone fisiche"
+IMPONIBILE = "AGGINCR"  # codice MEF, non etichetta: le etichette cambiano lingua
 FONTE_TURISMO = "Regione Lombardia — flussi turistici per comune"
 
 
@@ -123,7 +124,8 @@ def _indicatori() -> list[dict[str, Any]]:
         valore = to_number(riga["valore"])
         if valore is None:
             continue
-        deposito = imponibile if riga["indicatore"].startswith("income") else contribuenti
+        # Sul codice, non sull'etichetta: l'etichetta cambia lingua.
+        deposito = imponibile if riga["codice_indicatore"] == IMPONIBILE else contribuenti
         anni = deposito.setdefault(riga["codice_istat"], {})
         anni[riga["anno"]] = (anni.get(riga["anno"]) or 0.0) + valore
     reddito = _rapporto(imponibile, contribuenti)

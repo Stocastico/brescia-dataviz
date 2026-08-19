@@ -30,6 +30,7 @@ from .datasets import (
     popolazione,
     province,
     redditi,
+    redditi_confronto,
     sezioni,
     sicurezza,
     sintesi,
@@ -52,6 +53,7 @@ DATASETS: dict[str, Callable[[dict[str, str]], None]] = {
     "sicurezza": sicurezza.build,
     "ambiente": ambiente.build,
     "redditi": redditi.build,
+    "redditi_confronto": redditi_confronto.build,
     "commercio_estero": commercio_estero.build,
     # devono restare in coda: leggono le tabelle prodotte dagli altri
     "sintesi": sintesi.build,

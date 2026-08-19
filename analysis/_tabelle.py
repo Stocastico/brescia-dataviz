@@ -28,6 +28,10 @@ PROCESSED = RADICE / "dati" / "processed"
 OUTPUT = Path(__file__).resolve().parent / "output"
 
 CAPOLUOGO = "017029"
+# Codici MEF dell'imponibile e dei contribuenti. Sono codici e non etichette
+# per la ragione spiegata in `pipeline/datasets/redditi.py`: le etichette
+# cambiano lingua.
+IMPONIBILE = "AGGINCR"
 PROVINCIA = "ITC47"
 
 Serie = dict[str, dict[str, float]]  # codice comune -> anno -> valore
@@ -92,11 +96,15 @@ def serie_imprese(indicatore: str, classe: str = "totale") -> Serie:
     return per_comune
 
 
-def serie_reddito() -> Serie:
+def serie_reddito(nome_file: str = "redditi_comuni.csv", provincia: str | None = None) -> Serie:
     """Reddito imponibile medio per contribuente, **in euro correnti**.
 
     Somma degli imponibili diviso somma dei contribuenti, su tutte le classi di
     importo. È un rapporto fra due totali, non la media delle medie di classe.
+
+    Con `nome_file` e `provincia` legge la stessa cosa da una tabella di
+    confronto (`redditi_comuni_confronto.csv`), che ha le stesse colonne più il
+    territorio: serve a chiedersi se un risultato bresciano sia bresciano.
 
     ⚠️ **Nominale.** Le tabelle MEF non portano un deflatore e il progetto non
     ne ha scaricato uno: fra 2012 e 2023 una parte della crescita è inflazione,
@@ -105,11 +113,16 @@ def serie_reddito() -> Serie:
     """
     imponibile: dict[str, dict[str, float]] = {}
     contribuenti: dict[str, dict[str, float]] = {}
-    for riga in leggi("redditi_comuni.csv"):
+    for riga in leggi(nome_file):
+        if provincia is not None and riga.get("codice_provincia") != provincia:
+            continue
         valore = numero(riga["valore"])
         if valore is None:
             continue
-        deposito = imponibile if riga["indicatore"].startswith("income") else contribuenti
+        # Sul **codice**, non sull'etichetta: l'etichetta cambia lingua con
+        # l'header della richiesta, e una tabella scaricata ieri e una scaricata
+        # oggi non si somigliano più (vedi `datasets/redditi.py`).
+        deposito = imponibile if riga["codice_indicatore"] == IMPONIBILE else contribuenti
         chiave = deposito.setdefault(riga["codice_istat"], {})
         chiave[riga["anno"]] = chiave.get(riga["anno"], 0.0) + valore
 
