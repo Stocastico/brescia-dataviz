@@ -3,11 +3,12 @@
 Tre cartelle:
 
 - **`processed/`** — le tabelle tidy, **versionate**: sono il prodotto del
-  progetto. Circa 8 MB in tutto.
+  progetto. Circa 12 MB in tutto.
 - **`geo/`** — la geometria di riferimento, **versionata**: i confini dei 205
   comuni in GeoJSON (320 KB). È la base di ogni coropletica.
-- **`raw/`** — le risposte grezze delle fonti, **non versionate** (centinaia di
-  MB) e rigenerabili con `python -m brescia_pipeline.build` da
+- **`raw/`** — le risposte grezze delle fonti, **non versionate** (qualche GB:
+  le tavole censuarie arrivano non filtrate, una nazione intera per volta) e
+  rigenerabili con `python -m brescia_pipeline.build` da
   [`../pipeline/`](../pipeline/README.md).
 
 Tutto è ricostruibile: nessun file qui è stato scritto a mano.
@@ -70,23 +71,35 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
 | `popolazione_comuni.csv` | 5.302 | Popolazione residente, in famiglia, in convivenza e numero di famiglie, per comune, 2018–2024. |
 | `redditi_comuni.csv` | 36.952 | Contribuenti e reddito complessivo per **classe di importo** (8 classi, da «≤ 0 €» a «oltre 120.000 €»), per comune, 2012–2023. Dà la distribuzione, non solo la media: è ciò che serve per parlare di disuguaglianza. |
 
-### Chi vive nel bresciano — ⏳ pipeline pronta, tabelle non ancora prodotte
+### Chi vive nel bresciano
 
-| File | Contenuto |
-|---|---|
-| `migrazioni_comuni.csv` | Background migratorio per comune: **stranieri immigrati**, **stranieri nati in Italia** e **italiani per acquisizione**, per sesso, età, cittadinanza, luogo di nascita dei genitori e titolo di studio. Dieci tavole censuarie in una tabella, distinte dalla colonna `tavola`. |
-| `abitazioni_comuni.csv` | Abitazioni occupate e non occupate, e quelle occupate per **proprietà, affitto, altro titolo**. È la risposta a «quante case in affitto» che non passa per i prezzi. |
-| `famiglie_comuni.csv` | Famiglie per numero di componenti, con **almeno uno** o **tutti** i componenti stranieri. Le due situazioni restano separate come le tiene la fonte. |
+| File | Righe | Contenuto |
+|---|---|---|
+| `famiglie_comuni.csv` | 30.126 | Famiglie per numero di componenti, con **almeno uno** o **tutti** i componenti stranieri, per comune, 2018–2024. Le due situazioni restano separate come le tiene la fonte: la colonna `tavola` vale `tutte`, `almeno_uno_straniero` o `tutti_stranieri`, e la prima fa da denominatore quando serve una quota. |
+| `abitazioni_comuni.csv` | 3.074 | Abitazioni occupate e non occupate, e quelle occupate per **proprietà, affitto, altro titolo** (`ownership_type`), per comune, 2019 · 2021 · 2023. È la risposta a «quante case in affitto» che non passa per i prezzi. |
+| `migrazioni_comuni.csv` | ⏳ | Background migratorio per comune: **stranieri immigrati**, **stranieri nati in Italia** e **italiani per acquisizione**, per sesso, età, cittadinanza, luogo di nascita dei genitori e titolo di studio. Dieci tavole censuarie in una tabella, distinte dalla colonna `tavola`. Scarico in corso: sono le tavole più pesanti del progetto. |
 
-> Il codice c'è ed è testato sul parsing; manca solo lo scarico, che non è mai
-> andato a buon fine perché `esploradati.istat.it` ha smesso di accettare
-> connessioni (agosto 2026). Si producono con
-> `python -m brescia_pipeline.build migrazioni abitazioni famiglie`.
->
 > A differenza di `censimento_lavoro_brescia.csv`, queste tabelle tengono
 > **una riga per osservazione con tutte le dimensioni in colonna**: dentro
 > ciascuna famiglia le dimensioni sono fisse, e appiattirle distruggerebbe la
 > distribuzione congiunta — che è l'informazione per cui valgono la pena.
+
+⚠️ Tre avvertenze su queste tre tabelle.
+
+1. **Le modalità sono in inglese** (`private households on 31st December`,
+   `4 and over`). Non è una scelta: manca `Accept-Language: it` nella richiesta
+   a ISTAT. Vale anche per `censimento_lavoro_brescia.csv`. Si corregge con una
+   riga di codice e un riscarico completo — vedi
+   [`../PROSSIMI-PASSI.md`](../PROSSIMI-PASSI.md) §2.4.
+2. **In `abitazioni_comuni.csv` cinque colonne su sette sono costanti**:
+   `numb_room`, `use_floor_spacegroup`, `heating_system_type`,
+   `access_building` e `type_of_building` valgono sempre il proprio totale. La
+   fonte dichiara quelle dimensioni ma **a grana comunale pubblica solo gli
+   aggregati**: il dettaglio per stanze, superficie o riscaldamento non esiste
+   sotto il livello provinciale. Le colonne restano per fedeltà alla fonte, non
+   perché contengano qualcosa.
+3. **Gli anni non sono una serie annuale piena**: le abitazioni ci sono solo
+   per 2019, 2021 e 2023.
 
 ### Ambiente
 
@@ -114,7 +127,7 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
 | `turismo_comuni_annuale.csv` | 8.929 | Arrivi, presenze e permanenza media per comune, tipo di struttura e cittadinanza dei turisti, 2019–2024. |
 | `turismo_comuni_mensile.csv` | 8.020 | Gli stessi flussi con dettaglio mensile. |
 
-⚠️ Due avvertenze specifiche, entrambe già costate un errore:
+⚠️ Tre avvertenze specifiche, le prime due già costate un errore:
 
 1. **Filtrare su `tipo_struttura = 'Totale'` *e* `cittadinanza = 'Totale'`.** Le
    righe esistono per ogni combinazione, totali inclusi: sommare senza filtrare
@@ -125,6 +138,11 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
    sono soppresse, quindi lo zero è calcolato su celle vuote, non misurato.
    Riguarda un solo comune (Gottolengo, 2024) e va escluso dai grafici, non
    disegnato come «nessun turismo».
+3. **Nel 2024 mancano 73 comuni su 205, in tre modi diversi**: 45 hanno il dato
+   soppresso, 1 è lo zero fittizio di cui sopra, e **27 non compaiono affatto**
+   nella fonte — non hanno nemmeno una riga. Sono tre assenze diverse e nessuna
+   delle tre è uno zero: su una mappa vanno tutte e tre nel colore «nessun
+   dato», ma in una tabella conviene distinguerle.
 
 ### Commercio estero
 

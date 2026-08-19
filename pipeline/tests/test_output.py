@@ -47,6 +47,9 @@ def test_la_provincia_ha_205_comuni() -> None:
         "imprese_classe_addetti.csv",
         "turismo_comuni_annuale.csv",
         "turismo_comuni_mensile.csv",
+        "famiglie_comuni.csv",
+        "abitazioni_comuni.csv",
+        "migrazioni_comuni.csv",
     ],
 )
 def test_ogni_codice_esiste_in_anagrafica(tabella: str) -> None:

@@ -62,9 +62,11 @@ A queste si aggiungono tre vincoli operativi.
 - **Le chiavi con più valori per dimensione non funzionano**, e non è una
   questione di lunghezza: `REF_AREA` con 50 codici (430 caratteri di URL)
   riceve `400` esattamente come con 205. Il server non accetta la sintassi
-  `codice+codice` su questa dimensione, quindi l'unica strada è scaricare
-  l'Italia intera e filtrare in locale — che è il motivo per cui il primo
-  build è lungo e per cui la cache di `dati/raw/` conta.
+  `codice+codice` su questa dimensione. Un codice solo invece funziona: le
+  strade sono quindi due, scaricare l'Italia intera e filtrare in locale
+  (quella scelta qui, ed è il motivo per cui il primo build è lungo e per cui
+  la cache di `dati/raw/` conta) oppure 205 richieste piccole — vedi
+  [`../FONTI.md`](../FONTI.md) §10 punto 6.
 - **I valori mancanti** (`Dato riservato`, `-9999`) non vanno **mai**
   convertiti in zero.
 - **I confini ISTAT si chiamano `_WGS84` ma sono in metri UTM 32N.** Passarli a
@@ -81,22 +83,29 @@ A queste si aggiungono tre vincoli operativi.
 | `turismo` | `turismo_comuni_annuale.csv`, `turismo_comuni_mensile.csv` | comuni, 2019–2024 | Regione Lombardia |
 | `lavoro` | `censimento_lavoro_brescia.csv`, `tasso_occupazione_provincia.csv` | comune / provincia | ISTAT |
 | `migrazioni` ⏳ | `migrazioni_comuni.csv` | 205 comuni | ISTAT Censimento permanente (10 tavole) |
-| `abitazioni` ⏳ | `abitazioni_comuni.csv` | 205 comuni | ISTAT Censimento permanente |
-| `famiglie` ⏳ | `famiglie_comuni.csv` | 205 comuni | ISTAT Censimento permanente |
+| `abitazioni` | `abitazioni_comuni.csv` | 205 comuni, 2019 · 2021 · 2023 | ISTAT Censimento permanente |
+| `famiglie` | `famiglie_comuni.csv` | 205 comuni, 2018–2024 | ISTAT Censimento permanente |
 | `sicurezza` | `reati_provincia.csv`, `percezione_sicurezza.csv` | provincia / comune | ISTAT |
 | `ambiente` | `stazioni_arpa.csv`, `aria_mensile.csv`, `meteo_mensile.csv` | stazione, dal 1990 | ARPA Lombardia |
 | `redditi` | `redditi_comuni.csv` | comuni | MEF via ISTAT |
 | `commercio_estero` | `commercio_estero_lombardia.csv` | **regione** (ripiego) | ISTAT |
 
-⏳ = **modulo scritto, tabella non ancora prodotta.** I dataflow sono
-verificati e le chiavi si compongono, ma il primo scarico non è mai andato a
-buon fine: `esploradati.istat.it` ha smesso di accettare connessioni durante
-la scrittura (agosto 2026) mentre `www.istat.it` restava raggiungibile. Non
-c'è niente da correggere nel codice, serve solo rilanciare:
+⏳ = **modulo scritto, tabella non ancora prodotta.** `famiglie` e
+`abitazioni` sono state prodotte ad agosto 2026, quando
+`esploradati.istat.it` è tornato ad accettare connessioni; `migrazioni` no, e
+il motivo è la dimensione: dieci tavole nazionali da centinaia di MB l'una, su
+un host che lascia cadere la connessione a metà. Ogni caduta fa **ripartire il
+download da zero**, perché la cache è per file intero e non c'è ripresa
+parziale. Si rilancia con:
 
 ```bash
-python -m brescia_pipeline.build migrazioni abitazioni famiglie
+python -m brescia_pipeline.build migrazioni
 ```
+
+e conviene lanciarlo quando si ha tempo di lasciarlo correre. Se cade sempre
+nello stesso punto, l'alternativa è **una richiesta per comune** invece di una
+per l'Italia intera: funziona (verificato) ed è descritta in
+[`../FONTI.md`](../FONTI.md) §10 punto 6.
 
 La forma delle tabelle è comunque coperta dai test (`tests/test_censimento.py`)
 su una risposta SDMX di prova, quindi il parsing non è materiale non provato.

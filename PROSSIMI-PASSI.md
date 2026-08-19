@@ -1,132 +1,163 @@
-# Prossimi passi — e tutto ciò che serve portarsi dietro
+# Prossimi passi
 
-Questo documento è scritto per essere letto **in un repository nuovo, in una
-sessione che non ha mai visto il progetto Donostia**. Tutto ciò che sta qui
-dentro è autosufficiente: decisioni da prendere, dati ancora da scaricare, e
-soprattutto la parte di architettura — sito statico, analisi, deploy — che
-altrimenti si perderebbe nel passaggio.
+Questo documento è **la lista di ciò che resta**, e dice per ogni voce *chi la
+può fare*. È scritto per essere ripreso a mesi di distanza da chi non ricorda
+più dov'era rimasto: ogni sezione si legge da sola.
+
+## Legenda — chi fa cosa
+
+| | Significato |
+|---|---|
+| ✅ | **fatto**, resta come traccia |
+| 🤖 | **fattibile da una sessione di lavoro qualsiasi**: bastano la rete e questo repository |
+| 🙋 | **tocca a te.** Richiede un login personale (SPID/CIE), una macchina con accesso normale alla rete italiana, oppure una decisione che non va presa al posto tuo |
+
+Le voci 🙋 non sono bloccanti per il grosso del progetto: i quattro assi
+portanti hanno già tutti i dati che servono. Sono estensioni e finiture.
+
+## Le cose che tocca a te — tutte, in un posto solo
+
+| | Cosa | Perché tocca a te | Tempo | Blocca |
+|---|---|---|---|---|
+| 🙋 1 | **Scegliere la licenza** (§3.3) | è una tua decisione, non una tecnicalità | 10 min | la pubblicazione, non il lavoro |
+| 🙋 2 | **Attivare GitHub Pages** (§7): *Settings → Pages → Source = «GitHub Actions»* | serve il tuo accesso da proprietario del repo | 2 min | il primo deploy |
+| 🙋 3 | **Scaricare le quotazioni OMI** e i perimetri delle zone (§2.2) | area riservata Agenzia delle Entrate, SPID/CIE | 1–2 h la prima volta | solo l'asse «casa e prezzi», che è di contorno |
+| 🙋 4 | **Scaricare gli open data del Comune di Brescia** (§2.2) | `dati.comune.brescia.it` non risponde dagli ambienti remoti, da una macchina italiana sì | 30 min | estende indietro il turismo cittadino (2005–2013) |
+| 🙋 5 | **Scaricare i dati MUR sui due atenei** (§2.2) | `dati-ustat.mur.gov.it` idem | 30 min | l'asse istruzione, che è di contorno |
+| 🙋 6 | **Esportare a mano il commercio estero provinciale** (§2.2) | il databrowser ISTAT è una SPA senza API | 1 h | niente: la serie regionale è già scaricata come ripiego dichiarato |
+| 🙋 7 | **Rileggere i testi prima di pubblicare** (§8) | è il tuo nome sopra | — | la pubblicazione |
+
+Tutto il resto di questo documento è 🤖 o ✅.
+
+---
 
 Indice:
 
-1. [Creare il repository nuovo](#1-creare-il-repository-nuovo)
+1. [Lo stato, in una pagina](#1-lo-stato-in-una-pagina)
 2. [Cosa resta da scaricare](#2-cosa-resta-da-scaricare)
-3. [Le decisioni da prendere](#3-le-decisioni-da-prendere)
+3. [Le decisioni](#3-le-decisioni)
 4. [Dimensioni non ancora considerate](#4-dimensioni-non-ancora-considerate)
 5. [Come analizzare i dati](#5-come-analizzare-i-dati)
 6. [Come si costruisce il sito statico](#6-come-si-costruisce-il-sito-statico)
 7. [Il deploy su GitHub Pages](#7-il-deploy-su-github-pages)
 8. [I due documenti da scrivere alla fine](#8-i-due-documenti-da-scrivere-alla-fine)
 9. [Le lezioni del progetto precedente](#9-le-lezioni-del-progetto-precedente)
+10. [Quanto tempo serve, e da dove ripartire](#10-quanto-tempo-serve-e-da-dove-ripartire)
 
 ---
 
-## 1. Creare il repository nuovo — ✅ fatto (agosto 2026)
+## 1. Lo stato, in una pagina
 
-Il repository esiste, è su GitHub come `brescia-dataviz`, il branch principale
-è `main` e i file stanno in radice. Della lista qui sotto resta aperta **solo
-la licenza**: le fonti sono aperte ma con obblighi di citazione diversi
-(ISTAT e Regione Lombardia CC-BY, OpenStreetMap ODbL, Agenzia delle Entrate
-con «Agenzia Entrate - OMI» obbligatorio), quindi la scelta va fatta con gli
-occhi aperti e non è stata fatta al posto di nessuno. La combinazione usuale
-per un progetto così è **codice MIT + dati e testi CC-BY-4.0**, che soddisfa
-gli obblighi di attribuzione delle fonti attuali; ODbL entrerebbe in gioco
-solo se si aggiungessero dati OpenStreetMap, che oggi non ci sono.
+| Pezzo | Stato |
+|---|---|
+| Ricognizione delle fonti | ✅ [`FONTI.md`](FONTI.md), con lo stato di accesso verificato riga per riga |
+| Soggetto e assi | ✅ decisi: la provincia attraverso i 205 comuni, quattro assi portanti ([`BRIEF.md`](BRIEF.md)) |
+| Repository separato | ✅ esiste, `main`, file in radice |
+| Pipeline | ✅ funzionante, `requests` + libreria standard, 58 test verdi |
+| Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
+| Tabelle tidy | ✅ 19 CSV in [`dati/processed/`](dati/README.md), versionati; il ventesimo (`migrazioni_comuni.csv`) è in scarico |
+| Analisi | 🤖 appena cominciata: due script in [`analysis/`](analysis/README.md) |
+| Storie scelte | 🤖 no. Dodici candidate in `BRIEF.md`, nessuna confermata sui dati |
+| Documento narrativo | 🤖 no |
+| Pannello interattivo | 🤖 no |
+| Deploy | 🙋🤖 no, e serve un passaggio tuo (§7) |
+| Licenza | 🙋 **non scelta** (§3.3) |
+| `METODOLOGIA.md`, `WORKING-PAPER.md` | ⚠️ bozze, si riscrivono alla fine (§8) |
 
-Il resto di questa sezione resta come traccia storica di com'è stata fatta la
-separazione.
-
-Il lavoro viveva nella cartella `brescia/` di un branch del repo
-`donostia-dataviz`. È autoconclusiva: non importa nulla da quel progetto se non
-l'ispirazione architetturale, che è interamente riassunta in questo documento.
-
-```bash
-# 1. Estrarre la cartella conservando lo storico dei commit
-git clone https://github.com/<utente>/donostia-dataviz.git estrazione
-cd estrazione
-git checkout claude/brescia-data-visualization-7gkn4y
-git subtree split --prefix=brescia -b solo-brescia
-
-# 2. Nuovo repository, branch principale main
-mkdir ../brescia-dataviz && cd ../brescia-dataviz
-git init -b main
-git pull ../estrazione solo-brescia
-```
-
-Se lo storico non interessa, basta copiare la cartella in un repo vuoto: il
-contenuto è lo stesso e si perde solo la cronologia della ricognizione.
-
-**Dopo il primo commit:**
-
-- il branch principale si chiama **`main`** (`git branch -M main` se serve, e
-  su GitHub *Settings → Branches → Default branch*);
-- spostare i file di `brescia/` nella radice del nuovo repo — `FONTI.md`,
-  `BRIEF.md`, `METODOLOGIA.md`, `WORKING-PAPER.md`, `PROSSIMI-PASSI.md`,
-  `pipeline/`, `dati/` — e riscrivere il `README.md` di radice partendo da
-  quello attuale;
-- ⚠️ `METODOLOGIA.md` e `WORKING-PAPER.md` sono **bozze scritte in anticipo**:
-  portarle dietro con il loro avviso in testa e riscriverle alla fine (§8);
-- portarsi dietro il `.gitignore` (esclude `dati/raw/`, che pesa quasi 1 GB ed
-  è rigenerabile);
-- **verificare che `dati/processed/` sia versionata**: sono le tabelle pulite,
-  8 MB, ed è il prodotto del progetto;
-- aggiungere una licenza. Le fonti sono tutte aperte ma con obblighi di
-  citazione diversi: ISTAT e Regione Lombardia CC-BY, OpenStreetMap ODbL,
-  Agenzia delle Entrate con citazione obbligatoria «Agenzia Entrate - OMI».
+**Dove sta il progetto, in una frase.** I dati ci sono e sono puliti; il
+ritratto del territorio non è ancora stato disegnato. Il prossimo pezzo di
+lavoro è l'analisi, non il download.
 
 ---
 
 ## 2. Cosa resta da scaricare
 
 Lo stato completo, fonte per fonte, è in [`FONTI.md`](FONTI.md). Qui solo ciò
-che manca, in ordine di rapporto valore/fatica.
+che manca.
 
-### Immediato — fonti già verificate, pipeline da scrivere
+### 2.1 Le fonti automatiche — ✅ chiuse
 
-| Cosa | Fonte | Stato |
-|---|---|---|
-| **Confini comunali** | `istat.it/storage/cartografia/confini_amministrativi/generalizzati/2025/Limiti01012025_g.zip` (10 MB) | ✅ **fatto** (agosto 2026). `datasets/confini.py` + `geo.py`, con lettore di shapefile e riproiezione in libreria standard: niente `pyshp`, per lo stesso motivo per cui §5 reimplementa k-means. Prodotti `dati/geo/comuni_brescia.geojson` e `comuni_geometria.csv`, verificati contro l'area nota della provincia e contro lo `Shape_Area` di ISTAT. **Non è più il pezzo bloccante.** |
-| **Background migratorio** | 10 dataflow `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM` | ⏳ modulo scritto (`datasets/migrazioni.py`), scarico da rifare |
-| **Abitazioni** | `DF_DCSS_ABITAZIONI_TV_1` e `_TV_2` | ⏳ modulo scritto (`datasets/abitazioni.py`), scarico da rifare |
-| **Famiglie con stranieri** | `DF_DCSS_FAMIGLIE_TV_1`, `_TV_2`, `_TV_3` | ⏳ modulo scritto (`datasets/famiglie.py`), scarico da rifare |
+| Cosa | Stato |
+|---|---|
+| **Confini comunali** | ✅ `datasets/confini.py` + `geo.py`, con lettore di shapefile e riproiezione in libreria standard: niente `pyshp`, per lo stesso motivo per cui §5 reimplementa k-means. Prodotti `dati/geo/comuni_brescia.geojson` e `comuni_geometria.csv`, verificati contro l'area nota della provincia e contro lo `Shape_Area` di ISTAT |
+| **Background migratorio** | ⏳ `migrazioni_comuni.csv` — dieci tavole `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM`, scarico in corso: sono le più pesanti di tutte (centinaia di MB l'una) |
+| **Abitazioni** | ✅ `abitazioni_comuni.csv` — `DF_DCSS_ABITAZIONI_TV_1` e `_TV_2` |
+| **Famiglie con stranieri** | ✅ `famiglie_comuni.csv` — `DF_DCSS_FAMIGLIE_TV_1`, `_TV_2`, `_TV_3` |
 
-I tre ⏳ hanno gli ID dei dataflow verificati contro l'elenco reale di ISTAT
-(4.896 dataflow) e le chiavi che si compongono; manca solo lo scarico, perché
-`esploradati.istat.it` ha smesso di accettare connessioni TCP a metà lavoro
-mentre `www.istat.it` restava su. Basta rilanciare:
+Le ultime tre erano rimaste indietro perché `esploradati.istat.it` aveva
+smesso di accettare connessioni a metà lavoro. **Non era un bug del codice: era
+quell'host**, ed è tornato su. Rilanciarle costa un comando e parecchi minuti
+di attesa:
 
 ```bash
 python -m brescia_pipeline.build migrazioni abitazioni famiglie
 ```
 
-Se il primo tentativo va a vuoto, non è un bug del modulo: è quel host. Vale la
-pena lanciarlo e lasciarlo correre, perché scarica l'Italia intera per ognuna
-delle 15 tavole (il filtro territoriale lato server non esiste — vedi sotto).
-
-> **Scoperta che vale la pena mettere per iscritto.** La chiave SDMX con più
+> **Scoperta che vale la pena tenere per iscritto.** La chiave SDMX con più
 > codici nella stessa dimensione **non** fallisce per lunghezza dell'URL, come
 > diceva il commento nel codice: `REF_AREA` con 50 codici (430 caratteri)
 > riceve `400` esattamente come con 205. Il server proprio non accetta la
-> sintassi `codice+codice` lì. Scaricare tutto e filtrare in locale non è una
-> comodità, è l'unica strada.
+> sintassi `codice+codice` lì. Scaricare l'Italia intera e filtrare in locale
+> non è una comodità, è l'unica strada — ed è il motivo per cui queste quindici
+> tavole pesano più di un giga in `dati/raw/`.
 
-### Richiede un passaggio manuale
+### 2.2 🙋 Le fonti che richiedono te
 
-| Cosa | Ostacolo | Come si supera |
-|---|---|---|
-| **Quotazioni immobiliari OMI** | Area riservata Agenzia delle Entrate (SPID/CIE/Fisconline, gratuito) | Registrarsi, scaricare quotazioni semestrali dal 2004 e perimetri delle zone OMI in GML/KML. Poi serve un crosswalk zone OMI ↔ comuni, da dichiarare. |
-| **Compravendite NTN** | Stessa area riservata | Dato annuale per comune dal 2011. |
-| **Commercio estero provinciale** | Il portale Coeweb storico è dismesso; il sostituto è una SPA senza API raggiungibile | Esportare a mano dal databrowser via browser e versionare come input curato. In alternativa restare sulla serie **regionale**, già scaricata, dichiarandola. |
-| **Open data del Comune di Brescia** | `dati.comune.brescia.it` non risponde dagli ambienti di esecuzione remota | Scaricare da una macchina normale: turismo cittadino 2005–2013 (estende indietro la serie regionale che parte dal 2019) e i materiali dell'Osservatorio migrazioni. |
-| **Università** | `dati-ustat.mur.gov.it` irraggiungibile dall'ambiente di ricognizione | Iscritti 1998/99–2025/26 e laureati 2001–2024 per ateneo. **Attenzione: Brescia ha due atenei**, la statale e la sede della Cattolica; la statale da sola sottostima la popolazione universitaria. |
+Nessuna di queste tocca i quattro assi portanti. Sono le estensioni.
 
-### Da verificare — promettenti ma non testate
+| | Cosa | Ostacolo | Come si supera |
+|---|---|---|---|
+| 🙋 3 | **Quotazioni immobiliari OMI** e **compravendite NTN** | area riservata Agenzia delle Entrate (SPID/CIE/Fisconline, gratuito) | Registrarsi, scaricare le quotazioni semestrali dal 2004 e i perimetri delle zone OMI in GML/KML; le compravendite sono annuali per comune dal 2011. Poi serve un crosswalk zone OMI ↔ comuni, **da dichiarare come tale**: è l'unico punto del progetto in cui si introduce una seconda geometria, e §9 spiega perché è pericoloso |
+| 🙋 4 | **Open data del Comune di Brescia** | `dati.comune.brescia.it` non risponde dagli ambienti di esecuzione remota, e ad agosto 2026 nemmeno `comune.brescia.it` (403) | Scaricare da una macchina normale: turismo cittadino 2005–2013 (estende indietro la serie regionale, che parte dal 2019) e i materiali dell'Osservatorio migrazioni |
+| 🙋 5 | **Università** | `dati-ustat.mur.gov.it` irraggiungibile | Iscritti 1998/99–2025/26 e laureati 2001–2024 per ateneo. **Attenzione: Brescia ha due atenei**, la statale e la sede della Cattolica; la statale da sola sottostima la popolazione universitaria |
+| 🙋 6 | **Commercio estero provinciale** | il portale Coeweb storico è dismesso (confermato: l'host non risponde), il sostituto è una SPA senza API | Esportare a mano dal databrowser via browser e versionare come input curato. In alternativa restare sulla serie **regionale**, già scaricata, dichiarandola — che è la scelta attuale e regge (MET-10) |
 
-INPS (lavoratori dipendenti per provincia e settore, retribuzioni per classi e
-**cittadinanza**) · INAIL (infortuni, pertinente in un territorio industriale) ·
-sezioni di censimento ISTAT (variabili censuarie a grana sub-comunale, 2011 e
-2021, se si vorrà scendere sotto il comune) · mappatura acustica
-dell'agglomerato · progetti PNRR da OpenPNRR (ODbL) · risultati elettorali per
-sezione da Eligendo.
+Quando arriva un file scaricato a mano, **non va copiato in
+`dati/processed/`**: va messo come input curato e passato dalla pipeline, così
+resta tracciabile da dove viene. È la stessa regola della provenienza esplicita
+di §9.
+
+### 2.3 🤖 Da verificare — promettenti, non testate
+
+Nessuna è stata interrogata davvero: della tabella in `FONTI.md` §8 sappiamo
+solo che l'host risponde.
+
+- **INPS** — lavoratori dipendenti per provincia e settore, retribuzioni per
+  classi e **cittadinanza**. È la più interessante delle tre, perché è l'unica
+  fonte sulle **retribuzioni** e incrocia la cittadinanza, che è l'asse 2. Ma
+  attenzione: `servizi2.inps.it` risponde 200 restituendo **la pagina HTML del
+  portale**, non JSON. Gli osservatori sono un'applicazione web, non un'API
+  documentata: il primo lavoro è trovare l'endpoint che l'applicazione stessa
+  chiama, e potrebbe non essercene uno stabile.
+- **INAIL** — infortuni sul lavoro. In un territorio industriale è pertinente,
+  e a grana provinciale ci sta bene.
+- **Sezioni di censimento ISTAT** — variabili censuarie sotto il comune (2011 e
+  2021). Servono solo se si vorrà scendere sotto il comune per il capoluogo:
+  con il soggetto provinciale non è più una priorità.
+- **Mappatura acustica** dell'agglomerato · **progetti PNRR** da OpenPNRR
+  (ODbL, e attenzione: aggiungerli cambia gli obblighi di licenza, §3.3) ·
+  **risultati elettorali per sezione** da Eligendo
+  (`elezioni.interno.gov.it` risponde; `eligendo.interno.gov.it` no).
+
+### 2.4 🤖 Un difetto noto: le etichette censuarie sono in inglese
+
+Nelle tabelle che vengono dall'SDMX di ISTAT le **modalità** delle dimensioni
+sono in inglese: `private households on 31st December`, `15 years and over`,
+`4 and over`. Riguarda `famiglie_comuni.csv`, `abitazioni_comuni.csv`,
+`migrazioni_comuni.csv` e `censimento_lavoro_brescia.csv`, cioè tutte le
+tavole censuarie, e stona con la decisione di §3.4 di tenere tutto in italiano
+salvo i nomi delle colonne.
+
+**Non è una scelta, è un header mancante.** ISTAT risponde in italiano se la
+richiesta porta `Accept-Language: it` — verificato riga per riga: le stesse
+osservazioni tornano come `famiglie con tutti i componenti stranieri al 31
+dicembre` e `6 e più`. Il rimedio è **una riga in `fetch.py`**, ma comporta un
+**riscarico completo** delle quindici tavole (la cache di `dati/raw/` è in
+inglese), quindi qualche ora di attesa: conviene farlo insieme al prossimo
+riscarico, non da solo.
+
+Finché non è fatto, va tenuto presente in ogni grafico: quelle stringhe non
+sono pubblicabili così come sono.
 
 ---
 
@@ -142,8 +173,9 @@ Conseguenze operative:
 
 - l'unità di default di ogni mappa e di ogni classifica sono i **205 comuni**;
 - il capoluogo compare come *uno dei* comuni, non come protagonista implicito —
-  e siccome è un ordine di grandezza sopra tutti gli altri, va gestito come
-  outlier dichiarato nelle scale di colore e nelle correlazioni (MET-5);
+  e siccome è un ordine di grandezza sopra tutti gli altri (199.853 abitanti
+  contro una mediana di 3.671), va gestito come outlier dichiarato nelle scale
+  di colore e nelle correlazioni (MET-5);
 - gli aggregati provinciali servono da riferimento, non da soggetto;
 - le due analisi dedicate al capoluogo sono indicate in `BRIEF.md`.
 
@@ -153,27 +185,52 @@ Quattro assi portanti, il resto come materiale di contorno. Il criterio è
 duplice: qualità del dato **e** coerenza con il soggetto provinciale.
 Motivazione e forma di ciascuno in [`BRIEF.md`](BRIEF.md).
 
-| | Asse | Forma prevalente |
-|---|---|---|
-| **1** | Il lavoro e le imprese | coropletica sui 205 comuni + serie |
-| **2** | Chi vive nel bresciano | coropletica + composizioni |
-| **3** | Le due economie: manifattura e Garda | mappa bivariata + concentrazione |
-| **4** | L'aria e il clima | **non una mappa**: 7 stazioni come sezione territoriale, più 52 stazioni meteo |
+| | Asse | Forma prevalente | Dati |
+|---|---|---|---|
+| **1** | Il lavoro e le imprese | coropletica sui 205 comuni + serie | ✅ completi |
+| **2** | Chi vive nel bresciano | coropletica + composizioni | ✅ completi |
+| **3** | Le due economie: manifattura e Garda | mappa bivariata + concentrazione | ✅ completi |
+| **4** | L'aria e il clima | **non una mappa**: 7 stazioni come sezione territoriale, più 52 stazioni meteo | ✅ completi |
 
 Di contorno, non abbandonati: sicurezza, casa e prezzi, commercio estero,
 riqualificazione. Entrano se un asse portante li richiama, non per completezza.
 
-### 3.3 Lingua
+### 3.3 🙋 La licenza — **da scegliere**
+
+È l'unica decisione ancora aperta, ed è tua. Le fonti sono tutte aperte ma con
+obblighi di citazione diversi:
+
+| Fonte | Obbligo |
+|---|---|
+| ISTAT, Regione Lombardia | CC-BY: attribuzione |
+| Agenzia delle Entrate (OMI) | citazione obbligatoria «Agenzia Entrate - OMI» |
+| OpenStreetMap | ODbL: **share-alike sui dati derivati** |
+| OpenPNRR | ODbL, stessa conseguenza |
+
+La combinazione usuale per un progetto così è **codice MIT + dati e testi
+CC-BY-4.0**, che soddisfa gli obblighi delle fonti *attualmente* usate: oggi
+nel repository non c'è un solo dato OpenStreetMap né PNRR, e la geometria viene
+da ISTAT. L'ODbL entrerebbe in gioco solo aggiungendoli — quindi la decisione
+va rifatta se un giorno si aggiungono (§2.3).
+
+In pratica: due file, `LICENSE` (MIT) e `LICENSE-DATI` (CC-BY-4.0), più una
+riga nel `README`. Dieci minuti, ma la scelta resta tua.
+
+### 3.4 Lingua — ✅ decisa, ma non ancora rispettata dai dati
 
 I documenti sono in italiano. Il progetto Donostia teneva la documentazione
 tecnica in inglese e i relati in spagnolo, e la mescolanza ha prodotto attrito.
-Meglio decidere una volta: **tutto in italiano** salvo i nomi delle colonne.
+Deciso una volta: **tutto in italiano** salvo i nomi delle colonne.
+
+⚠️ Le tabelle censuarie oggi violano la decisione: le modalità arrivano in
+inglese perché manca un header nella richiesta. Vedi §2.4.
 
 ---
 
 ## 4. Dimensioni non ancora considerate
 
-Idee emerse durante la ricognizione che nessuno ha ancora valutato.
+Idee emerse durante la ricognizione che nessuno ha ancora valutato. Tutte 🤖:
+i dati ci sono o si scaricano da soli.
 
 **Sul lavoro e le imprese**
 
@@ -197,7 +254,13 @@ Idee emerse durante la ricognizione che nessuno ha ancora valutato.
   dove si abita, e i due estremi hanno cause opposte (acciaierie contro
   alberghi). È già calcolabile da `comuni_sintesi.csv`.
 - **Lo spopolamento montano**: Valle Camonica e Valle Sabbia contro la pianura.
-  I dati di popolazione 2018–2024 ci sono già.
+  Il primo sguardo c'è già ed è netto — `analysis/variazione_popolazione.py`
+  dice che **93 comuni su 205 perdono popolazione fra il 2018 e il 2024**, e
+  che le dieci cadute più rapide sono tutte di montagna (Magasa −2,9 % l'anno,
+  Lozio, Berzo Demo, Paisco Loveno, Saviore dell'Adamello), mentre la provincia
+  nel suo complesso cresce dello 0,15 % l'anno. È materiale per una storia,
+  non ancora una storia: manca la decomposizione fra saldo naturale e
+  migrazione.
 
 **Sull'ambiente**
 
@@ -213,7 +276,9 @@ Idee emerse durante la ricognizione che nessuno ha ancora valutato.
 
 - **Confrontare Brescia con Bergamo**: due province gemelle, stessa Capitale
   della cultura 2023, storie industriali parallele. Tutte le fonti usate qui
-  coprono l'Italia intera: aggiungere Bergamo costa un filtro.
+  coprono l'Italia intera: aggiungere Bergamo costa un filtro — e i file grezzi
+  nazionali sono già in `dati/raw/`, quindi nemmeno un download. È anche il
+  **controllo naturale** per la questione aperta di MET-9.
 
 ---
 
@@ -221,7 +286,7 @@ Idee emerse durante la ricognizione che nessuno ha ancora valutato.
 
 L'approccio del progetto precedente, che ha retto alla revisione esterna.
 
-### Regole che hanno salvato il progetto
+### 5.1 Regole che hanno salvato il progetto
 
 1. **Correlazione non è causalità, e va scritto nel testo, non solo pensato.**
    Il progetto Donostia partiva da «il turismo fa salire i prezzi?» e ha
@@ -233,37 +298,56 @@ L'approccio del progetto precedente, che ha retto alla revisione esterna.
    correlazioni fra indicatori comunali restano descrittive. Usare **Pearson e
    Spearman insieme** e un **leave-one-out** sugli outlier noti (qui: Brescia
    città, e i comuni del Garda per qualunque cosa tocchi il turismo).
-4. **Ogni numero citato deve avere uno script dietro.** Nel progetto
-   precedente ogni cifra dei testi era riproducibile da `analysis/*.py`.
+4. **Ogni numero citato deve avere uno script dietro.** Non era vero fino ad
+   agosto 2026, e infatti due cifre su ventiquattro erano sbagliate: ora
+   `analysis/verifica_cifre.py` le ricalcola tutte dalle tabelle e diverge
+   rumorosamente se una non torna. **Aggiungere una cifra a un documento
+   significa aggiungere una riga a quello script.**
 5. **Una scheda di confidenza per indicatore**: `osservato` (misurato
    direttamente), `derivato` (calcolato da altri), `proxy` (approssimazione),
    più le assunzioni esplicite. Nell'interfaccia diventa un distintivo
    visibile, non una nota a piè di pagina.
 
-### Analisi che avevano dato i risultati migliori
+### 5.2 Analisi che avevano dato i risultati migliori
 
-Riadattate al caso bresciano:
+Riadattate al caso bresciano. La prima è fatta, le altre no.
 
-- **Velocità di cambio**: tassi annualizzati per comune fra il primo e
+- ✅ **Velocità di cambio**: tassi annualizzati per comune fra il primo e
   l'ultimo anno di ogni serie. Distingue «dov'è alto» da «dove sta cambiando in
-  fretta», che è quasi sempre la domanda più interessante.
-- **Livelli contro variazioni**: uno scatter con il livello sull'asse x e la
+  fretta», che è quasi sempre la domanda più interessante. Fatta sulla
+  popolazione (`analysis/variazione_popolazione.py`); **da rifare su addetti,
+  unità locali e reddito**, che è un'ora di lavoro perché lo schema è lo stesso.
+- 🤖 **Livelli contro variazioni**: uno scatter con il livello sull'asse x e la
   variazione sull'asse y separa i comuni in quattro quadranti e rende visibile
   la polarizzazione.
-- **Tipologia di comuni**: k-means con seme fisso su poche variabili
+- 🤖 **Tipologia di comuni**: k-means con seme fisso su poche variabili
   (specializzazione settoriale, dimensione media d'impresa, reddito, densità).
   Da presentare **come profili descrittivi, mai come verità**.
-- **Autocorrelazione spaziale**: i comuni contigui si somigliano? Con 205
-  comuni e una geometria vera, qui ha molto più senso che con 19 barrios.
-- **Rottura Covid**: 2020–2021 spezza quasi tutte le serie. Testare
-  esplicitamente la discontinuità invece di far finta che non ci sia.
-- **Decomposizione della popolazione**: quanto della variazione viene da saldo
-  naturale, migrazione interna, migrazione estera.
+- 🤖 **Autocorrelazione spaziale**: i comuni contigui si somigliano? Con 205
+  comuni e una geometria vera, qui ha molto più senso che con 19 barrios. La
+  matrice di contiguità si ricava dal GeoJSON già presente.
+- 🤖 **Rottura Covid**: 2020–2021 spezza quasi tutte le serie. Testare
+  esplicitamente la discontinuità invece di far finta che non ci sia. Vale
+  anche per il tasso annualizzato del punto 1, che ci passa sopra.
+- 🤖 **Decomposizione della popolazione**: quanto della variazione viene da
+  saldo naturale, migrazione interna, migrazione estera. È il seguito naturale
+  dello spopolamento montano di §4.
+- 🤖 **La decomposizione settoriale del capoluogo**, che MET-9 ha lasciato a
+  metà: se la divisione 81 sia scesa davvero a zero o sia stata riclassificata,
+  e se lo stesso movimento si veda a Bergamo.
 
-Convenzione pratica: uno script per analisi in `analysis/`, con `--save` che
-scrive CSV in `analysis/output/`, e le sole dipendenze `pandas` + `numpy`
-(niente scipy o sklearn: si reimplementano k-means e le correlazioni in poche
-righe e il progetto resta installabile ovunque).
+### 5.3 La convenzione di `analysis/`
+
+Uno script per analisi in [`analysis/`](analysis/README.md), `--save` che
+scrive CSV in `analysis/output/` (ignorata da git: si rigenera), e come sole
+dipendenze la **libreria standard** — niente pandas, niente scipy, niente
+sklearn. Le tabelle sono piccole e k-means e le correlazioni si reimplementano
+in poche righe; in cambio il progetto resta installabile ovunque, come la
+pipeline.
+
+Gli script leggono **solo** da `dati/processed/`: nessuno tocca la rete. La
+regola di confine con la pipeline: **se il risultato serve al sito è pipeline,
+se serve a capire è analisi.**
 
 ---
 
@@ -317,6 +401,9 @@ Tre scelte che hanno funzionato:
   l'altro.
 - **Una tabella-specchio accessibile** accanto a ogni mappa, navigabile da
   tastiera e da lettore di schermo. Una coropletica da sola è inaccessibile.
+
+> **Se il tempo è poco, il documento narrativo viene prima** — nel progetto
+> precedente ha avuto molto più valore del pannello (§9).
 
 ### 6.2 Il contratto fra pipeline e frontend
 
@@ -385,8 +472,10 @@ export async function loadMetric(id: string) {
 - **Qualitativa** per le metriche categoriche, con le etichette nella legenda e
   nel tooltip al posto dell'indice numerico.
 - Un colore dedicato per **«nessun dato»** (`#e6e6e6`), mai lo zero della
-  scala. Per Brescia questo è cruciale: 45 comuni hanno le presenze turistiche
-  soppresse e uno ha uno zero fittizio.
+  scala. Per Brescia questo è cruciale, e più di quanto sembri: sulle presenze
+  turistiche 2024 mancano **73 comuni su 205** — 45 con il dato soppresso, 27
+  che la fonte non riporta affatto e uno (Gottolengo) con uno zero fittizio.
+  Sono tre assenze diverse e nessuna delle tre è uno zero.
 
 ### 6.4 Le tabelle CSV canoniche
 
@@ -414,7 +503,7 @@ I passaggi, nell'ordine:
 1. `actions/checkout` e `actions/setup-node` (Node 22+, cache su
    `web/package-lock.json`);
 2. `npm ci` e `npm run build` dentro `web/`, con
-   **`VITE_BASE: "/<nome-repo>/app/"`** — GitHub Pages serve da una
+   **`VITE_BASE: "/brescia-dataviz/app/"`** — GitHub Pages serve da una
    sottocartella e senza questa variabile tutti gli asset danno 404;
 3. assemblaggio: `mkdir -p _site/app`, copia di `web/dist/*` in `_site/app/`,
    copia del narrativo in `_site/index.html` **e** con il suo nome, copia delle
@@ -424,8 +513,8 @@ I passaggi, nell'ordine:
 
 Dettagli che costano tempo se non li sai:
 
-- **Una volta sola**: *Settings → Pages → Source = «GitHub Actions»*. Il primo
-  deploy fallisce se non è impostato.
+- 🙋 **Una volta sola, e la puoi fare solo tu**: *Settings → Pages → Source =
+  «GitHub Actions»*. Il primo deploy fallisce se non è impostato.
 - Permessi richiesti: `contents: read`, `pages: write`, `id-token: write`.
 - `concurrency: { group: pages, cancel-in-progress: true }` evita che due
   deploy si accavallino.
@@ -434,16 +523,9 @@ Dettagli che costano tempo se non li sai:
   ogni build completo. Nelle pagine ci sono i segnaposto `{{BUILD_DATE}}` e
   `{{DATA_DATE}}`, sostituiti dal workflow. Senza questo meccanismo le date
   invecchiano in silenzio e il sito mente.
-- Decidere se il deploy è **automatico a ogni push su `main`** o **solo
-  manuale** (`workflow_dispatch`). Il progetto precedente è partito manuale —
-  per rileggere i testi prima di pubblicare — ed è passato ad automatico solo
-  dopo che i contenuti si erano stabilizzati. Vale la pena rifare così.
-
-**Test del documento narrativo.** Il progetto eseguiva l'HTML completo sotto
-jsdom con vitest, verificando che lo scrollytelling, le etichette dei grafici
-e la sincronia dei controlli funzionassero. Dopo ogni rigenerazione,
-`npm test` diceva se qualcosa si era rotto. Su un file da 800 KB generato da
-script è l'unica rete di sicurezza che regge.
+- Partire con il deploy **manuale** (`workflow_dispatch`) e passare
+  all'automatico su `main` solo quando i testi si sono stabilizzati. Il
+  progetto precedente ha fatto così, per rileggere prima di pubblicare.
 
 ---
 
@@ -464,9 +546,10 @@ progetto Donostia si chiamava `NOTA-METODOLOGICA.md` e numerava le decisioni
 incontrati *facendo* l'analisi, non prima. Nel progetto precedente le tre più
 importanti — fallacia ecologica, distinzione fra stato, cambio e traiettoria, e
 il bias del proxy turistico — sono arrivate dalle revisioni esterne, cioè dopo
-che i relati erano scritti. Qui è già successo una volta: MET-9 («decomporre
-prima di titolare») esiste solo perché un titolo sbagliato è stato scoperto e
-corretto.
+che i relati erano scritti. Qui è già successo due volte: MET-9 («decomporre
+prima di titolare») esiste perché un titolo sbagliato è stato scoperto e
+corretto, e la regola «ogni numero ha uno script dietro» è diventata vera solo
+quando lo script ha trovato due cifre sbagliate nei documenti.
 
 Cosa mancherà finché non si chiude l'analisi: le regole su **come si scelgono e
 si raccontano le storie** — quando un indicatore merita una narrazione, quali
@@ -491,7 +574,7 @@ qual è la tesi.
 Due cose che nel progetto precedente hanno fatto la differenza e vanno
 riprodotte:
 
-- **includere gli analisi che hanno smontato i propri risultati.** È la parte
+- **includere le analisi che hanno smontato i propri risultati.** È la parte
   che quasi nessuno pubblica ed è quella che dà credibilità a tutto il resto.
   Qui c'è già il primo candidato (§6.1 della bozza).
 - **una sezione esplicita su cosa i dati non permettono di dire.** Nel progetto
@@ -499,11 +582,12 @@ riprodotte:
 
 ### Ordine consigliato
 
-1. completare i download e le analisi;
-2. scegliere le storie e costruire le visualizzazioni;
+1. completare le analisi (§5);
+2. scegliere le storie e costruire le visualizzazioni (§6);
 3. **poi** riscrivere la nota metodologica, che a quel punto descrive decisioni
    davvero prese;
-4. **infine** il working paper, che le sintetizza per un lettore esterno.
+4. **infine** il working paper, che le sintetizza per un lettore esterno;
+5. 🙋 rileggere tutto prima di pubblicare.
 
 ---
 
@@ -516,7 +600,8 @@ Cose imparate a caro prezzo, che non sono ovvie.
 - **Una sola geometria di riferimento, un solo join in ingestione.** Il momento
   in cui si ammettono due geometrie «quasi uguali» è il momento in cui i numeri
   smettono di tornare. Qui la geometria è il comune e la chiave è il codice
-  ISTAT: non inventare slug.
+  ISTAT: non inventare slug. L'unica eccezione all'orizzonte sono le zone OMI
+  (§2.2), e va trattata come un'eccezione dichiarata.
 - **Nessuna riga scartata in silenzio.** Quando un join non trova
   corrispondenza, va registrato e mostrato (il progetto precedente pubblicava
   un `matchRate`). Uno scarto silenzioso è un errore che si scopre mesi dopo.
@@ -543,12 +628,61 @@ Cose imparate a caro prezzo, che non sono ovvie.
 - **Le finestre temporali sono molto diverse per asse** — aria dal 1992, ASIA
   2018–2023, percezione dal 2022. Non appiattirle sulla più corta: mostrarle
   per quello che sono, dichiarando la differenza.
-- **I dati mancanti non sono zeri**, e in questo progetto c'è già un caso in
-  cui la fonte stessa confonde le due cose (lo `zero_fittizio` del turismo).
+- **I dati mancanti non sono zeri**, e in questo progetto ci sono già tre modi
+  diversi di essere assenti sullo stesso indicatore (§6.3).
+- **Un host che non risponde non è un modulo rotto.** Le tre tavole censuarie
+  sono rimaste ferme per mesi perché `esploradati.istat.it` era giù nel momento
+  sbagliato. Prima di mettere mano al codice, riprovare il giorno dopo.
 
 ---
 
-*Documento scritto ad agosto 2026 come consegna, prima della separazione del
-repository. Lo stato dei dati e delle fonti è quello descritto in
-[`FONTI.md`](FONTI.md); la pipeline funzionante è in
-[`pipeline/`](pipeline/README.md).*
+## 10. Quanto tempo serve, e da dove ripartire
+
+Stime a spanne, per una sessione di lavoro tranquilla. Servono a decidere cosa
+entra nel tempo che hai, non a fare un piano.
+
+| Blocco | Tempo | Serve a |
+|---|---|---|
+| 🙋 Licenza (§3.3) | **10 min** | poter pubblicare |
+| 🤖 Le altre velocità di cambio (addetti, unità locali, reddito) | **1 h** | lo schema è già scritto, si copia |
+| 🤖 Livelli contro variazioni + i quattro quadranti | **2 h** | la prima immagine davvero parlante |
+| 🤖 Rapporto addetti/residenti sui 205 comuni (§4) | **1 h** | la prima coropletica, e i dati ci sono tutti |
+| 🤖 Decomposizione settoriale del capoluogo (MET-9) | **3 h** | chiudere la questione aperta più importante |
+| 🤖 Autocorrelazione spaziale e tipologia di comuni | **mezza giornata** | il contributo più originale possibile |
+| 🤖 Documento narrativo, prima storia intera | **1–2 giorni** | il prodotto vero |
+| 🤖 Workflow di deploy + pagine sorelle | **mezza giornata** | pubblicare |
+| 🙋 Attivare Pages (§7) | **2 min** | idem |
+| 🤖 Pannello React | **2–3 giorni** | l'esplorazione, ma viene dopo il documento |
+| 🙋 I download manuali (§2.2) | **2–4 h in tutto** | estensioni, nessun asse portante |
+| 🤖 Etichette censuarie in italiano (§2.4) | **10 min di codice + qualche ora di riscarico** | poter pubblicare quelle tavole |
+| 🤖 Riscrivere METODOLOGIA e WORKING-PAPER (§8) | **1 giorno** | in coda, quando le storie sono chiuse |
+
+### Se hai due ore
+
+Fai la licenza (dieci minuti, e toglie l'unica decisione aperta), poi le
+velocità di cambio su addetti e reddito. Escono numeri veri e li puoi guardare.
+
+### Se hai mezza giornata
+
+Le due ore di sopra, più il rapporto addetti/residenti e i quattro quadranti.
+A quel punto hai tre immagini e sai già quale storia regge.
+
+### Se hai un weekend
+
+Aggiungi la decomposizione settoriale del capoluogo — è la domanda che il
+progetto ha lasciato aperta e che nessun altro ha risposto — e comincia il
+documento narrativo con una storia sola, fatta bene. Una storia intera vale
+più di sette abbozzate, ed è anche il modo per scoprire cosa manca al
+contratto dati di §6.2 prima di averlo replicato dieci volte.
+
+**Da dove ripartire in ogni caso**: `python analysis/verifica_cifre.py`. Se le
+ventiquattro verifiche passano, le tabelle sono a posto e i documenti dicono il
+vero; se una diverge, quello è il primo problema da guardare.
+
+---
+
+*Documento nato ad agosto 2026 come consegna per la separazione del
+repository, e riscritto quando la separazione era avvenuta e la pipeline
+funzionava. Lo stato delle fonti è in [`FONTI.md`](FONTI.md), quello dei dati
+in [`dati/README.md`](dati/README.md), quello della pipeline in
+[`pipeline/README.md`](pipeline/README.md).*
