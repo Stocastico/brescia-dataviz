@@ -158,6 +158,10 @@ p { margin: 0 0 1.15rem; }
 
 .figura svg { display: block; width: 100%; height: auto; overflow: visible; }
 
+/* La provincia è alta quasi il doppio di quanto è larga: senza un tetto, la
+   mappa appiccicata esce dallo schermo e lo scrollytelling non funziona più. */
+.figura svg.mappa { max-height: 62vh; width: auto; margin: 0 auto; }
+
 .comandi {
   display: flex;
   flex-wrap: wrap;

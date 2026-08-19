@@ -58,6 +58,7 @@ METRICHE_USATE = [
     "presenze_per_abitante",
     "quota_manifattura",
     "quota_alloggio_ristorazione",
+    "specializzazione",
 ]
 
 PAGINE = {
@@ -112,6 +113,116 @@ def pearson(x: list[float], y: list[float]) -> float:
     dx = math.sqrt(sum((a - mx) ** 2 for a in x))
     dy = math.sqrt(sum((b - my) ** 2 for b in y))
     return num / (dx * dy) if dx and dy else 0.0
+
+
+# --- due calcoli che il racconto cita e che nessun JSON contiene --------
+
+
+def contiguita() -> dict[str, set[str]]:
+    """Vicini per vertice condiviso, come in `analysis/autocorrelazione_spaziale.py`."""
+    geo = json.loads((DATI_WEB / "comuni.geojson").read_text(encoding="utf-8"))
+    per_vertice: dict[tuple[float, float], set[str]] = {}
+    for feature in geo["features"]:
+        codice = feature["properties"]["codice_istat"]
+        for anello in feature["geometry"]["coordinates"]:
+            for x, y in anello:
+                per_vertice.setdefault((round(x, 5), round(y, 5)), set()).add(codice)
+    adiacenze: dict[str, set[str]] = {f["properties"]["codice_istat"]: set() for f in geo["features"]}
+    for condivisori in per_vertice.values():
+        if len(condivisori) > 1:
+            for uno in condivisori:
+                adiacenze[uno] |= condivisori - {uno}
+    return adiacenze
+
+
+def moran(valori_indicatore: dict[str, float]) -> float:
+    """Indice di Moran con pesi normalizzati per riga."""
+    adiacenze = contiguita()
+    codici = [c for c in valori_indicatore if adiacenze.get(c)]
+    if not codici:
+        return 0.0
+    centro = sum(valori_indicatore[c] for c in codici) / len(codici)
+    z = {c: valori_indicatore[c] - centro for c in codici}
+    numeratore = 0.0
+    for codice in codici:
+        presenti = [z[v] for v in adiacenze[codice] if v in z]
+        if presenti:
+            numeratore += z[codice] * (sum(presenti) / len(presenti))
+    denominatore = sum(v**2 for v in z.values())
+    return numeratore / denominatore if denominatore else 0.0
+
+
+def decomposizione() -> dict[str, Any]:
+    """La scomposizione settore × classe del capoluogo, per la terza storia.
+
+    Sta qui e non nei `metric_*.json` perché non è un indicatore comunale: è una
+    tabella a due territori che serve a un racconto solo. Il contratto del §6.2
+    resta quello che è — un indicatore per comune — e non va piegato.
+    """
+    import csv
+
+    path = PROCESSED / "imprese_settore_classe.csv"
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as handle:
+        righe = list(csv.DictReader(handle))
+
+    dentro: dict[tuple[str, str, str, str], dict[str, float]] = {}
+    etichette: dict[str, str] = {}
+    for riga in righe:
+        if not riga["valore"]:
+            continue
+        chiave = (riga["territorio"], riga["ateco"], riga["classe_addetti"], riga["indicatore"])
+        dentro.setdefault(chiave, {})[riga["anno"]] = float(riga["valore"])
+        etichette[riga["ateco"]] = riga["settore"]
+
+    anni = sorted({a for serie in dentro.values() for a in serie})
+    primo, ultimo = anni[0], anni[-1]
+
+    def coppia(territorio: str, ateco: str, classe: str, indicatore: str = "addetti") -> tuple[float, float]:
+        serie = dentro.get((territorio, ateco, classe, indicatore), {})
+        return serie.get(primo, 0.0), serie.get(ultimo, 0.0)
+
+    divisioni = sorted({
+        a for (t, a, c, i) in dentro
+        if t == CAPOLUOGO and c == "250+" and i == "addetti" and a != "0010"
+    })
+    variazioni = []
+    for ateco in divisioni:
+        iniziale, finale = coppia(CAPOLUOGO, ateco, "250+")
+        variazioni.append({"ateco": ateco, "nome": etichette[ateco], "iniziale": iniziale,
+                           "finale": finale, "variazione": finale - iniziale})
+    variazioni.sort(key=lambda v: v["variazione"])
+
+    manifattura = [f"{n:02d}" for n in range(10, 34)]
+    grande_manifattura = [0.0, 0.0]
+    for ateco in manifattura:
+        iniziale, finale = coppia(CAPOLUOGO, ateco, "250+")
+        grande_manifattura[0] += iniziale
+        grande_manifattura[1] += finale
+
+    return {
+        "anni": anni,
+        "primo": primo,
+        "ultimo": ultimo,
+        "serie_grandi": [dentro.get((CAPOLUOGO, "0010", "250+", "addetti"), {}).get(a) for a in anni],
+        "serie_totale": [dentro.get((CAPOLUOGO, "0010", "totale", "addetti"), {}).get(a) for a in anni],
+        "divisioni": variazioni[:8] + variazioni[-3:],
+        "totale_grandi": coppia(CAPOLUOGO, "0010", "250+"),
+        "totale_tutte": coppia(CAPOLUOGO, "0010", "totale"),
+        "manifattura_grandi": grande_manifattura,
+        "confronto": [
+            {
+                "ateco": ateco,
+                "nome": etichette[ateco],
+                "grandi_citta": coppia(CAPOLUOGO, ateco, "250+"),
+                "totale_citta": coppia(CAPOLUOGO, ateco, "totale"),
+                "unita_citta": coppia(CAPOLUOGO, ateco, "totale", "unita_locali"),
+                "totale_provincia": coppia("ITC47", ateco, "totale"),
+            }
+            for ateco in [variazioni[0]["ateco"], variazioni[1]["ateco"]]
+        ],
+    }
 
 
 # --- le cifre del racconto ----------------------------------------------
@@ -197,6 +308,39 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
     fuori["intensita_seconda"] = numero_it(ordinata[1][1], 1)
     fuori["intensita_mediana"] = numero_it(mediana(list(intensita.values())), 1)
 
+    scomposizione = decomposizione()
+    if scomposizione:
+        fuori["anno_asia_i"] = scomposizione["primo"]
+        fuori["anno_asia_f"] = scomposizione["ultimo"]
+        grandi = scomposizione["totale_grandi"]
+        tutte = scomposizione["totale_tutte"]
+        fuori["grandi_iniziale"] = numero_it(grandi[0])
+        fuori["grandi_finale"] = numero_it(grandi[1])
+        fuori["grandi_variazione"] = numero_it(grandi[1] - grandi[0])
+        fuori["citta_variazione"] = numero_it(tutte[1] - tutte[0])
+        prime = scomposizione["divisioni"][:2]
+        fuori["divisione_prima"] = prime[0]["nome"]
+        fuori["divisione_prima_variazione"] = numero_it(prime[0]["variazione"])
+        fuori["divisione_seconda"] = prime[1]["nome"]
+        fuori["divisione_seconda_variazione"] = numero_it(prime[1]["variazione"])
+        fuori["due_divisioni_variazione"] = numero_it(prime[0]["variazione"] + prime[1]["variazione"])
+        manifattura_grandi = scomposizione["manifattura_grandi"]
+        fuori["manifattura_grandi_iniziale"] = numero_it(manifattura_grandi[0])
+        fuori["manifattura_grandi_variazione"] = numero_it(manifattura_grandi[1] - manifattura_grandi[0])
+        for indice, confronto in enumerate(scomposizione["confronto"], start=1):
+            fuori[f"conf{indice}_nome"] = confronto["nome"]
+            fuori[f"conf{indice}_grandi"] = numero_it(confronto["grandi_citta"][1] - confronto["grandi_citta"][0])
+            fuori[f"conf{indice}_citta"] = numero_it(confronto["totale_citta"][1] - confronto["totale_citta"][0])
+            fuori[f"conf{indice}_unita"] = numero_it(confronto["unita_citta"][1] - confronto["unita_citta"][0])
+            fuori[f"conf{indice}_provincia"] = numero_it(confronto["totale_provincia"][1] - confronto["totale_provincia"][0])
+            fuori[f"conf{indice}_provincia_quota"] = percento_it(
+                (confronto["totale_provincia"][1] / confronto["totale_provincia"][0] - 1) * 100
+                if confronto["totale_provincia"][0] else 0.0
+            )
+
+    fuori["moran_crescita_popolazione"] = numero_it(moran(crescita_pop), 2)
+    fuori["moran_reddito"] = numero_it(moran(red_f), 2)
+
     if "quota_manifattura" in metriche:
         manifattura = valori(metriche["quota_manifattura"])
         alloggio = valori(metriche["quota_alloggio_ristorazione"])
@@ -204,12 +348,28 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         fuori["manifattura_capoluogo"] = percento_it(manifattura[CAPOLUOGO])
         sopra = [c for c, v in manifattura.items() if v >= 50]
         fuori["comuni_manifatturieri"] = numero_it(len(sopra))
+        turistici = [c for c, v in alloggio.items() if v >= 25]
+        fuori["comuni_turistici"] = numero_it(len(turistici))
         top_alloggio = sorted(alloggio.items(), key=lambda kv: kv[1], reverse=True)[:5]
         fuori["comuni_turistici_top"] = ", ".join(comuni[c]["comune"] for c, _ in top_alloggio)
+        top_manifattura = sorted(manifattura.items(), key=lambda kv: kv[1], reverse=True)[:5]
+        fuori["comuni_manifatturieri_top"] = ", ".join(comuni[c]["comune"] for c, _ in top_manifattura)
         comuni_entrambi = [c for c in manifattura if c in alloggio]
         fuori["manifattura_alloggio_pearson"] = numero_it(
             pearson([manifattura[c] for c in comuni_entrambi], [alloggio[c] for c in comuni_entrambi]), 2
         )
+        addetti_sezioni = {c: 0.0 for c in manifattura}
+        fuori["manifattura_provinciale"] = percento_it(
+            sum(manifattura[c] * add_f[c] for c in manifattura if c in add_f)
+            / sum(add_f[c] for c in manifattura if c in add_f)
+        )
+        fuori["alloggio_provinciale"] = percento_it(
+            sum(alloggio[c] * add_f[c] for c in alloggio if c in add_f)
+            / sum(add_f[c] for c in alloggio if c in add_f)
+        )
+        del addetti_sezioni
+        specializzazione = valori(metriche["specializzazione"])
+        fuori["moran_specializzazione"] = numero_it(moran(specializzazione), 2)
 
     return fuori
 
@@ -245,6 +405,7 @@ def dati_incorporati(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict
             codice: [riga["comune"], int(riga["capoluogo"])] for codice, riga in sorted(comuni.items())
         },
         "geo": geometria_compatta(),
+        "decomposizione": decomposizione(),
         "metriche": {
             id_metrica: {
                 "label": metrica["label"],

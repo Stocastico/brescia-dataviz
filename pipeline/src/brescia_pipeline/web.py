@@ -327,6 +327,21 @@ def _sezioni_disponibili() -> list[dict[str, Any]]:
         "ASIA non copre agricoltura, pubblica amministrazione e servizi domestici: "
         "il denominatore è l'economia osservata dal registro, non tutta l'economia"
     )
+
+    manifattura = quota("C")
+    alloggio = quota("I")
+    # La differenza fra le due quote: positiva dove il comune è manifatturiero,
+    # negativa dove vive di alloggio e ristorazione, attorno a zero dove non è
+    # né l'una né l'altra cosa. È l'unico modo di mettere le due economie in
+    # una sola immagine senza inventare una scala bivariata.
+    specializzazione: Valori = {}
+    for codice, per_anno in manifattura.items():
+        for anno, valore in per_anno.items():
+            altro = alloggio.get(codice, {}).get(anno)
+            if valore is None or altro is None:
+                continue
+            specializzazione.setdefault(codice, {})[anno] = valore - altro
+
     return [
         {
             "id": "quota_manifattura",
@@ -349,6 +364,21 @@ def _sezioni_disponibili() -> list[dict[str, Any]]:
             "confidence": "derivato",
             "assumptions": [nota, "Sezione Ateco I"],
             "values": quota("I"),
+        },
+        {
+            "id": "specializzazione",
+            "label": "Manifattura meno alloggio e ristorazione",
+            "unit": "punti percentuali",
+            "kind": "diverging",
+            "theme": "settori",
+            "source": FONTE_ASIA,
+            "confidence": "derivato",
+            "assumptions": [
+                nota,
+                "Differenza fra due quote sullo stesso totale: positiva = manifatturiero, negativa = turistico",
+                "Un comune vicino a zero può essere equilibrato oppure specializzato in un terzo settore",
+            ],
+            "values": specializzazione,
         },
         {
             "id": "quota_costruzioni",

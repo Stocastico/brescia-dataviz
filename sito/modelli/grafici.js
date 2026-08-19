@@ -140,7 +140,7 @@
     };
   }
 
-  function disegnaLegenda(contenitore, scalaColore, decimali, unita) {
+  function disegnaLegenda(contenitore, scalaColore, decimali, unita, quantiSenzaDato) {
     const legenda = document.createElement("div");
     legenda.className = "legenda";
     const barra = document.createElement("div");
@@ -162,14 +162,19 @@
     const ultimo = scalaColore.rotture[scalaColore.rotture.length - 1];
     estremi.textContent = num(primo, decimali) + " → " + num(ultimo, decimali) + " " + (unita || "");
     legenda.appendChild(estremi);
-    const assente = document.createElement("span");
-    assente.className = "voce";
-    const pallino = document.createElement("span");
-    pallino.className = "pallino";
-    pallino.style.background = css("--nessun-dato");
-    assente.appendChild(pallino);
-    assente.appendChild(document.createTextNode("nessun dato"));
-    legenda.appendChild(assente);
+    // Il colore dell'assenza compare solo se qualcuno è davvero assente:
+    // una voce di legenda sempre presente e quasi sempre inutile si smette
+    // di leggere, e il giorno che serve non la si vede più.
+    if (quantiSenzaDato) {
+      const assente = document.createElement("span");
+      assente.className = "voce";
+      const pallino = document.createElement("span");
+      pallino.className = "pallino";
+      pallino.style.background = css("--nessun-dato");
+      assente.appendChild(pallino);
+      assente.appendChild(document.createTextNode("nessun dato (" + quantiSenzaDato + " comuni)"));
+      legenda.appendChild(assente);
+    }
     contenitore.appendChild(legenda);
   }
 
@@ -275,6 +280,7 @@
 
     const svg = el("svg", {
       viewBox: "0 0 " + LARGHEZZA + " " + PROIEZIONE.altezza,
+      class: "mappa",
       role: "img",
       "aria-label": opzioni.descrizione || m.label,
     });
@@ -312,11 +318,11 @@
         forme[comune.c].setAttribute("fill", scalaCorrente.colore(valore));
       });
       piede.innerHTML = "";
-      disegnaLegenda(piede, scalaCorrente, decimali, m.unit);
       const righe = Object.keys(valori)
         .sort(function (a, b) { return valori[b] - valori[a]; })
         .map(function (codice) { return [nomeComune(codice), num(valori[codice], decimali)]; });
       const senzaDato = DATI.geo.comuni.length - righe.length;
+      disegnaLegenda(piede, scalaCorrente, decimali, m.unit, senzaDato);
       tabellaSpecchio(piede, ["comune", m.unit], righe,
         "Gli stessi numeri in tabella (" + righe.length + " comuni con dato" +
         (senzaDato ? ", " + senzaDato + " senza" : "") + ")");
@@ -338,7 +344,7 @@
 
   // --- assi condivisi da scatter e serie -------------------------------
 
-  function assi(svg, riquadro, scalaX, scalaY, etichetteX, etichetteY, decimaliX, decimaliY) {
+  function assi(svg, riquadro, scalaX, scalaY, etichetteX, etichetteY, decimaliX, decimaliY, formattaX, formattaY) {
     const gruppo = el("g", null, svg);
     etichetteY.forEach(function (valore) {
       const y = scalaY(valore);
@@ -350,7 +356,7 @@
         x: riquadro.sinistra - 8, y: y + 4, "text-anchor": "end",
         fill: css("--inchiostro-3"), "font-size": 11,
       }, gruppo);
-      testo.textContent = num(valore, decimaliY);
+      testo.textContent = formattaY ? formattaY(valore) : num(valore, decimaliY);
     });
     etichetteX.forEach(function (valore) {
       const x = scalaX(valore);
@@ -358,7 +364,7 @@
         x: x, y: riquadro.alto + riquadro.altezza + 18, "text-anchor": "middle",
         fill: css("--inchiostro-3"), "font-size": 11,
       }, gruppo);
-      testo.textContent = num(valore, decimaliX);
+      testo.textContent = formattaX ? formattaX(valore) : num(valore, decimaliX);
     });
     el("line", {
       x1: riquadro.sinistra, x2: riquadro.sinistra + riquadro.larghezza,
@@ -409,7 +415,8 @@
 
     assi(svg, riquadro, sx, sy,
       passi(xMin, xMax, 5), passi(yMin, yMax, 5),
-      opzioni.decimaliX || 0, opzioni.decimaliY === undefined ? 1 : opzioni.decimaliY);
+      opzioni.decimaliX || 0, opzioni.decimaliY === undefined ? 1 : opzioni.decimaliY,
+      opzioni.formattaX, opzioni.formattaY);
 
     // Le due mediane: sono i confini dei quadranti, e vanno viste.
     [["x", opzioni.medianaX, sx], ["y", opzioni.medianaY, sy]].forEach(function (coppia) {
@@ -431,13 +438,18 @@
       }, svg);
       cerchio.addEventListener("mousemove", function (evento) {
         mostraSuggerimento(evento, "<b>" + punto.nome + "</b>" +
-          opzioni.etichettaX + ": " + num(punto.x, opzioni.decimaliX || 0) + "<br>" +
+          opzioni.etichettaX + ": " +
+          (opzioni.formattaX ? opzioni.formattaX(punto.x) : num(punto.x, opzioni.decimaliX || 0)) + "<br>" +
           opzioni.etichettaY + ": " + num(punto.y, opzioni.decimaliY === undefined ? 2 : opzioni.decimaliY));
       });
       cerchio.addEventListener("mouseleave", nascondiSuggerimento);
       if (punto.etichetta) {
+        // Vicino al bordo destro l'etichetta si ribalta a sinistra, invece di
+        // uscire dal riquadro come faceva Brescia.
+        const vicinoAlBordo = sx(punto.x) > riquadro.sinistra + riquadro.larghezza - 70;
         const testo = el("text", {
-          x: sx(punto.x) + 9, y: sy(punto.y) + 4,
+          x: sx(punto.x) + (vicinoAlBordo ? -9 : 9), y: sy(punto.y) + 4,
+          "text-anchor": vicinoAlBordo ? "end" : "start",
           fill: css("--inchiostro-2"), "font-size": 11,
         }, svg);
         testo.textContent = punto.nome;
@@ -458,7 +470,11 @@
     const righe = punti.slice()
       .sort(function (a, b) { return b.y - a.y; })
       .map(function (p) {
-        return [p.nome, num(p.x, opzioni.decimaliX || 0), num(p.y, opzioni.decimaliY === undefined ? 2 : opzioni.decimaliY)];
+        return [
+          p.nome,
+          opzioni.formattaX ? opzioni.formattaX(p.x) : num(p.x, opzioni.decimaliX || 0),
+          num(p.y, opzioni.decimaliY === undefined ? 2 : opzioni.decimaliY),
+        ];
       });
     tabellaSpecchio(contenitore, ["comune", opzioni.etichettaX, opzioni.etichettaY], righe);
   }
@@ -467,7 +483,7 @@
 
   function serie(contenitore, opzioni) {
     const ALTEZZA = 340;
-    const riquadro = { sinistra: 58, alto: 16, larghezza: LARGHEZZA - 130, altezza: ALTEZZA - 56 };
+    const riquadro = { sinistra: 58, alto: 16, larghezza: LARGHEZZA - 195, altezza: ALTEZZA - 56 };
     const linee = opzioni.linee;
     const periodi = opzioni.periodi;
 
@@ -550,7 +566,7 @@
     const voci = opzioni.voci;
     const ALTEZZA_RIGA = 26;
     const ALTEZZA = voci.length * ALTEZZA_RIGA + 34;
-    const sinistra = opzioni.larghezzaEtichette || 230;
+    const sinistra = opzioni.larghezzaEtichette || 275;
     const larghezza = LARGHEZZA - sinistra - 70;
 
     const estremo = Math.max.apply(null, voci.map(function (v) { return Math.abs(v.valore); }));
@@ -576,10 +592,15 @@
       const etichetta = el("text", { x: sinistra - 10, y: y + 12, "text-anchor": "end",
         fill: css("--inchiostro-2"), "font-size": 11.5 }, svg);
       etichetta.textContent = voce.nome;
+      // Se il numero finirebbe sopra la colonna delle etichette, entra nella
+      // barra: fuori si sovrapporrebbe al nome del settore.
+      const fuoriASinistra = voce.valore < 0 && x - 8 < sinistra + 40;
       const numero = el("text", {
-        x: voce.valore < 0 ? x - 8 : x + lunghezza + 8, y: y + 12,
-        "text-anchor": voce.valore < 0 ? "end" : "start",
-        fill: css("--inchiostro"), "font-size": 11.5, "font-weight": 600,
+        x: fuoriASinistra ? x + 8 : voce.valore < 0 ? x - 8 : x + lunghezza + 8,
+        y: y + 12,
+        "text-anchor": fuoriASinistra ? "start" : voce.valore < 0 ? "end" : "start",
+        fill: fuoriASinistra ? css("--superficie") : css("--inchiostro"),
+        "font-size": 11.5, "font-weight": 600,
       }, svg);
       numero.textContent = num(voce.valore, opzioni.decimali === undefined ? 0 : opzioni.decimali);
     });

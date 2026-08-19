@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodo — Come cambia il bresciano</title>
+<meta name="description" content="Le regole che governano il progetto: come si misura, cosa si dichiara, e perché.">
+<style>/*{{STILE}}*/</style>
+</head>
+<body>
+
+<header class="testata">
+  <p class="occhiello">Come cambia il bresciano</p>
+  <h1>Il metodo</h1>
+  <p class="sommario">Le regole che governano il progetto, ciascuna con il suo
+  perché. Quasi tutte sono nate da un problema incontrato facendo, non da un
+  principio scelto prima.</p>
+  <nav class="navigazione">
+    <a href="index.html">Il racconto</a>
+    <a href="dati.html">I dati</a>
+  </nav>
+</header>
+
+<main>
+<section>
+  <h2>Una sola geometria, una sola chiave</h2>
+  <p>L'unità è il <b>comune</b>, la chiave è il <b>codice ISTAT a sei cifre</b>
+  (<code>017029</code> è Brescia). Nessuno slug inventato, nessun join per nome:
+  i nomi hanno apostrofi, accenti e varianti, e sono il modo più affidabile di
+  perdere righe in silenzio. Il momento in cui si ammettono due geometrie «quasi
+  uguali» è il momento in cui i numeri smettono di tornare.</p>
+
+  <h2>Un dato mancante non è uno zero</h2>
+  <p>È la regola che questo progetto ha dovuto scrivere tre volte. Sulle
+  presenze turistiche esistono <b>tre modi diversi di essere assenti</b> sullo
+  stesso indicatore: il valore soppresso perché troppo piccolo, il comune che la
+  fonte non riporta affatto, e uno zero che è chiaramente fittizio. Nessuno dei
+  tre è «nessun turista». Nelle mappe l'assenza ha un colore proprio, mai lo
+  zero della scala.</p>
+
+  <h2>Decomporre prima di titolare</h2>
+  <p>Nessun titolo su una variazione aggregata prima di averla scomposta. La
+  regola nasce da un errore reale, raccontato per esteso nel
+  <a href="index.html#crollo">terzo capitolo</a>: una variazione spettacolare —
+  il crollo degli addetti nelle grandi unità locali del capoluogo — si è
+  dissolta appena scomposta per settore, rivelandosi concentrata in due
+  divisioni di servizi mentre la manifattura restava immobile.</p>
+
+  <h2>Il livello iniziale, non quello finale</h2>
+  <p>Per chiedersi se i comuni convergano bisogna correlare la crescita con il
+  livello <b>di partenza</b>. Correlarla con il livello finale è un artefatto:
+  il livello finale contiene la crescita. Sul reddito bresciano i due calcoli
+  danno segni opposti, ed è il motivo per cui il
+  <a href="index.html#redditi">secondo capitolo</a> li mostra entrambi.</p>
+
+  <h2>Due correlazioni, mai una</h2>
+  <p>Pearson e Spearman si riportano sempre in coppia. Quando divergono molto,
+  il numero lo stanno facendo pochi comuni. E ogni correlazione viene
+  ricalcolata togliendo gli outlier noti — il capoluogo, che è un ordine di
+  grandezza sopra tutti gli altri, e i comuni a forte vocazione turistica — per
+  vedere se il risultato dipende da loro.</p>
+
+  <h2>Le finestre temporali non si appiattiscono</h2>
+  <p>Gli assi di questo progetto hanno finestre molto diverse: la qualità
+  dell'aria comincia negli anni Novanta, il registro delle imprese nel 2018, la
+  percezione della sicurezza nel 2022. Tagliarle tutte sulla più corta
+  butterebbe via il dato migliore. Ogni grafico dichiara la propria.</p>
+
+  <h2>Il 2020 non si attraversa in silenzio</h2>
+  <p>Il 2020 e il 2021 spezzano quasi tutte le serie. Un tasso annuo composto ci
+  passa sopra come se nulla fosse — è una media, e le medie fanno questo. Dove
+  la rottura conta, la serie si mostra anno per anno invece che riassunta.</p>
+
+  <h2>Ogni numero ha uno script dietro</h2>
+  <p>Nessuna cifra di questo sito è scritta a mano: nel testo ci sono
+  segnaposto, e la costruzione della pagina li sostituisce ricalcolandoli dalle
+  tabelle. Se un segnaposto non trova il suo valore, il sito non si costruisce
+  invece di pubblicare una frase con un buco.</p>
+  <p>Nel repository c'è anche il verso opposto: uno script che rilegge i
+  documenti di lavoro e ricalcola ogni cifra citata. Alla prima esecuzione ne ha
+  trovate due sbagliate su ventiquattro.</p>
+
+  <h2>Confidenza dichiarata, indicatore per indicatore</h2>
+  <p>Ogni indicatore porta un'etichetta — <b>osservato</b> (misurato
+  direttamente), <b>derivato</b> (calcolato da altri), <b>proxy</b>
+  (approssimazione) — e l'elenco delle assunzioni che lo reggono. Viaggiano con
+  il dato fino al riquadro che compare sotto ogni grafico, perché una nota a
+  piè di pagina non la legge nessuno.</p>
+
+  <h2>Correlazione non è causalità, e va scritto</h2>
+  <p>Non «va tenuto presente»: va scritto nel testo, ogni volta. Con
+  {{c:comuni}} comuni e poche annate si descrive un territorio; non si stabilisce
+  un meccanismo. Le parole che implicano un meccanismo che i dati non mostrano
+  restano fuori dai titoli.</p>
+</section>
+</main>
+
+<footer class="chiusura">
+  <p>Pagina costruita il {{BUILD_DATE}} · dati aggiornati al {{DATA_DATE}}.</p>
+</footer>
+</body>
+</html>
