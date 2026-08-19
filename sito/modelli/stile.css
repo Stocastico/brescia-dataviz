@@ -11,7 +11,13 @@
   --griglia: #e1e0d9;
   --asse: #c3c2b7;
   --bordo: rgba(11, 11, 11, 0.10);
-  --nessun-dato: #e6e6e6;
+  /* «Nessun dato» e «nessuna variazione» sono due cose diverse e devono
+     sembrarlo: qui erano due grigi quasi uguali. Adesso il primo è più scuro
+     del secondo **e** porta un tratteggio, così la distinzione non dipende dal
+     colore — che è anche l'unico modo in cui regge in stampa e per chi non
+     distingue bene le tinte. */
+  --nessun-dato: #c9c8c3;
+  --nessun-dato-tratto: #9a9994;
 
   /* Sequenziale: una sola tinta, dal chiaro allo scuro. */
   --seq-1: #cde2fb; --seq-2: #b7d3f6; --seq-3: #9ec5f4; --seq-4: #6da7ec;
@@ -43,7 +49,8 @@
     --griglia: #2c2c2a;
     --asse: #383835;
     --bordo: rgba(255, 255, 255, 0.10);
-    --nessun-dato: #3a3a38;
+    --nessun-dato: #56554f;
+    --nessun-dato-tratto: #86847c;
     --div-zero: #383835;
     --serie-1: #3987e5;
     --serie-2: #d95926;
@@ -190,6 +197,12 @@ p { margin: 0 0 1.15rem; }
 .legenda .passo { width: 26px; height: 10px; border-radius: 2px; }
 .legenda .voce { display: flex; align-items: center; gap: 0.35rem; }
 .legenda .pallino { width: 10px; height: 10px; border-radius: 3px; }
+.legenda .pallino.assente {
+  background:
+    repeating-linear-gradient(45deg,
+      var(--nessun-dato-tratto) 0 1.5px,
+      var(--nessun-dato) 1.5px 4px);
+}
 
 .provenienza { font-size: 0.75rem; color: var(--inchiostro-3); margin-top: 0.75rem; }
 .provenienza .distintivo {

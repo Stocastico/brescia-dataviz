@@ -134,9 +134,10 @@
       colori: chiavi.map(css),
       rotture: rotture,
       colore: function (valore) {
-        if (valore === null || valore === undefined) return css("--nessun-dato");
+        if (valore === null || valore === undefined) return this.assente;
         return this.colori[classeDi(valore, rotture)];
       },
+      assente: css("--nessun-dato"),
     };
   }
 
@@ -169,8 +170,7 @@
       const assente = document.createElement("span");
       assente.className = "voce";
       const pallino = document.createElement("span");
-      pallino.className = "pallino";
-      pallino.style.background = css("--nessun-dato");
+      pallino.className = "pallino assente";
       assente.appendChild(pallino);
       assente.appendChild(document.createTextNode("nessun dato (" + quantiSenzaDato + " comuni)"));
       legenda.appendChild(assente);
@@ -232,6 +232,26 @@
   // --- la mappa --------------------------------------------------------
 
   const LARGHEZZA = 720;
+  let contatoreTratteggi = 0;
+
+  /* Il tratteggio dell'assenza. Un grigio da solo non basta: accanto al grigio
+     neutro di una scala divergente sono due tinte quasi uguali, e «non lo
+     sappiamo» finisce per sembrare «non si muove». Il tratto distingue le due
+     cose anche in stampa e senza distinguere i colori. */
+  function tratteggioAssenza(svg) {
+    const id = "senza-dato-" + ++contatoreTratteggi;
+    const defs = el("defs", null, svg);
+    const pattern = el("pattern", {
+      id: id, width: 6, height: 6, patternUnits: "userSpaceOnUse",
+      patternTransform: "rotate(45)",
+    }, defs);
+    el("rect", { width: 6, height: 6, fill: css("--nessun-dato") }, pattern);
+    el("line", {
+      x1: 0, y1: 0, x2: 0, y2: 6,
+      stroke: css("--nessun-dato-tratto"), "stroke-width": 2,
+    }, pattern);
+    return "url(#" + id + ")";
+  }
 
   function proiezione() {
     let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
@@ -285,6 +305,7 @@
       "aria-label": opzioni.descrizione || m.label,
     });
     contenitore.appendChild(svg);
+    const riempimentoAssente = tratteggioAssenza(svg);
 
     const forme = {};
     DATI.geo.comuni.forEach(function (comune) {
@@ -312,6 +333,7 @@
     function aggiorna(periodo) {
       const valori = valoriDi(opzioni.metrica, periodo);
       scalaCorrente = scala(valori, m.kind);
+      scalaCorrente.assente = riempimentoAssente;
       DATI.geo.comuni.forEach(function (comune) {
         const valore = valori[comune.c];
         forme[comune.c].__valore = valore;
