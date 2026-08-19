@@ -15,6 +15,7 @@ import sys
 import time
 from collections.abc import Callable
 
+from . import web
 from .config import PROCESSED_DIR, RAW_DIR, ensure_dirs
 from .datasets import (
     abitazioni,
@@ -50,8 +51,9 @@ DATASETS: dict[str, Callable[[dict[str, str]], None]] = {
     "ambiente": ambiente.build,
     "redditi": redditi.build,
     "commercio_estero": commercio_estero.build,
-    # deve restare in coda: legge le tabelle prodotte dagli altri
+    # devono restare in coda: leggono le tabelle prodotte dagli altri
     "sintesi": sintesi.build,
+    "web": web.build,
 }
 
 

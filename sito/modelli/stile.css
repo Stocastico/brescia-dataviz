@@ -1,0 +1,260 @@
+/* Palette e impaginazione del sito. I colori dei grafici sono ruoli, non hex
+   sparsi nel codice: cambiare tema significa cambiare queste variabili. */
+
+:root {
+  color-scheme: light;
+  --piano: #f9f9f7;
+  --superficie: #fcfcfb;
+  --inchiostro: #0b0b0b;
+  --inchiostro-2: #52514e;
+  --inchiostro-3: #898781;
+  --griglia: #e1e0d9;
+  --asse: #c3c2b7;
+  --bordo: rgba(11, 11, 11, 0.10);
+  --nessun-dato: #e6e6e6;
+
+  /* Sequenziale: una sola tinta, dal chiaro allo scuro. */
+  --seq-1: #cde2fb; --seq-2: #b7d3f6; --seq-3: #9ec5f4; --seq-4: #6da7ec;
+  --seq-5: #3987e5; --seq-6: #256abf; --seq-7: #184f95; --seq-8: #0d366b;
+
+  /* Divergente: due tinte opposte, grigio neutro nel mezzo. I due archi hanno
+     la stessa chiarezza passo per passo, così nessuno dei due pesa di più. */
+  --div-neg-4: #0d366b; --div-neg-3: #184f95; --div-neg-2: #3987e5; --div-neg-1: #9ec5f4;
+  --div-zero: #f0efec;
+  --div-pos-1: #f1aea8; --div-pos-2: #d65853; --div-pos-3: #892c2a; --div-pos-4: #621b1a;
+
+  /* Categoriche, nell'ordine fisso: mai rimescolate, mai riciclate. */
+  --serie-1: #2a78d6;
+  --serie-2: #eb6834;
+  --serie-3: #1baf7a;
+
+  --evidenza: #eb6834;
+  --larghezza: 44rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --piano: #0d0d0d;
+    --superficie: #1a1a19;
+    --inchiostro: #ffffff;
+    --inchiostro-2: #c3c2b7;
+    --inchiostro-3: #898781;
+    --griglia: #2c2c2a;
+    --asse: #383835;
+    --bordo: rgba(255, 255, 255, 0.10);
+    --nessun-dato: #3a3a38;
+    --div-zero: #383835;
+    --serie-1: #3987e5;
+    --serie-2: #d95926;
+    --serie-3: #199e70;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--piano);
+  color: var(--inchiostro);
+  font: 16px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+a { color: inherit; text-underline-offset: 0.2em; }
+
+header.testata {
+  max-width: var(--larghezza);
+  margin: 0 auto;
+  padding: 4rem 1.25rem 2rem;
+}
+
+header.testata h1 {
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem;
+}
+
+.occhiello {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--inchiostro-3);
+  margin: 0 0 1rem;
+}
+
+.sommario { font-size: 1.15rem; color: var(--inchiostro-2); margin: 0 0 1.5rem; }
+
+.navigazione {
+  border-top: 1px solid var(--bordo);
+  border-bottom: 1px solid var(--bordo);
+  padding: 0.75rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+main { max-width: var(--larghezza); margin: 0 auto; padding: 0 1.25rem 5rem; }
+
+section { padding-top: 3.5rem; }
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.5rem;
+}
+
+h3 { font-size: 1.15rem; margin: 2rem 0 0.5rem; }
+
+p { margin: 0 0 1.15rem; }
+
+.numeri {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1px;
+  background: var(--bordo);
+  border: 1px solid var(--bordo);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.numero { background: var(--superficie); padding: 1rem 1.1rem; }
+.numero b { display: block; font-size: 1.75rem; line-height: 1.1; letter-spacing: -0.02em; }
+.numero span { display: block; font-size: 0.8rem; color: var(--inchiostro-2); margin-top: 0.35rem; }
+
+/* Il riquadro «la metrica, in chiaro»: due frasi, non una nota a piè di pagina. */
+.in-chiaro {
+  background: var(--superficie);
+  border: 1px solid var(--bordo);
+  border-left: 3px solid var(--serie-1);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  margin: 1.75rem 0;
+  font-size: 0.95rem;
+}
+.in-chiaro b { display: block; margin-bottom: 0.35rem; }
+.in-chiaro p:last-child { margin-bottom: 0; }
+
+.avvertenza { border-left-color: var(--serie-2); }
+
+.figura {
+  background: var(--superficie);
+  border: 1px solid var(--bordo);
+  border-radius: 10px;
+  padding: 1.1rem 1.1rem 0.9rem;
+  margin: 2rem 0;
+}
+
+.figura > figcaption {
+  font-size: 0.85rem;
+  color: var(--inchiostro-2);
+  margin-bottom: 0.9rem;
+}
+.figura > figcaption b { color: var(--inchiostro); font-weight: 600; }
+
+.figura svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+.comandi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.9rem;
+}
+
+.comandi button {
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--bordo);
+  background: transparent;
+  color: var(--inchiostro-2);
+  cursor: pointer;
+}
+.comandi button[aria-pressed="true"] {
+  background: var(--inchiostro);
+  color: var(--superficie);
+  border-color: var(--inchiostro);
+}
+
+.legenda { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; font-size: 0.78rem; color: var(--inchiostro-2); margin-top: 0.6rem; }
+.legenda .scala { display: flex; align-items: center; gap: 2px; }
+.legenda .passo { width: 26px; height: 10px; border-radius: 2px; }
+.legenda .voce { display: flex; align-items: center; gap: 0.35rem; }
+.legenda .pallino { width: 10px; height: 10px; border-radius: 3px; }
+
+.provenienza { font-size: 0.75rem; color: var(--inchiostro-3); margin-top: 0.75rem; }
+.provenienza .distintivo {
+  display: inline-block;
+  border: 1px solid var(--bordo);
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+  margin-right: 0.4rem;
+}
+
+details.tabella { margin-top: 0.75rem; font-size: 0.8rem; }
+details.tabella summary { cursor: pointer; color: var(--inchiostro-2); }
+details.tabella table { width: 100%; border-collapse: collapse; margin-top: 0.6rem; font-variant-numeric: tabular-nums; }
+details.tabella th, details.tabella td { text-align: right; padding: 0.2rem 0.4rem; border-bottom: 1px solid var(--griglia); }
+details.tabella th:first-child, details.tabella td:first-child { text-align: left; }
+details.tabella .contenitore { max-height: 20rem; overflow: auto; }
+
+.suggerimento {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10;
+  background: var(--inchiostro);
+  color: var(--piano);
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  opacity: 0;
+  transition: opacity 0.1s;
+  max-width: 16rem;
+}
+.suggerimento.visibile { opacity: 1; }
+.suggerimento b { display: block; }
+
+/* Lo scrollytelling: la figura resta, il testo scorre e la aggiorna. */
+.scrollytelling { margin: 2.5rem 0; }
+.scrollytelling .sostegno { position: sticky; top: 1rem; z-index: 1; }
+.scrollytelling .passi { margin-top: 1.5rem; }
+.scrollytelling .passo-testo {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  border-left: 2px solid transparent;
+  padding-left: 1rem;
+  transition: border-color 0.2s, opacity 0.2s;
+  opacity: 0.45;
+}
+.scrollytelling .passo-testo[data-attivo="1"] { border-left-color: var(--evidenza); opacity: 1; }
+.scrollytelling .passo-testo > div { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollytelling .passo-testo { opacity: 1; transition: none; }
+}
+
+footer.chiusura {
+  border-top: 1px solid var(--bordo);
+  max-width: var(--larghezza);
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  font-size: 0.85rem;
+  color: var(--inchiostro-2);
+}
+
+table.fonti { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1.5rem 0; }
+table.fonti th, table.fonti td { text-align: left; padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--griglia); vertical-align: top; }
+
+ul.elenco { padding-left: 1.15rem; }
+ul.elenco li { margin-bottom: 0.5rem; }
+
+@media (max-width: 40rem) {
+  .scrollytelling .passo-testo { min-height: 45vh; }
+}
