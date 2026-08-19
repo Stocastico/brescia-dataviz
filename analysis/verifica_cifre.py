@@ -587,6 +587,78 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         0,
     ),
     (
+        "WORKING-PAPER §7.3",
+        "crescita del reddito, mediana dei comuni: +2,23 %/anno",
+        2.23,
+        lambda: statistics.median(
+            tasso(reddito_medio("2012")[c], reddito_medio("2023")[c], 11)
+            for c in reddito_medio("2012")
+            if c in reddito_medio("2023")
+        ),
+        0.01,
+    ),
+    (
+        "WORKING-PAPER §7.1",
+        "unità locali sotto i 10 addetti, 2018: 92,8 %",
+        92.8,
+        lambda: addetti("2018", "0-9", "unita_locali") / addetti("2018", "totale", "unita_locali") * 100,
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.1",
+        "addetti in micro-unità: +6.842 fra 2018 e 2023",
+        6842,
+        lambda: addetti("2023", "0-9") - addetti("2018", "0-9"),
+        2,
+    ),
+    (
+        "WORKING-PAPER §7.1",
+        "addetti in unità ≥250 in provincia: −1.260",
+        -1260,
+        lambda: addetti("2023", "250+") - addetti("2018", "250+"),
+        2,
+    ),
+    (
+        "WORKING-PAPER §7.4",
+        "alloggio e ristorazione: 8,0 % degli addetti provinciali",
+        8.0,
+        lambda: sum(
+            numero(r["valore"]) or 0.0
+            for r in sezioni
+            if r["anno"] == "2023" and r["indicatore"] == "addetti" and r["sezione"] == "I"
+        )
+        / addetti("2023", "totale")
+        * 100,
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.4 / sito §Le due economie",
+        "manifattura e alloggio sono alternative: Pearson −0,67",
+        -0.67,
+        lambda: correlazione(
+            *zip(*[
+                (q["C"], q["I"])
+                for q in quote_sezioni("2023").values()
+                if "C" in q and "I" in q
+            ])
+        ),
+        0.01,
+    ),
+    (
+        "WORKING-PAPER §7.4",
+        "24 comuni hanno almeno un quarto degli addetti in alloggio",
+        24,
+        lambda: sum(1 for q in quote_sezioni("2023").values() if q.get("I", 0.0) >= 25),
+        0,
+    ),
+    (
+        "WORKING-PAPER §6.2",
+        "Moran sul reddito per contribuente: 0,43",
+        0.43,
+        lambda: moran(reddito_medio("2023")),
+        0.01,
+    ),
+    (
         "analysis/autocorrelazione_spaziale",
         "contiguità: grado medio 5,37 vicini per comune",
         5.37,

@@ -22,7 +22,7 @@ il punto.
 | `_tabelle.py` | Non è un'analisi: è la lettura delle tabelle e la statistica di base che gli script hanno in comune. |
 
 ```bash
-python analysis/verifica_cifre.py                    # quaranta verifiche, agosto 2026
+python analysis/verifica_cifre.py                    # quarantotto verifiche, agosto 2026
 python analysis/variazione_popolazione.py --save     # + CSV in analysis/output/
 python analysis/velocita_di_cambio.py reddito
 python analysis/livelli_e_variazioni.py
