@@ -36,6 +36,7 @@ jobs:
           python analysis/due_economie.py > /dev/null
           python analysis/tipologia_comuni.py > /dev/null
           python analysis/dove_si_lavora.py > /dev/null
+          python analysis/rottura_covid.py > /dev/null
       - name: Il sito si costruisce
         run: |
           python -m brescia_pipeline.build --offline web

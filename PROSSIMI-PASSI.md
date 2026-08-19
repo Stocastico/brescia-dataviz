@@ -372,9 +372,11 @@ Riadattate al caso bresciano. La prima è fatta, le altre no.
   nota metodologica. Resta aperto solo il confronto con Bergamo.
 - ✅ **Le due economie** (`analysis/due_economie.py`), che prima non era
   possibile: quote settoriali comune per comune.
-- 🤖 **Rottura Covid**: 2020–2021 spezza quasi tutte le serie. La
-  decomposizione del capoluogo la mostra per un caso (la rottura è tutta nel
-  2020), ma un test sistematico su tutte le serie non c'è.
+- ✅ **Rottura Covid** (`analysis/rottura_covid.py`). Il risultato è doppio:
+  sulle serie annuali **non si può testare** (due punti prima del 2020 non fanno
+  una tendenza), e sulle mensili si può ma bisogna scegliere bene la base — con
+  vent'anni di base il PM10 del 2020 sembra −26 %, con tre anni è −9 %, e la
+  differenza è tutta tendenza di lungo periodo scambiata per pandemia.
 - 🤖 **Decomposizione della popolazione**: quanto della variazione viene da
   saldo naturale, migrazione interna, migrazione estera. È il seguito naturale
   della prima storia del sito, ed è la domanda che quella storia dichiara di non
@@ -740,7 +742,6 @@ entra nel tempo che hai, non a fare un piano.
 | 🤖 Scarico delle migrazioni + riscarico in italiano delle tre tavole censuarie (§2.4) | **una notte di attesa** | l'unico dataset previsto che manchi, e tre tabelle oggi non pubblicabili |
 | 🤖 Decomposizione della popolazione: saldo naturale contro migrazione | **mezza giornata** | rispondere alla domanda che la prima storia del sito dichiara di non poter rispondere |
 | 🤖 Bergamo come controllo | **mezza giornata** | chiudere l'ultimo pezzo aperto di MET-9 |
-| 🤖 Test sistematico della rottura Covid | **2 h** | MET-8 oggi è dichiarata, non misurata |
 | 🤖 Riscrivere la §7 del working paper con le quattro storie | **mezza giornata** | il documento per un lettore esterno |
 | 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |
 | 🙋 I download manuali (§2.2) | **2–4 h in tutto** | estensioni, nessun asse portante |

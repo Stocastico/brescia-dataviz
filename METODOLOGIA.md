@@ -150,6 +150,34 @@ tratteggio o ombreggiatura sui tratti non confrontabili).
 E **il 2020–2021 spezza quasi tutto**: la discontinuità Covid va testata
 esplicitamente, non attraversata con una linea di tendenza.
 
+### Testarla, però, richiede una base che non contenga già la risposta
+
+`analysis/rottura_covid.py` la testa dove si può, e la prima cosa che dice è
+**dove non si può**: il registro delle imprese comincia nel 2018, quindi prima
+della pandemia ci sono due punti, e con due punti non esiste una tendenza da cui
+misurare uno scostamento. Non è un preambolo, è il risultato.
+
+Dove si può, il metodo è l'**attesa stagionale**: ogni mese si confronta con i
+mesi omologhi precedenti. E qui c'è la trappola, che è la stessa di MET-12 in
+un'altra forma — **una base lunga su una serie che ha una tendenza propria non
+misura la rottura, misura la tendenza**:
+
+| PM10, scarto del 2020 dall'attesa | |
+|---|---|
+| base 2000–2019 (venti anni) | −26 % |
+| base 2017–2019 (tre anni) | **−9 %** |
+
+Il PM10 scende da trent'anni per conto suo. Il primo numero attribuisce alla
+pandemia due terzi di un miglioramento cominciato prima, e sarebbe un titolo
+sbagliato in buona fede. Anche il secondo resta tendenza **più** rottura: questo
+metodo non le separa, e dirlo è parte del risultato.
+
+Il confronto fra le due serie mensili è per contro istruttivo: le presenze
+turistiche perdono metà delle notti nel 2020 e superano il livello del 2019 già
+nel 2022 — una rottura vera, netta e riassorbita — mentre sull'aria lo scarto
+resta negativo cinque anni dopo, che è il segno di una tendenza in corso e non
+di una rottura.
+
 ## MET-9 — Decomporre prima di titolare
 
 > Questa regola nasce da un errore commesso in questo progetto, ed è la

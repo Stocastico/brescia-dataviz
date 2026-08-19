@@ -246,6 +246,19 @@ def quote_sezioni(anno: str) -> dict[str, dict[str, float]]:
     }
 
 
+def scarto_stagionale_turismo(anno: str, base: str = "2019") -> float:
+    """Presenze dell'anno contro i mesi omologhi del `base`, in percentuale."""
+    per_mese: dict[str, float] = defaultdict(float)
+    for riga in leggi("turismo_comuni_mensile.csv"):
+        valore = numero(riga["presenze"])
+        if valore is not None:
+            per_mese[riga["mese"]] += valore
+    osservato = sum(v for m, v in per_mese.items() if m[:4] == anno)
+    mesi = {m[5:7] for m in per_mese if m[:4] == anno}
+    atteso = sum(v for m, v in per_mese.items() if m[:4] == base and m[5:7] in mesi)
+    return (osservato / atteso - 1) * 100
+
+
 def vicini() -> dict[str, set[str]]:
     """Contiguità per vertice condiviso, riletta dal GeoJSON."""
     geo = json.loads((RADICE / "dati" / "geo" / "comuni_brescia.geojson").read_text(encoding="utf-8"))
@@ -657,6 +670,20 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         0.43,
         lambda: moran(reddito_medio("2023")),
         0.01,
+    ),
+    (
+        "METODOLOGIA MET-8",
+        "presenze turistiche 2020: −53,9 % rispetto all'attesa stagionale",
+        -53.9,
+        lambda: scarto_stagionale_turismo("2020"),
+        0.1,
+    ),
+    (
+        "METODOLOGIA MET-8",
+        "presenze turistiche 2022: già +18,1 % sopra l'attesa",
+        18.1,
+        lambda: scarto_stagionale_turismo("2022"),
+        0.1,
     ),
     (
         "analysis/autocorrelazione_spaziale",
