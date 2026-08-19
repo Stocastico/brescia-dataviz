@@ -6,13 +6,14 @@ con il capoluogo (`017029`) come caso privilegiato. Modellato sull'architettura
 di `donostia-dataviz` ma con una domanda di ricerca diversa: *come è cambiato
 questo territorio*, senza una tesi turistica a monte.
 
-**Stato: ricognizione completata, pipeline funzionante, dati scaricati e
-puliti, base geografica in piedi.** I confini dei 205 comuni ci sono
-([`dati/geo/`](dati/README.md)): da qui in poi ogni coropletica è possibile.
-Manca la parte di analisi e visualizzazione — e le prime due analisi sono in
-[`analysis/`](analysis/README.md). Il piano, con l'indicazione di **cosa può
-fare una sessione di lavoro e cosa richiede te**, sta in
-[`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md).
+**Stato: il sito esiste.** Dati scaricati e puliti, otto analisi fatte, quattro
+storie scritte in un documento narrativo autocontenuto
+([`sito/`](sito/README.md)) che si costruisce da solo e ha già il suo workflow
+di pubblicazione. Quello che manca per pubblicare non è più tecnico: **una
+licenza da scegliere, una rilettura dei testi e un clic nelle impostazioni del
+repository**. Tutto il resto è facoltativo, ed è elencato in
+[`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md), che distingue riga per riga **cosa può
+fare una sessione di lavoro e cosa richiede te**.
 
 ## I documenti
 
@@ -20,12 +21,13 @@ fare una sessione di lavoro e cosa richiede te**, sta in
 |---|---|
 | [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, il soggetto e i **quattro assi scelti**, le due analisi dedicate al capoluogo, le storie candidate, i principi. |
 | [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e la traccia storica della separazione del repository (§12). |
-| [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza.** Le undici regole che governano il progetto: perché misuriamo come misuriamo. MET-9 nasce da un errore reale. Da completare a fine progetto. |
+| [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza avanzata.** Le **tredici** regole che governano il progetto: perché misuriamo come misuriamo. Tre nascono da errori veri trovati sui dati — MET-9 (un titolo sbagliato), MET-12 (una correlazione con il segno rovesciato), MET-13 (due script che rispondevano numeri diversi alla stessa domanda). |
 | [`WORKING-PAPER.md`](WORKING-PAPER.md) | ⚠️ **Bozza.** Il working paper: metodo per un lettore esterno. La sezione dei risultati è provvisoria — si riscrive quando le storie saranno chiuse. |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco delle cose che **richiedono te** (una licenza da scegliere, un login SPID, una macchina italiana), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
-| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 19 CSV su territorio, imprese, lavoro, popolazione, famiglie e abitazioni, redditi, ambiente, sicurezza e turismo, più i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
-| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: uno script per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati ogni cifra citata in questi documenti. |
+| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 21 CSV su territorio, imprese, lavoro, popolazione, famiglie e abitazioni, redditi, ambiente, sicurezza e turismo, più i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
+| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: uno script per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
+| [`sito/`](sito/README.md) | **Il documento narrativo**: quattro storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
 ## Come leggere il registro
 
@@ -67,11 +69,24 @@ clima. Il resto resta materiale di contorno. Dettaglio in
 [`BRIEF.md`](BRIEF.md).
 
 Il confronto città/provincia è la cosa più informativa emersa: fra 2018 e 2023
-la provincia guadagna 29 mila addetti mentre la città è ferma. Attenzione però
-al titolo facile — il crollo delle grandi unità locali del capoluogo, scomposto
-per settore, è quasi tutto somministrazione di lavoro e servizi esternalizzati,
-non industria: la manifattura grande non si muove. È il caso che ha dato
-origine alla regola MET-9 e sta in [`WORKING-PAPER.md`](WORKING-PAPER.md) §6.1.
+la provincia guadagna 29 mila addetti mentre la città è ferma. Il titolo facile
+— «la grande industria se ne va dalla città» — è **falso, e ora si può
+dimostrare**: la manifattura grande del capoluogo perde 51 addetti su 4.448,
+cioè non si muove, e tutto il calo sta in due divisioni di servizi che non hanno
+perso lavoro ma cambiato forma (i servizi per edifici si frammentano in 157
+unità locali in più) o comune (la somministrazione esce dalla città ma resta in
+provincia). È MET-9, che era la questione aperta più importante del progetto ed
+è chiusa.
+
+Le altre tre storie del sito: **93 comuni su 205 perdono abitanti**, e non sono
+sparsi a caso ma contigui, tutta la montagna; i **redditi convergono** — chi
+partiva sotto cresce più in fretta, correlazione −0,45 — anche se il comune più
+ricco dichiara ancora 2,5 volte il più povero, ed era 2,2 undici anni prima; e
+la provincia è **davvero due economie**, con la manifattura nelle valli e nella
+Bassa e l'alloggio sul Garda, divise così nettamente che la specializzazione
+settoriale (Moran 0,44) è la variabile economica più raggruppata nello spazio
+fra quelle misurate — dietro solo alla densità abitativa, che però è geografia,
+non economia.
 
 Sul turismo l'asimmetria è più netta e più semplice: 12,2 milioni di presenze
 provinciali nel 2024, di cui il 68,8 % nei primi dieci comuni, otto dei quali
@@ -85,4 +100,17 @@ regionale, come ripiego dichiarato.
 
 Dettagli, prove e tabella completa di raggiungibilità in [`FONTI.md`](FONTI.md).
 Se lavori con l'SDMX di ISTAT, leggi prima la nota tecnica in fondo a quel
-documento: un parametro sbagliato fa sembrare vuoti dataset che sono pieni.
+documento: un parametro sbagliato fa sembrare vuoti dataset che sono pieni — e
+il riquadro in `PROSSIMI-PASSI.md` §2.1 spiega come ottenere gli incroci che
+sembravano impossibili, che è il modo in cui sono arrivate le due tabelle
+migliori del progetto.
+
+## Come si rifà tutto
+
+```bash
+pip install -e ./pipeline
+python -m brescia_pipeline.build          # da zero: scarica e pulisce (ore)
+python -m brescia_pipeline.build --offline web   # solo i JSON per il sito (secondi)
+python sito/costruisci.py                 # -> _site/
+python analysis/verifica_cifre.py         # se una cifra diverge, è quello il primo problema
+```

@@ -1,4 +1,4 @@
-# Nota metodologica (MET-1…MET-11)
+# Nota metodologica (MET-1…MET-13)
 
 > **Cos'è.** Le decisioni che governano il progetto: *perché* misuriamo come
 > misuriamo. È la base di credibilità — qualunque grafico, testo o titolo deve
@@ -6,23 +6,24 @@
 > progetto gemello su Donostia, in parte dai problemi specifici incontrati sui
 > dati bresciani.
 >
-> ## ⚠️ BOZZA — lavori in corso
+> ## ⚠️ Bozza avanzata — non ancora definitiva
 >
-> **Questo documento è stato scritto in anticipo e non è definitivo.** Va
-> riscritto e completato **alla fine**, quando i dati saranno tutti scaricati,
-> le analisi fatte e le storie scelte: solo allora si saprà davvero quali
-> decisioni metodologiche hanno governato il progetto, perché diverse
-> nasceranno da problemi che ancora non abbiamo incontrato.
+> **Aggiornata ad agosto 2026, dopo il primo giro di analisi.** Le tredici
+> regole qui elencate sono tutte reali e applicate; tre di esse (MET-9, MET-12,
+> MET-13) nascono da errori o incoerenze **effettivamente trovati sui dati
+> bresciani**, non da principi scelti a tavolino, e le ultime due sono nuove di
+> questa tornata.
 >
-> Cosa vale già oggi: le undici regole qui elencate sono reali, applicate nella
-> pipeline e in parte coperte da test. MET-9 in particolare nasce da un errore
-> effettivamente commesso (§MET-9) e ha già cambiato un titolo del progetto.
+> Cosa è cambiato in questa revisione: **MET-9 non è più una questione aperta.**
+> L'incrocio fra settore e classe dimensionale — la tabella che mancava — ha
+> chiuso la domanda, e la risposta è nel §MET-9. Restano aperti solo i confronti
+> con altre province.
 >
-> Cosa mancherà finché non si chiude l'analisi: le regole che riguardano
-> **come si scelgono e si raccontano le storie** — soglie, criteri di
-> inclusione di un indicatore in una narrazione, trattamento dei casi limite
-> che emergeranno dai dati. Nel progetto Donostia queste sono arrivate dalle
-> revisioni esterne, cioè dopo aver scritto i relati.
+> Cosa manca ancora: le regole su **come si scelgono e si raccontano le
+> storie** — soglie, criteri di inclusione, casi limite. Quattro storie sono
+> state scritte, che è abbastanza per intuirle e troppo poco per fissarle. Nel
+> progetto Donostia sono arrivate dalle revisioni esterne, cioè dopo la
+> pubblicazione.
 
 ---
 
@@ -189,11 +190,44 @@ MET-1 avverte di non prendere alla lettera: i lavoratori somministrati sono
 attribuiti all'unità locale dell'agenzia, non a quella dove lavorano davvero,
 e una riorganizzazione societaria basta a spostarne migliaia.
 
-**Cosa resta da chiarire** prima di poter dire qualsiasi cosa su questo asse:
-se la divisione 81 sia davvero scesa a zero o sia stata riclassificata; se il
-crollo della somministrazione sia un fenomeno reale del mercato del lavoro
-bresciano o un artefatto di attribuzione; e se lo stesso movimento si veda in
-province comparabili (Bergamo è il controllo naturale).
+### La questione aperta, chiusa (agosto 2026)
+
+La domanda che restava era: *quegli addetti sono spariti o sono stati
+riclassificati?* Non era rispondibile finché il dettaglio settoriale e quello
+dimensionale vivevano in due tabelle separate. Con l'incrocio — quattro
+richieste piccole, perché il territorio è fissato a un codice solo — la risposta
+è netta, e si legge guardando **la stessa divisione a due scale diverse**
+(`analysis/decomposizione_capoluogo.py`):
+
+| Divisione 81 — servizi per edifici | Variazione 2018→2023 |
+|---|---|
+| classe ≥250 addetti, capoluogo | **−3.123** (la classe sparisce) |
+| **tutte** le classi, capoluogo | −1.493 |
+| unità locali del comune, tutte le classi | **+157** |
+| tutte le classi, **provincia** | −536 su 12.699, cioè −4 % |
+
+Le due unità locali grandi non hanno chiuso: si sono **sciolte in unità più
+piccole**, e il comune ne conta 157 in più di prima. In provincia la divisione è
+sostanzialmente ferma.
+
+| Divisione 78 — somministrazione | Variazione 2018→2023 |
+|---|---|
+| classe ≥250 addetti, capoluogo | −4.167 |
+| tutte le classi, capoluogo | −4.830 |
+| tutte le classi, **provincia** | −882 su 17.782, cioè −5 % |
+
+Qui il capoluogo perde davvero, ma la provincia quasi no: il lavoro non è
+uscito dal bresciano, è uscito **dal capoluogo** — e per una fonte che attribuisce
+i somministrati all'unità locale dell'agenzia, spostare una sede basta. La
+rottura, per giunta, è tutta nel 2020 (8.686 → 4.393 in un anno), non una
+discesa gradua: è il profilo di un cambio di registrazione, non di
+un'erosione.
+
+**Conclusione.** Il titolo *«la grande industria se ne va dalla città»* è falso
+due volte: la manifattura grande non si è mossa (−51 addetti su 4.448), e le due
+divisioni che fanno tutto il calo non hanno perso lavoro ma cambiato forma o
+comune. Resta aperto solo il confronto con province comparabili — Bergamo è il
+controllo naturale, e costa un filtro.
 
 **La regola.** *Nessun titolo su una variazione aggregata prima di averla
 scomposta per settore e verificata contro almeno una spiegazione
@@ -226,6 +260,61 @@ Italia** (seconde generazioni) e **italiani per acquisizione** sono tre
 popolazioni diverse. Confonderle in un unico «stranieri» è un errore di misura
 prima ancora che di racconto.
 
+## MET-12 — Per la convergenza serve il livello **iniziale**
+
+> Anche questa nasce da un numero sbagliato, trovato ad agosto 2026 mentre si
+> costruiva `analysis/livelli_e_variazioni.py`.
+
+Per chiedersi se i comuni si stiano avvicinando o allontanando si correla la
+**crescita** con il **livello di partenza**. Correlarla con il livello finale è
+un artefatto e basta: il livello finale *contiene* la crescita, quindi chi è
+cresciuto di più ci finisce sopra per costruzione.
+
+Sul reddito bresciano i due calcoli non danno un numero un po' diverso: danno
+**segni opposti**.
+
+| Reddito medio per contribuente, 2012–2023 | Pearson | Spearman |
+|---|---|---|
+| livello **2012** contro crescita (il test vero) | **−0,45** | −0,47 |
+| livello 2012, senza capoluogo e comuni turistici | **−0,53** | −0,51 |
+| livello **2023** contro crescita (l'artefatto) | +0,12 | +0,07 |
+
+C'è convergenza, ed è forte; il calcolo sbagliato la nasconde e suggerisce il
+contrario. Il quadrante di una mappa può usare il livello finale — descrive il
+presente, ed è quello che il lettore vuole vedere — ma **la correlazione no**.
+Gli script del progetto stampano entrambi i numeri di proposito: quando
+divergono, il primo è quello che risponde alla domanda.
+
+Corollario, meno vistoso ma dello stesso tipo: se l'indicatore è un rapporto,
+numeratore e denominatore vanno presi **allo stesso anno**. Gli addetti ogni 100
+abitanti del 2023 sul 2018 misurano anche il movimento della popolazione.
+
+## MET-13 — Una decisione sul dato mancante si prende in un posto solo
+
+> Trovata dal verificatore, che è esattamente il motivo per cui esiste.
+
+MET-3 dice che un dato mancante non è uno zero. Non dice *chi* lo decide, e
+finché la decisione viene presa dentro ogni script capita quello che è capitato
+qui: l'indice di Moran sulla specializzazione settoriale valeva **0,44** nel
+sito e **0,46** negli script di analisi. Nessuno dei due calcoli era sbagliato:
+il primo escludeva i comuni senza la riga della manifattura, il secondo li
+faceva entrare con lo 0 %.
+
+La decisione giusta è l'esclusione — ASIA non pubblica la cella quando è troppo
+piccola, e «zero addetti nella manifattura» è un'affermazione diversa da «non lo
+sappiamo» — ma il punto della regola non è quale delle due, è che **deve
+esistere un posto solo dove è scritta**. Qui è `analysis/_tabelle.quote_sezioni()`,
+con il perché accanto.
+
+L'eccezione, deliberata: `analysis/verifica_cifre.py` riscrive la definizione
+per conto suo. Un verificatore che importa il codice che verifica non verifica
+niente — se la lettura fosse sbagliata, lo sarebbe da entrambe le parti e i
+numeri tornerebbero lo stesso.
+
+E quando un comune viene escluso, **va nominato**: nel sito i tre comuni senza
+la riga della manifattura sono scritti per nome, con il loro peso, invece di
+sparire dalla mappa in silenzio.
+
 ---
 
 ## Invarianti tecniche
@@ -239,7 +328,23 @@ Fatte valere dai test della pipeline (`pipeline/tests/`):
    mai numeri;
 4. nessuna tabella prodotta è vuota;
 5. i valori soppressi restano vuoti e, se qualificati, portano il proprio
-   `stato`.
+   `stato`;
+6. ogni codice usato in un `metric_*.json` esiste nella geometria, ogni
+   indicatore dichiarato `live` nel registro ha il suo file e viceversa, i
+   periodi sono ordinati e senza duplicati, i conteggi non sono mai negativi e
+   le chiavi dei valori esistono tutte fra i periodi — sono i cinque invarianti
+   del contratto con il sito;
+7. ogni indicatore non `osservato` dichiara almeno un'assunzione: un derivato
+   che non le dichiara è un derivato che finge di essere una misura.
+
+E due controlli che non sono test ma girano a ogni push
+(`.github/workflows/verifica.yml`):
+
+- `analysis/verifica_cifre.py` ricalcola dalle tabelle **ogni cifra citata**
+  nei documenti e nel sito, e fallisce se una diverge;
+- il sito si costruisce, e la costruzione fallisce se un segnaposto numerico
+  resta senza valore. Nel racconto pubblicato **nessuna cifra è scritta a
+  mano**: sono tutte segnaposto sostituiti in fase di build.
 
 ## Convenzioni di scrittura
 

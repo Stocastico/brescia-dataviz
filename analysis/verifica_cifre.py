@@ -192,6 +192,15 @@ def addetti_settore_classe(territorio: str, ateco: str, classe: str, anno: str) 
     return 0.0  # una classe che sparisce non ha righe: sono zero addetti in quella classe
 
 
+def unita_settore_classe(territorio: str, ateco: str, classe: str, anno: str) -> float:
+    for riga in settore_classe:
+        if (riga["territorio"], riga["ateco"], riga["classe_addetti"], riga["anno"]) == (
+            territorio, ateco, classe, anno
+        ) and riga["indicatore"] == "unita_locali":
+            return numero(riga["valore"]) or 0.0
+    return 0.0
+
+
 def manifattura_grande_capoluogo(anno: str) -> float:
     divisioni = {f"{n:02d}" for n in range(10, 34)}
     return sum(
@@ -554,6 +563,28 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         / addetti("2023", "totale")
         * 100,
         0.05,
+    ),
+    (
+        "README §In sintesi / sito §I redditi",
+        "il comune più ricco dichiara 2,5 volte il più povero (2023)",
+        2.51,
+        lambda: max(reddito_medio("2023").values()) / min(reddito_medio("2023").values()),
+        0.01,
+    ),
+    (
+        "README §In sintesi / sito §I redditi",
+        "nel 2012 il rapporto era 2,2",
+        2.17,
+        lambda: max(reddito_medio("2012").values()) / min(reddito_medio("2012").values()),
+        0.01,
+    ),
+    (
+        "METODOLOGIA MET-9",
+        "div. 81, unità locali del capoluogo: +157 fra 2018 e 2023",
+        157,
+        lambda: unita_settore_classe(CAPOLUOGO, "81", "totale", "2023")
+        - unita_settore_classe(CAPOLUOGO, "81", "totale", "2018"),
+        0,
     ),
     (
         "analysis/autocorrelazione_spaziale",
