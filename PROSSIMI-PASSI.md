@@ -17,13 +17,13 @@ portanti hanno già tutti i dati che servono. Sono estensioni e finiture.
 
 ## Le cose che tocca a te — tutte, in un posto solo
 
-Sono rimaste le stesse, e adesso sono **le uniche due che bloccano la
-pubblicazione**: il sito esiste, si costruisce da solo e il workflow è scritto.
+La licenza è scelta (§3.3), quindi ne è rimasta **una sola che blocca la
+pubblicazione**: il clic su Pages. Il sito esiste, si costruisce da solo e il
+workflow è scritto.
 
 | | Cosa | Perché tocca a te | Tempo | Blocca |
 |---|---|---|---|---|
-| 🙋 1 | **Scegliere la licenza** (§3.3) | è una tua decisione, non una tecnicalità | 10 min | la pubblicazione, non il lavoro |
-| 🙋 2 | **Attivare GitHub Pages** (§7): *Settings → Pages → Source = «GitHub Actions»*, poi lanciare a mano il workflow «Pubblica il sito» | serve il tuo accesso da proprietario del repo | 2 min | il primo deploy |
+| 🙋 2 | **Correggere la sorgente di GitHub Pages** (§7): *Settings → Pages → Source* è su «Deploy from a branch», va messo su **«GitHub Actions»**; poi lanciare a mano il workflow «Pubblica il sito» | serve il tuo accesso da proprietario del repo | 2 min | il primo deploy: finché resta com'è, l'indirizzo pubblico serve il README passato per Jekyll, non il racconto |
 | 🙋 3 | **Scaricare le quotazioni OMI** e i perimetri delle zone (§2.2) | area riservata Agenzia delle Entrate, SPID/CIE | 1–2 h la prima volta | solo l'asse «casa e prezzi», che è di contorno |
 | 🙋 4 | **Scaricare gli open data del Comune di Brescia** (§2.2) | `dati.comune.brescia.it` non risponde dagli ambienti remoti, da una macchina italiana sì | 30 min | estende indietro il turismo cittadino (2005–2013) |
 | 🙋 5 | **Scaricare i dati MUR sui due atenei** (§2.2) | `dati-ustat.mur.gov.it` idem | 30 min | l'asse istruzione, che è di contorno |
@@ -66,13 +66,13 @@ Indice:
 | Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega |
 | Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
 | Deploy | 🤖 workflow scritto e pronto; 🙋 serve il tuo passaggio su Pages (§7) |
-| Licenza | 🙋 **non scelta** (§3.3) |
+| Licenza | ✅ MIT per il codice (`LICENSE`), CC BY 4.0 per testi e dati (`LICENSE-DATI`) (§3.3) |
 | `METODOLOGIA.md` | ⚠️ bozza avanzata: quattordici regole, MET-9 chiusa, tre nuove nate da questa tornata |
 | `WORKING-PAPER.md` | ⚠️ bozza, la sezione dei risultati va riscritta con le quattro storie (§8) |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
 fatte e quattro storie sono scritte in un sito che si costruisce da solo: **manca
-la tua rilettura, la licenza e un clic nelle impostazioni**. Il lavoro tecnico
+la tua rilettura e un clic nelle impostazioni**. Il lavoro tecnico
 che resta è tutto facoltativo — il pannello interattivo, i download manuali, i
 confronti con altre province.
 
@@ -259,10 +259,16 @@ Motivazione e forma di ciascuno in [`BRIEF.md`](BRIEF.md).
 Di contorno, non abbandonati: sicurezza, casa e prezzi, commercio estero,
 riqualificazione. Entrano se un asse portante li richiama, non per completezza.
 
-### 3.3 🙋 La licenza — **da scegliere**
+### 3.3 La licenza — ✅ **decisa**
 
-È l'unica decisione ancora aperta, ed è tua. Le fonti sono tutte aperte ma con
-obblighi di citazione diversi:
+**Codice MIT** ([`LICENSE`](LICENSE)), **testi e dati CC BY 4.0**
+([`LICENSE-DATI`](LICENSE-DATI)), più una sezione nel `README`. CC BY 4.0 è la
+più permissiva fra le licenze Creative Commons che chiedono l'attribuzione:
+riuso libero, anche commerciale, purché si citi la fonte e si dichiarino le
+modifiche.
+
+La scelta soddisfa gli obblighi delle fonti **attualmente** usate, che sono
+aperte ma con obblighi di citazione diversi:
 
 | Fonte | Obbligo |
 |---|---|
@@ -271,14 +277,10 @@ obblighi di citazione diversi:
 | OpenStreetMap | ODbL: **share-alike sui dati derivati** |
 | OpenPNRR | ODbL, stessa conseguenza |
 
-La combinazione usuale per un progetto così è **codice MIT + dati e testi
-CC-BY-4.0**, che soddisfa gli obblighi delle fonti *attualmente* usate: oggi
-nel repository non c'è un solo dato OpenStreetMap né PNRR, e la geometria viene
-da ISTAT. L'ODbL entrerebbe in gioco solo aggiungendoli — quindi la decisione
-va rifatta se un giorno si aggiungono (§2.3).
-
-In pratica: due file, `LICENSE` (MIT) e `LICENSE-DATI` (CC-BY-4.0), più una
-riga nel `README`. Dieci minuti, ma la scelta resta tua.
+Oggi nel repository non c'è un solo dato OpenStreetMap né PNRR, e la geometria
+viene da ISTAT: l'ODbL non è in gioco. ⚠️ **La decisione va rifatta se un
+giorno si aggiungono** (§2.3) — lo share-alike sui derivati contagerebbe le
+tabelle, e CC BY 4.0 sulle tabelle non basterebbe più.
 
 ### 3.4 Lingua — ✅ decisa, ma non ancora rispettata dai dati
 
@@ -611,7 +613,13 @@ poco e rende il lavoro verificabile da chiunque. Qui esistono già:
 > giorno non risponde.
 >
 > Parte **a mano** (`workflow_dispatch`), come previsto qui sotto. Resta il tuo
-> clic: *Settings → Pages → Source = «GitHub Actions»*.
+> clic, e ad agosto 2026 **non è ancora quello giusto**: Pages è attivo, ma con
+> *Source = «Deploy from a branch»*. Con quella impostazione GitHub ignora il
+> workflow e passa il repository per Jekyll, così l'indirizzo pubblico
+> (<https://stefanomasneri.com/brescia-dataviz/>, dove reindirizza
+> `stocastico.github.io/brescia-dataviz` perché il dominio personalizzato è
+> impostato sul sito utente) serve il **README** invece del racconto. Va messo
+> su **«GitHub Actions»**: *Settings → Pages → Source*.
 
 Un solo workflow, `.github/workflows/deploy-pages.yml`. Struttura del sito:
 
@@ -639,7 +647,13 @@ I passaggi, nell'ordine:
 Dettagli che costano tempo se non li sai:
 
 - 🙋 **Una volta sola, e la puoi fare solo tu**: *Settings → Pages → Source =
-  «GitHub Actions»*. Il primo deploy fallisce se non è impostato.
+  «GitHub Actions»*. Il primo deploy fallisce se non è impostato — e non basta
+  che Pages sia «attivo»: con la sorgente su un ramo, `deploy-pages` non ha
+  dove pubblicare. `configure-pages` con `enablement: true` accende Pages
+  quando è spento, ma non cambia la sorgente di un Pages già acceso.
+- Il dominio personalizzato **non va toccato qui**: `stefanomasneri.com` è
+  impostato sul sito utente (`stocastico.github.io`), e i siti di progetto lo
+  ereditano via redirect. Nessun file `CNAME` da mettere nell'artefatto.
 - Permessi richiesti: `contents: read`, `pages: write`, `id-token: write`.
 - `concurrency: { group: pages, cancel-in-progress: true }` evita che due
   deploy si accavallino.
@@ -771,8 +785,7 @@ entra nel tempo che hai, non a fare un piano.
 
 | Blocco | Tempo | Serve a |
 |---|---|---|
-| 🙋 Licenza (§3.3) | **10 min** | poter pubblicare |
-| 🙋 Attivare Pages e lanciare il workflow (§7) | **5 min** | pubblicare davvero |
+| 🙋 Mettere la sorgente di Pages su «GitHub Actions» e lanciare il workflow (§7) | **5 min** | pubblicare davvero |
 | 🙋 Rileggere i testi del sito | **1 h** | è il tuo nome sopra |
 | 🤖 Scarico delle migrazioni + riscarico in italiano delle tre tavole censuarie (§2.4) | **una notte di attesa** | l'unico dataset previsto che manchi, e tre tabelle oggi non pubblicabili |
 | 🤖 Decomposizione della popolazione: saldo naturale contro migrazione | **mezza giornata** | rispondere alla domanda che la prima storia del sito dichiara di non poter rispondere |
@@ -784,7 +797,8 @@ entra nel tempo che hai, non a fare un piano.
 ### Se hai venti minuti
 
 Sono i venti minuti che valgono di più di tutto il resto di questa tabella:
-scegli la licenza, attiva Pages, lancia il workflow. Il sito è pronto.
+metti la sorgente di Pages su «GitHub Actions», lancia il workflow, rileggi la
+prima storia. Il sito è pronto.
 
 ### Se hai due ore
 

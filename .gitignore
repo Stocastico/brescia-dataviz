@@ -13,6 +13,10 @@ __pycache__/
 # Uscite degli script di analisi: si rigenerano con `--save`.
 analysis/output/
 
+# Il sito costruito: lo produce `python sito/costruisci.py`, e in pubblicazione
+# lo ricostruisce il workflow. Versionarlo significherebbe avere due verità.
+_site/
+
 # ⚠️ Eccezione dichiarata alla regola «dati/processed/ si versiona».
 # `migrazioni_comuni.csv` è la distribuzione congiunta di sei dimensioni
 # censuarie su 205 comuni: 1,8 milioni di righe e 422 MB, perché ogni riga

@@ -11,9 +11,12 @@ monte.
 **Stato: il sito esiste.** Dati scaricati e puliti, dieci analisi fatte, cinque
 storie scritte in un documento narrativo autocontenuto
 ([`sito/`](sito/README.md)) che si costruisce da solo e ha già il suo workflow
-di pubblicazione. Quello che manca per pubblicare non è più tecnico: **una
-licenza da scegliere, una rilettura dei testi e un clic nelle impostazioni del
-repository**. Tutto il resto è facoltativo, ed è elencato in
+di pubblicazione. La licenza è scelta (MIT per il codice, CC BY 4.0 per testi e
+dati: vedi in fondo). Quello che manca per pubblicare non è più tecnico: **una
+rilettura dei testi e un clic nelle impostazioni del repository** — Settings →
+Pages → Source = «GitHub Actions», che oggi è ancora «Deploy from a branch» e
+per questo l'indirizzo pubblico mostra il README invece del racconto. Tutto il
+resto è facoltativo, ed è elencato in
 [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md), che distingue riga per riga **cosa può
 fare una sessione di lavoro e cosa richiede te**.
 
@@ -25,7 +28,7 @@ fare una sessione di lavoro e cosa richiede te**.
 | [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e la traccia storica della separazione del repository (§12). |
 | [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza avanzata.** Le **quattordici** regole che governano il progetto: perché misuriamo come misuriamo. Quattro nascono da errori veri trovati sui dati — MET-9 (un titolo sbagliato), MET-12 (una correlazione con il segno rovesciato), MET-13 (due script che rispondevano numeri diversi alla stessa domanda) e MET-14 (una frase che questo progetto ripeteva dal primo giorno e che il confronto con le altre province ha smontato). |
 | [`WORKING-PAPER.md`](WORKING-PAPER.md) | ⚠️ **Bozza.** Il working paper: metodo per un lettore esterno. La sezione dei risultati è provvisoria — si riscrive quando le storie saranno chiuse. |
-| [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco delle cose che **richiedono te** (una licenza da scegliere, un login SPID, una macchina italiana), con una stima dei tempi. |
+| [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco delle cose che **richiedono te** (un login SPID, una macchina italiana), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 23 CSV su territorio, imprese, lavoro, popolazione, famiglie e abitazioni, redditi, ambiente, sicurezza e turismo, più i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
 | [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: uno script per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
@@ -127,3 +130,23 @@ python -m brescia_pipeline.build --offline web   # solo i JSON per il sito (seco
 python sito/costruisci.py                 # -> _site/
 python analysis/verifica_cifre.py         # se una cifra diverge, è quello il primo problema
 ```
+
+## Licenza
+
+Due licenze, perché le due metà del progetto vivono di regole diverse:
+
+| Cosa | Licenza |
+|---|---|
+| **Il codice** — `pipeline/`, `analysis/`, `sito/costruisci.py`, i grafici in `sito/modelli/grafici.js` | [MIT](LICENSE) |
+| **I testi e i dati** — i documenti `.md`, il testo del sito, le tabelle in `dati/` e i JSON in `web/src/data/` | [CC BY 4.0](LICENSE-DATI) |
+
+CC BY 4.0 è la più permissiva fra le licenze Creative Commons che chiedono
+l'attribuzione: si copia, si modifica e si riusa anche commercialmente,
+citando la fonte. Attribuzione consigliata: «Brescia Dataviz» di Stefano
+Masneri (CC BY 4.0), <https://github.com/Stocastico/brescia-dataviz>.
+
+Le fonti originali mantengono i propri obblighi di citazione — ISTAT e Regione
+Lombardia in CC BY, ARPA Lombardia, MEF — e sono elencate fonte per fonte in
+[`FONTI.md`](FONTI.md). Aggiungere un giorno dati OpenStreetMap o OpenPNRR
+(ODbL, share-alike sui derivati) obbligherebbe a rifare questa scelta:
+[`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) §3.3.
