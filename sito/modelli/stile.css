@@ -1,277 +1,317 @@
-/* Palette e impaginazione del sito. I colori dei grafici sono ruoli, non hex
-   sparsi nel codice: cambiare tema significa cambiare queste variabili. */
+/* Lingua grafica del progetto, ripresa da `donostia-dataviz`.
+ *
+ * È lo stile del progetto gemello, adottato qui per intero perché i due
+ * racconti sono pezzi della stessa collana e devono sembrarlo: stessa
+ * tavolozza, stessa tipografia, stessa anatomia delle storie — numero grande,
+ * occhiello, domanda in corsivo, capolettera, cifre chiave, riquadro delle
+ * conclusioni, scheda di confidenza.
+ *
+ * Due sole differenze deliberate rispetto all'originale, e sono qui perché
+ * questo documento ha un vincolo in più: **deve restare autocontenuto**.
+ *
+ * 1. Nessun carattere caricato dalla rete. Le famiglie restano quelle di
+ *    donostia — Libre Franklin per i titoli, Inter per il testo — con la stessa
+ *    catena di ripieghi di sistema: chi le ha installate le vede, chi no legge
+ *    in `system-ui` senza che si rompa nulla. Un `<link>` a un servizio di
+ *    caratteri renderebbe la pagina dipendente da un host di terzi.
+ * 2. Nessuna fotografia nell'apertura. L'originale incorpora la baia di La
+ *    Concha come data URI; qui la testata è tipografica, perché una foto
+ *    incorporata pesa più di tutti i dati messi insieme.
+ *
+ * E una conseguenza da mettere in conto: **non c'è tema scuro.** L'originale è
+ * un disegno a luce sola — carta calda, inchiostro blu notte — e un tema scuro
+ * non è l'inversione di una tavolozza chiara: è una seconda tavolozza da
+ * scegliere e verificare. Finché non la si fa, questa pagina si presenta uguale
+ * a chi ha il sistema in chiaro e a chi ce l'ha in scuro, il che è una scelta
+ * dichiarata e non una dimenticanza.
+ */
 
-:root {
-  color-scheme: light;
-  --piano: #f9f9f7;
-  --superficie: #fcfcfb;
-  --inchiostro: #0b0b0b;
-  --inchiostro-2: #52514e;
-  --inchiostro-3: #898781;
-  --griglia: #e1e0d9;
-  --asse: #c3c2b7;
-  --bordo: rgba(11, 11, 11, 0.10);
-  /* «Nessun dato» e «nessuna variazione» sono due cose diverse e devono
-     sembrarlo: qui erano due grigi quasi uguali. Adesso il primo è più scuro
-     del secondo **e** porta un tratteggio, così la distinzione non dipende dal
-     colore — che è anche l'unico modo in cui regge in stampa e per chi non
-     distingue bene le tinte. */
-  --nessun-dato: #c9c8c3;
-  --nessun-dato-tratto: #9a9994;
+:root{
+  /* Inchiostri e superfici */
+  --ink:#14233a; --ink2:#3a4a63; --muted:#5f6e84; --line:#e2e7ef;
+  --bg:#f7f5f0; --card:#ffffff;
+  --shadow:0 1px 2px rgba(20,35,58,.05);
+  --maxw:1180px;
 
-  /* Sequenziale: una sola tinta, dal chiaro allo scuro. */
-  --seq-1: #cde2fb; --seq-2: #b7d3f6; --seq-3: #9ec5f4; --seq-4: #6da7ec;
-  --seq-5: #3987e5; --seq-6: #256abf; --seq-7: #184f95; --seq-8: #0d366b;
+  /* I quattro colori delle storie. Nell'originale il primo è il mare; qui
+     resta identico, perché è il colore della collana e non del posto. */
+  --sea:#1f6f8b; --sea-d:#0f4c5c;
+  --coral:#d1495b; --coral-d:#a63446;
+  --amber:#e0902f; --amber-d:#b9741f;
+  --green:#2a9d6f; --green-d:#1d7a55;
+  --viola:#8e7cc3; --viola-d:#6a53a8;
+  --oro:#e7b57e;
 
-  /* Divergente: due tinte opposte, grigio neutro nel mezzo. I due archi hanno
-     la stessa chiarezza passo per passo, così nessuno dei due pesa di più. */
-  --div-neg-4: #0d366b; --div-neg-3: #184f95; --div-neg-2: #3987e5; --div-neg-1: #9ec5f4;
-  --div-zero: #f0efec;
-  --div-pos-1: #f1aea8; --div-pos-2: #d65853; --div-pos-3: #892c2a; --div-pos-4: #621b1a;
+  /* Rampe dei grafici, le stesse dell'originale.
+     SEQ: sequenziale caldo, chiaro → scuro.
+     DIV: divergente, freddo ← neutro → caldo.
+     Le classi sono per quantile sulle grandezze e simmetriche sullo zero per
+     le variazioni; il perché sta in `sito/README.md`. */
+  --seq-1:#fff5f0; --seq-2:#fee0d2; --seq-3:#fdcab5; --seq-4:#fc8d59;
+  --seq-5:#ef6548; --seq-6:#e34a33; --seq-7:#c02d20; --seq-8:#a63446;
 
-  /* Categoriche, nell'ordine fisso: mai rimescolate, mai riciclate. */
-  --serie-1: #2a78d6;
-  --serie-2: #eb6834;
-  --serie-3: #1baf7a;
+  --div-neg-4:#2c7bb6; --div-neg-3:#5ba3cf; --div-neg-2:#a6d4e6; --div-neg-1:#d9ecf4;
+  --div-zero:#f4f4f4;
+  --div-pos-1:#fbdcc8; --div-pos-2:#f3a582; --div-pos-3:#e0685f; --div-pos-4:#d1495b;
 
-  --evidenza: #eb6834;
-  --larghezza: 44rem;
+  /* Serie categoriche, nell'ordine fisso dell'originale. */
+  --serie-1:#1b7ba3; --serie-2:#7fb069; --serie-3:#e0902f;
+  --serie-4:#d1495b; --serie-5:#8e7cc3;
+
+  /* «Nessun dato» non è «nessuna variazione»: colore proprio più tratteggio,
+     così la distinzione regge anche in stampa e senza distinguere le tinte. */
+  --nessun-dato:#eef1f5; --nessun-dato-tratto:#c2cad6;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --piano: #0d0d0d;
-    --superficie: #1a1a19;
-    --inchiostro: #ffffff;
-    --inchiostro-2: #c3c2b7;
-    --inchiostro-3: #898781;
-    --griglia: #2c2c2a;
-    --asse: #383835;
-    --bordo: rgba(255, 255, 255, 0.10);
-    --nessun-dato: #56554f;
-    --nessun-dato-tratto: #86847c;
-    --div-zero: #383835;
-    --serie-1: #3987e5;
-    --serie-2: #d95926;
-    --serie-3: #199e70;
-  }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.001ms !important;animation-duration:.001ms !important;
+    scroll-behavior:auto !important}
 }
 
-* { box-sizing: border-box; }
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:17px}
+h1,h2,h3{font-family:"Libre Franklin","Inter",system-ui,sans-serif;font-weight:700;line-height:1.18;
+  letter-spacing:-.015em;text-wrap:balance;color:var(--ink)}
+a{color:var(--sea)}
+::selection{background:rgba(31,111,139,.16);color:var(--ink)}
+table{font-variant-numeric:tabular-nums}
 
-body {
-  margin: 0;
-  background: var(--piano);
-  color: var(--inchiostro);
-  font: 16px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
-  -webkit-text-size-adjust: 100%;
+/* Salto della barra appiccicosa: invisibile finché non riceve il fuoco. */
+.skip{position:absolute;left:12px;top:-48px;z-index:100;background:var(--sea-d);color:#fff;
+  padding:10px 16px;border-radius:0 0 8px 8px;text-decoration:none;font-weight:700;font-size:.9rem;
+  transition:top .15s ease}
+.skip:focus{top:0;outline:3px solid var(--oro);outline-offset:2px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.narrow{max-width:760px}
+
+/* TESTATA */
+header.hero{background:linear-gradient(160deg,#0f4c5c 0%,#1f6f8b 55%,#2a8aa8 100%);
+  color:#eaf6fb;padding:96px 0 76px;position:relative;overflow:hidden}
+header.hero:after{content:"";position:absolute;inset:0;
+  background:radial-gradient(900px 400px at 80% -10%,rgba(255,255,255,.12),transparent 60%)}
+.hero .wrap{position:relative;z-index:1}
+.hero .eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;
+  font-weight:700;color:var(--oro);margin:0 0 14px}
+.hero h1{font-size:clamp(2.1rem,5vw,3.5rem);margin:0 0 18px;color:#fff;max-width:18ch}
+.hero p.lede{font-size:1.18rem;max-width:62ch;color:#dcf0f6;margin:0 0 6px}
+.hero .meta{margin-top:26px;font-size:.86rem;color:#a9d6e3}
+.hero .freshness{margin-top:6px;font-size:.78rem;color:#8fc0cf}
+.hero .quicklinks{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+.hero .quicklinks a{display:inline-block;padding:8px 16px;border-radius:999px;
+  font-size:.85rem;font-weight:700;text-decoration:none;color:#eaf6fb;
+  border:1px solid rgba(234,246,251,.45);background:rgba(255,255,255,.08)}
+.hero .quicklinks a:hover{background:rgba(255,255,255,.18);border-color:rgba(234,246,251,.8)}
+.hero .quicklinks a.primary{background:var(--oro);border-color:var(--oro);color:#0a313d}
+.hero .quicklinks a.primary:hover{background:#f0c795;border-color:#f0c795}
+
+/* BARRA */
+nav.toc{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:2px;flex-wrap:wrap;align-items:center;padding-top:10px;padding-bottom:10px}
+nav.toc .brand{font-weight:800;color:var(--sea-d);margin-right:auto;font-size:.95rem}
+nav.toc a{color:var(--ink2);text-decoration:none;font-size:.82rem;font-weight:600;
+  padding:7px 10px;border-radius:999px;white-space:nowrap}
+nav.toc a:hover{background:#eef4f8;color:var(--sea-d)}
+nav.toc a.pagina{color:var(--sea-d);font-weight:700}
+@media(max-width:900px){
+  nav.toc .wrap{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav.toc .brand{flex:0 0 auto;margin-right:10px}
+  nav.toc a{flex:0 0 auto}
 }
 
-a { color: inherit; text-underline-offset: 0.2em; }
+/* STORIE */
+section.story{padding:72px 0 24px;border-top:1px solid var(--line);scroll-margin-top:var(--navh,62px)}
+section.story:first-of-type{border-top:none}
+.story-head{display:flex;gap:20px;align-items:flex-end;margin-bottom:8px}
+.badge-num{flex:0 0 auto;font-family:"Libre Franklin","Inter",sans-serif;font-weight:800;
+  font-size:2.9rem;line-height:.82;letter-spacing:-.03em;color:var(--sea);margin-bottom:8px}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:700;
+  color:var(--muted);margin:0 0 6px}
+h2.story-title{font-size:clamp(1.6rem,3.4vw,2.4rem);margin:0}
+.question{font-size:1.12rem;color:var(--ink2);font-style:italic;margin:14px 0 0;
+  border-left:3px solid var(--line);padding-left:16px;max-width:64ch}
+p{margin:1.05em 0;color:var(--ink2);text-wrap:pretty}
+p strong,li strong{color:var(--ink)}
+h3{font-size:1.12rem;margin:2rem 0 .4rem}
 
-header.testata {
-  max-width: var(--larghezza);
-  margin: 0 auto;
-  padding: 4rem 1.25rem 2rem;
+/* Capolettera alzata sul primo paragrafo dopo la domanda. */
+.question + p::first-letter{font-family:"Libre Franklin","Inter",sans-serif;
+  font-weight:800;font-size:3em;line-height:.9;margin:0 .06em 0 0;vertical-align:baseline;
+  color:var(--sea-d)}
+
+.nextcap{margin:30px 0 10px;font-size:.98rem;color:var(--muted);font-style:italic;
+  border-top:1px dashed var(--line);padding-top:16px}
+.nextcap a{font-style:normal;font-weight:700;text-decoration:none}
+
+/* I colori delle storie */
+.s1 .badge-num{color:var(--coral)} .s2 .badge-num{color:var(--sea)}
+.s3 .badge-num{color:var(--green)} .s4 .badge-num{color:var(--amber)}
+.s5 .badge-num{color:var(--viola)} .sx .badge-num{color:var(--ink2)}
+.s1 .question{border-color:var(--coral)} .s2 .question{border-color:var(--sea)}
+.s3 .question{border-color:var(--green)} .s4 .question{border-color:var(--amber)}
+.s5 .question{border-color:var(--viola)}
+.s1 .takeaway{border-left-color:var(--coral)} .s3 .takeaway{border-left-color:var(--green)}
+.s4 .takeaway{border-left-color:var(--amber)} .s5 .takeaway{border-left-color:var(--viola)}
+.s1 .kn .big{color:var(--coral-d)} .s3 .kn .big{color:var(--green-d)}
+.s4 .kn .big{color:var(--amber-d)} .s5 .kn .big{color:var(--viola-d)}
+.s1 .step.active>div{border-left-color:var(--coral)}
+.s3 .step.active>div{border-left-color:var(--green)}
+.s4 .step.active>div{border-left-color:var(--amber)}
+.s5 .step.active>div{border-left-color:var(--viola)}
+
+/* FIGURE */
+.fig{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px;margin:30px 0}
+.fig h3{margin:0 0 4px;font-size:1.06rem}
+.fig .cap{font-size:.86rem;color:var(--muted);margin:0 0 16px}
+.fig .src{font-size:.76rem;color:#9aa7ba;margin-top:14px}
+.fig svg{display:block;width:100%;height:auto;overflow:visible}
+.fig svg.mappa{max-width:520px;margin:0 auto}
+
+a.dl-csv{display:inline-flex;align-items:center;gap:4px;margin-left:10px;font-size:.72rem;
+  font-weight:700;color:var(--sea-d);text-decoration:none;border:1px solid var(--line);
+  border-radius:999px;padding:2px 9px;white-space:nowrap;vertical-align:middle}
+a.dl-csv:hover{background:#eef4f8;border-color:#cfe0ea}
+
+/* CONTROLLI */
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  background:#f4f8fb;border:1px solid #e2edf3;border-radius:12px;padding:12px 16px;margin-bottom:18px}
+.segmented{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  background:#fff;flex-wrap:wrap}
+.segmented button{border:0;background:#fff;padding:7px 13px;font:inherit;font-size:.82rem;
+  font-weight:600;color:var(--ink2);cursor:pointer;border-right:1px solid var(--line)}
+.segmented button:last-child{border-right:0}
+.segmented button[aria-pressed="true"]{background:var(--sea);color:#fff}
+.hint{font-size:.78rem;color:var(--muted)}
+
+/* LEGENDE */
+.legend{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;
+  font-size:.8rem;color:var(--ink2)}
+.legend .scale{display:flex;height:12px;border-radius:3px;overflow:hidden;width:220px}
+.legend .scale span{flex:1}
+.legend .ticks{display:flex;justify-content:space-between;width:220px;font-size:.72rem;color:var(--muted)}
+.swatches{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:12px;font-size:.82rem}
+.swatches .sw{display:flex;align-items:center;gap:7px;color:var(--ink2)}
+.swatches .sw i{width:14px;height:14px;border-radius:3px;display:inline-block}
+.swatches .sw i.assente{background:
+  repeating-linear-gradient(45deg,var(--nessun-dato-tratto) 0 1.5px,var(--nessun-dato) 1.5px 4px)}
+
+/* SUGGERIMENTO */
+#tip{position:fixed;pointer-events:none;z-index:200;background:#14233a;color:#fff;
+  padding:8px 11px;border-radius:8px;font-size:.8rem;line-height:1.4;opacity:0;
+  transition:opacity .12s;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:280px}
+#tip.on{opacity:1}
+#tip b{color:#fff;display:block} #tip .t-val{color:#7fd1e8;font-weight:700}
+
+/* CIFRE CHIAVE E CONCLUSIONI */
+.keynums{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:26px 0}
+@media(max-width:680px){.keynums{grid-template-columns:1fr}}
+.kn{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px}
+.kn .big{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;color:var(--sea-d);
+  font-variant-numeric:tabular-nums}
+.kn .lbl{font-size:.86rem;color:var(--ink2);margin-top:2px}
+
+.takeaway{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--sea);
+  border-radius:6px;padding:18px 20px;margin:26px 0}
+.takeaway .t-lab{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;
+  font-weight:700;color:var(--muted)}
+.takeaway p{margin:6px 0 0;color:var(--ink)}
+.takeaway ul{margin:8px 0 0;padding-left:1.15em}
+.takeaway li{margin:.5em 0;color:var(--ink)}
+
+/* SCHEDA DI CONFIDENZA */
+.conf{display:block;font-size:.76rem;color:var(--muted);line-height:1.5;background:#f1f5f8;
+  border:1px solid #e2e9ef;border-radius:12px;padding:9px 14px;margin-top:14px}
+.conf b{font-weight:700}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
+.dot.derivato{background:var(--amber)} .dot.osservato{background:var(--green)}
+.dot.proxy{background:var(--coral)}
+
+/* PIEGHEVOLI: la metrica in chiaro, e gli approfondimenti */
+.metric-expl{background:#f4f6fb;border:1px solid #dfe5f2;border-radius:12px;margin:14px 0;
+  font-size:.85rem;color:var(--ink2);line-height:1.55}
+.metric-expl b{color:var(--ink)}
+.metric-expl>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;
+  padding:11px 16px;user-select:none}
+.metric-expl>summary::-webkit-details-marker{display:none}
+.metric-expl .me-lab{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;
+  font-weight:700;color:#4a5fa5}
+.metric-expl .me-body{padding:0 16px 12px;min-width:0}
+.me-tgl{margin-left:auto;font-size:.72rem;color:var(--muted);white-space:nowrap}
+.me-tgl:before{content:"+ "}
+details[open]>summary .me-tgl:before{content:"− "}
+.me-tgl:after{content:"apri"}
+details[open]>summary .me-tgl:after{content:"chiudi"}
+.metric-expl>summary:hover .me-tgl{color:var(--sea-d)}
+
+details.deep{background:#f7f8fb;border:1px solid #e3e8f2;border-radius:12px;margin:26px 0}
+details.deep>summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:10px;
+  padding:13px 18px;font-size:.92rem;color:var(--ink2);line-height:1.5;user-select:none}
+details.deep>summary::-webkit-details-marker{display:none}
+details.deep>summary b{color:var(--ink)}
+details.deep>summary:hover .me-tgl{color:var(--sea-d)}
+details.deep .d-lab{flex:0 0 auto;font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;
+  font-weight:700;color:#4a5fa5;background:#eef1f9;border:1px solid #dfe5f2;border-radius:999px;
+  padding:3px 10px;position:relative;top:-1px}
+details.deep .d-body{padding:2px 18px 16px}
+details.deep .d-body .fig{margin:12px 0;box-shadow:none}
+
+/* TABELLE-SPECCHIO */
+/* La tabella tiene la sua larghezza naturale e scorre dentro il contenitore:
+   su telefono una colonna «fonte» lunga la farebbe sbordare dalla pagina. */
+table.rank{width:100%;min-width:max-content;border-collapse:collapse;font-size:.86rem;margin-top:6px}
+table.rank th,table.rank td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+table.rank th{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+table.rank td.num,table.rank th.num{text-align:right;font-variant-numeric:tabular-nums;
+  font-weight:600;color:var(--ink)}
+.rankwrap{max-height:22rem;max-width:100%;overflow:auto;margin-top:10px;
+  border-top:1px solid var(--line)}
+
+/* SCROLLYTELLING: figura a sinistra, testo a destra, come nell'originale. */
+.scrolly{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:30px;
+  align-items:start;margin:30px 0}
+.scrolly .fig{margin:0}
+.scrolly-fig{position:sticky;top:var(--navh,62px);z-index:5}
+.scrolly-fig .fig svg.mappa{max-height:56vh}
+.scrolly-steps{display:flex;flex-direction:column;gap:4vh;padding:4vh 0 22vh}
+.step{min-height:52vh;display:flex;align-items:center}
+.step>div{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);
+  border-radius:12px;padding:16px 18px;box-shadow:var(--shadow);opacity:.45;
+  transition:opacity .25s,border-color .25s}
+.step.active>div{opacity:1;border-left-color:var(--sea)}
+.step p{margin:.45em 0;font-size:.95rem}
+.step .steplab{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;
+  font-weight:700;color:var(--muted);margin-bottom:6px}
+@media(max-width:900px){
+  .scrolly{grid-template-columns:1fr;gap:14px}
+  .scrolly-fig{position:static}
+  .scrolly-fig .fig svg.mappa{max-height:none}
+  .step{min-height:0}
+  .step>div{opacity:1}
+  .scrolly-steps{gap:12px;padding:0 0 10px}
+}
+@media (prefers-reduced-motion: reduce){
+  .step>div{opacity:1}
 }
 
-header.testata h1 {
-  font-size: clamp(2rem, 6vw, 3.25rem);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  margin: 0 0 0.75rem;
-}
+/* TABELLE DI DOCUMENTAZIONE */
+table.fonti{width:100%;border-collapse:collapse;font-size:.86rem;margin:22px 0}
+table.fonti th,table.fonti td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);
+  vertical-align:top;color:var(--ink2)}
+table.fonti th{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+ul.elenco{padding-left:1.15em;color:var(--ink2)}
+ul.elenco li{margin-bottom:.6em}
 
-.occhiello {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.75rem;
-  color: var(--inchiostro-3);
-  margin: 0 0 1rem;
-}
-
-.sommario { font-size: 1.15rem; color: var(--inchiostro-2); margin: 0 0 1.5rem; }
-
-.navigazione {
-  border-top: 1px solid var(--bordo);
-  border-bottom: 1px solid var(--bordo);
-  padding: 0.75rem 0;
-  font-size: 0.9rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-}
-
-main { max-width: var(--larghezza); margin: 0 auto; padding: 0 1.25rem 5rem; }
-
-section { padding-top: 3.5rem; }
-
-h2 {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  margin: 0 0 0.5rem;
-}
-
-h3 { font-size: 1.15rem; margin: 2rem 0 0.5rem; }
-
-p { margin: 0 0 1.15rem; }
-
-.numeri {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  gap: 1px;
-  background: var(--bordo);
-  border: 1px solid var(--bordo);
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 2rem 0;
-}
-
-.numero { background: var(--superficie); padding: 1rem 1.1rem; }
-.numero b { display: block; font-size: 1.75rem; line-height: 1.1; letter-spacing: -0.02em; }
-.numero span { display: block; font-size: 0.8rem; color: var(--inchiostro-2); margin-top: 0.35rem; }
-
-/* Il riquadro «la metrica, in chiaro»: due frasi, non una nota a piè di pagina. */
-.in-chiaro {
-  background: var(--superficie);
-  border: 1px solid var(--bordo);
-  border-left: 3px solid var(--serie-1);
-  border-radius: 8px;
-  padding: 1rem 1.15rem;
-  margin: 1.75rem 0;
-  font-size: 0.95rem;
-}
-.in-chiaro b { display: block; margin-bottom: 0.35rem; }
-.in-chiaro p:last-child { margin-bottom: 0; }
-
-.avvertenza { border-left-color: var(--serie-2); }
-
-.figura {
-  background: var(--superficie);
-  border: 1px solid var(--bordo);
-  border-radius: 10px;
-  padding: 1.1rem 1.1rem 0.9rem;
-  margin: 2rem 0;
-}
-
-.figura > figcaption {
-  font-size: 0.85rem;
-  color: var(--inchiostro-2);
-  margin-bottom: 0.9rem;
-}
-.figura > figcaption b { color: var(--inchiostro); font-weight: 600; }
-
-.figura svg { display: block; width: 100%; height: auto; overflow: visible; }
-
-/* La provincia è alta quasi il doppio di quanto è larga: senza un tetto, la
-   mappa appiccicata esce dallo schermo e lo scrollytelling non funziona più. */
-.figura svg.mappa { max-height: 62vh; width: auto; margin: 0 auto; }
-
-.comandi {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: 0 0 0.9rem;
-}
-
-.comandi button {
-  font: inherit;
-  font-size: 0.82rem;
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid var(--bordo);
-  background: transparent;
-  color: var(--inchiostro-2);
-  cursor: pointer;
-}
-.comandi button[aria-pressed="true"] {
-  background: var(--inchiostro);
-  color: var(--superficie);
-  border-color: var(--inchiostro);
-}
-
-.legenda { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; font-size: 0.78rem; color: var(--inchiostro-2); margin-top: 0.6rem; }
-.legenda .scala { display: flex; align-items: center; gap: 2px; }
-.legenda .passo { width: 26px; height: 10px; border-radius: 2px; }
-.legenda .voce { display: flex; align-items: center; gap: 0.35rem; }
-.legenda .pallino { width: 10px; height: 10px; border-radius: 3px; }
-.legenda .pallino.assente {
-  background:
-    repeating-linear-gradient(45deg,
-      var(--nessun-dato-tratto) 0 1.5px,
-      var(--nessun-dato) 1.5px 4px);
-}
-
-.provenienza { font-size: 0.75rem; color: var(--inchiostro-3); margin-top: 0.75rem; }
-.provenienza .distintivo {
-  display: inline-block;
-  border: 1px solid var(--bordo);
-  border-radius: 999px;
-  padding: 0.05rem 0.5rem;
-  margin-right: 0.4rem;
-}
-
-details.tabella { margin-top: 0.75rem; font-size: 0.8rem; }
-details.tabella summary { cursor: pointer; color: var(--inchiostro-2); }
-details.tabella table { width: 100%; border-collapse: collapse; margin-top: 0.6rem; font-variant-numeric: tabular-nums; }
-details.tabella th, details.tabella td { text-align: right; padding: 0.2rem 0.4rem; border-bottom: 1px solid var(--griglia); }
-details.tabella th:first-child, details.tabella td:first-child { text-align: left; }
-details.tabella .contenitore { max-height: 20rem; overflow: auto; }
-
-.suggerimento {
-  position: fixed;
-  pointer-events: none;
-  z-index: 10;
-  background: var(--inchiostro);
-  color: var(--piano);
-  border-radius: 6px;
-  padding: 0.4rem 0.6rem;
-  font-size: 0.8rem;
-  line-height: 1.35;
-  opacity: 0;
-  transition: opacity 0.1s;
-  max-width: 16rem;
-}
-.suggerimento.visibile { opacity: 1; }
-.suggerimento b { display: block; }
-
-/* Lo scrollytelling: la figura resta, il testo scorre e la aggiorna. */
-.scrollytelling { margin: 2.5rem 0; }
-.scrollytelling .sostegno { position: sticky; top: 1rem; z-index: 1; }
-.scrollytelling .passi { margin-top: 1.5rem; }
-.scrollytelling .passo-testo {
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  border-left: 2px solid transparent;
-  padding-left: 1rem;
-  transition: border-color 0.2s, opacity 0.2s;
-  opacity: 0.45;
-}
-.scrollytelling .passo-testo[data-attivo="1"] { border-left-color: var(--evidenza); opacity: 1; }
-.scrollytelling .passo-testo > div { margin: 0; }
-
-@media (prefers-reduced-motion: reduce) {
-  .scrollytelling .passo-testo { opacity: 1; transition: none; }
-}
-
-footer.chiusura {
-  border-top: 1px solid var(--bordo);
-  max-width: var(--larghezza);
-  margin: 0 auto;
-  padding: 2rem 1.25rem 4rem;
-  font-size: 0.85rem;
-  color: var(--inchiostro-2);
-}
-
-table.fonti { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1.5rem 0; }
-table.fonti th, table.fonti td { text-align: left; padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--griglia); vertical-align: top; }
-
-ul.elenco { padding-left: 1.15rem; }
-ul.elenco li { margin-bottom: 0.5rem; }
-
-@media (max-width: 40rem) {
-  .scrollytelling .passo-testo { min-height: 45vh; }
-}
+/* PIEDE */
+footer.foot{background:#0f2233;color:#c9d6e2;margin-top:60px;padding:54px 0 64px}
+footer.foot h3{color:#fff;font-size:1.1rem;margin:0 0 10px}
+footer.foot a{color:#7fd1e8}
+footer.foot .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px}
+@media(max-width:820px){footer.foot .cols{grid-template-columns:1fr}}
+footer.foot p,footer.foot li{font-size:.86rem;color:#a9bccd}
+footer.foot ul{margin:.4em 0;padding-left:1.1em}
+.fine{font-size:.78rem;color:#7d93a8;margin-top:30px;border-top:1px solid #21384a;padding-top:18px}

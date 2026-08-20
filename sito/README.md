@@ -37,21 +37,55 @@ anni non ci sarà una libreria da aggiornare né una CDN da cui dipendere.
 schermo. Una coropletica da sola è inaccessibile, e la tabella serve anche a chi
 vuole controllare.
 
-## I colori
+## Lo stile viene da `donostia-dataviz`
 
-Sono ruoli, non valori: stanno tutti in cima a `stile.css` e i grafici li
-leggono da lì, così il tema scuro è una sostituzione di variabili e non una
-seconda tavolozza.
+La lingua grafica non è nuova: è quella del **progetto gemello**
+[`donostia-dataviz`](https://github.com/Stocastico/donostia-dataviz), adottata
+qui per intero. I due racconti sono pezzi della stessa collana e devono
+sembrarlo.
 
-- **Sequenziale** — una sola tinta, dal chiaro allo scuro, per le grandezze.
-- **Divergente** — due tinte opposte con il grigio nel mezzo, per le variazioni
-  e per le opposizioni vere (manifattura contro turismo). I due archi hanno la
-  stessa chiarezza passo per passo, così nessuno dei due pesa più dell'altro.
-- **Nessun dato** — un grigio suo, mai lo zero della scala, e compare in legenda
-  solo quando qualcuno manca davvero.
+Cosa arriva da lì, e va cambiato lì se si vuole cambiare:
+
+| | |
+|---|---|
+| **Tavolozza** | inchiostro blu notte su carta calda (`--ink` su `--bg`), e i colori delle storie: mare, corallo, ambra, verde, viola |
+| **Tipografia** | Libre Franklin per i titoli, Inter per il testo, 17px con interlinea 1,65 |
+| **Anatomia di una storia** | numero grande, occhiello, titolo, domanda in corsivo con filetto, capolettera alzata, cifre chiave, riquadro delle conclusioni, scheda di confidenza |
+| **Pieghevoli** | «la metrica, in chiaro» per le spiegazioni tecniche e «controllo» per i blocchi che mettono alla prova l'argomento |
+| **Scrollytelling** | figura appiccicosa a sinistra, passi di testo a destra, che degrada a articolo semplice sotto i 900px |
+| **Rampe dei grafici** | `SEQ` sequenziale calda e `DIV` divergente freddo↔caldo, le stesse dell'originale |
+
+Tre differenze deliberate, tutte dovute al vincolo in più che ha questo
+documento — **restare autocontenuto**:
+
+1. **Nessun carattere caricato dalla rete.** Le famiglie sono le stesse, con la
+   stessa catena di ripieghi di sistema: chi le ha installate le vede, gli altri
+   leggono in `system-ui`.
+2. **Nessuna fotografia nell'apertura.** L'originale incorpora la baia di La
+   Concha come data URI; qui la testata è tipografica, perché una foto
+   incorporata peserebbe più di tutti i dati messi insieme.
+3. **Nessuna mappa a piastrelle.** L'originale usa Leaflet da una CDN per il
+   dettaglio di strada; qui la geometria comunale basta, e si disegna a mano.
+
+E una conseguenza da mettere in conto: **non c'è tema scuro.** L'originale è un
+disegno a luce sola, e un tema scuro non è l'inversione di una tavolozza chiara:
+è una seconda tavolozza da scegliere e verificare.
+
+## Le scale di colore
+
+- **Sequenziale** — la rampa calda dell'originale, dal chiaro allo scuro.
+- **Divergente** — freddo ← neutro → caldo, per le variazioni e per le
+  opposizioni vere (manifattura contro turismo).
+- **Nessun dato** — un colore suo **più un tratteggio**, mai lo zero della
+  scala: due grigi vicini si confondono, un tratteggio no, e regge anche in
+  stampa. Compare in legenda solo quando qualcuno manca davvero.
 - Le classi sono per **quantile** sulle grandezze (con 205 comuni e un capoluogo
   fuori scala, le classi a intervallo uguale metterebbero quasi tutti nella
-  prima) e **simmetriche attorno allo zero** sulle variazioni.
+  prima) e **simmetriche attorno allo zero** sulle variazioni — ma centrate sul
+  **95º percentile** dei valori assoluti, non sul massimo: con il massimo un
+  solo comune fuori scala (Magasa, che perde il 2,9 % di abitanti l'anno)
+  schiaccia tutti gli altri in due classi pallide. Chi sta oltre finisce nella
+  classe di fondo, e la legenda lo dichiara con un `≤` e un `≥`.
 
 ## Il rapporto con `web/src/data/`
 

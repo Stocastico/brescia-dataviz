@@ -2,9 +2,11 @@
 
 Progetto di data visualization sull'evoluzione del **bresciano**: soggetto la
 **provincia di Brescia** (`ITC47`) raccontata attraverso i suoi **205 comuni**,
-con il capoluogo (`017029`) come caso privilegiato. Modellato sull'architettura
-di `donostia-dataviz` ma con una domanda di ricerca diversa: *come è cambiato
-questo territorio*, senza una tesi turistica a monte.
+con il capoluogo (`017029`) come caso privilegiato. Modellato su
+[`donostia-dataviz`](https://github.com/Stocastico/donostia-dataviz) — di cui
+riprende architettura, metodo e lingua grafica — ma con una domanda di ricerca
+diversa: *come è cambiato questo territorio*, senza una tesi turistica a
+monte.
 
 **Stato: il sito esiste.** Dati scaricati e puliti, dieci analisi fatte, cinque
 storie scritte in un documento narrativo autocontenuto
@@ -27,7 +29,7 @@ fare una sessione di lavoro e cosa richiede te**.
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 23 CSV su territorio, imprese, lavoro, popolazione, famiglie e abitazioni, redditi, ambiente, sicurezza e turismo, più i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
 | [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: uno script per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
-| [`sito/`](sito/README.md) | **Il documento narrativo**: cinque storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
+| [`sito/`](sito/README.md) | **Il documento narrativo**: cinque storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
 ## Come leggere il registro
 

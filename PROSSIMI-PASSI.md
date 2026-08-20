@@ -568,19 +568,19 @@ export async function loadMetric(id: string) {
 
 ### 6.3 Le scale di colore
 
-Il documento narrativo le implementa così, con una correzione rispetto a quanto
-segue: la scala sequenziale è a **una sola tinta** (blu, dal chiaro allo scuro)
-invece che multitinta `YlOrRd`. Una sequenziale multitinta fa leggere un salto
-di tinta come un salto di significato che nei dati non c'è. La divergente è
-rimasta come previsto, e i due archi hanno la **stessa chiarezza passo per
-passo**, così nessuno dei due pesa più dell'altro.
+> ✅ **Deciso, e non qui**: le scale sono quelle di `donostia-dataviz`, insieme a
+> tutto il resto della lingua grafica. I due progetti sono una collana e devono
+> sembrarlo; il dettaglio di cosa è stato ripreso e cosa no sta in
+> [`sito/README.md`](sito/README.md).
 
 Le classi sono per **quantile** sulle grandezze — con 205 comuni e un capoluogo
 fuori scala, le classi a intervallo uguale ne metterebbero quasi duecento nella
-prima — e **simmetriche attorno allo zero** sulle variazioni.
+prima — e **simmetriche attorno allo zero** sulle variazioni, centrate però sul
+95º percentile dei valori assoluti e non sul massimo: con il massimo, un solo
+comune fuori scala schiaccia tutti gli altri in due classi pallide.
 
-- **Sequenziale** (una tinta, chiaro → scuro) per i valori assoluti.
-- **Divergente** (blu = giù, rosso = su, grigio neutro nel mezzo) centrata
+- **Sequenziale** (la rampa calda dell'originale, chiaro → scuro) per i valori assoluti.
+- **Divergente** (freddo = giù, caldo = su, neutro nel mezzo) centrata
   sullo zero per le variazioni.
 - **Qualitativa** per le metriche categoriche, con le etichette nella legenda e
   nel tooltip al posto dell'indice numerico.

@@ -5,7 +5,8 @@
  * Ogni dipendenza a runtime toglie una di queste proprietà.
  *
  * Convenzioni rispettate ovunque:
- * - i colori vengono dalle variabili CSS, mai scritti qui;
+ * - i colori vengono dalle variabili CSS, mai scritti qui: la tavolozza è
+ *   quella di `donostia-dataviz` e sta tutta in cima a `stile.css`;
  * - «nessun dato» ha un colore proprio e non è mai lo zero della scala;
  * - ogni mappa e ogni grafico hanno una tabella-specchio navigabile da
  *   tastiera: una coropletica da sola è inaccessibile;
@@ -66,13 +67,13 @@
   // --- il suggerimento (uno solo, riusato) -----------------------------
 
   const suggerimento = document.createElement("div");
-  suggerimento.className = "suggerimento";
+  suggerimento.id = "tip";
   suggerimento.setAttribute("role", "status");
   document.body.appendChild(suggerimento);
 
   function mostraSuggerimento(evento, html) {
     suggerimento.innerHTML = html;
-    suggerimento.classList.add("visibile");
+    suggerimento.classList.add("on");
     const riquadro = suggerimento.getBoundingClientRect();
     let x = evento.clientX + 14;
     let y = evento.clientY + 14;
@@ -83,12 +84,13 @@
   }
 
   function nascondiSuggerimento() {
-    suggerimento.classList.remove("visibile");
+    suggerimento.classList.remove("on");
   }
 
   // --- scale di colore -------------------------------------------------
 
   const SEQUENZIALE = ["--seq-1", "--seq-2", "--seq-3", "--seq-4", "--seq-5", "--seq-6", "--seq-7", "--seq-8"];
+  const CATEGORICHE = ["--serie-1", "--serie-2", "--serie-3", "--serie-4", "--serie-5"];
   const DIVERGENTE = [
     "--div-neg-4", "--div-neg-3", "--div-neg-2", "--div-neg-1",
     "--div-zero",
@@ -108,9 +110,16 @@
   }
 
   /* Per le variazioni: classi simmetriche attorno allo zero, così il grigio
-     centrale significa davvero «non si muove» e i due archi sono confrontabili. */
+     centrale significa davvero «non si muove» e i due archi sono confrontabili.
+
+     L'estremo non è il massimo assoluto ma il **95º percentile** dei valori
+     assoluti: con il massimo, un solo comune fuori scala (qui Magasa, che perde
+     il 2,9 % di abitanti l'anno) allarga la scala fino a schiacciare tutti gli
+     altri in due classi pallide. I valori oltre l'estremo finiscono nella
+     classe di fondo — sono fuori scala, ed è giusto che si vedano come tali. */
   function rottureSimmetriche(valori, quante) {
-    const estremo = Math.max.apply(null, valori.map(Math.abs));
+    const assoluti = valori.map(Math.abs).sort(function (a, b) { return a - b; });
+    const estremo = assoluti[Math.floor(assoluti.length * 0.95)] || assoluti[assoluti.length - 1];
     const passo = estremo / (quante / 2);
     const rotture = [];
     for (let i = -quante / 2 + 1; i <= quante / 2 - 1; i++) rotture.push(i * passo);
@@ -130,9 +139,12 @@
     const rotture = tipo === "diverging"
       ? rottureSimmetriche(lista, chiavi.length)
       : rottureQuantile(lista, chiavi.length);
+    const estremiVeri = [Math.min.apply(null, lista), Math.max.apply(null, lista)];
     return {
       colori: chiavi.map(css),
       rotture: rotture,
+      // vero quando qualcuno sta oltre l'ultima rottura: la legenda lo dice
+      tagliata: estremiVeri[0] < rotture[0] || estremiVeri[1] > rotture[rotture.length - 1],
       colore: function (valore) {
         if (valore === null || valore === undefined) return this.assente;
         return this.colori[classeDi(valore, rotture)];
@@ -143,38 +155,58 @@
 
   function disegnaLegenda(contenitore, scalaColore, decimali, unita, quantiSenzaDato) {
     const legenda = document.createElement("div");
-    legenda.className = "legenda";
+    legenda.className = "legend";
+
+    const blocco = document.createElement("div");
     const barra = document.createElement("div");
-    barra.className = "scala";
+    barra.className = "scale";
     scalaColore.colori.forEach(function (colore, indice) {
       const passo = document.createElement("span");
-      passo.className = "passo";
       passo.style.background = colore;
       const da = indice === 0 ? null : scalaColore.rotture[indice - 1];
       const a = indice === scalaColore.colori.length - 1 ? null : scalaColore.rotture[indice];
-      passo.title = (da === null ? "fino a " + num(a, decimali)
+      passo.title = da === null ? "fino a " + num(a, decimali)
         : a === null ? "da " + num(da, decimali)
-        : num(da, decimali) + " – " + num(a, decimali));
+        : num(da, decimali) + " – " + num(a, decimali);
       barra.appendChild(passo);
     });
-    legenda.appendChild(barra);
-    const estremi = document.createElement("span");
-    const primo = scalaColore.rotture[0];
-    const ultimo = scalaColore.rotture[scalaColore.rotture.length - 1];
-    estremi.textContent = num(primo, decimali) + " → " + num(ultimo, decimali) + " " + (unita || "");
-    legenda.appendChild(estremi);
-    // Il colore dell'assenza compare solo se qualcuno è davvero assente:
-    // una voce di legenda sempre presente e quasi sempre inutile si smette
-    // di leggere, e il giorno che serve non la si vede più.
-    if (quantiSenzaDato) {
-      const assente = document.createElement("span");
-      assente.className = "voce";
-      const pallino = document.createElement("span");
-      pallino.className = "pallino assente";
-      assente.appendChild(pallino);
-      assente.appendChild(document.createTextNode("nessun dato (" + quantiSenzaDato + " comuni)"));
-      legenda.appendChild(assente);
+    blocco.appendChild(barra);
+
+    const tacche = document.createElement("div");
+    tacche.className = "ticks";
+    const primo = document.createElement("span");
+    primo.textContent = (scalaColore.tagliata ? "≤ " : "") + num(scalaColore.rotture[0], decimali);
+    const ultimo = document.createElement("span");
+    ultimo.textContent = (scalaColore.tagliata ? "≥ " : "") +
+      num(scalaColore.rotture[scalaColore.rotture.length - 1], decimali);
+    tacche.appendChild(primo);
+    tacche.appendChild(ultimo);
+    blocco.appendChild(tacche);
+    legenda.appendChild(blocco);
+
+    if (unita) {
+      const misura = document.createElement("span");
+      misura.textContent = unita;
+      legenda.appendChild(misura);
     }
+
+    // Il colore dell'assenza compare solo se qualcuno è davvero assente: una
+    // voce di legenda sempre presente e quasi sempre inutile si smette di
+    // leggere, e il giorno che serve non la si vede più.
+    if (quantiSenzaDato) {
+      const gruppo = document.createElement("span");
+      gruppo.className = "swatches";
+      const voce = document.createElement("span");
+      voce.className = "sw";
+      const quadratino = document.createElement("i");
+      quadratino.className = "assente";
+      voce.appendChild(quadratino);
+      voce.appendChild(document.createTextNode(
+        "nessun dato (" + quantiSenzaDato + (quantiSenzaDato === 1 ? " comune)" : " comuni)")));
+      gruppo.appendChild(voce);
+      legenda.appendChild(gruppo);
+    }
+
     contenitore.appendChild(legenda);
   }
 
@@ -182,19 +214,33 @@
 
   function tabellaSpecchio(contenitore, intestazioni, righe, riassunto) {
     const dettagli = document.createElement("details");
-    dettagli.className = "tabella";
+    dettagli.className = "metric-expl";
     const titolo = document.createElement("summary");
-    titolo.textContent = riassunto || "Gli stessi numeri in tabella";
+    const etichetta = document.createElement("span");
+    etichetta.className = "me-lab";
+    etichetta.textContent = "i numeri";
+    const testo = document.createElement("span");
+    testo.textContent = riassunto || "Gli stessi numeri in tabella";
+    const leva = document.createElement("span");
+    leva.className = "me-tgl";
+    titolo.appendChild(etichetta);
+    titolo.appendChild(testo);
+    titolo.appendChild(leva);
     dettagli.appendChild(titolo);
+
+    const corpoDettagli = document.createElement("div");
+    corpoDettagli.className = "me-body";
     const involucro = document.createElement("div");
-    involucro.className = "contenitore";
+    involucro.className = "rankwrap";
     const tabella = document.createElement("table");
+    tabella.className = "rank";
     const testa = document.createElement("thead");
     const rigaTesta = document.createElement("tr");
-    intestazioni.forEach(function (testo) {
+    intestazioni.forEach(function (voce, indice) {
       const cella = document.createElement("th");
       cella.scope = "col";
-      cella.textContent = testo;
+      if (indice > 0) cella.className = "num";
+      cella.textContent = voce;
       rigaTesta.appendChild(cella);
     });
     testa.appendChild(rigaTesta);
@@ -205,6 +251,7 @@
       riga.forEach(function (cella, indice) {
         const td = document.createElement(indice === 0 ? "th" : "td");
         if (indice === 0) td.scope = "row";
+        else td.className = "num";
         td.textContent = cella;
         tr.appendChild(td);
       });
@@ -212,21 +259,24 @@
     });
     tabella.appendChild(corpo);
     involucro.appendChild(tabella);
-    dettagli.appendChild(involucro);
+    corpoDettagli.appendChild(involucro);
+    dettagli.appendChild(corpoDettagli);
     contenitore.appendChild(dettagli);
   }
 
   function provenienza(contenitore, m) {
-    const nota = document.createElement("p");
-    nota.className = "provenienza";
-    const distintivo = document.createElement("span");
-    distintivo.className = "distintivo";
-    distintivo.textContent = m.confidence;
-    nota.appendChild(distintivo);
-    let testo = m.source;
+    const scheda = document.createElement("p");
+    scheda.className = "conf";
+    const pallino = document.createElement("span");
+    pallino.className = "dot " + m.confidence;
+    scheda.appendChild(pallino);
+    const grado = document.createElement("b");
+    grado.textContent = m.confidence;
+    scheda.appendChild(grado);
+    let testo = " · " + m.source;
     if (m.assumptions && m.assumptions.length) testo += " · " + m.assumptions.join(" · ");
-    nota.appendChild(document.createTextNode(testo));
-    contenitore.appendChild(nota);
+    scheda.appendChild(document.createTextNode(testo));
+    contenitore.appendChild(scheda);
   }
 
   // --- la mappa --------------------------------------------------------
@@ -311,7 +361,7 @@
     DATI.geo.comuni.forEach(function (comune) {
       const forma = el("path", {
         d: tracciato(comune),
-        stroke: css("--superficie"),
+        stroke: css("--card"),
         "stroke-width": 0.5,
         "stroke-linejoin": "round",
       }, svg);
@@ -358,7 +408,7 @@
       DATI.geo.comuni.forEach(function (comune) {
         const dentro = !insieme || insieme[comune.c];
         forme[comune.c].setAttribute("opacity", dentro ? 1 : 0.25);
-        forme[comune.c].setAttribute("stroke", dentro && insieme ? css("--inchiostro") : css("--superficie"));
+        forme[comune.c].setAttribute("stroke", dentro && insieme ? css("--ink") : css("--card"));
         forme[comune.c].setAttribute("stroke-width", dentro && insieme ? 1.2 : 0.5);
       });
     } };
@@ -372,11 +422,11 @@
       const y = scalaY(valore);
       el("line", {
         x1: riquadro.sinistra, x2: riquadro.sinistra + riquadro.larghezza, y1: y, y2: y,
-        stroke: css("--griglia"), "stroke-width": 1,
+        stroke: css("--line"), "stroke-width": 1,
       }, gruppo);
       const testo = el("text", {
         x: riquadro.sinistra - 8, y: y + 4, "text-anchor": "end",
-        fill: css("--inchiostro-3"), "font-size": 11,
+        fill: css("--muted"), "font-size": 11,
       }, gruppo);
       testo.textContent = formattaY ? formattaY(valore) : num(valore, decimaliY);
     });
@@ -384,14 +434,14 @@
       const x = scalaX(valore);
       const testo = el("text", {
         x: x, y: riquadro.alto + riquadro.altezza + 18, "text-anchor": "middle",
-        fill: css("--inchiostro-3"), "font-size": 11,
+        fill: css("--muted"), "font-size": 11,
       }, gruppo);
       testo.textContent = formattaX ? formattaX(valore) : num(valore, decimaliX);
     });
     el("line", {
       x1: riquadro.sinistra, x2: riquadro.sinistra + riquadro.larghezza,
       y1: riquadro.alto + riquadro.altezza, y2: riquadro.alto + riquadro.altezza,
-      stroke: css("--asse"), "stroke-width": 1,
+      stroke: css("--line"), "stroke-width": 1,
     }, gruppo);
     return gruppo;
   }
@@ -446,17 +496,17 @@
       const posizione = coppia[2](coppia[1]);
       el("line", coppia[0] === "x"
         ? { x1: posizione, x2: posizione, y1: riquadro.alto, y2: riquadro.alto + riquadro.altezza,
-            stroke: css("--asse"), "stroke-dasharray": "3 3" }
+            stroke: css("--line"), "stroke-dasharray": "3 3" }
         : { x1: riquadro.sinistra, x2: riquadro.sinistra + riquadro.larghezza, y1: posizione, y2: posizione,
-            stroke: css("--asse"), "stroke-dasharray": "3 3" }, svg);
+            stroke: css("--line"), "stroke-dasharray": "3 3" }, svg);
     });
 
     punti.forEach(function (punto) {
       const cerchio = el("circle", {
         cx: sx(punto.x), cy: sy(punto.y), r: punto.evidenza ? 6 : 4,
-        fill: punto.evidenza ? css("--serie-2") : css("--serie-1"),
+        fill: punto.evidenza ? css("--coral") : css("--sea"),
         "fill-opacity": punto.evidenza ? 1 : 0.55,
-        stroke: css("--superficie"), "stroke-width": punto.evidenza ? 2 : 0,
+        stroke: css("--card"), "stroke-width": punto.evidenza ? 2 : 0,
       }, svg);
       cerchio.addEventListener("mousemove", function (evento) {
         mostraSuggerimento(evento, "<b>" + punto.nome + "</b>" +
@@ -472,7 +522,7 @@
         const testo = el("text", {
           x: sx(punto.x) + (vicinoAlBordo ? -9 : 9), y: sy(punto.y) + 4,
           "text-anchor": vicinoAlBordo ? "end" : "start",
-          fill: css("--inchiostro-2"), "font-size": 11,
+          fill: css("--ink2"), "font-size": 11,
         }, svg);
         testo.textContent = punto.nome;
       }
@@ -480,11 +530,11 @@
 
     const testoX = el("text", {
       x: riquadro.sinistra + riquadro.larghezza / 2, y: ALTEZZA - 6,
-      "text-anchor": "middle", fill: css("--inchiostro-2"), "font-size": 11.5,
+      "text-anchor": "middle", fill: css("--ink2"), "font-size": 11.5,
     }, svg);
     testoX.textContent = opzioni.etichettaX;
     const testoY = el("text", {
-      x: 0, y: 0, "text-anchor": "middle", fill: css("--inchiostro-2"), "font-size": 11.5,
+      x: 0, y: 0, "text-anchor": "middle", fill: css("--ink2"), "font-size": 11.5,
       transform: "translate(14," + (riquadro.alto + riquadro.altezza / 2) + ") rotate(-90)",
     }, svg);
     testoY.textContent = opzioni.etichettaY;
@@ -536,18 +586,18 @@
     passi(yMin, yMax, 5).forEach(function (valore) {
       const y = sy(valore);
       el("line", { x1: riquadro.sinistra, x2: riquadro.sinistra + riquadro.larghezza, y1: y, y2: y,
-        stroke: css("--griglia") }, svg);
+        stroke: css("--line") }, svg);
       const testo = el("text", { x: riquadro.sinistra - 8, y: y + 4, "text-anchor": "end",
-        fill: css("--inchiostro-3"), "font-size": 11 }, svg);
+        fill: css("--muted"), "font-size": 11 }, svg);
       testo.textContent = num(valore, opzioni.decimali === undefined ? 0 : opzioni.decimali);
     });
     periodi.forEach(function (periodo, indice) {
       const testo = el("text", { x: sx(indice), y: riquadro.alto + riquadro.altezza + 18,
-        "text-anchor": "middle", fill: css("--inchiostro-3"), "font-size": 11 }, svg);
+        "text-anchor": "middle", fill: css("--muted"), "font-size": 11 }, svg);
       testo.textContent = periodo;
     });
 
-    const colori = ["--serie-1", "--serie-2", "--serie-3"].map(css);
+    const colori = CATEGORICHE.map(css);
     linee.forEach(function (linea, indiceLinea) {
       let d = "";
       linea.valori.forEach(function (valore, indice) {
@@ -559,7 +609,7 @@
       linea.valori.forEach(function (valore, indice) {
         if (valore === null) return;
         const punto = el("circle", { cx: sx(indice), cy: sy(valore), r: 4.5,
-          fill: colori[indiceLinea % colori.length], stroke: css("--superficie"), "stroke-width": 2 }, svg);
+          fill: colori[indiceLinea % colori.length], stroke: css("--card"), "stroke-width": 2 }, svg);
         punto.addEventListener("mousemove", function (evento) {
           mostraSuggerimento(evento, "<b>" + linea.nome + "</b>" + periodi[indice] + ": " +
             num(valore, opzioni.decimali === undefined ? 0 : opzioni.decimali) + " " + (opzioni.unita || ""));
@@ -609,10 +659,10 @@
         x: x, y: y, width: Math.max(lunghezza, 1), height: ALTEZZA_RIGA - 10,
         rx: 4,
         fill: voce.colore ? css(voce.colore)
-          : voce.valore < 0 ? css("--div-neg-3") : css("--div-pos-3"),
+          : voce.valore < 0 ? css("--div-neg-3") : css("--div-pos-4"),
       }, svg);
       const etichetta = el("text", { x: sinistra - 10, y: y + 12, "text-anchor": "end",
-        fill: css("--inchiostro-2"), "font-size": 11.5 }, svg);
+        fill: css("--ink2"), "font-size": 11.5 }, svg);
       etichetta.textContent = voce.nome;
       // Se il numero finirebbe sopra la colonna delle etichette, entra nella
       // barra: fuori si sovrapporrebbe al nome del settore.
@@ -621,14 +671,14 @@
         x: fuoriASinistra ? x + 8 : voce.valore < 0 ? x - 8 : x + lunghezza + 8,
         y: y + 12,
         "text-anchor": fuoriASinistra ? "start" : voce.valore < 0 ? "end" : "start",
-        fill: fuoriASinistra ? css("--superficie") : css("--inchiostro"),
+        fill: fuoriASinistra ? css("--card") : css("--ink"),
         "font-size": 11.5, "font-weight": 600,
       }, svg);
       numero.textContent = num(voce.valore, opzioni.decimali === undefined ? 0 : opzioni.decimali);
     });
 
     if (opzioni.conSegno) {
-      el("line", { x1: zero, x2: zero, y1: 4, y2: ALTEZZA - 26, stroke: css("--asse") }, svg);
+      el("line", { x1: zero, x2: zero, y1: 4, y2: ALTEZZA - 26, stroke: css("--line") }, svg);
     }
 
     tabellaSpecchio(contenitore, [opzioni.etichettaVoci || "voce", opzioni.unita || "valore"],
@@ -680,9 +730,9 @@
     if (opzioni.mediana !== undefined) {
       const x = sx(opzioni.mediana);
       el("line", { x1: x, x2: x, y1: riquadro.alto - 10, y2: base + 6,
-        stroke: css("--asse"), "stroke-dasharray": "3 3" }, svg);
+        stroke: css("--line"), "stroke-dasharray": "3 3" }, svg);
       const etichetta = el("text", { x: x, y: riquadro.alto - 15, "text-anchor": "middle",
-        fill: css("--inchiostro-3"), "font-size": 11 }, svg);
+        fill: css("--muted"), "font-size": 11 }, svg);
       etichetta.textContent = "mediana " + num(opzioni.mediana, opzioni.decimali);
     }
 
@@ -698,10 +748,10 @@
       const cerchio = el("circle", {
         cx: punto.x, cy: base - punto.livello * passoY, r: evidenziato ? 6.5 : RAGGIO,
         fill: evidenziato
-          ? (punto.codice === "017" ? css("--serie-2") : css("--superficie"))
-          : css("--serie-1"),
+          ? (punto.codice === "017" ? css("--coral") : css("--card"))
+          : css("--sea"),
         "fill-opacity": evidenziato ? 1 : 0.4,
-        stroke: evidenziato ? css("--serie-2") : "none",
+        stroke: evidenziato ? css("--coral") : "none",
         "stroke-width": evidenziato ? 2 : 0,
       }, svg);
       const nome = opzioni.nomi[punto.codice] || punto.codice;
@@ -716,14 +766,14 @@
           return i < indice && Math.abs(altro.x - punto.x) < 60;
         });
         const cy = base - punto.livello * passoY;
-        const alzata = vicino ? 32 : 14;
+        const alzata = vicino ? 38 : 16;
         el("line", {
           x1: punto.x, x2: punto.x, y1: cy - 7, y2: cy - alzata + 4,
-          stroke: css("--inchiostro-3"), "stroke-width": 1,
+          stroke: css("--muted"), "stroke-width": 1,
         }, svg);
         const testo = el("text", {
           x: punto.x, y: cy - alzata, "text-anchor": "middle",
-          fill: css("--inchiostro"), "font-size": 11.5, "font-weight": 600,
+          fill: css("--ink"), "font-size": 11.5, "font-weight": 600,
         }, svg);
         testo.textContent = evidenziato;
       }
@@ -738,14 +788,14 @@
       }, codici[0])];
       const testo = el("text", {
         x: sx(valore), y: base + 22, "text-anchor": indice === 0 ? "start" : "end",
-        fill: css("--inchiostro-3"), "font-size": 11,
+        fill: css("--muted"), "font-size": 11,
       }, svg);
       testo.textContent = num(valore, opzioni.decimali) + " · " + nomeEstremo;
     });
 
     const asse = el("text", {
       x: riquadro.sinistra + riquadro.larghezza / 2, y: ALTEZZA - 6,
-      "text-anchor": "middle", fill: css("--inchiostro-2"), "font-size": 11.5,
+      "text-anchor": "middle", fill: css("--ink2"), "font-size": 11.5,
     }, svg);
     asse.textContent = opzioni.etichetta;
 
@@ -759,12 +809,12 @@
   // --- scrollytelling ---------------------------------------------------
 
   function scrollytelling(radice, alCambio) {
-    const passiTesto = Array.prototype.slice.call(radice.querySelectorAll(".passo-testo"));
+    const passiTesto = Array.prototype.slice.call(radice.querySelectorAll(".step"));
     if (!passiTesto.length) return;
 
     function attiva(indice) {
       passiTesto.forEach(function (passo, i) {
-        passo.setAttribute("data-attivo", i === indice ? "1" : "0");
+        passo.classList.toggle("active", i === indice);
       });
       alCambio(indice, passiTesto[indice]);
     }
@@ -786,8 +836,10 @@
 
   function comandi(contenitore, voci, alClic) {
     const barra = document.createElement("div");
-    barra.className = "comandi";
-    barra.setAttribute("role", "group");
+    barra.className = "controls";
+    const gruppo = document.createElement("div");
+    gruppo.className = "segmented";
+    gruppo.setAttribute("role", "group");
     const bottoni = voci.map(function (voce, indice) {
       const bottone = document.createElement("button");
       bottone.type = "button";
@@ -798,9 +850,10 @@
         bottone.setAttribute("aria-pressed", "true");
         alClic(voce, indice);
       });
-      barra.appendChild(bottone);
+      gruppo.appendChild(bottone);
       return bottone;
     });
+    barra.appendChild(gruppo);
     contenitore.appendChild(barra);
     return {
       seleziona: function (indice) {
