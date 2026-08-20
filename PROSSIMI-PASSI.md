@@ -17,13 +17,14 @@ portanti hanno già tutti i dati che servono. Sono estensioni e finiture.
 
 ## Le cose che tocca a te — tutte, in un posto solo
 
-Sono rimaste le stesse, e adesso sono **le uniche due che bloccano la
-pubblicazione**: il sito esiste, si costruisce da solo e il workflow è scritto.
+La licenza è scelta (§3.3), quindi restano **due clic**, e nessuno dei due è
+tecnico: la sorgente di Pages, e il cancello che decide quando il sito diventa
+visibile. Il resto si costruisce da solo a ogni push su `main`.
 
 | | Cosa | Perché tocca a te | Tempo | Blocca |
 |---|---|---|---|---|
-| 🙋 1 | **Scegliere la licenza** (§3.3) | è una tua decisione, non una tecnicalità | 10 min | la pubblicazione, non il lavoro |
-| 🙋 2 | **Attivare GitHub Pages** (§7): *Settings → Pages → Source = «GitHub Actions»*, poi lanciare a mano il workflow «Pubblica il sito» | serve il tuo accesso da proprietario del repo | 2 min | il primo deploy |
+| 🙋 2 | **Correggere la sorgente di GitHub Pages** (§7): *Settings → Pages → Source* è su «Deploy from a branch», va messo su **«GitHub Actions»** | serve il tuo accesso da proprietario del repo | 2 min | il primo deploy: finché resta com'è, l'indirizzo pubblico serve il README passato per Jekyll, non il racconto |
+| 🙋 9 | **Aprire il cancello** quando i testi ti convincono (§7): *Settings → Secrets and variables → Actions → Variables → `PUBBLICA` = `si`* | è la decisione di pubblicare, e non la prende un workflow | 1 min | che il sito diventi visibile. Prima di allora si costruisce a ogni push e resta un artefatto da scaricare |
 | 🙋 3 | **Scaricare le quotazioni OMI** e i perimetri delle zone (§2.2) | area riservata Agenzia delle Entrate, SPID/CIE | 1–2 h la prima volta | solo l'asse «casa e prezzi», che è di contorno |
 | 🙋 4 | **Scaricare gli open data del Comune di Brescia** (§2.2) | `dati.comune.brescia.it` non risponde dagli ambienti remoti, da una macchina italiana sì | 30 min | estende indietro il turismo cittadino (2005–2013) |
 | 🙋 5 | **Scaricare i dati MUR sui due atenei** (§2.2) | `dati-ustat.mur.gov.it` idem | 30 min | l'asse istruzione, che è di contorno |
@@ -65,14 +66,14 @@ Indice:
 | Contratto dati per il sito | ✅ `metric_*.json` + registro, con i cinque invarianti come test |
 | Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega |
 | Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
-| Deploy | 🤖 workflow scritto e pronto; 🙋 serve il tuo passaggio su Pages (§7) |
-| Licenza | 🙋 **non scelta** (§3.3) |
+| Deploy | 🤖 automatico su `main`, ma dietro un cancello: pubblica solo con `PUBBLICA` = `si`; 🙋 serve il tuo passaggio su Pages (§7) |
+| Licenza | ✅ MIT per il codice (`LICENSE`), CC BY 4.0 per testi e dati (`LICENSE-DATI`) (§3.3) |
 | `METODOLOGIA.md` | ⚠️ bozza avanzata: quattordici regole, MET-9 chiusa, tre nuove nate da questa tornata |
 | `WORKING-PAPER.md` | ⚠️ bozza, la sezione dei risultati va riscritta con le quattro storie (§8) |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
 fatte e quattro storie sono scritte in un sito che si costruisce da solo: **manca
-la tua rilettura, la licenza e un clic nelle impostazioni**. Il lavoro tecnico
+la tua rilettura e un clic nelle impostazioni**. Il lavoro tecnico
 che resta è tutto facoltativo — il pannello interattivo, i download manuali, i
 confronti con altre province.
 
@@ -259,10 +260,16 @@ Motivazione e forma di ciascuno in [`BRIEF.md`](BRIEF.md).
 Di contorno, non abbandonati: sicurezza, casa e prezzi, commercio estero,
 riqualificazione. Entrano se un asse portante li richiama, non per completezza.
 
-### 3.3 🙋 La licenza — **da scegliere**
+### 3.3 La licenza — ✅ **decisa**
 
-È l'unica decisione ancora aperta, ed è tua. Le fonti sono tutte aperte ma con
-obblighi di citazione diversi:
+**Codice MIT** ([`LICENSE`](LICENSE)), **testi e dati CC BY 4.0**
+([`LICENSE-DATI`](LICENSE-DATI)), più una sezione nel `README`. CC BY 4.0 è la
+più permissiva fra le licenze Creative Commons che chiedono l'attribuzione:
+riuso libero, anche commerciale, purché si citi la fonte e si dichiarino le
+modifiche.
+
+La scelta soddisfa gli obblighi delle fonti **attualmente** usate, che sono
+aperte ma con obblighi di citazione diversi:
 
 | Fonte | Obbligo |
 |---|---|
@@ -271,14 +278,10 @@ obblighi di citazione diversi:
 | OpenStreetMap | ODbL: **share-alike sui dati derivati** |
 | OpenPNRR | ODbL, stessa conseguenza |
 
-La combinazione usuale per un progetto così è **codice MIT + dati e testi
-CC-BY-4.0**, che soddisfa gli obblighi delle fonti *attualmente* usate: oggi
-nel repository non c'è un solo dato OpenStreetMap né PNRR, e la geometria viene
-da ISTAT. L'ODbL entrerebbe in gioco solo aggiungendoli — quindi la decisione
-va rifatta se un giorno si aggiungono (§2.3).
-
-In pratica: due file, `LICENSE` (MIT) e `LICENSE-DATI` (CC-BY-4.0), più una
-riga nel `README`. Dieci minuti, ma la scelta resta tua.
+Oggi nel repository non c'è un solo dato OpenStreetMap né PNRR, e la geometria
+viene da ISTAT: l'ODbL non è in gioco. ⚠️ **La decisione va rifatta se un
+giorno si aggiungono** (§2.3) — lo share-alike sui derivati contagerebbe le
+tabelle, e CC BY 4.0 sulle tabelle non basterebbe più.
 
 ### 3.4 Lingua — ✅ decisa, ma non ancora rispettata dai dati
 
@@ -610,36 +613,70 @@ poco e rende il lavoro verificabile da chiunque. Qui esistono già:
 > ISTAT, perché la pubblicazione non deve poter fallire per un host che quel
 > giorno non risponde.
 >
-> Parte **a mano** (`workflow_dispatch`), come previsto qui sotto. Resta il tuo
-> clic: *Settings → Pages → Source = «GitHub Actions»*.
+> Parte **a ogni push su `main`** e anche a mano, ma fra il costruire e il
+> pubblicare c'è un **cancello**: il job `pubblica` gira solo se la variabile di
+> repository `PUBBLICA` vale `si`. Finché non la crei, ogni push costruisce il
+> sito, lo verifica e lo lascia come **artefatto scaricabile** dell'esecuzione —
+> online non compare niente. Quando i testi ti convincono: *Settings → Secrets
+> and variables → Actions → Variables → `PUBBLICA` = `si`*, e da lì in poi ogni
+> push su `main` pubblica davvero.
+>
+> Resta il tuo clic su Pages, e ad agosto 2026 **non è ancora quello giusto**: Pages è attivo, ma con
+> *Source = «Deploy from a branch»*. Con quella impostazione GitHub ignora il
+> workflow e passa il repository per Jekyll, così l'indirizzo pubblico
+> (<https://stefanomasneri.com/brescia-dataviz/>, dove reindirizza
+> `stocastico.github.io/brescia-dataviz` perché il dominio personalizzato è
+> impostato sul sito utente) serve il **README** invece del racconto. Va messo
+> su **«GitHub Actions»**: *Settings → Pages → Source*.
 
-Un solo workflow, `.github/workflows/deploy-pages.yml`. Struttura del sito:
+Un solo workflow, `.github/workflows/deploy-pages.yml`. Struttura del sito
+**pubblicata oggi** — niente `app/`: il pannello interattivo non esiste ancora
+(§6.1), e quando esisterà questa sezione va riscritta insieme al workflow.
 
 ```
-/                     il documento narrativo (copiato anche come index.html)
-/metodologia.html     
-/dati.html            fonti, vigenza, avvertenze
-/app/                 il pannello React
+/index.html           il documento narrativo
+/metodologia.html     le regole del progetto
+/dati.html            fonti, vigenza, avvertenze, licenza
 /dati/processed/*.csv le tabelle scaricabili
 ```
 
-I passaggi, nell'ordine:
+I passaggi, nell'ordine — **solo Python, nessun passo Node**: il sito non ha
+build step, i grafici sono SVG scritti a mano e `costruisci.py` incorpora tutto
+in tre file:
 
-1. `actions/checkout` e `actions/setup-node` (Node 22+, cache su
-   `web/package-lock.json`);
-2. `npm ci` e `npm run build` dentro `web/`, con
-   **`VITE_BASE: "/brescia-dataviz/app/"`** — GitHub Pages serve da una
-   sottocartella e senza questa variabile tutti gli asset danno 404;
-3. assemblaggio: `mkdir -p _site/app`, copia di `web/dist/*` in `_site/app/`,
-   copia del narrativo in `_site/index.html` **e** con il suo nome, copia delle
-   pagine sorelle e dei CSV;
-4. `actions/configure-pages` con `enablement: true`, poi
-   `upload-pages-artifact` e `deploy-pages`.
+1. `actions/checkout` con `fetch-depth: 0` (serve la storia per datare i dati) e
+   `actions/setup-python` su 3.12;
+2. `pip install -e ./pipeline`, poi `build --offline web`: i JSON del sito
+   escono dalle tabelle versionate, senza interrogare le fonti;
+3. i controlli, che sono la parte che vale: i test del contratto e il ricalcolo
+   di **ogni cifra citata**. Se una diverge, non si pubblica;
+4. `costruisci.py --uscita _site`, con la data presa dal commit;
+5. il controllo che nessun segnaposto sia sopravvissuto, poi
+   `upload-pages-artifact`. **Qui finisce il job che gira sempre.**
+6. Il job `pubblica`, dietro `if: vars.PUBBLICA == 'si'`:
+   `configure-pages` con `enablement: true` e `deploy-pages`. È l'unico posto
+   che tocca le impostazioni di Pages, e con il cancello chiuso non gira.
 
 Dettagli che costano tempo se non li sai:
 
+- **Il cancello è un interruttore, non un'approvazione a ogni deploy.** Se
+  preferisci fermare *ogni* pubblicazione con un clic, l'ambiente
+  `github-pages` accetta dei «required reviewers»: *Settings → Environments →
+  github-pages*. Le due cose convivono.
+- **Le versioni delle action** sono allineate a `donostia-dataviz`, che il
+  deploy ce l'ha funzionante: checkout v7, setup-python v7, configure-pages v6,
+  upload-pages-artifact v5, deploy-pages v5. Restare indietro di un major è il
+  modo tipico di ritrovarsi con l'avviso «Node 20 actions are deprecated» nei
+  log: non viene dal workflow — che di Node non ne usa — ma dal runtime con cui
+  girano le action stesse.
 - 🙋 **Una volta sola, e la puoi fare solo tu**: *Settings → Pages → Source =
-  «GitHub Actions»*. Il primo deploy fallisce se non è impostato.
+  «GitHub Actions»*. Il primo deploy fallisce se non è impostato — e non basta
+  che Pages sia «attivo»: con la sorgente su un ramo, `deploy-pages` non ha
+  dove pubblicare. `configure-pages` con `enablement: true` accende Pages
+  quando è spento, ma non cambia la sorgente di un Pages già acceso.
+- Il dominio personalizzato **non va toccato qui**: `stefanomasneri.com` è
+  impostato sul sito utente (`stocastico.github.io`), e i siti di progetto lo
+  ereditano via redirect. Nessun file `CNAME` da mettere nell'artefatto.
 - Permessi richiesti: `contents: read`, `pages: write`, `id-token: write`.
 - `concurrency: { group: pages, cancel-in-progress: true }` evita che due
   deploy si accavallino.
@@ -651,9 +688,10 @@ Dettagli che costano tempo se non li sai:
   invecchiano in silenzio e il sito mente.
 - Il workflow **controlla che nessun segnaposto sia sopravvissuto** alla
   sostituzione: meglio un deploy fallito di una pagina con un buco.
-- Partire con il deploy **manuale** (`workflow_dispatch`) e passare
-  all'automatico su `main` solo quando i testi si sono stabilizzati. Il
-  progetto precedente ha fatto così, per rileggere prima di pubblicare.
+- Il deploy era **manuale** e ora è automatico su `main`, ma la prudenza che lo
+  teneva manuale non è stata buttata: si è spostata nel cancello. Costruire a
+  ogni push serve — se una cifra smette di tornare lo sai subito — e pubblicare
+  è un'altra decisione.
 
 ---
 
@@ -771,8 +809,8 @@ entra nel tempo che hai, non a fare un piano.
 
 | Blocco | Tempo | Serve a |
 |---|---|---|
-| 🙋 Licenza (§3.3) | **10 min** | poter pubblicare |
-| 🙋 Attivare Pages e lanciare il workflow (§7) | **5 min** | pubblicare davvero |
+| 🙋 Mettere la sorgente di Pages su «GitHub Actions» (§7) | **2 min** | poter pubblicare |
+| 🙋 Aprire il cancello: `PUBBLICA` = `si` (§7) | **1 min** | pubblicare davvero, quando i testi ti convincono |
 | 🙋 Rileggere i testi del sito | **1 h** | è il tuo nome sopra |
 | 🤖 Scarico delle migrazioni + riscarico in italiano delle tre tavole censuarie (§2.4) | **una notte di attesa** | l'unico dataset previsto che manchi, e tre tabelle oggi non pubblicabili |
 | 🤖 Decomposizione della popolazione: saldo naturale contro migrazione | **mezza giornata** | rispondere alla domanda che la prima storia del sito dichiara di non poter rispondere |
@@ -784,7 +822,9 @@ entra nel tempo che hai, non a fare un piano.
 ### Se hai venti minuti
 
 Sono i venti minuti che valgono di più di tutto il resto di questa tabella:
-scegli la licenza, attiva Pages, lancia il workflow. Il sito è pronto.
+metti la sorgente di Pages su «GitHub Actions», lancia il workflow a mano e
+scarica l'artefatto, rileggi la prima storia. Il sito è pronto, e il cancello
+lo apri quando lo sei anche tu.
 
 ### Se hai due ore
 
