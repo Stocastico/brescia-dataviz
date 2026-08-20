@@ -1,8 +1,24 @@
 # Pubblica il sito su GitHub Pages.
 #
-# Parte a mano (`workflow_dispatch`) e non a ogni push: i testi vanno riletti
-# prima di pubblicare, e un deploy automatico su `main` toglie quel passaggio.
-# Quando i testi si saranno stabilizzati, togliere il commento a `push`.
+# Parte a ogni push su `main`, e anche a mano (`workflow_dispatch`). Ma
+# costruire non è pubblicare: il lavoro si divide in due job, e fra i due c'è un
+# cancello.
+#
+#   costruisci  gira sempre: dati, test, cifre, sito, artefatto. Non tocca Pages
+#               e non pubblica niente. L'artefatto è scaricabile dalla pagina
+#               dell'esecuzione, quindi il sito si rilegge prima che esista un
+#               indirizzo pubblico.
+#   pubblica    gira solo se la variabile di repository PUBBLICA vale «si».
+#
+# 🙋 Il cancello lo apri tu, una volta sola, quando i testi ti convincono:
+#    Settings → Secrets and variables → Actions → Variables → New variable,
+#    nome PUBBLICA, valore si. Da quel momento ogni push su `main` pubblica
+#    davvero. Per richiuderlo basta rimettere un altro valore.
+#
+#    In alternativa (o in aggiunta), l'ambiente `github-pages` accetta dei
+#    «required reviewers»: con quelli ogni deploy si ferma ad aspettare un tuo
+#    clic invece di dipendere da una variabile. Il cancello qui sotto è un
+#    interruttore solo, e sta nel repository: si vede leggendo il workflow.
 #
 # 🙋 Da fare una volta sola, e lo può fare solo il proprietario del repository:
 #    Settings → Pages → Source = «GitHub Actions».
@@ -16,8 +32,8 @@ name: Pubblica il sito
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches: [main]
+  push:
+    branches: [main]
 
 permissions:
   contents: read
@@ -69,6 +85,20 @@ jobs:
           DATA_COMMIT=$(git log -1 --format=%cs)
           python sito/costruisci.py --uscita _site --data-build "$DATA_COMMIT"
 
+      - name: Dove sta il cancello
+        env:
+          PUBBLICA: ${{ vars.PUBBLICA }}
+        run: |
+          if [ "$PUBBLICA" = "si" ]; then
+            echo "PUBBLICA=si: il job «pubblica» girerà e il sito finirà online."
+          else
+            echo "PUBBLICA non è «si»: si costruisce e basta, niente va online."
+            echo "Il sito costruito sta fra gli artefatti di questa esecuzione:"
+            echo "scaricalo e aprilo per rileggerlo."
+            echo "Per pubblicare: Settings → Secrets and variables → Actions →"
+            echo "Variables → PUBBLICA = si."
+          fi
+
       - name: Controlla che i segnaposto siano tutti sostituiti
         run: |
           if grep -rlE '\{\{(c:[a-z0-9_]+|BUILD_DATE|DATA_DATE|N_[A-Z]+)\}\}' _site; then
@@ -76,20 +106,26 @@ jobs:
             exit 1
           fi
 
-      - uses: actions/configure-pages@v6
-        with:
-          enablement: true
-
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
+  # Il cancello. Con PUBBLICA diversa da «si» questo job si salta: la
+  # costruzione resta verde, l'artefatto resta scaricabile, e online non
+  # compare niente.
   pubblica:
     needs: costruisci
+    if: vars.PUBBLICA == 'si'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
+      # Sta qui e non nella costruzione: è l'unico passo che tocca le
+      # impostazioni di Pages, e con il cancello chiuso non deve girare.
+      - uses: actions/configure-pages@v6
+        with:
+          enablement: true
+
       - id: deploy
         uses: actions/deploy-pages@v5

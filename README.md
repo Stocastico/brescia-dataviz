@@ -13,10 +13,13 @@ storie scritte in un documento narrativo autocontenuto
 ([`sito/`](sito/README.md)) che si costruisce da solo e ha già il suo workflow
 di pubblicazione. La licenza è scelta (MIT per il codice, CC BY 4.0 per testi e
 dati: vedi in fondo). Quello che manca per pubblicare non è più tecnico: **una
-rilettura dei testi e un clic nelle impostazioni del repository** — Settings →
-Pages → Source = «GitHub Actions», che oggi è ancora «Deploy from a branch» e
-per questo l'indirizzo pubblico mostra il README invece del racconto. Tutto il
-resto è facoltativo, ed è elencato in
+rilettura dei testi e due clic nelle impostazioni del repository**. Il primo è
+Settings → Pages → Source = «GitHub Actions», che oggi è ancora «Deploy from a
+branch» e per questo l'indirizzo pubblico mostra il README invece del racconto.
+Il secondo è il **cancello**: il sito si ricostruisce a ogni push su `main`, ma
+va online solo con la variabile `PUBBLICA` impostata a `si` — fino ad allora
+resta un artefatto da scaricare e rileggere. Tutto il resto è facoltativo, ed è
+elencato in
 [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md), che distingue riga per riga **cosa può
 fare una sessione di lavoro e cosa richiede te**.
 
