@@ -104,10 +104,13 @@ e dieci sono a posto.
 python -m brescia_pipeline.build migrazioni   # riparte dall'ottava
 ```
 
-Conviene lanciarlo quando si ha tempo di lasciarlo correre. La soluzione
-strutturale è **una richiesta per comune** invece di una per l'Italia intera:
-funziona (verificato), dà 205 risposte da qualche decina di KB invece di una da
-1,8 GB, ed è descritta in [`../FONTI.md`](../FONTI.md) §10 punto 6.
+Conviene lanciarlo su una macchina che non si spegne, non in una sessione
+remota. **Attenzione a una via d'uscita che sembra ovvia e non lo è**: la
+richiesta per singolo comune, che su altri dataflow funziona benissimo, su
+questa famiglia va in timeout dopo 300 secondi senza restituire nulla — il
+server prepara la risposta a prescindere dal filtro. Il quadro completo, con le
+quattro strade possibili, sta in
+[`../PROSSIMI-PASSI.md`](../PROSSIMI-PASSI.md) §2.1-bis.
 
 La forma delle tabelle è comunque coperta dai test (`tests/test_censimento.py`)
 su una risposta SDMX di prova, quindi il parsing non è materiale non provato.

@@ -77,14 +77,14 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
 |---|---|---|
 | `famiglie_comuni.csv` | 30.126 | Famiglie per numero di componenti, con **almeno uno** o **tutti** i componenti stranieri, per comune, 2018–2024. Le due situazioni restano separate come le tiene la fonte: la colonna `tavola` vale `tutte`, `almeno_uno_straniero` o `tutti_stranieri`, e la prima fa da denominatore quando serve una quota. |
 | `abitazioni_comuni.csv` | 3.074 | Abitazioni occupate e non occupate, e quelle occupate per **proprietà, affitto, altro titolo** (`ownership_type`), per comune, 2019 · 2021 · 2023. È la risposta a «quante case in affitto» che non passa per i prezzi. |
-| `migrazioni_comuni.csv` | ⏳ | Background migratorio per comune: **stranieri immigrati**, **stranieri nati in Italia** e **italiani per acquisizione**, per sesso, età, cittadinanza, luogo di nascita dei genitori e titolo di studio. Dieci tavole censuarie in una tabella, distinte dalla colonna `tavola`. Scarico in corso: sono le tavole più pesanti del progetto. |
+| `migrazioni_comuni.csv` | ❌ | **Non ancora prodotta.** Background migratorio per comune: **stranieri immigrati**, **stranieri nati in Italia** e **italiani per acquisizione**, per sesso, età, cittadinanza, luogo di nascita dei genitori e titolo di studio. Dieci tavole censuarie in una tabella, distinte dalla colonna `tavola`. Sono le più pesanti del progetto (fino a 1,8 GB l'una) e lo scarico si è rotto sull'ottava: [`../PROSSIMI-PASSI.md`](../PROSSIMI-PASSI.md) §2.1-bis. |
 
 > A differenza di `censimento_lavoro_brescia.csv`, queste tabelle tengono
 > **una riga per osservazione con tutte le dimensioni in colonna**: dentro
 > ciascuna famiglia le dimensioni sono fisse, e appiattirle distruggerebbe la
 > distribuzione congiunta — che è l'informazione per cui valgono la pena.
 
-⚠️ Tre avvertenze su queste tre tabelle.
+⚠️ Tre avvertenze su queste tabelle.
 
 1. **Le modalità sono in inglese** (`private households on 31st December`,
    `4 and over`). Non è una scelta: manca `Accept-Language: it` nella richiesta

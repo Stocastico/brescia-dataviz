@@ -26,6 +26,7 @@ portanti hanno già tutti i dati che servono. Sono estensioni e finiture.
 | 🙋 5 | **Scaricare i dati MUR sui due atenei** (§2.2) | `dati-ustat.mur.gov.it` idem | 30 min | l'asse istruzione, che è di contorno |
 | 🙋 6 | **Esportare a mano il commercio estero provinciale** (§2.2) | il databrowser ISTAT è una SPA senza API | 1 h | niente: la serie regionale è già scaricata come ripiego dichiarato |
 | 🙋 7 | **Rileggere i testi prima di pubblicare** (§8) | è il tuo nome sopra | — | la pubblicazione |
+| 🙋 8 | **Lanciare lo scarico di `migrazioni`** (§2.1-bis) | serve una macchina che resti accesa per ore: una sessione remota scade prima, e ci ha già provato otto volte | mezz'ora di codice + una notte di scarico | l'asse 2 nella sua forma completa; le altre sette tavole coprono già il grosso |
 
 Tutto il resto di questo documento è 🤖 o ✅.
 
@@ -55,7 +56,7 @@ Indice:
 | Repository separato | ✅ esiste, `main`, file in radice |
 | Pipeline | ✅ funzionante, `requests` + libreria standard, 58 test verdi |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
-| Tabelle tidy | ✅ 19 CSV in [`dati/processed/`](dati/README.md), versionati; il ventesimo (`migrazioni_comuni.csv`) è in scarico |
+| Tabelle tidy | ✅ 19 CSV in [`dati/processed/`](dati/README.md), versionati. Manca solo `migrazioni_comuni.csv`: vedi §2.1-bis |
 | Analisi | 🤖 appena cominciata: due script in [`analysis/`](analysis/README.md) |
 | Storie scelte | 🤖 no. Dodici candidate in `BRIEF.md`, nessuna confermata sui dati |
 | Documento narrativo | 🤖 no |
@@ -75,46 +76,72 @@ lavoro è l'analisi, non il download.
 Lo stato completo, fonte per fonte, è in [`FONTI.md`](FONTI.md). Qui solo ciò
 che manca.
 
-### 2.1 Le fonti automatiche — ✅ chiuse
+### 2.1 Le fonti automatiche — quasi tutte chiuse
 
 | Cosa | Stato |
 |---|---|
 | **Confini comunali** | ✅ `datasets/confini.py` + `geo.py`, con lettore di shapefile e riproiezione in libreria standard: niente `pyshp`, per lo stesso motivo per cui §5 reimplementa k-means. Prodotti `dati/geo/comuni_brescia.geojson` e `comuni_geometria.csv`, verificati contro l'area nota della provincia e contro lo `Shape_Area` di ISTAT |
-| **Background migratorio** | ⏳ `migrazioni_comuni.csv` — dieci tavole `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM`, **sette scaricate su dieci**, vedi sotto |
+| **Background migratorio** | ❌ `migrazioni_comuni.csv` — dieci tavole `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM`, **non prodotta**: §2.1-bis racconta perché e cosa provare |
 | **Abitazioni** | ✅ `abitazioni_comuni.csv` — `DF_DCSS_ABITAZIONI_TV_1` e `_TV_2` |
 | **Famiglie con stranieri** | ✅ `famiglie_comuni.csv` — `DF_DCSS_FAMIGLIE_TV_1`, `_TV_2`, `_TV_3` |
 
 Le ultime tre erano rimaste indietro perché `esploradati.istat.it` aveva
 smesso di accettare connessioni a metà lavoro. **Non era un bug del codice: era
-quell'host**, ed è tornato su. Rilanciarle costa un comando e parecchi minuti
-di attesa:
+quell'host**, ed è tornato su: `famiglie` e `abitazioni` sono uscite al primo
+colpo. `migrazioni` no, e ha una sezione tutta sua qui sotto.
 
-```bash
-python -m brescia_pipeline.build migrazioni abitazioni famiglie
-```
+### 2.1-bis 🤖 `migrazioni`: l'unica cosa rimasta a metà, e cosa sappiamo
 
-**Il caso `migrazioni`, che è quello aperto.** Le dieci tavole del background
-migratorio sono le più pesanti del progetto: scaricate senza filtro
-territoriale pesano fra 0,5 e **1,8 GB l'una**, e ci mettono da venti minuti a
-un'ora. Ad agosto 2026 ne sono arrivate **sette su dieci** (6,9 GB in
-`dati/raw/`, che è cache: non si riscaricano); l'ottava —
+Ci ho passato sei ore ad agosto 2026 e **non è uscita**. Qui sta tutto quello
+che si è imparato provandoci, così il prossimo tentativo non riparte da zero.
+
+**Cosa c'è.** Le dieci tavole del background migratorio sono di gran lunga le
+più pesanti del progetto: senza filtro territoriale pesano fra 0,5 e **1,8 GB
+l'una** e impiegano da venti minuti a un'ora. **Sette sono arrivate**, ma
+stavano in `dati/raw/`, che non è versionata e vive nel contenitore della
+sessione: **quei 6,9 GB non ci sono più.** Chi riprende riparte dalla prima.
+
+**Dove si è rotto.** L'ottava —
 `DF_DCSS_MIGR_BACKG_PAR_TV_8_COM`, titolo di studio degli italiani — ha
-fallito quattro tentativi di fila perché l'host lascia cadere la connessione, e
-**ogni caduta fa ripartire il download da zero**: non c'è ripresa parziale.
+fallito **otto tentativi** (due giri da quattro): l'host lascia cadere la
+connessione dopo un giga abbondante, e **ogni caduta fa ripartire da zero**
+perché la cache è per file intero e non c'è ripresa parziale.
 
-Il modulo scrive la tabella solo quando tutte e dieci sono a posto, quindi
-finché l'ottava non passa non esce niente. Tre strade, in ordine di fatica:
+**E qui la cosa da sapere, che costa due ore scoprire da soli.** Per quella
+tavola **non funziona nemmeno la richiesta per comune**: chiedere il solo
+`017029` va in *read timeout* dopo 300 secondi senza che arrivi un byte. Il
+server non sta trasferendo lentamente, sta **preparando** la risposta, e il
+filtro territoriale non gli risparmia il lavoro. Quindi la strada «205
+richieste piccole», che su `DF_DCSS_FAMIGLIE_TV_3` funziona benissimo
+(§10 punto 6 di `FONTI.md`), **su questa famiglia di dataflow non è una via
+d'uscita**: prima di riscrivere `_censimento.py` in quella direzione, provare
+una singola richiesta per comune su `TV_8` e vedere se risponde.
 
-1. **rilanciare** `python -m brescia_pipeline.build migrazioni` — le sette in
-   cache non si riscaricano, quindi ogni tentativo riparte dall'ottava;
-2. **una richiesta per comune** invece di una per l'Italia (§10 punto 6 di
-   `FONTI.md`): 205 risposte da qualche decina di KB al posto di una da 1,8 GB,
-   ognuna ritentabile da sola. È la soluzione strutturale;
-3. accontentarsi delle sette tavole, cambiando `migrazioni.py` perché scriva
-   ciò che ha e dichiari quali tavole mancano. Le tre che mancano sono quelle
-   sull'**istruzione** (8, 9, 10): le sette presenti coprono già la
-   distinzione fra stranieri, seconde generazioni e italiani per acquisizione,
-   che è il cuore dell'asse 2.
+**Le quattro strade, in ordine di fatica.**
+
+1. **Rilanciare e sperare**, in un momento in cui ISTAT respira meglio:
+   `python -m brescia_pipeline.build migrazioni`. Costa una giornata di
+   scarico, e va lasciato correre su una macchina che non si spegne — non in
+   una sessione remota, che ha una scadenza.
+2. **Alzare il timeout** in `fetch.py` (`DEFAULT_TIMEOUT = 300`) a qualcosa
+   come 900 secondi e riprovare la sola `TV_8`. Se il problema è la
+   preparazione lato server, è la modifica più piccola che possa bastare, ed è
+   quella da provare per prima.
+3. **Rendere il modulo tollerante**: far scrivere a `migrazioni.py` le tavole
+   che ha, con una colonna o una nota che dichiari quali mancano — nello
+   spirito di «nessuna riga scartata in silenzio» (§9). Oggi il modulo scrive
+   solo se tutte e dieci sono a posto, e una tavola su dieci blocca le altre
+   nove.
+4. **Accontentarsi delle sette**: le tre che mancano (8, 9, 10) sono quelle
+   sull'**istruzione**. Le altre sette coprono già la distinzione fra
+   stranieri, seconde generazioni e italiani per acquisizione, che è il cuore
+   dell'asse 2 e la ragione per cui queste tavole sono nel progetto.
+
+**Il consiglio, se vale qualcosa**: fare la 2 e la 3 insieme (mezz'ora di
+codice), poi lanciare la 1 di sera e guardare il mattino dopo. La 4 è il piano
+di riserva, e non è un ripiego grave.
+
+---
 
 > **Scoperta che vale la pena tenere per iscritto.** La chiave SDMX con più
 > codici nella stessa dimensione **non** fallisce per lunghezza dell'URL, come

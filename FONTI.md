@@ -714,10 +714,16 @@ Le altre regole imparate sul campo:
    MB e venti minuti per tavola), oppure **205 richieste da un comune
    ciascuna**, che funzionano — verificato:
    `data/IT1,DF_DCSS_FAMIGLIE_TV_3,1.0/A.017029....` risponde `200` con 15 KB.
-   La seconda strada non è stata provata a fondo e potrebbe essere molto più
-   rapida e leggera; il rischio è il rate limiting, che con 205 × 15 = 3.075
-   richieste diventa una questione seria. Vale un esperimento su una tavola
-   sola prima di riscrivere `_censimento.py`.
+   ⚠️ **Ma non su tutti i dataflow.** Sulla famiglia
+   `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM` la richiesta per singolo comune va in
+   *read timeout* dopo 300 secondi **senza che arrivi un byte**: il server non
+   trasferisce lentamente, sta preparando la risposta, e il filtro territoriale
+   non gli risparmia il lavoro. Su quelle tavole la seconda strada non è una
+   via d'uscita. Prima di riscrivere `_censimento.py` in quella direzione,
+   provare una singola richiesta per comune sul dataflow che interessa e
+   guardare **quanto ci mette a rispondere**, non quanto pesa. E comunque
+   resta il rate limiting: 205 × 15 = 3.075 richieste sono una questione
+   seria.
 7. **Le etichette si chiedono in italiano con `Accept-Language: it`.** Senza
    quell'header ISTAT risponde in inglese, e nelle tabelle finiscono modalità
    come `private households on 31st December` o `4 and over` — che è ciò che è
