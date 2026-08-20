@@ -29,6 +29,7 @@ pubblicazione**: il sito esiste, si costruisce da solo e il workflow è scritto.
 | 🙋 5 | **Scaricare i dati MUR sui due atenei** (§2.2) | `dati-ustat.mur.gov.it` idem | 30 min | l'asse istruzione, che è di contorno |
 | 🙋 6 | **Esportare a mano il commercio estero provinciale** (§2.2) | il databrowser ISTAT è una SPA senza API | 1 h | niente: la serie regionale è già scaricata come ripiego dichiarato |
 | 🙋 7 | **Rileggere i testi prima di pubblicare** (§8) | è il tuo nome sopra | — | la pubblicazione |
+| 🙋 8 | **Scaricare in locale `migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git, e serve solo quando l'asse 2 diventerà una storia | 20 min di attesa | niente di quello che è pubblicato |
 
 Tutto il resto di questo documento è 🤖 o ✅.
 
@@ -136,7 +137,8 @@ python -m brescia_pipeline.build migrazioni abitazioni famiglie
 >   userà davvero, tenendo il resto in `dati/raw/`.
 >
 > La seconda è quasi certamente quella giusta, ma va scelta guardando la storia
-> che si vuole raccontare, non prima.
+> che si vuole raccontare, non prima. **Istruzioni per rifarla in locale, e il
+> ragionamento per esteso, in [`dati/SCARICHI-LOCALI.md`](dati/SCARICHI-LOCALI.md).**
 
 > **E il seguito, che vale ancora di più** (agosto 2026). Il vincolo è **solo**
 > sulla dimensione territoriale, e si aggira da due lati opposti:
