@@ -703,29 +703,48 @@ Le altre regole imparate sul campo:
 5. Le etichette leggibili arrivano solo con `labels=both`; senza, si ottengono
    i codici nudi. In che **lingua** siano le etichette è un'altra questione:
    vedi il punto 7.
-6. **Più codici nella stessa dimensione non si possono chiedere.** La sintassi
-   SDMX `017001+017002+…` riceve `400`, e **non per la lunghezza dell'URL**:
-   con 50 codici (430 caratteri) fallisce esattamente come con 205 (1.515).
-   Dove il punto 4 dice «filtrare per `REF_AREA`» va letto come *un* valore
-   solo.
+6. **Più codici nella stessa dimensione si possono chiedere, a blocchi.** Questo
+   punto diceva il contrario, per mesi, ed è l'errore più caro del progetto.
 
-   Restano quindi due strade, e la pipeline ha scelto la prima:
-   **scaricare l'Italia e filtrare in locale** (una richiesta da centinaia di
-   MB e venti minuti per tavola), oppure **205 richieste da un comune
-   ciascuna**, che funzionano — verificato:
-   `data/IT1,DF_DCSS_FAMIGLIE_TV_3,1.0/A.017029....` risponde `200` con 15 KB.
-   La seconda strada non è stata provata a fondo e potrebbe essere molto più
-   rapida e leggera; il rischio è il rate limiting, che con 205 × 15 = 3.075
-   richieste diventa una questione seria. Vale un esperimento su una tavola
-   sola prima di riscrivere `_censimento.py`.
+   ⚠️ **Cosa diceva.** «La sintassi `017001+017002+…` riceve `400`, e non per la
+   lunghezza dell'URL: con 50 codici fallisce come con 205.» Da lì la scelta di
+   scaricare l'Italia intera per ogni tavola censuaria: la prima delle dieci
+   tavole sulle migrazioni pesa **866 MB** e impiega quasi un'ora.
+
+   ✅ **Cosa è vero** (verificato ad agosto 2026). La sintassi funziona. Quel
+   `400` era una chiave con **il numero di campi sbagliato**: i dataflow
+   `DF_DCSS_MIGR_*` hanno nove dimensioni, e una chiave con otto punti risponde
+
+   ```
+   422  Not enough key values in query, expecting 9 got 8
+   ```
+
+   che con un client che non mostra il corpo della risposta diventa un errore
+   generico e sembra un rifiuto della sintassi. È lo **stesso** modo di
+   sbagliare del punto 1 — il numero di campi della chiave — con un sintomo
+   diverso, e per questo è passato inosservato: il punto 1 avverte che una
+   chiave corta dà *zero righe senza errore*, e qui invece l'errore c'era ma
+   diceva un'altra cosa.
+
+   Con il numero giusto di campi, **quindici comuni per richiesta** rispondono
+   `200` in nove secondi con 1,6 MB. Le stesse dieci tavole passano da circa
+   otto gigabyte e nove ore a **duecento megabyte e venti minuti**. La pipeline
+   ora fa così (`datasets/_censimento.py`), come già faceva `redditi.py` — che
+   usava i blocchi da sempre, e la cui esistenza avrebbe dovuto far sospettare
+   che la regola generale fosse falsa.
+
+   **Morale trasferibile**: prima di dichiarare impossibile una richiesta, farsi
+   restituire il corpo dell'errore. `curl -s` che scrive solo il codice di stato
+   ha nascosto per mesi una riga che diceva esattamente cosa c'era di sbagliato.
 7. **Le etichette si chiedono in italiano con `Accept-Language: it`.** Senza
    quell'header ISTAT risponde in inglese, e nelle tabelle finiscono modalità
    come `private households on 31st December` o `4 and over` — che è ciò che è
    successo qui, in un progetto che ha deciso di stare tutto in italiano. La
    verifica è diretta: stessa richiesta, stesso URL, con l'header le stesse
    righe diventano `famiglie con tutti i componenti stranieri al 31 dicembre` e
-   `6 e più`. Rimediare costa una riga in `fetch.py` **e un riscarico
-   completo**, perché la cache in `dati/raw/` è in inglese.
+   `6 e più`. ✅ L'header è in `fetch.py` da agosto 2026, con i test. Resta il
+   **riscarico** delle tavole già in cache, che non porta traccia della lingua
+   con cui è stata scaricata — ma con i blocchi del punto 6 non costa più ore.
 8. **L'host può sparire.** Ad agosto 2026, a metà lavorazione,
    `esploradati.istat.it` ha smesso di accettare connessioni TCP (timeout in
    `connect`, non in lettura) mentre `www.istat.it` continuava a rispondere

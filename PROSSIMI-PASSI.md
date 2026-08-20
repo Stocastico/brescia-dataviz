@@ -87,7 +87,7 @@ che manca.
 | Cosa | Stato |
 |---|---|
 | **Confini comunali** | ✅ `datasets/confini.py` + `geo.py`, con lettore di shapefile e riproiezione in libreria standard: niente `pyshp`, per lo stesso motivo per cui §5 reimplementa k-means. Prodotti `dati/geo/comuni_brescia.geojson` e `comuni_geometria.csv`, verificati contro l'area nota della provincia e contro lo `Shape_Area` di ISTAT |
-| **Background migratorio** | ⏳ `migrazioni_comuni.csv` — dieci tavole `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM`, ancora da scaricare: sono le più pesanti di tutte (centinaia di MB l'una, alcune ore in tutto). È l'unico dataset previsto che manchi |
+| **Background migratorio** | ✅ scaricato — dieci tavole `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM`. Erano «le più pesanti di tutte», e lo erano solo perché si scaricava l'Italia intera: con le chiavi a blocchi sono venti minuti. ⚠️ Ma la tabella prodotta **non è versionata**: vedi il riquadro qui sotto |
 | **Sezioni Ateco per comune** | ✅ `imprese_sezioni_comuni.csv` — **nuovo**, ed è quello che ha sbloccato l'asse 3: vedi il riquadro qui sotto |
 | **Settore × classe dimensionale** | ✅ `imprese_settore_classe.csv` — **nuovo**, capoluogo e provincia: è la tabella che ha chiuso MET-9 |
 | **Abitazioni** | ✅ `abitazioni_comuni.csv` — `DF_DCSS_ABITAZIONI_TV_1` e `_TV_2` |
@@ -95,20 +95,48 @@ che manca.
 
 Le ultime tre erano rimaste indietro perché `esploradati.istat.it` aveva
 smesso di accettare connessioni a metà lavoro. **Non era un bug del codice: era
-quell'host**, ed è tornato su. Rilanciarle costa un comando e parecchi minuti
-di attesa:
+quell'host**, ed è tornato su. Rilanciarle costa un comando e, da quando le
+chiavi vanno a blocchi, pochi minuti invece di ore:
 
 ```bash
 python -m brescia_pipeline.build migrazioni abitazioni famiglie
 ```
 
-> **Scoperta che vale la pena tenere per iscritto.** La chiave SDMX con più
-> codici nella stessa dimensione **non** fallisce per lunghezza dell'URL, come
-> diceva il commento nel codice: `REF_AREA` con 50 codici (430 caratteri)
-> riceve `400` esattamente come con 205. Il server proprio non accetta la
-> sintassi `codice+codice` lì. Scaricare l'Italia intera e filtrare in locale
-> non è una comodità, è l'unica strada — ed è il motivo per cui queste quindici
-> tavole pesano più di un giga in `dati/raw/`.
+> ~~**Scoperta che vale la pena tenere per iscritto.** La chiave SDMX con più
+> codici nella stessa dimensione non fallisce per lunghezza dell'URL: il server
+> proprio non accetta la sintassi `codice+codice` lì. Scaricare l'Italia intera
+> e filtrare in locale non è una comodità, è l'unica strada.~~
+>
+> ⚠️ **Era falso, ed è costato caro.** Quel `400` era una chiave con il numero
+> di campi sbagliato: i dataflow censuari hanno nove dimensioni, e con otto
+> punti rispondono `422 expecting 9 got 8` — che senza guardare il corpo della
+> risposta sembra un rifiuto della sintassi. Con il numero giusto di campi,
+> **quindici comuni per richiesta passano**: 1,6 MB e nove secondi. Le dieci
+> tavole sulle migrazioni passano da otto gigabyte e nove ore a duecento
+> megabyte e venti minuti. Dettaglio in `FONTI.md` §10 punto 6, e la ricetta in
+> `datasets/_censimento.py`.
+>
+> La cosa che avrebbe dovuto far sospettare: `redditi.py` usava i blocchi da
+> sempre, sotto gli occhi di tutti.
+
+> 🤖 **Una decisione da prendere: che forma dare a `migrazioni_comuni.csv`.**
+> Scaricato, è **1,8 milioni di righe e 422 MB** — la distribuzione congiunta di
+> sei dimensioni censuarie su 205 comuni, con le etichette italiane ripetute per
+> esteso su ogni riga. Le altre tabelle del progetto stanno fra le cinquemila e
+> le quarantamila righe.
+>
+> Per ora è **esclusa da git** (`.gitignore`, con la motivazione accanto) e si
+> rigenera in venti minuti. Nessuna delle cinque storie pubblicate la usa, quindi
+> non blocca niente. Le due strade, quando l'asse 2 verrà affrontato:
+>
+> - **codici al posto delle etichette**, più una legenda in una tabella a parte.
+>   È anche la forma giusta a prescindere (MET-13: le etichette cambiano lingua),
+>   e taglia il file di circa tre quarti — ma resta grosso;
+> - **solo le marginali che servono**, cioè le poche combinazioni che l'asse 2
+>   userà davvero, tenendo il resto in `dati/raw/`.
+>
+> La seconda è quasi certamente quella giusta, ma va scelta guardando la storia
+> che si vuole raccontare, non prima.
 
 > **E il seguito, che vale ancora di più** (agosto 2026). Il vincolo è **solo**
 > sulla dimensione territoriale, e si aggira da due lati opposti:

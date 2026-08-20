@@ -7,8 +7,10 @@ serie e non due fotografie.
 
 from __future__ import annotations
 
+from .. import sdmx
 from ..fetch import sdmx_csv
 from ..tidy import fmt, read_sdmx, split_code, to_number, write_csv
+from ._censimento import COMUNI_PER_RICHIESTA
 
 DATAFLOW = "DF_DCSS_FAM_POP_TV_1"
 
@@ -23,14 +25,26 @@ INDICATORI = {
 COLUMNS = ["codice_istat", "comune", "anno", "indicatore", "valore"]
 
 
-def build(comuni: dict[str, str]) -> None:
-    # Il dataflow non si può filtrare per provincia (la dimensione è il comune),
-    # e una chiave con 205 codici supera il limite di lunghezza dell'URL: si
-    # scarica l'Italia intera una volta sola e si filtra qui.
-    path = sdmx_csv(DATAFLOW, dest_name="istat_popolazione_comuni.csv")
+def _scarica(codici: list[str]):
+    for inizio in range(0, len(codici), COMUNI_PER_RICHIESTA):
+        blocco = codici[inizio : inizio + COMUNI_PER_RICHIESTA]
+        path = sdmx_csv(
+            DATAFLOW,
+            sdmx.key(DATAFLOW, {"FREQ": "A", "REF_AREA": "+".join(blocco)}),
+            dest_name=f"istat_popolazione_comuni_{inizio:03d}.csv",
+        )
+        yield from read_sdmx(path)
 
+
+def build(comuni: dict[str, str]) -> None:
+    # I comuni si chiedono al server a blocchi. Questo modulo scaricava l'Italia
+    # intera perché «una chiave con 205 codici supera il limite di lunghezza
+    # dell'URL»: il limite esiste, ma quindici codici ci stanno comodamente, e
+    # la diagnosi che aveva bloccato tutte le tavole censuarie era sbagliata
+    # (`FONTI.md` §10 punto 6).
+    codici = sorted(comuni)
     rows = []
-    for record in read_sdmx(path):
+    for record in _scarica(codici):
         code, _ = split_code(record.get("REF_AREA", ""))
         if code not in comuni:
             continue
