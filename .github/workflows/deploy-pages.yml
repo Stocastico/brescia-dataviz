@@ -1,0 +1,91 @@
+# Pubblica il sito su GitHub Pages.
+#
+# Parte a mano (`workflow_dispatch`) e non a ogni push: i testi vanno riletti
+# prima di pubblicare, e un deploy automatico su `main` toglie quel passaggio.
+# Quando i testi si saranno stabilizzati, togliere il commento a `push`.
+#
+# 🙋 Da fare una volta sola, e lo può fare solo il proprietario del repository:
+#    Settings → Pages → Source = «GitHub Actions».
+#    Senza, il primo deploy fallisce.
+
+name: Pubblica il sito
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Due deploy che si accavallano lasciano il sito a metà.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  costruisci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Serve la storia: la data dei dati viene dall'ultimo commit che ha
+          # toccato dati/processed/, e con un checkout superficiale non c'è.
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installa la pipeline
+        run: pip install -e ./pipeline
+
+      # I JSON per il sito si ricavano dalle tabelle versionate in
+      # dati/processed/: nessuna richiesta alle fonti durante il deploy, così la
+      # pubblicazione non dipende dal fatto che ISTAT risponda.
+      - name: Costruisci i dati per il sito
+        run: python -m brescia_pipeline.build --offline web
+
+      - name: Verifica gli invarianti del contratto
+        run: |
+          pip install pytest
+          python -m pytest pipeline/tests -q
+
+      # Le cifre citate nei documenti devono tornare: se una diverge, non si
+      # pubblica. È la stessa regola del repository, applicata in CI.
+      - name: Ricalcola le cifre citate
+        run: python analysis/verifica_cifre.py
+
+      # La data del sito viene dal commit, non da un valore scritto a mano:
+      # senza questo meccanismo le date invecchiano in silenzio e il sito mente.
+      - name: Costruisci il sito
+        run: |
+          DATA_COMMIT=$(git log -1 --format=%cs)
+          python sito/costruisci.py --uscita _site --data-build "$DATA_COMMIT"
+
+      - name: Controlla che i segnaposto siano tutti sostituiti
+        run: |
+          if grep -rlE '\{\{(c:[a-z0-9_]+|BUILD_DATE|DATA_DATE|N_[A-Z]+)\}\}' _site; then
+            echo "segnaposto non sostituiti: vedi i file elencati sopra"
+            exit 1
+          fi
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  pubblica:
+    needs: costruisci
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

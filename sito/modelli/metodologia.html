@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Il metodo — Come cambia il bresciano</title>
+<meta name="description" content="Le regole che governano il progetto: come si misura, cosa si dichiara, e perché.">
+<style>/*{{STILE}}*/</style>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Salta al contenuto</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Come cambia il bresciano</p>
+    <h1>Il metodo</h1>
+    <p class="lede">Le regole che governano il progetto, ciascuna con il suo perché. Quasi tutte sono nate da un problema incontrato facendo, non da un principio scelto prima — e quattro da un errore vero.</p>
+    <div class="quicklinks">
+      <a class="primary" href="index.html">Torna al racconto</a>
+      <a href="dati.html">I dati</a>
+    </div>
+    <p class="freshness">Pagina costruita il {{BUILD_DATE}} · dati aggiornati al {{DATA_DATE}}</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Indice">
+  <div class="wrap">
+    <span class="brand">Come cambia il bresciano</span>
+    <a class="pagina" href="index.html">Il racconto</a>
+    <a class="pagina" href="metodologia.html">Metodo</a>
+    <a class="pagina" href="dati.html">Dati</a>
+  </div>
+</nav>
+
+<main id="contenuto">
+<section class="story sx">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">·</div>
+      <div>
+        <p class="eyebrow">Nota metodologica</p>
+        <h2 class="story-title">Come si misura, e perché così</h2>
+      </div>
+    </div>
+    <p class="question">Un ritratto quantitativo è credibile quanto le decisioni che lo hanno
+    prodotto. Queste sono quelle di questo progetto.</p>
+<h3>Una sola geometria, una sola chiave</h3>
+  <p>L'unità è il <b>comune</b>, la chiave è il <b>codice ISTAT a sei cifre</b>
+  (<code>017029</code> è Brescia). Nessuno slug inventato, nessun join per nome:
+  i nomi hanno apostrofi, accenti e varianti, e sono il modo più affidabile di
+  perdere righe in silenzio. Il momento in cui si ammettono due geometrie «quasi
+  uguali» è il momento in cui i numeri smettono di tornare.</p>
+
+  <h3>Un dato mancante non è uno zero</h3>
+  <p>È la regola che questo progetto ha dovuto scrivere tre volte. Sulle
+  presenze turistiche esistono <b>tre modi diversi di essere assenti</b> sullo
+  stesso indicatore: il valore soppresso perché troppo piccolo, il comune che la
+  fonte non riporta affatto, e uno zero che è chiaramente fittizio. Nessuno dei
+  tre è «nessun turista». Nelle mappe l'assenza ha un colore proprio, mai lo
+  zero della scala.</p>
+
+  <h3>Decomporre prima di titolare</h3>
+  <p>Nessun titolo su una variazione aggregata prima di averla scomposta. La
+  regola nasce da un errore reale, raccontato per esteso nel
+  <a href="index.html#crollo">terzo capitolo</a>: una variazione spettacolare —
+  il crollo degli addetti nelle grandi unità locali del capoluogo — si è
+  dissolta appena scomposta per settore, rivelandosi concentrata in due
+  divisioni di servizi mentre la manifattura restava immobile.</p>
+
+  <h3>Il livello iniziale, non quello finale</h3>
+  <p>Per chiedersi se i comuni convergano bisogna correlare la crescita con il
+  livello <b>di partenza</b>. Correlarla con il livello finale è un artefatto:
+  il livello finale contiene la crescita. Sul reddito bresciano i due calcoli
+  danno segni opposti, ed è il motivo per cui il
+  <a href="index.html#redditi">secondo capitolo</a> li mostra entrambi.</p>
+
+  <h3>Due correlazioni, mai una</h3>
+  <p>Pearson e Spearman si riportano sempre in coppia. Quando divergono molto,
+  il numero lo stanno facendo pochi comuni. E ogni correlazione viene
+  ricalcolata togliendo gli outlier noti — il capoluogo, che è un ordine di
+  grandezza sopra tutti gli altri, e i comuni a forte vocazione turistica — per
+  vedere se il risultato dipende da loro.</p>
+
+  <h3>Le finestre temporali non si appiattiscono</h3>
+  <p>Gli assi di questo progetto hanno finestre molto diverse: la qualità
+  dell'aria comincia negli anni Novanta, il registro delle imprese nel 2018, la
+  percezione della sicurezza nel 2022. Tagliarle tutte sulla più corta
+  butterebbe via il dato migliore. Ogni grafico dichiara la propria.</p>
+
+  <h3>Il 2020 non si attraversa in silenzio</h3>
+  <p>Il 2020 e il 2021 spezzano quasi tutte le serie. Un tasso annuo composto ci
+  passa sopra come se nulla fosse — è una media, e le medie fanno questo. Dove
+  la rottura conta, la serie si mostra anno per anno invece che riassunta.</p>
+
+  <h3>Ogni numero ha uno script dietro</h3>
+  <p>Nessuna cifra di questo sito è scritta a mano: nel testo ci sono
+  segnaposto, e la costruzione della pagina li sostituisce ricalcolandoli dalle
+  tabelle. Se un segnaposto non trova il suo valore, il sito non si costruisce
+  invece di pubblicare una frase con un buco.</p>
+  <p>Nel repository c'è anche il verso opposto: uno script che rilegge i
+  documenti di lavoro e ricalcola ogni cifra citata. Alla prima esecuzione ne ha
+  trovate due sbagliate su ventiquattro.</p>
+
+  <h3>Un numero senza termine di paragone non è un risultato</h3>
+  <p>È la regola più recente e quella che ha corretto più cose in una volta. Per
+  quasi tutto il progetto Brescia è stata misurata <b>contro sé stessa</b>, che
+  è il modo in cui si prende per caratteristica di un luogo quello che è la
+  normalità di un paese. Il confronto con le altre province ha corretto la frase
+  che il progetto ripeteva dal primo giorno, ne ha rafforzata un'altra, e a una
+  terza ha tolto un aggettivo — tre esiti diversi e tutti e tre utili.</p>
+  <p>Dove il confronto non c'è, va detto. Qui manca su spopolamento e turismo, e
+  quelle due letture vanno scritte come «a Brescia succede questo», mai come «a
+  Brescia, a differenza di altrove, succede questo».</p>
+
+  <h3>Una decisione sul dato mancante si prende in un posto solo</h3>
+  <p>La regola sopra dice che un dato mancante non è uno zero. Non dice
+  <i>chi</i> lo decide, e finché la decisione viene presa dentro ogni script
+  capita quello che è capitato qui: due parti del progetto rispondevano numeri
+  diversi alla stessa domanda, non per un errore di calcolo ma perché ciascuna
+  aveva deciso per conto suo cosa fare di una cella che la fonte non pubblica.
+  L'ha trovato lo script che ricalcola ogni cifra citata.</p>
+  <p>E quando un comune viene escluso, <b>va nominato</b>: nella quarta storia i
+  tre comuni senza la riga della manifattura sono scritti per nome, con il loro
+  peso, invece di sparire dalla mappa in silenzio.</p>
+
+  <h3>Confidenza dichiarata, indicatore per indicatore</h3>
+  <p>Ogni indicatore porta un'etichetta — <b>osservato</b> (misurato
+  direttamente), <b>derivato</b> (calcolato da altri), <b>proxy</b>
+  (approssimazione) — e l'elenco delle assunzioni che lo reggono. Viaggiano con
+  il dato fino al riquadro che compare sotto ogni grafico, perché una nota a
+  piè di pagina non la legge nessuno.</p>
+
+  <h3>Correlazione non è causalità, e va scritto</h3>
+  <p>Non «va tenuto presente»: va scritto nel testo, ogni volta. Con
+  {{c:comuni}} comuni e poche annate si descrive un territorio; non si stabilisce
+  un meccanismo. Le parole che implicano un meccanismo che i dati non mostrano
+  restano fuori dai titoli.</p>
+  </div></div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="fine">Pagina costruita il {{BUILD_DATE}} · dati aggiornati al {{DATA_DATE}} ·
+    Fonti pubbliche, nessuna chiave API, nessun tracciamento.</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -4,13 +4,22 @@
 un territorio di microimprese, e permette il confronto città/provincia che
 finora è la cosa più informativa emersa.
 
-Due tabelle, per non versionare il prodotto cartesiano completo (205 comuni ×
+Tre tabelle, per non versionare il prodotto cartesiano completo (205 comuni ×
 88 divisioni Ateco × 5 classi × 6 anni × 2 indicatori):
 
 - `imprese_classe_addetti.csv` — comune × anno × classe, totale dei settori.
   È quella che alimenta le mappe e il confronto dimensionale.
 - `imprese_settore.csv` — comune × anno × divisione Ateco, totale delle classi.
   Serve a vedere *quale* settore si muove.
+- `imprese_settore_classe.csv` — le due dimensioni **incrociate**, ma solo per
+  il capoluogo e per la provincia. È la tabella che chiude MET-9: senza
+  l'incrocio si può dire *che* le grandi unità locali del capoluogo si sono
+  svuotate e *quali* settori sono calati, ma non che siano la stessa cosa. Con
+  l'incrocio sì. Costa quattro richieste piccole, perché il territorio è fissato
+  a un codice solo.
+
+La sezione Ateco per **tutti** i comuni sta in `datasets/sezioni.py`, che usa
+una ricetta diversa (territorio libero, settore fisso).
 
 ⚠️ Un'unità locale non è un'impresa: lo stabilimento di un gruppo con sede
 altrove conta nel comune dove si trova. E gli addetti sono medie annue, quindi
@@ -41,15 +50,32 @@ CLASSI = {
 
 CLASSE_COLUMNS = ["codice_istat", "comune", "anno", "classe_addetti", "indicatore", "valore"]
 SETTORE_COLUMNS = ["territorio", "nome_territorio", "anno", "ateco", "settore", "indicatore", "valore"]
+SETTORE_CLASSE_COLUMNS = [
+    "territorio",
+    "nome_territorio",
+    "anno",
+    "ateco",
+    "settore",
+    "classe_addetti",
+    "indicatore",
+    "valore",
+]
 
 
 def _decimali(indicator: str) -> int:
     return 1 if indicator == "LUEMPDAA" else 0
 
 
+TERRITORI_CON_DETTAGLIO = (
+    (DATAFLOW_PROVINCE, PROVINCIA_BRESCIA_SDMX, "Provincia di Brescia"),
+    (DATAFLOW_COMUNI, COMUNE_BRESCIA, "Brescia"),
+)
+
+
 def build(comuni: dict[str, str]) -> None:
     per_classe: list[dict[str, str]] = []
     per_settore: list[dict[str, str]] = []
+    per_settore_classe: list[dict[str, str]] = []
 
     for indicator, nome_indicatore in INDICATORI.items():
         # --- comuni × classe di addetti (totale dei settori) ---------------
@@ -84,10 +110,7 @@ def build(comuni: dict[str, str]) -> None:
         # Il dettaglio settoriale su tutti i comuni sarebbe un prodotto
         # cartesiano da milioni di righe: si prendono i due territori che
         # servono davvero, e il confronto fra i due e' la lettura interessante.
-        for dataflow, territorio, nome in (
-            (DATAFLOW_PROVINCE, PROVINCIA_BRESCIA_SDMX, "Provincia di Brescia"),
-            (DATAFLOW_COMUNI, COMUNE_BRESCIA, "Brescia"),
-        ):
+        for dataflow, territorio, nome in TERRITORI_CON_DETTAGLIO:
             path = sdmx_csv(
                 dataflow,
                 sdmx.key(dataflow, {"FREQ": "A", "REF_AREA": territorio,
@@ -116,8 +139,43 @@ def build(comuni: dict[str, str]) -> None:
                     }
                 )
 
+        # --- settore × classe, per i due territori --------------------------
+        # Il territorio è un codice solo, quindi la chiave passa con entrambe le
+        # altre dimensioni libere: mezzo mega di risposta, non un gigabyte.
+        for dataflow, territorio, nome in TERRITORI_CON_DETTAGLIO:
+            path = sdmx_csv(
+                dataflow,
+                sdmx.key(dataflow, {"FREQ": "A", "REF_AREA": territorio,
+                                    "DATA_TYPE": indicator}),
+                dest_name=f"istat_asia_settore_classe_{territorio}_{indicator.lower()}.csv",
+            )
+            for record in read_sdmx(path):
+                nace_code, nace_label = split_code(record.get("ECON_ACTIVITY_NACE_2007", ""))
+                if nace_code != NACE_TOTALE and len(nace_code) != 2:
+                    continue  # il dataflow provinciale scende a 3 cifre
+                classe_code, _ = split_code(record.get("PERS_EMPL_SIZE_CLASS", ""))
+                value = to_number(record.get("OBS_VALUE"))
+                if value is None or classe_code not in CLASSI:
+                    continue
+                per_settore_classe.append(
+                    {
+                        "territorio": territorio,
+                        "nome_territorio": nome,
+                        "anno": record.get("TIME_PERIOD", ""),
+                        "ateco": nace_code,
+                        "settore": nace_label,
+                        "classe_addetti": CLASSI[classe_code],
+                        "indicatore": nome_indicatore,
+                        "valore": fmt(value, _decimali(indicator)),
+                    }
+                )
+
     per_classe.sort(key=lambda r: (r["codice_istat"], r["indicatore"], r["anno"], r["classe_addetti"]))
     per_settore.sort(key=lambda r: (r["territorio"], r["indicatore"], r["anno"], r["ateco"]))
+    per_settore_classe.sort(
+        key=lambda r: (r["territorio"], r["indicatore"], r["anno"], r["ateco"], r["classe_addetti"])
+    )
 
     write_csv("imprese_classe_addetti.csv", per_classe, CLASSE_COLUMNS)
     write_csv("imprese_settore.csv", per_settore, SETTORE_COLUMNS)
+    write_csv("imprese_settore_classe.csv", per_settore_classe, SETTORE_CLASSE_COLUMNS)

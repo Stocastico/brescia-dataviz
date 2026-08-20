@@ -14,9 +14,18 @@ from ..tidy import fmt, read_sdmx, split_code, to_number, write_csv
 DATAFLOW = "30_1008_DF_MEF_REDDITIIRPEF_COM_2"
 
 COLUMNS = [
-    "codice_istat", "comune", "anno", "indicatore", "classe_reddito",
-    "codice_classe", "valore",
+    "codice_istat", "comune", "anno", "codice_indicatore", "indicatore",
+    "classe_reddito", "codice_classe", "valore",
 ]
+
+# ⚠️ `indicatore` è **un'etichetta**, e le etichette di ISTAT cambiano lingua a
+# seconda dell'header della richiesta: la stessa riga è `income by amount class`
+# in inglese e `reddito per classi di importo` in italiano. Filtrare su quella
+# stringa funziona finché tutte le tabelle sono state scaricate lo stesso
+# giorno, e poi smette — è successo davvero, confrontando Brescia con Bergamo.
+# `codice_indicatore` porta il codice della fonte, che è invariante.
+IMPONIBILE = "AGGINCR"     # reddito per classi di importo
+CONTRIBUENTI = "AGGINCF"   # contribuenti per classe di importo
 
 CLASSE_DIM = "AMOUNT_CLASS"
 
@@ -51,18 +60,20 @@ def build(comuni: dict[str, str]) -> None:
             continue
 
         classe_code, classe_label = split_code(record.get(CLASSE_DIM, ""))
+        indicatore_code, indicatore_label = split_code(record.get("DATA_TYPE", ""))
 
         rows.append(
             {
                 "codice_istat": code,
                 "comune": comuni[code],
                 "anno": record.get("TIME_PERIOD", ""),
-                "indicatore": split_code(record.get("DATA_TYPE", ""))[1],
+                "codice_indicatore": indicatore_code,
+                "indicatore": indicatore_label,
                 "classe_reddito": classe_label,
                 "codice_classe": classe_code,
                 "valore": fmt(value, 2),
             }
         )
 
-    rows.sort(key=lambda r: (r["codice_istat"], r["anno"], r["indicatore"], r["codice_classe"]))
+    rows.sort(key=lambda r: (r["codice_istat"], r["anno"], r["codice_indicatore"], r["codice_classe"]))
     write_csv("redditi_comuni.csv", rows, COLUMNS)

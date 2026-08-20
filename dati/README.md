@@ -1,5 +1,9 @@
 # Dati
 
+> ⚠️ **Una tabella non è qui**: `migrazioni_comuni.csv` pesa 422 MB e resta
+> fuori da git. Come rifarla in venti minuti, e perché va bene così, sta in
+> [`SCARICHI-LOCALI.md`](SCARICHI-LOCALI.md).
+
 Tre cartelle:
 
 - **`processed/`** — le tabelle tidy, **versionate**: sono il prodotto del

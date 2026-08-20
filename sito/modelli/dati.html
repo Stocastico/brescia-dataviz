@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I dati — Come cambia il bresciano</title>
+<meta name="description" content="Le fonti, le tabelle scaricabili e le avvertenze: tutto quello che serve per rifare i conti.">
+<style>/*{{STILE}}*/</style>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Salta al contenuto</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Come cambia il bresciano</p>
+    <h1>I dati</h1>
+    <p class="lede">Tutte le tabelle di questo sito sono scaricabili, e tutte vengono da fonti
+    pubbliche interrogate senza chiavi né login. Rifare i conti è il modo migliore di
+    controllarli.</p>
+    <div class="quicklinks">
+      <a class="primary" href="index.html">Torna al racconto</a>
+      <a href="dati/processed/">Le tabelle in CSV</a>
+      <a href="metodologia.html">Il metodo</a>
+    </div>
+    <p class="meta">{{N_TABELLE}} tabelle · {{N_INDICATORI}} indicatori · {{c:comuni}} comuni</p>
+    <p class="freshness">Pagina costruita il {{BUILD_DATE}} · dati aggiornati al {{DATA_DATE}}</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Indice">
+  <div class="wrap">
+    <span class="brand">Come cambia il bresciano</span>
+    <a class="pagina" href="index.html">Il racconto</a>
+    <a class="pagina" href="metodologia.html">Metodo</a>
+    <a class="pagina" href="dati.html">Dati</a>
+  </div>
+</nav>
+
+<main id="contenuto">
+<section class="story sx">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">·</div>
+      <div>
+        <p class="eyebrow">Provenienza</p>
+        <h2 class="story-title">Da dove vengono questi numeri</h2>
+      </div>
+    </div>
+    <p class="question">Ogni grafico di questo sito esce da una tabella pubblica e da uno script
+    pubblico. Ecco le une e gli altri.</p>
+
+    <h3>Le fonti</h3>
+    <table class="fonti">
+      <thead><tr><th>Fonte</th><th>Cosa dà</th><th>Grana</th><th>Avvertenza</th></tr></thead>
+      <tbody>
+        <tr><td>ISTAT — registro ASIA</td><td>unità locali e addetti per classe dimensionale e settore</td><td>comune, annuale</td><td>unità locali, non imprese: una sede secondaria conta dove sta</td></tr>
+        <tr><td>ISTAT — popolazione residente</td><td>abitanti, famiglie, convivenze</td><td>comune, annuale</td><td>—</td></tr>
+        <tr><td>ISTAT — confini generalizzati</td><td>la geometria dei comuni</td><td>comune</td><td>i confini sul Garda passano dentro il lago</td></tr>
+        <tr><td>ISTAT — censimento permanente</td><td>lavoro, istruzione, abitazioni, background migratorio</td><td>comune, annuale</td><td>—</td></tr>
+        <tr><td>MEF — dichiarazioni dei redditi</td><td>imponibile e contribuenti per classe di importo</td><td>comune, annuale</td><td>euro correnti; contribuenti, non residenti</td></tr>
+        <tr><td>Regione Lombardia</td><td>flussi turistici per comune</td><td>comune, mensile</td><td>molti comuni con dato soppresso</td></tr>
+        <tr><td>ARPA Lombardia</td><td>qualità dell'aria e clima</td><td>stazione, oraria</td><td>sette stazioni: è una sezione, non una mappa</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Le tabelle</h3>
+    <p>Sono {{N_TABELLE}} file CSV, uno per tema, in forma «tidy»: una riga per osservazione, una
+    colonna per variabile, virgola come separatore e UTF-8. Stanno nella cartella
+    <a href="dati/processed/">dati/processed/</a> di questo sito e nel repository del
+    progetto.</p>
+
+    <h3>Gli indicatori</h3>
+    <p>Gli {{N_INDICATORI}} indicatori che alimentano i grafici sono derivati da quelle tabelle e
+    portano con sé la fonte, il grado di confidenza e le assunzioni.</p>
+    <div id="elenco-indicatori"></div>
+
+    <h3>Tre cose da sapere prima di usarli</h3>
+    <ul class="elenco">
+      <li><strong>I vuoti sono vuoti.</strong> Una cella vuota è un dato che non c'è, e non va
+      letta come zero. Nei JSON degli indicatori il comune semplicemente non compare per quel
+      periodo.</li>
+      <li><strong>Le finestre sono diverse.</strong> Ogni indicatore dichiara i propri periodi:
+      non tutti coprono gli stessi anni, e allinearli a forza fa perdere la parte migliore dei
+      dati.</li>
+      <li><strong>Gli anni non sempre coincidono.</strong> Il registro delle imprese arriva a un
+      anno prima della popolazione: ogni rapporto fra i due mescola due annate, e dove succede è
+      scritto nelle assunzioni dell'indicatore.</li>
+    </ul>
+  </div></div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="fine">Pagina costruita il {{BUILD_DATE}} · dati aggiornati al {{DATA_DATE}} ·
+    Fonti pubbliche, nessuna chiave API, nessun tracciamento.</p>
+  </div>
+</footer>
+
+<script>/*{{DATI}}*/</script>
+<script>/*{{GRAFICI}}*/</script>
+<script>
+(function () {
+  "use strict";
+  var G = window.GRAFICI, DATI = window.DATI;
+  var righe = Object.keys(DATI.metriche).map(function (id) {
+    var m = DATI.metriche[id];
+    return [
+      m.label,
+      m.periods[0] + "–" + m.periods[m.periods.length - 1],
+      m.confidence,
+      m.coverage.comuni + " / " + m.coverage.attesi,
+      m.source
+    ];
+  });
+  G.tabellaSpecchio(document.getElementById("elenco-indicatori"),
+    ["indicatore", "periodo", "confidenza", "comuni con dato", "fonte"], righe,
+    "Gli " + righe.length + " indicatori, con copertura e fonte");
+})();
+</script>
+</body>
+</html>

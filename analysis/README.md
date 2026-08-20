@@ -10,13 +10,51 @@ il punto.
 
 | Script | Cosa fa |
 |---|---|
-| `verifica_cifre.py` | Ricalcola dai CSV **ogni cifra citata nei documenti** e la confronta con quella scritta. Esce con codice 1 se una diverge. |
+| `verifica_cifre.py` | Ricalcola dai CSV **ogni cifra citata nei documenti e nel sito** e la confronta con quella scritta. Esce con codice 1 se una diverge. |
 | `variazione_popolazione.py` | Tasso annualizzato di variazione della popolazione per comune, 2018–2024. La prima delle analisi previste in §5. |
+| `velocita_di_cambio.py` | Lo stesso tasso su **addetti, unità locali e reddito**, ciascuno sulla sua finestra. |
+| `livelli_e_variazioni.py` | I quattro quadranti livello/crescita, e il test di convergenza fatto sul livello **iniziale** — che sul reddito cambia segno al risultato. |
+| `autocorrelazione_spaziale.py` | Indice di Moran sui 205 comuni, con la contiguità ricavata dal GeoJSON e la significatività per permutazione. |
+| `decomposizione_capoluogo.py` | La scomposizione settore × classe che ha chiuso MET-9: il crollo delle grandi unità locali del capoluogo, spiegato. |
+| `due_economie.py` | Quote settoriali comune per comune: manifattura contro alloggio e ristorazione, e il quoziente di localizzazione. |
+| `tipologia_comuni.py` | k-means++ con seme fisso su sei variabili strutturali. Dichiara anche i comuni che nessun gruppo descrive bene. |
+| `dove_si_lavora.py` | Addetti ogni 100 abitanti, e il settore prevalente che spiega perché i due estremi non sono lo stesso fenomeno. |
+| `rottura_covid.py` | La discontinuità del 2020, testata dove si può e dichiarata non testabile dove non si può. |
+| `confronto_province.py` | Gli stessi indicatori su tutte e 107 le province italiane: dove sta Brescia, e il controllo esterno di MET-9. |
+| `convergenza_confronto.py` | La convergenza dei redditi rifatta su Bergamo: regge identica, quindi non è bresciana. |
+| `_tabelle.py` | Non è un'analisi: è la lettura delle tabelle e la statistica di base che gli script hanno in comune. |
 
 ```bash
-python analysis/verifica_cifre.py                 # 24 verifiche
-python analysis/variazione_popolazione.py --save  # + CSV in analysis/output/
+python analysis/verifica_cifre.py                    # sessanta verifiche, agosto 2026
+python analysis/variazione_popolazione.py --save     # + CSV in analysis/output/
+python analysis/velocita_di_cambio.py reddito
+python analysis/livelli_e_variazioni.py
+python analysis/autocorrelazione_spaziale.py --save
+python analysis/decomposizione_capoluogo.py
+python analysis/due_economie.py
+python analysis/tipologia_comuni.py --gruppi 5
+python analysis/dove_si_lavora.py
+python analysis/rottura_covid.py
+python analysis/confronto_province.py
+python analysis/convergenza_confronto.py
 ```
+
+Il numero delle verifiche è scritto **solo qui**, e di proposito: una cifra
+ripetuta in quattro documenti è una cifra che fra sei mesi ne dice quattro
+diverse. Negli altri documenti si parla di «ogni cifra citata», che resta vero
+comunque vada.
+
+## Il modulo condiviso, e l'unico script che non lo usa
+
+`_tabelle.py` esiste perché ogni script rifarebbe le stesse tre cose: aprire un
+CSV di `dati/processed/`, ricavarne una serie per comune e anno, e calcolare le
+due correlazioni che MET-6 impone di riportare in coppia. Il trattino basso dice
+che non è un'analisi.
+
+**`verifica_cifre.py` non lo usa, ed è deliberato.** Un verificatore che
+condivide il codice con ciò che verifica non verifica niente: se la lettura del
+CSV avesse un errore, lo avrebbero entrambi e i numeri tornerebbero lo stesso.
+Rilegge i file per conto suo, ed è l'unico script a cui la duplicazione fa bene.
 
 ## Perché `verifica_cifre.py` esiste
 
@@ -39,6 +77,18 @@ oneste.
 Aggiungere una cifra a un documento significa aggiungere una riga a
 `VERIFICHE`. Se non è ricalcolabile dalle tabelle, è un segnale: o manca il
 dato, o la frase dice più di quanto il dato sostenga.
+
+**È successo di nuovo ad agosto 2026**, e la seconda volta è più interessante
+della prima. Aggiungendo le cifre delle analisi nuove, l'indice di Moran sulla
+specializzazione settoriale divergeva: 0,44 nel sito, 0,46 qui. Nessuno dei due
+calcoli era sbagliato — erano due decisioni diverse sullo stesso dato mancante,
+prese in due file diversi da chi non sapeva dell'altro. Da lì è nata MET-13, e
+la definizione ora sta in un posto solo.
+
+Nel sito il problema si pone in modo diverso, e più radicale: **nessuna cifra è
+scritta a mano nel testo**. Sono segnaposto che `sito/costruisci.py` calcola
+dalle tabelle, e un segnaposto senza valore fa fallire la costruzione. Lì non
+serve un verificatore perché non c'è niente da verificare.
 
 ## Cosa **non** va messo qui
 

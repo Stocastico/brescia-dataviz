@@ -12,3 +12,16 @@ __pycache__/
 
 # Uscite degli script di analisi: si rigenerano con `--save`.
 analysis/output/
+
+# ⚠️ Eccezione dichiarata alla regola «dati/processed/ si versiona».
+# `migrazioni_comuni.csv` è la distribuzione congiunta di sei dimensioni
+# censuarie su 205 comuni: 1,8 milioni di righe e 422 MB, perché ogni riga
+# ripete per esteso le etichette italiane delle modalità. È un estratto di
+# ricerca, non una tabella per il sito, e nessuna delle storie pubblicate lo
+# usa. Si rigenera con `python -m brescia_pipeline.build migrazioni` in una
+# ventina di minuti (era mezza giornata prima delle chiavi a blocchi).
+#
+# Prima di versionarlo va deciso in che forma: codici al posto delle etichette
+# più una legenda a parte, oppure le sole marginali che servono all'asse 2.
+# Vedi PROSSIMI-PASSI.md §2.1.
+dati/processed/migrazioni_comuni.csv

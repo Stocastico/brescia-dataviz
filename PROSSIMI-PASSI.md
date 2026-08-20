@@ -17,15 +17,19 @@ portanti hanno già tutti i dati che servono. Sono estensioni e finiture.
 
 ## Le cose che tocca a te — tutte, in un posto solo
 
+Sono rimaste le stesse, e adesso sono **le uniche due che bloccano la
+pubblicazione**: il sito esiste, si costruisce da solo e il workflow è scritto.
+
 | | Cosa | Perché tocca a te | Tempo | Blocca |
 |---|---|---|---|---|
 | 🙋 1 | **Scegliere la licenza** (§3.3) | è una tua decisione, non una tecnicalità | 10 min | la pubblicazione, non il lavoro |
-| 🙋 2 | **Attivare GitHub Pages** (§7): *Settings → Pages → Source = «GitHub Actions»* | serve il tuo accesso da proprietario del repo | 2 min | il primo deploy |
+| 🙋 2 | **Attivare GitHub Pages** (§7): *Settings → Pages → Source = «GitHub Actions»*, poi lanciare a mano il workflow «Pubblica il sito» | serve il tuo accesso da proprietario del repo | 2 min | il primo deploy |
 | 🙋 3 | **Scaricare le quotazioni OMI** e i perimetri delle zone (§2.2) | area riservata Agenzia delle Entrate, SPID/CIE | 1–2 h la prima volta | solo l'asse «casa e prezzi», che è di contorno |
 | 🙋 4 | **Scaricare gli open data del Comune di Brescia** (§2.2) | `dati.comune.brescia.it` non risponde dagli ambienti remoti, da una macchina italiana sì | 30 min | estende indietro il turismo cittadino (2005–2013) |
 | 🙋 5 | **Scaricare i dati MUR sui due atenei** (§2.2) | `dati-ustat.mur.gov.it` idem | 30 min | l'asse istruzione, che è di contorno |
 | 🙋 6 | **Esportare a mano il commercio estero provinciale** (§2.2) | il databrowser ISTAT è una SPA senza API | 1 h | niente: la serie regionale è già scaricata come ripiego dichiarato |
 | 🙋 7 | **Rileggere i testi prima di pubblicare** (§8) | è il tuo nome sopra | — | la pubblicazione |
+| 🙋 8 | **Scaricare in locale `migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git, e serve solo quando l'asse 2 diventerà una storia | 20 min di attesa | niente di quello che è pubblicato |
 
 Tutto il resto di questo documento è 🤖 o ✅.
 
@@ -53,20 +57,24 @@ Indice:
 | Ricognizione delle fonti | ✅ [`FONTI.md`](FONTI.md), con lo stato di accesso verificato riga per riga |
 | Soggetto e assi | ✅ decisi: la provincia attraverso i 205 comuni, quattro assi portanti ([`BRIEF.md`](BRIEF.md)) |
 | Repository separato | ✅ esiste, `main`, file in radice |
-| Pipeline | ✅ funzionante, `requests` + libreria standard, 58 test verdi |
+| Pipeline | ✅ funzionante, `requests` + libreria standard, 167 test verdi |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
-| Tabelle tidy | ✅ 19 CSV in [`dati/processed/`](dati/README.md), versionati; il ventesimo (`migrazioni_comuni.csv`) è in scarico |
-| Analisi | 🤖 appena cominciata: due script in [`analysis/`](analysis/README.md) |
-| Storie scelte | 🤖 no. Dodici candidate in `BRIEF.md`, nessuna confermata sui dati |
-| Documento narrativo | 🤖 no |
-| Pannello interattivo | 🤖 no |
-| Deploy | 🙋🤖 no, e serve un passaggio tuo (§7) |
+| Tabelle tidy | ✅ 23 CSV in [`dati/processed/`](dati/README.md), versionati; manca solo `migrazioni_comuni.csv` |
+| Analisi | ✅ undici script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province |
+| Storie scelte | ✅ **cinque**, scritte e pubblicate nel documento narrativo — l'ultima delle quali corregge le altre. Le candidate rimaste stanno in `BRIEF.md` |
+| Contratto dati per il sito | ✅ `metric_*.json` + registro, con i cinque invarianti come test |
+| Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega |
+| Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
+| Deploy | 🤖 workflow scritto e pronto; 🙋 serve il tuo passaggio su Pages (§7) |
 | Licenza | 🙋 **non scelta** (§3.3) |
-| `METODOLOGIA.md`, `WORKING-PAPER.md` | ⚠️ bozze, si riscrivono alla fine (§8) |
+| `METODOLOGIA.md` | ⚠️ bozza avanzata: quattordici regole, MET-9 chiusa, tre nuove nate da questa tornata |
+| `WORKING-PAPER.md` | ⚠️ bozza, la sezione dei risultati va riscritta con le quattro storie (§8) |
 
-**Dove sta il progetto, in una frase.** I dati ci sono e sono puliti; il
-ritratto del territorio non è ancora stato disegnato. Il prossimo pezzo di
-lavoro è l'analisi, non il download.
+**Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
+fatte e quattro storie sono scritte in un sito che si costruisce da solo: **manca
+la tua rilettura, la licenza e un clic nelle impostazioni**. Il lavoro tecnico
+che resta è tutto facoltativo — il pannello interattivo, i download manuali, i
+confronti con altre province.
 
 ---
 
@@ -80,26 +88,76 @@ che manca.
 | Cosa | Stato |
 |---|---|
 | **Confini comunali** | ✅ `datasets/confini.py` + `geo.py`, con lettore di shapefile e riproiezione in libreria standard: niente `pyshp`, per lo stesso motivo per cui §5 reimplementa k-means. Prodotti `dati/geo/comuni_brescia.geojson` e `comuni_geometria.csv`, verificati contro l'area nota della provincia e contro lo `Shape_Area` di ISTAT |
-| **Background migratorio** | ⏳ `migrazioni_comuni.csv` — dieci tavole `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM`, scarico in corso: sono le più pesanti di tutte (centinaia di MB l'una) |
+| **Background migratorio** | ✅ scaricato — dieci tavole `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM`. Erano «le più pesanti di tutte», e lo erano solo perché si scaricava l'Italia intera: con le chiavi a blocchi sono venti minuti. ⚠️ Ma la tabella prodotta **non è versionata**: vedi il riquadro qui sotto |
+| **Sezioni Ateco per comune** | ✅ `imprese_sezioni_comuni.csv` — **nuovo**, ed è quello che ha sbloccato l'asse 3: vedi il riquadro qui sotto |
+| **Settore × classe dimensionale** | ✅ `imprese_settore_classe.csv` — **nuovo**, capoluogo e provincia: è la tabella che ha chiuso MET-9 |
 | **Abitazioni** | ✅ `abitazioni_comuni.csv` — `DF_DCSS_ABITAZIONI_TV_1` e `_TV_2` |
 | **Famiglie con stranieri** | ✅ `famiglie_comuni.csv` — `DF_DCSS_FAMIGLIE_TV_1`, `_TV_2`, `_TV_3` |
 
 Le ultime tre erano rimaste indietro perché `esploradati.istat.it` aveva
 smesso di accettare connessioni a metà lavoro. **Non era un bug del codice: era
-quell'host**, ed è tornato su. Rilanciarle costa un comando e parecchi minuti
-di attesa:
+quell'host**, ed è tornato su. Rilanciarle costa un comando e, da quando le
+chiavi vanno a blocchi, pochi minuti invece di ore:
 
 ```bash
 python -m brescia_pipeline.build migrazioni abitazioni famiglie
 ```
 
-> **Scoperta che vale la pena tenere per iscritto.** La chiave SDMX con più
-> codici nella stessa dimensione **non** fallisce per lunghezza dell'URL, come
-> diceva il commento nel codice: `REF_AREA` con 50 codici (430 caratteri)
-> riceve `400` esattamente come con 205. Il server proprio non accetta la
-> sintassi `codice+codice` lì. Scaricare l'Italia intera e filtrare in locale
-> non è una comodità, è l'unica strada — ed è il motivo per cui queste quindici
-> tavole pesano più di un giga in `dati/raw/`.
+> ~~**Scoperta che vale la pena tenere per iscritto.** La chiave SDMX con più
+> codici nella stessa dimensione non fallisce per lunghezza dell'URL: il server
+> proprio non accetta la sintassi `codice+codice` lì. Scaricare l'Italia intera
+> e filtrare in locale non è una comodità, è l'unica strada.~~
+>
+> ⚠️ **Era falso, ed è costato caro.** Quel `400` era una chiave con il numero
+> di campi sbagliato: i dataflow censuari hanno nove dimensioni, e con otto
+> punti rispondono `422 expecting 9 got 8` — che senza guardare il corpo della
+> risposta sembra un rifiuto della sintassi. Con il numero giusto di campi,
+> **quindici comuni per richiesta passano**: 1,6 MB e nove secondi. Le dieci
+> tavole sulle migrazioni passano da otto gigabyte e nove ore a duecento
+> megabyte e venti minuti. Dettaglio in `FONTI.md` §10 punto 6, e la ricetta in
+> `datasets/_censimento.py`.
+>
+> La cosa che avrebbe dovuto far sospettare: `redditi.py` usava i blocchi da
+> sempre, sotto gli occhi di tutti.
+
+> 🤖 **Una decisione da prendere: che forma dare a `migrazioni_comuni.csv`.**
+> Scaricato, è **1,8 milioni di righe e 422 MB** — la distribuzione congiunta di
+> sei dimensioni censuarie su 205 comuni, con le etichette italiane ripetute per
+> esteso su ogni riga. Le altre tabelle del progetto stanno fra le cinquemila e
+> le quarantamila righe.
+>
+> Per ora è **esclusa da git** (`.gitignore`, con la motivazione accanto) e si
+> rigenera in venti minuti. Nessuna delle cinque storie pubblicate la usa, quindi
+> non blocca niente. Le due strade, quando l'asse 2 verrà affrontato:
+>
+> - **codici al posto delle etichette**, più una legenda in una tabella a parte.
+>   È anche la forma giusta a prescindere (MET-13: le etichette cambiano lingua),
+>   e taglia il file di circa tre quarti — ma resta grosso;
+> - **solo le marginali che servono**, cioè le poche combinazioni che l'asse 2
+>   userà davvero, tenendo il resto in `dati/raw/`.
+>
+> La seconda è quasi certamente quella giusta, ma va scelta guardando la storia
+> che si vuole raccontare, non prima. **Istruzioni per rifarla in locale, e il
+> ragionamento per esteso, in [`dati/SCARICHI-LOCALI.md`](dati/SCARICHI-LOCALI.md).**
+
+> **E il seguito, che vale ancora di più** (agosto 2026). Il vincolo è **solo**
+> sulla dimensione territoriale, e si aggira da due lati opposti:
+>
+> - **territorio libero, settore fisso** — una richiesta per sezione Ateco su
+>   tutta Italia (una dozzina di MB, una ventina di secondi l'una), filtro sui
+>   205 comuni in locale. Diciassette sezioni per due indicatori sono
+>   trentaquattro richieste e un quarto d'ora, e da lì viene
+>   `imprese_sezioni_comuni.csv`: **la specializzazione settoriale di tutti i
+>   comuni**, che era data per impossibile e senza la quale l'asse 3 del brief
+>   non si poteva disegnare;
+> - **territorio fisso, tutto il resto libero** — mezzo mega di risposta per il
+>   capoluogo con settore *e* classe dimensionale insieme. È
+>   `imprese_settore_classe.csv`, quattro richieste in tutto, ed è la tabella
+>   che ha chiuso MET-9 dopo mesi.
+>
+> Morale: prima di dichiarare impossibile un incrocio, provare a fissare
+> **l'altra** dimensione. Le due ricette sono in `datasets/sezioni.py` e in
+> `datasets/imprese.py`.
 
 ### 2.2 🙋 Le fonti che richiedono te
 
@@ -148,16 +206,22 @@ sono in inglese: `private households on 31st December`, `15 years and over`,
 tavole censuarie, e stona con la decisione di §3.4 di tenere tutto in italiano
 salvo i nomi delle colonne.
 
-**Non è una scelta, è un header mancante.** ISTAT risponde in italiano se la
-richiesta porta `Accept-Language: it` — verificato riga per riga: le stesse
-osservazioni tornano come `famiglie con tutti i componenti stranieri al 31
-dicembre` e `6 e più`. Il rimedio è **una riga in `fetch.py`**, ma comporta un
-**riscarico completo** delle quindici tavole (la cache di `dati/raw/` è in
-inglese), quindi qualche ora di attesa: conviene farlo insieme al prossimo
-riscarico, non da solo.
+**Non era una scelta, era un header mancante.** ISTAT risponde in italiano se la
+richiesta porta `Accept-Language: it`. ✅ **Fatto**: l'header è in `fetch.py`, con
+i test che lo verificano, e tutte le tabelle scaricate da agosto 2026 in poi
+arrivano in italiano — `imprese_settore.csv` e le due tabelle nuove lo sono già
+(«attività di ricerca, selezione, fornitura di personale» al posto di
+`employment activities`).
 
-Finché non è fatto, va tenuto presente in ogni grafico: quelle stringhe non
-sono pubblicabili così come sono.
+⏳ **Resta da rifare il giro sulle tavole censuarie** già in
+`dati/processed/`, che sono state scaricate prima: `famiglie_comuni.csv`,
+`abitazioni_comuni.csv` e `censimento_lavoro_brescia.csv` hanno ancora le
+modalità in inglese. La cache di `dati/raw/` non porta traccia della lingua, per
+cui serve un riscarico con `force=True` — qualche ora di attesa, e conviene
+farlo insieme allo scarico delle migrazioni, che è comunque da fare.
+
+Finché non è fatto, quelle tre tabelle non sono pubblicabili così come sono. Le
+quattro storie del sito non le usano.
 
 ---
 
@@ -241,18 +305,19 @@ i dati ci sono o si scaricano da soli.
 - **Il lavoro da casa** (`DF_DCSS_LCAS_FRISC_1`): quanto è rimasto del remoto
   dopo il 2021, in un territorio manifatturiero dove gran parte del lavoro non
   si può fare da casa.
-- **I distretti**: Val Trompia e Lumezzane (metalmeccanica), Franciacorta
-  (vino), Bassa (agroalimentare), Garda (turismo). Non esiste una
-  classificazione ufficiale pronta, ma si può costruire raggruppando i comuni
-  per specializzazione settoriale con i dati ASIA già scaricati. Sarebbe un
-  contributo originale, non una ripetizione.
+- ✅ **I distretti**: fatto, ed è stata la sorpresa della tornata. La
+  specializzazione settoriale per comune **si può scaricare** (§2.1), e da lì
+  vengono `analysis/due_economie.py` e `analysis/tipologia_comuni.py`. Resta da
+  fare la parte fine: i distretti veri sono di divisione, non di sezione — la
+  Val Trompia è la divisione 25, non «la manifattura» — e la ricetta per
+  scaricare una divisione è la stessa.
 
 **Sul territorio**
 
-- **Odolo, 89,6 addetti ogni 100 abitanti** — e Limone sul Garda 133. Una mappa
-  del rapporto addetti/residenti mostra dove il lavoro si concentra rispetto a
-  dove si abita, e i due estremi hanno cause opposte (acciaierie contro
-  alberghi). È già calcolabile da `comuni_sintesi.csv`.
+- ✅ **Odolo, 89,6 addetti ogni 100 abitanti** — e Limone sul Garda 133:
+  `analysis/dove_si_lavora.py`. Le cause opposte adesso si **mostrano** invece
+  di raccontarle: Limone ha il 71 % degli addetti in alloggio e ristorazione,
+  Odolo l'81 % nella manifattura.
 - **Lo spopolamento montano**: Valle Camonica e Valle Sabbia contro la pianura.
   Il primo sguardo c'è già ed è netto — `analysis/variazione_popolazione.py`
   dice che **93 comuni su 205 perdono popolazione fra il 2018 e il 2024**, e
@@ -260,7 +325,10 @@ i dati ci sono o si scaricano da soli.
   Lozio, Berzo Demo, Paisco Loveno, Saviore dell'Adamello), mentre la provincia
   nel suo complesso cresce dello 0,15 % l'anno. È materiale per una storia,
   non ancora una storia: manca la decomposizione fra saldo naturale e
-  migrazione.
+  migrazione. ⏳ È diventata **la prima storia del sito**, con la mappa e
+  l'indice di Moran (0,34: i comuni che si svuotano confinano fra loro), e la
+  decomposizione resta il pezzo mancante — dichiarato come tale nella sezione
+  dei limiti.
 
 **Sull'ambiente**
 
@@ -277,8 +345,10 @@ i dati ci sono o si scaricano da soli.
 - **Confrontare Brescia con Bergamo**: due province gemelle, stessa Capitale
   della cultura 2023, storie industriali parallele. Tutte le fonti usate qui
   coprono l'Italia intera: aggiungere Bergamo costa un filtro — e i file grezzi
-  nazionali sono già in `dati/raw/`, quindi nemmeno un download. È anche il
-  **controllo naturale** per la questione aperta di MET-9.
+  nazionali sono già in `dati/raw/`, quindi nemmeno un download. Resta il
+  **controllo naturale** per MET-9, che nel frattempo si è chiusa da sola sui
+  soli dati bresciani (la stessa divisione a due scale diverse basta), e serve
+  ora a un'altra domanda: la convergenza dei redditi è bresciana o è di tutti?
 
 ---
 
@@ -313,35 +383,53 @@ L'approccio del progetto precedente, che ha retto alla revisione esterna.
 Riadattate al caso bresciano. La prima è fatta, le altre no.
 
 - ✅ **Velocità di cambio**: tassi annualizzati per comune fra il primo e
-  l'ultimo anno di ogni serie. Distingue «dov'è alto» da «dove sta cambiando in
-  fretta», che è quasi sempre la domanda più interessante. Fatta sulla
-  popolazione (`analysis/variazione_popolazione.py`); **da rifare su addetti,
-  unità locali e reddito**, che è un'ora di lavoro perché lo schema è lo stesso.
-- 🤖 **Livelli contro variazioni**: uno scatter con il livello sull'asse x e la
-  variazione sull'asse y separa i comuni in quattro quadranti e rende visibile
-  la polarizzazione.
-- 🤖 **Tipologia di comuni**: k-means con seme fisso su poche variabili
-  (specializzazione settoriale, dimensione media d'impresa, reddito, densità).
-  Da presentare **come profili descrittivi, mai come verità**.
-- 🤖 **Autocorrelazione spaziale**: i comuni contigui si somigliano? Con 205
-  comuni e una geometria vera, qui ha molto più senso che con 19 barrios. La
-  matrice di contiguità si ricava dal GeoJSON già presente.
-- 🤖 **Rottura Covid**: 2020–2021 spezza quasi tutte le serie. Testare
-  esplicitamente la discontinuità invece di far finta che non ci sia. Vale
-  anche per il tasso annualizzato del punto 1, che ci passa sopra.
+  l'ultimo anno di ogni serie. Fatta su popolazione
+  (`analysis/variazione_popolazione.py`) e su addetti, unità locali e reddito
+  (`analysis/velocita_di_cambio.py`).
+- ✅ **Livelli contro variazioni** (`analysis/livelli_e_variazioni.py`). Ha
+  prodotto il risultato metodologico della tornata: correlare la crescita con il
+  livello **finale** è un artefatto, e sul reddito cambia il segno. È MET-12.
+- ✅ **Tipologia di comuni** (`analysis/tipologia_comuni.py`): k-means++ con
+  seme fisso, trenta righe, cinque gruppi. Stampa anche i comuni che **nessun
+  gruppo descrive bene**, che è la parte onesta.
+- ✅ **Autocorrelazione spaziale** (`analysis/autocorrelazione_spaziale.py`):
+  contiguità per vertice condiviso dal GeoJSON (grado medio 5,37, nessun comune
+  isolato), Moran con significatività per permutazione. Tutti gli indicatori
+  provati sono spazialmente aggregati; il più aggregato di tutti è la
+  specializzazione settoriale.
+- ✅ **La decomposizione settoriale del capoluogo**
+  (`analysis/decomposizione_capoluogo.py`): MET-9 è chiusa, la risposta è nella
+  nota metodologica. Resta aperto solo il confronto con Bergamo.
+- ✅ **Le due economie** (`analysis/due_economie.py`), che prima non era
+  possibile: quote settoriali comune per comune.
+- ✅ **Rottura Covid** (`analysis/rottura_covid.py`). Il risultato è doppio:
+  sulle serie annuali **non si può testare** (due punti prima del 2020 non fanno
+  una tendenza), e sulle mensili si può ma bisogna scegliere bene la base — con
+  vent'anni di base il PM10 del 2020 sembra −26 %, con tre anni è −9 %, e la
+  differenza è tutta tendenza di lungo periodo scambiata per pandemia.
 - 🤖 **Decomposizione della popolazione**: quanto della variazione viene da
   saldo naturale, migrazione interna, migrazione estera. È il seguito naturale
-  dello spopolamento montano di §4.
-- 🤖 **La decomposizione settoriale del capoluogo**, che MET-9 ha lasciato a
-  metà: se la divisione 81 sia scesa davvero a zero o sia stata riclassificata,
-  e se lo stesso movimento si veda a Bergamo.
+  della prima storia del sito, ed è la domanda che quella storia dichiara di non
+  poter rispondere. Servono le tavole del bilancio demografico, non ancora
+  scaricate.
+- ✅ **Il confronto fra province** (`analysis/confronto_province.py`), che è
+  andato oltre Bergamo: gli stessi indicatori su tutte e 107 le province, perché
+  i file grezzi nazionali erano già su disco e il costo era il tempo di
+  rileggerli. Ha corretto la frase più ripetuta del progetto (MET-14) e
+  rafforzato MET-9. ✅ Esteso ai **redditi** con `convergenza_confronto.py`: la
+  convergenza regge identica a Bergamo (−0,48 contro −0,45), quindi è solida e
+  non è bresciana. ⏳ Restano fuori **popolazione e turismo**.
 
 ### 5.3 La convenzione di `analysis/`
 
 Uno script per analisi in [`analysis/`](analysis/README.md), `--save` che
 scrive CSV in `analysis/output/` (ignorata da git: si rigenera), e come sole
 dipendenze la **libreria standard** — niente pandas, niente scipy, niente
-sklearn. Le tabelle sono piccole e k-means e le correlazioni si reimplementano
+sklearn. Dalla tornata di agosto 2026 c'è anche `analysis/_tabelle.py`, che
+**non è un'analisi**: è la lettura delle tabelle e la statistica di base che
+gli script hanno in comune, più il posto dove stanno scritte una volta sola le
+decisioni che altrimenti si prendono in modo diverso in due script diversi
+(MET-13). `verifica_cifre.py` non lo usa, ed è deliberato. Le tabelle sono piccole e k-means e le correlazioni si reimplementano
 in poche righe; in cambio il progetto resta installabile ovunque, come la
 pipeline.
 
@@ -355,6 +443,22 @@ se serve a capire è analisi.**
 
 Questa è la parte che si perderebbe. Il progetto Donostia pubblica **due cose
 diverse** sullo stesso sito, ed è una separazione che vale la pena copiare.
+
+> **✅ Il primo dei due artefatti esiste** (agosto 2026), in
+> [`sito/`](sito/README.md): documento narrativo con quattro storie, più
+> `metodologia.html` e `dati.html`. Mezzo mega, autocontenuto, mappe e grafici
+> in SVG disegnati a mano. Si costruisce con `python sito/costruisci.py`.
+>
+> Quello che segue resta la specifica — è ancora la descrizione fedele di com'è
+> fatto — con l'aggiunta di **una regola scoperta costruendolo**: nessuna cifra
+> del racconto è scritta a mano. Nel testo ci sono segnaposto `{{c:nome}}` che
+> il costruttore calcola dalle tabelle, e un segnaposto senza valore fa
+> **fallire** la costruzione invece di pubblicare una frase con un buco. È la
+> regola «ogni numero ha uno script dietro» applicata in avanti, al prodotto,
+> invece che a posteriori sui documenti.
+>
+> Il pannello React (b) resta da fare, e resta il secondo in ordine di
+> importanza.
 
 ### 6.1 I due artefatti
 
@@ -466,8 +570,19 @@ export async function loadMetric(id: string) {
 
 ### 6.3 Le scale di colore
 
-- **Sequenziale** (`interpolateYlOrRd`) per i valori assoluti.
-- **Divergente** (`interpolateRdBu` invertita: blu = giù, rosso = su) centrata
+> ✅ **Deciso, e non qui**: le scale sono quelle di `donostia-dataviz`, insieme a
+> tutto il resto della lingua grafica. I due progetti sono una collana e devono
+> sembrarlo; il dettaglio di cosa è stato ripreso e cosa no sta in
+> [`sito/README.md`](sito/README.md).
+
+Le classi sono per **quantile** sulle grandezze — con 205 comuni e un capoluogo
+fuori scala, le classi a intervallo uguale ne metterebbero quasi duecento nella
+prima — e **simmetriche attorno allo zero** sulle variazioni, centrate però sul
+95º percentile dei valori assoluti e non sul massimo: con il massimo, un solo
+comune fuori scala schiaccia tutti gli altri in due classi pallide.
+
+- **Sequenziale** (la rampa calda dell'originale, chiaro → scuro) per i valori assoluti.
+- **Divergente** (freddo = giù, caldo = su, neutro nel mezzo) centrata
   sullo zero per le variazioni.
 - **Qualitativa** per le metriche categoriche, con le etichette nella legenda e
   nel tooltip al posto dell'indice numerico.
@@ -487,6 +602,16 @@ poco e rende il lavoro verificabile da chiunque. Qui esistono già:
 ---
 
 ## 7. Il deploy su GitHub Pages
+
+> **✅ Il workflow è scritto** (`.github/workflows/deploy-pages.yml`), insieme a
+> uno di verifica che a ogni push fa girare i test, il ricalcolo delle cifre
+> citate e tutti gli script di analisi. Nessuno dei due tocca la rete: c'è
+> `build --offline`, che rilegge le tabelle versionate invece di interrogare
+> ISTAT, perché la pubblicazione non deve poter fallire per un host che quel
+> giorno non risponde.
+>
+> Parte **a mano** (`workflow_dispatch`), come previsto qui sotto. Resta il tuo
+> clic: *Settings → Pages → Source = «GitHub Actions»*.
 
 Un solo workflow, `.github/workflows/deploy-pages.yml`. Struttura del sito:
 
@@ -518,11 +643,14 @@ Dettagli che costano tempo se non li sai:
 - Permessi richiesti: `contents: read`, `pages: write`, `id-token: write`.
 - `concurrency: { group: pages, cancel-in-progress: true }` evita che due
   deploy si accavallino.
-- **Le date si stampano in fase di deploy**, non a mano: la data del sito viene
-  dal commit, quella dei dati da un `manifest.json` che la pipeline scrive a
-  ogni build completo. Nelle pagine ci sono i segnaposto `{{BUILD_DATE}}` e
-  `{{DATA_DATE}}`, sostituiti dal workflow. Senza questo meccanismo le date
+- **Le date si stampano in fase di deploy**, non a mano. La data del sito viene
+  dal commit; quella dei dati **non** dal manifest, come si era previsto qui —
+  una data scritta in un file versionato cambia a ogni esecuzione e sporca il
+  diff senza che sia cambiato un numero — ma dall'**ultimo commit che ha toccato
+  `dati/processed/`**, che è anche più vero. Senza questo meccanismo le date
   invecchiano in silenzio e il sito mente.
+- Il workflow **controlla che nessun segnaposto sia sopravvissuto** alla
+  sostituzione: meglio un deploy fallito di una pagina con un buco.
 - Partire con il deploy **manuale** (`workflow_dispatch`) e passare
   all'automatico su `main` solo quando i testi si sono stabilizzati. Il
   progetto precedente ha fatto così, per rileggere prima di pubblicare.
@@ -644,45 +772,56 @@ entra nel tempo che hai, non a fare un piano.
 | Blocco | Tempo | Serve a |
 |---|---|---|
 | 🙋 Licenza (§3.3) | **10 min** | poter pubblicare |
-| 🤖 Le altre velocità di cambio (addetti, unità locali, reddito) | **1 h** | lo schema è già scritto, si copia |
-| 🤖 Livelli contro variazioni + i quattro quadranti | **2 h** | la prima immagine davvero parlante |
-| 🤖 Rapporto addetti/residenti sui 205 comuni (§4) | **1 h** | la prima coropletica, e i dati ci sono tutti |
-| 🤖 Decomposizione settoriale del capoluogo (MET-9) | **3 h** | chiudere la questione aperta più importante |
-| 🤖 Autocorrelazione spaziale e tipologia di comuni | **mezza giornata** | il contributo più originale possibile |
-| 🤖 Documento narrativo, prima storia intera | **1–2 giorni** | il prodotto vero |
-| 🤖 Workflow di deploy + pagine sorelle | **mezza giornata** | pubblicare |
-| 🙋 Attivare Pages (§7) | **2 min** | idem |
-| 🤖 Pannello React | **2–3 giorni** | l'esplorazione, ma viene dopo il documento |
+| 🙋 Attivare Pages e lanciare il workflow (§7) | **5 min** | pubblicare davvero |
+| 🙋 Rileggere i testi del sito | **1 h** | è il tuo nome sopra |
+| 🤖 Scarico delle migrazioni + riscarico in italiano delle tre tavole censuarie (§2.4) | **una notte di attesa** | l'unico dataset previsto che manchi, e tre tabelle oggi non pubblicabili |
+| 🤖 Decomposizione della popolazione: saldo naturale contro migrazione | **mezza giornata** | rispondere alla domanda che la prima storia del sito dichiara di non poter rispondere |
+| 🤖 Estendere il confronto fra province a popolazione e turismo | **mezza giornata** | imprese e redditi il termine di paragone ce l'hanno; lo spopolamento montano no, ed è una storia intera del sito |
+| 🤖 Riscrivere la §7 del working paper con le quattro storie | **mezza giornata** | il documento per un lettore esterno |
+| 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |
 | 🙋 I download manuali (§2.2) | **2–4 h in tutto** | estensioni, nessun asse portante |
-| 🤖 Etichette censuarie in italiano (§2.4) | **10 min di codice + qualche ora di riscarico** | poter pubblicare quelle tavole |
-| 🤖 Riscrivere METODOLOGIA e WORKING-PAPER (§8) | **1 giorno** | in coda, quando le storie sono chiuse |
+
+### Se hai venti minuti
+
+Sono i venti minuti che valgono di più di tutto il resto di questa tabella:
+scegli la licenza, attiva Pages, lancia il workflow. Il sito è pronto.
 
 ### Se hai due ore
 
-Fai la licenza (dieci minuti, e toglie l'unica decisione aperta), poi le
-velocità di cambio su addetti e reddito. Escono numeri veri e li puoi guardare.
+Rileggi i testi del sito con il tuo occhio — è il tuo nome sopra, e nessuno
+script controlla se una frase dice più di quanto il dato sostenga. Poi lancia lo
+scarico delle migrazioni prima di andare a dormire, che è lungo ma non richiede
+presenza.
 
 ### Se hai mezza giornata
 
-Le due ore di sopra, più il rapporto addetti/residenti e i quattro quadranti.
-A quel punto hai tre immagini e sai già quale storia regge.
+La decomposizione della popolazione fra saldo naturale e migrazione. È
+letteralmente la prima voce della sezione «cosa questi dati non permettono di
+dire» del sito, ed è l'unica di quella lista che si possa togliere scaricando
+una tabella.
 
 ### Se hai un weekend
 
-Aggiungi la decomposizione settoriale del capoluogo — è la domanda che il
-progetto ha lasciato aperta e che nessun altro ha risposto — e comincia il
-documento narrativo con una storia sola, fatta bene. Una storia intera vale
-più di sette abbozzate, ed è anche il modo per scoprire cosa manca al
-contratto dati di §6.2 prima di averlo replicato dieci volte.
+Estendere il confronto fra province a **popolazione e turismo**. Sulle imprese e
+sui redditi è fatto, ed è servito più di qualunque altra analisi: ha smontato una
+frase che il progetto ripeteva dal primo giorno e ha tolto un aggettivo a
+un'altra. Sullo spopolamento montano — che nel sito è la prima storia — il
+termine di paragone non c'è: si svuota anche il resto delle Alpi, e quanto? Lo
+schema è già scritto in `datasets/province.py` e in
+`datasets/redditi_confronto.py`, che sono i due modi diversi di farlo a seconda
+che la fonte si possa filtrare in locale o no.
 
 **Da dove ripartire in ogni caso**: `python analysis/verifica_cifre.py`. Se le
-ventiquattro verifiche passano, le tabelle sono a posto e i documenti dicono il
-vero; se una diverge, quello è il primo problema da guardare.
+verifiche passano, le tabelle sono a posto e i documenti dicono il
+vero; se una diverge, quello è il primo problema da guardare — ed è già successo
+due volte che ne trovasse una.
 
 ---
 
 *Documento nato ad agosto 2026 come consegna per la separazione del
-repository, e riscritto quando la separazione era avvenuta e la pipeline
-funzionava. Lo stato delle fonti è in [`FONTI.md`](FONTI.md), quello dei dati
+repository, riscritto quando la separazione era avvenuta e la pipeline
+funzionava, e aggiornato di nuovo quando le analisi erano fatte e il sito
+esisteva. Lo stato delle fonti è in [`FONTI.md`](FONTI.md), quello dei dati
 in [`dati/README.md`](dati/README.md), quello della pipeline in
-[`pipeline/README.md`](pipeline/README.md).*
+[`pipeline/README.md`](pipeline/README.md), quello del sito in
+[`sito/README.md`](sito/README.md).*

@@ -15,6 +15,7 @@ import sys
 import time
 from collections.abc import Callable
 
+from . import web
 from .config import PROCESSED_DIR, RAW_DIR, ensure_dirs
 from .datasets import (
     abitazioni,
@@ -27,7 +28,10 @@ from .datasets import (
     lavoro,
     migrazioni,
     popolazione,
+    province,
     redditi,
+    redditi_confronto,
+    sezioni,
     sicurezza,
     sintesi,
     turismo,
@@ -39,6 +43,8 @@ DATASETS: dict[str, Callable[[dict[str, str]], None]] = {
     "confini": confini.build,
     "popolazione": popolazione.build,
     "imprese": imprese.build,
+    "sezioni": sezioni.build,
+    "province": province.build,
     "turismo": turismo.build,
     "lavoro": lavoro.build,
     "migrazioni": migrazioni.build,
@@ -47,9 +53,11 @@ DATASETS: dict[str, Callable[[dict[str, str]], None]] = {
     "sicurezza": sicurezza.build,
     "ambiente": ambiente.build,
     "redditi": redditi.build,
+    "redditi_confronto": redditi_confronto.build,
     "commercio_estero": commercio_estero.build,
-    # deve restare in coda: legge le tabelle prodotte dagli altri
+    # devono restare in coda: leggono le tabelle prodotte dagli altri
     "sintesi": sintesi.build,
+    "web": web.build,
 }
 
 
@@ -57,6 +65,12 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="brescia_pipeline.build")
     parser.add_argument("datasets", nargs="*", help="dataset da costruire (default: tutti)")
     parser.add_argument("--list", action="store_true", help="elenca i dataset disponibili")
+    parser.add_argument(
+        "--offline",
+        action="store_true",
+        help="non tocca la rete: usa le tabelle già in dati/processed/ "
+        "(serve a chi ricostruisce solo l'export per il sito, e alla CI)",
+    )
     args = parser.parse_args(argv)
 
     if args.list:
@@ -76,7 +90,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"processed: {PROCESSED_DIR}\n")
 
     print("anagrafica dei comuni")
-    comuni = anagrafica.build()
+    comuni = anagrafica.build(solo_locale=args.offline)
     print(f"  {len(comuni)} comuni nella provincia di Brescia\n")
 
     failures: list[str] = []

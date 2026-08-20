@@ -19,6 +19,19 @@ from .config import RAW_DIR
 # il parametro `format=` nella query string: va negoziato con l'header.
 SDMX_CSV_ACCEPT = "application/vnd.sdmx.data+csv;version=1.0.0;labels=both"
 
+# Senza questo header ISTAT risponde con le etichette in inglese: `private
+# households on 31st December`, `4 and over`. Con l'header le stesse
+# osservazioni tornano come `famiglie con tutti i componenti stranieri al 31
+# dicembre` e `6 e più`. Non è una preferenza estetica: la decisione di tenere
+# il progetto in italiano (`PROSSIMI-PASSI.md` §3.4) si applica ai dati come ai
+# testi, e quelle stringhe finiscono nelle legende dei grafici.
+#
+# ⚠️ La cache di `dati/raw/` non porta traccia della lingua con cui è stata
+# scaricata: un file già presente resta com'è. Le tabelle scaricate prima di
+# questo header vanno riscaricate con `force=True` — o cancellando il file
+# grezzo — se le si vuole in italiano.
+SDMX_ACCEPT_LANGUAGE = "it"
+
 DEFAULT_TIMEOUT = 300
 RETRIES = 4
 
@@ -77,7 +90,7 @@ def sdmx_csv(dataflow: str, key: str = "", *, dest_name: str, force: bool = Fals
     return fetch(
         url,
         dest_name,
-        headers={"Accept": SDMX_CSV_ACCEPT},
+        headers={"Accept": SDMX_CSV_ACCEPT, "Accept-Language": SDMX_ACCEPT_LANGUAGE},
         force=force,
     )
 

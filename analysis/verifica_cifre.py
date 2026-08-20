@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import statistics
 import sys
 from collections import defaultdict
@@ -29,6 +30,7 @@ PROCESSED = RADICE / "dati" / "processed"
 OUTPUT = Path(__file__).resolve().parent / "output"
 
 CAPOLUOGO = "017029"
+IMPONIBILE = "AGGINCR"  # codice MEF, non etichetta: le etichette cambiano lingua
 
 
 def leggi(nome: str) -> list[dict[str, str]]:
@@ -51,6 +53,14 @@ imprese = leggi("imprese_classe_addetti.csv")
 turismo = leggi("turismo_comuni_annuale.csv")
 aria = leggi("aria_mensile.csv")
 stazioni = leggi("stazioni_arpa.csv")
+popolazione = leggi("popolazione_comuni.csv")
+redditi = leggi("redditi_comuni.csv")
+settore_classe = leggi("imprese_settore_classe.csv")
+sezioni = leggi("imprese_sezioni_comuni.csv")
+province = leggi("imprese_province.csv")
+capoluoghi = leggi("imprese_capoluoghi.csv")
+
+PROVINCIA = "ITC47"
 
 
 def addetti(anno: str, classe: str, indicatore: str = "addetti", comune: str | None = None) -> float:
@@ -106,6 +116,278 @@ def media_pm10_broletto(anno: str) -> float:
     ]
     valide = [m for m in medie if m is not None]
     return sum(valide) / len(valide)
+
+
+def serie_popolazione() -> dict[str, dict[str, float]]:
+    per_comune: dict[str, dict[str, float]] = defaultdict(dict)
+    for riga in popolazione:
+        if riga["indicatore"] != "popolazione_residente":
+            continue
+        valore = numero(riga["valore"])
+        if valore is not None:
+            per_comune[riga["codice_istat"]][riga["anno"]] = valore
+    return per_comune
+
+
+def tasso(iniziale: float, finale: float, anni: int) -> float:
+    return ((finale / iniziale) ** (1 / anni) - 1) * 100
+
+
+def comuni_in_calo() -> int:
+    quanti = 0
+    for serie in serie_popolazione().values():
+        anni = sorted(serie)
+        quanti += serie[anni[-1]] < serie[anni[0]]
+    return quanti
+
+
+def reddito_medio(anno: str) -> dict[str, float]:
+    """Somma degli imponibili diviso somma dei contribuenti, per comune."""
+    imponibile: dict[str, float] = defaultdict(float)
+    contribuenti: dict[str, float] = defaultdict(float)
+    for riga in redditi:
+        if riga["anno"] != anno:
+            continue
+        valore = numero(riga["valore"])
+        if valore is None:
+            continue
+        deposito = imponibile if riga["codice_indicatore"] == IMPONIBILE else contribuenti
+        deposito[riga["codice_istat"]] += valore
+    return {c: imponibile[c] / contribuenti[c] for c in imponibile if contribuenti.get(c)}
+
+
+def correlazione(x: list[float], y: list[float]) -> float:
+    mx, my = sum(x) / len(x), sum(y) / len(y)
+    num = sum((a - mx) * (b - my) for a, b in zip(x, y))
+    dx = (sum((a - mx) ** 2 for a in x)) ** 0.5
+    dy = (sum((b - my) ** 2 for b in y)) ** 0.5
+    return num / (dx * dy)
+
+
+def convergenza_reddito(iniziale: str = "2012", finale: str = "2023") -> float:
+    """Pearson fra reddito di partenza e crescita annua, tutti i comuni."""
+    primo, ultimo = reddito_medio(iniziale), reddito_medio(finale)
+    codici = sorted(set(primo) & set(ultimo))
+    anni = int(finale) - int(iniziale)
+    return correlazione(
+        [primo[c] for c in codici],
+        [tasso(primo[c], ultimo[c], anni) for c in codici],
+    )
+
+
+def artefatto_reddito(iniziale: str = "2012", finale: str = "2023") -> float:
+    """Lo stesso calcolo con il livello finale: è l'artefatto, e cambia segno."""
+    primo, ultimo = reddito_medio(iniziale), reddito_medio(finale)
+    codici = sorted(set(primo) & set(ultimo))
+    anni = int(finale) - int(iniziale)
+    return correlazione(
+        [ultimo[c] for c in codici],
+        [tasso(primo[c], ultimo[c], anni) for c in codici],
+    )
+
+
+def addetti_settore_classe(territorio: str, ateco: str, classe: str, anno: str) -> float:
+    for riga in settore_classe:
+        if (riga["territorio"], riga["ateco"], riga["classe_addetti"], riga["anno"]) == (
+            territorio, ateco, classe, anno
+        ) and riga["indicatore"] == "addetti":
+            return numero(riga["valore"]) or 0.0
+    return 0.0  # una classe che sparisce non ha righe: sono zero addetti in quella classe
+
+
+def unita_settore_classe(territorio: str, ateco: str, classe: str, anno: str) -> float:
+    for riga in settore_classe:
+        if (riga["territorio"], riga["ateco"], riga["classe_addetti"], riga["anno"]) == (
+            territorio, ateco, classe, anno
+        ) and riga["indicatore"] == "unita_locali":
+            return numero(riga["valore"]) or 0.0
+    return 0.0
+
+
+def manifattura_grande_capoluogo(anno: str) -> float:
+    divisioni = {f"{n:02d}" for n in range(10, 34)}
+    return sum(
+        numero(riga["valore"]) or 0.0
+        for riga in settore_classe
+        if riga["territorio"] == CAPOLUOGO
+        and riga["anno"] == anno
+        and riga["classe_addetti"] == "250+"
+        and riga["indicatore"] == "addetti"
+        and riga["ateco"] in divisioni
+    )
+
+
+def quote_sezioni(anno: str) -> dict[str, dict[str, float]]:
+    """Quota di addetti per sezione Ateco, comune per comune.
+
+    Denominatore: il **totale ASIA riportato**, non la somma delle sezioni. Una
+    sezione assente **non** diventa zero: resta fuori, e chi la usa deve dirlo.
+    È la stessa definizione di `_tabelle.quote_sezioni()` — riscritta qui per
+    conto suo, perché un verificatore che importa il codice che verifica non
+    verifica niente. Se le due divergono, una delle due è sbagliata, ed è
+    esattamente quello che questo script serve a scoprire.
+    """
+    per_comune: dict[str, dict[str, float]] = defaultdict(dict)
+    for riga in sezioni:
+        if riga["anno"] != anno or riga["indicatore"] != "addetti":
+            continue
+        valore = numero(riga["valore"])
+        if valore is not None:
+            per_comune[riga["codice_istat"]][riga["sezione"]] = valore
+
+    totali = {
+        riga["codice_istat"]: numero(riga["valore"])
+        for riga in imprese
+        if riga["anno"] == anno
+        and riga["indicatore"] == "addetti"
+        and riga["classe_addetti"] == "totale"
+    }
+    return {
+        codice: {s: v / totali[codice] * 100 for s, v in sezioni_comune.items()}
+        for codice, sezioni_comune in per_comune.items()
+        if totali.get(codice)
+    }
+
+
+def scarto_stagionale_turismo(anno: str, base: str = "2019") -> float:
+    """Presenze dell'anno contro i mesi omologhi del `base`, in percentuale."""
+    per_mese: dict[str, float] = defaultdict(float)
+    for riga in leggi("turismo_comuni_mensile.csv"):
+        valore = numero(riga["presenze"])
+        if valore is not None:
+            per_mese[riga["mese"]] += valore
+    osservato = sum(v for m, v in per_mese.items() if m[:4] == anno)
+    mesi = {m[5:7] for m in per_mese if m[:4] == anno}
+    atteso = sum(v for m, v in per_mese.items() if m[:4] == base and m[5:7] in mesi)
+    return (osservato / atteso - 1) * 100
+
+
+def per_provincia(anno: str, dimensione: str, modalita: str, indicatore: str) -> dict[str, float]:
+    fuori: dict[str, float] = {}
+    for riga in province:
+        if (riga["anno"], riga["dimensione"], riga["modalita"], riga["indicatore"]) == (
+            anno, dimensione, modalita, indicatore
+        ):
+            valore = numero(riga["valore"])
+            if valore is not None:
+                fuori[riga["codice_provincia"]] = valore
+    return fuori
+
+
+def quota_provinciale(
+    anno: str, dimensione: str, parte: str, indicatore: str,
+    dimensione_totale: str = "classe_addetti", tutto: str = "totale",
+) -> dict[str, float]:
+    """Quota sul totale provinciale. Il denominatore sta sempre fra le classi
+    dimensionali, anche quando il numeratore è una sezione Ateco: il «totale»
+    della dimensione settoriale non esiste in questa tabella."""
+    sopra = per_provincia(anno, dimensione, parte, indicatore)
+    sotto = per_provincia(anno, dimensione_totale, tutto, indicatore)
+    return {c: sopra[c] / sotto[c] * 100 for c in sopra if sotto.get(c)}
+
+
+def mediana_lista(valori: list[float]) -> float:
+    ordinati = sorted(valori)
+    meta = len(ordinati) // 2
+    return ordinati[meta] if len(ordinati) % 2 else (ordinati[meta - 1] + ordinati[meta]) / 2
+
+
+def rango_brescia(valori: dict[str, float]) -> int:
+    ordinati = sorted(valori.items(), key=lambda kv: -kv[1])
+    return [c for c, _ in ordinati].index("017") + 1
+
+
+def variazioni_capoluoghi() -> list[float]:
+    grandi: dict[str, dict[str, float]] = defaultdict(dict)
+    for riga in capoluoghi:
+        if riga["indicatore"] == "addetti" and riga["classe_addetti"] == "250+":
+            valore = numero(riga["valore"])
+            if valore is not None:
+                grandi[riga["codice_istat"]][riga["anno"]] = valore
+    fuori = []
+    for serie in grandi.values():
+        anni = sorted(serie)
+        if serie[anni[0]] >= 2000:
+            fuori.append((serie[anni[-1]] / serie[anni[0]] - 1) * 100)
+    return sorted(fuori)
+
+
+def decili(valori: dict[str, float]) -> float:
+    """p90/p10: la dispersione senza farla decidere a due comuni su duecento."""
+    ordinati = sorted(valori.values())
+    return ordinati[int(len(ordinati) * 0.9)] / ordinati[int(len(ordinati) * 0.1)]
+
+
+def convergenza_bergamo() -> float:
+    """Lo stesso conto della convergenza, sui comuni della provincia di Bergamo."""
+    righe = leggi("redditi_comuni_confronto.csv")
+    imponibile: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    contribuenti: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    for riga in righe:
+        valore = numero(riga["valore"])
+        if valore is None:
+            continue
+        deposito = imponibile if riga["codice_indicatore"] == IMPONIBILE else contribuenti
+        deposito[riga["codice_istat"]][riga["anno"]] += valore
+    medi: dict[str, dict[str, float]] = {}
+    for codice, per_anno in imponibile.items():
+        for anno, totale in per_anno.items():
+            teste = contribuenti[codice].get(anno)
+            if teste:
+                medi.setdefault(codice, {})[anno] = totale / teste
+    codici = [c for c in medi if "2012" in medi[c] and "2023" in medi[c]]
+    return correlazione(
+        [medi[c]["2012"] for c in codici],
+        [tasso(medi[c]["2012"], medi[c]["2023"], 11) for c in codici],
+    )
+
+
+def vicini() -> dict[str, set[str]]:
+    """Contiguità per vertice condiviso, riletta dal GeoJSON."""
+    geo = json.loads((RADICE / "dati" / "geo" / "comuni_brescia.geojson").read_text(encoding="utf-8"))
+    per_vertice: dict[tuple[float, float], set[str]] = defaultdict(set)
+    for feature in geo["features"]:
+        codice = feature["properties"]["codice_istat"]
+        for anello in feature["geometry"]["coordinates"]:
+            for x, y in anello:
+                per_vertice[(round(x, 5), round(y, 5))].add(codice)
+    adiacenze: dict[str, set[str]] = {f["properties"]["codice_istat"]: set() for f in geo["features"]}
+    for condivisori in per_vertice.values():
+        if len(condivisori) > 1:
+            for uno in condivisori:
+                adiacenze[uno] |= condivisori - {uno}
+    return adiacenze
+
+
+def moran(valori: dict[str, float]) -> float:
+    adiacenze = vicini()
+    codici = [c for c in valori if adiacenze.get(c)]
+    centro = sum(valori[c] for c in codici) / len(codici)
+    z = {c: valori[c] - centro for c in codici}
+    numeratore = 0.0
+    for codice in codici:
+        presenti = [z[v] for v in adiacenze[codice] if v in z]
+        if presenti:
+            numeratore += z[codice] * (sum(presenti) / len(presenti))
+    return numeratore / sum(v**2 for v in z.values())
+
+
+def moran_crescita_popolazione() -> float:
+    serie = serie_popolazione()
+    return moran({
+        codice: tasso(valori[min(valori)], valori[max(valori)], int(max(valori)) - int(min(valori)))
+        for codice, valori in serie.items()
+    })
+
+
+def moran_specializzazione(anno: str = "2023") -> float:
+    """Solo i comuni che hanno **entrambe** le sezioni: un'assenza non è uno zero."""
+    quote = quote_sezioni(anno)
+    return moran({
+        codice: sezioni_comune["C"] - sezioni_comune["I"]
+        for codice, sezioni_comune in quote.items()
+        if "C" in sezioni_comune and "I" in sezioni_comune
+    })
 
 
 # --- le verifiche -------------------------------------------------------
@@ -282,6 +564,290 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
             float(r["addetti_per_100_abitanti"]) for r in sintesi if r["comune"] == "Limone sul Garda"
         ),
         0.05,
+    ),
+    # --- le cifre delle analisi e del sito (agosto 2026) ----------------
+    (
+        "PROSSIMI-PASSI §4 / sito §Dove si svuota",
+        "93 comuni su 205 perdono popolazione fra 2018 e 2024",
+        93,
+        comuni_in_calo,
+        0,
+    ),
+    (
+        "METODOLOGIA MET-12 / sito §I redditi",
+        "convergenza dei redditi: Pearson −0,45 sul livello iniziale",
+        -0.45,
+        convergenza_reddito,
+        0.01,
+    ),
+    (
+        "METODOLOGIA MET-12 / sito §I redditi",
+        "lo stesso calcolo sul livello finale: +0,12, e cambia segno",
+        0.12,
+        artefatto_reddito,
+        0.01,
+    ),
+    (
+        "sito §Dove si svuota",
+        "Moran sulla crescita della popolazione: 0,34",
+        0.34,
+        moran_crescita_popolazione,
+        0.01,
+    ),
+    (
+        "sito §Le due economie",
+        "Moran sulla specializzazione settoriale: 0,44",
+        0.44,
+        moran_specializzazione,
+        0.01,
+    ),
+    (
+        "WORKING-PAPER §6.1 / sito §Il crollo",
+        "unità ≥250 del capoluogo: −6.336 addetti fra 2018 e 2023",
+        -6335.6,
+        lambda: addetti_settore_classe(CAPOLUOGO, "0010", "250+", "2023")
+        - addetti_settore_classe(CAPOLUOGO, "0010", "250+", "2018"),
+        1,
+    ),
+    (
+        "WORKING-PAPER §6.1 / sito §Il crollo",
+        "di cui somministrazione di personale (div. 78): −4.167",
+        -4167.1,
+        lambda: addetti_settore_classe(CAPOLUOGO, "78", "250+", "2023")
+        - addetti_settore_classe(CAPOLUOGO, "78", "250+", "2018"),
+        1,
+    ),
+    (
+        "WORKING-PAPER §6.1 / sito §Il crollo",
+        "e servizi per edifici (div. 81): −3.123, la classe sparisce",
+        -3122.9,
+        lambda: addetti_settore_classe(CAPOLUOGO, "81", "250+", "2023")
+        - addetti_settore_classe(CAPOLUOGO, "81", "250+", "2018"),
+        1,
+    ),
+    (
+        "WORKING-PAPER §6.1 / sito §Il crollo",
+        "la manifattura grande del capoluogo è ferma: −51 addetti",
+        -51.0,
+        lambda: manifattura_grande_capoluogo("2023") - manifattura_grande_capoluogo("2018"),
+        1,
+    ),
+    (
+        "WORKING-PAPER §6.1",
+        "div. 81 in provincia, tutte le classi: −536 addetti su 12.699",
+        -536.1,
+        lambda: addetti_settore_classe(PROVINCIA, "81", "totale", "2023")
+        - addetti_settore_classe(PROVINCIA, "81", "totale", "2018"),
+        1,
+    ),
+    (
+        "sito §Le due economie",
+        "48 comuni hanno più della metà degli addetti nella manifattura",
+        48,
+        lambda: sum(1 for q in quote_sezioni("2023").values() if q.get("C", 0.0) >= 50),
+        0,
+    ),
+    (
+        "sito §Le due economie",
+        "in provincia la manifattura vale il 32,4 % degli addetti ASIA",
+        32.4,
+        lambda: sum(
+            numero(r["valore"]) or 0.0
+            for r in sezioni
+            if r["anno"] == "2023" and r["indicatore"] == "addetti" and r["sezione"] == "C"
+        )
+        / addetti("2023", "totale")
+        * 100,
+        0.05,
+    ),
+    (
+        "README §In sintesi / sito §I redditi",
+        "il comune più ricco dichiara 2,5 volte il più povero (2023)",
+        2.51,
+        lambda: max(reddito_medio("2023").values()) / min(reddito_medio("2023").values()),
+        0.01,
+    ),
+    (
+        "README §In sintesi / sito §I redditi",
+        "nel 2012 il rapporto era 2,2",
+        2.17,
+        lambda: max(reddito_medio("2012").values()) / min(reddito_medio("2012").values()),
+        0.01,
+    ),
+    (
+        "METODOLOGIA MET-9",
+        "div. 81, unità locali del capoluogo: +157 fra 2018 e 2023",
+        157,
+        lambda: unita_settore_classe(CAPOLUOGO, "81", "totale", "2023")
+        - unita_settore_classe(CAPOLUOGO, "81", "totale", "2018"),
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.3",
+        "crescita del reddito, mediana dei comuni: +2,23 %/anno",
+        2.23,
+        lambda: statistics.median(
+            tasso(reddito_medio("2012")[c], reddito_medio("2023")[c], 11)
+            for c in reddito_medio("2012")
+            if c in reddito_medio("2023")
+        ),
+        0.01,
+    ),
+    (
+        "WORKING-PAPER §7.1",
+        "unità locali sotto i 10 addetti, 2018: 92,8 %",
+        92.8,
+        lambda: addetti("2018", "0-9", "unita_locali") / addetti("2018", "totale", "unita_locali") * 100,
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.1",
+        "addetti in micro-unità: +6.842 fra 2018 e 2023",
+        6842,
+        lambda: addetti("2023", "0-9") - addetti("2018", "0-9"),
+        2,
+    ),
+    (
+        "WORKING-PAPER §7.1",
+        "addetti in unità ≥250 in provincia: −1.260",
+        -1260,
+        lambda: addetti("2023", "250+") - addetti("2018", "250+"),
+        2,
+    ),
+    (
+        "WORKING-PAPER §7.4",
+        "alloggio e ristorazione: 8,0 % degli addetti provinciali",
+        8.0,
+        lambda: sum(
+            numero(r["valore"]) or 0.0
+            for r in sezioni
+            if r["anno"] == "2023" and r["indicatore"] == "addetti" and r["sezione"] == "I"
+        )
+        / addetti("2023", "totale")
+        * 100,
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.4 / sito §Le due economie",
+        "manifattura e alloggio sono alternative: Pearson −0,67",
+        -0.67,
+        lambda: correlazione(
+            *zip(*[
+                (q["C"], q["I"])
+                for q in quote_sezioni("2023").values()
+                if "C" in q and "I" in q
+            ])
+        ),
+        0.01,
+    ),
+    (
+        "WORKING-PAPER §7.4",
+        "24 comuni hanno almeno un quarto degli addetti in alloggio",
+        24,
+        lambda: sum(1 for q in quote_sezioni("2023").values() if q.get("I", 0.0) >= 25),
+        0,
+    ),
+    (
+        "WORKING-PAPER §6.2",
+        "Moran sul reddito per contribuente: 0,43",
+        0.43,
+        lambda: moran(reddito_medio("2023")),
+        0.01,
+    ),
+    # --- il confronto fra province (MET-14) ------------------------------
+    (
+        "WORKING-PAPER §7.3 / sito §I redditi",
+        "la convergenza dei redditi a Bergamo: Pearson −0,48",
+        -0.48,
+        convergenza_bergamo,
+        0.01,
+    ),
+    (
+        "WORKING-PAPER §7.3 / sito §I redditi",
+        "rapporto fra decili del reddito, 2012: 1,34",
+        1.345,
+        lambda: decili(reddito_medio("2012")),
+        0.005,
+    ),
+    (
+        "WORKING-PAPER §7.3 / sito §I redditi",
+        "rapporto fra decili del reddito, 2023: 1,26 (si stringe)",
+        1.265,
+        lambda: decili(reddito_medio("2023")),
+        0.005,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.1",
+        "unità locali sotto i 10: mediana provinciale italiana 94,4 %",
+        94.4,
+        lambda: mediana_lista(list(quota_provinciale(
+            "2023", "classe_addetti", "0-9", "unita_locali").values())),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.1",
+        "Brescia è la 101ª provincia su 107 per frammentazione",
+        101,
+        lambda: rango_brescia(quota_provinciale(
+            "2023", "classe_addetti", "0-9", "unita_locali")),
+        0,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.1",
+        "addetti in unità sotto i 10: mediana provinciale 51,0 %",
+        51.0,
+        lambda: mediana_lista(list(quota_provinciale(
+            "2023", "classe_addetti", "0-9", "addetti").values())),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.1",
+        "manifattura: Brescia 15ª provincia d'Italia",
+        15,
+        lambda: rango_brescia(quota_provinciale("2023", "sezione", "C", "addetti")),
+        0,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.1",
+        "manifattura: mediana provinciale 20,7 %",
+        20.7,
+        lambda: mediana_lista(list(quota_provinciale("2023", "sezione", "C", "addetti").values())),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.2",
+        "la classe ≥250 cala in 44 capoluoghi su 64",
+        44,
+        lambda: sum(1 for v in variazioni_capoluoghi() if v < 0),
+        0,
+    ),
+    (
+        "METODOLOGIA MET-14 / WORKING-PAPER §7.2",
+        "mediana dei capoluoghi sulla classe ≥250: −11,9 %",
+        -11.9,
+        lambda: mediana_lista(variazioni_capoluoghi()),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-8",
+        "presenze turistiche 2020: −53,9 % rispetto all'attesa stagionale",
+        -53.9,
+        lambda: scarto_stagionale_turismo("2020"),
+        0.1,
+    ),
+    (
+        "METODOLOGIA MET-8",
+        "presenze turistiche 2022: già +18,1 % sopra l'attesa",
+        18.1,
+        lambda: scarto_stagionale_turismo("2022"),
+        0.1,
+    ),
+    (
+        "analysis/autocorrelazione_spaziale",
+        "contiguità: grado medio 5,37 vicini per comune",
+        5.37,
+        lambda: sum(len(v) for v in vicini().values()) / len(vicini()),
+        0.01,
     ),
     (
         "WORKING-PAPER §7",

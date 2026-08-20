@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Come cambia il bresciano</title>
+<meta name="description" content="Un ritratto in numeri della provincia di Brescia attraverso i suoi 205 comuni: chi si svuota, i redditi che si avvicinano, un crollo industriale che non c'è stato, e cosa distingue davvero questa provincia dalle altre.">
+<style>/*{{STILE}}*/</style>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Salta al contenuto</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Provincia di Brescia · {{c:comuni}} comuni · dati aperti</p>
+    <h1>Come cambia il bresciano</h1>
+    <p class="lede">Un ritratto in numeri costruito solo con fonti pubbliche, comune per comune.
+    Cinque storie che i dati reggono — l'ultima corregge le altre quattro — e una lista di cose
+    che questi dati non permettono di dire.</p>
+    <div class="quicklinks">
+      <a class="primary" href="#svuota">Comincia a leggere</a>
+      <a href="metodologia.html">Come è stato fatto</a>
+      <a href="dati.html">Scarica i dati</a>
+    </div>
+    <p class="meta">{{c:popolazione_provinciale}} abitanti · {{c:addetti_provinciali}} addetti ·
+    {{N_TABELLE}} tabelle aperte · {{N_INDICATORI}} indicatori</p>
+    <p class="freshness">Pagina costruita il {{BUILD_DATE}} · dati aggiornati al {{DATA_DATE}}</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Indice">
+  <div class="wrap">
+    <span class="brand">Come cambia il bresciano</span>
+    <a href="#svuota">1 · Dove si svuota</a>
+    <a href="#redditi">2 · I redditi</a>
+    <a href="#crollo">3 · Il crollo che non c'è stato</a>
+    <a href="#economie">4 · Le due economie</a>
+    <a href="#diversa">5 · Brescia è diversa?</a>
+    <a href="#limiti">Cosa non si può dire</a>
+    <a class="pagina" href="metodologia.html">Metodo</a>
+    <a class="pagina" href="dati.html">Dati</a>
+  </div>
+</nav>
+
+<main id="contenuto">
+
+<section class="story sx" id="apertura">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">0</div>
+      <div>
+        <p class="eyebrow">Introduzione · il territorio, l'unità di misura, il metodo</p>
+        <h2 class="story-title">Da dove parte questo racconto</h2>
+      </div>
+    </div>
+    <p class="question">Una provincia grande quanto una regione piccola, e più varia di quasi
+    tutte: che cosa vuol dire, qui, «un numero medio»?</p>
+
+    <p><strong>Il territorio.</strong> La provincia di Brescia tiene insieme il Garda e la Val
+    Camonica, la Bassa agricola e la Val Trompia delle acciaierie, una città di duecentomila
+    abitanti e comuni da centocinquanta. Nessuno di questi posti somiglia alla media di tutti
+    gli altri, ed è il motivo per cui qui l'unità di misura sono i comuni, tutti e
+    {{c:comuni}}.</p>
+
+    <div class="keynums">
+      <div class="kn"><div class="big">{{c:popolazione_provinciale}}</div>
+        <div class="lbl">abitanti nel {{c:anno_pop_finale}}</div></div>
+      <div class="kn"><div class="big">{{c:popolazione_mediana}}</div>
+        <div class="lbl">abitanti nel comune mediano</div></div>
+      <div class="kn"><div class="big">{{c:quota_capoluogo}}</div>
+        <div class="lbl">della popolazione sta nel capoluogo</div></div>
+    </div>
+
+    <p><strong>La distanza fra le parti.</strong> Il capoluogo pesa
+    {{c:quota_capoluogo}} della popolazione e {{c:quota_addetti_capoluogo}} degli addetti: molto,
+    ma non abbastanza da essere la provincia. Il comune mediano ha
+    {{c:popolazione_mediana}} abitanti, cioè un cinquantesimo della città. Ogni media provinciale
+    che leggerete altrove nasconde questa distanza.</p>
+
+    <p><strong>Le regole.</strong> Due, e valgono per tutta la pagina. Ogni numero è
+    <strong>riproducibile</strong>: viene da una tabella pubblica e da uno script pubblico, e
+    nessuna cifra di questo testo è scritta a mano — sono tutte ricalcolate quando la pagina
+    viene costruita. E si distingue sempre quello che i dati permettono di
+    <strong>affermare</strong> da quello che non permettono, che è la
+    <a href="#limiti">sezione finale</a>.</p>
+
+    <div class="takeaway">
+      <span class="t-lab">Le conclusioni, in cinque righe</span>
+      <ul>
+        <li><strong>Metà della provincia si svuota</strong>, e non a caso: i comuni che perdono
+          abitanti confinano fra loro, e sono la montagna.</li>
+        <li><strong>I redditi convergono</strong> — chi partiva sotto cresce più in fretta — ma il
+          grosso si avvicina mentre i due estremi si allontanano.</li>
+        <li><strong>Il crollo della grande industria in città non è avvenuto.</strong> Il numero
+          che lo diceva era vero; la conclusione era falsa.</li>
+        <li><strong>Sono davvero due economie</strong>, la manifattura nelle valli e il turismo sul
+          lago, ed è la divisione più netta di tutto il progetto.</li>
+        <li><strong>Ma «territorio di microimprese» descrive l'Italia, non Brescia</strong>, che è
+          fra le meno frammentate del paese. Ce ne siamo accorti solo guardando altrove.</li>
+      </ul>
+    </div>
+  </div></div>
+</section>
+
+<section class="story s1" id="svuota">
+  <div class="wrap">
+    <div class="narrow">
+      <div class="story-head">
+        <div class="badge-num">1</div>
+        <div>
+          <p class="eyebrow">Popolazione · {{c:anno_pop_iniziale}}–{{c:anno_pop_finale}}</p>
+          <h2 class="story-title">Dove il bresciano si svuota</h2>
+        </div>
+      </div>
+      <p class="question">La provincia nel suo complesso è ferma. Ma «ferma» è la somma di che
+      cosa?</p>
+
+      <p>Fra il {{c:anno_pop_iniziale}} e il {{c:anno_pop_finale}} la popolazione provinciale
+      cresce dello {{c:crescita_provinciale}} l'anno: un numero che non dice niente, perché somma
+      due movimenti opposti. Da una parte la pianura attorno alla città e la sponda del lago;
+      dall'altra la montagna, che si svuota.</p>
+    </div>
+
+    <div class="scrolly" id="scrolly-popolazione">
+      <div class="scrolly-fig">
+        <figure class="fig">
+          <h3>Crescita della popolazione, {{c:anno_pop_iniziale}}–{{c:anno_pop_finale}}</h3>
+          <p class="cap" id="didascalia-popolazione">Tasso annuo composto per comune. Il blu è
+          calo, il rosso è crescita, il grigio in mezzo è «non si muove».</p>
+          <div id="mappa-popolazione"></div>
+        </figure>
+      </div>
+      <div class="scrolly-steps">
+        <div class="step" data-passo="tutti"><div>
+          <span class="steplab">La mappa</span>
+          <p>Ogni poligono è un comune. Le classi sono simmetriche attorno allo zero, così i due
+          versi si possono confrontare.</p>
+        </div></div>
+        <div class="step" data-passo="calo"><div>
+          <span class="steplab">Quanti</span>
+          <p><strong>{{c:comuni_in_calo}} comuni su {{c:comuni}} perdono abitanti.</strong> Non è
+          una minoranza marginale: è quasi metà della provincia, e sparisce del tutto nella media
+          provinciale.</p>
+        </div></div>
+        <div class="step" data-passo="peggiori"><div>
+          <span class="steplab">Dove</span>
+          <p>Le cadute più rapide sono tutte di montagna: {{c:cadute_peggiori}}.
+          {{c:caduta_peggiore_comune}} perde {{c:caduta_peggiore_tasso}} di abitanti l'anno — su
+          numeri piccoli, dove poche decine di persone fanno una percentuale vistosa.</p>
+        </div></div>
+        <div class="step" data-passo="grumi"><div>
+          <span class="steplab">Non a caso</span>
+          <p>L'indice di Moran sulla crescita della popolazione vale
+          <strong>{{c:moran_crescita_popolazione}}</strong>: i comuni che si svuotano confinano con
+          altri comuni che si svuotano. Il fenomeno non ha la forma del comune, ha quella della
+          valle.</p>
+        </div></div>
+        <div class="step" data-passo="pianura"><div>
+          <span class="steplab">Il verso opposto</span>
+          <p>La pianura attorno alla città e la sponda del lago. È la stessa geografia da
+          cinquant'anni, ma vale la pena dirlo con i numeri invece che a memoria.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="narrow">
+      <details class="metric-expl">
+        <summary><span class="me-lab">la metrica</span>
+          <span>Che cos'è il «tasso annuo composto»</span><span class="me-tgl"></span></summary>
+        <div class="me-body">
+          <p>È la crescita costante che, applicata ogni anno, porterebbe dal primo valore
+          all'ultimo. <b>Non</b> è la variazione percentuale divisa per gli anni: su sei anni le
+          due divergono già.</p>
+          <p>Ed è una media, quindi passa sopra quello che c'è in mezzo — il 2020 compreso.</p>
+        </div>
+      </details>
+
+      <p>C'è un secondo modo di guardare la stessa cosa: mettere il livello di partenza sull'asse
+      orizzontale e la crescita su quello verticale. Se i comuni grandi crescono più dei piccoli,
+      la nuvola sale da sinistra a destra, e la provincia si sta polarizzando.</p>
+
+      <figure class="fig">
+        <h3>Popolazione di partenza e crescita successiva</h3>
+        <p class="cap">Un punto per comune. Le linee tratteggiate sono le mediane; il punto rosso
+        è il capoluogo.</p>
+        <div id="scatter-popolazione"></div>
+      </figure>
+
+      <p>È quello che succede, moderatamente. La correlazione fra dimensione iniziale e crescita è
+      positiva: chi era grande cresce, chi era piccolo cala. Non è una legge — la nuvola è larga e
+      ci sono comuni piccoli in crescita — ma la direzione è quella.</p>
+
+      <div class="takeaway">
+        <span class="t-lab">In una riga</span>
+        <p>Metà provincia si svuota, in una fascia continua di montagna, mentre l'altra metà
+        cresce attorno alla città e al lago. Il totale provinciale, fermo, non descrive né
+        l'una né l'altra.</p>
+      </div>
+
+      <p class="nextcap">E se la popolazione si divide così, il reddito che fa?
+      <a href="#redditi">→ I redditi si avvicinano</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="story s2" id="redditi">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">2</div>
+      <div>
+        <p class="eyebrow">Redditi · {{c:anno_reddito_iniziale}}–{{c:anno_reddito_finale}}</p>
+        <h2 class="story-title">I redditi si avvicinano, i luoghi no</h2>
+      </div>
+    </div>
+    <p class="question">Se i comuni ricchi diventano più ricchi, la provincia si polarizza. E se
+    invece succede il contrario?</p>
+
+    <p>Sui redditi dichiarati la provincia fa l'opposto della popolazione. Fra il
+    {{c:anno_reddito_iniziale}} e il {{c:anno_reddito_finale}} il reddito medio per contribuente
+    cresce ovunque — la mediana comunale fa {{c:crescita_reddito_mediana}} l'anno — ma cresce
+    <strong>di più dove partiva basso</strong>.</p>
+
+    <figure class="fig">
+      <h3>Reddito di partenza e crescita successiva</h3>
+      <p class="cap">La nuvola scende: i comuni che partivano poveri corrono di più. Il secondo
+      pulsante mostra lo stesso conto fatto male, e serve.</p>
+      <div id="comandi-reddito"></div>
+      <div id="scatter-reddito"></div>
+    </figure>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">attenzione</span>
+        <span>Con quale livello si misura la convergenza</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Con il reddito <b>iniziale</b> sull'asse orizzontale la correlazione vale
+        <b>{{c:convergenza_pearson}}</b>: convergenza. Con il reddito <b>finale</b> vale
+        <b>{{c:artefatto_pearson}}</b>, e sembra il contrario.</p>
+        <p>Il secondo numero è un artefatto: il livello finale <i>contiene</i> la crescita, quindi
+        chi è cresciuto di più finisce meccanicamente più in alto. Solo il primo risponde alla
+        domanda.</p>
+      </div>
+    </details>
+
+    <p>Convergenza non vuol dire uguaglianza, e nemmeno che tutti si avvicinino. La distribuzione
+    si è stretta davvero — fra il comune al novantesimo percentile e quello al decimo il rapporto
+    scende da {{c:reddito_decili_iniziale}} a {{c:reddito_decili}} — ma <strong>i due estremi si
+    sono allontanati</strong>: {{c:reddito_massimo_comune}} dichiara {{c:reddito_massimo}} euro per
+    contribuente e {{c:reddito_minimo_comune}} {{c:reddito_minimo}}, cioè
+    {{c:reddito_rapporto}} a uno contro i {{c:reddito_rapporto_iniziale}} di undici anni prima.</p>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">la metrica</span>
+        <span>Due risposte diverse alla stessa domanda</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Il rapporto fra il massimo e il minimo lo decidono due comuni su duecentocinque, e qui
+        sono sempre gli stessi due: cambia perché a uno dei due è successo qualcosa, non perché
+        sia cambiata la provincia. Il rapporto fra decili guarda la stessa distanza saltando le
+        code, e dice il contrario.</p>
+        <p>Entrambe sono vere: <b>il grosso dei comuni si è avvicinato, la cima si è
+        staccata.</b></p>
+      </div>
+    </details>
+
+    <details class="deep">
+      <summary><span class="d-lab">controllo</span>
+        <b>La convergenza è bresciana?</b> Rifatta identica su Bergamo.<span class="me-tgl"></span></summary>
+      <div class="d-body">
+        <p>Sui {{c:comuni_bergamo}} comuni della provincia di Bergamo — la gemella per dimensione e
+        storia industriale — lo stesso conto dà <b>{{c:convergenza_bergamo}}</b> contro i
+        {{c:convergenza_pearson}} di Brescia: la stessa cosa, con la stessa forza. Quello che
+        succede qui succede anche lì, e forse in tutta Italia.</p>
+        <p>Due province non bastano a dirlo, ma bastano a togliere a questa storia la parola
+        «bresciana» — ed è il motivo per cui la <a href="#diversa">quinta storia</a> esiste.</p>
+      </div>
+    </details>
+
+    <p>E il reddito è ancorato alla geografia quanto la popolazione: l'indice di Moran sul livello
+    del {{c:anno_reddito_finale}} vale {{c:moran_reddito}}, più alto di quello sulla crescita
+    demografica. I comuni ricchi stanno vicino ad altri comuni ricchi — la sponda del Garda e la
+    cintura della città da una parte, l'alta valle dall'altra.</p>
+
+    <div class="takeaway">
+      <span class="t-lab">In una riga</span>
+      <p>Il grosso dei comuni bresciani si sta avvicinando nei redditi, la cima si stacca, e
+      niente di tutto questo è una specialità locale.</p>
+    </div>
+
+    <p class="conf"><span class="dot derivato"></span><b>derivato</b> · MEF — dichiarazioni dei
+    redditi · Euro correnti, non deflazionati: fra il {{c:anno_reddito_iniziale}} e il
+    {{c:anno_reddito_finale}} una parte della crescita è inflazione — il che non tocca la
+    correlazione, perché l'inflazione è comune a tutti i comuni · Contribuenti, non residenti:
+    chi non dichiara non c'è · Redditi dichiarati, che non sono ricchezza.</p>
+
+    <p class="nextcap">Dai redditi al lavoro, e a un numero che sembrava dire una cosa sola.
+    <a href="#crollo">→ Il crollo che non c'è stato</a></p>
+  </div></div>
+</section>
+
+<section class="story s3" id="crollo">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">3</div>
+      <div>
+        <p class="eyebrow">Lavoro e imprese · il comune di Brescia, {{c:anno_asia_i}}–{{c:anno_asia_f}}</p>
+        <h2 class="story-title">Il crollo che non c'è stato</h2>
+      </div>
+    </div>
+    <p class="question">Le grandi unità locali del capoluogo perdono seimila addetti in cinque
+    anni. È la fine della grande industria in città?</p>
+
+    <p>Questa storia comincia con un numero vero e un titolo falso. Fra il {{c:anno_asia_i}} e il
+    {{c:anno_asia_f}} le unità locali con almeno 250 addetti del comune di Brescia passano da
+    {{c:grandi_iniziale}} a {{c:grandi_finale}} addetti: {{c:grandi_variazione}}. Nello stesso
+    periodo il totale degli addetti del comune si muove di {{c:citta_variazione}}. È fermo.</p>
+
+    <figure class="fig">
+      <h3>Addetti nel comune di Brescia</h3>
+      <p class="cap">La classe con almeno 250 addetti contro il totale di tutte le classi. La
+      rottura è nel 2020, non una discesa lenta.</p>
+      <div id="serie-capoluogo"></div>
+    </figure>
+
+    <p>La differenza fra i due numeri è tutta la questione, e si risolve scomponendo. Delle
+    divisioni economiche che compongono quel calo, due ne fanno più del totale.</p>
+
+    <figure class="fig">
+      <h3>Chi fa il calo delle grandi unità locali</h3>
+      <p class="cap">Variazione degli addetti per divisione Ateco nella classe ≥250, comune di
+      Brescia, {{c:anno_asia_i}}–{{c:anno_asia_f}}.</p>
+      <div id="barre-divisioni"></div>
+    </figure>
+
+    <p>Sono <strong>{{c:divisione_prima}}</strong> ({{c:divisione_prima_variazione}} addetti) e
+    <strong>{{c:divisione_seconda}}</strong> ({{c:divisione_seconda_variazione}}). Insieme fanno
+    {{c:due_divisioni_variazione}} addetti, cioè più dell'intero calo: il resto della classe, nel
+    complesso, tiene. La manifattura grande — le divisioni dalla 10 alla 33 — passa da
+    {{c:manifattura_grandi_iniziale}} addetti a {{c:manifattura_grandi_variazione}} di differenza.
+    Immobile.</p>
+
+    <p>Resta la domanda vera: quegli addetti sono spariti, o si sono spostati? Basta guardare la
+    stessa divisione a due scale diverse.</p>
+
+    <div class="takeaway">
+      <span class="t-lab">{{c:conf2_nome}}</span>
+      <p>Nella classe ≥250 del capoluogo: {{c:conf2_grandi}} addetti. Nel totale dello stesso
+      comune, tutte le classi: {{c:conf2_citta}}. E le unità locali del comune passano di
+      {{c:conf2_unita}}. Le grandi si sono sciolte in tante piccole — in provincia la divisione
+      perde in tutto {{c:conf2_provincia_quota}}.</p>
+    </div>
+
+    <div class="takeaway">
+      <span class="t-lab">{{c:conf1_nome}}</span>
+      <p>Nella classe ≥250 del capoluogo: {{c:conf1_grandi}}. Nel comune, tutte le classi:
+      {{c:conf1_citta}}. In provincia: {{c:conf1_provincia}}, cioè {{c:conf1_provincia_quota}}. Il
+      lavoro non è sparito dalla provincia: è uscito dal capoluogo.</p>
+    </div>
+
+    <details class="deep">
+      <summary><span class="d-lab">controllo</span>
+        <b>Succede anche altrove?</b> La stessa classe negli altri capoluoghi
+        d'Italia.<span class="me-tgl"></span></summary>
+      <div class="d-body">
+        <p>Nei {{c:capoluoghi_confrontati}} comuni capoluogo che nel {{c:anno_asia_i}} avevano
+        almeno duemila addetti in unità da 250 in su, la classe si è svuotata in
+        <b>{{c:capoluoghi_in_calo}} casi</b>, con una mediana del {{c:capoluoghi_mediana}}. I cali
+        più forti: {{c:capoluoghi_peggiori}}.</p>
+        <p>Brescia è il {{c:capoluoghi_rango_brescia}}º calo più forte: sopra la mediana, ma dentro
+        un movimento che riguarda quasi tutti. Un movimento così diffuso non è una vicenda
+        industriale che accade contemporaneamente in quaranta città diverse.</p>
+      </div>
+    </details>
+
+    <div class="takeaway">
+      <span class="t-lab">La regola che ne è nata</span>
+      <p><strong>Nessun titolo su una variazione aggregata prima di averla scomposta.</strong> Il
+      numero di partenza era corretto e la conclusione ovvia era sbagliata, e fra i due c'erano
+      due divisioni di servizi e un cambio di scala.</p>
+    </div>
+
+    <p class="nextcap">Se non è la dimensione delle imprese, che cosa divide questa provincia?
+    <a href="#economie">→ Le due economie</a></p>
+  </div></div>
+</section>
+
+<section class="story s4" id="economie">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">4</div>
+      <div>
+        <p class="eyebrow">Struttura produttiva · sezioni Ateco per comune, {{c:anno_asia_f}}</p>
+        <h2 class="story-title">Le due economie</h2>
+      </div>
+    </div>
+    <p class="question">Che questa provincia siano due province lo dicono tutti. Si può
+    misurare?</p>
+
+    <p>Fino a poco fa no: il dettaglio settoriale esisteva solo per il capoluogo e per l'aggregato
+    provinciale. Ora esiste per tutti i {{c:comuni}} comuni. In provincia la manifattura vale
+    {{c:manifattura_provinciale}} degli addetti censiti dal registro delle imprese, e alloggio e
+    ristorazione {{c:alloggio_provinciale}}. Sono medie, e come al solito non descrivono
+    nessuno.</p>
+
+    <figure class="fig">
+      <h3>Da che parte sta ogni comune</h3>
+      <p class="cap" id="didascalia-economie">Quota di addetti nella manifattura meno quota in
+      alloggio e ristorazione. Rosso = manifatturiero, blu = turistico, grigio = né l'uno né
+      l'altro.</p>
+      <div id="comandi-economie"></div>
+      <div id="mappa-economie"></div>
+    </figure>
+
+    <p>{{c:comuni_manifatturieri}} comuni hanno più della metà degli addetti nella manifattura, e
+    sono le valli: {{c:comuni_manifatturieri_top}}. {{c:comuni_turistici}} ne hanno almeno un
+    quarto in alloggio e ristorazione, e sono il lago e l'alta montagna:
+    {{c:comuni_turistici_top}}. Nel mezzo c'è la cintura della città, che non è né una cosa né
+    l'altra.</p>
+
+    <p>Le due quote si escludono a vicenda — la correlazione fra loro è
+    {{c:manifattura_alloggio_pearson}} — ma è un risultato in parte aritmetico: sono due fette
+    della stessa torta, e quando una cresce all'altra resta meno spazio. Quello che il numero
+    aggiunge è <em>quanto</em> netta sia la sostituzione: nei comuni del Garda la manifattura non
+    è ridotta, è assente.</p>
+
+    <p>E anche questa divisione è geografica prima che economica: l'indice di Moran sulla
+    specializzazione vale <strong>{{c:moran_specializzazione}}</strong>, il più alto di tutta
+    questa pagina. Non ci sono comuni manifatturieri isolati in mezzo al lago né alberghi in mezzo
+    alle acciaierie: ci sono due territori contigui, ciascuno fatto di comuni che si
+    somigliano.</p>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">attenzione</span>
+        <span>Che cosa manca da questo denominatore</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Il registro delle imprese non copre agricoltura, pubblica amministrazione, istruzione
+        pubblica e servizi domestici. Le quote sono calcolate sull'economia che il registro
+        osserva, non su tutta l'economia del comune: nella Bassa agricola questo pesa, e un comune
+        «non specializzato» può essere semplicemente un comune agricolo.</p>
+        <p>Tre comuni non compaiono sulla mappa. Non hanno zero addetti nella manifattura: il
+        registro non pubblica quella cella perché è troppo piccola, e scriverci zero sarebbe
+        inventare un dato. Sono Magasa, Paisco Loveno e Valvestino, e insieme fanno meno di cento
+        addetti.</p>
+      </div>
+    </details>
+
+    <div class="takeaway">
+      <span class="t-lab">In una riga</span>
+      <p>Le due economie esistono, sono contigue e non si mescolano: è la divisione più netta
+      misurata in tutto il progetto.</p>
+    </div>
+
+    <p class="nextcap">Tutto quanto sopra misura Brescia contro sé stessa. E se la si guardasse da
+    fuori? <a href="#diversa">→ Brescia è diversa?</a></p>
+  </div></div>
+</section>
+
+<section class="story s5" id="diversa">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">5</div>
+      <div>
+        <p class="eyebrow">Il controllo · {{c:province_italiane}} province italiane a confronto</p>
+        <h2 class="story-title">Brescia è diversa?</h2>
+      </div>
+    </div>
+    <p class="question">Quando un numero descrive un luogo e quando descrive semplicemente il
+    paese in cui quel luogo si trova?</p>
+
+    <p>Fin qui abbiamo misurato Brescia contro sé stessa. È il modo in cui si scrivono quasi tutti
+    i ritratti di territorio, ed è il modo in cui si prende per caratteristica di un posto quello
+    che è la normalità di un paese. Le fonti usate qui coprono l'Italia intera, quindi la verifica
+    costa poco — e il risultato ci ha costretto a riscrivere una frase che questo progetto
+    ripeteva dal primo giorno.</p>
+
+    <figure class="fig">
+      <h3>Dove sta Brescia fra le province italiane</h3>
+      <p class="cap">Ogni punto è una provincia; il punto rosso è Brescia, quello vuoto Bergamo.
+      La linea tratteggiata è la mediana.</p>
+      <div id="comandi-province"></div>
+      <div id="grafico-province"></div>
+    </figure>
+
+    <div class="takeaway">
+      <span class="t-lab">La frase da riscrivere</span>
+      <p>«Brescia è un territorio di microimprese» è vera in assoluto — il {{c:ul_micro_brescia}}
+      delle unità locali ha meno di dieci addetti — e fuorviante come descrizione. La provincia
+      mediana italiana sta al {{c:ul_micro_mediana}}, e Brescia è la
+      <strong>{{c:ul_micro_rango}}ª più frammentata su {{c:province_italiane}}</strong>: cioè fra
+      le meno frammentate del paese. Il 92 % descrive l'Italia, non Brescia.</p>
+    </div>
+
+    <p>Sugli addetti la distanza è più larga: nelle unità sotto i dieci addetti ne lavora il
+    {{c:addetti_micro_brescia}}, contro una mediana provinciale del {{c:addetti_micro_mediana}}. E
+    l'unità locale bresciana media ha {{c:dimensione_brescia}} addetti contro
+    {{c:dimensione_mediana}}. Non è una provincia di piccolissimi: è una provincia di
+    <strong>medi</strong>, in un paese di piccolissimi.</p>
+
+    <p>Quello che <strong>sì</strong> distingue Brescia è il settore: la manifattura vale il
+    {{c:manifattura_confronto_brescia}} degli addetti contro una mediana del
+    {{c:manifattura_confronto_mediana}}, ed è la {{c:manifattura_confronto_rango}}ª provincia
+    d'Italia. Brescia somiglia meno all'Italia che a Vicenza, Treviso, Reggio Emilia, Modena — e
+    naturalmente a Bergamo, che le sta accanto su quasi ogni riga.</p>
+
+    <p>Infine la crescita. Fra il {{c:anno_asia_i}} e il {{c:anno_asia_f}} gli addetti bresciani
+    crescono dell'{{c:crescita_confronto_brescia}} l'anno, e sembra molto finché non si guarda la
+    mediana: {{c:crescita_confronto_mediana}}. Brescia è la {{c:crescita_confronto_rango}}ª su
+    {{c:province_italiane}}. Cresce come l'Italia, non più dell'Italia.</p>
+
+    <div class="takeaway">
+      <span class="t-lab">Perché questa storia esiste</span>
+      <p>Un numero senza termine di paragone non è un risultato: è una cifra che sembra dire
+      qualcosa. Questo confronto ha corretto una nostra affermazione, rafforzato il capitolo
+      precedente e tolto un aggettivo alla storia dei redditi — e ci è costato un filtro su file
+      che erano già sul disco.</p>
+    </div>
+
+    <p class="nextcap">Resta la parte che di solito non si scrive.
+    <a href="#limiti">→ Cosa questi dati non permettono di dire</a></p>
+  </div></div>
+</section>
+
+<section class="story sx" id="limiti">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">·</div>
+      <div>
+        <p class="eyebrow">I limiti</p>
+        <h2 class="story-title">Cosa questi dati non permettono di dire</h2>
+      </div>
+    </div>
+    <p class="question">È la sezione che di solito non si scrive, ed è quella che rende leggibile
+    tutto il resto.</p>
+
+    <ul class="elenco">
+      <li><strong>Perché la montagna si svuota.</strong> La variazione di popolazione qui è netta:
+      non distingue nascite e morti dalle migrazioni, né quelle interne da quelle estere. Senza
+      quella scomposizione, «spopolamento» è una descrizione, non una spiegazione.</li>
+      <li><strong>Se il reddito che cresce sia reddito di chi ci abitava.</strong> Un comune può
+      diventare più ricco perché chi ci vive guadagna di più o perché ci si trasferisce gente più
+      ricca. Con dati aggregati per comune i due casi sono indistinguibili.</li>
+      <li><strong>Il confronto si ferma a imprese e redditi.</strong> La quinta storia colloca
+      Brescia fra le province italiane sul registro delle imprese, e la convergenza dei redditi è
+      stata replicata su Bergamo. Sullo spopolamento e sul turismo il termine di paragone non c'è:
+      quelle due letture restano misurate contro sé stesse.</li>
+      <li><strong>Niente sui prezzi delle case.</strong> Le quotazioni ufficiali sono dietro
+      un'area riservata, e i prezzi di offerta non sono prezzi di vendita.</li>
+      <li><strong>I reati solo a scala provinciale.</strong> Qualunque mappa comunale della
+      sicurezza sarebbe inventata.</li>
+      <li><strong>Niente agricoltura, e non è un dettaglio.</strong> Il registro delle imprese non
+      la osserva, quindi in tutta la parte settoriale i comuni della Bassa appaiono meno
+      specializzati di quanto siano.</li>
+      <li><strong>Nulla su singole persone o singole imprese.</strong> Tutte le fonti sono
+      aggregate, e dove il numero è troppo piccolo la fonte lo sopprime: sulle presenze turistiche
+      del {{c:anno_pop_finale}} mancano decine di comuni, e <strong>un dato mancante non è uno
+      zero</strong>.</li>
+      <li><strong>Niente cause.</strong> Nessuna correlazione di questa pagina dimostra che una
+      cosa ne provochi un'altra. Con {{c:comuni}} comuni e sei anni si descrive; non si stabilisce
+      un meccanismo.</li>
+    </ul>
+  </div></div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>Come è fatto</h3>
+        <p>Tutti i numeri di questa pagina sono ricalcolati dalle tabelle in fase di costruzione:
+        nessuna cifra è scritta a mano nel testo. I grafici sono SVG disegnati a mano, senza
+        librerie: il documento non ha dipendenze a runtime e si apre anche da disco.</p>
+        <p>Lo stile è quello del progetto gemello
+        <a href="https://github.com/Stocastico/donostia-dataviz">donostia-dataviz</a>, di cui
+        questo lavoro riprende anche il metodo.</p>
+      </div>
+      <div>
+        <h3>Le fonti</h3>
+        <ul>
+          <li>ISTAT — censimento permanente, registro ASIA, confini comunali</li>
+          <li>MEF — dichiarazioni dei redditi</li>
+          <li>Regione Lombardia — flussi turistici</li>
+          <li>ARPA Lombardia — aria e clima</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Vai oltre</h3>
+        <ul>
+          <li><a href="metodologia.html">La nota metodologica</a></li>
+          <li><a href="dati.html">I dati, scaricabili</a></li>
+          <li><a href="dati/processed/">Le {{N_TABELLE}} tabelle in CSV</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">Pagina costruita il {{BUILD_DATE}} · dati aggiornati al {{DATA_DATE}} ·
+    {{N_INDICATORI}} indicatori · Fonti pubbliche, nessuna chiave API, nessun tracciamento.</p>
+  </div>
+</footer>
+
+<script>/*{{DATI}}*/</script>
+<script>/*{{GRAFICI}}*/</script>
+<script>
+(function () {
+  "use strict";
+  var G = window.GRAFICI, DATI = window.DATI;
+
+  // L'altezza della barra appiccicosa alimenta `scroll-margin-top` e la
+  // posizione della figura: misurarla evita di doverla scrivere due volte.
+  var barra = document.querySelector("nav.toc");
+  function misuraBarra() {
+    document.documentElement.style.setProperty("--navh", (barra.offsetHeight + 6) + "px");
+  }
+  misuraBarra();
+  window.addEventListener("resize", misuraBarra);
+
+  // --- storia 1: la mappa che scorre ---------------------------------
+  var mappa = G.mappa(document.getElementById("mappa-popolazione"), {
+    metrica: "crescita_popolazione",
+    decimali: 2,
+    descrizione: "Mappa dei 205 comuni della provincia di Brescia colorati per crescita annua della popolazione"
+  });
+
+  if (mappa) {
+    var crescita = G.valoriDi("crescita_popolazione");
+    var inCalo = Object.keys(crescita).filter(function (c) { return crescita[c] < 0; });
+    var peggiori = Object.keys(crescita).sort(function (a, b) { return crescita[a] - crescita[b]; }).slice(0, 10);
+    var inCrescita = Object.keys(crescita).filter(function (c) { return crescita[c] > 0; });
+    var didascalia = document.getElementById("didascalia-popolazione");
+    var testi = {
+      tutti: "Tasso annuo composto per comune. Il blu è calo, il rosso è crescita, il grigio in mezzo è «non si muove».",
+      calo: "<b>I " + inCalo.length + " comuni che perdono abitanti</b>, sugli altri sbiaditi.",
+      peggiori: "<b>Le dieci cadute più rapide</b>: tutte di montagna.",
+      grumi: "<b>I comuni in calo, di nuovo</b>: guardate come si toccano fra loro.",
+      pianura: "<b>I " + inCrescita.length + " comuni che crescono</b>: la pianura attorno alla città e il lago."
+    };
+    var selezioni = { tutti: null, calo: inCalo, peggiori: peggiori, grumi: inCalo, pianura: inCrescita };
+
+    G.scrollytelling(document.getElementById("scrolly-popolazione"), function (indice, passo) {
+      var nome = passo.getAttribute("data-passo");
+      mappa.evidenzia(selezioni[nome]);
+      didascalia.innerHTML = testi[nome];
+    });
+  }
+
+  // --- storia 1: lo scatter dimensione/crescita -----------------------
+  var popolazione = G.metrica("popolazione");
+  if (popolazione) {
+    var primoAnno = popolazione.periods[0];
+    var iniziale = G.valoriDi("popolazione", primoAnno);
+    var tasso = G.valoriDi("crescita_popolazione");
+    var puntiPopolazione = Object.keys(tasso).filter(function (c) { return iniziale[c]; }).map(function (c) {
+      return {
+        x: Math.log10(iniziale[c]), y: tasso[c], nome: G.nomeComune(c),
+        evidenza: DATI.comuni[c][1] === 1, etichetta: DATI.comuni[c][1] === 1
+      };
+    });
+    var mediane = function (lista) {
+      var ordinati = lista.slice().sort(function (a, b) { return a - b; });
+      return ordinati[Math.floor(ordinati.length / 2)];
+    };
+    G.scatter(document.getElementById("scatter-popolazione"), {
+      punti: puntiPopolazione,
+      etichettaX: "popolazione " + primoAnno + " (scala logaritmica)",
+      etichettaY: "crescita %/anno",
+      decimaliX: 1, decimaliY: 2,
+      formattaX: function (v) { return G.num(Math.round(Math.pow(10, v))); },
+      medianaX: mediane(puntiPopolazione.map(function (p) { return p.x; })),
+      medianaY: mediane(puntiPopolazione.map(function (p) { return p.y; })),
+      descrizione: "Grafico a dispersione: popolazione iniziale contro crescita annua, un punto per comune"
+    });
+  }
+
+  // --- storia 2: convergenza contro artefatto -------------------------
+  var reddito = G.metrica("reddito_medio");
+  if (reddito) {
+    var annoI = reddito.periods[0], annoF = reddito.periods[reddito.periods.length - 1];
+    var redditoI = G.valoriDi("reddito_medio", annoI);
+    var redditoF = G.valoriDi("reddito_medio", annoF);
+    var crescitaR = G.valoriDi("crescita_reddito");
+    var contenitoreReddito = document.getElementById("scatter-reddito");
+
+    function disegnaReddito(quale) {
+      contenitoreReddito.innerHTML = "";
+      var base = quale === "iniziale" ? redditoI : redditoF;
+      var punti = Object.keys(crescitaR).filter(function (c) { return base[c]; }).map(function (c) {
+        return {
+          x: base[c], y: crescitaR[c], nome: G.nomeComune(c),
+          evidenza: DATI.comuni[c][1] === 1, etichetta: DATI.comuni[c][1] === 1
+        };
+      });
+      G.scatter(contenitoreReddito, {
+        punti: punti,
+        etichettaX: "reddito medio " + (quale === "iniziale" ? annoI : annoF) + " (euro)",
+        etichettaY: "crescita %/anno",
+        decimaliX: 0, decimaliY: 2,
+        descrizione: "Grafico a dispersione fra reddito e crescita del reddito, un punto per comune"
+      });
+    }
+
+    G.comandi(document.getElementById("comandi-reddito"), [
+      { etichetta: "reddito di partenza (" + annoI + ")", quale: "iniziale" },
+      { etichetta: "reddito finale (" + annoF + ") — l'artefatto", quale: "finale" }
+    ], function (voce) { disegnaReddito(voce.quale); });
+    disegnaReddito("iniziale");
+  }
+
+  // --- storia 5: il confronto con le altre province --------------------
+  var confronto = DATI.confronto;
+  if (confronto && confronto.misure) {
+    var contenitoreProvince = document.getElementById("grafico-province");
+    var vociProvince = [
+      { etichetta: "unità locali sotto i 10", chiave: "ul_micro", unita: "%", decimali: 1 },
+      { etichetta: "addetti sotto i 10", chiave: "addetti_micro", unita: "%", decimali: 1 },
+      { etichetta: "addetti per unità locale", chiave: "dimensione", unita: "addetti", decimali: 2 },
+      { etichetta: "manifattura", chiave: "manifattura", unita: "%", decimali: 1 },
+      { etichetta: "crescita", chiave: "crescita", unita: "%/anno", decimali: 2 }
+    ];
+
+    function disegnaProvince(voce) {
+      contenitoreProvince.innerHTML = "";
+      var misura = confronto.misure[voce.chiave];
+      if (!misura) return;
+      G.sciame(contenitoreProvince, {
+        valori: misura.valori,
+        nomi: confronto.nomi,
+        evidenziati: { "017": "Brescia", "016": "Bergamo" },
+        mediana: misura.mediana,
+        etichetta: voce.etichetta + (voce.unita ? " (" + voce.unita + ")" : ""),
+        decimali: voce.decimali,
+        descrizione: "Distribuzione delle province italiane per " + voce.etichetta
+      });
+    }
+
+    G.comandi(document.getElementById("comandi-province"), vociProvince.map(function (v) {
+      return { etichetta: v.etichetta, voce: v };
+    }), function (scelta) { disegnaProvince(scelta.voce); });
+    disegnaProvince(vociProvince[0]);
+  }
+
+  // --- storia 4: le due economie --------------------------------------
+  var contenitoreEconomie = document.getElementById("mappa-economie");
+  if (contenitoreEconomie && G.metrica("specializzazione")) {
+    var didascaliaEconomie = document.getElementById("didascalia-economie");
+    var testiEconomie = {
+      specializzazione: "Quota nella manifattura meno quota in alloggio e ristorazione. Rosso = manifatturiero, blu = turistico.",
+      quota_manifattura: "<b>Quota di addetti nella manifattura</b>: più scuro, più manifatturiero.",
+      quota_alloggio_ristorazione: "<b>Quota di addetti in alloggio e ristorazione</b>: più scuro, più turistico."
+    };
+
+    function disegnaEconomie(id) {
+      contenitoreEconomie.innerHTML = "";
+      G.mappa(contenitoreEconomie, {
+        metrica: id, decimali: 1,
+        descrizione: "Mappa dei comuni della provincia di Brescia per specializzazione settoriale"
+      });
+      didascaliaEconomie.innerHTML = testiEconomie[id];
+    }
+
+    G.comandi(document.getElementById("comandi-economie"), [
+      { etichetta: "le due insieme", id: "specializzazione" },
+      { etichetta: "manifattura", id: "quota_manifattura" },
+      { etichetta: "alloggio e ristorazione", id: "quota_alloggio_ristorazione" }
+    ], function (voce) { disegnaEconomie(voce.id); });
+    disegnaEconomie("specializzazione");
+  }
+
+  // --- storia 3: la decomposizione ------------------------------------
+  var scomposizione = DATI.decomposizione;
+  function accorcia(testo, quanti) {
+    return testo.length > quanti ? testo.slice(0, quanti - 1) + "…" : testo;
+  }
+  if (scomposizione && scomposizione.anni) {
+    G.serie(document.getElementById("serie-capoluogo"), {
+      periodi: scomposizione.anni,
+      unita: "addetti",
+      linee: [
+        { nome: "tutte", valori: scomposizione.serie_totale },
+        { nome: "≥250 addetti", valori: scomposizione.serie_grandi.map(function (v) { return v === null ? 0 : v; }) }
+      ],
+      descrizione: "Due serie storiche degli addetti nel comune di Brescia"
+    });
+
+    G.barre(document.getElementById("barre-divisioni"), {
+      voci: scomposizione.divisioni.map(function (d) {
+        return { nome: accorcia(d.nome, 40), valore: d.variazione };
+      }),
+      conSegno: true,
+      etichettaVoci: "divisione Ateco",
+      unita: "addetti",
+      descrizione: "Variazione degli addetti per divisione economica nella classe con almeno 250 addetti"
+    });
+  }
+})();
+</script>
+</body>
+</html>
