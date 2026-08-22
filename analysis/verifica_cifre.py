@@ -393,6 +393,104 @@ def moran_specializzazione(anno: str = "2023") -> float:
 # --- le verifiche -------------------------------------------------------
 # (documento, cifra citata, valore atteso, funzione, tolleranza)
 
+# --- il bilancio demografico --------------------------------------------
+
+bilancio = leggi("bilancio_demografico_comuni.csv")
+bilancio_province = leggi("bilancio_province.csv")
+
+# Le componenti si ricalcolano qui dai flussi lordi, non si leggono dalle
+# colonne dei saldi: la tabella non le porta apposta (vedi `datasets/bilancio`),
+# e un verificatore che rileggesse un totale già calcolato non verificherebbe
+# niente.
+COMPONENTI_BILANCIO = {
+    "naturale": ("nati", "morti"),
+    "interna": ("immigrati_interni", "emigrati_interni"),
+    "estera": ("immigrati_estero", "emigrati_estero"),
+}
+
+
+def _somma_bilancio(righe: list[dict[str, str]], chiave: str) -> dict[str, dict[str, float]]:
+    fuori: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    for riga in righe:
+        valore = numero(riga["valore"])
+        if valore is not None:
+            fuori[riga[chiave]][riga["indicatore"]] += valore
+    return fuori
+
+
+def componenti(conti: dict[str, float]) -> dict[str, float]:
+    fuori = {
+        nome: conti.get(piu, 0.0) - conti.get(meno, 0.0)
+        for nome, (piu, meno) in COMPONENTI_BILANCIO.items()
+    }
+    fuori["aggiustamento"] = conti.get("aggiustamento_statistico", 0.0)
+    fuori["territorio"] = conti.get("variazioni_territoriali", 0.0)
+    fuori["totale"] = sum(fuori.values())
+    return fuori
+
+
+def bilancio_comuni() -> dict[str, dict[str, float]]:
+    return {c: componenti(v) for c, v in _somma_bilancio(bilancio, "codice_istat").items()}
+
+
+def componente_provinciale(nome: str) -> float:
+    return sum(v[nome] for v in bilancio_comuni().values())
+
+
+def in_calo_componente(nome: str) -> float:
+    """La componente sommata sui soli comuni che perdono abitanti."""
+    return sum(v[nome] for v in bilancio_comuni().values() if v["totale"] < 0)
+
+
+def comuni_con_naturale_negativo() -> int:
+    return sum(1 for v in bilancio_comuni().values() if v["naturale"] < 0)
+
+
+def comuni_per_componente_piu_negativa(nome: str) -> int:
+    """Fra i comuni in calo, quanti hanno `nome` come componente più negativa."""
+    quanti = 0
+    for valori in bilancio_comuni().values():
+        if valori["totale"] >= 0:
+            continue
+        if min(("naturale", "interna", "estera"), key=lambda k: valori[k]) == nome:
+            quanti += 1
+    return quanti
+
+
+def _province_per_mille() -> dict[str, dict[str, float]]:
+    per_provincia = _somma_bilancio(bilancio_province, "codice_provincia")
+    primo = min(r["anno"] for r in bilancio_province)
+    base = {
+        r["codice_provincia"]: float(r["valore"])
+        for r in bilancio_province
+        if r["indicatore"] == "popolazione_inizio" and r["anno"] == primo
+    }
+    return {
+        codice: {n: v / base[codice] * 1000 for n, v in componenti(conti).items()}
+        for codice, conti in per_provincia.items()
+        if base.get(codice)
+    }
+
+
+def rango_provincia(nome: str) -> int:
+    valori = _province_per_mille()
+    ordinati = sorted(valori.items(), key=lambda kv: -kv[1][nome])
+    return [c for c, _ in ordinati].index("017") + 1
+
+
+def mediana_province(nome: str) -> float:
+    return mediana_lista([v[nome] for v in _province_per_mille().values()])
+
+
+def brescia_per_mille(nome: str) -> float:
+    return _province_per_mille()["017"][nome]
+
+
+def province_con(nome: str, positivo: bool = True) -> int:
+    valori = _province_per_mille()
+    return sum(1 for v in valori.values() if (v[nome] > 0) == positivo)
+
+
 VERIFICHE: list[tuple[str, str, float, object, float]] = [
     (
         "BRIEF §Unità di analisi",
@@ -861,6 +959,142 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         "PM10 a Brescia v.Broletto, 2024: 27,3 µg/m³",
         27.3,
         lambda: media_pm10_broletto("2024"),
+        0.05,
+    ),
+    # --- la scomposizione demografica (agosto 2026) ---------------------
+    (
+        "sito §Dove si svuota / METODOLOGIA MET-15",
+        "la scomposizione chiude: componenti = variazione degli stock",
+        0,
+        lambda: max(
+            abs(
+                valori["totale"]
+                - (
+                    serie_popolazione()[codice]["2024"]
+                    - serie_popolazione()[codice]["2018"]
+                )
+            )
+            for codice, valori in bilancio_comuni().items()
+        ),
+        0.5,
+    ),
+    (
+        "sito §Dove si svuota",
+        "saldo naturale provinciale 2018-2024: −25.764",
+        -25764,
+        lambda: componente_provinciale("naturale"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota",
+        "migrazione estera provinciale: +27.817",
+        27817,
+        lambda: componente_provinciale("estera"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota",
+        "migrazione interna provinciale: +13.970",
+        13970,
+        lambda: componente_provinciale("interna"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota",
+        "aggiustamento statistico provinciale: −4.558",
+        -4558,
+        lambda: componente_provinciale("aggiustamento"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota",
+        "senza la migrazione estera la provincia perderebbe 16.352 abitanti",
+        16352,
+        lambda: componente_provinciale("estera") - componente_provinciale("totale"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota / METODOLOGIA MET-15",
+        "i 93 comuni in calo: −10.163 per saldo naturale",
+        -10163,
+        lambda: in_calo_componente("naturale"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota / METODOLOGIA MET-15",
+        "gli stessi 93 comuni: −66 per migrazione interna, cioè quasi zero",
+        -66,
+        lambda: in_calo_componente("interna"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota",
+        "in 81 dei 93 comuni in calo la componente più negativa è il saldo naturale",
+        81,
+        lambda: comuni_per_componente_piu_negativa("naturale"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota",
+        "in 12 dei 93 comuni in calo tira più giù la migrazione interna",
+        12,
+        lambda: comuni_per_componente_piu_negativa("interna"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota",
+        "saldo naturale negativo in 189 comuni su 205",
+        189,
+        comuni_con_naturale_negativo,
+        0,
+    ),
+    (
+        "sito §Dove si svuota / PROSSIMI-PASSI §5.2",
+        "Brescia è la 6ª provincia italiana per crescita di popolazione",
+        6,
+        lambda: rango_provincia("totale"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota",
+        "crescita di Brescia: +9,1 abitanti ogni mille",
+        9.1,
+        lambda: brescia_per_mille("totale"),
+        0.05,
+    ),
+    (
+        "sito §Dove si svuota",
+        "mediana delle province: −19,7 ogni mille",
+        -19.7,
+        lambda: mediana_province("totale"),
+        0.05,
+    ),
+    (
+        "sito §Dove si svuota",
+        "solo 21 province su 107 crescono",
+        21,
+        lambda: province_con("totale"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota",
+        "il saldo naturale è positivo in 1 provincia su 107",
+        1,
+        lambda: province_con("naturale"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota",
+        "saldo naturale di Brescia: 14º migliore d'Italia, −20,5 ogni mille",
+        14,
+        lambda: rango_provincia("naturale"),
+        0,
+    ),
+    (
+        "sito §Dove si svuota",
+        "mediana del saldo naturale provinciale: −34,4 ogni mille",
+        -34.4,
+        lambda: mediana_province("naturale"),
         0.05,
     ),
 ]

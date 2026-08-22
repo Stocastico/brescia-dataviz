@@ -191,11 +191,78 @@
       positiva: chi era grande cresce, chi era piccolo cala. Non è una legge — la nuvola è larga e
       ci sono comuni piccoli in crescita — ma la direzione è quella.</p>
 
+      <h3>Ma perché si svuota?</h3>
+
+      <p>Fin qui la variazione è <em>netta</em>: dice quanto, non dice da dove. E «spopolamento»
+      è una parola che suggerisce una risposta — la gente se ne va — che nessuno dei numeri di
+      sopra sostiene. La differenza fra due anni si scompone in modo esatto, perché il bilancio
+      demografico conta separatamente chi nasce, chi muore, chi arriva e chi parte:</p>
+
+      <figure class="fig">
+        <h3>Da dove viene la variazione, {{c:anno_pop_iniziale}}–{{c:anno_pop_finale}}</h3>
+        <p class="cap">Le componenti della variazione provinciale, in persone. Sommate danno
+        esattamente i {{c:crescita_provinciale_assoluta}} abitanti in più: non è un modello, è
+        contabilità.</p>
+        <div id="barre-demografia"></div>
+      </figure>
+
+      <p>La provincia cresce, ma <strong>non per nascite</strong>: fra il
+      {{c:anno_pop_iniziale}} e il {{c:anno_pop_finale}} ci muoiono
+      {{c:saldo_naturale_provinciale}} persone più di quante ne nascano. Cresce perché ne arrivano
+      {{c:migrazione_estera_provinciale}} dall'estero e {{c:migrazione_interna_provinciale}} da
+      altri comuni italiani. Senza la sola componente estera la provincia
+      <strong>perderebbe {{c:perdita_senza_estero}} abitanti</strong> invece di guadagnarne.</p>
+
+      <details class="metric-expl">
+        <summary><span class="me-lab">la metrica</span>
+          <span>Che cos'è «l'aggiustamento statistico»</span><span class="me-tgl"></span></summary>
+        <div class="me-body">
+          <p>È la rettifica che riconcilia l'anagrafe con il censimento: persone iscritte che il
+          censimento non trova, o viceversa. In sei anni vale {{c:aggiustamento_provinciale}}
+          persone in provincia.</p>
+          <p><b>Non è un fenomeno demografico</b>, ed è tenuto separato apposta: attribuirlo alle
+          migrazioni farebbe dire a questa pagina che se ne sono andate persone che in anagrafe
+          non c'erano più.</p>
+        </div>
+      </details>
+
+      <p>Sui {{c:comuni_in_calo}} comuni che perdono abitanti la risposta è ancora più netta, e
+      ribalta la parola. Sommati, quei comuni perdono {{c:comuni_in_calo_naturale}} persone per
+      saldo naturale e <strong>{{c:comuni_in_calo_interna}} per migrazione interna</strong>: la
+      seconda cifra non è piccola, è quasi zero. Chi ci abita <em>non</em> se ne sta andando. In
+      {{c:comuni_calo_per_naturale}} di quei comuni la componente che tira più giù è il saldo
+      naturale, in {{c:comuni_calo_per_interna}} la migrazione interna.</p>
+
+      <figure class="fig">
+        <h3>Le due componenti, comune per comune</h3>
+        <p class="cap">Un punto per comune, per mille abitanti del {{c:anno_pop_iniziale}} e
+        sull'intero periodo; le tratteggiate sono lo zero, il punto rosso è il capoluogo. Quasi
+        tutti i comuni stanno a <em>sinistra</em> della verticale — il saldo naturale è negativo
+        quasi ovunque — mentre sulla migrazione interna si dividono attorno all'orizzontale.</p>
+        <div id="scatter-demografia"></div>
+      </figure>
+
+      <p>Il saldo naturale è negativo in {{c:comuni_saldo_naturale_negativo}} comuni su
+      {{c:comuni}}. È il fondo su cui tutto il resto si muove, e non è una particolarità della
+      montagna bresciana: fra le {{c:province_confrontate}} province italiane è positivo in
+      <strong>{{c:province_naturale_positivo}}</strong>.</p>
+
+      <p>Che è anche il modo di rispondere alla domanda che questa storia non poteva porsi: la
+      provincia di Brescia si svuota più o meno delle altre? <strong>Meno.</strong> Su
+      {{c:province_confrontate}} province Brescia è la <strong>{{c:rango_crescita_provincia}}ª per
+      crescita</strong> ({{c:crescita_provinciale_mille}} abitanti ogni mille contro una mediana
+      di −{{c:mediana_province_mille}}), e solo {{c:province_in_crescita}} province italiane
+      crescono. Anche il suo saldo naturale, per quanto negativo, è il
+      {{c:rango_naturale_provincia}}º migliore d'Italia: −{{c:naturale_provinciale_mille}} contro
+      una mediana di −{{c:mediana_naturale_mille}}. Quello che distingue Brescia non è che qui si
+      faccia più figli — non se ne fanno — ma quanta gente arriva.</p>
+
       <div class="takeaway">
         <span class="t-lab">In una riga</span>
         <p>Metà provincia si svuota, in una fascia continua di montagna, mentre l'altra metà
-        cresce attorno alla città e al lago. Il totale provinciale, fermo, non descrive né
-        l'una né l'altra.</p>
+        cresce attorno alla città e al lago. Ma non si svuota perché la gente se ne va: si svuota
+        perché ci muore più gente di quanta ne nasca, e la provincia sta in piedi solo perché
+        qualcun altro arriva.</p>
       </div>
 
       <p class="nextcap">E se la popolazione si divide così, il reddito che fa?
@@ -532,16 +599,21 @@
     tutto il resto.</p>
 
     <ul class="elenco">
-      <li><strong>Perché la montagna si svuota.</strong> La variazione di popolazione qui è netta:
-      non distingue nascite e morti dalle migrazioni, né quelle interne da quelle estere. Senza
-      quella scomposizione, «spopolamento» è una descrizione, non una spiegazione.</li>
+      <li><strong>Dove va chi parte.</strong> La scomposizione della prima storia dice quante
+      persone entrano ed escono da ogni comune, non da dove a dove: «chi lascia la Valle Camonica
+      scende a Brescia» è una frase che questi dati <em>non</em> sostengono. Servirebbero le
+      matrici origine-destinazione, che non sono pubblicate a grana comunale.</li>
       <li><strong>Se il reddito che cresce sia reddito di chi ci abitava.</strong> Un comune può
       diventare più ricco perché chi ci vive guadagna di più o perché ci si trasferisce gente più
       ricca. Con dati aggregati per comune i due casi sono indistinguibili.</li>
-      <li><strong>Il confronto si ferma a imprese e redditi.</strong> La quinta storia colloca
-      Brescia fra le province italiane sul registro delle imprese, e la convergenza dei redditi è
-      stata replicata su Bergamo. Sullo spopolamento e sul turismo il termine di paragone non c'è:
-      quelle due letture restano misurate contro sé stesse.</li>
+      <li><strong>Il confronto non copre il turismo.</strong> Brescia è collocata fra le
+      {{c:province_confrontate}} province italiane sul registro delle imprese e sulla demografia,
+      e la convergenza dei redditi è stata replicata su Bergamo. Sul turismo il termine di
+      paragone non c'è: quella lettura resta misurata contro sé stessa.</li>
+      <li><strong>L'aggiustamento statistico non si sa a cosa attribuirlo.</strong> Vale
+      {{c:aggiustamento_provinciale}} persone in sei anni — abbastanza da cambiare il segno di un
+      comune piccolo — ed è una rettifica anagrafica, non un fenomeno. Qui resta una voce a parte
+      proprio perché non si può dire di quale movimento reale sia il residuo.</li>
       <li><strong>Niente sui prezzi delle case.</strong> Le quotazioni ufficiali sono dietro
       un'area riservata, e i prezzi di offerta non sono prezzi di vendita.</li>
       <li><strong>I reati solo a scala provinciale.</strong> Qualunque mappa comunale della
@@ -670,6 +742,42 @@
       medianaX: mediane(puntiPopolazione.map(function (p) { return p.x; })),
       medianaY: mediane(puntiPopolazione.map(function (p) { return p.y; })),
       descrizione: "Grafico a dispersione: popolazione iniziale contro crescita annua, un punto per comune"
+    });
+  }
+
+  // --- storia 1bis: da dove viene la variazione ------------------------
+  var demografia = DATI.demografia;
+  if (demografia && demografia.provincia) {
+    var prov = demografia.provincia;
+    // L'aggiustamento statistico è in fondo e in grigio: è contabilità, non
+    // demografia, e messo fra le altre barre si leggerebbe come una di loro.
+    var voci = [
+      { nome: "migrazione estera", valore: prov.estera },
+      { nome: "migrazione interna", valore: prov.interna },
+      { nome: "saldo naturale", valore: prov.naturale },
+      { nome: "aggiustamento statistico", valore: prov.aggiustamento, colore: "--muted" }
+    ];
+    if (prov.territorio) voci.push({ nome: "variazioni territoriali", valore: prov.territorio });
+    G.barre(document.getElementById("barre-demografia"), {
+      voci: voci, conSegno: true, larghezzaEtichette: 200,
+      etichettaVoci: "componente", unita: "persone",
+      descrizione: "Barre divergenti: le componenti della variazione di popolazione provinciale"
+    });
+
+    var puntiDemografia = Object.keys(demografia.comuni).map(function (c) {
+      var v = demografia.comuni[c];
+      return {
+        x: v.naturale, y: v.interna, nome: G.nomeComune(c),
+        evidenza: DATI.comuni[c][1] === 1, etichetta: DATI.comuni[c][1] === 1
+      };
+    });
+    G.scatter(document.getElementById("scatter-demografia"), {
+      punti: puntiDemografia,
+      etichettaX: "saldo naturale (‰ del " + demografia.primo + ")",
+      etichettaY: "migrazione interna (‰)",
+      decimaliX: 1, decimaliY: 1,
+      medianaX: 0, medianaY: 0,
+      descrizione: "Grafico a dispersione: saldo naturale contro migrazione interna, un punto per comune"
     });
   }
 

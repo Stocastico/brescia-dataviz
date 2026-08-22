@@ -50,6 +50,7 @@ def test_la_provincia_ha_205_comuni() -> None:
         "famiglie_comuni.csv",
         "abitazioni_comuni.csv",
         "migrazioni_comuni.csv",
+        "bilancio_demografico_comuni.csv",
     ],
 )
 def test_ogni_codice_esiste_in_anagrafica(tabella: str) -> None:
@@ -138,3 +139,87 @@ def test_nessuna_tabella_e_vuota() -> None:
         with path.open(encoding="utf-8") as handle:
             righe = sum(1 for _ in handle)
         assert righe > 1, f"{path.name} contiene solo l'intestazione"
+
+
+# --- il bilancio demografico --------------------------------------------
+
+
+def componenti_bilancio(righe: list[dict[str, str]], chiave: str) -> dict[str, dict[str, float]]:
+    conti: dict[str, dict[str, float]] = {}
+    for riga in righe:
+        if not riga["valore"]:
+            continue
+        per_territorio = conti.setdefault(riga[chiave], {})
+        indicatore = riga["indicatore"]
+        per_territorio[indicatore] = per_territorio.get(indicatore, 0.0) + float(riga["valore"])
+    return conti
+
+
+def test_il_bilancio_ricostruisce_la_popolazione_del_censimento() -> None:
+    """L'identità contabile, verificata sulla tabella scritta e non solo in memoria.
+
+    È il controllo che rende la scomposizione una scomposizione: se non chiude,
+    resta un residuo che qualcuno prima o poi attribuirà a un fenomeno.
+    """
+    righe = leggi("bilancio_demografico_comuni.csv")
+    for codice, conti in componenti_bilancio(righe, "codice_istat").items():
+        ricostruito = (
+            conti["popolazione_inizio"]
+            + conti["nati"] - conti["morti"]
+            + conti["immigrati_interni"] - conti["emigrati_interni"]
+            + conti["immigrati_estero"] - conti["emigrati_estero"]
+            + conti.get("variazioni_territoriali", 0.0)
+            + conti["aggiustamento_statistico"]
+        )
+        assert abs(ricostruito - conti["popolazione_censita"]) < 0.5, codice
+
+
+def test_la_popolazione_censita_del_bilancio_e_quella_del_censimento() -> None:
+    """Le due tabelle parlano della stessa popolazione, non di due popolazioni.
+
+    È la condizione che permette di scomporre `popolazione_comuni.csv` con i
+    flussi di un'altra fonte senza inventare un residuo.
+    """
+    censimento = {
+        (r["codice_istat"], r["anno"]): float(r["valore"])
+        for r in leggi("popolazione_comuni.csv")
+        if r["indicatore"] == "popolazione_residente" and r["valore"]
+    }
+    confrontate = 0
+    for riga in leggi("bilancio_demografico_comuni.csv"):
+        if riga["indicatore"] != "popolazione_censita" or not riga["valore"]:
+            continue
+        atteso = censimento.get((riga["codice_istat"], riga["anno"]))
+        if atteso is None:
+            continue
+        assert abs(float(riga["valore"]) - atteso) < 0.5, riga
+        confrontate += 1
+    assert confrontate > 1000, f"solo {confrontate} confronti: la finestra non si sovrappone"
+
+
+def test_le_province_del_bilancio_sono_tutte_e_107() -> None:
+    righe = leggi("bilancio_province.csv")
+    codici = {r["codice_provincia"] for r in righe}
+    assert len(codici) == 107
+    assert all(len(c) == 3 for c in codici)
+
+
+def test_la_provincia_di_brescia_e_la_somma_dei_suoi_comuni() -> None:
+    """Le due tabelle si controllano a vicenda: stessa fonte, due aggregazioni."""
+    comuni = componenti_bilancio(leggi("bilancio_demografico_comuni.csv"), "codice_istat")
+    province = componenti_bilancio(leggi("bilancio_province.csv"), "codice_provincia")
+    for indicatore in ("nati", "morti", "immigrati_estero", "popolazione_censita"):
+        somma = sum(c[indicatore] for c in comuni.values())
+        assert abs(somma - province[PROVINCIA_BRESCIA_ISTAT][indicatore]) < 0.5, indicatore
+
+
+def test_i_conteggi_del_bilancio_non_sono_negativi() -> None:
+    """I flussi lordi sono conteggi. I saldi sarebbero negativi, ma la tabella
+    non li porta: se un `nati` esce negativo, si è letta la colonna sbagliata."""
+    lordi = {"nati", "morti", "immigrati_interni", "emigrati_interni",
+             "immigrati_estero", "emigrati_estero", "popolazione_inizio",
+             "popolazione_fine", "popolazione_censita"}
+    for tabella in ("bilancio_demografico_comuni.csv", "bilancio_province.csv"):
+        for riga in leggi(tabella):
+            if riga["indicatore"] in lordi and riga["valore"]:
+                assert float(riga["valore"]) >= 0, f"{tabella}: {riga}"
