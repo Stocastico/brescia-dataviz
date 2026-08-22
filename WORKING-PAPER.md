@@ -11,19 +11,20 @@
 >
 > ## ⚠️ Bozza — versione 1, agosto 2026
 >
-> **Riscritta dopo il primo giro di analisi e la pubblicazione di quattro
+> **Riscritta dopo il primo giro di analisi e la pubblicazione di cinque
 > storie.** La §7 non contiene più solo ciò che era emerso costruendo la
 > pipeline: contiene risultati veri, con i loro controlli. La §6.1, che era il
 > pezzo più solido del documento, ha ora la sua conclusione invece della sua
 > domanda.
 >
+> **Il limite più serio della versione precedente è caduto.** Diceva che tutti i
+> risultati descrivevano Brescia senza dire se Brescia fosse diversa da una
+> provincia qualunque. Il confronto esterno adesso c'è su tre assi su quattro —
+> imprese (§7.1), redditi (§7.3), popolazione (§7.6) — e su due dei tre ha
+> cambiato quello che il progetto diceva. Resta scoperto il **turismo**.
+>
 > Cosa resta provvisorio: il **titolo**, che cambierà quando sarà chiara la
-> tesi; la §5, da rivedere se si aggiungeranno indicatori; e soprattutto
-> l'assenza di un **confronto esterno**. Tutti i risultati qui sotto descrivono
-> Brescia senza dire se Brescia sia diversa da una provincia qualunque: la
-> convergenza dei redditi in particolare potrebbe essere un fatto italiano e
-> non bresciano, e finché non c'è almeno Bergamo non si può sapere. È il limite
-> più serio di questa versione ed è dichiarato in §8.
+> tesi; la §5, da rivedere se si aggiungeranno indicatori.
 
 ---
 
@@ -34,7 +35,8 @@ provincia e i suoi 205 comuni — a partire da fonti esclusivamente aperte:
 ISTAT (censimento permanente, registro ASIA delle unità locali, criminalità,
 forze di lavoro, commercio estero), MEF (dichiarazioni dei redditi per classi
 di importo), ARPA Lombardia (qualità dell'aria dal 1992 e clima dal 1990),
-Regione Lombardia (flussi turistici). Ventuno tabelle tidy, tutte ricostruibili
+Regione Lombardia (flussi turistici), ISTAT `demo.istat.it` (bilancio
+demografico comunale). Ventisei tabelle tidy, tutte ricostruibili
 con `requests` e la libreria standard di Python, senza chiavi API — e da lì un
 sito statico autocontenuto, costruito senza alcuna dipendenza a runtime.
 
@@ -45,7 +47,7 @@ fermano alla provincia, altri arrivano al comune, nessuno scende sotto), la
 soprattutto la **fragilità semantica degli aggregati amministrativi**, che
 cambiano per ragioni contabili senza che cambi nulla nel mondo.
 
-I risultati metodologicamente più utili sono **quattro errori corretti**, tutti
+I risultati metodologicamente più utili sono **cinque errori corretti**, tutti
 trovati sui dati e non previsti a tavolino.
 
 1. **§6.1 — decomporre prima di titolare.** Una variazione aggregata
@@ -70,8 +72,19 @@ trovati sui dati e non previsti a tavolino.
    Misurare un territorio solo contro sé stesso fa scambiare la normalità di un
    paese per la caratteristica di un luogo.
 
-Nessuno dei quattro è un errore di programmazione: sono quattro modi diversi di
-far dire a un dato corretto una cosa falsa.
+5. **§7.6 — una variazione netta non è una spiegazione, e il titolo che le si
+   dà non deve contenerne una.** La prima storia del progetto si intitolava
+   «dove il bresciano si svuota» e la parola *spopolamento* portava con sé un
+   meccanismo — la gente se ne va — che una differenza fra due stock non
+   contiene. Scomposta nelle sue componenti, la risposta è l'opposto: sui 93
+   comuni in calo la migrazione interna sommata vale **−66 persone in sei anni**
+   contro −10.163 di saldo naturale. È lo stesso errore di §6.1, commesso su una
+   parola invece che su un numero.
+
+Nessuno dei cinque è un errore di programmazione: sono cinque modi diversi di
+far dire a un dato corretto una cosa falsa. Tre dei cinque — il primo, il quarto
+e il quinto — sono la stessa disciplina applicata a oggetti diversi:
+**scomporre, o confrontare, prima di dare un nome a una variazione.**
 
 ---
 
@@ -349,10 +362,17 @@ che i dati non sostengono.
 - **Rottura Covid**, testata in modo sistematico. Oggi è dichiarata (MET-8) e
   mostrata su un caso solo — la serie della classe ≥250 del capoluogo, dove la
   discontinuità del 2020 è visibile a occhio.
-- **Decomposizione demografica**: quanta parte della variazione di popolazione
-  viene da saldo naturale, migrazione interna, migrazione estera. È la prima
-  voce della sezione «cosa non possiamo dire» del sito pubblicato, ed è l'unica
-  di quella lista che si tolga scaricando una tabella.
+- ✅ **Decomposizione demografica** (`analysis/decomposizione_popolazione.py`).
+  Era la prima voce della sezione «cosa non possiamo dire» del sito, ed è stata
+  l'unica di quella lista che si sia potuta togliere scaricando una tabella. Il
+  risultato è in §7.6 e ribalta la parola su cui poggiava la prima storia. Porta
+  con sé anche il **quarto uso del confronto fra province**, gratis: il file
+  della fonte è nazionale.
+- **Rottura Covid sulla popolazione.** La scomposizione di §7.6 somma sei anni,
+  quindi passa sopra il 2020 come qualunque media (MET-8). I dati sono mensili e
+  la discontinuità si potrebbe isolare: nel 2020 la mortalità bresciana è stata
+  fuori scala, e non sapere quanta parte del saldo naturale di sei anni venga da
+  quei pochi mesi è un buco reale in §7.6.
 
 ## 7. Risultati
 
@@ -477,7 +497,8 @@ non sono 205 osservazioni indipendenti.
 
 - **93 comuni su 205 perdono abitanti** fra 2018 e 2024, mentre la provincia nel
   complesso cresce dello 0,15 % l'anno. Le cadute più rapide sono tutte di
-  montagna (Magasa −2,9 % l'anno), e non sono sparse: Moran 0,34.
+  montagna (Magasa −2,9 % l'anno), e non sono sparse: Moran 0,34. Il *perché* è
+  in §7.6, e non è quello che la parola «spopolamento» lascia intendere.
 - **La provincia è turistica, il capoluogo no.** 12.246.854 presenze nel 2024,
   di cui il 68,8 % nei primi dieci comuni, otto sul Garda. Sirmione da sola
   (1.406.590) supera Brescia città (883.531, il 7,2 %).
@@ -486,6 +507,80 @@ non sono 205 osservazioni indipendenti.
   dell'Organizzazione mondiale della sanità.
 - **La città importa lavoro**: addetti localizzati su occupati residenti ≈ 1,16;
   26.425 residenti escono ogni giorno dal comune, 23.699 per lavoro (2019).
+
+### 7.6 Lo spopolamento montano non è una partenza
+
+È il risultato più recente ed è, di nuovo, la correzione di un titolo dato prima
+di decomporre (§6.1). La prima storia del progetto misurava la variazione di
+popolazione comunale — 93 comuni su 205 in calo, in una fascia contigua di
+montagna — e dichiarava di non poter dire *perché*, perché una differenza fra due
+stock non distingue chi muore da chi parte.
+
+**La fonte che mancava non mancava.** Per mesi «ISTAT» ha voluto dire
+`esploradati.istat.it`, cioè l'SDMX; il bilancio demografico sta su un altro
+sito dello stesso istituto, `demo.istat.it`, con un'altra logica — un CSV
+zippato per anno con dentro tutti gli 7.896 comuni italiani. Sei anni si
+scaricano in mezzo minuto.
+
+Quello che rende la scomposizione utilizzabile senza mescolare due popolazioni
+diverse è un'identità verificata e non assunta: la riga «Popolazione censita al
+31 dicembre» del bilancio **coincide** con la popolazione del censimento
+permanente, comune per comune e anno per anno, allo zero. La decomposizione
+quindi chiude — popolazione iniziale più componenti più aggiustamento uguale
+popolazione censita — e la pipeline si rifiuta di scrivere le tabelle se un
+giorno smette di chiudere. Non è un modello con un residuo da interpretare.
+
+**Il risultato provinciale.** Fra il 2018 e il 2024 la provincia guadagna 11.465
+abitanti, con questa composizione:
+
+| Componente | Persone | ‰ della popolazione 2018 |
+|---|---:|---:|
+| saldo naturale | **−25.764** | −20,5 |
+| migrazione interna | +13.970 | +11,1 |
+| migrazione estera | **+27.817** | +22,2 |
+| aggiustamento statistico | −4.558 | −3,6 |
+| **variazione** | **+11.465** | **+9,1** |
+
+Senza la sola componente estera la provincia **perderebbe 16.352 abitanti**. La
+crescita non viene dalle nascite: il saldo naturale è negativo in 189 comuni su
+205.
+
+**Il risultato comunale, che ribalta la parola.** Sommando i 93 comuni che
+perdono abitanti, la migrazione interna vale **−66 persone in sei anni** contro
+−10.163 di saldo naturale. Sessantasei persone su un insieme di comuni che ne
+contano oltre centomila non è una cifra piccola, è indistinguibile da zero: chi
+ci abita **non se ne sta andando**. In 81 di quei 93 comuni la componente che
+tira più giù è il saldo naturale, in 12 la migrazione interna, in nessuno quella
+estera.
+
+**Il controllo esterno**, che qui non costa nulla perché il file della fonte è
+nazionale — lo stesso vantaggio di §7.1 sulle imprese. Su 107 province:
+
+| | Brescia (‰) | rango | mediana (‰) |
+|---|---:|---:|---:|
+| variazione | +9,1 | **6ª** | −19,7 |
+| saldo naturale | −20,5 | 14ª | −34,4 |
+| migrazione interna | +11,1 | 33ª | +6,1 |
+| migrazione estera | +22,2 | 44ª | +20,8 |
+
+Solo 21 province italiane crescono, e il saldo naturale è positivo in **una
+sola**. Il calo demografico non è montano né bresciano: è italiano. Quello che
+distingue Brescia non è che qui si facciano più figli — non se ne fanno, e la
+provincia è comunque quattordicesima proprio perché il resto d'Italia sta
+peggio — ma quanta gente arriva.
+
+**Una voce che resta fuori, e va detto perché.** L'aggiustamento statistico
+(−4.558 persone) è la rettifica che riconcilia l'anagrafe con il censimento, non
+un fenomeno demografico. Nel progetto resta una colonna a sé in
+`bilancio_demografico_comuni.csv`, nel grafico e in questo documento: sommarlo
+alle migrazioni farebbe dire al lavoro che se ne sono andate persone che in
+anagrafe non c'erano più. Su un comune di poche centinaia di abitanti basta a
+cambiare il segno.
+
+**Cosa questa scomposizione ancora non dice.** Il bilancio conta chi entra e chi
+esce da ogni comune, **non la coppia origine-destinazione**. «Chi lascia la Valle
+Camonica scende in città» resta fuori portata: servirebbero le matrici di
+migrazione, che non sono pubblicate a grana comunale.
 
 ## 8. Limiti — cosa questo metodo non può affermare
 
@@ -507,22 +602,30 @@ non sono 205 osservazioni indipendenti.
 - **Gli aggregati amministrativi sono fragili** (§6.1): il registro delle unità
   locali misura dove le cose sono *registrate*, che non sempre è dove
   accadono.
-- **Il termine di paragone copre imprese e redditi, non il resto.** Il confronto
-  con le 107 province (§7.1), con i capoluoghi (§7.2) e la replicazione della
-  convergenza su Bergamo (§7.3) sono stati fatti, e hanno corretto una sezione e
-  rafforzato le altre due. Ma **sullo spopolamento montano e sul turismo non
-  esiste**: quelle due letture restano misurate contro sé stesse, e vanno scritte
-  come «a Brescia succede questo», mai come «a Brescia, a differenza di altrove,
-  succede questo».
+- **Il termine di paragone copre tre assi su quattro; il turismo no.** Il
+  confronto con le 107 province è stato fatto sulle imprese (§7.1), sui
+  capoluoghi (§7.2), sulla demografia (§7.6), e la convergenza dei redditi è
+  stata replicata su Bergamo (§7.3). Ha corretto due letture e ne ha rafforzate
+  due. Ma **sul turismo non esiste**, e lì il caso è più difficile che negli
+  altri tre: le altre volte la fonte era nazionale e bastava non filtrarla,
+  mentre i flussi turistici arrivano da una fonte regionale. Quella lettura resta
+  misurata contro sé stessa e va scritta come «a Brescia succede questo», mai
+  come «a Brescia, a differenza di altrove, succede questo».
 - **Due province non sono l'Italia.** La replicazione su Bergamo esclude che la
   convergenza dei redditi sia un artefatto locale; non stabilisce che sia
   generale. Bergamo è per giunta la provincia **più simile** a Brescia fra
   quelle disponibili, il che rende il controllo il più debole possibile fra
   quelli sensati: un controllo forte sarebbe una provincia diversa per
   struttura.
-- **La variazione di popolazione è netta**: non distingue saldo naturale da
-  migrazione, quindi «spopolamento montano» qui è una descrizione e non una
-  spiegazione.
+- **La migrazione non ha origine né destinazione.** La variazione di popolazione
+  è scomposta (§7.6), ma il bilancio conta quante persone entrano ed escono da
+  ogni comune, non da dove a dove. Ogni affermazione sulla *direzione* dei
+  movimenti interni — la montagna che si svuota verso la città, il capoluogo che
+  perde verso la cintura — resta fuori portata.
+- **L'aggiustamento statistico non è attribuibile.** Vale −4.558 persone in
+  provincia in sei anni (§7.6) ed è una rettifica anagrafica: si sa quanto vale,
+  non di quale movimento reale sia il residuo. Su un comune piccolo basta a
+  cambiare il segno della variazione.
 - **Le quote settoriali hanno un denominatore parziale.** Il registro delle
   imprese non osserva agricoltura, pubblica amministrazione, istruzione pubblica
   e servizi domestici: nella Bassa agricola un comune «non specializzato» può
@@ -567,11 +670,14 @@ trasferibile è quasi tutta:
 | Documento | Cosa contiene |
 |---|---|
 | [`FONTI.md`](FONTI.md) | Registro delle fonti con stato di accesso verificato; note tecniche SDMX e ricette collaudate |
-| [`METODOLOGIA.md`](METODOLOGIA.md) | Le undici decisioni metodologiche per esteso |
+| [`METODOLOGIA.md`](METODOLOGIA.md) | Le quindici decisioni metodologiche per esteso |
 | [`BRIEF.md`](BRIEF.md) | La domanda, gli assi, le storie candidate |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | Consegna: cosa resta da scaricare, decisioni aperte, come si costruiscono analisi e sito |
 | [`pipeline/`](pipeline/README.md) | Il codice, con le trappole documentate |
-| [`dati/`](dati/README.md) | Le diciannove tabelle prodotte |
+| [`dati/`](dati/README.md) | Le ventisei tabelle prodotte |
+| [`analysis/`](analysis/README.md) | I dodici script che leggono quelle tabelle, e le settantotto verifiche di `verifica_cifre.py` |
 
-*Versione 0 — agosto 2026. Da rivedere quando l'analisi sarà stata fatta: la
-§7 è provvisoria e la §6.2 elenca controlli non ancora eseguiti.*
+*Versione 1 — agosto 2026. La §7 riporta risultati veri con i loro controlli, e
+di quelli elencati in §6.2 restano fuori solo due: la rottura Covid trattata in
+modo sistematico e il confronto esterno sul turismo. Resta provvisorio il
+titolo, che cambierà quando sarà chiara la tesi.*

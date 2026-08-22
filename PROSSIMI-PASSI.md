@@ -58,21 +58,21 @@ Indice:
 | Ricognizione delle fonti | ✅ [`FONTI.md`](FONTI.md), con lo stato di accesso verificato riga per riga |
 | Soggetto e assi | ✅ decisi: la provincia attraverso i 205 comuni, quattro assi portanti ([`BRIEF.md`](BRIEF.md)) |
 | Repository separato | ✅ esiste, `main`, file in radice |
-| Pipeline | ✅ funzionante, `requests` + libreria standard, 167 test verdi |
+| Pipeline | ✅ funzionante, `requests` + libreria standard, 188 test verdi |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
-| Tabelle tidy | ✅ 23 CSV in [`dati/processed/`](dati/README.md), versionati; manca solo `migrazioni_comuni.csv` |
-| Analisi | ✅ undici script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province |
+| Tabelle tidy | ✅ 26 CSV in [`dati/processed/`](dati/README.md), versionati; manca solo `migrazioni_comuni.csv` |
+| Analisi | ✅ dodici script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province, la scomposizione demografica |
 | Storie scelte | ✅ **cinque**, scritte e pubblicate nel documento narrativo — l'ultima delle quali corregge le altre. Le candidate rimaste stanno in `BRIEF.md` |
 | Contratto dati per il sito | ✅ `metric_*.json` + registro, con i cinque invarianti come test |
 | Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega |
 | Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
 | Deploy | 🤖 automatico su `main`, ma dietro un cancello: pubblica solo con `PUBBLICA` = `si`; 🙋 serve il tuo passaggio su Pages (§7) |
 | Licenza | ✅ MIT per il codice (`LICENSE`), CC BY 4.0 per testi e dati (`LICENSE-DATI`) (§3.3) |
-| `METODOLOGIA.md` | ⚠️ bozza avanzata: quattordici regole, MET-9 chiusa, tre nuove nate da questa tornata |
-| `WORKING-PAPER.md` | ⚠️ bozza, la sezione dei risultati va riscritta con le quattro storie (§8) |
+| `METODOLOGIA.md` | ⚠️ bozza avanzata: **quindici** regole, MET-9 chiusa, MET-15 nata dalla scomposizione demografica |
+| `WORKING-PAPER.md` | ⚠️ bozza, la sezione dei risultati va riscritta con le cinque storie (§8) |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
-fatte e quattro storie sono scritte in un sito che si costruisce da solo: **manca
+fatte e cinque storie sono scritte in un sito che si costruisce da solo: **manca
 la tua rilettura e un clic nelle impostazioni**. Il lavoro tecnico
 che resta è tutto facoltativo — il pannello interattivo, i download manuali, i
 confronti con altre province.
@@ -222,7 +222,7 @@ cui serve un riscarico con `force=True` — qualche ora di attesa, e conviene
 farlo insieme allo scarico delle migrazioni, che è comunque da fare.
 
 Finché non è fatto, quelle tre tabelle non sono pubblicabili così come sono. Le
-quattro storie del sito non le usano.
+cinque storie del sito non le usano.
 
 ---
 
@@ -327,11 +327,13 @@ i dati ci sono o si scaricano da soli.
   che le dieci cadute più rapide sono tutte di montagna (Magasa −2,9 % l'anno,
   Lozio, Berzo Demo, Paisco Loveno, Saviore dell'Adamello), mentre la provincia
   nel suo complesso cresce dello 0,15 % l'anno. È materiale per una storia,
-  non ancora una storia: manca la decomposizione fra saldo naturale e
-  migrazione. ⏳ È diventata **la prima storia del sito**, con la mappa e
+  non ancora una storia: mancava la decomposizione fra saldo naturale e
+  migrazione. ✅ È diventata **la prima storia del sito**, con la mappa e
   l'indice di Moran (0,34: i comuni che si svuotano confinano fra loro), e la
-  decomposizione resta il pezzo mancante — dichiarato come tale nella sezione
-  dei limiti.
+  decomposizione **c'è**: `analysis/decomposizione_popolazione.py`. Il risultato
+  ribalta la parola — sui 93 comuni in calo la migrazione interna sommata vale
+  −66 persone contro −10.163 di saldo naturale, cioè non se ne va nessuno, ci si
+  muore — ed è diventata MET-15.
 
 **Sull'ambiente**
 
@@ -410,18 +412,26 @@ Riadattate al caso bresciano. La prima è fatta, le altre no.
   una tendenza), e sulle mensili si può ma bisogna scegliere bene la base — con
   vent'anni di base il PM10 del 2020 sembra −26 %, con tre anni è −9 %, e la
   differenza è tutta tendenza di lungo periodo scambiata per pandemia.
-- 🤖 **Decomposizione della popolazione**: quanto della variazione viene da
-  saldo naturale, migrazione interna, migrazione estera. È il seguito naturale
-  della prima storia del sito, ed è la domanda che quella storia dichiara di non
-  poter rispondere. Servono le tavole del bilancio demografico, non ancora
-  scaricate.
+- ✅ **Decomposizione della popolazione**
+  (`analysis/decomposizione_popolazione.py`). Le tavole del bilancio demografico
+  c'erano, ma su un host a cui nessuno aveva pensato: `demo.istat.it`, tavola
+  D7B, un CSV zippato per anno con dentro tutti i comuni italiani — niente SDMX,
+  niente chiavi posizionali, mezzo minuto per sei anni. La scomposizione
+  **chiude allo zero** perché la «popolazione censita» di quella tavola è la
+  stessa del censimento permanente, e ha prodotto MET-15. È anche il caso più
+  netto della lezione di §9: la fonte non mancava, mancava l'idea di cercarla
+  fuori da `esploradati`.
 - ✅ **Il confronto fra province** (`analysis/confronto_province.py`), che è
   andato oltre Bergamo: gli stessi indicatori su tutte e 107 le province, perché
   i file grezzi nazionali erano già su disco e il costo era il tempo di
   rileggerli. Ha corretto la frase più ripetuta del progetto (MET-14) e
   rafforzato MET-9. ✅ Esteso ai **redditi** con `convergenza_confronto.py`: la
   convergenza regge identica a Bergamo (−0,48 contro −0,45), quindi è solida e
-  non è bresciana. ⏳ Restano fuori **popolazione e turismo**.
+  non è bresciana. ✅ Esteso alla **popolazione** con
+  `decomposizione_popolazione.py`, e per lo stesso motivo — il file della fonte
+  è nazionale, le 107 province costano zero download in più: Brescia è la 6ª
+  provincia italiana per crescita, contro una mediana di −19,7 abitanti ogni
+  mille. ⏳ Resta fuori il **turismo**.
 
 ### 5.3 La convenzione di `analysis/`
 
@@ -448,7 +458,7 @@ Questa è la parte che si perderebbe. Il progetto Donostia pubblica **due cose
 diverse** sullo stesso sito, ed è una separazione che vale la pena copiare.
 
 > **✅ Il primo dei due artefatti esiste** (agosto 2026), in
-> [`sito/`](sito/README.md): documento narrativo con quattro storie, più
+> [`sito/`](sito/README.md): documento narrativo con cinque storie, più
 > `metodologia.html` e `dati.html`. Mezzo mega, autocontenuto, mappe e grafici
 > in SVG disegnati a mano. Si costruisce con `python sito/costruisci.py`.
 >
@@ -813,9 +823,9 @@ entra nel tempo che hai, non a fare un piano.
 | 🙋 Aprire il cancello: `PUBBLICA` = `si` (§7) | **1 min** | pubblicare davvero, quando i testi ti convincono |
 | 🙋 Rileggere i testi del sito | **1 h** | è il tuo nome sopra |
 | 🤖 Scarico delle migrazioni + riscarico in italiano delle tre tavole censuarie (§2.4) | **una notte di attesa** | l'unico dataset previsto che manchi, e tre tabelle oggi non pubblicabili |
-| 🤖 Decomposizione della popolazione: saldo naturale contro migrazione | **mezza giornata** | rispondere alla domanda che la prima storia del sito dichiara di non poter rispondere |
-| 🤖 Estendere il confronto fra province a popolazione e turismo | **mezza giornata** | imprese e redditi il termine di paragone ce l'hanno; lo spopolamento montano no, ed è una storia intera del sito |
-| 🤖 Riscrivere la §7 del working paper con le quattro storie | **mezza giornata** | il documento per un lettore esterno |
+| ✅ ~~Decomposizione della popolazione~~ | fatta | ed è diventata MET-15: la prima storia adesso risponde alla domanda che dichiarava di non poter rispondere |
+| 🤖 Estendere il confronto fra province al **turismo** | **mezza giornata** | imprese, redditi e popolazione il termine di paragone ce l'hanno; il turismo no. Ed è il caso più difficile dei quattro: la fonte è regionale, quindi un confronto nazionale va costruito da un'altra fonte |
+| 🤖 Riscrivere la §7 del working paper con le cinque storie | **mezza giornata** | il documento per un lettore esterno |
 | 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |
 | 🙋 I download manuali (§2.2) | **2–4 h in tutto** | estensioni, nessun asse portante |
 
@@ -835,26 +845,32 @@ presenza.
 
 ### Se hai mezza giornata
 
-La decomposizione della popolazione fra saldo naturale e migrazione. È
-letteralmente la prima voce della sezione «cosa questi dati non permettono di
-dire» del sito, ed è l'unica di quella lista che si possa togliere scaricando
-una tabella.
+Riscrivere la §7 del working paper con le cinque storie. È l'ultimo documento
+rimasto indietro: la nota metodologica è allineata, il sito racconta, e il paper
+descrive ancora risultati provvisori. Il materiale c'è tutto e non serve
+scaricare niente.
 
 ### Se hai un weekend
 
-Estendere il confronto fra province a **popolazione e turismo**. Sulle imprese e
-sui redditi è fatto, ed è servito più di qualunque altra analisi: ha smontato una
-frase che il progetto ripeteva dal primo giorno e ha tolto un aggettivo a
-un'altra. Sullo spopolamento montano — che nel sito è la prima storia — il
-termine di paragone non c'è: si svuota anche il resto delle Alpi, e quanto? Lo
-schema è già scritto in `datasets/province.py` e in
-`datasets/redditi_confronto.py`, che sono i due modi diversi di farlo a seconda
-che la fonte si possa filtrare in locale o no.
+**Il pannello React** (§6.1), o il **turismo confrontato con il resto d'Italia**.
+
+Il confronto fra province è servito più di qualunque altra analisi — ha smontato
+una frase che il progetto ripeteva dal primo giorno (MET-14) e ha ribaltato la
+parola su cui poggiava la prima storia (MET-15) — e adesso copre imprese, redditi
+e popolazione. Sul turismo no, ed è il caso più difficile: le altre tre volte la
+fonte era nazionale e bastava non filtrarla, mentre i flussi turistici arrivano
+da `dati.lombardia.it` e coprono la Lombardia. Servirebbe la tavola ISTAT sulla
+capacità e sul movimento degli esercizi ricettivi, che è un'altra fonte con le
+sue trappole. Lo schema di come si fa sta in `datasets/province.py` (filtro
+locale su file nazionale), in `datasets/bilancio.py` (stesso, su un host
+diverso) e in `datasets/redditi_confronto.py` (quando la fonte non si può
+filtrare e ogni provincia costa i suoi download).
 
 **Da dove ripartire in ogni caso**: `python analysis/verifica_cifre.py`. Se le
 verifiche passano, le tabelle sono a posto e i documenti dicono il
 vero; se una diverge, quello è il primo problema da guardare — ed è già successo
-due volte che ne trovasse una.
+due volte che ne trovasse una. Sono settantotto verifiche, e diciotto vengono
+dalla scomposizione demografica.
 
 ---
 
