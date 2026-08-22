@@ -488,7 +488,17 @@ Fatte valere dai test della pipeline (`pipeline/tests/`):
    con i flussi di un'altra senza inventare un residuo;
 9. la somma dei comuni bresciani torna con l'aggregato provinciale che la fonte
    pubblica per conto suo — due aggregazioni della stessa fonte che si
-   controllano a vicenda.
+   controllano a vicenda;
+10. **due tabelle che raccontano la stessa cosa devono tornare**: la provincia
+    di `imprese_province.csv` è la somma dei comuni di
+    `imprese_classe_addetti.csv`; il turismo annuale è la somma dei dodici mesi
+    dove i dodici mesi ci sono; `comuni_sintesi.csv` non riscrive un numero
+    diverso da quello della tabella da cui viene. Sono controlli nati come
+    verifiche fatte a mano in una revisione, e messi nei test perché una
+    revisione che non lascia un test dietro di sé va rifatta da capo;
+11. **la pioggia si somma e la temperatura si media**, e la colonna
+    `aggregazione` lo dice: se un giorno la pioggia uscisse come media i totali
+    annui crollerebbero di tre ordini di grandezza senza che niente fallisca.
 
 E due controlli che non sono test ma girano a ogni push
 (`.github/workflows/verifica.yml`):
