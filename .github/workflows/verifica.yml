@@ -21,7 +21,9 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - run: pip install -e ./pipeline pytest
+      # pyyaml non serve alla pipeline: serve al test che controlla che il
+      # workflow di pubblicazione non possa partire da solo.
+      - run: pip install -e ./pipeline pytest pyyaml
       - name: Test della pipeline
         run: python -m pytest pipeline/tests -q
       - name: Le cifre citate nei documenti tornano

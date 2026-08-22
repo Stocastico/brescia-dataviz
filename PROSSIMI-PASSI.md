@@ -24,7 +24,7 @@ visibile. Il resto si costruisce da solo a ogni push su `main`.
 | | Cosa | Perché tocca a te | Tempo | Blocca |
 |---|---|---|---|---|
 | 🙋 2 | **Correggere la sorgente di GitHub Pages** (§7): *Settings → Pages → Source* è su «Deploy from a branch», va messo su **«GitHub Actions»** | serve il tuo accesso da proprietario del repo | 2 min | il primo deploy: finché resta com'è, l'indirizzo pubblico serve il README passato per Jekyll, non il racconto |
-| 🙋 9 | **Aprire il cancello** quando i testi ti convincono (§7): *Settings → Secrets and variables → Actions → Variables → `PUBBLICA` = `si`* | è la decisione di pubblicare, e non la prende un workflow | 1 min | che il sito diventi visibile. Prima di allora si costruisce a ogni push e resta un artefatto da scaricare |
+| 🙋 9 | **Pubblicare**, quando l'analisi sarà finita (§7): *Actions → «Pubblica il sito» → Run workflow → conferma = `pubblica`* | è la decisione di pubblicare, e non la prende un workflow | 1 min | che il sito diventi visibile. Prima di allora si costruisce a ogni push e resta un artefatto da scaricare |
 | 🙋 3 | **Scaricare le quotazioni OMI** e i perimetri delle zone (§2.2) | area riservata Agenzia delle Entrate, SPID/CIE | 1–2 h la prima volta | solo l'asse «casa e prezzi», che è di contorno |
 | 🙋 4 | **Scaricare gli open data del Comune di Brescia** (§2.2) | `dati.comune.brescia.it` non risponde dagli ambienti remoti, da una macchina italiana sì | 30 min | estende indietro il turismo cittadino (2005–2013) |
 | 🙋 5 | **Scaricare i dati MUR sui due atenei** (§2.2) | `dati-ustat.mur.gov.it` idem | 30 min | l'asse istruzione, che è di contorno |
@@ -66,7 +66,7 @@ Indice:
 | Contratto dati per il sito | ✅ `metric_*.json` + registro, con i cinque invarianti come test |
 | Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega |
 | Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
-| Deploy | 🤖 automatico su `main`, ma dietro un cancello: pubblica solo con `PUBBLICA` = `si`; 🙋 serve il tuo passaggio su Pages (§7) |
+| Deploy | 🤖 la **costruzione** è automatica su `main` (test, cifre, sito, artefatto); la **pubblicazione** no: parte solo a mano, con una conferma scritta (§7). 🙋 serve il tuo passaggio su Pages |
 | Licenza | ✅ MIT per il codice (`LICENSE`), CC BY 4.0 per testi e dati (`LICENSE-DATI`) (§3.3) |
 | `METODOLOGIA.md` | ⚠️ bozza avanzata: **quindici** regole, MET-9 chiusa, MET-15 nata dalla scomposizione demografica |
 | `WORKING-PAPER.md` | ⚠️ bozza, la sezione dei risultati va riscritta con le cinque storie (§8) |
@@ -623,13 +623,20 @@ poco e rende il lavoro verificabile da chiunque. Qui esistono già:
 > ISTAT, perché la pubblicazione non deve poter fallire per un host che quel
 > giorno non risponde.
 >
-> Parte **a ogni push su `main`** e anche a mano, ma fra il costruire e il
-> pubblicare c'è un **cancello**: il job `pubblica` gira solo se la variabile di
-> repository `PUBBLICA` vale `si`. Finché non la crei, ogni push costruisce il
-> sito, lo verifica e lo lascia come **artefatto scaricabile** dell'esecuzione —
-> online non compare niente. Quando i testi ti convincono: *Settings → Secrets
-> and variables → Actions → Variables → `PUBBLICA` = `si`*, e da lì in poi ogni
-> push su `main` pubblica davvero.
+> **Costruire non è pubblicare**, e i due verbi stanno in due job separati.
+> `costruisci` parte a ogni push su `main`: dati, test, ricalcolo delle cifre,
+> sito, e l'artefatto scaricabile dalla pagina dell'esecuzione — così il sito si
+> rilegge mentre l'analisi va avanti, senza che esista un indirizzo pubblico.
+> `pubblica` **non parte da nessun evento automatico**: ci si arriva solo da
+> *Actions → «Pubblica il sito» → Run workflow*, scrivendo `pubblica` nella
+> casella di conferma.
+>
+> Non c'è nessuna variabile da impostare prima e nessuno stato da ricordarsi di
+> richiudere dopo: la decisione si prende nel momento in cui si pubblica e vale
+> per quella esecuzione sola. ⏳ **Era una variabile di repository `PUBBLICA`**,
+> che una volta aperta faceva pubblicare ogni push; è stata sostituita ad agosto
+> 2026 perché il progetto voleva l'opposto — nessuna pubblicazione finché
+> l'analisi non è finita.
 >
 > Resta il tuo clic su Pages, e ad agosto 2026 **non è ancora quello giusto**: Pages è attivo, ma con
 > *Source = «Deploy from a branch»*. Con quella impostazione GitHub ignora il
@@ -663,16 +670,30 @@ in tre file:
 4. `costruisci.py --uscita _site`, con la data presa dal commit;
 5. il controllo che nessun segnaposto sia sopravvissuto, poi
    `upload-pages-artifact`. **Qui finisce il job che gira sempre.**
-6. Il job `pubblica`, dietro `if: vars.PUBBLICA == 'si'`:
+6. Il job `pubblica`, dietro
+   `if: github.event_name == 'workflow_dispatch' && inputs.conferma == 'pubblica'`:
    `configure-pages` con `enablement: true` e `deploy-pages`. È l'unico posto
-   che tocca le impostazioni di Pages, e con il cancello chiuso non gira.
+   che tocca le impostazioni di Pages, e da un push non è raggiungibile.
 
 Dettagli che costano tempo se non li sai:
 
-- **Il cancello è un interruttore, non un'approvazione a ogni deploy.** Se
-  preferisci fermare *ogni* pubblicazione con un clic, l'ambiente
+- **Il cancello è l'evento, non una variabile.** Nessun push, nessuno
+  `schedule` aggiunto un domani e nessun `repository_dispatch` può soddisfare
+  quella condizione. È una proprietà che vale la pena non perdere per sbaglio,
+  quindi ha un test: `pipeline/tests/test_workflow_deploy.py` legge il workflow
+  e fallisce se il job `pubblica` smette di essere ristretto al lancio manuale.
+  Se un giorno vorrai il deploy automatico, la modifica è una riga e quel test
+  ti dirà che l'hai fatta — che è il suo mestiere.
+- **La conferma è scritta, non un clic.** Un input obbligatorio in cui digitare
+  `pubblica`: «Run workflow» da solo costruisce e basta. Serviva perché il
+  bottone è a un clic di distanza da chiunque abbia accesso in scrittura.
+- **Se vuoi anche un'approvazione umana** sopra a tutto questo, l'ambiente
   `github-pages` accetta dei «required reviewers»: *Settings → Environments →
   github-pages*. Le due cose convivono.
+- **Un push non può annullare una pubblicazione a metà.** I due generi di
+  esecuzione stanno in gruppi di concorrenza diversi
+  (`pages-${{ github.event_name }}`): due build si annullano a vicenda senza
+  danno, un deploy interrotto lascerebbe il sito monco.
 - **Le versioni delle action** sono allineate a `donostia-dataviz`, che il
   deploy ce l'ha funzionante: checkout v7, setup-python v7, configure-pages v6,
   upload-pages-artifact v5, deploy-pages v5. Restare indietro di un major è il
@@ -820,7 +841,7 @@ entra nel tempo che hai, non a fare un piano.
 | Blocco | Tempo | Serve a |
 |---|---|---|
 | 🙋 Mettere la sorgente di Pages su «GitHub Actions» (§7) | **2 min** | poter pubblicare |
-| 🙋 Aprire il cancello: `PUBBLICA` = `si` (§7) | **1 min** | pubblicare davvero, quando i testi ti convincono |
+| 🙋 Pubblicare: *Run workflow → conferma = `pubblica`* (§7) | **1 min** | mandare il sito online, quando l'analisi sarà finita |
 | 🙋 Rileggere i testi del sito | **1 h** | è il tuo nome sopra |
 | 🤖 Scarico delle migrazioni + riscarico in italiano delle tre tavole censuarie (§2.4) | **una notte di attesa** | l'unico dataset previsto che manchi, e tre tabelle oggi non pubblicabili |
 | ✅ ~~Decomposizione della popolazione~~ | fatta | ed è diventata MET-15: la prima storia adesso risponde alla domanda che dichiarava di non poter rispondere |
@@ -833,9 +854,9 @@ entra nel tempo che hai, non a fare un piano.
 ### Se hai venti minuti
 
 Sono i venti minuti che valgono di più di tutto il resto di questa tabella:
-metti la sorgente di Pages su «GitHub Actions», lancia il workflow a mano e
-scarica l'artefatto, rileggi la prima storia. Il sito è pronto, e il cancello
-lo apri quando lo sei anche tu.
+metti la sorgente di Pages su «GitHub Actions», lancia il workflow a mano —
+lasciando la conferma su `no`, così costruisce e basta — scarica l'artefatto e
+rileggi la prima storia. Il sito è pronto; lo pubblichi quando lo sei anche tu.
 
 ### Se hai due ore
 
