@@ -69,6 +69,18 @@ A queste si aggiungono tre vincoli operativi.
   [`../FONTI.md`](../FONTI.md) §10 punto 6.
 - **I valori mancanti** (`Dato riservato`, `-9999`) non vanno **mai**
   convertiti in zero.
+- **L'aggregazione mensile non è sempre una media.** La pioggia si somma, la
+  temperatura si media, e la media delle piogge orarie è un numero plausibile
+  che non significa niente. (`ambiente.py`, `SERIE_METEO`)
+- **L'alias di un valore aggregato non deve chiamarsi come una colonna della
+  fonte.** Con `avg(valore) AS valore`, il `WHERE valore > -100` di Socrata
+  risolve l'alias e risponde `400 aggregate-in-ungrouped-context`. Senza quel
+  filtro passano i −999 con cui ARPA marca i dati non validi, cioè medie
+  mensili negative. (`ambiente.py`, `ALIAS_VALORE`)
+- **Ogni serie storica ARPA contiene un parametro solo.** «Temperatura dal
+  2021» non risponde a un pluviometro: risponde **zero righe**, senza errore.
+  È il modo in cui questo modulo ha prodotto per mesi una tabella di sole
+  temperature mentre la documentazione ne prometteva quattro parametri.
 - **I confini ISTAT si chiamano `_WGS84` ma sono in metri UTM 32N.** Passarli a
   una mappa senza riproiettare disegna la provincia al largo dell'Africa, e
   l'errore è silenzioso perché i numeri restano numeri. (`geo.py`)
@@ -89,7 +101,7 @@ A queste si aggiungono tre vincoli operativi.
 | `abitazioni` | `abitazioni_comuni.csv` | 205 comuni, 2019 · 2021 · 2023 | ISTAT Censimento permanente |
 | `famiglie` | `famiglie_comuni.csv` | 205 comuni, 2018–2024 | ISTAT Censimento permanente |
 | `sicurezza` | `reati_provincia.csv`, `percezione_sicurezza.csv` | provincia / comune | ISTAT |
-| `ambiente` | `stazioni_arpa.csv`, `aria_mensile.csv`, `meteo_mensile.csv` | stazione, dal 1990 | ARPA Lombardia |
+| `ambiente` | `stazioni_arpa.csv`, `aria_mensile.csv`, `meteo_mensile.csv` | stazione, dal 1986 | ARPA Lombardia (un dataset per parametro) |
 | `redditi` | `redditi_comuni.csv` | comuni | MEF via ISTAT |
 | `redditi_confronto` | `redditi_comuni_confronto.csv` | comuni di Bergamo | MEF via ISTAT |
 | `commercio_estero` | `commercio_estero_lombardia.csv` | **regione** (ripiego) | ISTAT |
