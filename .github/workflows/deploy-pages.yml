@@ -1,24 +1,28 @@
-# Pubblica il sito su GitHub Pages.
+# Costruisce il sito a ogni push, e lo pubblica **solo quando lo dici tu**.
 #
-# Parte a ogni push su `main`, e anche a mano (`workflow_dispatch`). Ma
-# costruire non è pubblicare: il lavoro si divide in due job, e fra i due c'è un
-# cancello.
+# I due verbi sono separati apposta, perché sono due decisioni diverse:
 #
-#   costruisci  gira sempre: dati, test, cifre, sito, artefatto. Non tocca Pages
-#               e non pubblica niente. L'artefatto è scaricabile dalla pagina
+#   costruisci  gira a ogni push su `main` e a ogni lancio manuale: dati, test,
+#               ricalcolo delle cifre citate, sito, artefatto. Non tocca Pages e
+#               non manda niente online. L'artefatto è scaricabile dalla pagina
 #               dell'esecuzione, quindi il sito si rilegge prima che esista un
-#               indirizzo pubblico.
-#   pubblica    gira solo se la variabile di repository PUBBLICA vale «si».
+#               indirizzo pubblico — ed è il modo di controllarlo mentre
+#               l'analisi va avanti.
+#   pubblica    non parte da nessun evento automatico. Ci si arriva **solo** da
+#               Actions → «Pubblica il sito» → Run workflow, scrivendo
+#               `pubblica` nella casella di conferma.
 #
-# 🙋 Il cancello lo apri tu, una volta sola, quando i testi ti convincono:
-#    Settings → Secrets and variables → Actions → Variables → New variable,
-#    nome PUBBLICA, valore si. Da quel momento ogni push su `main` pubblica
-#    davvero. Per richiuderlo basta rimettere un altro valore.
+# 🙋 Come si pubblica, quando l'analisi sarà finita:
+#    Actions → «Pubblica il sito» → Run workflow → conferma = pubblica → Run.
+#    Non c'è nessuna variabile da impostare prima e nessuno stato da ricordarsi
+#    di richiudere dopo: la decisione si prende nel momento in cui si pubblica,
+#    e vale per quella esecuzione sola.
 #
-#    In alternativa (o in aggiunta), l'ambiente `github-pages` accetta dei
-#    «required reviewers»: con quelli ogni deploy si ferma ad aspettare un tuo
-#    clic invece di dipendere da una variabile. Il cancello qui sotto è un
-#    interruttore solo, e sta nel repository: si vede leggendo il workflow.
+#    Se un giorno vorrai che ogni push pubblichi davvero, la modifica è una
+#    riga: togliere `github.event_name == 'workflow_dispatch' &&` dalla
+#    condizione del job `pubblica`. Il test
+#    `pipeline/tests/test_workflow_deploy.py` fallirà, ed è il suo mestiere:
+#    serve a rendere quella riga una scelta e non una svista.
 #
 # 🙋 Da fare una volta sola, e lo può fare solo il proprietario del repository:
 #    Settings → Pages → Source = «GitHub Actions».
@@ -32,6 +36,11 @@ name: Pubblica il sito
 
 on:
   workflow_dispatch:
+    inputs:
+      conferma:
+        description: 'Scrivi «pubblica» per mandare il sito online. Qualunque altra cosa costruisce e basta.'
+        required: true
+        default: 'no'
   push:
     branches: [main]
 
@@ -40,10 +49,13 @@ permissions:
   pages: write
   id-token: write
 
-# Due deploy che si accavallano lasciano il sito a metà.
+# Due build che si accavallano si annullano a vicenda senza danno; una
+# pubblicazione annullata a metà lascerebbe il sito monco. I due generi di
+# esecuzione stanno quindi in gruppi separati, così un push che arriva mentre
+# stai pubblicando non tocca la pubblicazione.
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: pages-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event_name != 'workflow_dispatch' }}
 
 jobs:
   costruisci:
@@ -70,7 +82,7 @@ jobs:
 
       - name: Verifica gli invarianti del contratto
         run: |
-          pip install pytest
+          pip install pytest pyyaml
           python -m pytest pipeline/tests -q
 
       # Le cifre citate nei documenti devono tornare: se una diverge, non si
@@ -85,18 +97,18 @@ jobs:
           DATA_COMMIT=$(git log -1 --format=%cs)
           python sito/costruisci.py --uscita _site --data-build "$DATA_COMMIT"
 
-      - name: Dove sta il cancello
+      - name: Cosa succede dopo questa costruzione
         env:
-          PUBBLICA: ${{ vars.PUBBLICA }}
+          EVENTO: ${{ github.event_name }}
+          CONFERMA: ${{ inputs.conferma }}
         run: |
-          if [ "$PUBBLICA" = "si" ]; then
-            echo "PUBBLICA=si: il job «pubblica» girerà e il sito finirà online."
+          if [ "$EVENTO" = "workflow_dispatch" ] && [ "$CONFERMA" = "pubblica" ]; then
+            echo "Conferma ricevuta: il job «pubblica» girerà e il sito finirà online."
           else
-            echo "PUBBLICA non è «si»: si costruisce e basta, niente va online."
-            echo "Il sito costruito sta fra gli artefatti di questa esecuzione:"
-            echo "scaricalo e aprilo per rileggerlo."
-            echo "Per pubblicare: Settings → Secrets and variables → Actions →"
-            echo "Variables → PUBBLICA = si."
+            echo "Niente va online: questa esecuzione costruisce e verifica soltanto."
+            echo "Il sito sta fra gli artefatti di questa pagina: scaricalo e aprilo."
+            echo "Per pubblicare davvero, quando l'analisi sarà finita:"
+            echo "  Actions -> «Pubblica il sito» -> Run workflow -> conferma = pubblica"
           fi
 
       - name: Controlla che i segnaposto siano tutti sostituiti
@@ -110,19 +122,19 @@ jobs:
         with:
           path: _site
 
-  # Il cancello. Con PUBBLICA diversa da «si» questo job si salta: la
-  # costruzione resta verde, l'artefatto resta scaricabile, e online non
-  # compare niente.
+  # Il cancello, e non è una variabile: è l'evento stesso. Nessun push, nessuno
+  # schedule e nessun `repository_dispatch` può soddisfare questa condizione —
+  # ci si arriva solo da «Run workflow» scrivendo la conferma.
   pubblica:
     needs: costruisci
-    if: vars.PUBBLICA == 'si'
+    if: github.event_name == 'workflow_dispatch' && inputs.conferma == 'pubblica'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       # Sta qui e non nella costruzione: è l'unico passo che tocca le
-      # impostazioni di Pages, e con il cancello chiuso non deve girare.
+      # impostazioni di Pages, e senza conferma non deve girare.
       - uses: actions/configure-pages@v6
         with:
           enablement: true
