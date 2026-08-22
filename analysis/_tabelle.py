@@ -258,3 +258,53 @@ def scrivi_csv(nome_file: str, colonne: list[str], righe: list[dict[str, str]]) 
         writer.writeheader()
         writer.writerows(righe)
     return destinazione
+
+
+# --- il bilancio demografico --------------------------------------------
+
+# Le componenti della variazione di popolazione, definite **una volta sola**
+# (MET-13). Ogni voce è una differenza fra due flussi lordi della tavola D7B.
+COMPONENTI = {
+    "saldo_naturale": ("nati", "morti"),
+    "saldo_migratorio_interno": ("immigrati_interni", "emigrati_interni"),
+    "saldo_migratorio_estero": ("immigrati_estero", "emigrati_estero"),
+}
+
+# Le due voci che **non** sono componenti demografiche e vanno tenute separate
+# invece di essere spalmate dentro le altre: attribuire una rettifica anagrafica
+# all'emigrazione è dare un titolo prima di decomporre.
+NON_DEMOGRAFICHE = ["variazioni_territoriali", "aggiustamento_statistico"]
+
+
+def bilancio(nome_file: str = "bilancio_demografico_comuni.csv", chiave: str = "codice_istat"):
+    """`territorio -> anno -> indicatore -> valore`, dal bilancio demografico.
+
+    Con `nome_file="bilancio_province.csv"` e `chiave="codice_provincia"` legge
+    la stessa cosa per tutte le 107 province: è il termine di paragone.
+    """
+    fuori: dict[str, dict[str, dict[str, float]]] = {}
+    for riga in leggi(nome_file):
+        valore = numero(riga["valore"])
+        if valore is None:
+            continue
+        fuori.setdefault(riga[chiave], {}).setdefault(riga["anno"], {})[riga["indicatore"]] = valore
+    return fuori
+
+
+def scomponi(per_anno: dict[str, dict[str, float]], anni: list[str] | None = None):
+    """Le componenti sommate sul periodo, più il totale che devono ricostruire.
+
+    Il totale è la somma delle componenti, non la differenza fra due stock: le
+    due coincidono per costruzione (lo verifica la pipeline), e derivarlo da qui
+    tiene la scomposizione internamente coerente anche su sottoperiodi.
+    """
+    scelti = sorted(anni or per_anno)
+    somma = {nome: 0.0 for nome in list(COMPONENTI) + NON_DEMOGRAFICHE}
+    for anno in scelti:
+        conti = per_anno.get(anno, {})
+        for nome, (piu, meno) in COMPONENTI.items():
+            somma[nome] += conti.get(piu, 0.0) - conti.get(meno, 0.0)
+        for nome in NON_DEMOGRAFICHE:
+            somma[nome] += conti.get(nome, 0.0)
+    somma["totale"] = sum(v for k, v in somma.items() if k != "totale")
+    return somma

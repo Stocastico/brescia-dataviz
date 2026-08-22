@@ -342,6 +342,147 @@ def decomposizione() -> dict[str, Any]:
     }
 
 
+def scomposizione_demografica() -> dict[str, Any]:
+    """Da dove viene la variazione di popolazione, per la prima storia.
+
+    Come `decomposizione()` e `confronto_province()`, legge il CSV invece di
+    passare dai `metric_*.json`: le componenti del bilancio sono cinque numeri
+    per comune e per anno, e il contratto del §6.2 è un indicatore per comune.
+    Piegarlo a contenerle peggiorerebbe entrambe le cose.
+
+    ⚠️ L'aggiustamento statistico resta una voce **separata**: è la rettifica che
+    riconcilia l'anagrafe con il censimento, non un fenomeno demografico, e
+    sommarlo dentro le migrazioni farebbe dire al sito che se ne sono andate
+    persone che invece non sono mai esistite in anagrafe.
+    """
+    import csv
+
+    path = PROCESSED / "bilancio_demografico_comuni.csv"
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as handle:
+        righe = list(csv.DictReader(handle))
+
+    per_comune: dict[str, dict[str, float]] = {}
+    anni: set[str] = set()
+    for riga in righe:
+        if not riga["valore"]:
+            continue
+        anni.add(riga["anno"])
+        conti = per_comune.setdefault(riga["codice_istat"], {})
+        conti[riga["indicatore"]] = conti.get(riga["indicatore"], 0.0) + float(riga["valore"])
+
+    def componenti(conti: dict[str, float]) -> dict[str, float]:
+        return {
+            "naturale": conti.get("nati", 0.0) - conti.get("morti", 0.0),
+            "interna": conti.get("immigrati_interni", 0.0) - conti.get("emigrati_interni", 0.0),
+            "estera": conti.get("immigrati_estero", 0.0) - conti.get("emigrati_estero", 0.0),
+            "territorio": conti.get("variazioni_territoriali", 0.0),
+            "aggiustamento": conti.get("aggiustamento_statistico", 0.0),
+        }
+
+    comuni = {codice: componenti(conti) for codice, conti in per_comune.items()}
+    # La base è la popolazione a inizio del **primo** anno: `per_comune` somma
+    # `popolazione_inizio` su tutti e sei, che è un numero senza significato.
+    primo_anno = min(anni)
+    base: dict[str, float] = {}
+    for riga in righe:
+        if riga["indicatore"] == "popolazione_inizio" and riga["anno"] == primo_anno:
+            base[riga["codice_istat"]] = float(riga["valore"])
+
+    chiavi = ("naturale", "interna", "estera", "territorio", "aggiustamento")
+    provincia = {chiave: sum(c[chiave] for c in comuni.values()) for chiave in chiavi}
+    provincia["totale"] = sum(provincia.values())
+    provincia["base"] = sum(base.values())
+
+    # I comuni che perdono abitanti, sommati **in persone**: le quote per mille
+    # di comuni diversi hanno denominatori diversi e non si sommano fra loro.
+    perdenti = [c for c, v in comuni.items() if sum(v.values()) < 0]
+    in_calo = {chiave: sum(comuni[c][chiave] for c in perdenti) for chiave in chiavi}
+    in_calo["quanti"] = len(perdenti)
+
+    return {
+        # Lo stock di partenza è quello di fine dell'anno prima del primo
+        # bilancio: i flussi del 2019 portano dalla popolazione di fine 2018.
+        "primo": str(int(primo_anno) - 1),
+        "ultimo": max(anni),
+        "provincia": provincia,
+        "in_calo": in_calo,
+        "comuni": {
+            codice: {
+                chiave: round(valore / base[codice] * 1000, 2)
+                for chiave, valore in valori_comune.items()
+            }
+            for codice, valori_comune in comuni.items()
+            if base.get(codice)
+        },
+        "province": scomposizione_province(),
+    }
+
+
+def scomposizione_province() -> dict[str, Any]:
+    """Le stesse componenti su tutte le province: il paragone che mancava.
+
+    Sulle imprese e sui redditi il termine di paragone c'è (ed è servito: MET-14
+    è nata da lì); sullo spopolamento no, ed è una storia intera di questo sito.
+    """
+    import csv
+
+    path = PROCESSED / "bilancio_province.csv"
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as handle:
+        righe = list(csv.DictReader(handle))
+
+    per_provincia: dict[str, dict[str, float]] = {}
+    nomi: dict[str, str] = {}
+    base: dict[str, float] = {}
+    primo = min(r["anno"] for r in righe)
+    for riga in righe:
+        if not riga["valore"]:
+            continue
+        nomi[riga["codice_provincia"]] = riga["provincia"]
+        conti = per_provincia.setdefault(riga["codice_provincia"], {})
+        conti[riga["indicatore"]] = conti.get(riga["indicatore"], 0.0) + float(riga["valore"])
+        if riga["indicatore"] == "popolazione_inizio" and riga["anno"] == primo:
+            base[riga["codice_provincia"]] = float(riga["valore"])
+
+    misure: dict[str, dict[str, float]] = {}
+    for codice, conti in per_provincia.items():
+        if not base.get(codice):
+            continue
+        mille = 1000 / base[codice]
+        naturale = (conti.get("nati", 0.0) - conti.get("morti", 0.0)) * mille
+        interna = (conti.get("immigrati_interni", 0.0) - conti.get("emigrati_interni", 0.0)) * mille
+        estera = (conti.get("immigrati_estero", 0.0) - conti.get("emigrati_estero", 0.0)) * mille
+        altro = (conti.get("variazioni_territoriali", 0.0)
+                 + conti.get("aggiustamento_statistico", 0.0)) * mille
+        misure.setdefault("naturale", {})[codice] = naturale
+        misure.setdefault("interna", {})[codice] = interna
+        misure.setdefault("estera", {})[codice] = estera
+        misure.setdefault("totale", {})[codice] = naturale + interna + estera + altro
+
+    def rango(nome_misura: str) -> int:
+        ordinati = sorted(misure[nome_misura].items(), key=lambda kv: -kv[1])
+        return [c for c, _ in ordinati].index("017") + 1
+
+    return {
+        "province": len(misure["totale"]),
+        "misure": {
+            nome_misura: {
+                "brescia": valori_province["017"],
+                "mediana": mediana(list(valori_province.values())),
+                "rango": rango(nome_misura),
+                "valori": {c: round(v, 2) for c, v in sorted(valori_province.items())},
+            }
+            for nome_misura, valori_province in misure.items()
+        },
+        "in_crescita": sum(1 for v in misure["totale"].values() if v > 0),
+        "naturale_positivo": sum(1 for v in misure["naturale"].values() if v > 0),
+        "nomi": nomi,
+    }
+
+
 # --- le cifre del racconto ----------------------------------------------
 
 
@@ -436,6 +577,61 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
     fuori["intensita_seconda_comune"] = comuni[ordinata[1][0]]["comune"]
     fuori["intensita_seconda"] = numero_it(ordinata[1][1], 1)
     fuori["intensita_mediana"] = numero_it(mediana(list(intensita.values())), 1)
+
+    demografia = scomposizione_demografica()
+    if demografia:
+        provinciale = demografia["provincia"]
+        fuori["saldo_naturale_provinciale"] = numero_it(-provinciale["naturale"])
+        fuori["migrazione_interna_provinciale"] = numero_it(provinciale["interna"])
+        fuori["migrazione_estera_provinciale"] = numero_it(provinciale["estera"])
+        fuori["aggiustamento_provinciale"] = numero_it(-provinciale["aggiustamento"])
+        fuori["crescita_provinciale_assoluta"] = numero_it(provinciale["totale"])
+        # Senza la migrazione estera la provincia perderebbe abitanti: è il modo
+        # più diretto di dire da dove viene la crescita, e va detto con il
+        # controfattuale esplicito, non lasciato dedurre dalle barre.
+        fuori["perdita_senza_estero"] = numero_it(
+            provinciale["estera"] - provinciale["totale"]
+        )
+
+        per_comune = demografia["comuni"]
+        in_calo = {
+            codice: valori_comune
+            for codice, valori_comune in per_comune.items()
+            if sum(valori_comune.values()) < 0
+        }
+        # La componente che **tira più giù**, non la più grande in valore
+        # assoluto: in un comune che perde abitanti con la migrazione estera a
+        # +59 ‰ la componente più grande è quella estera, e non è la ragione per
+        # cui il comune si svuota.
+        def piu_negativa(valori_comune: dict[str, float]) -> str:
+            return min(("naturale", "interna", "estera"), key=lambda k: valori_comune[k])
+
+        conteggio = {
+            nome: sum(1 for v in in_calo.values() if piu_negativa(v) == nome)
+            for nome in ("naturale", "interna", "estera")
+        }
+        fuori["comuni_calo_per_naturale"] = numero_it(conteggio["naturale"])
+        fuori["comuni_calo_per_interna"] = numero_it(conteggio["interna"])
+        fuori["comuni_saldo_naturale_negativo"] = numero_it(
+            sum(1 for v in per_comune.values() if v["naturale"] < 0)
+        )
+        calanti = demografia["in_calo"]
+        fuori["comuni_in_calo_naturale"] = numero_it(-calanti["naturale"])
+        fuori["comuni_in_calo_interna"] = numero_it(-calanti["interna"])
+        fuori["comuni_in_calo_estera"] = numero_it(calanti["estera"])
+
+        confronto_prov = demografia["province"]
+        if confronto_prov:
+            misure = confronto_prov["misure"]
+            fuori["province_confrontate"] = numero_it(confronto_prov["province"])
+            fuori["province_in_crescita"] = numero_it(confronto_prov["in_crescita"])
+            fuori["province_naturale_positivo"] = numero_it(confronto_prov["naturale_positivo"])
+            fuori["rango_crescita_provincia"] = numero_it(misure["totale"]["rango"])
+            fuori["rango_naturale_provincia"] = numero_it(misure["naturale"]["rango"])
+            fuori["crescita_provinciale_mille"] = numero_it(misure["totale"]["brescia"], 1)
+            fuori["mediana_province_mille"] = numero_it(-misure["totale"]["mediana"], 1)
+            fuori["naturale_provinciale_mille"] = numero_it(-misure["naturale"]["brescia"], 1)
+            fuori["mediana_naturale_mille"] = numero_it(-misure["naturale"]["mediana"], 1)
 
     scomposizione = decomposizione()
     if scomposizione:
@@ -605,6 +801,7 @@ def dati_incorporati(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict
         },
         "geo": geometria_compatta(),
         "decomposizione": decomposizione(),
+        "demografia": scomposizione_demografica(),
         "confronto": confronto_province(),
         "capoluoghi": controllo_capoluoghi(),
         "metriche": {

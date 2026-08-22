@@ -36,3 +36,16 @@ PROCESSED_DIR = PROJECT_ROOT / "dati" / "processed"
 def ensure_dirs() -> None:
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+
+
+# --- Bilancio demografico (demo.istat.it, tavola D7B) --------------------
+
+# La pagina indice porta un link per anno: gli anni si leggono da lì invece di
+# scriverli in una costante che invecchia in silenzio.
+BILANCIO_ANNI_URL = "https://demo.istat.it/app/?i=D7B&l=it"
+BILANCIO_FILE_URL = "https://demo.istat.it/data/d7b/D7B{anno}.csv.zip"
+
+# Il bilancio mensile riconciliato con il censimento permanente comincia con il
+# 2019: gli anni precedenti stanno su un'altra tavola, con un'altra popolazione
+# di riferimento, e mescolarli romperebbe la catena degli stock.
+PRIMO_ANNO_BILANCIO = 2019

@@ -21,6 +21,7 @@ from .datasets import (
     abitazioni,
     ambiente,
     anagrafica,
+    bilancio,
     commercio_estero,
     confini,
     famiglie,
@@ -42,6 +43,7 @@ DATASETS: dict[str, Callable[[dict[str, str]], None]] = {
     # apre la fila: e' la geometria di riferimento su cui tutto il resto mappa
     "confini": confini.build,
     "popolazione": popolazione.build,
+    "bilancio": bilancio.build,
     "imprese": imprese.build,
     "sezioni": sezioni.build,
     "province": province.build,
