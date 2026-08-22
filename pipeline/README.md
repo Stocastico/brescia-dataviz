@@ -79,7 +79,10 @@ A queste si aggiungono tre vincoli operativi.
 |---|---|---|---|
 | `confini` | `../dati/geo/comuni_brescia.geojson`, `comuni_geometria.csv` | 205 comuni | ISTAT limiti amministrativi 2025 |
 | `popolazione` | `popolazione_comuni.csv` | 205 comuni, 2018–2024 | ISTAT Censimento permanente |
-| `imprese` | `imprese_classe_addetti.csv`, `imprese_settore.csv` | comuni + provincia, 2018–2023 | ISTAT ASIA |
+| `bilancio` | `bilancio_demografico_comuni.csv`, `bilancio_province.csv` | 205 comuni + 107 province, 2019–2024 | ISTAT `demo.istat.it`, tavola D7B |
+| `imprese` | `imprese_classe_addetti.csv`, `imprese_settore.csv`, `imprese_settore_classe.csv` | comuni + provincia, 2018–2023 | ISTAT ASIA |
+| `sezioni` | `imprese_sezioni_comuni.csv` | 205 comuni × sezione Ateco, 2018–2023 | ISTAT ASIA |
+| `province` | `imprese_province.csv`, `imprese_capoluoghi.csv` | 107 province + capoluoghi, 2018–2023 | ISTAT ASIA (stessi file grezzi, riaggregati) |
 | `turismo` | `turismo_comuni_annuale.csv`, `turismo_comuni_mensile.csv` | comuni, 2019–2024 | Regione Lombardia |
 | `lavoro` | `censimento_lavoro_brescia.csv`, `tasso_occupazione_provincia.csv` | comune / provincia | ISTAT |
 | `migrazioni` ⏳ | `migrazioni_comuni.csv` | 205 comuni | ISTAT Censimento permanente (10 tavole) |
@@ -88,7 +91,13 @@ A queste si aggiungono tre vincoli operativi.
 | `sicurezza` | `reati_provincia.csv`, `percezione_sicurezza.csv` | provincia / comune | ISTAT |
 | `ambiente` | `stazioni_arpa.csv`, `aria_mensile.csv`, `meteo_mensile.csv` | stazione, dal 1990 | ARPA Lombardia |
 | `redditi` | `redditi_comuni.csv` | comuni | MEF via ISTAT |
+| `redditi_confronto` | `redditi_comuni_confronto.csv` | comuni di Bergamo | MEF via ISTAT |
 | `commercio_estero` | `commercio_estero_lombardia.csv` | **regione** (ripiego) | ISTAT |
+| `sintesi` | `comuni_sintesi.csv` | 205 comuni | *nessuna*: rilegge le tabelle sopra |
+| `web` | `../web/src/data/*.json` | 205 comuni | *nessuna*: rilegge le tabelle sopra |
+
+Gli ultimi due **devono restare in coda**: leggono ciò che gli altri hanno
+scritto, e girarli prima produce un export della tornata precedente.
 
 ⏳ = **modulo scritto, tabella non ancora prodotta.** `famiglie` e
 `abitazioni` sono state prodotte ad agosto 2026, quando

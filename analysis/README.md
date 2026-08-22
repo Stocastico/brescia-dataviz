@@ -12,6 +12,7 @@ il punto.
 |---|---|
 | `verifica_cifre.py` | Ricalcola dai CSV **ogni cifra citata nei documenti e nel sito** e la confronta con quella scritta. Esce con codice 1 se una diverge. |
 | `variazione_popolazione.py` | Tasso annualizzato di variazione della popolazione per comune, 2018–2024. La prima delle analisi previste in §5. |
+| `decomposizione_popolazione.py` | **Da dove viene** quella variazione: saldo naturale, migrazione interna, migrazione estera, più le due voci che componenti non sono. Ha ribaltato la parola «spopolamento» (MET-15) e porta il confronto con le altre 107 province, che sulla popolazione mancava. |
 | `velocita_di_cambio.py` | Lo stesso tasso su **addetti, unità locali e reddito**, ciascuno sulla sua finestra. |
 | `livelli_e_variazioni.py` | I quattro quadranti livello/crescita, e il test di convergenza fatto sul livello **iniziale** — che sul reddito cambia segno al risultato. |
 | `autocorrelazione_spaziale.py` | Indice di Moran sui 205 comuni, con la contiguità ricavata dal GeoJSON e la significatività per permutazione. |
@@ -25,8 +26,9 @@ il punto.
 | `_tabelle.py` | Non è un'analisi: è la lettura delle tabelle e la statistica di base che gli script hanno in comune. |
 
 ```bash
-python analysis/verifica_cifre.py                    # sessanta verifiche, agosto 2026
+python analysis/verifica_cifre.py                    # settantotto verifiche, agosto 2026
 python analysis/variazione_popolazione.py --save     # + CSV in analysis/output/
+python analysis/decomposizione_popolazione.py        # perché quella variazione
 python analysis/velocita_di_cambio.py reddito
 python analysis/livelli_e_variazioni.py
 python analysis/autocorrelazione_spaziale.py --save

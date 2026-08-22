@@ -1,4 +1,4 @@
-# Nota metodologica (MET-1…MET-14)
+# Nota metodologica (MET-1…MET-15)
 
 > **Cos'è.** Le decisioni che governano il progetto: *perché* misuriamo come
 > misuriamo. È la base di credibilità — qualunque grafico, testo o titolo deve
@@ -8,16 +8,17 @@
 >
 > ## ⚠️ Bozza avanzata — non ancora definitiva
 >
-> **Aggiornata ad agosto 2026, dopo il primo giro di analisi.** Le quattordici
-> regole qui elencate sono tutte reali e applicate; quattro di esse (MET-9,
-> MET-12, MET-13, MET-14) nascono da errori o incoerenze **effettivamente
-> trovati sui dati bresciani**, non da principi scelti a tavolino, e le ultime
-> tre sono nuove di questa tornata.
+> **Aggiornata ad agosto 2026, dopo il primo giro di analisi.** Le quindici
+> regole qui elencate sono tutte reali e applicate; cinque di esse (MET-9,
+> MET-12, MET-13, MET-14, MET-15) nascono da errori o incoerenze
+> **effettivamente trovati sui dati bresciani**, non da principi scelti a
+> tavolino.
 >
 > Cosa è cambiato in questa revisione: **MET-9 non è più una questione aperta.**
 > L'incrocio fra settore e classe dimensionale — la tabella che mancava — ha
-> chiuso la domanda, e la risposta è nel §MET-9. Restano aperti solo i confronti
-> con altre province.
+> chiuso la domanda, e la risposta è nel §MET-9. E **MET-15** è nata subito
+> dopo, quando la stessa disciplina applicata alla popolazione ha ribaltato la
+> parola su cui poggiava la prima storia del sito.
 >
 > Cosa manca ancora: le regole su **come si scelgono e si raccontano le
 > storie** — soglie, criteri di inclusione, casi limite. Quattro storie sono
@@ -387,9 +388,77 @@ e non più bresciano.
 quanto fa altrove.* Un confronto può correggere una frase (le microimprese),
 rafforzarne un'altra (le grandi unità locali) o toglierle un aggettivo (la
 convergenza): sono tre esiti diversi e tutti e tre utili. Dove il confronto non
-c'è — qui manca su spopolamento e turismo — va **dichiarato**, e la frase va
+c'è — dopo MET-15 resta solo il turismo — va **dichiarato**, e la frase va
 scritta come «a Brescia succede questo», mai come «a Brescia, a differenza di
 altrove, succede questo».
+
+⏳ **Il quarto uso**, sulla popolazione, è arrivato con il bilancio demografico
+(MET-15): fra le 107 province Brescia è la **6ª per crescita**, con una mediana
+provinciale di −19,7 abitanti ogni mille. Anche qui il confronto cambia la
+frase: la provincia non «tiene» nonostante la montagna che si svuota, sta fra le
+poche che crescono in un paese in cui 86 province su 107 perdono abitanti.
+
+---
+
+## MET-15 — «Si svuota» non dice come, e la parola scelta contiene già una risposta
+
+> Nata dalla prima storia del sito, e nello stesso modo di MET-9: un titolo dato
+> prima di decomporre.
+
+La prima storia del sito si intitola «Dove il bresciano si svuota» e dice il
+vero: 93 comuni su 205 perdono abitanti fra il 2018 e il 2024, in una fascia
+contigua di montagna. Ma **spopolamento** è una parola che porta con sé un
+meccanismo — la gente se ne va — che quei numeri non contenevano: la variazione
+di popolazione è *netta*, e una differenza fra due stock non distingue chi
+muore da chi parte.
+
+Scomposta con il bilancio demografico, la risposta è opposta a quella che la
+parola suggerisce. Sommando i 93 comuni in calo:
+
+| Componente, 2018–2024 | Persone |
+|---|---|
+| saldo naturale | **−10.163** |
+| migrazione interna | **−66** |
+| migrazione estera | +5.020 |
+| aggiustamento statistico | −2.010 |
+
+La migrazione interna, sommata su tutti i comuni che perdono abitanti, vale
+**meno di settanta persone in sei anni**: non è piccola, è indistinguibile da
+zero. Chi ci abita non se ne sta andando. In 81 di quei 93 comuni la componente
+che tira più giù è il saldo naturale, in 12 la migrazione interna, in nessuno
+quella estera.
+
+Lo stesso vale un livello sopra: la provincia guadagna 11.465 abitanti, ma con
+un saldo naturale di **−25.764**. Cresce perché ne arrivano 27.817 dall'estero;
+senza quella componente perderebbe 16.352 abitanti. Il saldo naturale è negativo
+in 189 comuni su 205 e — per MET-14 — in 106 province italiane su 107.
+
+**La regola, in due parti.**
+
+1. *Una variazione netta non è una spiegazione, e il titolo che le si dà non
+   deve contenerne una.* Prima di scrivere «spopolamento», «fuga», «esodo»,
+   «attrattività», decomporre — o dichiarare che non si è potuto, come questa
+   storia faceva prima e come le altre voci della sezione dei limiti fanno
+   ancora.
+2. *Dentro la decomposizione, ciò che non è un fenomeno resta fuori.*
+   L'**aggiustamento statistico** del bilancio demografico è la rettifica che
+   riconcilia l'anagrafe con il censimento: vale −4.558 persone in provincia in
+   sei anni, abbastanza da cambiare il segno di un comune piccolo. Sommarlo alle
+   migrazioni farebbe dire al progetto che se ne sono andate persone che in
+   anagrafe non c'erano più. Resta una colonna a sé in
+   `bilancio_demografico_comuni.csv`, nel grafico e in questo documento.
+
+**Cosa la rende verificabile e non un'opinione.** La scomposizione **chiude**:
+popolazione iniziale più componenti più aggiustamento uguale popolazione
+censita, comune per comune e anno per anno, allo zero. Non è un modello con un
+residuo da interpretare, è la contabilità della fonte, e la pipeline si rifiuta
+di scrivere le tabelle se un giorno smette di tornare
+(`pipeline/datasets/bilancio.py`, `verifica_identita`).
+
+**Cosa resta fuori anche adesso, e va detto.** Il bilancio conta chi entra e chi
+esce da ogni comune, **non la coppia origine-destinazione**. «Chi lascia la Valle
+Camonica scende in città» resta una frase che questi dati non sostengono, ed è
+nella sezione dei limiti del sito.
 
 ---
 
@@ -411,7 +480,15 @@ Fatte valere dai test della pipeline (`pipeline/tests/`):
    le chiavi dei valori esistono tutte fra i periodi — sono i cinque invarianti
    del contratto con il sito;
 7. ogni indicatore non `osservato` dichiara almeno un'assunzione: un derivato
-   che non le dichiara è un derivato che finge di essere una misura.
+   che non le dichiara è un derivato che finge di essere una misura;
+8. **la scomposizione demografica chiude** (MET-15): popolazione iniziale più
+   componenti più aggiustamento uguale popolazione censita, comune per comune e
+   anno per anno; e la popolazione censita del bilancio coincide con quella del
+   censimento permanente, che è la condizione per poter scomporre una tabella
+   con i flussi di un'altra senza inventare un residuo;
+9. la somma dei comuni bresciani torna con l'aggregato provinciale che la fonte
+   pubblica per conto suo — due aggregazioni della stessa fonte che si
+   controllano a vicenda.
 
 E due controlli che non sono test ma girano a ogni push
 (`.github/workflows/verifica.yml`):
