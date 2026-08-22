@@ -217,10 +217,53 @@ metrica, come in Donostia (`observed` / `derived` / `proxy`).
 | Indicatori demografici di città (natalità, mortalità) | idem → *Indicatori Demografici* (PDF) | città | **1971–2024** | **da estrarre a mano** (pagina verificata ✓) |
 | Popolazione 65+ per quartiere; famiglie per quartiere e per numero di componenti | Comune di Brescia — open data | `dati.comune.brescia.it/dataset?groups=demografia` | quartiere | serie storiche parziali (alcune ferme al 2014) | **non raggiungibile da qui** |
 | Popolazione, cittadinanza, titolo di studio, condizione professionale | ISTAT — variabili censuarie (v. §2) | **sezione di censimento** | 2021, 2011, 2001, 1991 | **verificata ✓** |
-| Bilancio demografico; stranieri residenti per cittadinanza | ISTAT — `demo.istat.it` | `demo.istat.it/app/?i=P02` (bilancio), `?i=P03` (bilancio stranieri) | comune | annuale, serie lunga | **verificata ✓** (host 200) |
+| **Bilancio demografico mensile: nati, morti, iscritti, cancellati** | ISTAT — `demo.istat.it`, tavola **D7B** | pagina indice `demo.istat.it/app/?i=D7B&l=it`, un CSV zippato per anno in `demo.istat.it/data/d7b/D7B<anno>.csv.zip` | **comune** (tutti gli 7.896 italiani nello stesso file) | **2019–2024**, mensile | **verificata ✓** — scaricata e in pipeline (`datasets/bilancio.py`). 4,3 MB per anno zippati, 40 MB scompattati; sei anni in mezzo minuto |
+| Bilancio demografico (altre tavole); stranieri residenti per cittadinanza | ISTAT — `demo.istat.it` | `demo.istat.it/app/?i=P02` (bilancio), `?i=P03` (bilancio stranieri) | comune | annuale, serie lunga | **verificata ✓** (host 200) |
 | Popolazione residente al 1° gennaio | ISTAT SDMX | `esploradati.istat.it/SDMXWS/rest/data/IT1,22_289_DF_DCIS_POPRES1_1,1.0/…` | comune | serie lunga | **da verificare** — l'endpoint risponde ma la chiave dimensionale va ricostruita dal DSD (il mio primo tentativo ha dato `NoRecordsFound`) |
 | Reddito IRPEF: imponibile, imposta netta, addizionali | MEF — Dipartimento delle Finanze, *Open data comunale* | `finanze.gov.it/it/statistiche-fiscali/open-data-comunale-principali-variabili-irpef/` | **comune + sub-comunale per CAP** | serie storica fino a imposta **2024** | **verificata ✓** (host 200) |
 | **Contribuenti e reddito complessivo per classi di importo** | MEF via ISTAT SDMX | dataflow `30_1008_DF_MEF_REDDITIIRPEF_COM_2` | **comune** | serie storica | **verificata ✓** — 261.331 osservazioni. Dà la **distribuzione** del reddito, non solo la media: è ciò che serve per parlare di disuguaglianza invece che di livello |
+
+### La tavola D7B, e perché vale più di quanto sembri
+
+È arrivata tardi perché per mesi «ISTAT» ha voluto dire `esploradati.istat.it`, e
+`demo.istat.it` è un altro sito, con un'altra logica: niente SDMX, niente chiavi
+posizionali, un file zippato per anno con dentro tutti i comuni italiani.
+
+Quello che la rende la fonte più utile scaricata dopo ASIA:
+
+- **è l'unica cosa che spiega la popolazione invece di misurarla.** Il
+  censimento permanente dà gli stock; qui ci sono i flussi che li collegano, e
+  la differenza fra «93 comuni perdono abitanti» e «93 comuni perdono abitanti
+  perché ci muore più gente di quanta ne nasca» è tutta lì (MET-15);
+- **si aggancia al censimento permanente allo zero.** La riga «Popolazione
+  censita al 31 dicembre» di questa tavola coincide, comune per comune e anno
+  per anno, con `popolazione_residente` di `DF_DCSS_FAM_POP_TV_1`. Non è una
+  seconda popolazione da riconciliare: è la stessa;
+- **il file è nazionale**, quindi le 107 province costano zero download in più —
+  lo stesso vantaggio di `province.py` sulle imprese, e per la stessa ragione.
+
+⚠️ **Quattro trappole, tutte silenziose.** Nessuna dà errore, tutte danno un
+numero plausibile. Stanno scritte per esteso in testa a
+`pipeline/src/brescia_pipeline/datasets/bilancio.py`, e in breve sono:
+
+1. la dimensione **Sesso ha un totale**: sommare tutte le righe raddoppia la
+   popolazione italiana, e 118 milioni di abitanti non stonano abbastanza in una
+   tabella intermedia da farsi notare;
+2. le righe con **`Codice comune` vuoto** sono gli aggregati provinciali (e con
+   anche `Codice provincia` vuoto, quello nazionale). Qui non si buttano: sono il
+   controllo contro cui si verifica la somma dei comuni;
+3. i **«mesi» sono quattordici**: il 13 è «Aggiustamento statistico» e il 15
+   «Popolazione censita al 31 dicembre». Le loro colonne di flusso sono vuote, e
+   il contenuto sta nella colonna «Popolazione fine periodo» — che per il 13 è
+   *l'ammontare della rettifica*, non una popolazione;
+4. l'**aggiustamento statistico non è un fenomeno demografico**: è la
+   riconciliazione fra anagrafe e censimento, e va tenuto fuori dalle componenti
+   invece che spalmato dentro (MET-15).
+
+⚠️ **La serie comincia con il 2019**, che è l'anno in cui il bilancio mensile si
+riconcilia con il censimento permanente. Gli anni precedenti stanno su altre
+tavole, con un'altra popolazione di riferimento, e attaccarli in coda romperebbe
+la catena degli stock.
 
 **Il reddito per CAP è il ritrovamento più interessante di questa sezione.**
 Brescia ha i CAP 25121–25136: non coincidono con i quartieri, ma danno un

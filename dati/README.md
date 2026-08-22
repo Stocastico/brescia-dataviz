@@ -73,7 +73,30 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
 | File | Righe | Contenuto |
 |---|---|---|
 | `popolazione_comuni.csv` | 5.302 | Popolazione residente, in famiglia, in convivenza e numero di famiglie, per comune, 2018–2024. |
+| `bilancio_demografico_comuni.csv` | 13.530 | **Da dove viene** quella popolazione: nati, morti, iscritti e cancellati da altri comuni, iscritti e cancellati dall'estero, variazioni territoriali e aggiustamento statistico, per comune, 2019–2024. Più i tre stock (`popolazione_inizio`, `popolazione_fine`, `popolazione_censita`). |
 | `redditi_comuni.csv` | 36.952 | Contribuenti e reddito complessivo per **classe di importo** (8 classi, da «≤ 0 €» a «oltre 120.000 €»), per comune, 2012–2023. Dà la distribuzione, non solo la media: è ciò che serve per parlare di disuguaglianza. |
+
+> ⚠️ **Tre cose da sapere prima di usare il bilancio.**
+>
+> 1. **La tabella porta i flussi lordi, non i saldi.** Il saldo naturale è
+>    `nati − morti`, il migratorio interno `immigrati_interni −
+>    emigrati_interni`, e così via. La fonte pubblica anche i saldi già fatti e
+>    qui non si riportano: una tabella con gli addendi *e* la somma ha due
+>    verità appena una delle due si legge male. La definizione sta scritta una
+>    volta sola in `analysis/_tabelle.py` (`COMPONENTI`).
+> 2. **`aggiustamento_statistico` non è un fenomeno demografico.** È la
+>    rettifica che riconcilia l'anagrafe con il censimento: −4.558 persone in
+>    provincia fra il 2018 e il 2024, abbastanza da cambiare il segno di un
+>    comune piccolo. Va tenuto separato dalle migrazioni, sempre (MET-15).
+> 3. **`popolazione_censita` è la stessa cosa di `popolazione_residente` in
+>    `popolazione_comuni.csv`**, comune per comune e anno per anno, allo zero: è
+>    la condizione che permette di scomporre quella serie con questi flussi
+>    senza inventare un residuo, ed è un test della pipeline.
+>
+> L'identità chiude: `popolazione_inizio` + i flussi + l'aggiustamento =
+> `popolazione_censita`. Se un giorno smette di chiudere, la pipeline si rifiuta
+> di scrivere la tabella.
+
 
 ### Chi vive nel bresciano
 
@@ -147,6 +170,34 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
    nella fonte — non hanno nemmeno una riga. Sono tre assenze diverse e nessuna
    delle tre è uno zero: su una mappa vanno tutte e tre nel colore «nessun
    dato», ma in una tabella conviene distinguerle.
+
+### Il confronto: fuori dalla provincia
+
+Cinque tabelle che **non** sono un secondo soggetto. Servono a una domanda sola:
+quello che si è misurato su Brescia è di Brescia o è dell'Italia? (MET-14). Non
+entrano in nessuna mappa e non producono classifiche di comuni fuori provincia.
+
+| File | Righe | Contenuto |
+|---|---|---|
+| `imprese_province.csv` | 28.180 | Unità locali e addetti per **tutte le 107 province**, per classe dimensionale e per sezione Ateco, 2018–2023. Non è costato un download: i file grezzi ASIA sono nazionali e il modulo li riaggrega. |
+| `imprese_capoluoghi.csv` | 6.398 | Gli stessi indicatori per i **comuni capoluogo**, per rispondere a una domanda sola: lo svuotamento della classe ≥250 addetti nel capoluogo (MET-9) succede anche altrove? Sì, in 44 capoluoghi su 64. |
+| `redditi_comuni_confronto.csv` | 43.080 | I redditi comunali di una provincia di confronto — oggi **Bergamo** (016) — nella stessa forma di `redditi_comuni.csv` più il territorio. Qui non basta un filtro: le tavole MEF si scaricano per blocchi di comuni, quindi ogni provincia costa i suoi download e la lista è corta apposta. |
+| `bilancio_province.csv` | 7.062 | Le componenti demografiche per **tutte le 107 province**, 2019–2024. Stesso vantaggio delle imprese: il file della fonte è nazionale. È il termine di paragone che allo spopolamento mancava. |
+
+### Il dettaglio settoriale
+
+| File | Righe | Contenuto |
+|---|---|---|
+| `imprese_sezioni_comuni.csv` | 34.886 | Unità locali e addetti per **comune × sezione Ateco**, 2018–2023. È la tabella che ha sbloccato l'asse «le due economie»: la specializzazione settoriale di *tutti* i comuni, che era data per impossibile. Si ottiene fissando il settore e lasciando libero il territorio — una richiesta per sezione su tutta Italia, filtrata in locale. |
+| `imprese_settore_classe.csv` | 7.164 | Settore **e** classe dimensionale insieme, per il capoluogo e per la provincia, 2018–2023. Quattro richieste in tutto, fissando il territorio invece del settore, ed è la tabella che ha chiuso MET-9. |
+
+> ⚠️ Su `imprese_sezioni_comuni.csv`: **una sezione assente resta assente.** ASIA
+> non pubblica la sezione di un comune quando la cella è troppo piccola, e
+> «nessun addetto nella manifattura» è un'affermazione diversa da «non lo
+> sappiamo». Il denominatore delle quote è il totale ASIA riportato, non la somma
+> delle sezioni: la decisione sta in `analysis/_tabelle.py` (`quote_sezioni`), una
+> volta sola (MET-13).
+
 
 ### Commercio estero
 
