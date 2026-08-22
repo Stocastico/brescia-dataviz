@@ -14,7 +14,7 @@ apre da disco, si manda per email, si archivia.
 | File | Cos'è |
 |---|---|
 | `costruisci.py` | assembla `_site/`: incorpora i dati, sostituisce le cifre e le date, copia i CSV |
-| `modelli/racconto.html` | il documento narrativo: quattro storie e la sezione dei limiti |
+| `modelli/racconto.html` | il documento narrativo: cinque storie e la sezione dei limiti |
 | `modelli/metodologia.html` | le regole del progetto, per un lettore che non ha letto il repository |
 | `modelli/dati.html` | fonti, tabelle scaricabili e avvertenze |
 | `modelli/stile.css` | la tavolozza e l'impaginazione, in variabili CSS |
