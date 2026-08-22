@@ -58,7 +58,7 @@ Indice:
 | Ricognizione delle fonti | ✅ [`FONTI.md`](FONTI.md), con lo stato di accesso verificato riga per riga |
 | Soggetto e assi | ✅ decisi: la provincia attraverso i 205 comuni, quattro assi portanti ([`BRIEF.md`](BRIEF.md)) |
 | Repository separato | ✅ esiste, `main`, file in radice |
-| Pipeline | ✅ funzionante, `requests` + libreria standard, 188 test verdi |
+| Pipeline | ✅ funzionante, `requests` + libreria standard, 209 test verdi |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
 | Tabelle tidy | ✅ 26 CSV in [`dati/processed/`](dati/README.md), versionati; manca solo `migrazioni_comuni.csv` |
 | Analisi | ✅ dodici script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province, la scomposizione demografica |
@@ -255,7 +255,7 @@ Motivazione e forma di ciascuno in [`BRIEF.md`](BRIEF.md).
 | **1** | Il lavoro e le imprese | coropletica sui 205 comuni + serie | ✅ completi |
 | **2** | Chi vive nel bresciano | coropletica + composizioni | ✅ completi |
 | **3** | Le due economie: manifattura e Garda | mappa bivariata + concentrazione | ✅ completi |
-| **4** | L'aria e il clima | **non una mappa**: 7 stazioni come sezione territoriale, più 52 stazioni meteo | ✅ completi |
+| **4** | L'aria e il clima | **non una mappa**: 7 stazioni come sezione territoriale, più 51 stazioni di temperatura e 54 pluviometri | ✅ completi — ⚠️ ma è l'unico asse portante che nel sito non ha ancora una storia |
 
 Di contorno, non abbandonati: sicurezza, casa e prezzi, commercio estero,
 riqualificazione. Entrano se un asse portante li richiama, non per completezza.
@@ -824,6 +824,7 @@ entra nel tempo che hai, non a fare un piano.
 | 🙋 Rileggere i testi del sito | **1 h** | è il tuo nome sopra |
 | 🤖 Scarico delle migrazioni + riscarico in italiano delle tre tavole censuarie (§2.4) | **una notte di attesa** | l'unico dataset previsto che manchi, e tre tabelle oggi non pubblicabili |
 | ✅ ~~Decomposizione della popolazione~~ | fatta | ed è diventata MET-15: la prima storia adesso risponde alla domanda che dichiarava di non poter rispondere |
+| 🤖 Una storia su aria e clima (asse 4) | **mezza giornata** | i dati ci sono da sempre e adesso c'è anche la pioggia; è l'unico dei quattro assi portanti senza una storia nel sito |
 | 🤖 Estendere il confronto fra province al **turismo** | **mezza giornata** | imprese, redditi e popolazione il termine di paragone ce l'hanno; il turismo no. Ed è il caso più difficile dei quattro: la fonte è regionale, quindi un confronto nazionale va costruito da un'altra fonte |
 | 🤖 Riscrivere la §7 del working paper con le cinque storie | **mezza giornata** | il documento per un lettore esterno |
 | 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |
