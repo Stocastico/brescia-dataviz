@@ -134,7 +134,44 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
 |---|---|---|
 | `stazioni_arpa.csv` | 323 | Anagrafica dei sensori ARPA della provincia (aria e meteo) con coordinate, quota e date di attivazione. |
 | `aria_mensile.csv` | 15.463 | Medie mensili per sensore: PM10, PM2.5, NO₂, ozono e altri, dal 2000 al 2026. Aggregate lato server: le serie orarie grezze sono decine di milioni di righe. |
-| `meteo_mensile.csv` | 10.415 | Medie mensili di temperatura, precipitazione, umidità e vento, dal 1990. |
+| `meteo_mensile.csv` | 20.150 | **Temperatura** (media mensile, dal 1987) e **precipitazione** (totale mensile, dal 1986) per sensore. La colonna `aggregazione` dice quale delle due è: sono due cose diverse e vanno lette come tali. |
+
+> ⚠️ **La pioggia si somma, la temperatura si media.** Sembra ovvio e non lo è
+> stato: i pluviometri registrano i millimetri caduti in ogni intervallo di dieci
+> minuti, quindi il valore mensile è il **totale** — la loro media è un numero
+> plausibile («in gennaio è caduta una media di 0,04 mm») che non significa
+> niente. Per questo la colonna si chiama `valore` e non `media`, e accanto c'è
+> `aggregazione`.
+
+> ⚠️ **Il clima non è tutto qui.** L'anagrafica ARPA porta otto parametri —
+> temperatura, precipitazione, umidità, vento (velocità e direzione), radiazione,
+> livello idrometrico, neve — ma le serie storiche stanno in **un dataset per
+> parametro** su `dati.lombardia.it`, non in uno solo. Qui ce ne sono due. Gli
+> altri sei hanno i sensori in `stazioni_arpa.csv` e non hanno le misure: il
+> build lo stampa a ogni esecuzione invece di lasciarlo dedurre dal file.
+
+> ⚠️ **La colonna `stato`**, su entrambe le tabelle ambientali. Vale:
+>
+> - `osservato`;
+> - `copertura_scarsa` — il mese ha molte meno letture del solito **per quel
+>   sensore**. Una «media mensile» calcolata su otto letture non è una media
+>   mensile, e nel file non si distingue da una calcolata su quattromila. La
+>   soglia si calibra sul sensore e non è fissa: il PM10 si misura una volta al
+>   giorno, la temperatura ogni dieci minuti, e una soglia assoluta marcherebbe
+>   come scarso tutto il particolato;
+> - `lettura_implausibile` — il mese contiene una lettura oltre il limite fisico
+>   dichiarato per quel parametro. Riguarda **cinque mesi su ventimila**, tutti
+>   di pioggia, e ognuno rovina il proprio totale: il pluviometro di Caino segna
+>   109.499 mm in un intervallo del maggio 2020 e il mese esce a 109.589 mm. La
+>   fonte non marca quelle righe e il filtro sui −999 non le vede.
+>
+> Le righe marcate **restano nel file**, come le presenze turistiche riservate:
+> cancellarle produrrebbe un buco indistinguibile da un dato mai raccolto.
+>
+> ⏳ **Un residuo noto**: il limite è su una **lettura singola**, quindi non
+> cattura un sensore mal calibrato per un mese intero. Ne resta almeno uno —
+> Gambara v.Parma, agosto 2004, media mensile di 41,0 °C — che nessuna
+> temperatura italiana giustifica ma nessuna lettura singola tradisce.
 
 ### Sicurezza
 

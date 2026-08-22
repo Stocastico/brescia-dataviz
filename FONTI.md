@@ -480,11 +480,35 @@ pianura padana è un asse narrativo di primo piano, non un accessorio.
 | Risorsa | Endpoint (`dati.lombardia.it`) | Copertura |
 |---|---|---|
 | Anagrafica stazioni idro-nivo-meteo | `resource/nf78-nj6b` | attuale, con `lat`/`lng`, `quota`, `datastart`, `datastop` |
-| Temperatura fino al 2010 | `resource/6eu4-4tja` | storico |
-| Temperatura 2011–2020 | `resource/d4kj-kbpj` | storico |
-| Temperatura dal 2021 | `resource/w9wd-u6jh` | corrente |
-| Dati sensori meteo (multi-parametro, corrente) | `resource/647i-nhxk` | corrente |
-| Velocità del vento dal 2021 | `resource/hu5q-68e3` | corrente |
+| Temperatura fino al 2010 | `resource/6eu4-4tja` | **in pipeline** |
+| Temperatura 2011–2020 | `resource/d4kj-kbpj` | **in pipeline** |
+| Temperatura dal 2021 | `resource/w9wd-u6jh` | **in pipeline** |
+| Precipitazioni fino al 2010 | `resource/e7r2-7m84` | **in pipeline** |
+| Precipitazioni 2011–2020 | `resource/2kar-pnuk` | **in pipeline** |
+| Precipitazioni dal 2021 | `resource/pstb-pga6` | **in pipeline** |
+| Umidità, vento, radiazione, neve, idrometria | un dataset per parametro e finestra, stesso schema di nome («Velocità del vento dal 2021» = `hu5q-68e3`, «Direzione del vento dal 2011 al 2020» = `ypty-e75m`, «Radiazione Globale dal 2021» = `cxym-eps2`…) | **da fare**, e costa tre righe l'una in `SERIE_METEO` |
+| Dati sensori meteo (multi-parametro, solo recente) | `resource/647i-nhxk` e `i95f-5avh` (identici) | dal 30/05/2023, tutti i parametri insieme |
+
+> ⚠️ **Un dataset per parametro, e nessun errore se sbagli.** «Temperatura dal
+> 2021» contiene **solo** i termometri: interrogarlo su un pluviometro non dà
+> `404` né un messaggio, dà **zero righe**. È così che la pipeline ha prodotto
+> per mesi un `meteo_mensile.csv` di sole temperature mentre la documentazione
+> ne prometteva quattro parametri, con 174 sensori dell'anagrafica senza una
+> misura e nessuno che lo dicesse. Adesso il build stampa quali parametri
+> restano scoperti.
+>
+> ⚠️ **Due altre trappole di questa fonte**, entrambe silenziose:
+>
+> - **l'aggregazione**. La pioggia si somma, la temperatura si media. Chiedere a
+>   Socrata `avg` su un pluviometro dà un numero plausibile e privo di senso;
+> - **l'alias**. `avg(valore) AS valore` fa risolvere all'alias il `WHERE valore
+>   > -100`, e Socrata risponde `400 aggregate-in-ungrouped-context`. Senza quel
+>   filtro entrano nelle medie i −999 con cui ARPA marca i dati non validi.
+>
+> ⚠️ **Il filtro sui −999 non basta.** Cinque letture su ventiquattro milioni
+> sono positive e impossibili (109.499 mm di pioggia in dieci minuti a Caino,
+> maggio 2020), e ognuna rovina il totale del suo mese. La fonte non le marca:
+> lo fa la pipeline, con la colonna `stato` e senza cancellarle.
 
 **Stazioni utili nel comune di Brescia — verificata ✓** (interrogazione
 sull'anagrafica, `provincia='BS'`):
