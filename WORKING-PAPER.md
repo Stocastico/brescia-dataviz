@@ -675,7 +675,7 @@ trasferibile è quasi tutta:
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | Consegna: cosa resta da scaricare, decisioni aperte, come si costruiscono analisi e sito |
 | [`pipeline/`](pipeline/README.md) | Il codice, con le trappole documentate |
 | [`dati/`](dati/README.md) | Le ventisei tabelle prodotte |
-| [`analysis/`](analysis/README.md) | I dodici script che leggono quelle tabelle, e le settantotto verifiche di `verifica_cifre.py` |
+| [`analysis/`](analysis/README.md) | I tredici script che leggono quelle tabelle, e le verifiche di `verifica_cifre.py` |
 
 *Versione 1 — agosto 2026. La §7 riporta risultati veri con i loro controlli, e
 di quelli elencati in §6.2 restano fuori solo due: la rottura Covid trattata in

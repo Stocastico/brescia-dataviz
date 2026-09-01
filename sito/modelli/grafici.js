@@ -591,7 +591,13 @@
         fill: css("--muted"), "font-size": 11 }, svg);
       testo.textContent = num(valore, opzioni.decimali === undefined ? 0 : opzioni.decimali);
     });
+    /* Un'etichetta ogni `n` periodi. Con le sei annate di ASIA ci stanno tutte;
+       con i ventitre anni delle centraline si sovrappongono fino a diventare
+       una striscia nera, e una data illeggibile è peggio di nessuna data.
+       L'ultimo periodo si scrive sempre: è quello che il lettore cerca. */
+    const saltoX = Math.ceil(periodi.length / 12);
     periodi.forEach(function (periodo, indice) {
+      if (indice % saltoX && indice !== periodi.length - 1) return;
       const testo = el("text", { x: sx(indice), y: riquadro.alto + riquadro.altezza + 18,
         "text-anchor": "middle", fill: css("--muted"), "font-size": 11 }, svg);
       testo.textContent = periodo;
@@ -683,6 +689,88 @@
 
     tabellaSpecchio(contenitore, [opzioni.etichettaVoci || "voce", opzioni.unita || "valore"],
       voci.map(function (v) { return [v.nome, num(v.valore, opzioni.decimali === undefined ? 0 : opzioni.decimali)]; }));
+  }
+
+  /* Colonne attorno allo zero: per le anomalie, dove il segno è metà del
+     messaggio. Una linea spezzata direbbe «la temperatura sale»; le colonne
+     dicono anche *rispetto a cosa*, perché lo zero è una riga disegnata e non
+     un bordo del riquadro. La rampa è la divergente della lingua grafica, così
+     un anno freddo è freddo anche di colore. */
+  function colonne(contenitore, opzioni) {
+    const ALTEZZA = 320;
+    const riquadro = { sinistra: 52, alto: 18, larghezza: LARGHEZZA - 76, altezza: ALTEZZA - 60 };
+    const voci = opzioni.voci;
+    const decimali = opzioni.decimali === undefined ? 2 : opzioni.decimali;
+
+    const valori = voci.map(function (v) { return v.valore; });
+    const estremo = Math.max.apply(null, valori.map(Math.abs)) * 1.15;
+    const yMin = -estremo, yMax = estremo;
+
+    function sy(valore) {
+      return riquadro.alto + riquadro.altezza - ((valore - yMin) / (yMax - yMin)) * riquadro.altezza;
+    }
+
+    const svg = el("svg", {
+      viewBox: "0 0 " + LARGHEZZA + " " + ALTEZZA,
+      role: "img", "aria-label": opzioni.descrizione,
+    });
+    contenitore.appendChild(svg);
+
+    passi(yMin, yMax, 5).forEach(function (valore) {
+      const y = sy(valore);
+      el("line", { x1: riquadro.sinistra, x2: riquadro.sinistra + riquadro.larghezza, y1: y, y2: y,
+        stroke: css("--line") }, svg);
+      const testo = el("text", { x: riquadro.sinistra - 8, y: y + 4, "text-anchor": "end",
+        fill: css("--muted"), "font-size": 11 }, svg);
+      testo.textContent = num(valore, decimali === 0 ? 0 : 1);
+    });
+
+    const zero = sy(0);
+    el("line", { x1: riquadro.sinistra, x2: riquadro.sinistra + riquadro.larghezza,
+      y1: zero, y2: zero, stroke: css("--ink"), "stroke-width": 1.5 }, svg);
+
+    // La rampa divergente scelta sull'estremo osservato: un +1,7 °C prende la
+    // classe di fondo calda, un −0,1 °C il neutro.
+    const passoClasse = estremo / 4;
+    const larghezzaColonna = Math.max(3, riquadro.larghezza / voci.length - 3);
+
+    voci.forEach(function (voce, indice) {
+      const x = riquadro.sinistra + (indice + 0.5) * (riquadro.larghezza / voci.length)
+        - larghezzaColonna / 2;
+      const alto = Math.min(sy(voce.valore), zero);
+      const altezza = Math.max(1, Math.abs(sy(voce.valore) - zero));
+      let classe = 4 + Math.round(voce.valore / passoClasse);
+      classe = Math.max(0, Math.min(DIVERGENTE.length - 1, classe));
+      const barra = el("rect", { x: x, y: alto, width: larghezzaColonna, height: altezza,
+        fill: css(DIVERGENTE[classe]) }, svg);
+      barra.addEventListener("mousemove", function (evento) {
+        mostraSuggerimento(evento, "<b>" + voce.etichetta + "</b>" +
+          num(voce.valore, decimali) + " " + (opzioni.unita || "") +
+          (voce.nota ? "<br>" + voce.nota : ""));
+      });
+      barra.addEventListener("mouseleave", nascondiSuggerimento);
+    });
+
+    // Un'etichetta ogni `n` colonne: con trent'anni scriverli tutti li
+    // sovrappone, e una data illeggibile è peggio di nessuna data.
+    const salto = Math.ceil(voci.length / 12);
+    voci.forEach(function (voce, indice) {
+      if (indice % salto) return;
+      const x = riquadro.sinistra + (indice + 0.5) * (riquadro.larghezza / voci.length);
+      const testo = el("text", { x: x, y: riquadro.alto + riquadro.altezza + 18,
+        "text-anchor": "middle", fill: css("--muted"), "font-size": 11 }, svg);
+      testo.textContent = voce.etichetta;
+    });
+
+    tabellaSpecchio(
+      contenitore,
+      [opzioni.etichettaX || "periodo", opzioni.etichettaY || "valore"].concat(opzioni.colonnaNota ? [opzioni.colonnaNota] : []),
+      voci.map(function (voce) {
+        const riga = [voce.etichetta, num(voce.valore, decimali)];
+        if (opzioni.colonnaNota) riga.push(voce.nota || "");
+        return riga;
+      })
+    );
   }
 
   // --- sciame: una distribuzione, non una classifica -------------------
@@ -864,7 +952,7 @@
 
   window.GRAFICI = {
     el: el, css: css, num: num, nomeComune: nomeComune, metrica: metrica, valoriDi: valoriDi,
-    mappa: mappa, scatter: scatter, serie: serie, barre: barre, sciame: sciame,
+    mappa: mappa, scatter: scatter, serie: serie, barre: barre, colonne: colonne, sciame: sciame,
     scrollytelling: scrollytelling, comandi: comandi, tabellaSpecchio: tabellaSpecchio,
   };
 })();

@@ -1,4 +1,4 @@
-# Nota metodologica (MET-1…MET-15)
+# Nota metodologica (MET-1…MET-16)
 
 > **Cos'è.** Le decisioni che governano il progetto: *perché* misuriamo come
 > misuriamo. È la base di credibilità — qualunque grafico, testo o titolo deve
@@ -8,20 +8,22 @@
 >
 > ## ⚠️ Bozza avanzata — non ancora definitiva
 >
-> **Aggiornata ad agosto 2026, dopo il primo giro di analisi.** Le quindici
-> regole qui elencate sono tutte reali e applicate; cinque di esse (MET-9,
-> MET-12, MET-13, MET-14, MET-15) nascono da errori o incoerenze
-> **effettivamente trovati sui dati bresciani**, non da principi scelti a
-> tavolino.
+> **Aggiornata a settembre 2026, quando l'ultimo dei quattro assi portanti ha
+> avuto la sua storia.** Le sedici regole qui elencate sono tutte reali e
+> applicate; cinque di esse (MET-9, MET-12, MET-13, MET-14, MET-15) nascono da
+> errori o incoerenze **effettivamente trovati sui dati bresciani**, non da
+> principi scelti a tavolino.
 >
-> Cosa è cambiato in questa revisione: **MET-9 non è più una questione aperta.**
-> L'incrocio fra settore e classe dimensionale — la tabella che mancava — ha
-> chiuso la domanda, e la risposta è nel §MET-9. E **MET-15** è nata subito
-> dopo, quando la stessa disciplina applicata alla popolazione ha ribaltato la
-> parola su cui poggiava la prima storia del sito.
+> Cosa è cambiato in questa revisione: **MET-16**, che è la prima regola nata da
+> un errore *evitato* invece che commesso — su una rete di sensori che apre e
+> chiude stazioni, la media di quello che c'è misura anche il cambiamento della
+> rete. Prima, in agosto: **MET-9 non è più una questione aperta** (l'incrocio
+> fra settore e classe dimensionale ha chiuso la domanda), e **MET-15** è nata
+> subito dopo, quando la stessa disciplina applicata alla popolazione ha
+> ribaltato la parola su cui poggiava la prima storia del sito.
 >
 > Cosa manca ancora: le regole su **come si scelgono e si raccontano le
-> storie** — soglie, criteri di inclusione, casi limite. Quattro storie sono
+> storie** — soglie, criteri di inclusione, casi limite. Sei storie sono
 > state scritte, che è abbastanza per intuirle e troppo poco per fissarle. Nel
 > progetto Donostia sono arrivate dalle revisioni esterne, cioè dopo la
 > pubblicazione.
@@ -459,6 +461,71 @@ di scrivere le tabelle se un giorno smette di tornare
 esce da ogni comune, **non la coppia origine-destinazione**. «Chi lascia la Valle
 Camonica scende in città» resta una frase che questi dati non sostengono, ed è
 nella sezione dei limiti del sito.
+
+---
+
+## MET-16 — Quando la rete di misura cambia, la media misura la rete
+
+> Nata dalla sesta storia, ed è la prima regola del progetto che non nasce da un
+> errore commesso ma da uno **evitato guardando il disegno prima del risultato**.
+
+Le centraline dell'aria e le stazioni meteorologiche non sono i 205 comuni: sono
+un insieme che si muove. Sul PM10 la rete bresciana passa da due stazioni a sette
+nell'arco della serie, e non sono le stesse due. Su questo genere di dato la
+media annua «di quello che c'è» è una trappola pulita:
+
+> **la media di un insieme che cambia misura anche il cambiamento
+> dell'insieme.**
+
+Se le stazioni che aprono stanno in posti più puliti — e tendenzialmente è così,
+perché le prime nascono dove il problema era grosso — un miglioramento compare
+anche se nessuna aria è migliorata. È lo stesso genere di artefatto di MET-12: il
+disegno della misura che produce il risultato, invece dei dati.
+
+**La regola, in due parti.**
+
+1. *Sulle serie lunghe si confronta un **panel bilanciato**: solo le unità
+   osservate in tutti gli anni della finestra.* Il prezzo è che ne restano poche
+   — tre stazioni per il PM10, quattro per il biossido di azoto — e che la
+   finestra si accorcia all'unità più giovane. In cambio la variazione risponde
+   alla domanda che le è stata fatta. Il conto ingenuo va calcolato lo stesso e
+   riportato accanto: la distanza fra i due dice quanto la rete ha contribuito al
+   risultato. Qui esagera i cali di tre o quattro punti.
+2. *Quando le unità non sono confrontabili fra loro, si confronta ciascuna con
+   sé stessa: **anomalie**, non medie.* Le stazioni di temperatura di questa
+   provincia stanno fra i 47 metri di Gambara e i 2.108 del Pantano d'Avio: la
+   loro media aritmetica non descrive nessun luogo e **cambia quando una
+   stazione di montagna apre o chiude** — la sola chiusura del Pantano
+   «scalderebbe» la provincia di mezzo grado senza che sia successo niente. Ogni
+   stazione si confronta quindi con la propria media 2004–2013, e si media lo
+   scostamento. È la convenzione climatologica, e qui è anche l'unica che regge.
+
+**Il controllo che rende credibile il risultato non è nel risultato.** Il
++1,10 °C fra le due finestre conta meno del fatto che salgano **tutte e otto** le
+stazioni, dalla Bassa al ghiacciaio: un effetto che si ripete uguale in otto
+posti diversi non lo fa un sensore tarato male. E accanto sta la pioggia, dalla
+stessa rete e con lo stesso metodo, che **non dà segnale** — mediana +0,5 %,
+sette stazioni in aumento e cinque in calo. Le due insieme valgono più di
+ciascuna: una serie senza segnale, ottenuta con lo stesso procedimento, è la
+prova che il procedimento non fabbrica segnali.
+
+**Due soglie che sembrano dettagli e non lo sono.** Un anno vale se ha abbastanza
+mesi osservati, e «abbastanza» dipende da cosa si aggrega: una **media** annua
+tollera due mesi mancanti, un **totale** annuo no — un totale a cui manca un mese
+non è un totale basso, è un totale di undici mesi. Scritta alla soglia sbagliata,
+la verifica indipendente di `verifica_cifre.py` contava sette stazioni di
+temperatura invece di otto: MET-13 in miniatura, trovata dalla terza
+implementazione della stessa definizione. E gli anni in cui è presente meno di
+metà del panel restano fuori dal grafico, perché le anomalie tolgono la quota ma
+non la variabilità: negli anni Novanta di questa rete c'è letteralmente una
+stazione sola, e la sua annata calda diventerebbe l'annata calda della provincia.
+
+**Cosa questa regola non autorizza a dire.** Niente sulle cause. La meteorologia
+governa la dispersione degli inquinanti quanto le emissioni, e separare le due
+richiederebbe una normalizzazione meteorologica che medie mensili non
+sostengono. Vale a maggior ragione per l'ozono, che non scende e che è un
+inquinante secondario con una chimica sua: questo progetto misura **cosa hanno
+respirato le centraline**, non perché.
 
 ---
 

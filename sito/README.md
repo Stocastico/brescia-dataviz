@@ -14,7 +14,7 @@ apre da disco, si manda per email, si archivia.
 | File | Cos'è |
 |---|---|
 | `costruisci.py` | assembla `_site/`: incorpora i dati, sostituisce le cifre e le date, copia i CSV |
-| `modelli/racconto.html` | il documento narrativo: cinque storie e la sezione dei limiti |
+| `modelli/racconto.html` | il documento narrativo: sei storie e la sezione dei limiti |
 | `modelli/metodologia.html` | le regole del progetto, per un lettore che non ha letto il repository |
 | `modelli/dati.html` | fonti, tabelle scaricabili e avvertenze |
 | `modelli/stile.css` | la tavolozza e l'impaginazione, in variabili CSS |
@@ -55,8 +55,8 @@ Cosa arriva da lì, e va cambiato lì se si vuole cambiare:
 | **Scrollytelling** | figura appiccicosa a sinistra, passi di testo a destra, che degrada a articolo semplice sotto i 900px |
 | **Rampe dei grafici** | `SEQ` sequenziale calda e `DIV` divergente freddo↔caldo, le stesse dell'originale |
 
-Tre differenze deliberate, tutte dovute al vincolo in più che ha questo
-documento — **restare autocontenuto**:
+Quattro differenze deliberate. Le prime tre nascono dal vincolo in più che ha
+questo documento — **restare autocontenuto**:
 
 1. **Nessun carattere caricato dalla rete.** Le famiglie sono le stesse, con la
    stessa catena di ripieghi di sistema: chi le ha installate le vede, gli altri
@@ -66,6 +66,18 @@ documento — **restare autocontenuto**:
    incorporata peserebbe più di tutti i dati messi insieme.
 3. **Nessuna mappa a piastrelle.** L'originale usa Leaflet da una CDN per il
    dettaglio di strada; qui la geometria comunale basta, e si disegna a mano.
+
+La quarta nasce invece dal contenuto, ed è la sola che **allarga** la tavolozza
+invece di restringerla:
+
+4. 🙋 **Un sesto colore di storia.** L'originale ha cinque storie e cinque
+   colori; qui le storie sono sei, e la sesta li avrebbe dovuti riusare —
+   con il risultato che due sezioni lontane si sarebbero somigliate senza motivo.
+   È stata aggiunta `--oliva` in `stile.css`, accanto alle altre cinque e con la
+   ragione scritta sopra la riga. **Va guardata:** se i due progetti devono
+   restare una collana stretta, la mossa giusta è portare l'oliva anche in
+   `donostia-dataviz` o scegliere un altro sesto tono là e riportarlo qui. La
+   riga da spostare è una sola.
 
 E una conseguenza da mettere in conto: **non c'è tema scuro.** L'originale è un
 disegno a luce sola, e un tema scuro non è l'inversione di una tavolozza chiara:
