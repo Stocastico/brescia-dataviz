@@ -702,7 +702,8 @@
     const voci = opzioni.voci;
     const decimali = opzioni.decimali === undefined ? 2 : opzioni.decimali;
 
-    const valori = voci.map(function (v) { return v.valore; });
+    const valori = voci.filter(function (v) { return v.valore !== null; })
+      .map(function (v) { return v.valore; });
     const estremo = Math.max.apply(null, valori.map(Math.abs)) * 1.15;
     const yMin = -estremo, yMax = estremo;
 
@@ -729,6 +730,12 @@
     el("line", { x1: riquadro.sinistra, x2: riquadro.sinistra + riquadro.larghezza,
       y1: zero, y2: zero, stroke: css("--ink"), "stroke-width": 1.5 }, svg);
 
+    /* Un periodo senza valore non è una colonna alta zero: senza un segno
+       proprio sarebbe indistinguibile da un anno in cui non è successo niente,
+       che è precisamente la confusione che MET-3 vieta. Prende il tratteggio
+       dell'assenza, alto quanto una colonna minima, a cavallo dello zero. */
+    const riempimentoAssente = tratteggioAssenza(svg);
+
     // La rampa divergente scelta sull'estremo osservato: un +1,7 °C prende la
     // classe di fondo calda, un −0,1 °C il neutro.
     const passoClasse = estremo / 4;
@@ -737,6 +744,16 @@
     voci.forEach(function (voce, indice) {
       const x = riquadro.sinistra + (indice + 0.5) * (riquadro.larghezza / voci.length)
         - larghezzaColonna / 2;
+      if (voce.valore === null || voce.valore === undefined) {
+        const vuota = el("rect", { x: x, y: zero - 7, width: larghezzaColonna, height: 14,
+          fill: riempimentoAssente }, svg);
+        vuota.addEventListener("mousemove", function (evento) {
+          mostraSuggerimento(evento, "<b>" + voce.etichetta + "</b>nessun dato" +
+            (voce.nota ? "<br>" + voce.nota : ""));
+        });
+        vuota.addEventListener("mouseleave", nascondiSuggerimento);
+        return;
+      }
       const alto = Math.min(sy(voce.valore), zero);
       const altezza = Math.max(1, Math.abs(sy(voce.valore) - zero));
       let classe = 4 + Math.round(voce.valore / passoClasse);
@@ -766,7 +783,7 @@
       contenitore,
       [opzioni.etichettaX || "periodo", opzioni.etichettaY || "valore"].concat(opzioni.colonnaNota ? [opzioni.colonnaNota] : []),
       voci.map(function (voce) {
-        const riga = [voce.etichetta, num(voce.valore, decimali)];
+        const riga = [voce.etichetta, num(voce.valore, decimali)];  // num() dà «n.d.» sul null
         if (opzioni.colonnaNota) riga.push(voce.nota || "");
         return riga;
       })

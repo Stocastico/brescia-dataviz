@@ -146,7 +146,7 @@ Nessuna di queste variazioni è attribuita a una causa: la meteorologia governa 
 dispersione degli inquinanti quanto le emissioni.
 
 Limiti da mettere in conto: l'aria e il clima si misurano **dove c'è una
-centralina**, e in centonovantotto comuni su 205 non ce n'è nessuna; i **reati**
+centralina**, e in 194 comuni su 205 non ce n'è mai stata nessuna; i **reati**
 esistono solo a grana provinciale (la
 percezione arriva al comune ma solo dal 2022); **nessuna copertura Inside
 Airbnb**; i **prezzi delle case** sono dietro un login gratuito (OMI) o sono

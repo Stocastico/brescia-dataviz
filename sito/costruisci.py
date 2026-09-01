@@ -395,6 +395,17 @@ def clima() -> dict[str, Any]:
         if len(v) >= soglia
     ]
 
+    # Quanti comuni hanno una centralina, e quante ne ha il capoluogo. Sono
+    # cifre del testo, quindi si contano qui invece di scriverle a mano — e
+    # scritte a mano erano sbagliate entrambe. Il conto è su **tutta la serie**,
+    # non sulle stazioni oggi attive: il `BRIEF` ne cita sette perché conta
+    # quelle vive, e sono due domande diverse.
+    con_centralina: dict[str, set[str]] = defaultdict(set)
+    sensori_aria = {r["id_sensore"] for r in righe("aria_mensile")}
+    for riga in righe("stazioni_arpa"):
+        if riga["id_sensore"] in sensori_aria and riga["comune"]:
+            con_centralina[riga["comune"]].add(riga["stazione"])
+
     coppie_p = due_finestre(annuali("meteo_mensile", "Precipitazione", "valore", somma=True))
     variazioni_pioggia = sorted((r / b - 1) * 100 for b, r in coppie_p.values())
 
@@ -410,6 +421,10 @@ def clima() -> dict[str, Any]:
             "quota_minima": min(v["quota"] for v in scarti) if scarti else None,
             "quota_massima": max(v["quota"] for v in scarti) if scarti else None,
             "anomalie": anomalie,
+        },
+        "rete": {
+            "comuni": len(con_centralina),
+            "capoluogo": len(con_centralina.get("Brescia", ())),
         },
         "pioggia": {
             "stazioni": len(variazioni_pioggia),
@@ -951,6 +966,9 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         fuori["temp_anni_caldi"] = ", ".join(sorted(v["anno"] for v in calde))
         fuori["temp_anomalia_massima"] = f"{numero_it(calde[0]['valore'], 2)} °C"
 
+        fuori["aria_comuni"] = numero_it(aria["rete"]["comuni"])
+        fuori["aria_comuni_senza"] = numero_it(len(comuni) - aria["rete"]["comuni"])
+        fuori["aria_stazioni_capoluogo"] = numero_it(aria["rete"]["capoluogo"])
         fuori["pioggia_stazioni"] = numero_it(aria["pioggia"]["stazioni"])
         fuori["pioggia_in_aumento"] = numero_it(aria["pioggia"]["in_aumento"])
         fuori["pioggia_in_calo"] = numero_it(

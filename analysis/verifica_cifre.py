@@ -493,6 +493,22 @@ def province_con(nome: str, positivo: bool = True) -> int:
 
 
 
+def _comuni_con_centralina() -> dict[str, set[str]]:
+    """Comune -> stazioni di qualità dell'aria che compaiono davvero nella serie.
+
+    Sull'**intera** serie, non sulle sole stazioni attive oggi: sono due
+    domande diverse, e `BRIEF.md` risponde alla seconda (sette comuni). Il
+    filtro su `aria_mensile.csv` serve perché `stazioni_arpa.csv` elenca anche
+    sensori di grandezze che il progetto non scarica.
+    """
+    con_dati = {r["id_sensore"] for r in aria}
+    fuori: dict[str, set[str]] = defaultdict(set)
+    for riga in stazioni:
+        if riga["id_sensore"] in con_dati and riga["comune"]:
+            fuori[riga["comune"]].add(riga["stazione"])
+    return fuori
+
+
 # --- l'aria e il clima (la sesta storia) ---------------------------------
 #
 # Rifatte da capo, come tutto il resto di questo file: `analysis/aria_e_clima.py`
@@ -1278,6 +1294,27 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         5.5,
         lambda: variazione_ingenua("Ozono"),
         0.05,
+    ),
+    (
+        "README §In sintesi / WORKING-PAPER §7.7 e §8 / sito, sesta storia",
+        "le centraline sono esistite in 11 comuni su 205",
+        11,
+        lambda: len(_comuni_con_centralina()),
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.7 / sito, sesta storia",
+        "7 delle centraline stanno nel capoluogo",
+        7,
+        lambda: len(_comuni_con_centralina()["Brescia"]),
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.7 / sito, sesta storia",
+        "gli altri comuni con centralina ne hanno una ciascuno",
+        10,
+        lambda: sum(1 for c, s in _comuni_con_centralina().items() if c != "Brescia" and len(s) == 1),
+        0,
     ),
 ]
 

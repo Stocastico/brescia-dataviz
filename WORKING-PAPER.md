@@ -614,7 +614,9 @@ migrazione, che non sono pubblicate a grana comunale.
 
 È il risultato con la finestra più lunga di tutto il lavoro — vent'anni contro i
 sei degli assi economici — e l'unico che non ha per unità il comune. In tutta la
-provincia le centraline di qualità dell'aria stanno in sette comuni su 205, e le
+provincia le centraline di qualità dell'aria sono esistite, in vent'anni, in **11
+comuni su 205** — sette delle quali nel solo capoluogo, e una per ciascuno degli
+altri dieci; oggi ne restano attive meno — e le
 stazioni meteorologiche non coincidono con esse: l'unità osservata è il
 **sensore**, e nessuna delle due reti sostiene una coropletica.
 
@@ -688,7 +690,8 @@ perché la fonte è regionale.
 
 - **Niente sotto il comune, e sull'aria nemmeno il comune.** Nessun asse scende
   al quartiere; l'asse ambientale (§7.7) non arriva nemmeno al comune, perché la
-  sua unità è il sensore e i sensori stanno in sette comuni su 205. Non esiste
+  sua unità è il sensore, e in vent'anni i sensori sono esistiti in 11 comuni su
+  205: in 194 non ce n'è mai stato uno. Non esiste
   una mappa comunale della qualità dell'aria di questa provincia che non sia
   inventata, e le stazioni non sono collocate a caso: nascono dove il problema
   era grosso, quindi descrivono sé stesse prima del territorio. I dati

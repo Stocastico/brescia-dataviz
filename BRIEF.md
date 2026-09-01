@@ -97,8 +97,10 @@ abbozzati.
 | **4** | **L'aria e il clima** | Profondità che nessun altro asse ha: PM10 dal 2000, NO₂ dal 1992, temperature dal 1990. In pianura padana è l'asse con il significato più immediato per chi ci vive. | ⚠️ **non una coropletica** | ✅ niente, ed è diventato la **sesta storia** |
 
 > **Nota sull'asse 4.** In tutta la provincia ci sono **sette comuni con
-> sensori di qualità dell'aria attivi** — Brescia, Darfo Boario Terme, Odolo,
-> Sarezzo, Rezzato, Lonato del Garda, Gambara — non 205. Non è però un limite
+> sensori di qualità dell'aria attivi** (Brescia, Darfo Boario Terme, Odolo,
+> Sarezzo, Rezzato, Lonato del Garda, Gambara), non 205; in vent'anni ne hanno
+> avuto almeno uno **undici**, e sette delle centraline stanno nel solo
+> capoluogo. Non è però un limite
 > quanto sembra: quei sette sono una **sezione territoriale quasi perfetta**
 > (capoluogo, Valle Camonica, Val Trompia metalmeccanica ×2, cintura
 > industriale, Garda, Bassa agricola). L'asse va costruito come **confronto fra

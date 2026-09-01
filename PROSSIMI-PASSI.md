@@ -867,16 +867,21 @@ rileggi la prima storia. Il sito è pronto; lo pubblichi quando lo sei anche tu.
 ### Se hai due ore
 
 Rileggi i testi del sito con il tuo occhio — è il tuo nome sopra, e nessuno
-script controlla se una frase dice più di quanto il dato sostenga. Poi lancia lo
-scarico delle migrazioni prima di andare a dormire, che è lungo ma non richiede
-presenza.
+script controlla se una frase dice più di quanto il dato sostenga. Sono sei
+storie adesso, e la sesta non l'hai mai letta.
 
 ### Se hai mezza giornata
 
-Riscrivere la §7 del working paper con le cinque storie. È l'ultimo documento
-rimasto indietro: la nota metodologica è allineata, il sito racconta, e il paper
-descrive ancora risultati provvisori. Il materiale c'è tutto e non serve
-scaricare niente.
+Il **turismo confrontato con il resto d'Italia** (§5.2), che è l'ultimo asse
+senza termine di paragone e l'unico caso in cui il confronto non è gratis: le
+altre tre volte la fonte era nazionale e bastava non filtrarla.
+
+⚠️ Oppure, e viene prima: **guarda il sesto colore di storia**. Le storie sono
+sei e i colori presi da `donostia-dataviz` sono cinque, quindi ne è stato
+aggiunto uno (`--oliva` in `stile.css`). È l'unica decisione presa in questa
+tornata che tocca la lingua grafica condivisa fra i due progetti, ed è quindi
+l'unica che vale la pena riesaminare: `sito/README.md` §Lo stile dice cosa
+comporterebbe riallineare i due.
 
 ### Se hai un weekend
 
@@ -900,7 +905,7 @@ vero; se una diverge, quello è il primo problema da guardare — ed è già suc
 due volte che ne trovasse una. Quante siano sta scritto in un posto solo,
 `analysis/README.md`, e non qui: una cifra ripetuta in quattro documenti è una
 cifra che fra sei mesi ne dice quattro diverse — ed era già ripetuta in quattro.
-Diciotto vengono dalla scomposizione demografica, dieci dall'aria e dal clima.
+Diciotto vengono dalla scomposizione demografica, tredici dall'aria e dal clima.
 
 ---
 

@@ -605,10 +605,11 @@
     <p>Tutto quello che avete letto fin qui dura sei anni, o dodici nel caso dei redditi. Qui i
     dati cominciano quando il resto del progetto non esisteva: l'aria dal {{c:no2_anno_i}}, la
     temperatura da prima ancora. Sono anche gli unici dati che non hanno per unità il comune, e
-    non per una scelta di comodo: <strong>l'unità qui è la centralina</strong>. Ce ne sono sei nel
-    solo capoluogo e nessuna in centonovantotto comuni su {{c:comuni}}, quindi non c'è nessuna
-    mappa da disegnare — e disegnarla comunque significherebbe colorare tre comuni e lasciare
-    grigia una provincia.</p>
+    non per una scelta di comodo: <strong>l'unità qui è la centralina</strong>. In vent'anni ne
+    sono esistite in {{c:aria_comuni}} comuni su {{c:comuni}} — {{c:aria_stazioni_capoluogo}} nel
+    solo capoluogo, una per ciascuno degli altri, e nessuna negli altri
+    {{c:aria_comuni_senza}} — quindi non c'è nessuna mappa da disegnare, e disegnarla comunque
+    significherebbe colorare una manciata di comuni e lasciare grigia una provincia.</p>
 
     <figure class="fig">
       <h3>Quello che si respira, {{c:no2_anno_i}}–{{c:no2_anno_f}}</h3>
@@ -668,7 +669,9 @@
     <figure class="fig">
       <h3>Quanto è più caldo di prima</h3>
       <p class="cap">Scostamento della temperatura media annua dalla media
-      {{c:clima_base_i}}–{{c:clima_base_f}} di <em>ciascuna</em> stazione. Gradi.</p>
+      {{c:clima_base_i}}–{{c:clima_base_f}} di <em>ciascuna</em> stazione. Gradi. Gli anni in
+      cui è osservata meno di metà della rete portano il tratteggio dell'assenza, non una
+      colonna a zero.</p>
       <div id="colonne-clima"></div>
     </figure>
 
@@ -1091,14 +1094,27 @@
   }
 
   if (clima && clima.temperatura && clima.temperatura.anomalie.length) {
+    // Gli anni scartati (meno di meta' panel presente) devono comparire come
+    // buchi dichiarati, non sparire: una colonna assente accanto a una colonna
+    // quasi nulla e' indistinguibile da «non e' successo niente», ed e' la
+    // confusione che MET-3 vieta.
+    var perAnno = {};
+    clima.temperatura.anomalie.forEach(function (a) { perAnno[a.anno] = a; });
+    var anniClima = clima.temperatura.anomalie.map(function (a) { return +a.anno; });
+    var vociClima = [];
+    for (var y = Math.min.apply(null, anniClima); y <= Math.max.apply(null, anniClima); y++) {
+      var trovato = perAnno[String(y)];
+      vociClima.push({
+        etichetta: String(y),
+        valore: trovato ? trovato.valore : null,
+        nota: trovato
+          ? trovato.stazioni + (trovato.stazioni === 1 ? " stazione" : " stazioni")
+          : "meno di metà delle stazioni osservate"
+      });
+    }
+
     G.colonne(document.getElementById("colonne-clima"), {
-      voci: clima.temperatura.anomalie.map(function (a) {
-        return {
-          etichetta: a.anno,
-          valore: a.valore,
-          nota: a.stazioni + (a.stazioni === 1 ? " stazione" : " stazioni")
-        };
-      }),
+      voci: vociClima,
       unita: "°C",
       decimali: 2,
       etichettaX: "anno",
