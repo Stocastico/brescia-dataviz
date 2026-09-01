@@ -900,7 +900,7 @@ vero; se una diverge, quello è il primo problema da guardare — ed è già suc
 due volte che ne trovasse una. Quante siano sta scritto in un posto solo,
 `analysis/README.md`, e non qui: una cifra ripetuta in quattro documenti è una
 cifra che fra sei mesi ne dice quattro diverse — ed era già ripetuta in quattro.
-Diciotto vengono dalla scomposizione demografica, sette dall'aria e dal clima.
+Diciotto vengono dalla scomposizione demografica, dieci dall'aria e dal clima.
 
 ---
 

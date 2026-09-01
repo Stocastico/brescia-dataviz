@@ -539,6 +539,32 @@ def variazione_inquinante(parametro: str) -> float:
     raise AssertionError(f"nessun panel bilanciato per {parametro}")
 
 
+def variazione_ingenua(parametro: str) -> float:
+    """Il conto che il panel bilanciato serve a evitare: tutte le stazioni
+    disponibili nel primo anno contro tutte quelle disponibili nell'ultimo.
+
+    Sta qui perché la §7.7 del working paper lo **riporta accanto** al panel: la
+    distanza fra i due quantifica quanto ha contribuito il rimaneggiamento della
+    rete, e su una serie ferma come l'ozono le rovescia il segno. Un numero
+    citato per essere criticato resta un numero citato (MET-16).
+    """
+    serie = {
+        s: {a: sum(m) / len(m) for a, m in per_anno.items()}
+        for s, per_anno in _annue(aria, parametro, "media", 10).items()
+    }
+    tutti = [a for per_anno in serie.values() for a in per_anno]
+    primo, ultimo = int(min(tutti)), int(max(tutti))
+    for inizio in range(primo, ultimo + 1):
+        anni = [str(a) for a in range(inizio, ultimo + 1)]
+        if len(anni) < 6:
+            break
+        if len([s for s, per_anno in serie.items() if all(a in per_anno for a in anni)]) >= 3:
+            testa = [per_anno[anni[0]] for per_anno in serie.values() if anni[0] in per_anno]
+            coda = [per_anno[anni[-1]] for per_anno in serie.values() if anni[-1] in per_anno]
+            return ((sum(coda) / len(coda)) / (sum(testa) / len(testa)) - 1) * 100
+    raise AssertionError(f"nessun panel bilanciato per {parametro}")
+
+
 def _due_finestre(parametro: str, somma: bool) -> list[tuple[float, float]]:
     """Le coppie (base, recente) delle stazioni che hanno entrambe le finestre.
 
@@ -1184,52 +1210,73 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         0.05,
     ),
     (
-        "README §In sintesi / sito, sesta storia",
+        "README §In sintesi / WORKING-PAPER §7.7 / sito, sesta storia",
         "PM10 sul panel bilanciato: -42,0 %",
         -42.0,
         lambda: variazione_inquinante("PM10 (SM2005)"),
         0.05,
     ),
     (
-        "README §In sintesi / sito, sesta storia",
+        "README §In sintesi / WORKING-PAPER §7.7 / sito, sesta storia",
         "biossido di azoto sul panel bilanciato: -38,9 %",
         -38.9,
         lambda: variazione_inquinante("Biossido di Azoto"),
         0.05,
     ),
     (
-        "README §In sintesi / sito, sesta storia",
+        "README §In sintesi / WORKING-PAPER §7.7 / sito, sesta storia",
         "ozono sul panel bilanciato: -1,8 %, cioè fermo",
         -1.8,
         lambda: variazione_inquinante("Ozono"),
         0.05,
     ),
     (
-        "README §In sintesi / sito, sesta storia",
+        "README §In sintesi / WORKING-PAPER §7.7 / sito, sesta storia",
         "temperatura: +1,10 °C fra le due finestre",
         1.10,
         scarto_temperatura,
         0.005,
     ),
     (
-        "README §In sintesi / sito, sesta storia",
+        "README §In sintesi / WORKING-PAPER §7.7 / sito, sesta storia",
         "in aumento 8 stazioni di temperatura su 8",
         8,
         stazioni_piu_calde,
         0,
     ),
     (
-        "sito, sesta storia",
+        "WORKING-PAPER §7.7 / sito, sesta storia",
         "le stazioni di temperatura con entrambe le finestre sono 8",
         8,
         stazioni_di_temperatura,
         0,
     ),
     (
-        "sito, sesta storia / §Limiti",
+        "WORKING-PAPER §7.7 / sito, sesta storia e §Limiti",
         "pioggia: variazione mediana +0,5 %, cioè nessun segnale",
         0.5,
         variazione_mediana_pioggia,
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.7, tabella",
+        "conto ingenuo PM10: -45,5 %, contro -42,0 % del panel",
+        -45.5,
+        lambda: variazione_ingenua("PM10 (SM2005)"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.7, tabella",
+        "conto ingenuo biossido di azoto: -42,3 %",
+        -42.3,
+        lambda: variazione_ingenua("Biossido di Azoto"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.7: il segno rovesciato",
+        "conto ingenuo ozono: +5,5 %, cioè il segno opposto al panel",
+        5.5,
+        lambda: variazione_ingenua("Ozono"),
         0.05,
     ),
 ]
