@@ -53,6 +53,7 @@ imprese = leggi("imprese_classe_addetti.csv")
 turismo = leggi("turismo_comuni_annuale.csv")
 aria = leggi("aria_mensile.csv")
 stazioni = leggi("stazioni_arpa.csv")
+meteo = leggi("meteo_mensile.csv")
 popolazione = leggi("popolazione_comuni.csv")
 redditi = leggi("redditi_comuni.csv")
 settore_classe = leggi("imprese_settore_classe.csv")
@@ -489,6 +490,133 @@ def brescia_per_mille(nome: str) -> float:
 def province_con(nome: str, positivo: bool = True) -> int:
     valori = _province_per_mille()
     return sum(1 for v in valori.values() if (v[nome] > 0) == positivo)
+
+
+
+def _comuni_con_centralina() -> dict[str, set[str]]:
+    """Comune -> stazioni di qualità dell'aria che compaiono davvero nella serie.
+
+    Sull'**intera** serie, non sulle sole stazioni attive oggi: sono due
+    domande diverse, e `BRIEF.md` risponde alla seconda (sette comuni). Il
+    filtro su `aria_mensile.csv` serve perché `stazioni_arpa.csv` elenca anche
+    sensori di grandezze che il progetto non scarica.
+    """
+    con_dati = {r["id_sensore"] for r in aria}
+    fuori: dict[str, set[str]] = defaultdict(set)
+    for riga in stazioni:
+        if riga["id_sensore"] in con_dati and riga["comune"]:
+            fuori[riga["comune"]].add(riga["stazione"])
+    return fuori
+
+
+# --- l'aria e il clima (la sesta storia) ---------------------------------
+#
+# Rifatte da capo, come tutto il resto di questo file: `analysis/aria_e_clima.py`
+# e `sito/costruisci.py` calcolano le stesse cifre ciascuno per conto suo, e se
+# le tre implementazioni divergessero sulla definizione di «panel bilanciato» o
+# di «anomalia» è qui che si vedrebbe. È il meccanismo che ha fatto emergere
+# MET-13 sull'indice di Moran.
+
+BASE_CLIMA = [str(a) for a in range(2004, 2014)]
+RECENTE_CLIMA = [str(a) for a in range(2016, 2026)]
+
+
+def _annue(righe: list[dict[str, str]], parametro: str, colonna: str, minimo: int) -> dict[str, dict[str, float]]:
+    grezzo: dict[str, dict[str, list[float]]] = defaultdict(lambda: defaultdict(list))
+    for riga in righe:
+        if riga["parametro"] != parametro or riga["stato"] != "osservato":
+            continue
+        valore = numero(riga[colonna])
+        if valore is not None:
+            grezzo[riga["id_sensore"]][riga["mese"][:4]].append(valore)
+    return {
+        sensore: {anno: mesi for anno, mesi in per_anno.items() if len(mesi) >= minimo}
+        for sensore, per_anno in grezzo.items()
+    }
+
+
+def variazione_inquinante(parametro: str) -> float:
+    """Variazione percentuale fra i primi e gli ultimi tre anni del panel bilanciato."""
+    serie = {
+        s: {a: sum(m) / len(m) for a, m in per_anno.items()}
+        for s, per_anno in _annue(aria, parametro, "media", 10).items()
+    }
+    tutti = [a for per_anno in serie.values() for a in per_anno]
+    primo, ultimo = int(min(tutti)), int(max(tutti))
+    for inizio in range(primo, ultimo + 1):
+        anni = [str(a) for a in range(inizio, ultimo + 1)]
+        if len(anni) < 6:
+            break
+        sensori = [s for s, per_anno in serie.items() if all(a in per_anno for a in anni)]
+        if len(sensori) >= 3:
+            testa = sum(serie[s][a] for s in sensori for a in anni[:3]) / (len(sensori) * 3)
+            coda = sum(serie[s][a] for s in sensori for a in anni[-3:]) / (len(sensori) * 3)
+            return (coda / testa - 1) * 100
+    raise AssertionError(f"nessun panel bilanciato per {parametro}")
+
+
+def variazione_ingenua(parametro: str) -> float:
+    """Il conto che il panel bilanciato serve a evitare: tutte le stazioni
+    disponibili nel primo anno contro tutte quelle disponibili nell'ultimo.
+
+    Sta qui perché la §7.7 del working paper lo **riporta accanto** al panel: la
+    distanza fra i due quantifica quanto ha contribuito il rimaneggiamento della
+    rete, e su una serie ferma come l'ozono le rovescia il segno. Un numero
+    citato per essere criticato resta un numero citato (MET-16).
+    """
+    serie = {
+        s: {a: sum(m) / len(m) for a, m in per_anno.items()}
+        for s, per_anno in _annue(aria, parametro, "media", 10).items()
+    }
+    tutti = [a for per_anno in serie.values() for a in per_anno]
+    primo, ultimo = int(min(tutti)), int(max(tutti))
+    for inizio in range(primo, ultimo + 1):
+        anni = [str(a) for a in range(inizio, ultimo + 1)]
+        if len(anni) < 6:
+            break
+        if len([s for s, per_anno in serie.items() if all(a in per_anno for a in anni)]) >= 3:
+            testa = [per_anno[anni[0]] for per_anno in serie.values() if anni[0] in per_anno]
+            coda = [per_anno[anni[-1]] for per_anno in serie.values() if anni[-1] in per_anno]
+            return ((sum(coda) / len(coda)) / (sum(testa) / len(testa)) - 1) * 100
+    raise AssertionError(f"nessun panel bilanciato per {parametro}")
+
+
+def _due_finestre(parametro: str, somma: bool) -> list[tuple[float, float]]:
+    """Le coppie (base, recente) delle stazioni che hanno entrambe le finestre.
+
+    ⚠️ La soglia dei mesi dipende da cosa si aggrega, e sbagliarla cambia la
+    risposta: una **media** annua tollera due mesi mancanti (10 su 12), un
+    **totale** annuo no — un totale a cui manca un mese non è un totale basso,
+    è un totale di undici mesi. Scritta a 12 anche per la temperatura, questa
+    verifica trovava 7 stazioni invece di 8, ed è esattamente il genere di
+    divergenza per cui questo file rifà i conti per conto proprio (MET-13).
+    """
+    coppie = []
+    for per_anno in _annue(meteo, parametro, "valore", 12 if somma else 10).values():
+        annuali = {a: (sum(m) if somma else sum(m) / len(m)) for a, m in per_anno.items()}
+        base = [annuali[a] for a in BASE_CLIMA if a in annuali]
+        recente = [annuali[a] for a in RECENTE_CLIMA if a in annuali]
+        if len(base) >= 8 and len(recente) >= 8:
+            coppie.append((sum(base) / len(base), sum(recente) / len(recente)))
+    return coppie
+
+
+def scarto_temperatura() -> float:
+    coppie = _due_finestre("Temperatura", somma=False)
+    return sum(r - b for b, r in coppie) / len(coppie)
+
+
+def stazioni_piu_calde() -> int:
+    return sum(1 for b, r in _due_finestre("Temperatura", somma=False) if r > b)
+
+
+def stazioni_di_temperatura() -> int:
+    return len(_due_finestre("Temperatura", somma=False))
+
+
+def variazione_mediana_pioggia() -> float:
+    variazioni = sorted((r / b - 1) * 100 for b, r in _due_finestre("Precipitazione", somma=True))
+    return mediana_lista(variazioni)
 
 
 VERIFICHE: list[tuple[str, str, float, object, float]] = [
@@ -1096,6 +1224,97 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         -34.4,
         lambda: mediana_province("naturale"),
         0.05,
+    ),
+    (
+        "README §In sintesi / WORKING-PAPER §7.7 / sito, sesta storia",
+        "PM10 sul panel bilanciato: -42,0 %",
+        -42.0,
+        lambda: variazione_inquinante("PM10 (SM2005)"),
+        0.05,
+    ),
+    (
+        "README §In sintesi / WORKING-PAPER §7.7 / sito, sesta storia",
+        "biossido di azoto sul panel bilanciato: -38,9 %",
+        -38.9,
+        lambda: variazione_inquinante("Biossido di Azoto"),
+        0.05,
+    ),
+    (
+        "README §In sintesi / WORKING-PAPER §7.7 / sito, sesta storia",
+        "ozono sul panel bilanciato: -1,8 %, cioè fermo",
+        -1.8,
+        lambda: variazione_inquinante("Ozono"),
+        0.05,
+    ),
+    (
+        "README §In sintesi / WORKING-PAPER §7.7 / sito, sesta storia",
+        "temperatura: +1,10 °C fra le due finestre",
+        1.10,
+        scarto_temperatura,
+        0.005,
+    ),
+    (
+        "README §In sintesi / WORKING-PAPER §7.7 / sito, sesta storia",
+        "in aumento 8 stazioni di temperatura su 8",
+        8,
+        stazioni_piu_calde,
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.7 / sito, sesta storia",
+        "le stazioni di temperatura con entrambe le finestre sono 8",
+        8,
+        stazioni_di_temperatura,
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.7 / sito, sesta storia e §Limiti",
+        "pioggia: variazione mediana +0,5 %, cioè nessun segnale",
+        0.5,
+        variazione_mediana_pioggia,
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.7, tabella",
+        "conto ingenuo PM10: -45,5 %, contro -42,0 % del panel",
+        -45.5,
+        lambda: variazione_ingenua("PM10 (SM2005)"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.7, tabella",
+        "conto ingenuo biossido di azoto: -42,3 %",
+        -42.3,
+        lambda: variazione_ingenua("Biossido di Azoto"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.7: il segno rovesciato",
+        "conto ingenuo ozono: +5,5 %, cioè il segno opposto al panel",
+        5.5,
+        lambda: variazione_ingenua("Ozono"),
+        0.05,
+    ),
+    (
+        "README §In sintesi / WORKING-PAPER §7.7 e §8 / sito, sesta storia",
+        "le centraline sono esistite in 11 comuni su 205",
+        11,
+        lambda: len(_comuni_con_centralina()),
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.7 / sito, sesta storia",
+        "7 delle centraline stanno nel capoluogo",
+        7,
+        lambda: len(_comuni_con_centralina()["Brescia"]),
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.7 / sito, sesta storia",
+        "gli altri comuni con centralina ne hanno una ciascuno",
+        10,
+        lambda: sum(1 for c, s in _comuni_con_centralina().items() if c != "Brescia" and len(s) == 1),
+        0,
     ),
 ]
 

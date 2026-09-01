@@ -9,19 +9,28 @@
 > referenzia. Ogni numero citato è riproducibile da
 > [`pipeline/`](pipeline/README.md).
 >
-> ## ⚠️ Bozza — versione 1, agosto 2026
+> ## ⚠️ Bozza — versione 2, settembre 2026
 >
-> **Riscritta dopo il primo giro di analisi e la pubblicazione di cinque
-> storie.** La §7 non contiene più solo ciò che era emerso costruendo la
-> pipeline: contiene risultati veri, con i loro controlli. La §6.1, che era il
-> pezzo più solido del documento, ha ora la sua conclusione invece della sua
-> domanda.
+> **La §7 copre adesso tutti e quattro gli assi portanti**, e contiene risultati
+> veri con i loro controlli invece di ciò che era emerso costruendo la pipeline.
+> La §6.1, che era il pezzo più solido del documento, ha la sua conclusione
+> invece della sua domanda.
 >
-> **Il limite più serio della versione precedente è caduto.** Diceva che tutti i
-> risultati descrivevano Brescia senza dire se Brescia fosse diversa da una
-> provincia qualunque. Il confronto esterno adesso c'è su tre assi su quattro —
-> imprese (§7.1), redditi (§7.3), popolazione (§7.6) — e su due dei tre ha
-> cambiato quello che il progetto diceva. Resta scoperto il **turismo**.
+> Cosa è cambiato in questa versione: la **§7.7**, l'asse ambientale, che era
+> l'ultimo scoperto ed è quello con la finestra più lunga — vent'anni contro sei.
+> Porta anche il controllo negativo più netto del lavoro (una serie senza segnale
+> ottenuta con lo stesso metodo di una con segnale) e la regola che l'ha resa
+> leggibile, MET-16. Con essa è stata corretta una cifra della §7.5, che dava la
+> misura dell'aria su una stazione sola.
+>
+> **Il limite più serio della versione precedente era caduto già in agosto.**
+> Diceva che tutti i risultati descrivevano Brescia senza dire se Brescia fosse
+> diversa da una provincia qualunque. Il confronto esterno c'è su imprese (§7.1),
+> redditi (§7.3) e popolazione (§7.6), e su due dei tre ha cambiato quello che il
+> progetto diceva. Restano scoperti il **turismo** (§7.4) e l'**ambiente**
+> (§7.7), per motivi diversi: nel primo caso la fonte è regionale e un confronto
+> nazionale andrebbe costruito da un'altra; nel secondo l'unità non è nemmeno il
+> comune.
 >
 > Cosa resta provvisorio: il **titolo**, che cambierà quando sarà chiara la
 > tesi; la §5, da rivedere se si aggiungeranno indicatori.
@@ -47,8 +56,8 @@ fermano alla provincia, altri arrivano al comune, nessuno scende sotto), la
 soprattutto la **fragilità semantica degli aggregati amministrativi**, che
 cambiano per ragioni contabili senza che cambi nulla nel mondo.
 
-I risultati metodologicamente più utili sono **cinque errori corretti**, tutti
-trovati sui dati e non previsti a tavolino.
+I risultati metodologicamente più utili sono **cinque errori corretti e uno
+evitato**, tutti trovati sui dati e non previsti a tavolino.
 
 1. **§6.1 — decomporre prima di titolare.** Una variazione aggregata
    spettacolare — il crollo dell'occupazione nelle grandi unità locali del
@@ -81,10 +90,19 @@ trovati sui dati e non previsti a tavolino.
    contro −10.163 di saldo naturale. È lo stesso errore di §6.1, commesso su una
    parola invece che su un numero.
 
-Nessuno dei cinque è un errore di programmazione: sono cinque modi diversi di
-far dire a un dato corretto una cosa falsa. Tre dei cinque — il primo, il quarto
-e il quinto — sono la stessa disciplina applicata a oggetti diversi:
-**scomporre, o confrontare, prima di dare un nome a una variazione.**
+6. **§7.7 — quando la rete di misura cambia, la media misura la rete.** È il
+   solo della lista che non è stato commesso: le centraline dell'aria aprono e
+   chiudono, e la media annua di quelle presenti avrebbe attribuito
+   all'atmosfera un miglioramento che sta in parte nel rimaneggiamento della
+   rete. Guardato prima di calcolare, invece che dopo aver pubblicato. Il conto
+   ingenuo, calcolato apposta per il confronto, esagera due cali di tre punti e
+   **rovescia il segno** del terzo.
+
+Nessuno dei sei è un errore di programmazione: sono sei modi diversi di far dire
+a un dato corretto una cosa falsa. Tre di essi — il primo, il quarto e il quinto
+— sono la stessa disciplina applicata a oggetti diversi: **scomporre, o
+confrontare, prima di dare un nome a una variazione.** Il sesto è la stessa
+disciplina applicata allo **strumento** invece che al numero.
 
 ---
 
@@ -193,8 +211,9 @@ di fallire:
 
 ## 4. Le decisioni metodologiche
 
-Undici regole, esposte per esteso in [`METODOLOGIA.md`](METODOLOGIA.md). In
-sintesi:
+Sedici regole, esposte per esteso in [`METODOLOGIA.md`](METODOLOGIA.md). Le
+prime undici sono principi; le cinque successive sono nate ciascuna da un caso
+concreto, e i loro casi sono la §6.1 e la §7. In sintesi:
 
 | | Regola |
 |---|---|
@@ -209,6 +228,11 @@ sintesi:
 | MET-9 | **Decomporre prima di titolare** (§6.1). |
 | MET-10 | **I ripieghi si dichiarano nel grafico**, non nelle note. |
 | MET-11 | **L'origine non è un proxy** di reddito o di disagio. |
+| MET-12 | **Per la convergenza serve il livello iniziale**: correlare la crescita con il livello finale è un artefatto, e sul reddito bresciano cambia il segno (§7.3). |
+| MET-13 | **Una decisione sul dato mancante si prende in un posto solo**, altrimenti due script rispondono numeri diversi alla stessa domanda. |
+| MET-14 | **Un numero senza termine di paragone non è un risultato** (§7.1). |
+| MET-15 | **Una variazione netta non è una spiegazione**, e il titolo che le si dà non deve contenerne una (§7.6). |
+| MET-16 | **Quando la rete di misura cambia, la media misura la rete**: panel bilanciato sulle serie lunghe, anomalie quando le unità non sono confrontabili fra loro (§7.7). |
 
 ## 5. Indicatori derivati
 
@@ -376,8 +400,10 @@ che i dati non sostengono.
 
 ## 7. Risultati
 
-Quattro risultati, con i loro controlli. Nessuno è causale: sono descrizioni di
-un territorio, e la §8 dice cosa non permettono di affermare.
+Sette risultati, con i loro controlli. Nessuno è causale: sono descrizioni di
+un territorio, e la §8 dice cosa non permettono di affermare. Tre di essi —
+§7.1, §7.3 e §7.6 — hanno un termine di paragone esterno; §7.4 e §7.7 no, e la
+§8 dice quali conclusioni questo indebolisce.
 
 ### 7.1 La domanda di partenza era mal posta
 
@@ -502,9 +528,11 @@ non sono 205 osservazioni indipendenti.
 - **La provincia è turistica, il capoluogo no.** 12.246.854 presenze nel 2024,
   di cui il 68,8 % nei primi dieci comuni, otto sul Garda. Sirmione da sola
   (1.406.590) supera Brescia città (883.531, il 7,2 %).
-- **L'aria è migliorata, e non abbastanza.** PM10 a Brescia Broletto: 45,5 µg/m³
-  nel 2001, 27,3 nel 2024. Circa −40 %, e comunque sopra la linea guida
-  dell'Organizzazione mondiale della sanità.
+- **L'aria è migliorata, e non abbastanza.** PM10 alla stazione di Brescia
+  Broletto: 45,5 µg/m³ nel 2001, 27,3 nel 2024 — una stazione confrontata con sé
+  stessa, e comunque sopra la linea guida dell'Organizzazione mondiale della
+  sanità. La misura provinciale, che non è una stazione sola e non si ricava
+  facendo la media di quelle che ci sono, è in §7.7.
 - **La città importa lavoro**: addetti localizzati su occupati residenti ≈ 1,16;
   26.425 residenti escono ogni giorno dal comune, 23.699 per lavoro (2019).
 
@@ -582,9 +610,91 @@ esce da ogni comune, **non la coppia origine-destinazione**. «Chi lascia la Val
 Camonica scende in città» resta fuori portata: servirebbero le matrici di
 migrazione, che non sono pubblicate a grana comunale.
 
+### 7.7 L'aria migliora, il clima no, e la pioggia non dice niente
+
+È il risultato con la finestra più lunga di tutto il lavoro — vent'anni contro i
+sei degli assi economici — e l'unico che non ha per unità il comune. In tutta la
+provincia le centraline di qualità dell'aria sono esistite, in vent'anni, in **11
+comuni su 205** — sette delle quali nel solo capoluogo, e una per ciascuno degli
+altri dieci; oggi ne restano attive meno — e le
+stazioni meteorologiche non coincidono con esse: l'unità osservata è il
+**sensore**, e nessuna delle due reti sostiene una coropletica.
+
+**Il problema di disegno viene prima del risultato**, e su questi dati è
+severo: le reti aprono e chiudono stazioni. Sul PM10 la rete bresciana passa da
+due sensori a sette nell'arco della serie, e non sono gli stessi due. La media
+annua «di quello che c'è» misura quindi anche il rimaneggiamento della rete — e
+lo misura con un segno prevedibile, perché le prime centraline nascono dove il
+problema è grosso e quelle successive tendono a stare in posti più puliti. È lo
+stesso genere di artefatto della §6.1: il disegno della misura che produce il
+risultato. Il rimedio è il **panel bilanciato** — solo i sensori osservati in
+tutti gli anni della finestra — e il conto ingenuo riportato accanto, perché la
+distanza fra i due quantifica il contributo della rete. È MET-16.
+
+| Inquinante | panel | sensori | primi 3 anni | ultimi 3 anni | variazione | conto ingenuo |
+|---|---|---:|---:|---:|---:|---:|
+| PM10 | 2005–2025 | 3 | 48,7 µg/m³ | 28,2 | **−42,0 %** | −45,5 % |
+| biossido di azoto | 2003–2025 | 4 | 36,3 µg/m³ | 22,2 | **−38,9 %** | −42,3 % |
+| ozono | 2005–2025 | 3 | 54,7 µg/m³ | 53,7 | **−1,8 %** | +5,5 % |
+
+Due dei tre inquinanti crollano di circa il quaranta per cento; il terzo non si
+muove. La differenza non è statistica ma fisica, e vale la pena esplicitarla
+perché è il motivo per cui «l'aria» non è una grandezza sola: il particolato e
+il biossido di azoto sono inquinanti **primari**, escono da una sorgente
+identificabile; l'ozono è **secondario**, si forma in atmosfera. Questo lavoro
+può dire che non scende. Non può dire perché, e la §8 lo mette per iscritto.
+
+Si noti che il conto ingenuo esagera i due cali di tre punti e **rovescia il
+segno** del terzo: sull'ozono darebbe +5,5 % contro il −1,8 % del panel. Sulle
+due serie in caduta l'artefatto è un'esagerazione; su quella ferma è un
+risultato inventato di sana pianta.
+
+**La temperatura pone un problema diverso**, e la soluzione ingenua è peggiore.
+Le stazioni bresciane stanno fra i 47 metri di Gambara e i 2.108 del Pantano
+d'Avio: la loro media aritmetica non descrive nessun luogo, e — più grave —
+cambierebbe di mezzo grado alla sola chiusura della stazione più alta, senza che
+sia successo niente. Ciascuna stazione si confronta quindi con sé stessa, con la
+propria media 2004–2013, e si mediano gli **scostamenti**.
+
+| | valore |
+|---|---:|
+| scostamento medio, 2016–2025 contro 2004–2013 | **+1,10 °C** |
+| stazioni con entrambe le finestre osservate | 8 |
+| stazioni in aumento | **8 su 8** |
+| quote coperte | 47 – 2.108 m |
+
+Il grado in più conta meno della sua distribuzione: **non c'è un'eccezione**, né
+in pianura, né in valle, né sul ghiacciaio. Un effetto che si ripete con lo
+stesso segno in otto siti indipendenti non lo produce un sensore tarato male, ed
+è il controllo che rende il risultato credibile senza bisogno di un test.
+
+**Il controllo negativo, che è la parte utile.** Dalla stessa rete, con lo stesso
+metodo e sulle stesse due finestre, la **precipitazione** non dà segnale: su 12
+stazioni, 7 in aumento e 5 in calo, con una variazione mediana di **+0,5 %**. Il
+segno non è concorde e la mediana è mezzo punto: con questa rete e questa
+finestra la risposta è che non lo sappiamo. Il risultato resta nel racconto e in
+questo documento per la ragione che il progetto applica altrove ai controlli
+falliti (§6.2): una serie **senza** segnale ottenuta con lo stesso procedimento è
+la prova che il procedimento non fabbrica segnali. Senza di essa il +1,10 °C
+sarebbe un numero da prendere sulla fiducia.
+
+**Cosa questo risultato non è.** Non è una misura dell'aria della provincia: è
+una misura dell'aria dove stanno le centraline, che non sono collocate a caso.
+Non è una serie di cause: la meteorologia governa la dispersione degli inquinanti
+quanto le emissioni, e separarle richiederebbe una normalizzazione meteorologica
+che medie mensili non sostengono. E non è un confronto esterno — a differenza di
+§7.1, §7.3 e §7.6, questo asse non è stato collocato fra le province italiane,
+perché la fonte è regionale.
+
 ## 8. Limiti — cosa questo metodo non può affermare
 
-- **Niente sotto il comune.** Nessun asse scende al quartiere. I dati
+- **Niente sotto il comune, e sull'aria nemmeno il comune.** Nessun asse scende
+  al quartiere; l'asse ambientale (§7.7) non arriva nemmeno al comune, perché la
+  sua unità è il sensore, e in vent'anni i sensori sono esistiti in 11 comuni su
+  205: in 194 non ce n'è mai stato uno. Non esiste
+  una mappa comunale della qualità dell'aria di questa provincia che non sia
+  inventata, e le stazioni non sono collocate a caso: nascono dove il problema
+  era grosso, quindi descrivono sé stesse prima del territorio. I dati
   esisterebbero per alcuni temi (sezioni di censimento) ma non per quelli
   centrali: lavoro, imprese, reddito e criminalità si fermano al comune o alla
   provincia. Una mappa dei quartieri di Brescia colorata per «sicurezza»
@@ -598,6 +708,15 @@ migrazione, che non sono pubblicate a grana comunale.
   censimento comunale degli alloggi turistici.
 - **La percezione di sicurezza parte dal 2022**, quindi non esiste un «prima»
   con cui confrontarla.
+- **Sull'aria non si separa la tendenza dalla meteorologia.** La dispersione
+  degli inquinanti dipende da vento, inversioni termiche e precipitazioni quanto
+  dalle emissioni. Le medie mensili di §7.7 non sostengono una normalizzazione
+  meteorologica, quindi ogni variazione riportata è quello che le centraline
+  hanno misurato, non quanto è stato emesso. È il motivo per cui la §7.7 non
+  attribuisce il calo del PM10 a nessuna politica né l'immobilità dell'ozono a
+  nessuna causa.
+- **Sulla precipitazione non si afferma niente**, e il non-risultato è
+  dichiarato invece che omesso (§7.7).
 - **Il commercio estero è regionale**, e la Lombardia non è Brescia.
 - **Gli aggregati amministrativi sono fragili** (§6.1): il registro delle unità
   locali misura dove le cose sono *registrate*, che non sempre è dove
@@ -675,7 +794,7 @@ trasferibile è quasi tutta:
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | Consegna: cosa resta da scaricare, decisioni aperte, come si costruiscono analisi e sito |
 | [`pipeline/`](pipeline/README.md) | Il codice, con le trappole documentate |
 | [`dati/`](dati/README.md) | Le ventisei tabelle prodotte |
-| [`analysis/`](analysis/README.md) | I dodici script che leggono quelle tabelle, e le settantotto verifiche di `verifica_cifre.py` |
+| [`analysis/`](analysis/README.md) | I tredici script che leggono quelle tabelle, e le verifiche di `verifica_cifre.py` |
 
 *Versione 1 — agosto 2026. La §7 riporta risultati veri con i loro controlli, e
 di quelli elencati in §6.2 restano fuori solo due: la rottura Covid trattata in

@@ -61,18 +61,18 @@ Indice:
 | Pipeline | ✅ funzionante, `requests` + libreria standard, 209 test verdi |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
 | Tabelle tidy | ✅ 26 CSV in [`dati/processed/`](dati/README.md), versionati; manca solo `migrazioni_comuni.csv` |
-| Analisi | ✅ dodici script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province, la scomposizione demografica |
-| Storie scelte | ✅ **cinque**, scritte e pubblicate nel documento narrativo — l'ultima delle quali corregge le altre. Le candidate rimaste stanno in `BRIEF.md` |
+| Analisi | ✅ tredici script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province, la scomposizione demografica, l'aria e il clima |
+| Storie scelte | ✅ **sei**, scritte e pubblicate nel documento narrativo — la quinta corregge quelle che la precedono, la sesta è l'unica che dura vent'anni. Le candidate rimaste stanno in `BRIEF.md` |
 | Contratto dati per il sito | ✅ `metric_*.json` + registro, con i cinque invarianti come test |
 | Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega |
 | Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
 | Deploy | 🤖 la **costruzione** è automatica su `main` (test, cifre, sito, artefatto); la **pubblicazione** no: parte solo a mano, con una conferma scritta (§7). 🙋 serve il tuo passaggio su Pages |
 | Licenza | ✅ MIT per il codice (`LICENSE`), CC BY 4.0 per testi e dati (`LICENSE-DATI`) (§3.3) |
-| `METODOLOGIA.md` | ⚠️ bozza avanzata: **quindici** regole, MET-9 chiusa, MET-15 nata dalla scomposizione demografica |
-| `WORKING-PAPER.md` | ⚠️ bozza, la sezione dei risultati va riscritta con le cinque storie (§8) |
+| `METODOLOGIA.md` | ⚠️ bozza avanzata: **sedici** regole, MET-9 chiusa, MET-15 dalla scomposizione demografica, MET-16 dal panel bilanciato delle centraline |
+| `WORKING-PAPER.md` | ⚠️ bozza, la sezione dei risultati va riscritta con le sei storie (§8) |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
-fatte e cinque storie sono scritte in un sito che si costruisce da solo: **manca
+fatte e sei storie sono scritte in un sito che si costruisce da solo: **manca
 la tua rilettura e un clic nelle impostazioni**. Il lavoro tecnico
 che resta è tutto facoltativo — il pannello interattivo, i download manuali, i
 confronti con altre province.
@@ -128,7 +128,7 @@ python -m brescia_pipeline.build migrazioni abitazioni famiglie
 > le quarantamila righe.
 >
 > Per ora è **esclusa da git** (`.gitignore`, con la motivazione accanto) e si
-> rigenera in venti minuti. Nessuna delle cinque storie pubblicate la usa, quindi
+> rigenera in venti minuti. Nessuna delle sei storie pubblicate la usa, quindi
 > non blocca niente. Le due strade, quando l'asse 2 verrà affrontato:
 >
 > - **codici al posto delle etichette**, più una legenda in una tabella a parte.
@@ -198,31 +198,37 @@ solo che l'host risponde.
   **risultati elettorali per sezione** da Eligendo
   (`elezioni.interno.gov.it` risponde; `eligendo.interno.gov.it` no).
 
-### 2.4 🤖 Un difetto noto: le etichette censuarie sono in inglese
+### 2.4 ✅ Le etichette censuarie sono in italiano
 
-Nelle tabelle che vengono dall'SDMX di ISTAT le **modalità** delle dimensioni
-sono in inglese: `private households on 31st December`, `15 years and over`,
-`4 and over`. Riguarda `famiglie_comuni.csv`, `abitazioni_comuni.csv`,
-`migrazioni_comuni.csv` e `censimento_lavoro_brescia.csv`, cioè tutte le
-tavole censuarie, e stona con la decisione di §3.4 di tenere tutto in italiano
-salvo i nomi delle colonne.
+Nelle tabelle che venivano dall'SDMX di ISTAT le **modalità** delle dimensioni
+erano in inglese: `private households on 31st December`, `15 years and over`,
+`4 and over`. Riguardava `famiglie_comuni.csv`, `abitazioni_comuni.csv` e
+`censimento_lavoro_brescia.csv`, cioè le tavole censuarie scaricate per prime, e
+stonava con la decisione di §3.4 di tenere tutto in italiano salvo i nomi delle
+colonne.
 
 **Non era una scelta, era un header mancante.** ISTAT risponde in italiano se la
-richiesta porta `Accept-Language: it`. ✅ **Fatto**: l'header è in `fetch.py`, con
-i test che lo verificano, e tutte le tabelle scaricate da agosto 2026 in poi
-arrivano in italiano — `imprese_settore.csv` e le due tabelle nuove lo sono già
-(«attività di ricerca, selezione, fornitura di personale» al posto di
-`employment activities`).
+richiesta porta `Accept-Language: it`, e l'header è in `fetch.py` con i test che
+lo verificano.
 
-⏳ **Resta da rifare il giro sulle tavole censuarie** già in
-`dati/processed/`, che sono state scaricate prima: `famiglie_comuni.csv`,
-`abitazioni_comuni.csv` e `censimento_lavoro_brescia.csv` hanno ancora le
-modalità in inglese. La cache di `dati/raw/` non porta traccia della lingua, per
-cui serve un riscarico con `force=True` — qualche ora di attesa, e conviene
-farlo insieme allo scarico delle migrazioni, che è comunque da fare.
+✅ **Chiuso a settembre 2026.** Le tre tavole rimaste indietro sono state
+riscaricate e sono in italiano: «famiglie con almeno uno straniero residente al
+31 dicembre», «15 anni e più», «tutte le voci». Con la cache di `dati/raw/`
+vuota — che è la condizione normale di un ambiente di lavoro fresco, visto che
+`raw/` non è versionata — non è servito nessun `force`: sono bastati venti
+minuti di `build lavoro abitazioni famiglie`, non le ore che questa riga
+prometteva. **Su una macchina dove la cache esiste, invece, il `force` serve
+ancora**, perché un file grezzo già scaricato non porta traccia della lingua con
+cui è arrivato.
 
-Finché non è fatto, quelle tre tabelle non sono pubblicabili così come sono. Le
-cinque storie del sito non le usano.
+Una cosa da sapere prima di guardare il diff: in `abitazioni_comuni.csv`
+cambiano anche **1.640 valori**, e non è la fonte che si è mossa. È
+l'**ordinamento**: «abitazioni non occupate» viene prima di «abitazioni
+occupate» in italiano, mentre `occupied` veniva prima di `unoccupied` in
+inglese. I totali per anno e per tavola coincidono all'unità. È la stessa
+ragione per cui `redditi.py` filtra sui codici e non sulle etichette (MET-13),
+vista da un'altra angolazione: **l'etichetta non è una chiave**, nemmeno per
+ordinare.
 
 ---
 
@@ -255,7 +261,7 @@ Motivazione e forma di ciascuno in [`BRIEF.md`](BRIEF.md).
 | **1** | Il lavoro e le imprese | coropletica sui 205 comuni + serie | ✅ completi |
 | **2** | Chi vive nel bresciano | coropletica + composizioni | ✅ completi |
 | **3** | Le due economie: manifattura e Garda | mappa bivariata + concentrazione | ✅ completi |
-| **4** | L'aria e il clima | **non una mappa**: 7 stazioni come sezione territoriale, più 51 stazioni di temperatura e 54 pluviometri | ✅ completi — ⚠️ ma è l'unico asse portante che nel sito non ha ancora una storia |
+| **4** | L'aria e il clima | **non una mappa**: il confronto è fra inquinanti e fra epoche, sulle sole stazioni osservate in tutti gli anni (MET-16) | ✅ completi, ✅ **e adesso ha la sua storia** — la sesta |
 
 Di contorno, non abbandonati: sicurezza, casa e prezzi, commercio estero,
 riqualificazione. Entrano se un asse portante li richiama, non per completezza.
@@ -458,7 +464,7 @@ Questa è la parte che si perderebbe. Il progetto Donostia pubblica **due cose
 diverse** sullo stesso sito, ed è una separazione che vale la pena copiare.
 
 > **✅ Il primo dei due artefatti esiste** (agosto 2026), in
-> [`sito/`](sito/README.md): documento narrativo con cinque storie, più
+> [`sito/`](sito/README.md): documento narrativo con sei storie, più
 > `metodologia.html` e `dati.html`. Mezzo mega, autocontenuto, mappe e grafici
 > in SVG disegnati a mano. Si costruisce con `python sito/costruisci.py`.
 >
@@ -843,11 +849,11 @@ entra nel tempo che hai, non a fare un piano.
 | 🙋 Mettere la sorgente di Pages su «GitHub Actions» (§7) | **2 min** | poter pubblicare |
 | 🙋 Pubblicare: *Run workflow → conferma = `pubblica`* (§7) | **1 min** | mandare il sito online, quando l'analisi sarà finita |
 | 🙋 Rileggere i testi del sito | **1 h** | è il tuo nome sopra |
-| 🤖 Scarico delle migrazioni + riscarico in italiano delle tre tavole censuarie (§2.4) | **una notte di attesa** | l'unico dataset previsto che manchi, e tre tabelle oggi non pubblicabili |
+| 🤖 Scarico delle migrazioni (§2.1) | **venti minuti**, non una notte | l'unico dataset previsto che manchi. ✅ Il riscarico in italiano delle tre tavole censuarie (§2.4) è **fatto** |
 | ✅ ~~Decomposizione della popolazione~~ | fatta | ed è diventata MET-15: la prima storia adesso risponde alla domanda che dichiarava di non poter rispondere |
-| 🤖 Una storia su aria e clima (asse 4) | **mezza giornata** | i dati ci sono da sempre e adesso c'è anche la pioggia; è l'unico dei quattro assi portanti senza una storia nel sito |
+| ✅ ~~Una storia su aria e clima (asse 4)~~ | fatta | `analysis/aria_e_clima.py` e la sesta storia del sito. Ne è uscita anche MET-16, e la pioggia è entrata nel racconto **proprio perché** non dà segnale |
 | 🤖 Estendere il confronto fra province al **turismo** | **mezza giornata** | imprese, redditi e popolazione il termine di paragone ce l'hanno; il turismo no. Ed è il caso più difficile dei quattro: la fonte è regionale, quindi un confronto nazionale va costruito da un'altra fonte |
-| 🤖 Riscrivere la §7 del working paper con le cinque storie | **mezza giornata** | il documento per un lettore esterno |
+| 🤖 Riscrivere la §7 del working paper con le sei storie | **mezza giornata** | il documento per un lettore esterno |
 | 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |
 | 🙋 I download manuali (§2.2) | **2–4 h in tutto** | estensioni, nessun asse portante |
 
@@ -861,16 +867,21 @@ rileggi la prima storia. Il sito è pronto; lo pubblichi quando lo sei anche tu.
 ### Se hai due ore
 
 Rileggi i testi del sito con il tuo occhio — è il tuo nome sopra, e nessuno
-script controlla se una frase dice più di quanto il dato sostenga. Poi lancia lo
-scarico delle migrazioni prima di andare a dormire, che è lungo ma non richiede
-presenza.
+script controlla se una frase dice più di quanto il dato sostenga. Sono sei
+storie adesso, e la sesta non l'hai mai letta.
 
 ### Se hai mezza giornata
 
-Riscrivere la §7 del working paper con le cinque storie. È l'ultimo documento
-rimasto indietro: la nota metodologica è allineata, il sito racconta, e il paper
-descrive ancora risultati provvisori. Il materiale c'è tutto e non serve
-scaricare niente.
+Il **turismo confrontato con il resto d'Italia** (§5.2), che è l'ultimo asse
+senza termine di paragone e l'unico caso in cui il confronto non è gratis: le
+altre tre volte la fonte era nazionale e bastava non filtrarla.
+
+⚠️ Oppure, e viene prima: **guarda il sesto colore di storia**. Le storie sono
+sei e i colori presi da `donostia-dataviz` sono cinque, quindi ne è stato
+aggiunto uno (`--oliva` in `stile.css`). È l'unica decisione presa in questa
+tornata che tocca la lingua grafica condivisa fra i due progetti, ed è quindi
+l'unica che vale la pena riesaminare: `sito/README.md` §Lo stile dice cosa
+comporterebbe riallineare i due.
 
 ### Se hai un weekend
 
@@ -891,8 +902,10 @@ filtrare e ogni provincia costa i suoi download).
 **Da dove ripartire in ogni caso**: `python analysis/verifica_cifre.py`. Se le
 verifiche passano, le tabelle sono a posto e i documenti dicono il
 vero; se una diverge, quello è il primo problema da guardare — ed è già successo
-due volte che ne trovasse una. Sono settantotto verifiche, e diciotto vengono
-dalla scomposizione demografica.
+due volte che ne trovasse una. Quante siano sta scritto in un posto solo,
+`analysis/README.md`, e non qui: una cifra ripetuta in quattro documenti è una
+cifra che fra sei mesi ne dice quattro diverse — ed era già ripetuta in quattro.
+Diciotto vengono dalla scomposizione demografica, tredici dall'aria e dal clima.
 
 ---
 

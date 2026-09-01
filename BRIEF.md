@@ -94,16 +94,28 @@ abbozzati.
 | **1** | **Il lavoro e le imprese** — unità locali per classe di addetti e settore | È la domanda che ha originato il progetto, ed è l'unico asse con dati completi su tutti i 205 comuni e sei anni. La struttura dimensionale è stabile (micro-unità al 92,7 %) e la crescita sta nella fascia intermedia: il fenomeno da spiegare c'è. | coropletica sui comuni + serie per classe | niente: già scaricato |
 | **2** | **Chi vive nel bresciano** — popolazione, origini, istruzione, redditi | Completamente mappabile, serie annuale, e la distinzione fra stranieri, seconde generazioni e italiani per acquisizione è materiale che nessuno racconta bene. Il reddito per classi di importo permette di parlare di disuguaglianza, non solo di livello. | coropletica + composizioni | il background migratorio (un download) |
 | **3** | **Le due economie: manifattura e Garda** | È *la* storia della provincia: 12,2 milioni di presenze concentrate al 68,8 % in dieci comuni, otto sul lago, mentre la manifattura sta a ovest e a nord. Due economie che si toccano poco, sullo stesso territorio. Nasce dall'incrocio di dati già scaricati. | mappa bivariata, indici di concentrazione | niente |
-| **4** | **L'aria e il clima** | Profondità che nessun altro asse ha: PM10 dal 2000, NO₂ dal 1992, temperature dal 1990. In pianura padana è l'asse con il significato più immediato per chi ci vive. | ⚠️ **non una coropletica** | niente |
+| **4** | **L'aria e il clima** | Profondità che nessun altro asse ha: PM10 dal 2000, NO₂ dal 1992, temperature dal 1990. In pianura padana è l'asse con il significato più immediato per chi ci vive. | ⚠️ **non una coropletica** | ✅ niente, ed è diventato la **sesta storia** |
 
 > **Nota sull'asse 4.** In tutta la provincia ci sono **sette comuni con
-> sensori di qualità dell'aria attivi** — Brescia, Darfo Boario Terme, Odolo,
-> Sarezzo, Rezzato, Lonato del Garda, Gambara — non 205. Non è però un limite
+> sensori di qualità dell'aria attivi** (Brescia, Darfo Boario Terme, Odolo,
+> Sarezzo, Rezzato, Lonato del Garda, Gambara), non 205; in vent'anni ne hanno
+> avuto almeno uno **undici**, e sette delle centraline stanno nel solo
+> capoluogo. Non è però un limite
 > quanto sembra: quei sette sono una **sezione territoriale quasi perfetta**
 > (capoluogo, Valle Camonica, Val Trompia metalmeccanica ×2, cintura
 > industriale, Garda, Bassa agricola). L'asse va costruito come **confronto fra
 > tipi di territorio**, non come mappa. Il meteo invece ha 52 stazioni attive e
 > regge una copertura spaziale vera.
+>
+> ✅ **Fatto** (settembre 2026), e la forma che ha preso non è nessuna delle due
+> previste qui. Il confronto fra tipi di territorio non regge: le stazioni con
+> una serie lunga abbastanza da confrontare sono troppo poche perché «la Val
+> Trompia» sia una stazione sola, e un tipo di territorio rappresentato da un
+> sensore non è un tipo di territorio. L'asse è diventato un confronto **fra
+> inquinanti** (due crollano, l'ozono no) e **fra epoche** sulla temperatura, con
+> le stazioni tenute insieme dalle anomalie invece che dalle medie. La lettura è
+> `analysis/aria_e_clima.py`, la storia è la sesta del sito, e le due decisioni
+> di metodo — panel bilanciato e anomalie — sono in MET-16.
 
 ### Di contorno
 

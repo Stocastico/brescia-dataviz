@@ -40,6 +40,11 @@
   --amber:#e0902f; --amber-d:#b9741f;
   --green:#2a9d6f; --green-d:#1d7a55;
   --viola:#8e7cc3; --viola-d:#6a53a8;
+  /* Il sesto, che in `donostia-dataviz` non c'e': quel progetto ha cinque
+     storie e cinque colori, questo ne ha sei. Aggiunto qui e non la' perche'
+     la' non servirebbe a niente; se un giorno i due progetti riallineano la
+     tavolozza, questa riga e' il punto da spostare. Vedi sito/README.md. */
+  --oliva:#7a8b3f; --oliva-d:#5a6830;
   --oro:#e7b57e;
 
   /* Rampe dei grafici, le stesse dell'originale.
@@ -151,14 +156,17 @@ h3{font-size:1.12rem;margin:2rem 0 .4rem}
 /* I colori delle storie */
 .s1 .badge-num{color:var(--coral)} .s2 .badge-num{color:var(--sea)}
 .s3 .badge-num{color:var(--green)} .s4 .badge-num{color:var(--amber)}
-.s5 .badge-num{color:var(--viola)} .sx .badge-num{color:var(--ink2)}
+.s5 .badge-num{color:var(--viola)} .s6 .badge-num{color:var(--oliva)}
+.sx .badge-num{color:var(--ink2)}
 .s1 .question{border-color:var(--coral)} .s2 .question{border-color:var(--sea)}
 .s3 .question{border-color:var(--green)} .s4 .question{border-color:var(--amber)}
-.s5 .question{border-color:var(--viola)}
+.s5 .question{border-color:var(--viola)} .s6 .question{border-color:var(--oliva)}
 .s1 .takeaway{border-left-color:var(--coral)} .s3 .takeaway{border-left-color:var(--green)}
 .s4 .takeaway{border-left-color:var(--amber)} .s5 .takeaway{border-left-color:var(--viola)}
+.s6 .takeaway{border-left-color:var(--oliva)}
 .s1 .kn .big{color:var(--coral-d)} .s3 .kn .big{color:var(--green-d)}
 .s4 .kn .big{color:var(--amber-d)} .s5 .kn .big{color:var(--viola-d)}
+.s6 .kn .big{color:var(--oliva-d)}
 .s1 .step.active>div{border-left-color:var(--coral)}
 .s3 .step.active>div{border-left-color:var(--green)}
 .s4 .step.active>div{border-left-color:var(--amber)}

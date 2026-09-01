@@ -269,6 +269,171 @@ def controllo_capoluoghi() -> dict[str, Any]:
     }
 
 
+def clima() -> dict[str, Any]:
+    """Aria e clima per la sesta storia: centraline, non comuni.
+
+    È il caso più netto di indicatore che **non** entra nel contratto del §6.2,
+    e per una ragione di sostanza e non di comodità: la chiave di quel contratto
+    è il codice ISTAT del comune, e qui l'unità osservata è la centralina. Un
+    comune ne ha sei e centonovantotto non ne hanno nessuna; spalmare la
+    centralina di Sarezzo su Sarezzo produrrebbe una coropletica con due comuni
+    colorati e la fallacia ecologica in omaggio. Il brief lo diceva già: l'asse 4
+    non è una mappa.
+
+    Le due decisioni di metodo sono le stesse di `analysis/aria_e_clima.py` — il
+    panel bilanciato e le anomalie — e sono **ricalcolate qui**, non importate.
+    È la stessa duplicazione deliberata di `analysis/verifica_cifre.py`: se le
+    due implementazioni divergono, le cifre di questa pagina e quelle dei
+    documenti smettono di coincidere e il verificatore lo dice. È il meccanismo
+    che ha fatto emergere MET-13.
+    """
+    import csv
+    from collections import defaultdict
+
+    percorsi = {n: PROCESSED / f"{n}.csv" for n in ("aria_mensile", "meteo_mensile", "stazioni_arpa")}
+    if not all(p.exists() for p in percorsi.values()):
+        return {}
+
+    def righe(nome: str) -> list[dict[str, str]]:
+        with percorsi[nome].open(encoding="utf-8") as handle:
+            return list(csv.DictReader(handle))
+
+    stazioni = {r["id_sensore"]: r for r in righe("stazioni_arpa")}
+
+    def annuali(tabella: str, parametro: str, colonna: str, *, somma: bool = False):
+        """`id_sensore -> anno -> valore`, dai soli mesi marcati `osservato`."""
+        per_anno: dict[str, dict[str, list[float]]] = defaultdict(lambda: defaultdict(list))
+        for riga in righe(tabella):
+            if riga["parametro"] != parametro or riga["stato"] != "osservato" or not riga[colonna]:
+                continue
+            per_anno[riga["id_sensore"]][riga["mese"][:4]].append(float(riga[colonna]))
+        minimo = 12 if somma else 10
+        return {
+            sensore: {
+                anno: (sum(mesi) if somma else sum(mesi) / len(mesi))
+                for anno, mesi in per_sensore.items()
+                if len(mesi) >= minimo
+            }
+            for sensore, per_sensore in per_anno.items()
+        }
+
+    def panel(serie: dict[str, dict[str, float]], minimo: int = 3):
+        """La finestra più lunga con almeno `minimo` stazioni presenti in tutti i suoi anni."""
+        anni_tutti = [a for per_sensore in serie.values() for a in per_sensore]
+        if not anni_tutti:
+            return [], []
+        primo, ultimo = int(min(anni_tutti)), int(max(anni_tutti))
+        for inizio in range(primo, ultimo + 1):
+            anni = [str(a) for a in range(inizio, ultimo + 1)]
+            if len(anni) < 6:
+                break
+            sensori = [s for s, per_s in serie.items() if all(a in per_s for a in anni)]
+            if len(sensori) >= minimo:
+                return anni, sensori
+        return [], []
+
+    inquinanti = []
+    for parametro in ("PM10 (SM2005)", "Biossido di Azoto", "Ozono"):
+        serie = annuali("aria_mensile", parametro, "media")
+        anni, sensori = panel(serie)
+        if not anni:
+            continue
+        inizio = sum(serie[s][a] for s in sensori for a in anni[:3]) / (len(sensori) * 3)
+        fine = sum(serie[s][a] for s in sensori for a in anni[-3:]) / (len(sensori) * 3)
+        inquinanti.append({
+            "parametro": parametro,
+            "unita": stazioni[sensori[0]]["unita_misura"],
+            "anni": anni,
+            "stazioni": [stazioni[s]["stazione"] for s in sorted(sensori)],
+            "serie": [round(sum(serie[s][a] for s in sensori) / len(sensori), 2) for a in anni],
+            "inizio": round(inizio, 1),
+            "fine": round(fine, 1),
+            "variazione": round((fine / inizio - 1) * 100, 1),
+        })
+
+    base = [str(a) for a in range(2004, 2014)]
+    recente = [str(a) for a in range(2016, 2026)]
+
+    def due_finestre(serie: dict[str, dict[str, float]]):
+        """Le stazioni che hanno **entrambe** le finestre abbastanza popolate."""
+        coppie = {}
+        for sensore, per_sensore in serie.items():
+            b = [per_sensore[a] for a in base if a in per_sensore]
+            r = [per_sensore[a] for a in recente if a in per_sensore]
+            if len(b) >= 8 and len(r) >= 8:
+                coppie[sensore] = (sum(b) / len(b), sum(r) / len(r))
+        return coppie
+
+    temperature = annuali("meteo_mensile", "Temperatura", "valore")
+    coppie_t = due_finestre(temperature)
+    scarti = sorted(
+        (
+            {
+                "stazione": stazioni[s]["stazione"],
+                "quota": int(stazioni[s]["quota"]),
+                "base": round(b, 2),
+                "recente": round(r, 2),
+                "scarto": round(r - b, 2),
+            }
+            for s, (b, r) in coppie_t.items()
+        ),
+        key=lambda v: -v["quota"],
+    )
+
+    # Le anomalie annue: ogni stazione contro la propria base, mediate. Gli anni
+    # con meno di metà del panel non entrano — le anomalie tolgono la quota, non
+    # la variabilità, e una stazione sola in un anno caldo scalderebbe la
+    # provincia intera.
+    per_anno_anom: dict[str, list[float]] = defaultdict(list)
+    for sensore, (b, _) in coppie_t.items():
+        for anno, valore in temperature[sensore].items():
+            per_anno_anom[anno].append(valore - b)
+    soglia = max(2, len(coppie_t) // 2)
+    anomalie = [
+        {"anno": anno, "valore": round(sum(v) / len(v), 2), "stazioni": len(v)}
+        for anno, v in sorted(per_anno_anom.items())
+        if len(v) >= soglia
+    ]
+
+    # Quanti comuni hanno una centralina, e quante ne ha il capoluogo. Sono
+    # cifre del testo, quindi si contano qui invece di scriverle a mano — e
+    # scritte a mano erano sbagliate entrambe. Il conto è su **tutta la serie**,
+    # non sulle stazioni oggi attive: il `BRIEF` ne cita sette perché conta
+    # quelle vive, e sono due domande diverse.
+    con_centralina: dict[str, set[str]] = defaultdict(set)
+    sensori_aria = {r["id_sensore"] for r in righe("aria_mensile")}
+    for riga in righe("stazioni_arpa"):
+        if riga["id_sensore"] in sensori_aria and riga["comune"]:
+            con_centralina[riga["comune"]].add(riga["stazione"])
+
+    coppie_p = due_finestre(annuali("meteo_mensile", "Precipitazione", "valore", somma=True))
+    variazioni_pioggia = sorted((r / b - 1) * 100 for b, r in coppie_p.values())
+
+    scarti_t = [v["scarto"] for v in scarti]
+    return {
+        "inquinanti": inquinanti,
+        "base": [base[0], base[-1]],
+        "recente": [recente[0], recente[-1]],
+        "temperatura": {
+            "stazioni": scarti,
+            "media": round(sum(scarti_t) / len(scarti_t), 2) if scarti_t else None,
+            "in_aumento": sum(1 for v in scarti_t if v > 0),
+            "quota_minima": min(v["quota"] for v in scarti) if scarti else None,
+            "quota_massima": max(v["quota"] for v in scarti) if scarti else None,
+            "anomalie": anomalie,
+        },
+        "rete": {
+            "comuni": len(con_centralina),
+            "capoluogo": len(con_centralina.get("Brescia", ())),
+        },
+        "pioggia": {
+            "stazioni": len(variazioni_pioggia),
+            "mediana": round(mediana(variazioni_pioggia), 1) if variazioni_pioggia else None,
+            "in_aumento": sum(1 for v in variazioni_pioggia if v > 0),
+        },
+    }
+
+
 def decomposizione() -> dict[str, Any]:
     """La scomposizione settore × classe del capoluogo, per la terza storia.
 
@@ -766,6 +931,51 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         specializzazione = valori(metriche["specializzazione"])
         fuori["moran_specializzazione"] = numero_it(moran(specializzazione), 2)
 
+    aria = clima()
+    if aria:
+        per_parametro = {i["parametro"]: i for i in aria["inquinanti"]}
+        etichette = {
+            "PM10 (SM2005)": "pm10",
+            "Biossido di Azoto": "no2",
+            "Ozono": "ozono",
+        }
+        for parametro, breve in etichette.items():
+            misura = per_parametro.get(parametro)
+            if not misura:
+                continue
+            fuori[f"{breve}_anno_i"] = misura["anni"][0]
+            fuori[f"{breve}_anno_f"] = misura["anni"][-1]
+            fuori[f"{breve}_stazioni"] = numero_it(len(misura["stazioni"]))
+            fuori[f"{breve}_inizio"] = numero_it(misura["inizio"], 1)
+            fuori[f"{breve}_fine"] = numero_it(misura["fine"], 1)
+            # Il verbo lo decide il segno, non chi scrive la frase: sull'ozono
+            # «−1,8 %» va detto come «non si muove», e se un domani si muovesse
+            # il testo non deve continuare a dire di no.
+            fuori[f"{breve}_variazione"] = f"{numero_it(misura['variazione'], 1)} %"
+            fuori[f"{breve}_variazione_assoluta"] = f"{numero_it(abs(misura['variazione']), 1)} %"
+
+        temperatura = aria["temperatura"]
+        fuori["clima_base_i"], fuori["clima_base_f"] = aria["base"]
+        fuori["clima_recente_i"], fuori["clima_recente_f"] = aria["recente"]
+        fuori["temp_scarto"] = f"{numero_it(temperatura['media'], 2)} °C"
+        fuori["temp_stazioni"] = numero_it(len(temperatura["stazioni"]))
+        fuori["temp_in_aumento"] = numero_it(temperatura["in_aumento"])
+        fuori["temp_quota_minima"] = numero_it(temperatura["quota_minima"])
+        fuori["temp_quota_massima"] = numero_it(temperatura["quota_massima"])
+        calde = sorted(temperatura["anomalie"], key=lambda v: -v["valore"])[:3]
+        fuori["temp_anni_caldi"] = ", ".join(sorted(v["anno"] for v in calde))
+        fuori["temp_anomalia_massima"] = f"{numero_it(calde[0]['valore'], 2)} °C"
+
+        fuori["aria_comuni"] = numero_it(aria["rete"]["comuni"])
+        fuori["aria_comuni_senza"] = numero_it(len(comuni) - aria["rete"]["comuni"])
+        fuori["aria_stazioni_capoluogo"] = numero_it(aria["rete"]["capoluogo"])
+        fuori["pioggia_stazioni"] = numero_it(aria["pioggia"]["stazioni"])
+        fuori["pioggia_in_aumento"] = numero_it(aria["pioggia"]["in_aumento"])
+        fuori["pioggia_in_calo"] = numero_it(
+            aria["pioggia"]["stazioni"] - aria["pioggia"]["in_aumento"]
+        )
+        fuori["pioggia_mediana"] = f"{numero_it(aria['pioggia']['mediana'], 1)} %"
+
     return fuori
 
 
@@ -803,6 +1013,7 @@ def dati_incorporati(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict
         "decomposizione": decomposizione(),
         "demografia": scomposizione_demografica(),
         "confronto": confronto_province(),
+        "clima": clima(),
         "capoluoghi": controllo_capoluoghi(),
         "metriche": {
             id_metrica: {

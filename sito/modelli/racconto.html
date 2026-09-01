@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Come cambia il bresciano</title>
-<meta name="description" content="Un ritratto in numeri della provincia di Brescia attraverso i suoi 205 comuni: chi si svuota, i redditi che si avvicinano, un crollo industriale che non c'è stato, e cosa distingue davvero questa provincia dalle altre.">
+<meta name="description" content="Un ritratto in numeri della provincia di Brescia attraverso i suoi 205 comuni: chi si svuota, i redditi che si avvicinano, un crollo industriale che non c'è stato, cosa distingue davvero questa provincia dalle altre, e vent'anni d'aria e di clima.">
 <style>/*{{STILE}}*/</style>
 </head>
 <body>
@@ -16,8 +16,8 @@
     <p class="eyebrow">Provincia di Brescia · {{c:comuni}} comuni · dati aperti</p>
     <h1>Come cambia il bresciano</h1>
     <p class="lede">Un ritratto in numeri costruito solo con fonti pubbliche, comune per comune.
-    Cinque storie che i dati reggono — l'ultima corregge le altre quattro — e una lista di cose
-    che questi dati non permettono di dire.</p>
+    Sei storie che i dati reggono — la quinta corregge le quattro che la precedono, la sesta è
+    l'unica che dura vent'anni — e una lista di cose che questi dati non permettono di dire.</p>
     <div class="quicklinks">
       <a class="primary" href="#svuota">Comincia a leggere</a>
       <a href="metodologia.html">Come è stato fatto</a>
@@ -37,6 +37,7 @@
     <a href="#crollo">3 · Il crollo che non c'è stato</a>
     <a href="#economie">4 · Le due economie</a>
     <a href="#diversa">5 · Brescia è diversa?</a>
+    <a href="#aria">6 · L'aria e il clima</a>
     <a href="#limiti">Cosa non si può dire</a>
     <a class="pagina" href="metodologia.html">Metodo</a>
     <a class="pagina" href="dati.html">Dati</a>
@@ -86,7 +87,7 @@
     <a href="#limiti">sezione finale</a>.</p>
 
     <div class="takeaway">
-      <span class="t-lab">Le conclusioni, in cinque righe</span>
+      <span class="t-lab">Le conclusioni, in sei righe</span>
       <ul>
         <li><strong>Metà della provincia si svuota</strong>, e non a caso: i comuni che perdono
           abitanti confinano fra loro, e sono la montagna.</li>
@@ -98,6 +99,9 @@
           lago, ed è la divisione più netta di tutto il progetto.</li>
         <li><strong>Ma «territorio di microimprese» descrive l'Italia, non Brescia</strong>, che è
           fra le meno frammentate del paese. Ce ne siamo accorti solo guardando altrove.</li>
+        <li><strong>L'aria è molto migliorata e il clima no</strong>: polveri e biossido di azoto
+          scendono di circa il quaranta per cento in vent'anni, l'ozono non si muove, e la
+          temperatura sale in tutte le stazioni della provincia.</li>
       </ul>
     </div>
   </div></div>
@@ -581,6 +585,156 @@
       che erano già sul disco.</p>
     </div>
 
+    <p class="nextcap">Tutto quanto sopra dura sei anni. C'è una serie che ne dura venti.
+    <a href="#aria">→ L'aria e il clima</a></p>
+  </div></div>
+</section>
+
+<section class="story s6" id="aria">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">6</div>
+      <div>
+        <p class="eyebrow">Aria e clima · le centraline ARPA, {{c:no2_anno_i}}–{{c:no2_anno_f}}</p>
+        <h2 class="story-title">L'aria è migliorata. Il clima no</h2>
+      </div>
+    </div>
+    <p class="question">Sono le due serie più lunghe di questo progetto e raccontano cose
+    opposte. Come fa la stessa provincia a migliorare e a peggiorare insieme?</p>
+
+    <p>Tutto quello che avete letto fin qui dura sei anni, o dodici nel caso dei redditi. Qui i
+    dati cominciano quando il resto del progetto non esisteva: l'aria dal {{c:no2_anno_i}}, la
+    temperatura da prima ancora. Sono anche gli unici dati che non hanno per unità il comune, e
+    non per una scelta di comodo: <strong>l'unità qui è la centralina</strong>. In vent'anni ne
+    sono esistite in {{c:aria_comuni}} comuni su {{c:comuni}} — {{c:aria_stazioni_capoluogo}} nel
+    solo capoluogo, una per ciascuno degli altri, e nessuna negli altri
+    {{c:aria_comuni_senza}} — quindi non c'è nessuna mappa da disegnare, e disegnarla comunque
+    significherebbe colorare una manciata di comuni e lasciare grigia una provincia.</p>
+
+    <figure class="fig">
+      <h3>Quello che si respira, {{c:no2_anno_i}}–{{c:no2_anno_f}}</h3>
+      <p class="cap">Media annua delle sole stazioni presenti in <em>tutti</em> gli anni della
+      serie. Microgrammi per metro cubo.</p>
+      <div id="serie-aria"></div>
+    </figure>
+
+    <p>Due delle tre righe crollano. Il <strong>PM10</strong> passa da {{c:pm10_inizio}} a
+    {{c:pm10_fine}} microgrammi per metro cubo fra i primi e gli ultimi tre anni della serie, cioè
+    {{c:pm10_variazione}}; il <strong>biossido di azoto</strong> da {{c:no2_inizio}} a
+    {{c:no2_fine}}, cioè {{c:no2_variazione}}. Su vent'anni sono i cali più grandi misurati in
+    tutto questo lavoro, e non hanno bisogno di essere interpretati: è quello che le stesse
+    centraline, nello stesso posto, hanno respirato prima e dopo.</p>
+
+    <div class="keynums">
+      <div class="kn"><div class="big">{{c:pm10_variazione}}</div>
+        <div class="lbl">PM10, {{c:pm10_anno_i}}→{{c:pm10_anno_f}}</div></div>
+      <div class="kn"><div class="big">{{c:no2_variazione}}</div>
+        <div class="lbl">biossido di azoto</div></div>
+      <div class="kn"><div class="big">{{c:ozono_variazione}}</div>
+        <div class="lbl">ozono, che è la riga interessante</div></div>
+    </div>
+
+    <p>La terza riga è quella che vale la pena guardare: l'<strong>ozono</strong> non si muove.
+    {{c:ozono_variazione}} in vent'anni, che a queste scale vuol dire fermo. Non è un dettaglio
+    tecnico — è il promemoria che «l'aria» non è una cosa sola. Il particolato e il biossido di
+    azoto escono da qualcosa: un camino, un tubo di scappamento, una caldaia. L'ozono no, si forma
+    in atmosfera, e la sua chimica non risponde alle stesse leve. Questa pagina può dire che non
+    scende; <strong>perché</strong> non scenda è una domanda a cui queste tabelle non rispondono, e
+    non ci proviamo.</p>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">la metrica, in chiaro</span>
+        <span>Perché contiamo solo le centraline che ci sono sempre</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Le centraline aprono e chiudono. Sul PM10 la rete bresciana passa da due stazioni a
+        sette nell'arco della serie, e non sono le stesse: fare ogni anno la media di quelle che
+        ci sono significa misurare <em>anche</em> il cambio della rete e chiamarlo qualità
+        dell'aria. Se le stazioni che aprono stanno in posti più puliti — e tendenzialmente è
+        così, perché le prime nascono dove il problema era grosso — il miglioramento si gonfia da
+        solo.</p>
+        <p>Il rimedio è tenere solo le stazioni osservate in <strong>tutti</strong> gli anni della
+        finestra: {{c:pm10_stazioni}} per il PM10, {{c:no2_stazioni}} per il biossido di azoto,
+        {{c:ozono_stazioni}} per l'ozono. Il prezzo è che sono poche e la serie si accorcia; in
+        cambio il numero risponde alla domanda che gli abbiamo fatto. Il conto ingenuo, per
+        cronaca, esagera il calo di qualche punto — e la differenza fra i due è essa stessa un
+        risultato.</p>
+        <p>I confronti sono fra <strong>medie di tre anni</strong>, non fra il primo e l'ultimo:
+        un singolo anno può essere un inverno ventoso, e una storia non deve poggiare su di
+        lui.</p>
+      </div>
+    </details>
+
+    <p>Poi c'è l'altra metà, e va nella direzione opposta.</p>
+
+    <figure class="fig">
+      <h3>Quanto è più caldo di prima</h3>
+      <p class="cap">Scostamento della temperatura media annua dalla media
+      {{c:clima_base_i}}–{{c:clima_base_f}} di <em>ciascuna</em> stazione. Gradi. Gli anni in
+      cui è osservata meno di metà della rete portano il tratteggio dell'assenza, non una
+      colonna a zero.</p>
+      <div id="colonne-clima"></div>
+    </figure>
+
+    <p>Fra la base {{c:clima_base_i}}–{{c:clima_base_f}} e il decennio
+    {{c:clima_recente_i}}–{{c:clima_recente_f}} le stazioni bresciane segnano
+    <strong>{{c:temp_scarto}}</strong> in più. Il numero conta meno del modo in cui è distribuito:
+    salgono <strong>{{c:temp_in_aumento}} stazioni su {{c:temp_stazioni}}</strong>, cioè tutte,
+    dai {{c:temp_quota_minima}} metri della Bassa ai {{c:temp_quota_massima}} del Pantano d'Avio.
+    Nessuna eccezione in pianura, nessuna in valle, nessuna sul ghiacciaio. Un risultato che si
+    ripete uguale in otto posti diversi non lo fa una stazione difettosa.</p>
+
+    <p>Gli anni più caldi della serie sono {{c:temp_anni_caldi}}, e stanno tutti in fondo:
+    {{c:temp_anomalia_massima}} sopra la base nel più caldo dei tre. Non è una tendenza che si
+    intravede fra il rumore — negli ultimi anni le colonne stanno da una parte sola.</p>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">la metrica, in chiaro</span>
+        <span>Perché scostamenti e non temperature</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Le stazioni di temperatura di questa provincia stanno fra i {{c:temp_quota_minima}} e i
+        {{c:temp_quota_massima}} metri sul mare. La loro media aritmetica è un numero che non
+        descrive nessun luogo, e soprattutto <strong>cambia quando una stazione di montagna apre o
+        chiude</strong>: basterebbe la chiusura del Pantano d'Avio per far «scaldare» la provincia
+        di mezzo grado in un anno, senza che sia successo niente.</p>
+        <p>Per questo ogni stazione si confronta con <strong>sé stessa</strong> — con la propria
+        media {{c:clima_base_i}}–{{c:clima_base_f}} — e si media lo scostamento. È la convenzione
+        climatologica, ed è l'unica che regge a una rete che si muove. Restano fuori dal grafico
+        gli anni in cui è presente meno di metà delle stazioni: le anomalie tolgono la quota, non
+        la variabilità, e negli anni Novanta di questa rete c'è letteralmente una stazione
+        sola.</p>
+      </div>
+    </details>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">controllo</span>
+        <span>La stessa fonte, la stessa provincia, e nessun risultato</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Dalle stesse centraline arriva la pioggia, e con lo stesso metodo non dice niente: su
+        {{c:pioggia_stazioni}} stazioni, {{c:pioggia_in_aumento}} in aumento e
+        {{c:pioggia_in_calo}} in calo, con una variazione mediana di {{c:pioggia_mediana}}. Il
+        segno non è concorde, e con questa rete e questa finestra la risposta onesta è che non lo
+        sappiamo.</p>
+        <p>Sta qui e non nel cestino per due motivi. Il primo è che un limite dichiarato vale più
+        di un risultato taciuto. Il secondo è che serve al grado di temperatura: due serie dalla
+        stessa fonte, con lo stesso metodo, una con un segnale netto e una senza, sono anche la
+        prova che il segnale della prima non lo ha fabbricato il metodo.</p>
+      </div>
+    </details>
+
+    <div class="takeaway">
+      <span class="t-lab">In una riga</span>
+      <p>Quello che esce dai camini è diminuito di circa il quaranta per cento; quello che scalda
+      l'atmosfera no. Sono due storie diverse che si leggono sulle stesse centraline, e confonderle
+      in «l'ambiente va meglio» le sbaglia entrambe.</p>
+    </div>
+
+    <p class="conf"><span class="dot derivato"></span><b>derivato</b> · ARPA Lombardia —
+    centraline della qualità dell'aria e rete idro-meteorologica · Le medie mensili sono osservate;
+    il panel bilanciato, le anomalie e i confronti fra trienni sono calcolati qui · Nessuna
+    variazione di questa sezione è attribuita a una causa: la meteorologia governa la dispersione
+    degli inquinanti quanto le emissioni, e separarle richiederebbe una normalizzazione che dati
+    mensili non sostengono · L'unità è la centralina, non il comune.</p>
+
     <p class="nextcap">Resta la parte che di solito non si scrive.
     <a href="#limiti">→ Cosa questi dati non permettono di dire</a></p>
   </div></div>
@@ -625,6 +779,16 @@
       aggregate, e dove il numero è troppo piccolo la fonte lo sopprime: sulle presenze turistiche
       del {{c:anno_pop_finale}} mancano decine di comuni, e <strong>un dato mancante non è uno
       zero</strong>.</li>
+      <li><strong>L'aria si misura dove c'è una centralina.</strong> Le stazioni sono poche e
+      non stanno a caso: nascono dove il problema era grosso. Dicono cosa hanno respirato loro, non
+      cosa respira la provincia, e per {{c:comuni}} comuni meno una manciata non c'è nessun dato.
+      Nessuna delle variazioni di quella sezione è attribuita a una causa: la meteorologia governa
+      la dispersione degli inquinanti quanto le emissioni, e separarle richiederebbe una
+      normalizzazione che queste medie mensili non sostengono.</li>
+      <li><strong>Sulla pioggia non sappiamo.</strong> Stessa fonte e stesso metodo della
+      temperatura, e il segno non è concorde: {{c:pioggia_in_aumento}} stazioni in aumento e
+      {{c:pioggia_in_calo}} in calo su {{c:pioggia_stazioni}}. È scritto nella sesta storia invece
+      che taciuto, ed è l'unico modo onesto di riportarlo.</li>
       <li><strong>Niente cause.</strong> Nessuna correlazione di questa pagina dimostra che una
       cosa ne provochi un'altra. Con {{c:comuni}} comuni e sei anni si descrive; non si stabilisce
       un meccanismo.</li>
@@ -899,6 +1063,64 @@
       etichettaVoci: "divisione Ateco",
       unita: "addetti",
       descrizione: "Variazione degli addetti per divisione economica nella classe con almeno 250 addetti"
+    });
+  }
+  // --- storia 6: l'aria e il clima -------------------------------------
+  var clima = DATI.clima;
+  if (clima && clima.inquinanti && clima.inquinanti.length) {
+    // Le tre serie cominciano in anni diversi — il panel del biossido di azoto
+    // regge due anni in piu' degli altri — quindi si allineano sull'asse piu'
+    // lungo e le altre partono con dei buchi, che e' la verita' del dato.
+    var anniAria = clima.inquinanti.reduce(function (piuLungo, i) {
+      return i.anni.length > piuLungo.length ? i.anni : piuLungo;
+    }, []);
+
+    G.serie(document.getElementById("serie-aria"), {
+      periodi: anniAria,
+      unita: clima.inquinanti[0].unita,
+      decimali: 1,
+      linee: clima.inquinanti.map(function (i) {
+        var perAnno = {};
+        i.anni.forEach(function (anno, indice) { perAnno[anno] = i.serie[indice]; });
+        return {
+          nome: i.parametro.replace(" (SM2005)", ""),
+          valori: anniAria.map(function (anno) {
+            return perAnno[anno] === undefined ? null : perAnno[anno];
+          })
+        };
+      }),
+      descrizione: "Serie storiche della concentrazione media annua di PM10, biossido di azoto e ozono nelle centraline bresciane"
+    });
+  }
+
+  if (clima && clima.temperatura && clima.temperatura.anomalie.length) {
+    // Gli anni scartati (meno di meta' panel presente) devono comparire come
+    // buchi dichiarati, non sparire: una colonna assente accanto a una colonna
+    // quasi nulla e' indistinguibile da «non e' successo niente», ed e' la
+    // confusione che MET-3 vieta.
+    var perAnno = {};
+    clima.temperatura.anomalie.forEach(function (a) { perAnno[a.anno] = a; });
+    var anniClima = clima.temperatura.anomalie.map(function (a) { return +a.anno; });
+    var vociClima = [];
+    for (var y = Math.min.apply(null, anniClima); y <= Math.max.apply(null, anniClima); y++) {
+      var trovato = perAnno[String(y)];
+      vociClima.push({
+        etichetta: String(y),
+        valore: trovato ? trovato.valore : null,
+        nota: trovato
+          ? trovato.stazioni + (trovato.stazioni === 1 ? " stazione" : " stazioni")
+          : "meno di metà delle stazioni osservate"
+      });
+    }
+
+    G.colonne(document.getElementById("colonne-clima"), {
+      voci: vociClima,
+      unita: "°C",
+      decimali: 2,
+      etichettaX: "anno",
+      etichettaY: "scostamento (°C)",
+      colonnaNota: "stazioni",
+      descrizione: "Scostamento annuo della temperatura media dalla base 2004-2013, una colonna per anno"
     });
   }
 })();

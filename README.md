@@ -8,7 +8,7 @@ riprende architettura, metodo e lingua grafica — ma con una domanda di ricerca
 diversa: *come è cambiato questo territorio*, senza una tesi turistica a
 monte.
 
-**Stato: il sito esiste.** Dati scaricati e puliti, dodici analisi fatte, cinque
+**Stato: il sito esiste.** Dati scaricati e puliti, tredici analisi fatte, sei
 storie scritte in un documento narrativo autocontenuto
 ([`sito/`](sito/README.md)) che si costruisce da solo e ha già il suo workflow
 di pubblicazione. La licenza è scelta (MIT per il codice, CC BY 4.0 per testi e
@@ -30,13 +30,13 @@ fare una sessione di lavoro e cosa richiede te**.
 |---|---|
 | [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, il soggetto e i **quattro assi scelti**, le due analisi dedicate al capoluogo, le storie candidate, i principi. |
 | [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e la traccia storica della separazione del repository (§12). |
-| [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza avanzata.** Le **quindici** regole che governano il progetto: perché misuriamo come misuriamo. Cinque nascono da errori veri trovati sui dati — MET-9 (un titolo sbagliato), MET-12 (una correlazione con il segno rovesciato), MET-13 (due script che rispondevano numeri diversi alla stessa domanda), MET-14 (una frase che questo progetto ripeteva dal primo giorno e che il confronto con le altre province ha smontato) e MET-15 (una parola — «spopolamento» — che conteneva già una risposta, e quella sbagliata). |
+| [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza avanzata.** Le **sedici** regole che governano il progetto: perché misuriamo come misuriamo. Cinque nascono da errori veri trovati sui dati — MET-9 (un titolo sbagliato), MET-12 (una correlazione con il segno rovesciato), MET-13 (due script che rispondevano numeri diversi alla stessa domanda), MET-14 (una frase che questo progetto ripeteva dal primo giorno e che il confronto con le altre province ha smontato) e MET-15 (una parola — «spopolamento» — che conteneva già una risposta, e quella sbagliata). La sedicesima è la prima nata da un errore *evitato*: su una rete di centraline che apre e chiude stazioni, la media misura anche la rete. |
 | [`WORKING-PAPER.md`](WORKING-PAPER.md) | ⚠️ **Bozza.** Il working paper: metodo per un lettore esterno. La sezione dei risultati è provvisoria — si riscrive quando le storie saranno chiuse. |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco delle cose che **richiedono te** (un login SPID, una macchina italiana), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 26 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza e turismo, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
-| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: dodici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito: settantotto verifiche. |
-| [`sito/`](sito/README.md) | **Il documento narrativo**: cinque storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
+| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: tredici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
+| [`sito/`](sito/README.md) | **Il documento narrativo**: sei storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
 ## Come leggere il registro
 
@@ -128,7 +128,26 @@ Sul turismo l'asimmetria è più netta e più semplice: 12,2 milioni di presenze
 provinciali nel 2024, di cui il 68,8 % nei primi dieci comuni, otto dei quali
 sul Garda — Sirmione da sola fa più del capoluogo.
 
-Limiti da mettere in conto: i **reati** esistono solo a grana provinciale (la
+**La sesta storia dura vent'anni**, che è tre volte il resto del progetto, e
+dice due cose opposte. L'aria è **molto** migliorata: tenendo solo le centraline
+osservate in tutti gli anni della serie — perché la rete apre e chiude stazioni,
+e mediare quelle che ci sono ogni anno misura anche il cambio della rete — il
+PM10 fa **−42,0 %** e il biossido di azoto **−38,9 %**. Sono i cali più grandi
+misurati in tutto il lavoro. L'**ozono** però non si muove, −1,8 %: non è un
+inquinante primario, non esce da un camino, e la sua chimica non risponde alle
+stesse leve. Il clima intanto va nell'altra direzione: fra la base 2004–2013 e
+il decennio 2016–2025 le stazioni bresciane segnano **+1,10 °C**, e salgono
+**tutte e otto**, dai 47 metri della Bassa ai 2.108 del Pantano d'Avio. La
+pioggia, dalla stessa fonte e con lo stesso metodo, **non dà segnale** — mediana
++0,5 %, sette stazioni in aumento e cinque in calo — e resta nel racconto proprio
+per questo: due serie della stessa rete, una con un segnale netto e una senza,
+sono anche la prova che il segnale della prima non lo ha fabbricato il metodo.
+Nessuna di queste variazioni è attribuita a una causa: la meteorologia governa la
+dispersione degli inquinanti quanto le emissioni.
+
+Limiti da mettere in conto: l'aria e il clima si misurano **dove c'è una
+centralina**, e in 194 comuni su 205 non ce n'è mai stata nessuna; i **reati**
+esistono solo a grana provinciale (la
 percezione arriva al comune ma solo dal 2022); **nessuna copertura Inside
 Airbnb**; i **prezzi delle case** sono dietro un login gratuito (OMI) o sono
 prezzi di offerta; il **commercio estero** è disponibile solo a grana regionale,
