@@ -21,6 +21,7 @@ il punto.
 | `tipologia_comuni.py` | k-means++ con seme fisso su sei variabili strutturali. Dichiara anche i comuni che nessun gruppo descrive bene. |
 | `dove_si_lavora.py` | Addetti ogni 100 abitanti, e il settore prevalente che spiega perché i due estremi non sono lo stesso fenomeno. |
 | `rottura_covid.py` | La discontinuità del 2020, testata dove si può e dichiarata non testabile dove non si può. |
+| `aria_e_clima.py` | L'asse 4: il panel bilanciato sulle centraline (PM10 e biossido di azoto crollano, l'ozono no) e le anomalie di temperatura, che è l'unico modo di mediare stazioni fra i 47 e i 2.108 metri. Comprende la serie che **non** dà segnale, la pioggia. |
 | `confronto_province.py` | Gli stessi indicatori su tutte e 107 le province italiane: dove sta Brescia, e il controllo esterno di MET-9. |
 | `convergenza_confronto.py` | La convergenza dei redditi rifatta su Bergamo: regge identica, quindi non è bresciana. |
 | `_tabelle.py` | Non è un'analisi: è la lettura delle tabelle e la statistica di base che gli script hanno in comune. |
@@ -37,6 +38,7 @@ python analysis/due_economie.py
 python analysis/tipologia_comuni.py --gruppi 5
 python analysis/dove_si_lavora.py
 python analysis/rottura_covid.py
+python analysis/aria_e_clima.py --save
 python analysis/confronto_province.py
 python analysis/convergenza_confronto.py
 ```
