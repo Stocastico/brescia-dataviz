@@ -36,7 +36,10 @@ posto tuo perché riguarda due repository insieme.
 | 🙋 8 | **Scaricare in locale `migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git, e serve solo quando l'asse 2 diventerà una storia | 20 min di attesa | niente di quello che è pubblicato |
 | 🙋 10 | **Decidere sul sesto colore di storia** ([`sito/README.md`](sito/README.md) §Lo stile) | le storie sono sei e i colori ereditati da `donostia-dataviz` sono cinque, quindi ne è stato aggiunto uno (`--oliva` in `stile.css`). Riguarda la lingua grafica **condivisa fra i due progetti**, e tenerli una collana o lasciarli divergere è una scelta tua | 10 min, o mezz'ora se lo porti anche nell'altro repository | niente. Il sito è coerente così com'è; la domanda è se lo sono i due progetti insieme |
 
-Tutto il resto di questo documento è 🤖 o ✅.
+Tutto il resto di questo documento è 🤖 o ✅. Questa tabella è ripetuta in forma
+breve in testa al [`README`](README.md), diviso fra ciò che blocca la
+pubblicazione e ciò che no: se ne aggiungi una voce qui, va aggiunta anche lì —
+un elenco che promette di essere completo e non lo è vale meno di nessun elenco.
 
 ---
 
