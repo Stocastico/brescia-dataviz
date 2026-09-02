@@ -17,9 +17,12 @@ portanti hanno già tutti i dati che servono. Sono estensioni e finiture.
 
 ## Le cose che tocca a te — tutte, in un posto solo
 
-La licenza è scelta (§3.3), quindi restano **due clic**, e nessuno dei due è
-tecnico: la sorgente di Pages, e il cancello che decide quando il sito diventa
-visibile. Il resto si costruisce da solo a ogni push su `main`.
+La licenza è scelta (§3.3), quindi per pubblicare restano **due clic**, e
+nessuno dei due è tecnico: la sorgente di Pages, e il cancello che decide quando
+il sito diventa visibile. Il resto si costruisce da solo a ogni push su `main`.
+Sopra ai due clic c'è una **decisione di disegno** aperta da settembre 2026, che
+non blocca niente ma è l'unica cosa in questo elenco che nessuno può prendere al
+posto tuo perché riguarda due repository insieme.
 
 | | Cosa | Perché tocca a te | Tempo | Blocca |
 |---|---|---|---|---|
@@ -31,6 +34,7 @@ visibile. Il resto si costruisce da solo a ogni push su `main`.
 | 🙋 6 | **Esportare a mano il commercio estero provinciale** (§2.2) | il databrowser ISTAT è una SPA senza API | 1 h | niente: la serie regionale è già scaricata come ripiego dichiarato |
 | 🙋 7 | **Rileggere i testi prima di pubblicare** (§8) | è il tuo nome sopra | — | la pubblicazione |
 | 🙋 8 | **Scaricare in locale `migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git, e serve solo quando l'asse 2 diventerà una storia | 20 min di attesa | niente di quello che è pubblicato |
+| 🙋 10 | **Decidere sul sesto colore di storia** ([`sito/README.md`](sito/README.md) §Lo stile) | le storie sono sei e i colori ereditati da `donostia-dataviz` sono cinque, quindi ne è stato aggiunto uno (`--oliva` in `stile.css`). Riguarda la lingua grafica **condivisa fra i due progetti**, e tenerli una collana o lasciarli divergere è una scelta tua | 10 min, o mezz'ora se lo porti anche nell'altro repository | niente. Il sito è coerente così com'è; la domanda è se lo sono i due progetti insieme |
 
 Tutto il resto di questo documento è 🤖 o ✅.
 

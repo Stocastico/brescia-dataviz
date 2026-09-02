@@ -8,31 +8,39 @@ riprende architettura, metodo e lingua grafica — ma con una domanda di ricerca
 diversa: *come è cambiato questo territorio*, senza una tesi turistica a
 monte.
 
-**Stato: il sito esiste.** Dati scaricati e puliti, tredici analisi fatte, sei
-storie scritte in un documento narrativo autocontenuto
-([`sito/`](sito/README.md)) che si costruisce da solo e ha già il suo workflow
-di pubblicazione. La licenza è scelta (MIT per il codice, CC BY 4.0 per testi e
-dati: vedi in fondo). Quello che manca per pubblicare non è più tecnico: **una
-rilettura dei testi e un clic nelle impostazioni del repository**, che è
-Settings → Pages → Source = «GitHub Actions»: oggi è ancora «Deploy from a
-branch», e per questo l'indirizzo pubblico mostra il README invece del racconto.
+**Stato: tutti e quattro gli assi portanti hanno la loro storia.** Dati
+scaricati e puliti, tredici analisi fatte, sei storie scritte in un documento
+narrativo autocontenuto ([`sito/`](sito/README.md)) che si costruisce da solo e
+ha già il suo workflow di pubblicazione. La licenza è scelta (MIT per il codice,
+CC BY 4.0 per testi e dati: vedi in fondo).
+
+**Quello che manca non è più tecnico, e sta tutto qui:**
+
+| | Cosa | Tempo |
+|---|---|---|
+| 🙋 | **Rileggere i testi del sito** — sono sei storie, e nessuno script controlla se una frase dice più di quanto il dato sostenga | 1 h |
+| 🙋 | **Mettere la sorgente di Pages su «GitHub Actions»** (*Settings → Pages → Source*): oggi è ancora «Deploy from a branch», ed è il motivo per cui l'indirizzo pubblico mostra questo README invece del racconto | 2 min |
+| 🙋 | **Pubblicare**, quando sarai pronto: *Actions → «Pubblica il sito» → Run workflow → conferma = `pubblica`* | 1 min |
+| 🙋 | **Decidere sul sesto colore di storia** — le storie sono sei e i colori ereditati da `donostia-dataviz` sono cinque, quindi ne è stato aggiunto uno. Riguarda la lingua grafica condivisa fra i due progetti: [`sito/README.md`](sito/README.md) §Lo stile. Non blocca niente | 10 min |
+
 **Il sito non si pubblica da solo**, ed è voluto finché l'analisi non è finita:
 ogni push su `main` lo ricostruisce e lo verifica lasciandolo come artefatto da
-scaricare, ma per mandarlo online serve un lancio a mano con una conferma
-scritta (*Actions → «Pubblica il sito» → Run workflow → conferma = `pubblica`*). Tutto il resto è facoltativo, ed è
-elencato in
-[`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md), che distingue riga per riga **cosa può
-fare una sessione di lavoro e cosa richiede te**.
+scaricare, ma per mandarlo online serve quel lancio a mano con la conferma
+scritta. Tutto il resto è facoltativo — i download che richiedono SPID o una
+macchina italiana, il pannello interattivo, il turismo confrontato con le altre
+province — ed è elencato in [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md), che
+distingue riga per riga **cosa può fare una sessione di lavoro e cosa richiede
+te**.
 
 ## I documenti
 
 | Documento | Cos'è |
 |---|---|
-| [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, il soggetto e i **quattro assi scelti**, le due analisi dedicate al capoluogo, le storie candidate, i principi. |
+| [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, il soggetto e i **quattro assi scelti** — tutti e quattro ora hanno una storia —, le due analisi dedicate al capoluogo, le storie candidate, i principi. |
 | [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e la traccia storica della separazione del repository (§12). |
 | [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza avanzata.** Le **sedici** regole che governano il progetto: perché misuriamo come misuriamo. Cinque nascono da errori veri trovati sui dati — MET-9 (un titolo sbagliato), MET-12 (una correlazione con il segno rovesciato), MET-13 (due script che rispondevano numeri diversi alla stessa domanda), MET-14 (una frase che questo progetto ripeteva dal primo giorno e che il confronto con le altre province ha smontato) e MET-15 (una parola — «spopolamento» — che conteneva già una risposta, e quella sbagliata). La sedicesima è la prima nata da un errore *evitato*: su una rete di centraline che apre e chiude stazioni, la media misura anche la rete. |
-| [`WORKING-PAPER.md`](WORKING-PAPER.md) | ⚠️ **Bozza.** Il working paper: metodo per un lettore esterno. La sezione dei risultati è provvisoria — si riscrive quando le storie saranno chiuse. |
-| [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco delle cose che **richiedono te** (un login SPID, una macchina italiana), con una stima dei tempi. |
+| [`WORKING-PAPER.md`](WORKING-PAPER.md) | ⚠️ **Bozza, versione 2.** Il working paper: metodo per un lettore esterno. La §7 non è più provvisoria — copre tutti e quattro gli assi, con i controlli e i due assi che un termine di paragone esterno non ce l'hanno. Restano provvisori il titolo e la §5. |
+| [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco completo delle cose che **richiedono te** (un login SPID, una macchina italiana, una decisione di disegno), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 26 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza e turismo, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
 | [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: tredici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
