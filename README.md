@@ -14,23 +14,39 @@ narrativo autocontenuto ([`sito/`](sito/README.md)) che si costruisce da solo e
 ha già il suo workflow di pubblicazione. La licenza è scelta (MIT per il codice,
 CC BY 4.0 per testi e dati: vedi in fondo).
 
-**Quello che manca non è più tecnico, e sta tutto qui:**
+### Quello che richiede te
+
+**Per pubblicare** — è tutto qui, e niente di tecnico:
 
 | | Cosa | Tempo |
 |---|---|---|
 | 🙋 | **Rileggere i testi del sito** — sono sei storie, e nessuno script controlla se una frase dice più di quanto il dato sostenga | 1 h |
 | 🙋 | **Mettere la sorgente di Pages su «GitHub Actions»** (*Settings → Pages → Source*): oggi è ancora «Deploy from a branch», ed è il motivo per cui l'indirizzo pubblico mostra questo README invece del racconto | 2 min |
 | 🙋 | **Pubblicare**, quando sarai pronto: *Actions → «Pubblica il sito» → Run workflow → conferma = `pubblica`* | 1 min |
-| 🙋 | **Decidere sul sesto colore di storia** — le storie sono sei e i colori ereditati da `donostia-dataviz` sono cinque, quindi ne è stato aggiunto uno. Riguarda la lingua grafica condivisa fra i due progetti: [`sito/README.md`](sito/README.md) §Lo stile. Non blocca niente | 10 min |
+
+**Che non blocca la pubblicazione, ma nessuno può farlo al posto tuo.** Cinque
+sono scarichi che questo ambiente non raggiunge — servono il tuo SPID, la tua
+rete o il tuo disco — e uno è una decisione:
+
+| | Cosa | Perché tocca a te | Tempo |
+|---|---|---|---|
+| 🙋 | **Quotazioni immobiliari OMI** e perimetri delle zone | area riservata dell'Agenzia delle Entrate: **SPID/CIE** | 1–2 h la prima volta |
+| 🙋 | **Open data del Comune di Brescia** — estende indietro il turismo cittadino (2005–2013) | `dati.comune.brescia.it` non risponde dagli ambienti di esecuzione remota, da una macchina italiana sì | 30 min |
+| 🙋 | **Dati MUR sui due atenei** — attenzione, Brescia ne ha due | `dati-ustat.mur.gov.it` idem | 30 min |
+| 🙋 | **Commercio estero provinciale** | il databrowser ISTAT è una SPA senza API, si esporta a mano. La serie regionale è già scaricata come ripiego dichiarato | 1 h |
+| 🙋 | **`migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git e si rigenera in locale. Serve solo quando l'asse 2 diventerà una storia | 20 min di attesa |
+| 🙋 | **Decidere sul sesto colore di storia** — le storie sono sei e i colori ereditati da `donostia-dataviz` sono cinque, quindi ne è stato aggiunto uno | riguarda la lingua grafica **condivisa fra i due progetti**: [`sito/README.md`](sito/README.md) §Lo stile | 10 min |
+
+Nessuna delle sei tocca i quattro assi portanti, che hanno già tutti i dati che
+servono: sono estensioni e finiture.
 
 **Il sito non si pubblica da solo**, ed è voluto finché l'analisi non è finita:
 ogni push su `main` lo ricostruisce e lo verifica lasciandolo come artefatto da
 scaricare, ma per mandarlo online serve quel lancio a mano con la conferma
-scritta. Tutto il resto è facoltativo — i download che richiedono SPID o una
-macchina italiana, il pannello interattivo, il turismo confrontato con le altre
-province — ed è elencato in [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md), che
-distingue riga per riga **cosa può fare una sessione di lavoro e cosa richiede
-te**.
+scritta. Il lavoro che resta e che **non** richiede te — il pannello
+interattivo, il turismo confrontato con le altre province — è in
+[`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md), che distingue riga per riga **cosa può
+fare una sessione di lavoro e cosa richiede te**.
 
 ## I documenti
 
