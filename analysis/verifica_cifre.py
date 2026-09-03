@@ -504,6 +504,34 @@ _MISURE = {
 }
 
 
+def turismo_di(nome_provincia: str, misura: str, anno: str = "2024") -> float:
+    """La stessa misura su un'altra provincia: la §7.8 ne cita quattro."""
+    codice = next(
+        r["codice_provincia"]
+        for r in turismo_province
+        if r["territorio"] == nome_provincia and r["livello"] == "provincia"
+    )
+    return _per_provincia_turismo(_MISURE[misura], anno)[codice]
+
+
+def turismo_piu_internazionali() -> int:
+    """Quante province hanno una quota straniera piu' alta di Brescia."""
+    quote = _per_provincia_turismo(_MISURE["quota_estera"])
+    return sum(1 for v in quote.values() if v > quote[BRESCIA_PROV])
+
+
+def turismo_sopra_il_2019() -> int:
+    quote = _per_provincia_turismo(_MISURE["crescita_2019"])
+    return sum(1 for v in quote.values() if v > 0)
+
+
+def turismo_quota_estera(anno: str) -> float:
+    dati = _turismo()
+    estero = dati[(BRESCIA_PROV, anno, "totale", "estero", "presenze")]
+    totale = dati[(BRESCIA_PROV, anno, "totale", "totale", "presenze")]
+    return estero / totale * 100
+
+
 def turismo_crescita_lunga(codice: str = BRESCIA_PROV) -> float:
     """Tasso composto 2008–2024 delle presenze, in percentuale l'anno."""
     dati = _turismo()
@@ -1628,6 +1656,48 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         10.6,
         lambda: scarto_fonti_turismo("2024"),
         0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "la quota straniera bresciana era il 61,9 % nel 2008",
+        61.9,
+        lambda: turismo_quota_estera("2008"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "le province piu' internazionali di Brescia sono cinque",
+        5,
+        turismo_piu_internazionali,
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "Bolzano fa 68,7 notti per residente, Brescia 8,74",
+        68.65,
+        lambda: turismo_di("Bolzano/Bozen", "per_abitante"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "Rimini 44,1 notti per residente",
+        44.14,
+        lambda: turismo_di("Rimini", "per_abitante"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "Bergamo, la gemella, cresce del 2,98 %/anno dal 2008",
+        2.98,
+        lambda: _crescite_lunghe()["016"],
+        0.005,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "72 province su 107 sono tornate sopra il 2019",
+        72,
+        turismo_sopra_il_2019,
+        0,
     ),
     (
         "METODOLOGIA MET-17",
