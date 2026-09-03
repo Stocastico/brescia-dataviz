@@ -34,7 +34,7 @@ posto tuo perché riguarda due repository insieme.
 | 🙋 6 | **Esportare a mano il commercio estero provinciale** (§2.2) | il databrowser ISTAT è una SPA senza API | 1 h | niente: la serie regionale è già scaricata come ripiego dichiarato |
 | 🙋 7 | **Rileggere i testi prima di pubblicare** (§8) | è il tuo nome sopra | — | la pubblicazione |
 | 🙋 8 | **Scaricare in locale `migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git, e serve solo quando l'asse 2 diventerà una storia | 20 min di attesa | niente di quello che è pubblicato |
-| 🙋 10 | **Decidere sul sesto colore di storia** ([`sito/README.md`](sito/README.md) §Lo stile) | le storie sono sei e i colori ereditati da `donostia-dataviz` sono cinque, quindi ne è stato aggiunto uno (`--oliva` in `stile.css`). Riguarda la lingua grafica **condivisa fra i due progetti**, e tenerli una collana o lasciarli divergere è una scelta tua | 10 min, o mezz'ora se lo porti anche nell'altro repository | niente. Il sito è coerente così com'è; la domanda è se lo sono i due progetti insieme |
+| 🙋 10 | **Decidere sui colori delle storie** ([`sito/README.md`](sito/README.md) §Lo stile) | le storie sono sei e i colori ereditati da `donostia-dataviz` sono cinque, quindi ne è stato aggiunto uno (`--oliva` in `stile.css`). Riguarda la lingua grafica **condivisa fra i due progetti**, e tenerli una collana o lasciarli divergere è una scelta tua | 10 min, o mezz'ora se lo porti anche nell'altro repository | una **settima storia**, sul turismo confrontato con le altre province: il materiale è pronto (§7.8 del working paper) ma servirebbe un settimo colore, e aggiungerlo prima che il sesto sia deciso raddoppierebbe la domanda invece di risponderle |
 
 Tutto il resto di questo documento è 🤖 o ✅. Questa tabella è ripetuta in forma
 breve in testa al [`README`](README.md), diviso fra ciò che blocca la
@@ -65,7 +65,7 @@ Indice:
 | Ricognizione delle fonti | ✅ [`FONTI.md`](FONTI.md), con lo stato di accesso verificato riga per riga |
 | Soggetto e assi | ✅ decisi: la provincia attraverso i 205 comuni, quattro assi portanti ([`BRIEF.md`](BRIEF.md)) |
 | Repository separato | ✅ esiste, `main`, file in radice |
-| Pipeline | ✅ funzionante, `requests` + libreria standard, 209 test verdi |
+| Pipeline | ✅ funzionante, `requests` + libreria standard, 222 test verdi |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
 | Tabelle tidy | ✅ 27 CSV in [`dati/processed/`](dati/README.md), versionati; manca solo `migrazioni_comuni.csv` |
 | Analisi | ✅ quattordici script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province, la scomposizione demografica, l'aria e il clima, il turismo confrontato con le altre province |
@@ -75,14 +75,14 @@ Indice:
 | Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
 | Deploy | 🤖 la **costruzione** è automatica su `main` (test, cifre, sito, artefatto); la **pubblicazione** no: parte solo a mano, con una conferma scritta (§7). 🙋 serve il tuo passaggio su Pages |
 | Licenza | ✅ MIT per il codice (`LICENSE`), CC BY 4.0 per testi e dati (`LICENSE-DATI`) (§3.3) |
-| `METODOLOGIA.md` | ⚠️ bozza avanzata: **sedici** regole, MET-9 chiusa, MET-15 dalla scomposizione demografica, MET-16 dal panel bilanciato delle centraline |
-| `WORKING-PAPER.md` | ⚠️ bozza, la sezione dei risultati va riscritta con le sei storie (§8) |
+| `METODOLOGIA.md` | ⚠️ bozza avanzata: **diciotto** regole, MET-9 chiusa, MET-16 dal panel bilanciato delle centraline, MET-17 e MET-18 dal confronto sul turismo |
+| `WORKING-PAPER.md` | ⚠️ bozza, ma la §7 è scritta: **otto risultati** con i loro controlli, e la §7.8 fa cadere il limite che il documento dichiarava più serio. Resta provvisorio il titolo, che cambierà quando sarà chiara la tesi (§8) |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
 fatte e sei storie sono scritte in un sito che si costruisce da solo: **manca
 la tua rilettura e un clic nelle impostazioni**. Il lavoro tecnico
-che resta è tutto facoltativo — il pannello interattivo, i download manuali, i
-confronti con altre province.
+che resta è tutto facoltativo — il pannello interattivo, i download manuali, e
+una settima storia sul turismo che aspetta una tua decisione sui colori.
 
 ---
 
@@ -444,7 +444,14 @@ Riadattate al caso bresciano. La prima è fatta, le altre no.
   `decomposizione_popolazione.py`, e per lo stesso motivo — il file della fonte
   è nazionale, le 107 province costano zero download in più: Brescia è la 6ª
   provincia italiana per crescita, contro una mediana di −19,7 abitanti ogni
-  mille. ⏳ Resta fuori il **turismo**.
+  mille. ✅ Esteso al **turismo** con `confronto_turismo.py`, ed era l'unico dei
+  quattro a costare un download: la fonte comunale è regionale, quindi ne è
+  servita una seconda (ISTAT `122_54_DF_DCSC_TUR_7`, tutte e 107 le province dal
+  2008). Ne è uscito il risultato meno atteso del progetto — la provincia è la
+  **decima d'Italia per presenze** e la sesta per quota di clienti stranieri —
+  e due regole, MET-17 e MET-18. **Il confronto esterno adesso copre tutti e
+  quattro gli assi economici**; resta fuori il solo ambiente, dove l'unità
+  osservata è il sensore e non il comune.
 
 ### 5.3 La convenzione di `analysis/`
 
@@ -859,8 +866,9 @@ entra nel tempo che hai, non a fare un piano.
 | 🤖 Scarico delle migrazioni (§2.1) | **venti minuti**, non una notte | l'unico dataset previsto che manchi. ✅ Il riscarico in italiano delle tre tavole censuarie (§2.4) è **fatto** |
 | ✅ ~~Decomposizione della popolazione~~ | fatta | ed è diventata MET-15: la prima storia adesso risponde alla domanda che dichiarava di non poter rispondere |
 | ✅ ~~Una storia su aria e clima (asse 4)~~ | fatta | `analysis/aria_e_clima.py` e la sesta storia del sito. Ne è uscita anche MET-16, e la pioggia è entrata nel racconto **proprio perché** non dà segnale |
-| 🤖 Estendere il confronto fra province al **turismo** | **mezza giornata** | imprese, redditi e popolazione il termine di paragone ce l'hanno; il turismo no. Ed è il caso più difficile dei quattro: la fonte è regionale, quindi un confronto nazionale va costruito da un'altra fonte |
-| 🤖 Riscrivere la §7 del working paper con le sei storie | **mezza giornata** | il documento per un lettore esterno |
+| ✅ ~~Estendere il confronto fra province al **turismo**~~ | fatta | `analysis/confronto_turismo.py` e la §7.8 del working paper. Ne sono uscite MET-17 e MET-18, e la scoperta che la provincia è la decima d'Italia per presenze |
+| ✅ ~~Riscrivere la §7 del working paper con le storie~~ | fatta | otto risultati, ciascuno con i suoi controlli |
+| 🤖 Portare il turismo nel sito come **settima storia** | **mezza giornata** | il materiale c'è tutto (§7.8 del working paper, `confronto_turismo.py`, le cifre già verificate). ⚠️ Ma servirebbe un **settimo colore**, e il sesto è già una decisione tua non ancora presa: vedi la voce 🙋 10 in testa a questo documento. Per questo la storia non è stata scritta |
 | 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |
 | 🙋 I download manuali (§2.2) | **2–4 h in tutto** | estensioni, nessun asse portante |
 
@@ -879,32 +887,33 @@ storie adesso, e la sesta non l'hai mai letta.
 
 ### Se hai mezza giornata
 
-Il **turismo confrontato con il resto d'Italia** (§5.2), che è l'ultimo asse
-senza termine di paragone e l'unico caso in cui il confronto non è gratis: le
-altre tre volte la fonte era nazionale e bastava non filtrarla.
-
-⚠️ Oppure, e viene prima: **guarda il sesto colore di storia**. Le storie sono
+**Guarda i colori delle storie, e decidi.** Le storie sono
 sei e i colori presi da `donostia-dataviz` sono cinque, quindi ne è stato
-aggiunto uno (`--oliva` in `stile.css`). È l'unica decisione presa in questa
+aggiunto uno (`--oliva` in `stile.css`). È l'unica decisione presa in quella
 tornata che tocca la lingua grafica condivisa fra i due progetti, ed è quindi
 l'unica che vale la pena riesaminare: `sito/README.md` §Lo stile dice cosa
 comporterebbe riallineare i due.
 
+E adesso non è più solo estetica: c'è **materiale per una settima storia** — il
+turismo confrontato con le altre 106 province, §7.8 del working paper — che non
+è stata scritta proprio per non aggiungere un settimo colore prima che il sesto
+sia stato deciso. Decidere sblocca la storia.
+
 ### Se hai un weekend
 
-**Il pannello React** (§6.1), o il **turismo confrontato con il resto d'Italia**.
+**Il pannello React** (§6.1), oppure la **settima storia** sul turismo, se il
+colore è stato deciso.
 
 Il confronto fra province è servito più di qualunque altra analisi — ha smontato
-una frase che il progetto ripeteva dal primo giorno (MET-14) e ha ribaltato la
-parola su cui poggiava la prima storia (MET-15) — e adesso copre imprese, redditi
-e popolazione. Sul turismo no, ed è il caso più difficile: le altre tre volte la
-fonte era nazionale e bastava non filtrarla, mentre i flussi turistici arrivano
-da `dati.lombardia.it` e coprono la Lombardia. Servirebbe la tavola ISTAT sulla
-capacità e sul movimento degli esercizi ricettivi, che è un'altra fonte con le
-sue trappole. Lo schema di come si fa sta in `datasets/province.py` (filtro
-locale su file nazionale), in `datasets/bilancio.py` (stesso, su un host
-diverso) e in `datasets/redditi_confronto.py` (quando la fonte non si può
-filtrare e ogni provincia costa i suoi download).
+una frase che il progetto ripeteva dal primo giorno (MET-14), ha ribaltato la
+parola su cui poggiava la prima storia (MET-15) e sul turismo ha trovato un
+risultato che nessuno stava cercando — e adesso copre tutti e quattro gli assi
+economici. Lo schema di come si fa sta in `datasets/province.py` (filtro locale
+su file nazionale), in `datasets/bilancio.py` (stesso, su un host diverso), in
+`datasets/redditi_confronto.py` (quando la fonte non si può filtrare e ogni
+provincia costa i suoi download) e ora in `datasets/turismo_confronto.py`
+(quando la fonte comunale non copre l'Italia e ne serve **una seconda**, con le
+conseguenze scritte in MET-17).
 
 **Da dove ripartire in ogni caso**: `python analysis/verifica_cifre.py`. Se le
 verifiche passano, le tabelle sono a posto e i documenti dicono il
