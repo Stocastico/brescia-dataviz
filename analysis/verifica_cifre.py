@@ -1694,9 +1694,23 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
     ),
     (
         "WORKING-PAPER §7.8",
-        "72 province su 107 sono tornate sopra il 2019",
-        72,
-        turismo_sopra_il_2019,
+        "la caduta 2020 degli addetti ASIA in provincia: -2,7 %",
+        -2.69,
+        lambda: (addetti("2020", "totale") / addetti("2019", "totale") - 1) * 100,
+        0.005,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "e quella della classe >=250 della provincia: -19,5 %",
+        -19.52,
+        lambda: (addetti("2020", "250+") / addetti("2019", "250+") - 1) * 100,
+        0.005,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "35 province su 107 non hanno riguadagnato il livello del 2019",
+        35,
+        lambda: 107 - turismo_sopra_il_2019(),
         0,
     ),
     (

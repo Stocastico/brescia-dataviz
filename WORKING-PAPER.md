@@ -751,9 +751,11 @@ non contiene, perché è la storia di un aeroporto e non di un lago.
 (−54,3 % contro −49,5 %), il che è coerente con una domanda estera: i confini
 chiusi pesano più della vacanza corta di prossimità. Il recupero però è più
 rapido della mediana, e nel 2024 la provincia sta il 13,8 % sopra il 2019
-mentre 72 province su 107 hanno appena riguadagnato il livello. È l'unica
-delle rotture del 2020 misurate in questo lavoro (§7.5, `rottura_covid.py`) che
-si sia richiusa **sopra** il punto di partenza.
+mentre 35 province su 107 non hanno ancora riguadagnato il livello. Fra le
+rotture del 2020 misurate in questo lavoro (`rottura_covid.py`) questa è di gran
+lunga la più profonda — le presenze perdono più della metà, gli addetti il
+2,7 % e la classe ≥250 della provincia il 19,5 % — ed è anche quella che si è
+richiusa più in alto.
 
 **Il controllo che questo risultato porta con sé, ed è la parte scomoda.** Le
 due fonti sul turismo bresciano **non danno lo stesso numero**, e la distanza
