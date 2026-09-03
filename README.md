@@ -8,8 +8,9 @@ riprende architettura, metodo e lingua grafica — ma con una domanda di ricerca
 diversa: *come è cambiato questo territorio*, senza una tesi turistica a
 monte.
 
-**Stato: tutti e quattro gli assi portanti hanno la loro storia.** Dati
-scaricati e puliti, tredici analisi fatte, sei storie scritte in un documento
+**Stato: tutti e quattro gli assi portanti hanno la loro storia, e i quattro
+assi economici hanno anche un termine di paragone nazionale.** Dati scaricati e
+puliti, quattordici analisi fatte, sette storie scritte in un documento
 narrativo autocontenuto ([`sito/`](sito/README.md)) che si costruisce da solo e
 ha già il suo workflow di pubblicazione. La licenza è scelta (MIT per il codice,
 CC BY 4.0 per testi e dati: vedi in fondo).
@@ -20,7 +21,7 @@ CC BY 4.0 per testi e dati: vedi in fondo).
 
 | | Cosa | Tempo |
 |---|---|---|
-| 🙋 | **Rileggere i testi del sito** — sono sei storie, e nessuno script controlla se una frase dice più di quanto il dato sostenga | 1 h |
+| 🙋 | **Rileggere i testi del sito** — sono sette storie, e nessuno script controlla se una frase dice più di quanto il dato sostenga | 1 h |
 | 🙋 | **Mettere la sorgente di Pages su «GitHub Actions»** (*Settings → Pages → Source*): oggi è ancora «Deploy from a branch», ed è il motivo per cui l'indirizzo pubblico mostra questo README invece del racconto | 2 min |
 | 🙋 | **Pubblicare**, quando sarai pronto: *Actions → «Pubblica il sito» → Run workflow → conferma = `pubblica`* | 1 min |
 
@@ -35,7 +36,7 @@ rete o il tuo disco — e uno è una decisione:
 | 🙋 | **Dati MUR sui due atenei** — attenzione, Brescia ne ha due | `dati-ustat.mur.gov.it` idem | 30 min |
 | 🙋 | **Commercio estero provinciale** | il databrowser ISTAT è una SPA senza API, si esporta a mano. La serie regionale è già scaricata come ripiego dichiarato | 1 h |
 | 🙋 | **`migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git e si rigenera in locale. Serve solo quando l'asse 2 diventerà una storia | 20 min di attesa |
-| 🙋 | **Decidere sul sesto colore di storia** — le storie sono sei e i colori ereditati da `donostia-dataviz` sono cinque, quindi ne è stato aggiunto uno | riguarda la lingua grafica **condivisa fra i due progetti**: [`sito/README.md`](sito/README.md) §Lo stile | 10 min |
+| 🙋 | **Dire se la tavolozza va riallineata con `donostia-dataviz`** — le storie qui sono sette, i colori ereditati cinque, quindi ne sono stati aggiunti due (`--oliva`, `--prugna`) con la regola che li sceglie scritta accanto. Qui è coerente; la domanda è se i due progetti debbano restare una collana stretta | riguarda la lingua grafica **condivisa fra i due progetti**: [`sito/README.md`](sito/README.md) §Lo stile | 10 min, o mezz'ora se porti regola e toni anche di là |
 
 Nessuna delle sei tocca i quattro assi portanti, che hanno già tutti i dati che
 servono: sono estensioni e finiture.
@@ -54,13 +55,13 @@ fare una sessione di lavoro e cosa richiede te**.
 |---|---|
 | [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, il soggetto e i **quattro assi scelti** — tutti e quattro ora hanno una storia —, le due analisi dedicate al capoluogo, le storie candidate, i principi. |
 | [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e la traccia storica della separazione del repository (§12). |
-| [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza avanzata.** Le **sedici** regole che governano il progetto: perché misuriamo come misuriamo. Cinque nascono da errori veri trovati sui dati — MET-9 (un titolo sbagliato), MET-12 (una correlazione con il segno rovesciato), MET-13 (due script che rispondevano numeri diversi alla stessa domanda), MET-14 (una frase che questo progetto ripeteva dal primo giorno e che il confronto con le altre province ha smontato) e MET-15 (una parola — «spopolamento» — che conteneva già una risposta, e quella sbagliata). La sedicesima è la prima nata da un errore *evitato*: su una rete di centraline che apre e chiude stazioni, la media misura anche la rete. |
+| [`METODOLOGIA.md`](METODOLOGIA.md) | ⚠️ **Bozza avanzata.** Le **diciotto** regole che governano il progetto: perché misuriamo come misuriamo. Cinque nascono da errori veri trovati sui dati — MET-9 (un titolo sbagliato), MET-12 (una correlazione con il segno rovesciato), MET-13 (due script che rispondevano numeri diversi alla stessa domanda), MET-14 (una frase che questo progetto ripeteva dal primo giorno e che il confronto con le altre province ha smontato) e MET-15 (una parola — «spopolamento» — che conteneva già una risposta, e quella sbagliata). La sedicesima è la prima nata da un errore *evitato*: su una rete di centraline che apre e chiude stazioni, la media misura anche la rete. Le ultime due vengono dal confronto sul turismo: MET-17, due fonti sullo stesso fenomeno non si mescolano in una frase, e MET-18, uno scalino isolato in una serie lunga è una definizione finché non si dimostra il contrario. |
 | [`WORKING-PAPER.md`](WORKING-PAPER.md) | ⚠️ **Bozza, versione 2.** Il working paper: metodo per un lettore esterno. La §7 non è più provvisoria — copre tutti e quattro gli assi, con i controlli e i due assi che un termine di paragone esterno non ce l'hanno. Restano provvisori il titolo e la §5. |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco completo delle cose che **richiedono te** (un login SPID, una macchina italiana, una decisione di disegno), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
-| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 26 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza e turismo, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
-| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: tredici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
-| [`sito/`](sito/README.md) | **Il documento narrativo**: sei storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
+| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 27 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza e turismo, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
+| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: quattordici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
+| [`sito/`](sito/README.md) | **Il documento narrativo**: sette storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
 ## Come leggere il registro
 
@@ -151,6 +152,13 @@ mediana del −11,9 %.
 Sul turismo l'asimmetria è più netta e più semplice: 12,2 milioni di presenze
 provinciali nel 2024, di cui il 68,8 % nei primi dieci comuni, otto dei quali
 sul Garda — Sirmione da sola fa più del capoluogo.
+
+E qui il confronto con le altre province ha trovato la cosa meno attesa di tutto
+il lavoro: **Brescia è la decima provincia italiana per presenze turistiche**,
+con più di cinque volte le notti della provincia mediana, e la **sesta** per
+quota di clienti stranieri (72,0 % contro una mediana del 37,7 %). Per abitante
+però è solo ventinovesima: è decima perché è grande, non perché sia intensamente
+turistica — ed è la settima storia del sito, oltre alla §7.8 del working paper.
 
 **La sesta storia dura vent'anni**, che è tre volte il resto del progetto, e
 dice due cose opposte. L'aria è **molto** migliorata: tenendo solo le centraline

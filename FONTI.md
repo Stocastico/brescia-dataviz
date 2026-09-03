@@ -600,13 +600,31 @@ Resta valido il gancio temporale: **Capitale italiana della cultura 2023** con
 Bergamo è uno shock datato e identificabile, utile come contro-prova in altre
 serie (commercio, ricettività, occupazione nei servizi).
 
+> ⚠️ **Le due fonti sul turismo bresciano non danno lo stesso numero, e la
+> differenza cresce.** Il totale provinciale ISTAT per il 2024 è **11.068.441**
+> presenze; la somma dei comuni di Regione Lombardia, qui sopra, è
+> **12.246.854**: il **10,6 %** in più, contro il 6,5 % del 2019. Sugli arrivi
+> lo scarto è la metà (2,0 % → 7,0 %), quindi riguarda le notti e non il
+> conteggio delle persone — e la somma dei comuni **esclude** i 45 con dato
+> soppresso, quindi la distanza vera è più larga. Nessuna delle due è
+> sbagliata: sono due filiere di rilevazione con due perimetri. La conseguenza
+> operativa è **MET-17** — una tabella, una fonte, e mai un numeratore da una
+> con un denominatore dall'altra.
+
+> ⚠️ **E il 2025 della serie ISTAT non si confronta con gli anni prima.** Da
+> quell'anno la voce «alloggi in affitto» comprende anche la gestione **non**
+> imprenditoriale: sull'Italia +87,6 % in dodici mesi, mentre l'alberghiero fa
+> +1,5 % e i campeggi +1,3 %. Le righe interessate sono marcate
+> `stato = definizione_cambiata` (**MET-18**).
+
 | Tema | Fonte | Endpoint | Grana | Copertura | Stato |
 |---|---|---|---|---|---|
 | Flussi turistici mensili (arrivi, presenze, permanenza media) | Regione Lombardia | `dati.lombardia.it/resource/mzxz-sz25` | **comune** | **2019–2024**, mensile | **verificata ✓** — Brescia presente (`codice_istat` 17029); es. ago-2019: 24.450 arrivi / 53.867 presenze / 2,2 gg |
 | Flussi turistici annuali | Regione Lombardia | `resource/vyxt-7jdx` | comune | 2019–2024 | **verificata ✓** (62.891 righe, stesso range) |
 | Flussi turistici mensili per provincia | Regione Lombardia | `resource/xzck-giqt` | provincia | mensile | **verificata ✓** (presente in catalogo) |
 | Flusso turistico a Brescia per nazionalità | Comune di Brescia — open data | `dati.comune.brescia.it/.../42-flusso-turistico-a-brescia…` | città | **2005–2013** | **non raggiungibile da qui** — è il pezzo che estende indietro la serie regionale (che parte dal 2019) |
-| Movimento dei clienti negli esercizi ricettivi | ISTAT | dataflow *Capacità/Movimento esercizi ricettivi* | comune capoluogo | serie lunga | **da verificare** — la via per coprire il buco 2014–2018 |
+| Movimento dei clienti negli esercizi ricettivi | ISTAT | dataflow `122_54_DF_DCSC_TUR_7` | **provincia** (tutte e 107, più regioni e Italia) | **2008–2025**, annuale, per tipologia di esercizio e residenza dei clienti | **verificata ✓ e scaricata** — `dati/processed/turismo_province.csv`, cinque richieste da ~5 MB l'una. È il termine di paragone che al turismo mancava, e porta undici anni prima del 2019. ⚠️ Non coincide con la fonte regionale: vedi il riquadro qui sotto |
+| Capacità degli esercizi ricettivi | ISTAT | dataflow `122_54_DF_DCSC_TUR_1` | **comune** | serie lunga | **da verificare** — è l'offerta (posti letto, esercizi), non i flussi: la via per il rapporto presenze/posti letto, e forse per coprire il buco comunale 2014–2018 |
 | Strutture alberghiere e RTA · B&B · affittacamere · alloggi agrituristici · alberghi diffusi | Regione Lombardia | `dati.lombardia.it` id `fiiw-i5su`, `jzsu-f86x`, `6var-2hht`, `yg8e-47jy`, `69j3-9hcp` | struttura (con indirizzo) | agg. 2024 | **da verificare** — presenti in catalogo ma non serviti dall'API tabellare (sono risorse-file): vanno scaricate dal portale |
 | Annunci Airbnb geolocalizzati | Inside Airbnb | — | — | — | **non disponibile**: **verificata ✓ l'assenza**. L'Italia è coperta solo per Napoli, Bologna, Roma, Milano, Bergamo, Veneto/Venezia, Toscana/Firenze, Puglia, Sicilia. **Brescia non c'è.** Esiste un archivio nazionale su richiesta. |
 | Codice Identificativo Nazionale (CIN) delle locazioni turistiche | Ministero del Turismo — Banca Dati Strutture Ricettive | — | struttura | dal 2024 | **da verificare** — è oggi l'unico censimento pubblico degli affitti brevi; sostituto naturale di Airbnb, ma serie cortissima |
@@ -812,7 +830,29 @@ Le altre regole imparate sul campo:
    `6 e più`. ✅ L'header è in `fetch.py` da agosto 2026, con i test. Resta il
    **riscarico** delle tavole già in cache, che non porta traccia della lingua
    con cui è stata scaricata — ma con i blocchi del punto 6 non costa più ore.
-8. **L'host può sparire.** Ad agosto 2026, a metà lavorazione,
+8. **I codici territoriali non sono tutti della stessa annata, e non c'è modo
+   di accorgersene dal dato.** Il dataflow del turismo (`122_54_DF_DCSC_TUR_7`)
+   usa i codici **NUTS 2010**: il Veneto è `ITD3`, la Toscana `ITE1`, e le
+   province che stanno lì dentro hanno codici che nell'elenco ISTAT corrente —
+   NUTS 2021 — non esistono più (`ITH3…`, `ITI1…`). Agganciare per codice NUTS
+   sembra la cosa pulita da fare e ritrova **53 province su 107**: le altre
+   spariscono, e sparire non è un errore, è una riga che non c'è. Nel confronto
+   fra province la mancanza si sarebbe vista solo come «Brescia è decima su
+   cinquantatré», che è ancora una frase plausibile.
+
+   Il rimedio adottato è agganciare per **nome normalizzato** — l'unica
+   differenza sistematica sono gli spazi attorno alla barra dei nomi bilingui
+   (`Bolzano / Bozen`), più un caso singolo (`Reggio di Calabria` contro `Reggio
+   Calabria`) — e verificare con un test che le province ritrovate siano 107. La
+   morale non è «usare i nomi»: è che un aggancio che può perdere righe in
+   silenzio va **contato**, e il conteggio va messo in un test invece che in un
+   controllo a occhio fatto una volta.
+
+   ⚠️ Da qui viene anche la geografia che cambia: la fonte riporta le quattro
+   province sarde soppresse fino al 2016 e Sud Sardegna dal 2017. Restano fuori
+   le prime quattro, e le superstiti portano `stato = confine_cambiato` prima
+   del 2017.
+9. **L'host può sparire.** Ad agosto 2026, a metà lavorazione,
    `esploradati.istat.it` ha smesso di accettare connessioni TCP (timeout in
    `connect`, non in lettura) mentre `www.istat.it` continuava a rispondere
    `200`. Non è un errore di chiave né di header: se le richieste che

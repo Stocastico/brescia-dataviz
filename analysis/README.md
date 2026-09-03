@@ -24,10 +24,11 @@ il punto.
 | `aria_e_clima.py` | L'asse 4: il panel bilanciato sulle centraline (PM10 e biossido di azoto crollano, l'ozono no) e le anomalie di temperatura, che è l'unico modo di mediare stazioni fra i 47 e i 2.108 metri. Comprende la serie che **non** dà segnale, la pioggia. |
 | `confronto_province.py` | Gli stessi indicatori su tutte e 107 le province italiane: dove sta Brescia, e il controllo esterno di MET-9. |
 | `convergenza_confronto.py` | La convergenza dei redditi rifatta su Bergamo: regge identica, quindi non è bresciana. |
+| `confronto_turismo.py` | Il turismo confrontato con le altre 106 province, dal 2008: era l'ultimo asse senza un altrove. Ne escono MET-17 (le due fonti sul turismo bresciano distano il 10,6 %) e MET-18 (il 2025 ha una definizione nuova dentro). |
 | `_tabelle.py` | Non è un'analisi: è la lettura delle tabelle e la statistica di base che gli script hanno in comune. |
 
 ```bash
-python analysis/verifica_cifre.py                    # novantuno verifiche, settembre 2026
+python analysis/verifica_cifre.py                    # centotrentasei verifiche, settembre 2026
 python analysis/variazione_popolazione.py --save     # + CSV in analysis/output/
 python analysis/decomposizione_popolazione.py        # perché quella variazione
 python analysis/velocita_di_cambio.py reddito
@@ -41,6 +42,7 @@ python analysis/rottura_covid.py
 python analysis/aria_e_clima.py --save
 python analysis/confronto_province.py
 python analysis/convergenza_confronto.py
+python analysis/confronto_turismo.py
 ```
 
 Il numero delle verifiche è scritto **solo qui**, e di proposito: una cifra

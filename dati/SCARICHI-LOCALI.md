@@ -47,7 +47,7 @@ che qualcuno ha caricato, chiede di poterlo rigenerare.
 
 Il costo reale è un altro, e va tenuto d'occhio: **finché la tabella non è nel
 repository, nessuna cifra pubblicata può dipendere da lei.** Oggi è vero — le
-sei storie del sito non la usano, e `analysis/verifica_cifre.py` non la
+sette storie del sito non la usano, e `analysis/verifica_cifre.py` non la
 tocca. Il giorno in cui l'asse 2 («chi vive nel bresciano») diventerà una
 storia, quel giorno la tabella deve entrare, e in una forma versionabile.
 

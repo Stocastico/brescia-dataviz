@@ -555,7 +555,6 @@
 
   function serie(contenitore, opzioni) {
     const ALTEZZA = 340;
-    const riquadro = { sinistra: 58, alto: 16, larghezza: LARGHEZZA - 195, altezza: ALTEZZA - 56 };
     const linee = opzioni.linee;
     const periodi = opzioni.periodi;
 
@@ -569,6 +568,22 @@
     });
     const margine = (yMax - yMin) * 0.1;
     yMin -= margine; yMax += margine;
+
+    /* Il margine sinistro si misura sull'etichetta piu' lunga invece di essere
+       una costante. Con i microgrammi delle centraline («48,7») bastavano 58
+       pixel; con le presenze turistiche («8.000.000») l'etichetta veniva
+       tagliata a «.000.000» — un asse illeggibile, e nessun errore da nessuna
+       parte. Sei pixel per cifra a corpo 11 sono una stima larga il giusto. */
+    const decimaliY = opzioni.decimali === undefined ? 0 : opzioni.decimali;
+    const etichettaPiuLunga = passi(yMin, yMax, 5).reduce(function (piu, v) {
+      const testo = num(v, decimaliY);
+      return testo.length > piu.length ? testo : piu;
+    }, "");
+    const riquadro = {
+      sinistra: Math.max(58, etichettaPiuLunga.length * 6.2 + 12),
+      alto: 16, larghezza: 0, altezza: ALTEZZA - 56,
+    };
+    riquadro.larghezza = LARGHEZZA - riquadro.sinistra - 137;
 
     function sx(indice) {
       return riquadro.sinistra + (indice / (periodi.length - 1)) * riquadro.larghezza;
@@ -589,7 +604,7 @@
         stroke: css("--line") }, svg);
       const testo = el("text", { x: riquadro.sinistra - 8, y: y + 4, "text-anchor": "end",
         fill: css("--muted"), "font-size": 11 }, svg);
-      testo.textContent = num(valore, opzioni.decimali === undefined ? 0 : opzioni.decimali);
+      testo.textContent = num(valore, decimaliY);
     });
     /* Un'etichetta ogni `n` periodi. Con le sei annate di ASIA ci stanno tutte;
        con i ventitre anni delle centraline si sovrappongono fino a diventare
@@ -705,7 +720,18 @@
     const valori = voci.filter(function (v) { return v.valore !== null; })
       .map(function (v) { return v.valore; });
     const estremo = Math.max.apply(null, valori.map(Math.abs)) * 1.15;
-    const yMin = -estremo, yMax = estremo;
+    /* L'asse resta simmetrico attorno allo zero solo se la serie ha davvero
+       due segni — le anomalie di temperatura, per cui questa funzione e' nata:
+       li' la simmetria e' il messaggio, perche' un anno sopra e uno sotto la
+       base devono essere lunghi uguali. Se invece tutti i valori stanno da una
+       parte sola, meta' del riquadro resterebbe vuota e suggerirebbe una
+       grandezza che puo' cambiare segno e per caso non lo fa. Lo zero resta
+       comunque nel grafico: e' il riferimento, e togliergli il fondo
+       gonfierebbe le differenze. */
+    const tuttiPositivi = valori.every(function (v) { return v >= 0; });
+    const tuttiNegativi = valori.every(function (v) { return v <= 0; });
+    const yMin = tuttiPositivi ? 0 : -estremo;
+    const yMax = tuttiNegativi ? 0 : estremo;
 
     function sy(valore) {
       return riquadro.alto + riquadro.altezza - ((valore - yMin) / (yMax - yMin)) * riquadro.altezza;

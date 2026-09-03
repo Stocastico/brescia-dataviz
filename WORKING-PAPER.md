@@ -23,14 +23,16 @@
 > leggibile, MET-16. Con essa è stata corretta una cifra della §7.5, che dava la
 > misura dell'aria su una stazione sola.
 >
-> **Il limite più serio della versione precedente era caduto già in agosto.**
-> Diceva che tutti i risultati descrivevano Brescia senza dire se Brescia fosse
-> diversa da una provincia qualunque. Il confronto esterno c'è su imprese (§7.1),
-> redditi (§7.3) e popolazione (§7.6), e su due dei tre ha cambiato quello che il
-> progetto diceva. Restano scoperti il **turismo** (§7.4) e l'**ambiente**
-> (§7.7), per motivi diversi: nel primo caso la fonte è regionale e un confronto
-> nazionale andrebbe costruito da un'altra; nel secondo l'unità non è nemmeno il
-> comune.
+> **Il limite più serio della versione precedente era caduto già in agosto**, e
+> in questa revisione è caduto del tutto. Diceva che tutti i risultati
+> descrivevano Brescia senza dire se Brescia fosse diversa da una provincia
+> qualunque. Il confronto esterno c'è su imprese (§7.1), redditi (§7.3),
+> popolazione (§7.6) e adesso **turismo** (§7.8), e su tre dei quattro ha
+> cambiato quello che il progetto diceva: l'ultimo ha scoperto che la provincia
+> è la **decima d'Italia per presenze**. Resta scoperto il solo **ambiente**
+> (§7.7), dove l'unità osservata non è nemmeno il comune. Il turismo, per
+> essere confrontato, ha richiesto una **seconda fonte** sullo stesso fenomeno,
+> e le due non coincidono: da lì MET-17 e MET-18.
 >
 > Cosa resta provvisorio: il **titolo**, che cambierà quando sarà chiara la
 > tesi; la §5, da rivedere se si aggiungeranno indicatori.
@@ -386,6 +388,11 @@ che i dati non sostengono.
 - **Rottura Covid**, testata in modo sistematico. Oggi è dichiarata (MET-8) e
   mostrata su un caso solo — la serie della classe ≥250 del capoluogo, dove la
   discontinuità del 2020 è visibile a occhio.
+- ✅ **Confronto fra province, sul turismo** (`analysis/confronto_turismo.py`).
+  Era il più difficile dei quattro, e l'unico che non fosse gratis: le altre
+  volte la fonte era nazionale e bastava non filtrarla, qui è regionale e ne è
+  servita una seconda. Ha aggiunto un risultato che il progetto non stava
+  cercando (§7.8) e due regole (MET-17, MET-18).
 - ✅ **Decomposizione demografica** (`analysis/decomposizione_popolazione.py`).
   Era la prima voce della sezione «cosa non possiamo dire» del sito, ed è stata
   l'unica di quella lista che si sia potuta togliere scaricando una tabella. Il
@@ -400,10 +407,10 @@ che i dati non sostengono.
 
 ## 7. Risultati
 
-Sette risultati, con i loro controlli. Nessuno è causale: sono descrizioni di
-un territorio, e la §8 dice cosa non permettono di affermare. Tre di essi —
-§7.1, §7.3 e §7.6 — hanno un termine di paragone esterno; §7.4 e §7.7 no, e la
-§8 dice quali conclusioni questo indebolisce.
+Otto risultati, con i loro controlli. Nessuno è causale: sono descrizioni di un
+territorio, e la §8 dice cosa non permettono di affermare. Quattro di essi —
+§7.1, §7.3, §7.6 e §7.8 — hanno un termine di paragone esterno; §7.4 e §7.7 no,
+e la §8 dice quali conclusioni questo indebolisce.
 
 ### 7.1 La domanda di partenza era mal posta
 
@@ -527,7 +534,8 @@ non sono 205 osservazioni indipendenti.
   in §7.6, e non è quello che la parola «spopolamento» lascia intendere.
 - **La provincia è turistica, il capoluogo no.** 12.246.854 presenze nel 2024,
   di cui il 68,8 % nei primi dieci comuni, otto sul Garda. Sirmione da sola
-  (1.406.590) supera Brescia città (883.531, il 7,2 %).
+  (1.406.590) supera Brescia città (883.531, il 7,2 %). Quanto sia tanto lo dice
+  la §7.8, che usa un'altra fonte e per questo un altro totale (MET-17).
 - **L'aria è migliorata, e non abbastanza.** PM10 alla stazione di Brescia
   Broletto: 45,5 µg/m³ nel 2001, 27,3 nel 2024 — una stazione confrontata con sé
   stessa, e comunque sopra la linea guida dell'Organizzazione mondiale della
@@ -686,6 +694,98 @@ che medie mensili non sostengono. E non è un confronto esterno — a differenza
 §7.1, §7.3 e §7.6, questo asse non è stato collocato fra le province italiane,
 perché la fonte è regionale.
 
+### 7.8 La provincia è la decima d'Italia per turismo, e nessuno lo direbbe
+
+È l'ultimo risultato in ordine di tempo, e nasce da una domanda che il metodo
+imponeva e la fonte impediva. La §7.5 dice che la provincia è turistica; MET-14
+chiede *rispetto a cosa*, e la risposta non c'era, perché la fonte comunale è
+regionale e si ferma al confine lombardo. Serve una **seconda fonte**: ISTAT
+pubblica il movimento dei clienti negli esercizi ricettivi per tutte e 107 le
+province, dal 2008.
+
+| Indicatore, 2024 | Brescia | mediana provinciale | rango |
+|---|---|---|---|
+| presenze | 11.068.441 | 2.088.719 | **10ª** |
+| presenze per abitante | 8,74 | 4,97 | 29ª |
+| quota di presenze straniere | 72,0 % | 37,7 % | **6ª** |
+| presenze in campeggi e villaggi | 26,7 % | 9,1 % | 19ª su 98 |
+| quota alberghiera | 52,9 % | 62,1 % | 78ª |
+| crescita 2019→2024 | +13,8 % | +5,5 % | 26ª |
+| caduta nel 2020 | −54,3 % | −49,5 % | 40ª |
+
+**Il primo numero è il risultato.** Brescia è la **decima provincia italiana per
+presenze turistiche**, dietro Roma, Venezia, Bolzano, Trento, Verona, Milano e
+poche altre, con più di cinque volte le notti della provincia mediana. È un
+fatto che questo lavoro non stava cercando: il progetto è nato per chiedersi se
+Brescia sia ancora il territorio della meccanica (§7.1), e il turismo era
+classificato come asse di contorno.
+
+**Il secondo numero lo ridimensiona, e insieme lo spiega.** Per abitante Brescia
+è ventinovesima, cioè sopra la mediana ma lontanissima da Bolzano (68,7 notti
+per residente) o Rimini (44,1). Le due letture non si contraddicono: Brescia è
+decima perché è **grande**, con 1,27 milioni di abitanti, non perché sia
+intensamente turistica. È la stessa disciplina di §7.1 applicata a un altro
+asse — un valore assoluto e un valore per unità dicono cose diverse, e citarne
+uno solo è scegliere la conclusione.
+
+**Il terzo numero è quello specifico.** Il **72,0 %** delle presenze bresciane
+viene dall'estero: solo cinque province italiane fanno di più (Como, Verbano-
+Cusio-Ossola, Firenze, Verona, Venezia), e la mediana nazionale è **37,7 %**.
+Questa è la caratteristica che non si spiega con la dimensione: la provincia ha
+un turismo internazionale come quello delle città d'arte, ma non ha le città
+d'arte. La composizione dice dove sta: **26,7 %** delle notti in campeggi e
+villaggi contro una mediana del 9,1 %, e una quota alberghiera sotto la mediana
+(78ª su 107). È il Garda — e la §7.5, che sulla fonte comunale trova otto dei
+primi dieci comuni sul lago, dice lo stesso da dentro.
+
+**La serie lunga, che la fonte comunale non aveva.** Dal 2008 al 2024 le
+presenze bresciane crescono del **2,09 % l'anno** composto, contro una mediana
+provinciale dello **0,96 %** (24ª su 99 province con la serie intera). La quota
+straniera sale in parallelo, dal 61,9 % al 72,0 %: non è che siano arrivati più
+italiani in un posto già internazionale, è che l'internazionalizzazione è essa
+stessa la crescita. Bergamo, la provincia gemella su quasi ogni altro
+indicatore, cresce più in fretta (+2,98 %) — e per una ragione che questo dato
+non contiene, perché è la storia di un aeroporto e non di un lago.
+
+**Il 2020 e il ritorno.** La caduta bresciana è più profonda della mediana
+(−54,3 % contro −49,5 %), il che è coerente con una domanda estera: i confini
+chiusi pesano più della vacanza corta di prossimità. Il recupero però è più
+rapido della mediana, e nel 2024 la provincia sta il 13,8 % sopra il 2019
+mentre 35 province su 107 non hanno ancora riguadagnato il livello. Fra le
+rotture del 2020 misurate in questo lavoro (`rottura_covid.py`) questa è di gran
+lunga la più profonda — le presenze perdono più della metà, gli addetti il
+2,7 % e la classe ≥250 della provincia il 19,5 % — ed è anche quella che si è
+richiusa più in alto.
+
+**Il controllo che questo risultato porta con sé, ed è la parte scomoda.** Le
+due fonti sul turismo bresciano **non danno lo stesso numero**, e la distanza
+cresce: la somma dei comuni di Regione Lombardia sta sopra il totale
+provinciale ISTAT del **6,5 % nel 2019** e del **10,6 % nel 2024**. Sugli arrivi
+lo scarto è la metà (2,0 % → 7,0 %), quindi il fenomeno riguarda le **notti** e
+non il conteggio delle persone. Nessuna delle due è sbagliata: sono due filiere
+di rilevazione con due perimetri. Ma è il motivo per cui la §7.5 e questa
+sezione citano due totali diversi per lo stesso 2024 — 12.246.854 e 11.068.441 —
+e devono dichiararlo invece di scegliere il più comodo. La regola che ne è nata
+è **MET-17**: una tabella, una fonte, e mai un numeratore da una e un
+denominatore dall'altra.
+
+**Un secondo controllo, e una cifra che non è stata scritta.** La stessa fonte
+dà per il 2025 un +14,9 % di presenze sull'Italia, che sarebbe il titolo
+migliore di tutto questo documento. Scomposto per tipologia si dissolve:
+alberghiero +1,5 %, campeggi +1,3 %, alloggi in affitto **+87,6 %** — perché da
+quell'anno la voce comprende anche la gestione non imprenditoriale. Non è un
+mercato che raddoppia, è un perimetro che si allarga, e la §6.1 di questo
+documento è la storia di cosa succede a non fare questa scomposizione. Il 2025
+resta nei dati, marcato, e fuori da ogni confronto: è **MET-18**.
+
+**Cosa questo risultato non dice.** Nulla sull'economia del turismo: le presenze
+sono notti, non spesa, non occupazione e non valore aggiunto. Un territorio può
+avere molte notti e poco valore per notte, e i campeggi sono per definizione il
+segmento a valore per notte più basso: la quota del 26,7 % che rende Brescia
+riconoscibile è anche la ragione per cui il decimo posto per presenze non è un
+decimo posto per fatturato turistico. Il collegamento fra questo asse e gli
+addetti dell'alloggio e ristorazione (§7.4) resta da fare e non è fatto qui.
+
 ## 8. Limiti — cosa questo metodo non può affermare
 
 - **Niente sotto il comune, e sull'aria nemmeno il comune.** Nessun asse scende
@@ -721,15 +821,29 @@ perché la fonte è regionale.
 - **Gli aggregati amministrativi sono fragili** (§6.1): il registro delle unità
   locali misura dove le cose sono *registrate*, che non sempre è dove
   accadono.
-- **Il termine di paragone copre tre assi su quattro; il turismo no.** Il
+- **Il termine di paragone copre i quattro assi economici; l'ambiente no.** Il
   confronto con le 107 province è stato fatto sulle imprese (§7.1), sui
-  capoluoghi (§7.2), sulla demografia (§7.6), e la convergenza dei redditi è
-  stata replicata su Bergamo (§7.3). Ha corretto due letture e ne ha rafforzate
-  due. Ma **sul turismo non esiste**, e lì il caso è più difficile che negli
-  altri tre: le altre volte la fonte era nazionale e bastava non filtrarla,
-  mentre i flussi turistici arrivano da una fonte regionale. Quella lettura resta
-  misurata contro sé stessa e va scritta come «a Brescia succede questo», mai
-  come «a Brescia, a differenza di altrove, succede questo».
+  capoluoghi (§7.2), sulla demografia (§7.6), sul turismo (§7.8), e la
+  convergenza dei redditi è stata replicata su Bergamo (§7.3). Ha corretto tre
+  letture e ne ha rafforzate due. Resta fuori l'**ambiente** (§7.7), e non per
+  pigrizia: l'unità osservata è il sensore, la rete è regionale e le reti delle
+  altre province non sono confrontabili con questa senza un lavoro che
+  cambierebbe il soggetto del progetto. Quella lettura resta misurata contro sé
+  stessa e va scritta come «alle centraline bresciane succede questo», mai come
+  «a Brescia, a differenza di altrove, succede questo».
+- **Il turismo ha due fonti che non coincidono** (MET-17), e la differenza
+  cresce nel tempo: fra il 6,5 % del 2019 e il 10,6 % del 2024 sulle stesse
+  presenze provinciali. Il confronto fra province (§7.8) e la lettura comunale
+  (§7.5) stanno quindi su due scale leggermente diverse, e ogni cifra dichiara
+  da quale viene. Quello che questo lavoro **non** ha fatto è stabilire quale
+  delle due sia più vicina al vero: servirebbe la documentazione metodologica
+  delle due rilevazioni, e non è un'analisi di dati.
+- **Le presenze non sono l'economia del turismo.** Sono notti, non spesa né
+  valore aggiunto, e il segmento che rende Brescia riconoscibile — campeggi e
+  villaggi, il 26,7 % delle notti contro il 9,1 % della mediana — è per
+  definizione quello a valore per notte più basso. Il decimo posto per presenze
+  non è un decimo posto per fatturato, e questo lavoro non ha i dati per dire
+  quale sia.
 - **Due province non sono l'Italia.** La replicazione su Bergamo esclude che la
   convergenza dei redditi sia un artefatto locale; non stabilisce che sia
   generale. Bergamo è per giunta la provincia **più simile** a Brescia fra
@@ -793,10 +907,10 @@ trasferibile è quasi tutta:
 | [`BRIEF.md`](BRIEF.md) | La domanda, gli assi, le storie candidate |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | Consegna: cosa resta da scaricare, decisioni aperte, come si costruiscono analisi e sito |
 | [`pipeline/`](pipeline/README.md) | Il codice, con le trappole documentate |
-| [`dati/`](dati/README.md) | Le ventisei tabelle prodotte |
-| [`analysis/`](analysis/README.md) | I tredici script che leggono quelle tabelle, e le verifiche di `verifica_cifre.py` |
+| [`dati/`](dati/README.md) | Le ventisette tabelle prodotte |
+| [`analysis/`](analysis/README.md) | I quattordici script che leggono quelle tabelle, e le verifiche di `verifica_cifre.py` |
 
-*Versione 1 — agosto 2026. La §7 riporta risultati veri con i loro controlli, e
-di quelli elencati in §6.2 restano fuori solo due: la rottura Covid trattata in
-modo sistematico e il confronto esterno sul turismo. Resta provvisorio il
-titolo, che cambierà quando sarà chiara la tesi.*
+*Versione 1 — settembre 2026. La §7 riporta risultati veri con i loro controlli,
+e di quelli elencati in §6.2 ne resta fuori uno solo: la rottura Covid trattata
+in modo sistematico. Il confronto esterno sul turismo, che era l'altro, è la
+§7.8. Resta provvisorio il titolo, che cambierà quando sarà chiara la tesi.*

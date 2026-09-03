@@ -210,7 +210,7 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
 
 ### Il confronto: fuori dalla provincia
 
-Cinque tabelle che **non** sono un secondo soggetto. Servono a una domanda sola:
+Sei tabelle che **non** sono un secondo soggetto. Servono a una domanda sola:
 quello che si è misurato su Brescia è di Brescia o è dell'Italia? (MET-14). Non
 entrano in nessuna mappa e non producono classifiche di comuni fuori provincia.
 
@@ -220,6 +220,7 @@ entrano in nessuna mappa e non producono classifiche di comuni fuori provincia.
 | `imprese_capoluoghi.csv` | 6.398 | Gli stessi indicatori per i **comuni capoluogo**, per rispondere a una domanda sola: lo svuotamento della classe ≥250 addetti nel capoluogo (MET-9) succede anche altrove? Sì, in 44 capoluoghi su 64. |
 | `redditi_comuni_confronto.csv` | 43.080 | I redditi comunali di una provincia di confronto — oggi **Bergamo** (016) — nella stessa forma di `redditi_comuni.csv` più il territorio. Qui non basta un filtro: le tavole MEF si scaricano per blocchi di comuni, quindi ogni provincia costa i suoi download e la lista è corta apposta. |
 | `bilancio_province.csv` | 7.062 | Le componenti demografiche per **tutte le 107 province**, 2019–2024. Stesso vantaggio delle imprese: il file della fonte è nazionale. È il termine di paragone che allo spopolamento mancava. |
+| `turismo_province.csv` | 68.210 | Arrivi e presenze per **tutte le 107 province** (più Italia e regioni, colonna `livello`), 2008–2025, per tipologia di esercizio e residenza dei clienti. Fonte ISTAT, **diversa** da quella comunale: vedi il riquadro qui sotto. Chiude l'ultimo asse che non aveva un altrove. |
 
 ### Il dettaglio settoriale
 
@@ -227,6 +228,24 @@ entrano in nessuna mappa e non producono classifiche di comuni fuori provincia.
 |---|---|---|
 | `imprese_sezioni_comuni.csv` | 34.886 | Unità locali e addetti per **comune × sezione Ateco**, 2018–2023. È la tabella che ha sbloccato l'asse «le due economie»: la specializzazione settoriale di *tutti* i comuni, che era data per impossibile. Si ottiene fissando il settore e lasciando libero il territorio — una richiesta per sezione su tutta Italia, filtrata in locale. |
 | `imprese_settore_classe.csv` | 7.164 | Settore **e** classe dimensionale insieme, per il capoluogo e per la provincia, 2018–2023. Quattro richieste in tutto, fissando il territorio invece del settore, ed è la tabella che ha chiuso MET-9. |
+
+> ⚠️ **Su `turismo_province.csv` ci sono tre trappole, tutte marcate nella
+> colonna `stato`.**
+>
+> 1. **Il 2025 non si confronta con gli anni prima** (`definizione_cambiata`).
+>    Da quell'anno la voce «alloggi in affitto» comprende anche la gestione non
+>    imprenditoriale: sull'Italia +87,6 % in dodici mesi, e il totale ne guadagna
+>    il 14,9 %. Non è un boom, è una definizione. Riguarda tre tipologie —
+>    `alloggi in affitto`, `extra-alberghiero` che la contiene e `totale`;
+>    alberghiero e campeggi restano confrontabili.
+> 2. **La Sardegna cambia geografia nel 2017** (`confine_cambiato`). Quattro
+>    province soppresse: sulle superstiti una crescita 2008–2024 è una crescita
+>    di superficie.
+> 3. **Le due fonti sul turismo non danno lo stesso numero, e la differenza
+>    cresce** (MET-17). La somma dei comuni di `turismo_comuni_annuale.csv` sta
+>    sopra il totale provinciale ISTAT del 6,5 % nel 2019 e del 10,6 % nel 2024.
+>    Sono due rilevazioni dello stesso fenomeno: si usa una tabella per volta, e
+>    non si mescolano nella stessa frase senza dichiararlo.
 
 > ⚠️ Su `imprese_sezioni_comuni.csv`: **una sezione assente resta assente.** ASIA
 > non pubblica la sezione di un comune quando la cella è troppo piccola, e
