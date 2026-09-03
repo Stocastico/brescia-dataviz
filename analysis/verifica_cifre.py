@@ -60,6 +60,8 @@ settore_classe = leggi("imprese_settore_classe.csv")
 sezioni = leggi("imprese_sezioni_comuni.csv")
 province = leggi("imprese_province.csv")
 capoluoghi = leggi("imprese_capoluoghi.csv")
+turismo_province = leggi("turismo_province.csv")
+bilancio_province = leggi("bilancio_province.csv")
 
 PROVINCIA = "ITC47"
 
@@ -389,6 +391,162 @@ def moran_specializzazione(anno: str = "2023") -> float:
         for codice, sezioni_comune in quote.items()
         if "C" in sezioni_comune and "I" in sezioni_comune
     })
+
+
+
+# --- il turismo confrontato con le altre province ------------------------
+
+BRESCIA_PROV = "017"
+
+
+def _turismo(livello: str = "provincia", solo_osservato: bool = True) -> dict:
+    """`(territorio, anno, tipologia, residenza, indicatore) -> valore`.
+
+    La chiave del livello provinciale è il codice provincia, quella dell'Italia
+    è `IT`: due spazi di nomi diversi, e mescolarli darebbe una collisione.
+    """
+    fuori: dict[tuple[str, str, str, str, str], float] = {}
+    for riga in turismo_province:
+        if riga["livello"] != livello:
+            continue
+        if solo_osservato and riga["stato"] != "osservato":
+            continue
+        valore = numero(riga["valore"])
+        if valore is None:
+            continue
+        chiave = riga["codice_provincia"] if livello == "provincia" else riga["codice_nuts3"]
+        fuori[(chiave, riga["anno"], riga["tipologia"], riga["residenza"], riga["indicatore"])] = valore
+    return fuori
+
+
+def _per_provincia_turismo(calcola, anno: str = "2024") -> dict[str, float]:
+    dati = _turismo()
+    province_turismo = {k[0] for k in dati}
+    fuori: dict[str, float] = {}
+    for codice in province_turismo:
+        valore = calcola(dati, codice, anno)
+        if valore is not None:
+            fuori[codice] = valore
+    return fuori
+
+
+def _presenze(dati: dict, codice: str, anno: str, tipologia: str = "totale", residenza: str = "totale"):
+    return dati.get((codice, anno, tipologia, residenza, "presenze"))
+
+
+def _popolazione_provinciale(anno: str = "2024") -> dict[str, float]:
+    return {
+        riga["codice_provincia"]: float(riga["valore"])
+        for riga in bilancio_province
+        if riga["indicatore"] == "popolazione_censita" and riga["anno"] == anno
+    }
+
+
+def turismo_valore(nome: str, anno: str = "2024") -> float:
+    return _per_provincia_turismo(_MISURE[nome], anno)[BRESCIA_PROV]
+
+
+def turismo_mediana(nome: str, anno: str = "2024") -> float:
+    return mediana_lista(list(_per_provincia_turismo(_MISURE[nome], anno).values()))
+
+
+def turismo_rango(nome: str, anno: str = "2024", alto_e_primo: bool = True) -> int:
+    valori = _per_provincia_turismo(_MISURE[nome], anno)
+    ordinate = sorted(valori, key=lambda c: valori[c], reverse=alto_e_primo)
+    return ordinate.index(BRESCIA_PROV) + 1
+
+
+def turismo_quante(nome: str, anno: str = "2024") -> int:
+    return len(_per_provincia_turismo(_MISURE[nome], anno))
+
+
+def _quota(tipologia: str):
+    def calcola(dati, codice, anno):
+        parte = _presenze(dati, codice, anno, tipologia=tipologia)
+        totale = _presenze(dati, codice, anno)
+        return None if parte is None or not totale else parte / totale * 100
+    return calcola
+
+
+def _quota_estera(dati, codice, anno):
+    estero = _presenze(dati, codice, anno, residenza="estero")
+    totale = _presenze(dati, codice, anno)
+    return None if estero is None or not totale else estero / totale * 100
+
+
+def _per_abitante(dati, codice, anno):
+    abitanti = _popolazione_provinciale(anno).get(codice)
+    totale = _presenze(dati, codice, anno)
+    return None if not abitanti or totale is None else totale / abitanti
+
+
+def _crescita_dal_2019(dati, codice, anno):
+    prima = _presenze(dati, codice, "2019")
+    dopo = _presenze(dati, codice, anno)
+    return None if not prima or dopo is None else (dopo / prima - 1) * 100
+
+
+def _caduta_2020(dati, codice, anno):
+    del anno
+    prima = _presenze(dati, codice, "2019")
+    durante = _presenze(dati, codice, "2020")
+    return None if not prima or durante is None else (durante / prima - 1) * 100
+
+
+_MISURE = {
+    "presenze": lambda d, c, a: _presenze(d, c, a),
+    "per_abitante": _per_abitante,
+    "quota_estera": _quota_estera,
+    "quota_alberghiera": _quota("alberghiero"),
+    "quota_campeggi": _quota("campeggi e villaggi"),
+    "crescita_2019": _crescita_dal_2019,
+    "caduta_2020": _caduta_2020,
+}
+
+
+def turismo_crescita_lunga(codice: str = BRESCIA_PROV) -> float:
+    """Tasso composto 2008–2024 delle presenze, in percentuale l'anno."""
+    dati = _turismo()
+    prima, dopo = _presenze(dati, codice, "2008"), _presenze(dati, codice, "2024")
+    return tasso(prima, dopo, 16)
+
+
+def _crescite_lunghe() -> dict[str, float]:
+    """Solo le province con la serie intera e il territorio invariato."""
+    dati = _turismo()
+    sarde = {
+        riga["codice_provincia"]
+        for riga in turismo_province
+        if riga["regione"] == "Sardegna" and riga["livello"] == "provincia"
+    }
+    fuori: dict[str, float] = {}
+    for codice in {k[0] for k in dati} - sarde:
+        prima, dopo = _presenze(dati, codice, "2008"), _presenze(dati, codice, "2024")
+        if prima and dopo:
+            fuori[codice] = tasso(prima, dopo, 16)
+    return fuori
+
+
+def scarto_fonti_turismo(anno: str) -> float:
+    """Quanto la somma dei comuni di Regione Lombardia sta sopra ISTAT, in %."""
+    somma = sum(
+        numero(r["presenze"]) or 0.0
+        for r in turismo
+        if r["anno"] == anno
+        and r["tipo_struttura"] == "Totale"
+        and r["cittadinanza"] == "Totale"
+        and r["stato"] == "osservato"
+    )
+    provinciale = _presenze(_turismo(), BRESCIA_PROV, anno)
+    return (somma / provinciale - 1) * 100
+
+
+def scalino_2025(tipologia: str = "alloggi in affitto") -> float:
+    """La crescita apparente fra 2024 e 2025 sull'Italia: è una definizione."""
+    dati = _turismo(livello="italia", solo_osservato=False)
+    prima = dati[("IT", "2024", tipologia, "totale", "presenze")]
+    dopo = dati[("IT", "2025", tipologia, "totale", "presenze")]
+    return (dopo / prima - 1) * 100
 
 
 # --- le verifiche -------------------------------------------------------
@@ -1315,6 +1473,174 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         10,
         lambda: sum(1 for c, s in _comuni_con_centralina().items() if c != "Brescia" and len(s) == 1),
         0,
+    ),
+    (
+        "WORKING-PAPER §7.8 / analysis/confronto_turismo.py",
+        "presenze in provincia di Brescia 2024: 11.068.441 (ISTAT)",
+        11068441,
+        lambda: turismo_valore("presenze"),
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "Brescia è la 10ª provincia italiana per presenze",
+        10,
+        lambda: turismo_rango("presenze"),
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "la provincia mediana ha 2.088.719 presenze",
+        2088719,
+        lambda: turismo_mediana("presenze"),
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "presenze per abitante: 8,74 contro una mediana di 4,97",
+        8.74,
+        lambda: turismo_valore("per_abitante"),
+        0.005,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "presenze per abitante, mediana provinciale: 4,97",
+        4.97,
+        lambda: turismo_mediana("per_abitante"),
+        0.005,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "presenze per abitante: Brescia 29ª su 107",
+        29,
+        lambda: turismo_rango("per_abitante"),
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "quota di presenze straniere: 72,0 % contro una mediana del 37,7 %",
+        72.01,
+        lambda: turismo_valore("quota_estera"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "quota di presenze straniere, mediana provinciale: 37,7 %",
+        37.68,
+        lambda: turismo_mediana("quota_estera"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "quota straniera: Brescia 6ª su 107",
+        6,
+        lambda: turismo_rango("quota_estera"),
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "quota alberghiera: 52,9 % contro una mediana del 62,1 %",
+        52.92,
+        lambda: turismo_valore("quota_alberghiera"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "quota alberghiera, mediana provinciale: 62,1 %",
+        62.06,
+        lambda: turismo_mediana("quota_alberghiera"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "presenze in campeggi e villaggi: 26,7 % contro una mediana del 9,1 %",
+        26.72,
+        lambda: turismo_valore("quota_campeggi"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "campeggi e villaggi, mediana provinciale: 9,1 %",
+        9.14,
+        lambda: turismo_mediana("quota_campeggi"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "crescita composta delle presenze 2008-2024: +2,09 %/anno",
+        2.09,
+        turismo_crescita_lunga,
+        0.005,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "crescita 2008-2024, mediana provinciale: +0,96 %/anno",
+        0.96,
+        lambda: mediana_lista(list(_crescite_lunghe().values())),
+        0.005,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "le province con la serie 2008-2024 intera sono 99",
+        99,
+        lambda: len(_crescite_lunghe()),
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "recupero 2019-2024: +13,8 % contro una mediana del +5,5 %",
+        13.81,
+        lambda: turismo_valore("crescita_2019"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "recupero 2019-2024, mediana provinciale: +5,5 %",
+        5.45,
+        lambda: turismo_mediana("crescita_2019"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "caduta 2020: -54,3 % contro una mediana del -49,5 %",
+        -54.28,
+        lambda: turismo_valore("caduta_2020"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.8",
+        "caduta 2020, mediana provinciale: -49,5 %",
+        -49.51,
+        lambda: turismo_mediana("caduta_2020"),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-17 / WORKING-PAPER §7.8",
+        "le due fonti sul turismo bresciano distano il 6,5 % nel 2019",
+        6.5,
+        lambda: scarto_fonti_turismo("2019"),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-17 / WORKING-PAPER §7.8",
+        "e il 10,6 % nel 2024: lo scarto cresce",
+        10.6,
+        lambda: scarto_fonti_turismo("2024"),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-18 / WORKING-PAPER §7.8",
+        "alloggi in affitto, Italia 2024->2025: +87,6 %, cioè una definizione",
+        87.6,
+        scalino_2025,
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-18",
+        "e il totale Italia ne guadagna il 14,9 % in un anno",
+        14.9,
+        lambda: scalino_2025("totale"),
+        0.05,
     ),
 ]
 
