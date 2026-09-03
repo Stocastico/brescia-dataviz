@@ -527,17 +527,18 @@ def _crescite_lunghe() -> dict[str, float]:
     return fuori
 
 
-def scarto_fonti_turismo(anno: str) -> float:
+def scarto_fonti_turismo(anno: str, colonna: str = "presenze") -> float:
     """Quanto la somma dei comuni di Regione Lombardia sta sopra ISTAT, in %."""
     somma = sum(
-        numero(r["presenze"]) or 0.0
+        numero(r[colonna]) or 0.0
         for r in turismo
         if r["anno"] == anno
         and r["tipo_struttura"] == "Totale"
         and r["cittadinanza"] == "Totale"
         and r["stato"] == "osservato"
     )
-    provinciale = _presenze(_turismo(), BRESCIA_PROV, anno)
+    indicatore = "presenze" if colonna == "presenze" else "arrivi"
+    provinciale = _turismo()[(BRESCIA_PROV, anno, "totale", "totale", indicatore)]
     return (somma / provinciale - 1) * 100
 
 
@@ -1629,6 +1630,34 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         0.05,
     ),
     (
+        "METODOLOGIA MET-17",
+        "lo scarto fra le fonti nel 2021: 7,1 %",
+        7.1,
+        lambda: scarto_fonti_turismo("2021"),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-17",
+        "lo scarto fra le fonti nel 2023: 9,6 %",
+        9.6,
+        lambda: scarto_fonti_turismo("2023"),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-17",
+        "sugli arrivi lo scarto e' piu' contenuto: 2,0 % nel 2019",
+        2.0,
+        lambda: scarto_fonti_turismo("2019", "arrivi"),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-17",
+        "e 7,0 % nel 2024: e' un fenomeno delle notti, non delle persone",
+        7.0,
+        lambda: scarto_fonti_turismo("2024", "arrivi"),
+        0.05,
+    ),
+    (
         "METODOLOGIA MET-18 / WORKING-PAPER §7.8",
         "alloggi in affitto, Italia 2024->2025: +87,6 %, cioè una definizione",
         87.6,
@@ -1640,6 +1669,20 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         "e il totale Italia ne guadagna il 14,9 % in un anno",
         14.9,
         lambda: scalino_2025("totale"),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-18",
+        "mentre l'alberghiero, che la voce non la contiene, fa +1,5 %",
+        1.5,
+        lambda: scalino_2025("alberghiero"),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-18",
+        "e campeggi e villaggi +1,3 %: un evento vero si vedrebbe su tutti",
+        1.3,
+        lambda: scalino_2025("campeggi e villaggi"),
         0.05,
     ),
 ]

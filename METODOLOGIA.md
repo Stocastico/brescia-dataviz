@@ -1,4 +1,4 @@
-# Nota metodologica (MET-1…MET-16)
+# Nota metodologica (MET-1…MET-18)
 
 > **Cos'è.** Le decisioni che governano il progetto: *perché* misuriamo come
 > misuriamo. È la base di credibilità — qualunque grafico, testo o titolo deve
@@ -8,19 +8,23 @@
 >
 > ## ⚠️ Bozza avanzata — non ancora definitiva
 >
-> **Aggiornata a settembre 2026, quando l'ultimo dei quattro assi portanti ha
-> avuto la sua storia.** Le sedici regole qui elencate sono tutte reali e
+> **Aggiornata a settembre 2026, quando l'ultimo dei quattro assi ha avuto il
+> suo termine di paragone.** Le diciotto regole qui elencate sono tutte reali e
 > applicate; cinque di esse (MET-9, MET-12, MET-13, MET-14, MET-15) nascono da
 > errori o incoerenze **effettivamente trovati sui dati bresciani**, non da
 > principi scelti a tavolino.
 >
-> Cosa è cambiato in questa revisione: **MET-16**, che è la prima regola nata da
+> Cosa è cambiato in questa revisione: **MET-17** e **MET-18**, entrambe nate
+> dal confronto sul turismo fra le 107 province. La prima dallo scarto fra le
+> due fonti che misurano lo stesso turismo bresciano — cresciuto dal 6,5 % al
+> 10,6 % in cinque anni; la seconda da un +87,6 % in dodici mesi che sembrava un
+> mercato e invece era un'etichetta. Prima: **MET-16**, la prima regola nata da
 > un errore *evitato* invece che commesso — su una rete di sensori che apre e
 > chiude stazioni, la media di quello che c'è misura anche il cambiamento della
-> rete. Prima, in agosto: **MET-9 non è più una questione aperta** (l'incrocio
-> fra settore e classe dimensionale ha chiuso la domanda), e **MET-15** è nata
-> subito dopo, quando la stessa disciplina applicata alla popolazione ha
-> ribaltato la parola su cui poggiava la prima storia del sito.
+> rete. Prima ancora, in agosto: **MET-9 non è più una questione aperta**
+> (l'incrocio fra settore e classe dimensionale ha chiuso la domanda), e
+> **MET-15** è nata subito dopo, quando la stessa disciplina applicata alla
+> popolazione ha ribaltato la parola su cui poggiava la prima storia del sito.
 >
 > Cosa manca ancora: le regole su **come si scelgono e si raccontano le
 > storie** — soglie, criteri di inclusione, casi limite. Sei storie sono
@@ -529,6 +533,102 @@ respirato le centraline**, non perché.
 
 ---
 
+## MET-17 — Due fonti sullo stesso fenomeno non si mescolano in una frase
+
+> Nata dal confronto sul turismo, e da uno scarto che nessuno stava cercando.
+
+Il turismo di questo progetto ha **due fonti**, e non per scelta: quella
+comunale è di Regione Lombardia e si ferma al confine regionale, quindi il
+confronto con le altre province si può fare solo con ISTAT. Sono due
+rilevazioni dello stesso fenomeno sullo stesso territorio, e la cosa naturale
+da aspettarsi è che diano lo stesso numero.
+
+Non lo danno. Sulle presenze in provincia di Brescia la somma dei comuni sta
+**sopra** il totale provinciale ISTAT, e la distanza **cresce**:
+
+| anno | ISTAT, provincia | somma dei comuni, Regione Lombardia | scarto |
+|---|---|---|---|
+| 2019 | 9.725.552 | 10.357.751 | **+6,5 %** |
+| 2021 | 7.928.464 | 8.491.772 | +7,1 % |
+| 2023 | 10.639.360 | 11.658.687 | +9,6 % |
+| 2024 | 11.068.441 | 12.246.854 | **+10,6 %** |
+
+E lo scarto vero è più largo di così: la somma dei comuni **esclude** i comuni
+con dato soppresso per riservatezza, che sono decine. Sugli arrivi la stessa
+distanza è più contenuta (dal 2,0 % al 7,0 %) e cresce nello stesso modo: è
+quindi un fenomeno delle **notti**, non del conteggio delle persone.
+
+**Nessuna delle due è sbagliata.** Sono due filiere amministrative con due
+perimetri di rilevazione, e la divergenza crescente somiglia molto a un diverso
+trattamento dell'offerta ricettiva nata negli ultimi anni. Ma non serve avere
+ragione su questo per sapere cosa fare:
+
+> **una tabella, una fonte.** Il confronto fra province si fa tutto dentro
+> `turismo_province.csv`, i comuni tutti dentro `turismo_comuni_annuale.csv`, e
+> i due numeri non compaiono nella stessa frase senza che la frase lo dichiari.
+
+**La regola non è «scegliere la fonte migliore».** È non fabbricare per
+sbaglio il numero che nasce dal mescolarle: «il Garda vale il 60 % delle
+presenze della provincia» calcolato con un numeratore regionale e un
+denominatore ISTAT è sbagliato del 10 %, e sembra giusto. Lo stesso vale per
+qualunque quota, tasso o classifica che prenda i due pezzi da tabelle diverse.
+
+**Il controllo è un test, non una promessa.** Il test
+`test_le_due_fonti_sul_turismo_bresciano_non_coincidono` fallisce sia se lo
+scarto sparisce — allora questa
+regola va riscritta — sia se esplode, che vorrebbe dire che una delle due
+letture si è rotta. Una regola che dipende da un numero e non lo sorveglia
+dura fino al prossimo aggiornamento della fonte.
+
+---
+
+## MET-18 — Uno scalino nella serie è una definizione finché non si dimostra il contrario
+
+> Nata dallo stesso scarico, e per poco non è costata la storia intera.
+
+Le presenze turistiche italiane crescono del **14,9 %** fra 2024 e 2025. È il
+genere di numero che un titolo se lo prende da solo. Scomposto per tipologia di
+esercizio, però, il numero si dissolve:
+
+| tipologia, Italia | 2024 | 2025 | variazione |
+|---|---|---|---|
+| alberghiero | 283,9 mln | 288,2 mln | +1,5 % |
+| campeggi e villaggi | 68,6 mln | 69,5 mln | +1,3 % |
+| **alloggi in affitto** | 71,8 mln | 134,7 mln | **+87,6 %** |
+
+Un mercato non raddoppia in dodici mesi mentre gli altri due si muovono di un
+punto. La spiegazione è nell'etichetta della fonte, scritta per esteso e facile
+da non leggere: *«dal 2025 comprende gli alloggi gestiti in forma
+imprenditoriale **e non imprenditoriale**»*. Non è cresciuto il fenomeno, è
+cresciuto il perimetro.
+
+> **Uno scalino isolato in una serie lunga si tratta come un cambio di
+> definizione, non come un evento, finché la fonte non dice il contrario.** La
+> prova sta nella scomposizione: un evento vero si vede su più componenti, un
+> cambio di perimetro su una sola.
+
+È la stessa famiglia di MET-9 («decomporre prima di titolare») e di MET-16 («la
+media di un insieme che cambia misura anche il cambiamento dell'insieme»): tre
+volte su tre, il risultato veniva dal disegno della misura e non dai dati.
+
+**La regola operativa: la marcatura sta nella tabella, non nel commento.** Le
+righe interessate portano `stato = definizione_cambiata`, e sono esattamente
+quelle in cui la voce entra — `alloggi in affitto`, `extra-alberghiero` che la
+contiene, `totale`. Alberghiero e campeggi restano confrontabili e restano
+marcati `osservato`. Gli script di analisi escludono per costruzione tutto ciò
+che non è `osservato`, quindi la trappola non si può calpestare per
+distrazione: bisogna decidere di volerla. È MET-3 applicata a un'altra specie
+di dato che c'è ma non si può usare come sembra.
+
+**Il 2025 non si butta.** Il dato è giusto, e nel 2026 avrà accanto un 2026 con
+la stessa definizione: la serie ricomincia da lì. Quello che non si può fare è
+metterlo nella stessa riga degli anni prima — e la stessa avvertenza vale per la
+Sardegna prima del 2017, dove a cambiare non è la definizione ma il confine
+(`stato = confine_cambiato`).
+
+---
+
+
 ## Invarianti tecniche
 
 Fatte valere dai test della pipeline (`pipeline/tests/`):
@@ -565,7 +665,14 @@ Fatte valere dai test della pipeline (`pipeline/tests/`):
     revisione che non lascia un test dietro di sé va rifatta da capo;
 11. **la pioggia si somma e la temperatura si media**, e la colonna
     `aggregazione` lo dice: se un giorno la pioggia uscisse come media i totali
-    annui crollerebbero di tre ordini di grandezza senza che niente fallisca.
+    annui crollerebbero di tre ordini di grandezza senza che niente fallisca;
+12. **le due fonti sul turismo bresciano continuano a non coincidere**
+    (MET-17), e il test fallisce in tutte e due le direzioni: se lo scarto
+    sparisce la regola va riscritta, se esplode una delle due letture si è
+    rotta. Accanto, il **2025 resta marcato** come definizione cambiata
+    (MET-18): il test controlla che lo scalino del +87,6 % sia ancora lì, cioè
+    che la fonte non abbia ricostruito la serie all'indietro rendendo inutile
+    la marcatura.
 
 E due controlli che non sono test ma girano a ogni push
 (`.github/workflows/verifica.yml`):
