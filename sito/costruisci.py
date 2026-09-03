@@ -236,6 +236,153 @@ def confronto_province() -> dict[str, Any]:
     }
 
 
+def turismo_confronto() -> dict[str, Any]:
+    """Il turismo bresciano fra le 107 province, e la serie lunga dal 2008.
+
+    Stessa forma di `confronto_province()` — un `sciame` per indicatore — più
+    due cose che quella non ha: una serie storica che comincia undici anni prima
+    del resto del progetto, e lo scarto fra le **due fonti** che misurano lo
+    stesso turismo bresciano (MET-17).
+
+    ⚠️ Le righe con `stato` diverso da `osservato` non entrano: sono il 2025,
+    che ha una definizione nuova dentro (MET-18), e la Sardegna prima del 2017,
+    che ha un confine diverso. Escluderle qui una volta sola è MET-13: se lo
+    facesse ogni indicatore per conto suo, uno se ne dimenticherebbe.
+    """
+    import csv
+
+    path = PROCESSED / "turismo_province.csv"
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as handle:
+        righe = list(csv.DictReader(handle))
+
+    nomi: dict[str, str] = {}
+    valori_prov: dict[tuple[str, str, str, str, str], float] = {}
+    for riga in righe:
+        if riga["livello"] != "provincia" or riga["stato"] != "osservato" or not riga["valore"]:
+            continue
+        nomi[riga["codice_provincia"]] = riga["territorio"]
+        valori_prov[
+            (riga["codice_provincia"], riga["anno"], riga["tipologia"],
+             riga["residenza"], riga["indicatore"])
+        ] = float(riga["valore"])
+
+    if "017" not in nomi:
+        return {}
+
+    # ⚠️ Gli anni si contano sulla misura che il racconto usa, non su tutte le
+    # righe: il 2025 c'è ancora per alberghiero e campeggi — che la definizione
+    # nuova non tocca — ma non per il totale. Prendere `max` su tutto darebbe un
+    # «ultimo anno» senza il numero che serve, e il grafico verrebbe vuoto senza
+    # un errore.
+    anni = sorted({
+        chiave[1] for chiave in valori_prov
+        if chiave[2] == "totale" and chiave[3] == "totale" and chiave[4] == "presenze"
+    })
+    if not anni:
+        return {}
+    ultimo = anni[-1]
+    primo = anni[0]
+
+    popolazione: dict[str, float] = {}
+    bilancio = PROCESSED / "bilancio_province.csv"
+    if bilancio.exists():
+        with bilancio.open(encoding="utf-8") as handle:
+            for riga in csv.DictReader(handle):
+                if riga["indicatore"] == "popolazione_censita" and riga["anno"] == ultimo:
+                    popolazione[riga["codice_provincia"]] = float(riga["valore"])
+
+    def p(codice: str, anno: str, tipologia: str = "totale", residenza: str = "totale",
+          indicatore: str = "presenze") -> float | None:
+        return valori_prov.get((codice, anno, tipologia, residenza, indicatore))
+
+    misure: dict[str, dict[str, float]] = {}
+    for codice in nomi:
+        totale = p(codice, ultimo)
+        if not totale:
+            continue
+        misure.setdefault("presenze", {})[codice] = totale
+        if popolazione.get(codice):
+            misure.setdefault("per_abitante", {})[codice] = totale / popolazione[codice]
+        estero = p(codice, ultimo, residenza="estero")
+        if estero is not None:
+            misure.setdefault("estera", {})[codice] = estero / totale * 100
+        campeggi = p(codice, ultimo, tipologia="campeggi e villaggi")
+        if campeggi is not None:
+            misure.setdefault("campeggi", {})[codice] = campeggi / totale * 100
+        arrivi = p(codice, ultimo, indicatore="arrivi")
+        if arrivi:
+            misure.setdefault("permanenza", {})[codice] = totale / arrivi
+        prima = p(codice, "2019")
+        if prima:
+            misure.setdefault("ripresa", {})[codice] = (totale / prima - 1) * 100
+
+    def rango(nome_misura: str, codice: str) -> int:
+        ordinati = sorted(misure[nome_misura].items(), key=lambda kv: -kv[1])
+        return [c for c, _ in ordinati].index(codice) + 1
+
+    # La serie lunga di Brescia. Le due componenti vanno tenute in **notti** e
+    # non come quota: sull'asse dei conteggi una percentuale non ci sta, e
+    # mettercela sarebbe due unità sullo stesso asse. Disegnate come due linee
+    # che partono vicine e si separano, dicono la stessa cosa della quota — e la
+    # dicono meglio, perché si vede che a crescere è una sola delle due.
+    serie = [
+        {
+            "anno": anno,
+            "presenze": p("017", anno),
+            "italia": p("017", anno, residenza="Italia"),
+            "estero": p("017", anno, residenza="estero"),
+            "estera": (p("017", anno, residenza="estero") / p("017", anno) * 100)
+            if p("017", anno) else None,
+        }
+        for anno in anni
+        if p("017", anno)
+    ]
+
+    # Lo scarto fra le due fonti, anno per anno: è il controllo di MET-17, e va
+    # mostrato invece che raccontato.
+    comunale = PROCESSED / "turismo_comuni_annuale.csv"
+    fonti: list[dict[str, Any]] = []
+    if comunale.exists():
+        somme: dict[str, float] = {}
+        with comunale.open(encoding="utf-8") as handle:
+            for riga in csv.DictReader(handle):
+                if riga["tipo_struttura"] != "Totale" or riga["cittadinanza"] != "Totale":
+                    continue
+                if riga["stato"] != "osservato" or not riga["presenze"]:
+                    continue
+                somme[riga["anno"]] = somme.get(riga["anno"], 0.0) + float(riga["presenze"])
+        for anno in sorted(somme):
+            provinciale = p("017", anno)
+            if provinciale:
+                fonti.append({
+                    "anno": anno,
+                    "istat": provinciale,
+                    "regione": somme[anno],
+                    "scarto": (somme[anno] / provinciale - 1) * 100,
+                })
+
+    return {
+        "primo": primo,
+        "ultimo": ultimo,
+        "province": len(misure["presenze"]),
+        "misure": {
+            nome_misura: {
+                "brescia": per_provincia["017"],
+                "mediana": mediana(list(per_provincia.values())),
+                "rango": rango(nome_misura, "017"),
+                "valori": {c: round(v, 3) for c, v in sorted(per_provincia.items())},
+            }
+            for nome_misura, per_provincia in misure.items()
+            if "017" in per_provincia
+        },
+        "serie": serie,
+        "fonti": fonti,
+        "nomi": nomi,
+    }
+
+
 def controllo_capoluoghi() -> dict[str, Any]:
     """La classe ≥250 nei comuni capoluogo: il controllo di MET-9."""
     import csv
@@ -976,6 +1123,89 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         )
         fuori["pioggia_mediana"] = f"{numero_it(aria['pioggia']['mediana'], 1)} %"
 
+    # --- settima storia: il turismo fra le province ----------------------
+    turismo = turismo_confronto()
+    if turismo and turismo.get("misure"):
+        misure_tur = turismo["misure"]
+        fuori["tur_anno"] = turismo["ultimo"]
+        fuori["tur_anno_primo"] = turismo["primo"]
+        fuori["tur_province"] = numero_it(turismo["province"])
+
+        def _tur(nome_misura: str, decimali: int, suffisso: str = "") -> None:
+            misura = misure_tur.get(nome_misura)
+            if not misura:
+                return
+            fuori[f"tur_{nome_misura}"] = numero_it(misura["brescia"], decimali) + suffisso
+            fuori[f"tur_{nome_misura}_mediana"] = numero_it(misura["mediana"], decimali) + suffisso
+            fuori[f"tur_{nome_misura}_rango"] = numero_it(misura["rango"])
+
+        _tur("presenze", 0)
+        _tur("per_abitante", 1)
+        _tur("estera", 1, " %")
+        _tur("campeggi", 1, " %")
+        _tur("permanenza", 2)
+        _tur("ripresa", 1, " %")
+
+        # Le province davanti a Brescia per presenze: sono la frase «decima
+        # dietro a queste», e vanno prese dai dati e non da una lista scritta.
+        presenze = misure_tur["presenze"]["valori"]
+        davanti = sorted(presenze, key=lambda c: -presenze[c])[: misure_tur["presenze"]["rango"] - 1]
+        fuori["tur_davanti"] = ", ".join(turismo["nomi"][c] for c in davanti)
+        fuori["tur_quante_davanti"] = numero_it(len(davanti))
+        fuori["tur_volte_mediana"] = numero_it(
+            misure_tur["presenze"]["brescia"] / misure_tur["presenze"]["mediana"], 1
+        )
+
+        estera = misure_tur["estera"]["valori"]
+        sopra = sorted(
+            (c for c in estera if estera[c] > estera["017"]), key=lambda c: -estera[c]
+        )
+        fuori["tur_estera_davanti"] = ", ".join(turismo["nomi"][c] for c in sopra)
+        fuori["tur_estera_quante_davanti"] = numero_it(len(sopra))
+
+        campeggi = misure_tur["campeggi"]["valori"]
+        fuori["tur_campeggi_volte"] = numero_it(campeggi["017"] / misure_tur["campeggi"]["mediana"], 1)
+
+        serie = {v["anno"]: v for v in turismo["serie"]}
+        primo_anno, ultimo_anno = turismo["primo"], turismo["ultimo"]
+        if primo_anno in serie and ultimo_anno in serie:
+            iniziale, finale = serie[primo_anno]["presenze"], serie[ultimo_anno]["presenze"]
+            durata_tur = int(ultimo_anno) - int(primo_anno)
+            fuori["tur_crescita"] = (
+                f"{numero_it(((finale / iniziale) ** (1 / durata_tur) - 1) * 100, 2)} %"
+            )
+            fuori["tur_presenze_primo"] = numero_it(iniziale)
+            fuori["tur_estera_primo"] = percento_it(serie[primo_anno]["estera"])
+            # Le due componenti separate: e' il numero che rende la frase
+            # «l'internazionalizzazione e' la crescita» una misura invece che
+            # un'impressione. Le notti italiane sono ferme, le estere no.
+            for chiave in ("italia", "estero"):
+                partenza, arrivo = serie[primo_anno][chiave], serie[ultimo_anno][chiave]
+                fuori[f"tur_{chiave}_primo"] = numero_it(partenza)
+                fuori[f"tur_{chiave}_finale"] = numero_it(arrivo)
+                # Il segno esplicito: «2,3 %» accanto a «62,1 %» si legge come
+                # due crescite simili, «+2,3 %» accanto a «+62,1 %» no.
+                variazione = (arrivo / partenza - 1) * 100
+                fuori[f"tur_{chiave}_variazione"] = (
+                    f"{'+' if variazione > 0 else ''}{numero_it(variazione, 1)} %"
+                )
+        if "2020" in serie and "2019" in serie:
+            fuori["tur_caduta_2020"] = (
+                f"{numero_it((serie['2020']['presenze'] / serie['2019']['presenze'] - 1) * 100, 1)} %"
+            )
+
+        ripresa = misure_tur["ripresa"]["valori"]
+        fuori["tur_sotto_il_2019"] = numero_it(sum(1 for v in ripresa.values() if v <= 0))
+
+        if turismo["fonti"]:
+            prima_fonte, ultima_fonte = turismo["fonti"][0], turismo["fonti"][-1]
+            fuori["tur_fonti_anno_i"] = prima_fonte["anno"]
+            fuori["tur_fonti_anno_f"] = ultima_fonte["anno"]
+            fuori["tur_fonti_scarto_i"] = percento_it(prima_fonte["scarto"])
+            fuori["tur_fonti_scarto_f"] = percento_it(ultima_fonte["scarto"])
+            fuori["tur_fonti_istat"] = numero_it(ultima_fonte["istat"])
+            fuori["tur_fonti_regione"] = numero_it(ultima_fonte["regione"])
+
     return fuori
 
 
@@ -1013,6 +1243,7 @@ def dati_incorporati(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict
         "decomposizione": decomposizione(),
         "demografia": scomposizione_demografica(),
         "confronto": confronto_province(),
+        "turismo": turismo_confronto(),
         "clima": clima(),
         "capoluoghi": controllo_capoluoghi(),
         "metriche": {

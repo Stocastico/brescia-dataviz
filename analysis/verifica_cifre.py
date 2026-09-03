@@ -514,6 +514,22 @@ def turismo_di(nome_provincia: str, misura: str, anno: str = "2024") -> float:
     return _per_provincia_turismo(_MISURE[misura], anno)[codice]
 
 
+def turismo_componente(residenza: str, anno: str) -> float:
+    """Presenze bresciane dei clienti residenti in Italia o all'estero."""
+    return _turismo()[(BRESCIA_PROV, anno, "totale", residenza, "presenze")]
+
+
+def turismo_variazione_componente(residenza: str) -> float:
+    prima = turismo_componente(residenza, "2008")
+    dopo = turismo_componente(residenza, "2024")
+    return (dopo / prima - 1) * 100
+
+
+def turismo_volte_mediana(misura: str) -> float:
+    valori = _per_provincia_turismo(_MISURE[misura])
+    return valori[BRESCIA_PROV] / mediana_lista(list(valori.values()))
+
+
 def turismo_piu_internazionali() -> int:
     """Quante province hanno una quota straniera piu' alta di Brescia."""
     quote = _per_provincia_turismo(_MISURE["quota_estera"])
@@ -1656,6 +1672,55 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         10.6,
         lambda: scarto_fonti_turismo("2024"),
         0.05,
+    ),
+    (
+        "sito, settima storia",
+        "Brescia fa 5,3 volte le presenze della provincia mediana",
+        5.3,
+        lambda: turismo_volte_mediana("presenze"),
+        0.05,
+    ),
+    (
+        "sito, settima storia",
+        "e 2,9 volte la mediana sulla quota in campeggi e villaggi",
+        2.9,
+        lambda: turismo_volte_mediana("quota_campeggi"),
+        0.05,
+    ),
+    (
+        "sito, settima storia / WORKING-PAPER §7.8",
+        "notti dei clienti italiani: 3.026.966 nel 2008, 3.098.073 nel 2024",
+        3098073,
+        lambda: turismo_componente("Italia", "2024"),
+        0,
+    ),
+    (
+        "sito, settima storia",
+        "cioe' +2,3 % in diciassette anni: ferme",
+        2.3,
+        lambda: turismo_variazione_componente("Italia"),
+        0.05,
+    ),
+    (
+        "sito, settima storia / WORKING-PAPER §7.8",
+        "notti dei clienti stranieri: 4.916.868 nel 2008, 7.970.368 nel 2024",
+        7970368,
+        lambda: turismo_componente("estero", "2024"),
+        0,
+    ),
+    (
+        "sito, settima storia",
+        "cioe' +62,1 %: tutta la crescita e' venuta da fuori",
+        62.1,
+        lambda: turismo_variazione_componente("estero"),
+        0.05,
+    ),
+    (
+        "sito, settima storia",
+        "le province davanti a Brescia per presenze sono nove",
+        9,
+        lambda: turismo_rango("presenze") - 1,
+        0,
     ),
     (
         "WORKING-PAPER §7.8",

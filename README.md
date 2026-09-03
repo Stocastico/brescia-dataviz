@@ -10,7 +10,7 @@ monte.
 
 **Stato: tutti e quattro gli assi portanti hanno la loro storia, e i quattro
 assi economici hanno anche un termine di paragone nazionale.** Dati scaricati e
-puliti, quattordici analisi fatte, sei storie scritte in un documento
+puliti, quattordici analisi fatte, sette storie scritte in un documento
 narrativo autocontenuto ([`sito/`](sito/README.md)) che si costruisce da solo e
 ha già il suo workflow di pubblicazione. La licenza è scelta (MIT per il codice,
 CC BY 4.0 per testi e dati: vedi in fondo).
@@ -21,7 +21,7 @@ CC BY 4.0 per testi e dati: vedi in fondo).
 
 | | Cosa | Tempo |
 |---|---|---|
-| 🙋 | **Rileggere i testi del sito** — sono sei storie, e nessuno script controlla se una frase dice più di quanto il dato sostenga | 1 h |
+| 🙋 | **Rileggere i testi del sito** — sono sette storie, e nessuno script controlla se una frase dice più di quanto il dato sostenga | 1 h |
 | 🙋 | **Mettere la sorgente di Pages su «GitHub Actions»** (*Settings → Pages → Source*): oggi è ancora «Deploy from a branch», ed è il motivo per cui l'indirizzo pubblico mostra questo README invece del racconto | 2 min |
 | 🙋 | **Pubblicare**, quando sarai pronto: *Actions → «Pubblica il sito» → Run workflow → conferma = `pubblica`* | 1 min |
 
@@ -36,7 +36,7 @@ rete o il tuo disco — e uno è una decisione:
 | 🙋 | **Dati MUR sui due atenei** — attenzione, Brescia ne ha due | `dati-ustat.mur.gov.it` idem | 30 min |
 | 🙋 | **Commercio estero provinciale** | il databrowser ISTAT è una SPA senza API, si esporta a mano. La serie regionale è già scaricata come ripiego dichiarato | 1 h |
 | 🙋 | **`migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git e si rigenera in locale. Serve solo quando l'asse 2 diventerà una storia | 20 min di attesa |
-| 🙋 | **Decidere sui colori delle storie** — sono sei e i colori ereditati da `donostia-dataviz` sono cinque, quindi ne è stato aggiunto uno. Sblocca una **settima storia** già pronta come analisi (il turismo confrontato con le altre province), che non è stata scritta per non aggiungere un settimo colore prima che il sesto sia deciso | riguarda la lingua grafica **condivisa fra i due progetti**: [`sito/README.md`](sito/README.md) §Lo stile | 10 min |
+| 🙋 | **Dire se la tavolozza va riallineata con `donostia-dataviz`** — le storie qui sono sette, i colori ereditati cinque, quindi ne sono stati aggiunti due (`--oliva`, `--prugna`) con la regola che li sceglie scritta accanto. Qui è coerente; la domanda è se i due progetti debbano restare una collana stretta | riguarda la lingua grafica **condivisa fra i due progetti**: [`sito/README.md`](sito/README.md) §Lo stile | 10 min, o mezz'ora se porti regola e toni anche di là |
 
 Nessuna delle sei tocca i quattro assi portanti, che hanno già tutti i dati che
 servono: sono estensioni e finiture.
@@ -61,7 +61,7 @@ fare una sessione di lavoro e cosa richiede te**.
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 27 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza e turismo, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no. |
 | [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: quattordici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
-| [`sito/`](sito/README.md) | **Il documento narrativo**: sei storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
+| [`sito/`](sito/README.md) | **Il documento narrativo**: sette storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
 ## Come leggere il registro
 
@@ -158,7 +158,7 @@ il lavoro: **Brescia è la decima provincia italiana per presenze turistiche**,
 con più di cinque volte le notti della provincia mediana, e la **sesta** per
 quota di clienti stranieri (72,0 % contro una mediana del 37,7 %). Per abitante
 però è solo ventinovesima: è decima perché è grande, non perché sia intensamente
-turistica — e questa non è una storia del sito, è la §7.8 del working paper.
+turistica — ed è la settima storia del sito, oltre alla §7.8 del working paper.
 
 **La sesta storia dura vent'anni**, che è tre volte il resto del progetto, e
 dice due cose opposte. L'aria è **molto** migliorata: tenendo solo le centraline

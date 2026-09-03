@@ -16,8 +16,9 @@
     <p class="eyebrow">Provincia di Brescia · {{c:comuni}} comuni · dati aperti</p>
     <h1>Come cambia il bresciano</h1>
     <p class="lede">Un ritratto in numeri costruito solo con fonti pubbliche, comune per comune.
-    Sei storie che i dati reggono — la quinta corregge le quattro che la precedono, la sesta è
-    l'unica che dura vent'anni — e una lista di cose che questi dati non permettono di dire.</p>
+    Sette storie che i dati reggono — la quinta corregge le quattro che la precedono, la sesta è
+    l'unica che dura vent'anni, la settima è l'unica che nessuno si aspetta — e una lista di cose
+    che questi dati non permettono di dire.</p>
     <div class="quicklinks">
       <a class="primary" href="#svuota">Comincia a leggere</a>
       <a href="metodologia.html">Come è stato fatto</a>
@@ -38,6 +39,7 @@
     <a href="#economie">4 · Le due economie</a>
     <a href="#diversa">5 · Brescia è diversa?</a>
     <a href="#aria">6 · L'aria e il clima</a>
+    <a href="#turismo">7 · La decima provincia turistica</a>
     <a href="#limiti">Cosa non si può dire</a>
     <a class="pagina" href="metodologia.html">Metodo</a>
     <a class="pagina" href="dati.html">Dati</a>
@@ -87,7 +89,7 @@
     <a href="#limiti">sezione finale</a>.</p>
 
     <div class="takeaway">
-      <span class="t-lab">Le conclusioni, in sei righe</span>
+      <span class="t-lab">Le conclusioni, in sette righe</span>
       <ul>
         <li><strong>Metà della provincia si svuota</strong>, e non a caso: i comuni che perdono
           abitanti confinano fra loro, e sono la montagna.</li>
@@ -102,6 +104,9 @@
         <li><strong>L'aria è molto migliorata e il clima no</strong>: polveri e biossido di azoto
           scendono di circa il quaranta per cento in vent'anni, l'ozono non si muove, e la
           temperatura sale in tutte le stazioni della provincia.</li>
+        <li><strong>È la decima provincia turistica d'Italia</strong>, e la sesta per clienti
+          stranieri. Non si vedeva guardando solo Brescia, e nemmeno guardando solo la
+          Lombardia.</li>
       </ul>
     </div>
   </div></div>
@@ -735,6 +740,146 @@
     degli inquinanti quanto le emissioni, e separarle richiederebbe una normalizzazione che dati
     mensili non sostengono · L'unità è la centralina, non il comune.</p>
 
+    <p class="nextcap">E l'ultimo asse, quello che nessuno si aspetta.
+    <a href="#turismo">→ La decima provincia turistica d'Italia</a></p>
+  </div></div>
+</section>
+
+<section class="story s7" id="turismo">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">7</div>
+      <div>
+        <p class="eyebrow">Turismo · ISTAT, movimento dei clienti, {{c:tur_anno_primo}}–{{c:tur_anno}}</p>
+        <h2 class="story-title">La decima provincia turistica d'Italia</h2>
+      </div>
+    </div>
+    <p class="question">Nella quarta storia il turismo è metà della divisione che spacca la
+    provincia in due. Ma quanto è tanto, {{c:tur_presenze}} presenze in un anno?</p>
+
+    <p>È la stessa domanda della quinta storia, fatta all'ultimo asse che non l'aveva ricevuta.
+    Un numero grande non è un risultato finché non gli si mette accanto quello di qualcun altro:
+    <strong>{{c:tur_presenze}} notti</strong> potrebbero essere la normalità di una provincia
+    italiana qualunque. Non lo sono. La provincia mediana ne fa {{c:tur_presenze_mediana}}: Brescia ne
+    fa {{c:tur_volte_mediana}} volte tanto, ed è la
+    <strong>{{c:tur_presenze_rango}}ª d'Italia</strong> — dietro a
+    {{c:tur_quante_davanti}} province soltanto: {{c:tur_davanti}}.</p>
+
+    <div class="keynums">
+      <div class="kn"><div class="big">{{c:tur_presenze_rango}}ª</div>
+        <div class="lbl">su {{c:tur_province}} province, per presenze</div></div>
+      <div class="kn"><div class="big">{{c:tur_estera_rango}}ª</div>
+        <div class="lbl">per quota di clienti stranieri</div></div>
+      <div class="kn"><div class="big">{{c:tur_per_abitante_rango}}ª</div>
+        <div class="lbl">per presenze <em>per abitante</em></div></div>
+    </div>
+
+    <p>I tre numeri qui sopra sono lo stesso turismo misurato in tre modi, e vanno letti
+    insieme perché il primo da solo direbbe una cosa falsa. <strong>Brescia è decima perché è
+    grande.</strong> Per abitante fa {{c:tur_per_abitante}} notti contro una mediana di
+    {{c:tur_per_abitante_mediana}}: sopra la media, ma lontanissima dalle province che del
+    turismo vivono. È lo stesso errore che la <a href="#diversa">quinta storia</a> ha trovato
+    sulle imprese, con il segno rovesciato — là un valore relativo faceva sembrare Brescia
+    ordinaria, qui un valore assoluto la fa sembrare eccezionale.</p>
+
+    <figure class="fig">
+      <h3>Dove sta Brescia, fra le {{c:tur_province}} province</h3>
+      <p class="cap">Un punto per provincia, {{c:tur_anno}}. La posizione verticale non
+      significa niente: serve a non sovrapporre i punti.</p>
+      <div id="comandi-turismo"></div>
+      <div id="grafico-turismo"></div>
+    </figure>
+
+    <p>Quello che <em>non</em> si spiega con la dimensione è la riga successiva. Il
+    <strong>{{c:tur_estera}}</strong> delle notti bresciane viene dall'estero, contro una mediana
+    nazionale del {{c:tur_estera_mediana}}: solo {{c:tur_estera_quante_davanti}} province italiane
+    fanno di più, e sono {{c:tur_estera_davanti}}. Brescia ha un turismo internazionale come
+    quello delle città d'arte, senza avere una città d'arte.</p>
+
+    <p>Dove stia, lo dice la forma della ricettività: <strong>{{c:tur_campeggi}}</strong> delle
+    notti in campeggi e villaggi, {{c:tur_campeggi_volte}} volte la mediana italiana. Non è la
+    città e non sono gli alberghi: è il lago, e la <a href="#economie">quarta storia</a> lo aveva
+    già mostrato da dentro, comune per comune, senza poter dire quanto fosse tanto.</p>
+
+    <figure class="fig">
+      <h3>Diciassette anni di presenze, e da dove arrivano</h3>
+      <p class="cap">Presenze annuali in provincia di Brescia e quota di clienti residenti
+      all'estero. È la serie più lunga del progetto dopo l'aria: comincia nel
+      {{c:tur_anno_primo}}, undici anni prima di tutto il resto.</p>
+      <div id="serie-turismo"></div>
+    </figure>
+
+    <p>Dal {{c:tur_anno_primo}} le presenze crescono del <strong>{{c:tur_crescita}} l'anno</strong>
+    composto, contro una mediana provinciale che sta sotto l'uno. Ma le due linee del grafico
+    dicono una cosa più precisa della somma: le notti dei clienti <strong>italiani</strong> vanno
+    da {{c:tur_italia_primo}} a {{c:tur_italia_finale}}, cioè {{c:tur_italia_variazione}} in
+    diciassette anni — ferme. Quelle dei clienti <strong>stranieri</strong> vanno da
+    {{c:tur_estero_primo}} a {{c:tur_estero_finale}}: {{c:tur_estero_variazione}}. La quota estera
+    passa da {{c:tur_estera_primo}} a {{c:tur_estera}} non perché sia arrivato qualcuno in meno
+    dall'Italia, ma perché <strong>tutta la crescita di questa provincia è venuta da fuori</strong>.</p>
+
+    <p>Nel mezzo c'è il {{c:tur_caduta_2020}} del 2020, che è la caduta più profonda misurata in
+    tutto questo lavoro: più di metà delle notti, contro il calo di pochi punti che il 2020 lascia
+    sugli addetti. Una domanda che per tre quarti viene da fuori confine è esattamente quella che
+    i confini chiusi cancellano. Ma il recupero è più rapido della mediana: nel {{c:tur_anno}} la
+    provincia sta {{c:tur_ripresa}} sopra il 2019, mentre {{c:tur_sotto_il_2019}} province su
+    {{c:tur_province}} non hanno ancora riguadagnato il livello di partenza.</p>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">la metrica, in chiaro</span>
+        <span>Perché questa storia usa un'altra fonte</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Tutte le cifre comunali sul turismo di questa pagina — la quarta storia, la mappa delle
+        due economie — vengono da <strong>Regione Lombardia</strong>, che pubblica arrivi e
+        presenze comune per comune. Quella fonte però si ferma al confine della Lombardia, e un
+        confronto con le altre province da lì non si può fare: non esistono i numeri delle altre.</p>
+        <p>Questa storia usa quindi <strong>ISTAT</strong>, che pubblica il movimento dei clienti
+        negli esercizi ricettivi per tutte e {{c:tur_province}} le province. Il guadagno non è
+        solo il confronto: la serie ISTAT comincia nel {{c:tur_anno_primo}}, undici anni prima di
+        quella regionale.</p>
+        <p>Il <strong>{{c:tur_anno}} è l'ultimo anno confrontabile</strong>, e non è l'ultimo
+        disponibile. Dal 2025 la voce «alloggi in affitto» comprende anche quelli gestiti in forma
+        non imprenditoriale: sull'Italia quella voce fa +87,6 % in dodici mesi mentre gli alberghi
+        fanno +1,5 %. Un mercato non raddoppia in un anno mentre il vicino si muove di un punto —
+        è cambiata la definizione, non il fenomeno, e il 2025 resta fuori da ogni confronto.</p>
+      </div>
+    </details>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">controllo</span>
+        <span>Le due fonti non danno lo stesso numero</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>E qui c'è la parte scomoda, che sta scritta perché tacerla sarebbe peggio. Le due fonti
+        misurano lo stesso turismo nello stesso posto e <strong>non coincidono</strong>: nel
+        {{c:tur_fonti_anno_f}} la somma dei comuni di Regione Lombardia fa
+        {{c:tur_fonti_regione}} presenze, il totale provinciale ISTAT ne fa
+        {{c:tur_fonti_istat}}. E la distanza <strong>cresce</strong>: dal
+        {{c:tur_fonti_scarto_i}} del {{c:tur_fonti_anno_i}} al {{c:tur_fonti_scarto_f}} del
+        {{c:tur_fonti_anno_f}}.</p>
+        <div id="fonti-turismo"></div>
+        <p>Nessuna delle due è sbagliata: sono due filiere di rilevazione con due perimetri, e
+        stabilire quale sia più vicina al vero richiederebbe la documentazione metodologica delle
+        due, non un'analisi di dati. Quello che si può fare è <strong>non mescolarle</strong>: in
+        questa pagina le cifre comunali vengono tutte dalla prima e il confronto fra province
+        tutto dalla seconda, e un numeratore preso da una con un denominatore preso dall'altra
+        darebbe una quota sbagliata del dieci per cento — che sembrerebbe giusta.</p>
+      </div>
+    </details>
+
+    <div class="takeaway">
+      <span class="t-lab">In una riga</span>
+      <p>La provincia della meccanica è anche la decima provincia turistica d'Italia, e la sesta
+      per clienti stranieri: nessuna delle due cose si vede guardando solo Brescia, e la seconda
+      non si vedeva nemmeno guardando solo la Lombardia.</p>
+    </div>
+
+    <p class="conf"><span class="dot derivato"></span><b>derivato</b> · ISTAT — movimento dei
+    clienti negli esercizi ricettivi, province · Arrivi e presenze sono osservati; quote, ranghi,
+    mediane e tassi composti sono calcolati qui · Le presenze sono <b>notti, non spesa</b>: un
+    territorio può avere molte notti e poco valore per notte, e i campeggi sono il segmento a
+    valore per notte più basso · Ultimo anno confrontabile {{c:tur_anno}}: il 2025 ha una
+    definizione diversa · Fonte diversa da quella comunale usata nel resto della pagina.</p>
+
     <p class="nextcap">Resta la parte che di solito non si scrive.
     <a href="#limiti">→ Cosa questi dati non permettono di dire</a></p>
   </div></div>
@@ -1016,6 +1161,76 @@
       return { etichetta: v.etichetta, voce: v };
     }), function (scelta) { disegnaProvince(scelta.voce); });
     disegnaProvince(vociProvince[0]);
+  }
+
+  // --- storia 7: il turismo fra le province ----------------------------
+  var turismo = DATI.turismo;
+  if (turismo && turismo.misure) {
+    var contenitoreTurismo = document.getElementById("grafico-turismo");
+    var vociTurismo = [
+      { etichetta: "presenze", chiave: "presenze", unita: "notti", decimali: 0 },
+      { etichetta: "presenze per abitante", chiave: "per_abitante", unita: "notti", decimali: 1 },
+      { etichetta: "quota dall'estero", chiave: "estera", unita: "%", decimali: 1 },
+      { etichetta: "campeggi e villaggi", chiave: "campeggi", unita: "%", decimali: 1 },
+      { etichetta: "permanenza media", chiave: "permanenza", unita: "notti", decimali: 2 },
+      { etichetta: "ripresa dal 2019", chiave: "ripresa", unita: "%", decimali: 1 }
+    ];
+
+    function disegnaTurismo(voce) {
+      contenitoreTurismo.innerHTML = "";
+      var misura = turismo.misure[voce.chiave];
+      if (!misura) return;
+      G.sciame(contenitoreTurismo, {
+        valori: misura.valori,
+        nomi: turismo.nomi,
+        evidenziati: { "017": "Brescia" },
+        mediana: misura.mediana,
+        etichetta: voce.etichetta + (voce.unita ? " (" + voce.unita + ")" : ""),
+        decimali: voce.decimali,
+        descrizione: "Distribuzione delle province italiane per " + voce.etichetta
+      });
+    }
+
+    G.comandi(document.getElementById("comandi-turismo"), vociTurismo.map(function (v) {
+      return { etichetta: v.etichetta, voce: v };
+    }), function (scelta) { disegnaTurismo(scelta.voce); });
+    disegnaTurismo(vociTurismo[0]);
+
+    // Le due componenti stanno sullo stesso asse perché sono la stessa unità:
+    // notti. La quota estera è la loro distanza, e si legge senza scriverla.
+    if (turismo.serie && turismo.serie.length) {
+      var anniTur = turismo.serie.map(function (v) { return v.anno; });
+      G.serie(document.getElementById("serie-turismo"), {
+        periodi: anniTur,
+        unita: "presenze",
+        decimali: 0,
+        linee: [
+          { nome: "dall'estero", valori: turismo.serie.map(function (v) { return v.estero; }) },
+          { nome: "dall'Italia", valori: turismo.serie.map(function (v) { return v.italia; }) }
+        ],
+        descrizione: "Presenze turistiche annuali in provincia di Brescia, distinte fra clienti residenti all'estero e in Italia"
+      });
+    }
+
+    // Lo scarto fra le due fonti, disegnato invece che raccontato: sta tutto
+    // sopra lo zero e sale, ed è il punto.
+    if (turismo.fonti && turismo.fonti.length) {
+      G.colonne(document.getElementById("fonti-turismo"), {
+        voci: turismo.fonti.map(function (f) {
+          return {
+            etichetta: f.anno,
+            valore: f.scarto,
+            nota: G.num(f.regione, 0) + " contro " + G.num(f.istat, 0)
+          };
+        }),
+        unita: "%",
+        decimali: 1,
+        etichettaX: "anno",
+        etichettaY: "quanto Regione Lombardia sta sopra ISTAT (%)",
+        colonnaNota: "presenze, somma dei comuni contro totale provinciale",
+        descrizione: "Scarto percentuale fra la somma dei comuni di Regione Lombardia e il totale provinciale ISTAT, anno per anno"
+      });
+    }
   }
 
   // --- storia 4: le due economie --------------------------------------

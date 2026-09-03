@@ -14,7 +14,7 @@ apre da disco, si manda per email, si archivia.
 | File | Cos'è |
 |---|---|
 | `costruisci.py` | assembla `_site/`: incorpora i dati, sostituisce le cifre e le date, copia i CSV |
-| `modelli/racconto.html` | il documento narrativo: sei storie e la sezione dei limiti |
+| `modelli/racconto.html` | il documento narrativo: sette storie e la sezione dei limiti |
 | `modelli/metodologia.html` | le regole del progetto, per un lettore che non ha letto il repository |
 | `modelli/dati.html` | fonti, tabelle scaricabili e avvertenze |
 | `modelli/stile.css` | la tavolozza e l'impaginazione, in variabili CSS |
@@ -70,14 +70,27 @@ questo documento — **restare autocontenuto**:
 La quarta nasce invece dal contenuto, ed è la sola che **allarga** la tavolozza
 invece di restringerla:
 
-4. 🙋 **Un sesto colore di storia.** L'originale ha cinque storie e cinque
-   colori; qui le storie sono sei, e la sesta li avrebbe dovuti riusare —
-   con il risultato che due sezioni lontane si sarebbero somigliate senza motivo.
-   È stata aggiunta `--oliva` in `stile.css`, accanto alle altre cinque e con la
-   ragione scritta sopra la riga. **Va guardata:** se i due progetti devono
-   restare una collana stretta, la mossa giusta è portare l'oliva anche in
-   `donostia-dataviz` o scegliere un altro sesto tono là e riportarlo qui. La
-   riga da spostare è una sola.
+4. **Due colori di storia in più, e la regola con cui si sceglie il prossimo.**
+   L'originale ha cinque storie e cinque colori; qui le storie sono sette. La
+   sesta e la settima li avrebbero dovuti riusare, con il risultato che sezioni
+   lontane si sarebbero somigliate senza motivo, quindi sono state aggiunte
+   `--oliva` e `--prugna` in `stile.css`.
+
+   La cosa che conta non sono i due colori: è che adesso esiste una **regola**,
+   ed è scritta sopra le due righe. Il colore nuovo va **nel buco di tinta più
+   largo che resta**, alla luminosità della famiglia, e si verifica che il
+   contrasto sul fondo non sia il peggiore del gruppo. Applicata ai cinque
+   originali dà l'oliva (73°, in mezzo ai 123 gradi fra ambra e verde);
+   applicata ai sei dà il prugna (308°, in mezzo ai 97 gradi fra viola e
+   corallo, e a 47 gradi dal vicino più prossimo — più di quanto distino fra
+   loro mare e verde). Non è una regola inventata adesso per giustificare una
+   scelta: è quella che descrive come era stato scelto l'oliva, resa esplicita
+   perché valga anche per l'ottava storia.
+
+   🙋 **Quello che resta da decidere è se portarla di là.** Se i due progetti
+   devono restare una collana stretta, la mossa è copiare in
+   `donostia-dataviz` la regola e i due toni; se possono divergere, va bene
+   così. Le righe da spostare sono due, più il commento che le spiega.
 
 E una conseguenza da mettere in conto: **non c'è tema scuro.** L'originale è un
 disegno a luce sola, e un tema scuro non è l'inversione di una tavolozza chiara:

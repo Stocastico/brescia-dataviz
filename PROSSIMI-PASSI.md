@@ -34,7 +34,7 @@ posto tuo perché riguarda due repository insieme.
 | 🙋 6 | **Esportare a mano il commercio estero provinciale** (§2.2) | il databrowser ISTAT è una SPA senza API | 1 h | niente: la serie regionale è già scaricata come ripiego dichiarato |
 | 🙋 7 | **Rileggere i testi prima di pubblicare** (§8) | è il tuo nome sopra | — | la pubblicazione |
 | 🙋 8 | **Scaricare in locale `migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git, e serve solo quando l'asse 2 diventerà una storia | 20 min di attesa | niente di quello che è pubblicato |
-| 🙋 10 | **Decidere sui colori delle storie** ([`sito/README.md`](sito/README.md) §Lo stile) | le storie sono sei e i colori ereditati da `donostia-dataviz` sono cinque, quindi ne è stato aggiunto uno (`--oliva` in `stile.css`). Riguarda la lingua grafica **condivisa fra i due progetti**, e tenerli una collana o lasciarli divergere è una scelta tua | 10 min, o mezz'ora se lo porti anche nell'altro repository | una **settima storia**, sul turismo confrontato con le altre province: il materiale è pronto (§7.8 del working paper) ma servirebbe un settimo colore, e aggiungerlo prima che il sesto sia deciso raddoppierebbe la domanda invece di risponderle |
+| 🙋 10 | **Dire se la tavolozza va riallineata con `donostia-dataviz`** ([`sito/README.md`](sito/README.md) §Lo stile) | le storie qui sono sette e i colori ereditati sono cinque, quindi ne sono stati aggiunti due (`--oliva` e `--prugna`), con accanto la **regola** che li sceglie: il buco di tinta più largo che resta, alla luminosità della famiglia. Qui il sito è coerente; la domanda che resta tua riguarda la lingua grafica **condivisa fra i due progetti** — tenerli una collana stretta o lasciarli divergere | 10 min per dire di sì com'è, mezz'ora se porti regola e toni anche nell'altro repository | niente |
 
 Tutto il resto di questo documento è 🤖 o ✅. Questa tabella è ripetuta in forma
 breve in testa al [`README`](README.md), diviso fra ciò che blocca la
@@ -69,7 +69,7 @@ Indice:
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
 | Tabelle tidy | ✅ 27 CSV in [`dati/processed/`](dati/README.md), versionati; manca solo `migrazioni_comuni.csv` |
 | Analisi | ✅ quattordici script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province, la scomposizione demografica, l'aria e il clima, il turismo confrontato con le altre province |
-| Storie scelte | ✅ **sei**, scritte e pubblicate nel documento narrativo — la quinta corregge quelle che la precedono, la sesta è l'unica che dura vent'anni. Le candidate rimaste stanno in `BRIEF.md` |
+| Storie scelte | ✅ **sette**, scritte e pubblicate nel documento narrativo — la quinta corregge quelle che la precedono, la sesta è l'unica che dura vent'anni, la settima è l'unica che nessuno si aspettava. Le candidate rimaste stanno in `BRIEF.md` |
 | Contratto dati per il sito | ✅ `metric_*.json` + registro, con i cinque invarianti come test |
 | Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega |
 | Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
@@ -79,10 +79,9 @@ Indice:
 | `WORKING-PAPER.md` | ⚠️ bozza, ma la §7 è scritta: **otto risultati** con i loro controlli, e la §7.8 fa cadere il limite che il documento dichiarava più serio. Resta provvisorio il titolo, che cambierà quando sarà chiara la tesi (§8) |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
-fatte e sei storie sono scritte in un sito che si costruisce da solo: **manca
-la tua rilettura e un clic nelle impostazioni**. Il lavoro tecnico
-che resta è tutto facoltativo — il pannello interattivo, i download manuali, e
-una settima storia sul turismo che aspetta una tua decisione sui colori.
+fatte e sette storie sono scritte in un sito che si costruisce da solo: **manca
+la tua rilettura e un clic nelle impostazioni**. Il lavoro tecnico che resta è
+tutto facoltativo — il pannello interattivo e i download manuali.
 
 ---
 
@@ -135,7 +134,7 @@ python -m brescia_pipeline.build migrazioni abitazioni famiglie
 > le quarantamila righe.
 >
 > Per ora è **esclusa da git** (`.gitignore`, con la motivazione accanto) e si
-> rigenera in venti minuti. Nessuna delle sei storie pubblicate la usa, quindi
+> rigenera in venti minuti. Nessuna delle sette storie pubblicate la usa, quindi
 > non blocca niente. Le due strade, quando l'asse 2 verrà affrontato:
 >
 > - **codici al posto delle etichette**, più una legenda in una tabella a parte.
@@ -478,7 +477,7 @@ Questa è la parte che si perderebbe. Il progetto Donostia pubblica **due cose
 diverse** sullo stesso sito, ed è una separazione che vale la pena copiare.
 
 > **✅ Il primo dei due artefatti esiste** (agosto 2026), in
-> [`sito/`](sito/README.md): documento narrativo con sei storie, più
+> [`sito/`](sito/README.md): documento narrativo con sette storie, più
 > `metodologia.html` e `dati.html`. Mezzo mega, autocontenuto, mappe e grafici
 > in SVG disegnati a mano. Si costruisce con `python sito/costruisci.py`.
 >
@@ -868,7 +867,7 @@ entra nel tempo che hai, non a fare un piano.
 | ✅ ~~Una storia su aria e clima (asse 4)~~ | fatta | `analysis/aria_e_clima.py` e la sesta storia del sito. Ne è uscita anche MET-16, e la pioggia è entrata nel racconto **proprio perché** non dà segnale |
 | ✅ ~~Estendere il confronto fra province al **turismo**~~ | fatta | `analysis/confronto_turismo.py` e la §7.8 del working paper. Ne sono uscite MET-17 e MET-18, e la scoperta che la provincia è la decima d'Italia per presenze |
 | ✅ ~~Riscrivere la §7 del working paper con le storie~~ | fatta | otto risultati, ciascuno con i suoi controlli |
-| 🤖 Portare il turismo nel sito come **settima storia** | **mezza giornata** | il materiale c'è tutto (§7.8 del working paper, `confronto_turismo.py`, le cifre già verificate). ⚠️ Ma servirebbe un **settimo colore**, e il sesto è già una decisione tua non ancora presa: vedi la voce 🙋 10 in testa a questo documento. Per questo la storia non è stata scritta |
+| ✅ ~~Portare il turismo nel sito come **settima storia**~~ | fatta | «La decima provincia turistica d'Italia», con lo sciame delle 107 province, i diciassette anni di presenze divise fra clienti italiani e stranieri, e lo scarto fra le due fonti disegnato invece che raccontato. Il settimo colore è `--prugna`, scelto con la regola ora scritta in `sito/README.md` |
 | 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |
 | 🙋 I download manuali (§2.2) | **2–4 h in tutto** | estensioni, nessun asse portante |
 
@@ -882,27 +881,22 @@ rileggi la prima storia. Il sito è pronto; lo pubblichi quando lo sei anche tu.
 ### Se hai due ore
 
 Rileggi i testi del sito con il tuo occhio — è il tuo nome sopra, e nessuno
-script controlla se una frase dice più di quanto il dato sostenga. Sono sei
-storie adesso, e la sesta non l'hai mai letta.
+script controlla se una frase dice più di quanto il dato sostenga. Sono sette
+storie adesso, e le ultime due non le hai mai lette.
 
 ### Se hai mezza giornata
 
-**Guarda i colori delle storie, e decidi.** Le storie sono
-sei e i colori presi da `donostia-dataviz` sono cinque, quindi ne è stato
-aggiunto uno (`--oliva` in `stile.css`). È l'unica decisione presa in quella
-tornata che tocca la lingua grafica condivisa fra i due progetti, ed è quindi
-l'unica che vale la pena riesaminare: `sito/README.md` §Lo stile dice cosa
-comporterebbe riallineare i due.
-
-E adesso non è più solo estetica: c'è **materiale per una settima storia** — il
-turismo confrontato con le altre 106 province, §7.8 del working paper — che non
-è stata scritta proprio per non aggiungere un settimo colore prima che il sesto
-sia stato deciso. Decidere sblocca la storia.
+**Guarda la tavolozza, e decidi se riallinearla con l'altro progetto.** Le storie sono
+sette e i colori presi da `donostia-dataviz` sono cinque, quindi ne sono stati
+aggiunti due (`--oliva` e `--prugna` in `stile.css`), con accanto la regola che
+li sceglie — il buco di tinta più largo che resta. È l'unica cosa decisa qui che
+tocca la lingua grafica condivisa fra i due progetti, ed è quindi l'unica che
+vale la pena riesaminare: `sito/README.md` §Lo stile dice cosa comporterebbe
+riallineare i due, e sono due righe più un commento.
 
 ### Se hai un weekend
 
-**Il pannello React** (§6.1), oppure la **settima storia** sul turismo, se il
-colore è stato deciso.
+**Il pannello React** (§6.1).
 
 Il confronto fra province è servito più di qualunque altra analisi — ha smontato
 una frase che il progetto ripeteva dal primo giorno (MET-14), ha ribaltato la
