@@ -36,6 +36,7 @@ from .datasets import (
     sicurezza,
     sintesi,
     turismo,
+    turismo_confronto,
 )
 
 # Ogni voce riceve la mappa dei comuni della provincia e scrive in processed/.
@@ -48,6 +49,7 @@ DATASETS: dict[str, Callable[[dict[str, str]], None]] = {
     "sezioni": sezioni.build,
     "province": province.build,
     "turismo": turismo.build,
+    "turismo_confronto": turismo_confronto.build,
     "lavoro": lavoro.build,
     "migrazioni": migrazioni.build,
     "abitazioni": abitazioni.build,

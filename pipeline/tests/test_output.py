@@ -371,3 +371,139 @@ def test_i_totali_annui_di_pioggia_sono_plausibili() -> None:
     assert len(completi) > 300
     assert 250 < min(completi), f"un anno completo con soli {min(completi):.0f} mm"
     assert max(completi) < 3000, f"un anno completo con {max(completi):.0f} mm"
+
+
+# --- turismo delle province: il termine di paragone -----------------------
+
+
+def turismo_province() -> dict:
+    """`(nuts3, anno, tipologia, residenza, indicatore) -> valore`."""
+    return {
+        (r["codice_nuts3"], r["anno"], r["tipologia"], r["residenza"], r["indicatore"]): float(
+            r["valore"]
+        )
+        for r in leggi("turismo_province.csv")
+        if r["valore"]
+    }
+
+
+def test_le_province_del_turismo_sono_tutte_e_107() -> None:
+    """L'aggancio è per nome, non per codice: se la fonte rinomina un
+    territorio si perdono righe *senza errore*. Questo è il guardiano."""
+    righe = leggi("turismo_province.csv")
+    codici = {r["codice_provincia"] for r in righe if r["livello"] == "provincia"}
+    assert len(codici) == 107
+    assert "017" in codici
+    assert all(len(c) == 3 for c in codici)
+    # e nessuna riga provinciale resta senza aggancio
+    assert not [r for r in righe if r["livello"] == "provincia" and not r["codice_provincia"]]
+
+
+def test_il_totale_del_turismo_e_alberghiero_piu_extra() -> None:
+    """`totale = alberghiero + extra-alberghiero` è la partizione dichiarata:
+    se saltasse, sommare le tipologie conterebbe due volte le stesse notti."""
+    valori = turismo_province()
+    controllati = 0
+    for (nuts, anno, tipologia, residenza, indicatore), totale in valori.items():
+        if tipologia != "totale":
+            continue
+        alberghiero = valori.get((nuts, anno, "alberghiero", residenza, indicatore))
+        extra = valori.get((nuts, anno, "extra-alberghiero", residenza, indicatore))
+        if alberghiero is None or extra is None:
+            continue
+        controllati += 1
+        assert abs(totale - (alberghiero + extra)) < 0.5, (nuts, anno, residenza, indicatore)
+    assert controllati > 5_000
+
+
+def test_le_residenze_del_turismo_sommano_al_totale() -> None:
+    """Italia + estero = totale. È la stessa trappola di `turismo.py`: la
+    dimensione ha un totale dentro, e sommare tutte le righe raddoppia."""
+    valori = turismo_province()
+    controllati = 0
+    for (nuts, anno, tipologia, residenza, indicatore), totale in valori.items():
+        if residenza != "totale":
+            continue
+        italia = valori.get((nuts, anno, tipologia, "Italia", indicatore))
+        estero = valori.get((nuts, anno, tipologia, "estero", indicatore))
+        if italia is None or estero is None:
+            continue
+        controllati += 1
+        assert abs(totale - (italia + estero)) < 0.5, (nuts, anno, tipologia, indicatore)
+    assert controllati > 5_000
+
+
+def test_il_2025_del_turismo_e_marcato_come_non_confrontabile() -> None:
+    """Dal 2025 gli «alloggi in affitto» comprendono la gestione non
+    imprenditoriale: +87 % in un anno, che non è un boom ma una definizione.
+    Le tre tipologie che la contengono devono dichiararlo."""
+    righe = [r for r in leggi("turismo_province.csv") if r["anno"] == "2025"]
+    assert righe, "il 2025 non c'è: se la fonte l'ha tolto, va tolta anche la marcatura"
+    toccate = {"totale", "extra-alberghiero", "alloggi in affitto"}
+    for riga in righe:
+        atteso = "definizione_cambiata" if riga["tipologia"] in toccate else "osservato"
+        assert riga["stato"] == atteso, riga
+
+    valori = turismo_province()
+    prima = valori[("IT", "2024", "alloggi in affitto", "totale", "presenze")]
+    dopo = valori[("IT", "2025", "alloggi in affitto", "totale", "presenze")]
+    assert dopo > 1.5 * prima, (
+        "lo scalino del 2025 è sparito: se la fonte ha ricostruito la serie "
+        "all'indietro, la marcatura non serve più"
+    )
+
+
+def test_la_sardegna_prima_del_2017_dichiara_il_confine_cambiato() -> None:
+    """Quattro province sarde sono state soppresse nel 2017: prima di allora le
+    superstiti coprono un territorio più piccolo, e una crescita 2008–2024
+    calcolata su quelle serie è una crescita di superficie."""
+    righe = [
+        r
+        for r in leggi("turismo_province.csv")
+        if r["regione"] == "Sardegna" and r["livello"] == "provincia"
+    ]
+    assert righe
+    toccate = {"totale", "extra-alberghiero", "alloggi in affitto"}
+    for riga in righe:
+        if int(riga["anno"]) < 2017:
+            atteso = "confine_cambiato"
+        elif riga["anno"] == "2025" and riga["tipologia"] in toccate:
+            atteso = "definizione_cambiata"
+        else:
+            atteso = "osservato"
+        assert riga["stato"] == atteso, riga
+    # e nessun'altra regione porta quella marca
+    altrove = [
+        r
+        for r in leggi("turismo_province.csv")
+        if r["stato"] == "confine_cambiato" and r["regione"] != "Sardegna"
+    ]
+    assert not altrove
+
+
+def test_le_due_fonti_sul_turismo_bresciano_non_coincidono() -> None:
+    """MET-17 nasce da qui, e il test la tiene viva: la somma dei comuni di
+    Regione Lombardia sta **sopra** il totale provinciale ISTAT, di una
+    quantità che cresce nel tempo. Non è un bug da aggiustare: è il motivo per
+    cui le due tabelle non si mescolano in una frase sola.
+
+    Il test fallisce se lo scarto sparisce (allora MET-17 va riscritta) o se
+    esplode (allora una delle due letture è rotta)."""
+    istat = turismo_province()
+    regionale: dict = {}
+    for riga in leggi("turismo_comuni_annuale.csv"):
+        if riga["tipo_struttura"] != "Totale" or riga["cittadinanza"] != "Totale":
+            continue
+        if riga["stato"] != "osservato" or not riga["presenze"]:
+            continue
+        regionale[riga["anno"]] = regionale.get(riga["anno"], 0.0) + float(riga["presenze"])
+
+    scarti = {}
+    for anno, somma_comuni in regionale.items():
+        provinciale = istat.get(("ITC47", anno, "totale", "totale", "presenze"))
+        if provinciale:
+            scarti[anno] = somma_comuni / provinciale - 1
+
+    assert len(scarti) >= 5
+    assert all(0.02 < s < 0.20 for s in scarti.values()), scarti
+    assert scarti["2024"] > scarti["2019"], "lo scarto non cresce più: MET-17 va riscritta"
