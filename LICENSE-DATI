@@ -21,7 +21,13 @@ Due cose che questa licenza NON copre:
 
 1. **I dati originali delle fonti.** Le tabelle di `dati/` sono lavorazioni
    di dati pubblici che hanno una loro licenza e vanno citati comunque:
-   ISTAT e Regione Lombardia (CC BY), ARPA Lombardia, MEF. Se un giorno
+   ISTAT e Regione Lombardia (CC BY), ARPA Lombardia, MEF. Una fonte chiede
+   una formula esatta: le quotazioni immobiliari e i volumi di compravendita
+   dell'Osservatorio del Mercato Immobiliare obbligano a citare
+   **«Agenzia Entrate - OMI»**. Vale per `quotazioni_zone.csv`,
+   `quotazioni_comuni.csv`, `compravendite_comuni.csv` e per gli archivi in
+   `dati/input/omi/`, che sono la fornitura originale e non una lavorazione.
+   Se un giorno
    entrassero dati OpenStreetMap o OpenPNRR (ODbL, con share-alike sui dati
    derivati) questa scelta andrebbe rifatta: vedi `PROSSIMI-PASSI.md` §3.3.
    Il registro completo, fonte per fonte, è in `FONTI.md`.

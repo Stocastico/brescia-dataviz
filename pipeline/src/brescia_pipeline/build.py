@@ -23,11 +23,13 @@ from .datasets import (
     anagrafica,
     bilancio,
     commercio_estero,
+    compravendite,
     confini,
     famiglie,
     imprese,
     lavoro,
     migrazioni,
+    omi,
     popolazione,
     province,
     redditi,
@@ -59,6 +61,9 @@ DATASETS: dict[str, Callable[[dict[str, str]], None]] = {
     "redditi": redditi.build,
     "redditi_confronto": redditi_confronto.build,
     "commercio_estero": commercio_estero.build,
+    # non scaricano niente: leggono gli archivi versionati in dati/input/omi/
+    "omi": omi.build,
+    "compravendite": compravendite.build,
     # devono restare in coda: leggono le tabelle prodotte dagli altri
     "sintesi": sintesi.build,
     "web": web.build,

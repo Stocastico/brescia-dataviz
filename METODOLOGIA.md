@@ -1,4 +1,4 @@
-# Nota metodologica (MET-1…MET-18)
+# Nota metodologica (MET-1…MET-19)
 
 > **Cos'è.** Le decisioni che governano il progetto: *perché* misuriamo come
 > misuriamo. È la base di credibilità — qualunque grafico, testo o titolo deve
@@ -9,12 +9,15 @@
 > ## ⚠️ Bozza avanzata — non ancora definitiva
 >
 > **Aggiornata a settembre 2026, quando l'ultimo dei quattro assi ha avuto il
-> suo termine di paragone.** Le diciotto regole qui elencate sono tutte reali e
+> suo termine di paragone.** Le diciannove regole qui elencate sono tutte reali e
 > applicate; cinque di esse (MET-9, MET-12, MET-13, MET-14, MET-15) nascono da
 > errori o incoerenze **effettivamente trovati sui dati bresciani**, non da
 > principi scelti a tavolino.
 >
-> Cosa è cambiato in questa revisione: **MET-17** e **MET-18**, entrambe nate
+> Ultima arrivata: **MET-19**, dalle quotazioni immobiliari OMI — negli affitti
+> la base di misura passa da superficie netta a superficie lorda nel 2025, e la
+> media della città «cala» di due decimi senza che il mercato si muova. Prima:
+> **MET-17** e **MET-18**, entrambe nate
 > dal confronto sul turismo fra le 107 province. La prima dallo scarto fra le
 > due fonti che misurano lo stesso turismo bresciano — cresciuto dal 6,5 % al
 > 10,6 % in cinque anni; la seconda da un +87,6 % in dodici mesi che sembrava un
@@ -625,6 +628,59 @@ la stessa definizione: la serie ricomincia da lì. Quello che non si può fare �
 metterlo nella stessa riga degli anni prima — e la stessa avvertenza vale per la
 Sardegna prima del 2017, dove a cambiare non è la definizione ma il confine
 (`stato = confine_cambiato`).
+
+---
+
+
+## MET-19 — L'unità di misura è una dimensione della tabella, non una nota
+
+> Nata dal primo scarico che è entrato nel progetto senza passare da un URL: le
+> quotazioni immobiliari OMI, settembre 2026.
+
+Le quotazioni OMI danno, per ogni zona e tipologia, un intervallo di €/m² per la
+vendita e uno per la locazione. Accanto a ciascuno c'è una colonna di un solo
+carattere — `Sup_NL_compr`, `Sup_NL_loc` — che dice se quei €/m² sono su
+superficie **lorda** o **netta**. È l'informazione più facile da non leggere di
+tutta la fornitura, e in questa provincia cambia:
+
+| affitti, provincia di Brescia | record su superficie netta | su superficie lorda |
+|---|---|---|
+| 2004–2023 | tutti, tranne una manciata | qualche unità |
+| 2024 | 2.410 | 10 |
+| **2025** | **0** | **2.415** |
+
+La media della città passa da **7,6 €/m² al mese nel 2024** a **7,4 nel 2025**.
+Chi legge solo la media vede un mercato degli affitti che si raffredda. Ma la
+superficie lorda è più grande della netta, quindi **lo stesso affitto, diviso per
+una superficie più grande, dà un €/m² più basso**: quel −0,2 è la misura che è
+cambiata. Le compravendite, nello stesso file e negli stessi ventidue semestri,
+sono sempre su superficie lorda: lì la serie regge.
+
+> **Quando la fonte dichiara l'unità o la base di misura, quella dichiarazione
+> diventa una colonna della tabella, e nessuna aggregazione media attraverso
+> valori diversi di quella colonna.** Un salto che coincide con un cambio di
+> base è il cambio di base, finché non si dimostra il contrario.
+
+La seconda metà della regola è MET-18 applicata alle unità invece che ai
+perimetri, e le due si sono presentate insieme: nello stesso scarico, i «depositi
+commerciali» dei volumi di compravendita diventano «depositi commerciali **e
+autorimesse**» nel 2017. Anche lì la tentazione è di trattarli come lo stesso
+segmento con due nomi; anche lì sarebbe una serie che cambia contenuto a metà.
+
+**La regola operativa: la base sta nella chiave, non nel commento.**
+`quotazioni_comuni.csv` è aggregata per comune × semestre × tipologia × mercato
+× `base_superficie`, e le righe lorda e netta non si sommano mai perché non
+condividono la chiave; `compravendite_comuni.csv` tiene
+`depositi_commerciali` e `depositi_commerciali_autorimesse` come **due
+segmenti**. Non c'è una nota da ricordarsi: c'è una tabella in cui l'errore non
+si può scrivere per distrazione. È lo stesso meccanismo di MET-18, dove la
+marcatura sta nelle righe, e di MET-3, dove un dato che c'è ma non si può usare
+come sembra viene qualificato invece di essere buttato.
+
+**Perché non si «normalizza» e via.** Convertire netto in lordo chiede un
+coefficiente di ragguaglio che varia per tipologia edilizia e che l'OMI non
+pubblica per zona: inventarlo produrrebbe una serie continua e sbagliata al
+posto di una serie spezzata e vera. Meglio due tratti dichiarati che uno finto.
 
 ---
 

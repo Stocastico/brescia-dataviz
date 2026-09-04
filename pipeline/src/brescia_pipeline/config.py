@@ -31,6 +31,9 @@ PACKAGE_ROOT = Path(__file__).resolve().parent
 PROJECT_ROOT = PACKAGE_ROOT.parents[2]  # brescia/
 RAW_DIR = PROJECT_ROOT / "dati" / "raw"
 PROCESSED_DIR = PROJECT_ROOT / "dati" / "processed"
+# Gli input curati: i file che nessun URL restituisce e che quindi stanno
+# versionati nel repository (oggi gli archivi OMI, dietro SPID).
+INPUT_DIR = PROJECT_ROOT / "dati" / "input"
 
 
 def ensure_dirs() -> None:
