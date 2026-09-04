@@ -14,7 +14,7 @@ apre da disco, si manda per email, si archivia.
 | File | Cos'è |
 |---|---|
 | `costruisci.py` | assembla `_site/`: incorpora i dati, sostituisce le cifre e le date, copia i CSV |
-| `modelli/racconto.html` | il documento narrativo: sette storie e la sezione dei limiti |
+| `modelli/racconto.html` | il documento narrativo: otto storie e la sezione dei limiti |
 | `modelli/metodologia.html` | le regole del progetto, per un lettore che non ha letto il repository |
 | `modelli/dati.html` | fonti, tabelle scaricabili e avvertenze |
 | `modelli/stile.css` | la tavolozza e l'impaginazione, in variabili CSS |
@@ -85,12 +85,27 @@ invece di restringerla:
    corallo, e a 47 gradi dal vicino più prossimo — più di quanto distino fra
    loro mare e verde). Non è una regola inventata adesso per giustificare una
    scelta: è quella che descrive come era stato scelto l'oliva, resa esplicita
-   perché valga anche per l'ottava storia.
+   perché valesse anche per l'ottava storia.
+
+   **E all'ottava è stata applicata, senza correggerla a gusto** (settembre
+   2026). Il buco più largo rimasto era **dentro i verdi**: fra oliva (73°) e
+   verde (156°), 83 gradi, mezzo a 114°. Ne è uscito `--alloro` (`#3c8235`), che
+   dista 41 gradi dall'oliva e 42 dal verde — la stessa spaziatura che hanno già
+   fra loro mare e verde (40°) e ambra e corallo (41°). Contrasto sul fondo
+   4,3:1 la tinta base e 7,1:1 quella scura, entrambi sopra la mediana del
+   gruppo (3,45 e 5,64).
+
+   ⚠️ **La conseguenza, dichiarata invece che scoperta dopo:** i colori di storia
+   sono adesso **tre verdi su otto**. Regge perché le tre storie che li portano —
+   la terza, la sesta e l'ottava — non si toccano mai in pagina. Se una nona
+   storia cadesse accanto a una di loro, la regola andrebbe **rinegoziata invece
+   che riapplicata**: una regola che dà un risultato scomodo va discussa, non
+   aggirata la volta in cui dà fastidio.
 
    🙋 **Quello che resta da decidere è se portarla di là.** Se i due progetti
    devono restare una collana stretta, la mossa è copiare in
-   `donostia-dataviz` la regola e i due toni; se possono divergere, va bene
-   così. Le righe da spostare sono due, più il commento che le spiega.
+   `donostia-dataviz` la regola e i **tre** toni; se possono divergere, va bene
+   così. Le righe da spostare sono tre, più il commento che le spiega.
 
 E una conseguenza da mettere in conto: **non c'è tema scuro.** L'originale è un
 disegno a luce sola, e un tema scuro non è l'inversione di una tavolozza chiara:

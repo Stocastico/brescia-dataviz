@@ -62,6 +62,8 @@ METRICHE_USATE = [
     "quota_manifattura",
     "quota_alloggio_ristorazione",
     "specializzazione",
+    "prezzo_case",
+    "variazione_prezzo_reale",
 ]
 
 PAGINE = {
@@ -795,6 +797,137 @@ def scomposizione_province() -> dict[str, Any]:
     }
 
 
+def indice_prezzi() -> dict[str, float]:
+    """`anno -> indice dei prezzi al consumo`, base 2015 = 100 (MET-20).
+
+    È **nazionale**: ogni «euro costante» di questo sito assume che
+    l'inflazione bresciana sia quella italiana, e i testi che lo usano lo
+    dicono.
+    """
+    import csv
+
+    percorso = PROCESSED / "indice_prezzi.csv"
+    if not percorso.exists():
+        return {}
+    with percorso.open(encoding="utf-8") as handle:
+        return {r["anno"]: float(r["indice"]) for r in csv.DictReader(handle)}
+
+
+def casa() -> dict[str, Any]:
+    """L'asse casa per l'ottava storia: il capoluogo, le sue zone, la provincia.
+
+    Le due serie del capoluogo — €/m² e volumi di compravendita — stanno in due
+    tabelle diverse e in due unità diverse, e la storia le mette una accanto
+    all'altra. Il ponte è il **deflatore** (MET-20): senza, il prezzo sembra
+    fermo e la frase da scrivere non esiste.
+
+    Ricalcolata qui e non importata da `analysis/casa_e_prezzi.py`, per la
+    stessa ragione di `clima()`: due implementazioni che divergono si vedono,
+    una sola non si controlla.
+    """
+    import csv
+    from collections import defaultdict
+
+    percorsi = {
+        n: PROCESSED / f"{n}.csv"
+        for n in ("quotazioni_comuni", "quotazioni_zone", "compravendite_comuni", "indice_prezzi")
+    }
+    if not all(percorso.exists() for percorso in percorsi.values()):
+        return {}
+
+    def righe(nome: str) -> list[dict[str, str]]:
+        with percorsi[nome].open(encoding="utf-8") as handle:
+            return list(csv.DictReader(handle))
+
+    indice = indice_prezzi()
+    base = max(indice)
+
+    def reale(valore: float, anno: str) -> float:
+        return valore * indice[base] / indice[anno]
+
+    # Le tre condizioni sono quelle di `analysis/casa_e_prezzi.py`: tipologia,
+    # mercato e base di superficie (MET-19).
+    correnti = {
+        r["anno"]: float(r["media"])
+        for r in righe("quotazioni_comuni")
+        if r["codice_istat"] == CAPOLUOGO
+        and r["tipologia"] == "Abitazioni civili"
+        and r["mercato"] == "vendita"
+        and r["base_superficie"] == "lorda"
+        and r["media"]
+    }
+    volumi: dict[str, float] = defaultdict(float)
+    for r in righe("compravendite_comuni"):
+        if (
+            r["codice_istat"] == CAPOLUOGO
+            and r["comparto"] == "residenziale"
+            and r["segmento"] == "totale"
+            and r["ntn"]
+        ):
+            volumi[r["anno"]] += float(r["ntn"])
+
+    anni = sorted(correnti)
+    # Le zone del capoluogo, sul panel bilanciato: nel 2024 la zonizzazione
+    # cambia, dieci zone finiscono e dieci cominciano, e la media di «quelle che
+    # ci sono» misurerebbe anche il cambio di perimetro (MET-16).
+    per_zona: dict[str, dict[str, float]] = defaultdict(dict)
+    nomi_zona: dict[str, str] = {}
+    for r in righe("quotazioni_zone"):
+        if (
+            r["codice_istat"] != CAPOLUOGO
+            or r["tipologia"] != "Abitazioni civili"
+            or r["stato_prevalente"] != "P"
+            or not r["vendita_min"]
+            or not r["vendita_max"]
+        ):
+            continue
+        per_zona[r["link_zona"]][r["anno"]] = (
+            float(r["vendita_min"]) + float(r["vendita_max"])
+        ) / 2
+        nomi_zona[r["link_zona"]] = r["zona"]
+    anni_zone = sorted({a for serie in per_zona.values() for a in serie})
+    panel = {k: s for k, s in per_zona.items() if len(s) == len(anni_zone)}
+
+    def forbice(anno: str, zone: dict[str, dict[str, float]]) -> float:
+        valori_anno = [s[anno] for s in zone.values() if anno in s]
+        return max(valori_anno) / min(valori_anno)
+
+    anno_ntn_primo = min(volumi)
+    fondo = min(volumi, key=lambda a: volumi[a])
+    return {
+        "anni": anni,
+        "correnti": [round(correnti[a], 1) for a in anni],
+        "reali": [round(reale(correnti[a], a), 1) for a in anni],
+        "anni_ntn": sorted(volumi),
+        "ntn": [round(volumi[a], 1) for a in sorted(volumi)],
+        # Indicizzate al primo anno in cui esistono entrambe: due unità diverse
+        # su un asse solo sarebbero due scale nascoste in un grafico.
+        "indice_reale": [
+            round(reale(correnti[a], a) / reale(correnti[anno_ntn_primo], anno_ntn_primo) * 100, 1)
+            for a in sorted(volumi)
+        ],
+        "indice_ntn": [round(volumi[a] / volumi[anno_ntn_primo] * 100, 1) for a in sorted(volumi)],
+        "anno_base_reale": base,
+        "fondo_ntn": fondo,
+        "zone": {
+            "anni": anni_zone,
+            "quante_panel": len(panel),
+            "quante_ultimo": sum(1 for s in per_zona.values() if anni_zone[-1] in s),
+            "forbice_panel": [round(forbice(a, panel), 3) for a in anni_zone],
+            # Tre linee e non tredici: con tredici linee etichettate in fondo il
+            # grafico diventa un pettine, e la cosa da vedere — che la distanza
+            # fra l'alto e il basso si accorcia — sparisce dentro il pettine.
+            "alta": [round(reale(max(s[a] for s in panel.values()), a), 1) for a in anni_zone],
+            "mediana": [
+                round(reale(mediana(sorted(s[a] for s in panel.values())), a), 1)
+                for a in anni_zone
+            ],
+            "bassa": [round(reale(min(s[a] for s in panel.values()), a), 1) for a in anni_zone],
+            "nomi": {k: nomi_zona[k] for k in panel},
+        },
+    }
+
+
 # --- le cifre del racconto ----------------------------------------------
 
 
@@ -858,6 +991,31 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
     fuori["reddito_massimo"] = numero_it(max(red_f.values()))
     fuori["reddito_rapporto"] = numero_it(max(red_f.values()) / min(red_f.values()), 1)
     fuori["reddito_rapporto_iniziale"] = numero_it(max(red_i.values()) / min(red_i.values()), 1)
+
+    # Il reddito in euro costanti. Fino a settembre 2026 questa storia poteva
+    # solo dire «una parte della crescita è inflazione»; adesso può dire quanta,
+    # e la frase che ne esce non è la stessa: la mediana comunale passa da poco
+    # più di due punti l'anno a meno di mezzo, e quarantacinque comuni scendono.
+    indice = indice_prezzi()
+    anni_reddito = [a for a in reddito["periods"] if a in indice]
+    if len(anni_reddito) >= 2:
+        primo_anno, ultimo_anno = anni_reddito[0], anni_reddito[-1]
+        durata_reddito = int(ultimo_anno) - int(primo_anno)
+        red_primo = valori(reddito, primo_anno)
+        red_ultimo = valori(reddito, ultimo_anno)
+        reali = {}
+        for codice, finale in red_ultimo.items():
+            iniziale = red_primo.get(codice)
+            if not iniziale:
+                continue
+            fattore = (finale / indice[ultimo_anno]) / (iniziale / indice[primo_anno])
+            reali[codice] = (fattore ** (1 / durata_reddito) - 1) * 100
+        fuori["reddito_inflazione"] = percento_it(
+            (indice[ultimo_anno] / indice[primo_anno] - 1) * 100
+        )
+        fuori["reddito_crescita_reale_mediana"] = percento_it(mediana(list(reali.values())), 2)
+        fuori["reddito_comuni_in_calo_reale"] = numero_it(sum(1 for v in reali.values() if v < 0))
+        fuori["reddito_comuni_reale"] = numero_it(len(reali))
 
     def decili(valori: dict[str, float]) -> float:
         """p90/p10: la stessa domanda del rapporto fra gli estremi, ma senza
@@ -1206,6 +1364,68 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
             fuori["tur_fonti_istat"] = numero_it(ultima_fonte["istat"])
             fuori["tur_fonti_regione"] = numero_it(ultima_fonte["regione"])
 
+    # --- l'ottava storia: la casa ---------------------------------------
+    dati_casa = casa()
+    if dati_casa:
+        anni, correnti, reali = dati_casa["anni"], dati_casa["correnti"], dati_casa["reali"]
+        fuori["casa_anno_primo"] = anni[0]
+        fuori["casa_anno_ultimo"] = anni[-1]
+        fuori["casa_anni"] = numero_it(int(anni[-1]) - int(anni[0]))
+        fuori["casa_prezzo_primo"] = numero_it(correnti[0])
+        fuori["casa_prezzo_ultimo"] = numero_it(correnti[-1])
+        fuori["casa_prezzo_primo_reale"] = numero_it(reali[0])
+        nominale = (correnti[-1] / correnti[0] - 1) * 100
+        fuori["casa_nominale"] = f"{'+' if nominale > 0 else ''}{numero_it(nominale, 1)} %"
+        fuori["casa_reale"] = percento_it((reali[-1] / reali[0] - 1) * 100)
+        fuori["casa_inflazione"] = f"+{numero_it((reali[0] / correnti[0] - 1) * 100, 1)} %"
+
+        volumi = dict(zip(dati_casa["anni_ntn"], dati_casa["ntn"]))
+        fondo = dati_casa["fondo_ntn"]
+        fuori["casa_ntn_fondo_anno"] = fondo
+        fuori["casa_ntn_fondo"] = numero_it(volumi[fondo])
+        fuori["casa_ntn_ultimo"] = numero_it(volumi[dati_casa["anni_ntn"][-1]])
+        variazione_ntn = (volumi[dati_casa["anni_ntn"][-1]] / volumi[fondo] - 1) * 100
+        fuori["casa_ntn_variazione"] = f"+{numero_it(variazione_ntn, 1)} %"
+        fuori["casa_ntn_anno_primo"] = dati_casa["anni_ntn"][0]
+
+        zone = dati_casa["zone"]
+        fuori["casa_zone_panel"] = numero_it(zone["quante_panel"])
+        fuori["casa_zone_ultimo"] = numero_it(zone["quante_ultimo"])
+        fuori["casa_forbice_primo"] = numero_it(zone["forbice_panel"][0], 2)
+        fuori["casa_forbice_ultimo"] = numero_it(zone["forbice_panel"][-1], 2)
+        fuori["casa_zone_anno_rifatta"] = str(int(zone["anni"][-1]) - 1)
+        # Le **annate**, non gli anni trascorsi: la serie OMI è un semestre per
+        # anno, e ventidue annate coprono ventun anni di distanza.
+        fuori["casa_zone_annate"] = numero_it(len(zone["anni"]))
+
+    prezzi_comuni = valori(metriche["prezzo_case"])
+    fuori["casa_comuni_quotati"] = numero_it(len(prezzi_comuni))
+    fuori["casa_comuni_assenti"] = numero_it(len(comuni) - len(prezzi_comuni))
+    ordinati_prezzo = sorted(prezzi_comuni.items(), key=lambda kv: -kv[1])
+    fuori["casa_comune_caro"] = comuni[ordinati_prezzo[0][0]]["comune"]
+    fuori["casa_prezzo_caro"] = numero_it(ordinati_prezzo[0][1])
+    fuori["casa_comune_economico"] = comuni[ordinati_prezzo[-1][0]]["comune"]
+    fuori["casa_prezzo_economico"] = numero_it(ordinati_prezzo[-1][1])
+    fuori["casa_rapporto_estremi"] = numero_it(ordinati_prezzo[0][1] / ordinati_prezzo[-1][1], 1)
+    fuori["casa_prezzo_capoluogo"] = numero_it(prezzi_comuni[CAPOLUOGO])
+    fuori["casa_rango_capoluogo"] = numero_it(
+        [c for c, _ in ordinati_prezzo].index(CAPOLUOGO) + 1
+    )
+    fuori["casa_prezzo_mediano"] = numero_it(mediana(list(prezzi_comuni.values())))
+
+    variazione_reale = valori(metriche["variazione_prezzo_reale"])
+    fuori["casa_comuni_variazione"] = numero_it(len(variazione_reale))
+    fuori["casa_comuni_in_calo"] = numero_it(sum(1 for v in variazione_reale.values() if v < 0))
+    fuori["casa_variazione_mediana"] = percento_it(mediana(list(variazione_reale.values())), 2)
+    su = sorted(variazione_reale.items(), key=lambda kv: -kv[1])[:3]
+    fuori["casa_comuni_in_crescita"] = ", ".join(comuni[c]["comune"] for c, _ in su)
+
+    reddito_comuni = valori(metriche["reddito_medio"])
+    condivisi = sorted(set(prezzi_comuni) & set(reddito_comuni))
+    fuori["casa_correlazione_reddito"] = numero_it(
+        pearson([prezzi_comuni[c] for c in condivisi], [reddito_comuni[c] for c in condivisi]), 2
+    )
+
     return fuori
 
 
@@ -1246,6 +1466,7 @@ def dati_incorporati(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict
         "turismo": turismo_confronto(),
         "clima": clima(),
         "capoluoghi": controllo_capoluoghi(),
+        "casa": casa(),
         "metriche": {
             id_metrica: {
                 "label": metrica["label"],

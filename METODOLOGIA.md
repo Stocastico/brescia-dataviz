@@ -1,4 +1,4 @@
-# Nota metodologica (MET-1…MET-19)
+# Nota metodologica (MET-1…MET-20)
 
 > **Cos'è.** Le decisioni che governano il progetto: *perché* misuriamo come
 > misuriamo. È la base di credibilità — qualunque grafico, testo o titolo deve
@@ -8,13 +8,15 @@
 >
 > ## ⚠️ Bozza avanzata — non ancora definitiva
 >
-> **Aggiornata a settembre 2026, quando l'ultimo dei quattro assi ha avuto il
-> suo termine di paragone.** Le diciannove regole qui elencate sono tutte reali e
+> **Aggiornata a settembre 2026, quando il quinto asse ha avuto la sua prima
+> analisi.** Le venti regole qui elencate sono tutte reali e
 > applicate; cinque di esse (MET-9, MET-12, MET-13, MET-14, MET-15) nascono da
 > errori o incoerenze **effettivamente trovati sui dati bresciani**, non da
 > principi scelti a tavolino.
 >
-> Ultima arrivata: **MET-19**, dalle quotazioni immobiliari OMI — negli affitti
+> Ultima arrivata: **MET-20**, dal deflatore: l'indice dei prezzi al consumo è
+> pubblicato in tre basi che non si sovrappongono, e attaccarne i livelli
+> disegna due crolli del 30 % mai avvenuti. Prima: **MET-19**, dalle quotazioni immobiliari OMI — negli affitti
 > la base di misura passa da superficie netta a superficie lorda nel 2025, e la
 > media della città «cala» di due decimi senza che il mercato si muova. Prima:
 > **MET-17** e **MET-18**, entrambe nate
@@ -685,6 +687,65 @@ posto di una serie spezzata e vera. Meglio due tratti dichiarati che uno finto.
 ---
 
 
+## MET-20 — Un indice pubblicato in più basi non è una serie
+
+> Nata dal deflatore, settembre 2026: la prima serie del progetto che la fonte
+> pubblica **spezzata**, e che sembra intera.
+
+Il progetto ha vissuto due mesi con una nota ripetuta in tre documenti: i redditi
+sono in **euro correnti**, quindi parte della crescita è inflazione e non
+sappiamo quanta. La nota era onesta e diventava insostenibile con le quotazioni
+immobiliari, che partono dal **2004**: su ventun anni la differenza fra euro
+correnti e costanti non è una sfumatura, è il segno del risultato.
+
+Scaricato l'indice dei prezzi al consumo (NIC, medie annue), si scopre che
+**non è una serie**: sono tre, in tre basi diverse, e nessuna coppia si
+sovrappone in un anno.
+
+| anni | base | valore agli estremi |
+|---|---|---|
+| 1996–2010 | 1995 = 100 | 2010 → 139,8 |
+| 2011–2015 | 2010 = 100 | 2011 → 102,8 |
+| 2016–2025 | 2015 = 100 | 2016 → 99,9 |
+
+Messi in colonna e graficati, quei numeri mostrano **due crolli del 30 %** —
+nel 2011 e nel 2016 — che non sono mai avvenuti. E la cosa pericolosa è che
+questa serie supera ogni controllo che verrebbe da scrivere: gli anni ci sono
+tutti, i valori sono positivi, l'indice cresce a tratti.
+
+> **Quando una fonte pubblica lo stesso indice in più basi, il raccordo si fa
+> con la variazione che la fonte stessa pubblica, non con i livelli.** Dentro
+> una base valgono i livelli pubblicati; nell'anno in cui una base comincia
+> vale la variazione annua. E la serie concatenata dichiara, riga per riga,
+> quali anni sono stati riscalati.
+
+`indice_prezzi.csv` esce così: `indice` in base 2015 = 100, `indice_fonte` con
+il numero **come la fonte lo pubblica** — 139,8 nel 2010, 102,8 nel 2011 —
+`base_fonte` con la base a cui quel numero appartiene, `stato` a `osservato` o
+`concatenato`. Il livello della fonte sta nella tabella per una ragione precisa:
+senza, il raccordo è un'affermazione da credere sulla parola; con, chiunque apra
+il CSV lo può rifare e contestare. Il test che la tiene in piedi non guarda i livelli — guarda che
+**ogni rapporto fra anni consecutivi riproduca la variazione dichiarata**,
+giunzioni comprese: è l'unico controllo che la concatenazione ingenua non passa.
+
+**Il prezzo del raccordo, dichiarato.** Le variazioni sono pubblicate con un
+decimale, quindi ogni giunzione porta fino a ~0,05 % di arrotondamento. Su due
+giunzioni in trent'anni è un decimo di punto contro il **+47,8 % di inflazione
+cumulata fra il 2004 e il 2025**: non tocca nessuna conclusione, ed è scritto
+qui perché una
+precisione persa che nessuno dichiara è una precisione che qualcuno prima o poi
+rivendica.
+
+**L'assunzione che resta, e non si può togliere.** È l'indice **nazionale**.
+Deflazionare i prezzi delle case bresciane con l'inflazione italiana assume che
+le due coincidano; un indice provinciale dei prezzi al consumo esiste per alcuni
+capoluoghi, non per tutta la serie e non per tutti i comuni. Quindi ogni cifra
+in euro costanti di questo progetto è **`derivato`** e non `osservato` (MET-4),
+e la frase che la accompagna dice con cosa è stata deflazionata.
+
+---
+
+
 ## Invarianti tecniche
 
 Fatte valere dai test della pipeline (`pipeline/tests/`):
@@ -728,7 +789,11 @@ Fatte valere dai test della pipeline (`pipeline/tests/`):
     rotta. Accanto, il **2025 resta marcato** come definizione cambiata
     (MET-18): il test controlla che lo scalino del +87,6 % sia ancora lì, cioè
     che la fonte non abbia ricostruito la serie all'indietro rendendo inutile
-    la marcatura.
+    la marcatura;
+13. **l'indice dei prezzi è una serie sola**: ogni rapporto fra anni
+    consecutivi riproduce la variazione annua pubblicata dalla fonte,
+    giunzioni fra basi comprese (MET-20). È il solo controllo che la
+    concatenazione sbagliata non supera.
 
 E due controlli che non sono test ma girano a ogni push
 (`.github/workflows/verifica.yml`):

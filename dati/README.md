@@ -82,6 +82,32 @@ SPID. **Chi le riusa deve citare «Agenzia Entrate - OMI».**
 > transazioni: l'Agenzia stessa le chiama «indicazioni di valore di larga
 > massima».
 
+### Il deflatore
+
+| File | Righe | Contenuto |
+|---|---|---|
+| `indice_prezzi.csv` | 30 | L'indice **nazionale** dei prezzi al consumo per l'intera collettività (NIC), medie annue **1996–2025**, in base 2015 = 100: `indice`, il livello `indice_fonte` **come la fonte lo pubblica** (139,8 nel 2010, 102,8 nel 2011: sono basi diverse), la `variazione_annua` della fonte, la base a cui quel livello appartiene (`base_fonte`) e lo `stato`. Fonte: ISTAT, `167_747_DCSP_NIC2B2025_1`. |
+
+È la tabella che permette di scrivere «euro costanti» invece di «euro
+correnti», e finché non c'era, ogni serie in euro del progetto portava la stessa
+avvertenza: quanto della crescita fosse inflazione non si sapeva dire.
+
+> ⚠️ **Non è una serie della fonte: è tre serie attaccate.** ISTAT pubblica il
+> NIC in tre basi che **non si sovrappongono** — 1995 = 100 fino al 2010,
+> 2010 = 100 dal 2011 al 2015, 2015 = 100 dal 2016 — e messe in colonna così
+> come sono danno due crolli del 30 % che non sono mai successi. Il ponte fra
+> una base e la successiva è la **variazione annua**, che la fonte calcola sul
+> proprio raccordo interno. Dentro una base valgono i livelli pubblicati, alle
+> giunzioni vale la variazione: è **MET-20**, e un test verifica che ogni
+> rapporto fra anni consecutivi riproduca la variazione dichiarata. `stato` dice
+> quali anni sono usciti così: `osservato` per quelli già in base 2015,
+> `concatenato` per gli altri.
+
+> ⚠️ **È l'indice italiano, non quello bresciano.** Deflazionare Brescia con
+> l'Italia assume che l'inflazione bresciana sia quella italiana. È
+> un'assunzione ragionevole e resta un'assunzione: va dichiarata ogni volta,
+> come vuole MET-4.
+
 ### La geometria
 
 | File | Contenuto |

@@ -611,7 +611,14 @@
        una striscia nera, e una data illeggibile è peggio di nessuna data.
        L'ultimo periodo si scrive sempre: è quello che il lettore cerca. */
     const saltoX = Math.ceil(periodi.length / 12);
+    /* L'ultimo periodo si scrive sempre, ma se cade a un passo da uno gia'
+       scritto i due si sovrappongono e diventano una parola sola: con
+       ventidue annate uscivano «202425». La penultima etichetta salta. */
+    const ultimoRegolare = Math.floor((periodi.length - 1) / saltoX) * saltoX;
+    const saltaUltimoRegolare =
+      periodi.length - 1 - ultimoRegolare > 0 && periodi.length - 1 - ultimoRegolare < saltoX;
     periodi.forEach(function (periodo, indice) {
+      if (saltaUltimoRegolare && indice === ultimoRegolare) return;
       if (indice % saltoX && indice !== periodi.length - 1) return;
       const testo = el("text", { x: sx(indice), y: riquadro.alto + riquadro.altezza + 18,
         "text-anchor": "middle", fill: css("--muted"), "font-size": 11 }, svg);
@@ -619,6 +626,7 @@
     });
 
     const colori = CATEGORICHE.map(css);
+    const etichette = [];
     linee.forEach(function (linea, indiceLinea) {
       let d = "";
       linea.valori.forEach(function (valore, indice) {
@@ -638,11 +646,29 @@
         punto.addEventListener("mouseleave", nascondiSuggerimento);
       });
       // Etichetta diretta in fondo alla linea: la legenda separata costringe
-      // l'occhio a fare avanti e indietro.
+      // l'occhio a fare avanti e indietro. La posizione viene decisa dopo,
+      // quando si sanno tutte: due linee che finiscono allo stesso valore —
+      // e la storia della casa ne ha due, per costruzione — scriverebbero
+      // altrimenti le due etichette una sopra l'altra.
       const ultimo = linea.valori.length - 1;
-      const testo = el("text", { x: sx(ultimo) + 10, y: sy(linea.valori[ultimo]) + 4,
-        fill: colori[indiceLinea % colori.length], "font-size": 12, "font-weight": 600 }, svg);
-      testo.textContent = linea.nome;
+      etichette.push({
+        y: sy(linea.valori[ultimo]),
+        x: sx(ultimo) + 10,
+        nome: linea.nome,
+        colore: colori[indiceLinea % colori.length],
+      });
+    });
+
+    /* Le etichette in ordine di altezza, spinte in giu' quando si accavallano:
+       tredici pixel sono l'altezza di riga a corpo 12. */
+    etichette.sort(function (a, b) { return a.y - b.y; });
+    etichette.forEach(function (etichetta, indice) {
+      if (indice > 0 && etichetta.y - etichette[indice - 1].y < 13) {
+        etichetta.y = etichette[indice - 1].y + 13;
+      }
+      const testo = el("text", { x: etichetta.x, y: etichetta.y + 4, fill: etichetta.colore,
+        "font-size": 12, "font-weight": 600 }, svg);
+      testo.textContent = etichetta.nome;
     });
 
     const righe = periodi.map(function (periodo, indice) {

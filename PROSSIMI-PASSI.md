@@ -77,22 +77,22 @@ Indice:
 | Ricognizione delle fonti | ✅ [`FONTI.md`](FONTI.md), con lo stato di accesso verificato riga per riga |
 | Soggetto e assi | ✅ decisi: la provincia attraverso i 205 comuni, quattro assi portanti ([`BRIEF.md`](BRIEF.md)) |
 | Repository separato | ✅ esiste, `main`, file in radice |
-| Pipeline | ✅ funzionante, `requests` + libreria standard, 222 test verdi |
+| Pipeline | ✅ funzionante, `requests` + libreria standard, 264 test verdi |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
-| Tabelle tidy | ✅ **30 CSV** in [`dati/processed/`](dati/README.md), versionati — le ultime tre vengono dall'OMI: quotazioni in grana zona e in grana comunale, più i volumi di compravendita 2011–2025 (settembre 2026); manca solo `migrazioni_comuni.csv` |
-| Asse «casa e prezzi» | ✅ i **dati** (quotazioni OMI 2004–2025 in due grane, compravendite 2011–2025), 🤖 **nessuna analisi ancora**: cosa ci si può fare sta in §4 |
-| Analisi | ✅ quattordici script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province, la scomposizione demografica, l'aria e il clima, il turismo confrontato con le altre province |
-| Storie scelte | ✅ **sette**, scritte e pubblicate nel documento narrativo — la quinta corregge quelle che la precedono, la sesta è l'unica che dura vent'anni, la settima è l'unica che nessuno si aspettava. Le candidate rimaste stanno in `BRIEF.md` |
+| Tabelle tidy | ✅ **31 CSV** in [`dati/processed/`](dati/README.md), versionati — tre vengono dall'OMI (quotazioni in grana zona e comunale, volumi di compravendita 2011–2025) e la trentunesima è il **deflatore** `indice_prezzi.csv`, che è arrivato per leggerle; manca solo `migrazioni_comuni.csv` |
+| Asse «casa e prezzi» | ✅ **completo**: i dati (quotazioni OMI 2004–2025 in due grane, compravendite 2011–2025), l'analisi (`casa_e_prezzi.py`, §4) e la **storia** — l'ottava del sito. Prezzo reale −30,8 % in ventun anni mentre i volumi fanno +134,5 % |
+| Analisi | ✅ **quindici** script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province, la scomposizione demografica, l'aria e il clima, il turismo confrontato con le altre province, e da settembre la **casa** — prezzi contro volumi, le zone del capoluogo, i 203 comuni quotati |
+| Storie scelte | ✅ **otto**, scritte e pubblicate nel documento narrativo — la quinta corregge quelle che la precedono, la settima è l'unica che nessuno si aspettava, l'ottava è la più lunga e la sola in cui il risultato dipende da come si misura. Le candidate rimaste stanno in `BRIEF.md` |
 | Contratto dati per il sito | ✅ `metric_*.json` + registro, con i cinque invarianti come test |
 | Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega |
 | Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
 | Deploy | 🤖 la **costruzione** è automatica su `main` (test, cifre, sito, artefatto); la **pubblicazione** no: parte solo a mano, con una conferma scritta (§7). ✅ la sorgente di Pages è su «GitHub Actions» dal 4 settembre 2026, quindi il primo lancio ha dove pubblicare |
 | Licenza | ✅ MIT per il codice (`LICENSE`), CC BY 4.0 per testi e dati (`LICENSE-DATI`) (§3.3) |
-| `METODOLOGIA.md` | ⚠️ bozza avanzata: **diciannove** regole, MET-9 chiusa, MET-16 dal panel bilanciato delle centraline, MET-17 e MET-18 dal confronto sul turismo, MET-19 dalle quotazioni OMI (l'unità di misura è una dimensione, non una nota) |
-| `WORKING-PAPER.md` | ⚠️ bozza, ma la §7 è scritta: **otto risultati** con i loro controlli, e la §7.8 fa cadere il limite che il documento dichiarava più serio. Resta provvisorio il titolo, che cambierà quando sarà chiara la tesi (§8) |
+| `METODOLOGIA.md` | ⚠️ bozza avanzata: **venti** regole, l'ultima (MET-20) dall'indice dei prezzi pubblicato in tre basi che non si sovrappongono; MET-9 chiusa, MET-16 dal panel bilanciato delle centraline, MET-17 e MET-18 dal confronto sul turismo, MET-19 dalle quotazioni OMI (l'unità di misura è una dimensione, non una nota) |
+| `WORKING-PAPER.md` | ⚠️ bozza, ma la §7 è scritta: **nove risultati** con i loro controlli. La §7.8 fa cadere il limite che il documento dichiarava più serio; la §7.9 è la sola in cui la conclusione dipende da come si misura, e la §7.3 è stata corretta da lei. Resta provvisorio il titolo, che cambierà quando sarà chiara la tesi (§8) |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
-fatte e sette storie sono scritte in un sito che si costruisce da solo, e adesso
+fatte e otto storie sono scritte in un sito che si costruisce da solo, e adesso
 ha anche dove pubblicarsi: **manca la tua rilettura, e il clic che pubblica**.
 Il lavoro tecnico che resta è tutto facoltativo — il pannello interattivo e i
 download manuali.
@@ -148,7 +148,7 @@ python -m brescia_pipeline.build migrazioni abitazioni famiglie
 > le quarantamila righe.
 >
 > Per ora è **esclusa da git** (`.gitignore`, con la motivazione accanto) e si
-> rigenera in venti minuti. Nessuna delle sette storie pubblicate la usa, quindi
+> rigenera in venti minuti. Nessuna delle otto storie pubblicate la usa, quindi
 > non blocca niente. Le due strade, quando l'asse 2 verrà affrontato:
 >
 > - **codici al posto delle etichette**, più una legenda in una tabella a parte.
@@ -393,25 +393,43 @@ i dati ci sono o si scaricano da soli.
   centro/periferia è più marcato che altrove.
 - **Il termovalorizzatore e il teleriscaldamento**, fra i più estesi d'Italia.
 
-**Sulla casa** — è la novità di settembre 2026: i dati ci sono (§2.2, 🙋 3
-chiusa), le analisi no.
+**Sulla casa** — ✅ **fatta**: `analysis/casa_e_prezzi.py`, settembre 2026. Le
+tre domande erano queste, e hanno tutte una risposta.
 
-- **Prezzi contro volumi.** Le due serie del capoluogo si muovono in modo
-  opposto — €/m² nominalmente fermo dal 2004, NTN residenziale quasi raddoppiato
-  dal fondo del 2013 — e messe su un grafico solo sono già una storia. Il
-  controllo da fare prima: quanto di quel «fermo» è inflazione, cioè la serie in
-  euro costanti accanto a quella corrente.
-- **Il capoluogo per zona.** Ventitré zone OMI quotate su ventisei censite: è la
-  grana da quartiere che a questo progetto è sempre mancata, e permette la
-  domanda che a Donostia veniva dal barrio — il centro si è staccato dalla
-  periferia, o si sono mossi insieme? ⚠️ Le zone si accorpano nel tempo (600 nel
-  2004, 436 nel 2025): serve `link_zona`, e va dichiarato che il perimetro non è
-  costante.
-- **La provincia in mappa.** `quotazioni_comuni.csv` incrocia i 205 comuni con
-  tutto il resto: prezzo contro reddito, contro addetti, contro spopolamento.
-  Attenzione a due cose e sono entrambe scritte nella tabella: la copertura è di
-  **203 comuni** (Magasa e Valvestino non ci sono) e la colonna
-  `base_superficie` non si può ignorare (**MET-19**).
+- ✅ **Prezzi contro volumi**, e il controllo che mancava. In euro correnti il
+  metro quadro del capoluogo fa **+2,3 % in ventun anni** — 1.788 € nel 2004,
+  1.829 € nel 2025 — e sembra un mercato fermo. In **euro 2025** fa **−30,8 %**:
+  quei 1.788 € del 2004 sono 2.642 € di oggi. Nello stesso periodo i volumi
+  crescono: dal fondo del 2013 al 2025 l'NTN residenziale fa **+134,5 %**. Le
+  due serie non si contraddicono — *si vende molto di più a un prezzo reale
+  molto più basso* — ed è una frase che nessuna delle due dice da sola. Il
+  controllo sull'inflazione ha prodotto il deflatore che al progetto mancava
+  (`indice_prezzi.csv`) e **MET-20**.
+- ✅ **Il capoluogo per zona**, con una sorpresa sul metodo. La domanda del
+  barrio — il centro si è staccato dalla periferia? — ha risposta **no, il
+  contrario**: sul panel bilanciato la forbice fra la zona più cara e la più
+  economica passa da **2,21 nel 2004 a 1,97 nel 2025**, e chi partiva più caro
+  ha perso di più (−0,38 Pearson / −0,53 Spearman fra livello iniziale e
+  variazione reale, su tredici zone). ⚠️ Il perimetro **non è costante e cambia
+  proprio qui**: nel 2024 la zonizzazione del capoluogo viene rifatta, dieci
+  zone finiscono nel 2023 e dieci cominciano nel 2024. Le medie annue restano su
+  23 zone quotate ma non sono le stesse 23, quindi il confronto lungo si fa sul
+  panel delle **tredici presenti in tutti e ventidue i semestri**. È MET-16
+  applicata alle zone invece che alle centraline.
+- ✅ **La provincia**, e il vertice non è la città. Il capoluogo è **18° su 203**
+  comuni quotati: sopra ci sono il Garda e l'alta montagna, cioè il turismo — lo
+  stesso risultato di `dove_si_lavora.py` visto dal lato della casa. Il prezzo
+  si accompagna al reddito (+0,52 / +0,50), meno agli addetti (+0,33 / +0,35), e
+  sulla popolazione **Pearson e Spearman divergono** (+0,18 contro +0,58): la
+  relazione fra rango c'è, quella lineare la schiaccia il capoluogo. Il
+  leave-one-out di MET-5 sui quattordici comuni gardesani non sposta niente,
+  quindi nessuna delle tre relazioni è fatta dal Garda.
+
+Cosa resta su questo asse, tutto 🤖 — la storia ✅ **è stata scritta** e sta nel
+sito (l'ottava, `#casa`). Restano gli **affitti** — che questo script non
+tocca perché la base di superficie cambia nel 2025 (MET-19) e vanno letti in due
+tratti — e l'incrocio con lo **stock abitativo** censuario, cioè quante case
+vuote ci sono dove i prezzi sono caduti di più.
 
 **Sul metodo**
 
@@ -533,7 +551,7 @@ Questa è la parte che si perderebbe. Il progetto Donostia pubblica **due cose
 diverse** sullo stesso sito, ed è una separazione che vale la pena copiare.
 
 > **✅ Il primo dei due artefatti esiste** (agosto 2026), in
-> [`sito/`](sito/README.md): documento narrativo con sette storie, più
+> [`sito/`](sito/README.md): documento narrativo con otto storie, più
 > `metodologia.html` e `dati.html`. Mezzo mega, autocontenuto, mappe e grafici
 > in SVG disegnati a mano. Si costruisce con `python sito/costruisci.py`.
 >
@@ -926,7 +944,7 @@ entra nel tempo che hai, non a fare un piano.
 | ✅ ~~Decomposizione della popolazione~~ | fatta | ed è diventata MET-15: la prima storia adesso risponde alla domanda che dichiarava di non poter rispondere |
 | ✅ ~~Una storia su aria e clima (asse 4)~~ | fatta | `analysis/aria_e_clima.py` e la sesta storia del sito. Ne è uscita anche MET-16, e la pioggia è entrata nel racconto **proprio perché** non dà segnale |
 | ✅ ~~Estendere il confronto fra province al **turismo**~~ | fatta | `analysis/confronto_turismo.py` e la §7.8 del working paper. Ne sono uscite MET-17 e MET-18, e la scoperta che la provincia è la decima d'Italia per presenze |
-| ✅ ~~Riscrivere la §7 del working paper con le storie~~ | fatta | otto risultati, ciascuno con i suoi controlli |
+| ✅ ~~Riscrivere la §7 del working paper con le storie~~ | fatta | nove risultati, ciascuno con i suoi controlli |
 | ✅ ~~Portare il turismo nel sito come **settima storia**~~ | fatta | «La decima provincia turistica d'Italia», con lo sciame delle 107 province, i diciassette anni di presenze divise fra clienti italiani e stranieri, e lo scarto fra le due fonti disegnato invece che raccontato. Il settimo colore è `--prugna`, scelto con la regola ora scritta in `sito/README.md` |
 | 🤖 Analisi e storia sulla casa (§4) | **mezza giornata** per la prima analisi, un giorno per l'ottava storia | l'unico tema che ha i dati e non ha ancora niente: prezzi fermi contro volumi raddoppiati |
 | 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |

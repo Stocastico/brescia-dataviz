@@ -103,6 +103,8 @@ FONTE_POP = "ISTAT — popolazione residente comunale"
 FONTE_MEF = "MEF — dichiarazioni dei redditi delle persone fisiche"
 IMPONIBILE = "AGGINCR"  # codice MEF, non etichetta: le etichette cambiano lingua
 FONTE_TURISMO = "Regione Lombardia — flussi turistici per comune"
+FONTE_OMI = "Agenzia delle Entrate — OMI, quotazioni immobiliari"
+FONTE_PREZZI = "ISTAT — indice dei prezzi al consumo (NIC), medie annue"
 
 
 def _indicatori() -> list[dict[str, Any]]:
@@ -111,6 +113,8 @@ def _indicatori() -> list[dict[str, Any]]:
     redditi = _leggi("redditi_comuni.csv")
     turismo = _leggi("turismo_comuni_annuale.csv")
     geo = {r["codice_istat"]: r for r in _leggi("comuni_geometria.csv")}
+    quotazioni = _leggi("quotazioni_comuni.csv")
+    indice_prezzi = {r["anno"]: float(r["indice"]) for r in _leggi("indice_prezzi.csv")}
 
     addetti = _serie(imprese, lambda r: r["indicatore"] == "addetti" and r["classe_addetti"] == "totale")
     unita = _serie(imprese, lambda r: r["indicatore"] == "unita_locali" and r["classe_addetti"] == "totale")
@@ -137,6 +141,40 @@ def _indicatori() -> list[dict[str, Any]]:
         and r["stato"] == "osservato",
         colonna="presenze",
     )
+
+    # €/m² delle abitazioni civili in vendita. Le tre condizioni non sono
+    # filtri di comodo: la tipologia perché negozi e capannoni sono altri
+    # mercati, il mercato perché gli affitti sono €/m² **al mese**, la base di
+    # superficie perché lorda e netta non si mediano fra loro (MET-19).
+    prezzo_case = _serie(
+        quotazioni,
+        lambda r: r["tipologia"] == "Abitazioni civili"
+        and r["mercato"] == "vendita"
+        and r["base_superficie"] == "lorda",
+        colonna="media",
+    )
+    # La stessa serie in euro dell'ultimo anno dei prezzi (MET-20). Gli anni
+    # fuori dalla serie dei prezzi sparirebbero invece di passare indeformati,
+    # ma non ce ne sono: l'indice copre dal 1996.
+    anno_base = max(indice_prezzi)
+    prezzo_case_reale: Valori = {
+        codice: {
+            anno: valore * indice_prezzi[anno_base] / indice_prezzi[anno]
+            for anno, valore in per_anno.items()
+            if valore is not None and anno in indice_prezzi
+        }
+        for codice, per_anno in prezzo_case.items()
+    }
+    # Magasa e Valvestino escono dalla fonte nel 2016: la loro variazione
+    # coprirebbe undici anni invece di ventuno, e finirebbe sulla stessa mappa
+    # degli altri come se fosse la stessa cosa. Restano fuori, e la mappa li
+    # mostra come «nessun dato» — che è quello che sono (MET-8, MET-3).
+    ultimo_quotato = max(anno for per_anno in prezzo_case_reale.values() for anno in per_anno)
+    prezzo_case_intero = {
+        codice: per_anno
+        for codice, per_anno in prezzo_case_reale.items()
+        if ultimo_quotato in per_anno
+    }
 
     superficie: Valori = {
         codice: {anno: float(riga["area_kmq"]) for anno in popolazione.get(codice, {})}
@@ -291,6 +329,42 @@ def _indicatori() -> list[dict[str, Any]]:
                 "Solo i valori osservati: i comuni con dato soppresso restano assenti, non a zero",
             ],
             "values": presenze,
+        },
+        {
+            "id": "prezzo_case",
+            "label": "Prezzo delle abitazioni civili",
+            "unit": "euro/m²",
+            "kind": "sequential",
+            "theme": "casa",
+            "source": FONTE_OMI,
+            "confidence": "osservato",
+            "assumptions": [
+                "Quotazioni, non transazioni: la fonte le chiama «indicazioni di valore "
+                "di larga massima»",
+                "Vendita, su superficie lorda: gli affitti hanno un'altra unità e dal 2025 "
+                "un'altra base",
+                "Media non pesata dei punti medi delle zone: il numero di immobili per zona "
+                "non esiste nella fonte",
+                "203 comuni su 205: Magasa e Valvestino non sono nella fonte dal 2016",
+            ],
+            "values": prezzo_case,
+        },
+        {
+            "id": "variazione_prezzo_reale",
+            "label": f"Variazione reale del prezzo delle case, 2004–{anno_base}",
+            "unit": "%/anno",
+            "kind": "diverging",
+            "theme": "casa",
+            "source": f"{FONTE_OMI}; {FONTE_PREZZI}",
+            "confidence": "derivato",
+            "assumptions": [
+                f"Euro {anno_base}: deflazionati con l'indice **nazionale** dei prezzi al "
+                "consumo, quindi assumendo che l'inflazione bresciana sia quella italiana",
+                "Tasso composto fra il primo e l'ultimo anno disponibile del comune",
+                "203 comuni: Magasa e Valvestino escono dalla fonte nel 2016 e una "
+                "variazione su undici anni non sta sulla stessa mappa di una su ventuno",
+            ],
+            "values": _crescita(prezzo_case_intero, f"2004–{anno_base}"),
         },
         {
             "id": "presenze_per_abitante",
