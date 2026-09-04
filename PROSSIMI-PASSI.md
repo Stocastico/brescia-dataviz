@@ -11,30 +11,42 @@ più dov'era rimasto: ogni sezione si legge da sola.
 | ✅ | **fatto**, resta come traccia |
 | 🤖 | **fattibile da una sessione di lavoro qualsiasi**: bastano la rete e questo repository |
 | 🙋 | **tocca a te.** Richiede un login personale (SPID/CIE), una macchina con accesso normale alla rete italiana, oppure una decisione che non va presa al posto tuo |
+| ✗ | **caduta**: la fonte non esiste più, e la voce resta scritta perché sapere che un dato è perduto vale quanto averlo |
 
 Le voci 🙋 non sono bloccanti per il grosso del progetto: i quattro assi
 portanti hanno già tutti i dati che servono. Sono estensioni e finiture.
 
 ## Le cose che tocca a te — tutte, in un posto solo
 
-La licenza è scelta (§3.3), quindi per pubblicare restano **due clic**, e
-nessuno dei due è tecnico: la sorgente di Pages, e il cancello che decide quando
-il sito diventa visibile. Il resto si costruisce da solo a ogni push su `main`.
-Sopra ai due clic c'è una **decisione di disegno** aperta da settembre 2026, che
-non blocca niente ma è l'unica cosa in questo elenco che nessuno può prendere al
-posto tuo perché riguarda due repository insieme.
+La licenza è scelta (§3.3) e la sorgente di Pages è a posto dal 4 settembre
+2026, quindi per pubblicare resta **un clic**, e non è tecnico: il cancello che
+decide quando il sito diventa visibile. Il resto si costruisce da solo a ogni
+push su `main`. Sopra a quel clic c'è una **decisione di disegno** aperta da
+settembre 2026, che non blocca niente ma è l'unica cosa in questo elenco che
+nessuno può prendere al posto tuo perché riguarda due repository insieme.
 
 | | Cosa | Perché tocca a te | Tempo | Blocca |
 |---|---|---|---|---|
-| 🙋 2 | **Correggere la sorgente di GitHub Pages** (§7): *Settings → Pages → Source* è su «Deploy from a branch», va messo su **«GitHub Actions»** | serve il tuo accesso da proprietario del repo | 2 min | il primo deploy: finché resta com'è, l'indirizzo pubblico serve il README passato per Jekyll, non il racconto |
+| ✅ 2 | ~~**Correggere la sorgente di GitHub Pages**~~ (§7) — **fatta il 4 settembre 2026**: *Source* è su «GitHub Actions», e il workflow ha finalmente dove pubblicare | serviva il tuo accesso da proprietario del repo | 2 min | niente più |
 | 🙋 9 | **Pubblicare**, quando l'analisi sarà finita (§7): *Actions → «Pubblica il sito» → Run workflow → conferma = `pubblica`* | è la decisione di pubblicare, e non la prende un workflow | 1 min | che il sito diventi visibile. Prima di allora si costruisce a ogni push e resta un artefatto da scaricare |
-| 🙋 3 | **Scaricare le quotazioni OMI** e i perimetri delle zone (§2.2) | area riservata Agenzia delle Entrate, SPID/CIE | 1–2 h la prima volta | solo l'asse «casa e prezzi», che è di contorno |
-| 🙋 4 | **Scaricare gli open data del Comune di Brescia** (§2.2) | `dati.comune.brescia.it` non risponde dagli ambienti remoti, da una macchina italiana sì | 30 min | estende indietro il turismo cittadino (2005–2013) |
-| 🙋 5 | **Scaricare i dati MUR sui due atenei** (§2.2) | `dati-ustat.mur.gov.it` idem | 30 min | l'asse istruzione, che è di contorno |
-| 🙋 6 | **Esportare a mano il commercio estero provinciale** (§2.2) | il databrowser ISTAT è una SPA senza API | 1 h | niente: la serie regionale è già scaricata come ripiego dichiarato |
+| ✅ 3 | ~~**Scaricare le quotazioni OMI**~~ — **fatta il 4 settembre 2026**: 22 semestri (2004–2025) più le compravendite comunali 2011–2025, in [`dati/input/omi/`](dati/input/omi/PROVENIENZA.md). Restano da chiedere solo i perimetri KML, se un giorno si scenderà sotto il capoluogo | serviva il tuo SPID: era l'unico scarico del progetto con un login | 1 h | niente più: l'asse «casa e prezzi» ha i dati, gli manca la pipeline (🤖) |
+| ✗ 4 | ~~**Scaricare gli open data del Comune di Brescia**~~ — **la voce cade** (4 settembre 2026): il portale è dismesso, non irraggiungibile ([perché](dati/SCARICHI-MANUALI.md) §2) | non era la nostra rete: `comune.brescia.it/opendata` risponde `410 Gone`. I dataset sono su `dati.lombardia.it`, quindi 🤖; il turismo cittadino 2005–2013 non è migrato e resta perduto | — | niente, tranne l'estensione indietro della settima storia, che va dichiarata come non disponibile |
+| 🙋 6 | **Esportare a mano il commercio estero provinciale** (§2.2, [istruzioni](dati/SCARICHI-MANUALI.md) §3) | il databrowser ISTAT è una SPA senza API | 1 h | niente: la serie regionale è già scaricata come ripiego dichiarato |
 | 🙋 7 | **Rileggere i testi prima di pubblicare** (§8) | è il tuo nome sopra | — | la pubblicazione |
 | 🙋 8 | **Scaricare in locale `migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git, e serve solo quando l'asse 2 diventerà una storia | 20 min di attesa | niente di quello che è pubblicato |
 | 🙋 10 | **Dire se la tavolozza va riallineata con `donostia-dataviz`** ([`sito/README.md`](sito/README.md) §Lo stile) | le storie qui sono sette e i colori ereditati sono cinque, quindi ne sono stati aggiunti due (`--oliva` e `--prugna`), con accanto la **regola** che li sceglie: il buco di tinta più largo che resta, alla luminosità della famiglia. Qui il sito è coerente; la domanda che resta tua riguarda la lingua grafica **condivisa fra i due progetti** — tenerli una collana stretta o lasciarli divergere | 10 min per dire di sì com'è, mezz'ora se porti regola e toni anche nell'altro repository | niente |
+
+🤖 **Tre voci non sono più tue, e per due ragioni diverse.** Il 4 settembre 2026
+ho riprovato gli host di questo elenco uno per uno. La 🙋 5 e metà della 🙋 3
+sono cadute perché gli host hanno risposto: `dati-ustat.mur.gov.it` è un CKAN
+funzionante, e le **compravendite NTN a grana provinciale e di capoluogo** sono
+pubblicate in chiaro sul sito dell'Agenzia — dietro il login resta solo il
+dettaglio comunale. La 🙋 4 è caduta per il motivo opposto: il portale open data
+del Comune **non esiste più** (`410 Gone`), i suoi dataset sono migrati su
+`dati.lombardia.it` — che la pipeline interroga da mesi — e la serie turistica
+cittadina 2005–2013 non è migrata con loro. Dettagli in §2.1, §2.2 e in
+[`dati/SCARICHI-MANUALI.md`](dati/SCARICHI-MANUALI.md) §2 e §5. I numeri liberati
+non sono stati riusati, perché questo documento viene citato per numero.
 
 Tutto il resto di questo documento è 🤖 o ✅. Questa tabella è ripetuta in forma
 breve in testa al [`README`](README.md), diviso fra ciò che blocca la
@@ -67,21 +79,23 @@ Indice:
 | Repository separato | ✅ esiste, `main`, file in radice |
 | Pipeline | ✅ funzionante, `requests` + libreria standard, 222 test verdi |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
-| Tabelle tidy | ✅ 27 CSV in [`dati/processed/`](dati/README.md), versionati; manca solo `migrazioni_comuni.csv` |
+| Tabelle tidy | ✅ **30 CSV** in [`dati/processed/`](dati/README.md), versionati — le ultime tre vengono dall'OMI: quotazioni in grana zona e in grana comunale, più i volumi di compravendita 2011–2025 (settembre 2026); manca solo `migrazioni_comuni.csv` |
+| Asse «casa e prezzi» | ✅ i **dati** (quotazioni OMI 2004–2025 in due grane, compravendite 2011–2025), 🤖 **nessuna analisi ancora**: cosa ci si può fare sta in §4 |
 | Analisi | ✅ quattordici script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province, la scomposizione demografica, l'aria e il clima, il turismo confrontato con le altre province |
 | Storie scelte | ✅ **sette**, scritte e pubblicate nel documento narrativo — la quinta corregge quelle che la precedono, la sesta è l'unica che dura vent'anni, la settima è l'unica che nessuno si aspettava. Le candidate rimaste stanno in `BRIEF.md` |
 | Contratto dati per il sito | ✅ `metric_*.json` + registro, con i cinque invarianti come test |
 | Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega |
 | Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
-| Deploy | 🤖 la **costruzione** è automatica su `main` (test, cifre, sito, artefatto); la **pubblicazione** no: parte solo a mano, con una conferma scritta (§7). 🙋 serve il tuo passaggio su Pages |
+| Deploy | 🤖 la **costruzione** è automatica su `main` (test, cifre, sito, artefatto); la **pubblicazione** no: parte solo a mano, con una conferma scritta (§7). ✅ la sorgente di Pages è su «GitHub Actions» dal 4 settembre 2026, quindi il primo lancio ha dove pubblicare |
 | Licenza | ✅ MIT per il codice (`LICENSE`), CC BY 4.0 per testi e dati (`LICENSE-DATI`) (§3.3) |
-| `METODOLOGIA.md` | ⚠️ bozza avanzata: **diciotto** regole, MET-9 chiusa, MET-16 dal panel bilanciato delle centraline, MET-17 e MET-18 dal confronto sul turismo |
+| `METODOLOGIA.md` | ⚠️ bozza avanzata: **diciannove** regole, MET-9 chiusa, MET-16 dal panel bilanciato delle centraline, MET-17 e MET-18 dal confronto sul turismo, MET-19 dalle quotazioni OMI (l'unità di misura è una dimensione, non una nota) |
 | `WORKING-PAPER.md` | ⚠️ bozza, ma la §7 è scritta: **otto risultati** con i loro controlli, e la §7.8 fa cadere il limite che il documento dichiarava più serio. Resta provvisorio il titolo, che cambierà quando sarà chiara la tesi (§8) |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
-fatte e sette storie sono scritte in un sito che si costruisce da solo: **manca
-la tua rilettura e un clic nelle impostazioni**. Il lavoro tecnico che resta è
-tutto facoltativo — il pannello interattivo e i download manuali.
+fatte e sette storie sono scritte in un sito che si costruisce da solo, e adesso
+ha anche dove pubblicarsi: **manca la tua rilettura, e il clic che pubblica**.
+Il lavoro tecnico che resta è tutto facoltativo — il pannello interattivo e i
+download manuali.
 
 ---
 
@@ -168,19 +182,41 @@ python -m brescia_pipeline.build migrazioni abitazioni famiglie
 
 ### 2.2 🙋 Le fonti che richiedono te
 
-Nessuna di queste tocca i quattro assi portanti. Sono le estensioni.
+Nessuna di queste tocca i quattro assi portanti. Sono le estensioni. Le
+**istruzioni operative** — dove andare, cosa chiedere, dove mettere il file —
+stanno in [`dati/SCARICHI-MANUALI.md`](dati/SCARICHI-MANUALI.md); qui resta il
+perché.
 
 | | Cosa | Ostacolo | Come si supera |
 |---|---|---|---|
-| 🙋 3 | **Quotazioni immobiliari OMI** e **compravendite NTN** | area riservata Agenzia delle Entrate (SPID/CIE/Fisconline, gratuito) | Registrarsi, scaricare le quotazioni semestrali dal 2004 e i perimetri delle zone OMI in GML/KML; le compravendite sono annuali per comune dal 2011. Poi serve un crosswalk zone OMI ↔ comuni, **da dichiarare come tale**: è l'unico punto del progetto in cui si introduce una seconda geometria, e §9 spiega perché è pericoloso |
-| 🙋 4 | **Open data del Comune di Brescia** | `dati.comune.brescia.it` non risponde dagli ambienti di esecuzione remota, e ad agosto 2026 nemmeno `comune.brescia.it` (403) | Scaricare da una macchina normale: turismo cittadino 2005–2013 (estende indietro la serie regionale, che parte dal 2019) e i materiali dell'Osservatorio migrazioni |
-| 🙋 5 | **Università** | `dati-ustat.mur.gov.it` irraggiungibile | Iscritti 1998/99–2025/26 e laureati 2001–2024 per ateneo. **Attenzione: Brescia ha due atenei**, la statale e la sede della Cattolica; la statale da sola sottostima la popolazione universitaria |
+| ✅ 3 | **Quotazioni immobiliari OMI** — **acquisite** il 4 settembre 2026 | area riservata Agenzia delle Entrate (SPID/CIE/Fisconline, gratuito) | Fatto: 22 semestri, il 2° di ogni anno **dal 2004 al 2025**, filtrati sulla provincia, più i volumi di compravendita comunali 2011–2025. Stanno in `dati/input/omi/` come archivi zip, letti dalla pipeline con `zipfile`. Le quotazioni sono libere **dal 1° semestre 2004** e l'ultimo pubblicato è il **2° semestre 2025**. I perimetri delle zone (KML, dal 2010/2) servono **solo** per scendere sotto il capoluogo — a grana comunale il file delle quotazioni porta già il codice del comune, quindi la seconda geometria, che è il punto pericoloso di §9, non entra affatto. Le **compravendite NTN** non sono più qui: vedi §2.1 |
+| ✗ 4 | **Open data del Comune di Brescia** — **voce chiusa**, non rinviata | il portale CKAN è **dismesso**: DNS che risolve ma nessuna connessione, `comune.brescia.it/opendata` a `410 Gone`, ultimo passaggio dell'Internet Archive a gennaio 2021. Ad agosto 2026 lo avevamo letto come un problema di rete, e non lo era | I dataset comunali sono **migrati su `dati.lombardia.it`** (una ventina di `comune-brescia-*`, censiti su `dati.gov.it` sotto Regione Lombardia): sono 🤖. Il **turismo cittadino 2005–2013** non è nella migrazione né nell'Internet Archive — la sola strada che resta è chiederlo all'ufficio statistica del Comune, il cui sito intanto **ha riaperto** (200, era 403) |
 | 🙋 6 | **Commercio estero provinciale** | il portale Coeweb storico è dismesso (confermato: l'host non risponde), il sostituto è una SPA senza API | Esportare a mano dal databrowser via browser e versionare come input curato. In alternativa restare sulla serie **regionale**, già scaricata, dichiarandola — che è la scelta attuale e regge (MET-10) |
 
 Quando arriva un file scaricato a mano, **non va copiato in
-`dati/processed/`**: va messo come input curato e passato dalla pipeline, così
-resta tracciabile da dove viene. È la stessa regola della provenienza esplicita
-di §9.
+`dati/processed/`**: va messo in `dati/input/<fonte>/` col nome originale e
+passato dalla pipeline, così resta tracciabile da dove viene. È la stessa regola
+della provenienza esplicita di §9, e sta scritta per intero in
+[`dati/SCARICHI-MANUALI.md`](dati/SCARICHI-MANUALI.md).
+
+> **Due host hanno riaperto** (4 settembre 2026). Erano nell'elenco delle cose
+> che richiedevano Stefano, e non ci sono più:
+>
+> - **MUR — atenei.** `dati-ustat.mur.gov.it` risponde, ed è un CKAN vero:
+>   `api/3/action/package_search?q=iscritti` dà 31 dataset e quello chiamato
+>   `iscritti` ne ha 24 risorse. Iscritti e laureati per ateneo si scaricano da
+>   qui, con l'avvertenza che nessuna API risolve: **Brescia ha due atenei**, la
+>   statale e la sede della Cattolica, e la statale da sola sottostima la
+>   popolazione universitaria.
+> - **Compravendite NTN, provincia e capoluogo.** Non stanno dietro il login: la
+>   pagina pubblica *Volumi di compravendita* dell'Agenzia distribuisce
+>   direttamente `RESIDENZIALE_DEFINITIVO_2011_2024.zip`, il gemello non
+>   residenziale e i provvisori 2025–2026 — serie **trimestrale dal 1° trimestre
+>   2011**, dettaglio provinciale e di capoluogo, che è esattamente la grana del
+>   progetto. Dietro il login resta solo il dettaglio **comunale** per settore di
+>   mercato.
+>
+> Nessuna delle due è ancora scritta come modulo: sono da fare, ma sono 🤖.
 
 ### 2.3 🤖 Da verificare — promettenti, non testate
 
@@ -356,6 +392,26 @@ i dati ci sono o si scaricano da soli.
   Computer è verificato e anonimo). In pianura padana il contrasto
   centro/periferia è più marcato che altrove.
 - **Il termovalorizzatore e il teleriscaldamento**, fra i più estesi d'Italia.
+
+**Sulla casa** — è la novità di settembre 2026: i dati ci sono (§2.2, 🙋 3
+chiusa), le analisi no.
+
+- **Prezzi contro volumi.** Le due serie del capoluogo si muovono in modo
+  opposto — €/m² nominalmente fermo dal 2004, NTN residenziale quasi raddoppiato
+  dal fondo del 2013 — e messe su un grafico solo sono già una storia. Il
+  controllo da fare prima: quanto di quel «fermo» è inflazione, cioè la serie in
+  euro costanti accanto a quella corrente.
+- **Il capoluogo per zona.** Ventitré zone OMI quotate su ventisei censite: è la
+  grana da quartiere che a questo progetto è sempre mancata, e permette la
+  domanda che a Donostia veniva dal barrio — il centro si è staccato dalla
+  periferia, o si sono mossi insieme? ⚠️ Le zone si accorpano nel tempo (600 nel
+  2004, 436 nel 2025): serve `link_zona`, e va dichiarato che il perimetro non è
+  costante.
+- **La provincia in mappa.** `quotazioni_comuni.csv` incrocia i 205 comuni con
+  tutto il resto: prezzo contro reddito, contro addetti, contro spopolamento.
+  Attenzione a due cose e sono entrambe scritte nella tabella: la copertura è di
+  **203 comuni** (Magasa e Valvestino non ci sono) e la colonna
+  `base_superficie` non si può ignorare (**MET-19**).
 
 **Sul metodo**
 
@@ -657,13 +713,15 @@ poco e rende il lavoro verificabile da chiunque. Qui esistono già:
 > 2026 perché il progetto voleva l'opposto — nessuna pubblicazione finché
 > l'analisi non è finita.
 >
-> Resta il tuo clic su Pages, e ad agosto 2026 **non è ancora quello giusto**: Pages è attivo, ma con
-> *Source = «Deploy from a branch»*. Con quella impostazione GitHub ignora il
-> workflow e passa il repository per Jekyll, così l'indirizzo pubblico
+> ✅ **Il clic su Pages è stato fatto** (4 settembre 2026): *Source =
+> «GitHub Actions»*. Fino a quel momento Pages era attivo ma con *Deploy from a
+> branch*, e con quella impostazione GitHub ignorava il workflow passando il
+> repository per Jekyll: l'indirizzo pubblico
 > (<https://stefanomasneri.com/brescia-dataviz/>, dove reindirizza
 > `stocastico.github.io/brescia-dataviz` perché il dominio personalizzato è
-> impostato sul sito utente) serve il **README** invece del racconto. Va messo
-> su **«GitHub Actions»**: *Settings → Pages → Source*.
+> impostato sul sito utente) serviva il **README** invece del racconto. Adesso
+> `deploy-pages` ha dove pubblicare, e l'unica cosa che manca al sito online è
+> la decisione di pubblicarlo.
 
 Un solo workflow, `.github/workflows/deploy-pages.yml`. Struttura del sito
 **pubblicata oggi** — niente `app/`: il pannello interattivo non esiste ancora
@@ -719,11 +777,13 @@ Dettagli che costano tempo se non li sai:
   modo tipico di ritrovarsi con l'avviso «Node 20 actions are deprecated» nei
   log: non viene dal workflow — che di Node non ne usa — ma dal runtime con cui
   girano le action stesse.
-- 🙋 **Una volta sola, e la puoi fare solo tu**: *Settings → Pages → Source =
-  «GitHub Actions»*. Il primo deploy fallisce se non è impostato — e non basta
-  che Pages sia «attivo»: con la sorgente su un ramo, `deploy-pages` non ha
-  dove pubblicare. `configure-pages` con `enablement: true` accende Pages
-  quando è spento, ma non cambia la sorgente di un Pages già acceso.
+- ✅ **Una volta sola, e la poteva fare solo lui**: *Settings → Pages → Source =
+  «GitHub Actions»*, fatto il 4 settembre 2026. Resta scritto qui perché è il
+  genere di impostazione che si perde in una migrazione di repository: il primo
+  deploy fallisce se non è così, e non basta che Pages sia «attivo» — con la
+  sorgente su un ramo, `deploy-pages` non ha dove pubblicare. `configure-pages`
+  con `enablement: true` accende Pages quando è spento, ma non cambia la
+  sorgente di un Pages già acceso.
 - Il dominio personalizzato **non va toccato qui**: `stefanomasneri.com` è
   impostato sul sito utente (`stocastico.github.io`), e i siti di progetto lo
   ereditano via redirect. Nessun file `CNAME` da mettere nell'artefatto.
@@ -859,7 +919,7 @@ entra nel tempo che hai, non a fare un piano.
 
 | Blocco | Tempo | Serve a |
 |---|---|---|
-| 🙋 Mettere la sorgente di Pages su «GitHub Actions» (§7) | **2 min** | poter pubblicare |
+| ✅ ~~Mettere la sorgente di Pages su «GitHub Actions»~~ (§7) | fatta | il 4 settembre 2026: il deploy ha dove pubblicare |
 | 🙋 Pubblicare: *Run workflow → conferma = `pubblica`* (§7) | **1 min** | mandare il sito online, quando l'analisi sarà finita |
 | 🙋 Rileggere i testi del sito | **1 h** | è il tuo nome sopra |
 | 🤖 Scarico delle migrazioni (§2.1) | **venti minuti**, non una notte | l'unico dataset previsto che manchi. ✅ Il riscarico in italiano delle tre tavole censuarie (§2.4) è **fatto** |
@@ -868,15 +928,17 @@ entra nel tempo che hai, non a fare un piano.
 | ✅ ~~Estendere il confronto fra province al **turismo**~~ | fatta | `analysis/confronto_turismo.py` e la §7.8 del working paper. Ne sono uscite MET-17 e MET-18, e la scoperta che la provincia è la decima d'Italia per presenze |
 | ✅ ~~Riscrivere la §7 del working paper con le storie~~ | fatta | otto risultati, ciascuno con i suoi controlli |
 | ✅ ~~Portare il turismo nel sito come **settima storia**~~ | fatta | «La decima provincia turistica d'Italia», con lo sciame delle 107 province, i diciassette anni di presenze divise fra clienti italiani e stranieri, e lo scarto fra le due fonti disegnato invece che raccontato. Il settimo colore è `--prugna`, scelto con la regola ora scritta in `sito/README.md` |
+| 🤖 Analisi e storia sulla casa (§4) | **mezza giornata** per la prima analisi, un giorno per l'ottava storia | l'unico tema che ha i dati e non ha ancora niente: prezzi fermi contro volumi raddoppiati |
 | 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |
-| 🙋 I download manuali (§2.2) | **2–4 h in tutto** | estensioni, nessun asse portante |
+| 🙋 Quel che resta dei download manuali: l'export Coeweb (§2.2, [istruzioni](dati/SCARICHI-MANUALI.md) §3) | **1 h**, ed erano 2–4 prima che tre voci uscissero dall'elenco e l'OMI arrivasse | estensioni, nessun asse portante |
 
 ### Se hai venti minuti
 
 Sono i venti minuti che valgono di più di tutto il resto di questa tabella:
-metti la sorgente di Pages su «GitHub Actions», lancia il workflow a mano —
-lasciando la conferma su `no`, così costruisce e basta — scarica l'artefatto e
-rileggi la prima storia. Il sito è pronto; lo pubblichi quando lo sei anche tu.
+lancia il workflow a mano — lasciando la conferma su `no`, così costruisce e
+basta — scarica l'artefatto e rileggi la prima storia. La sorgente di Pages è
+già a posto, quindi il sito è pronto ad andare online: lo pubblichi quando lo
+sei anche tu.
 
 ### Se hai due ore
 

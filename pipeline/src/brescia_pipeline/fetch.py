@@ -33,7 +33,19 @@ SDMX_CSV_ACCEPT = "application/vnd.sdmx.data+csv;version=1.0.0;labels=both"
 SDMX_ACCEPT_LANGUAGE = "it"
 
 DEFAULT_TIMEOUT = 300
-RETRIES = 4
+RETRIES = 5
+
+# Le attese fra i tentativi: 15, 30, 60, 120 secondi, quattro minuti in tutto.
+# Erano 1, 2, 4 — sette secondi — e il 4 settembre 2026 non sono bastati: dopo
+# quaranta blocchi di `migrazioni`, `esploradati.istat.it` ha smesso di
+# accettare connessioni (timeout in *connessione*, non in lettura) mentre
+# `demo.istat.it` e `www.istat.it`, che stanno nella stessa sottorete,
+# rispondevano normalmente. Non era un guasto della fonte né della nostra rete:
+# è una strozzatura per host, e dura qualche minuto. Con sette secondi di
+# tentativi il dataset moriva dentro la strozzatura buttando venti minuti di
+# scarico; con quattro la attraversa. La cache di `dati/raw/` fa il resto — un
+# rilancio riparte dal blocco che manca.
+PAUSA_INIZIALE = 15
 
 
 def fetch(
@@ -71,9 +83,15 @@ def fetch(
         except Exception as error:  # rete: 502 sporadici dal proxy, timeout
             last_error = error
             if attempt < RETRIES - 1:
-                time.sleep(2**attempt)
+                time.sleep(PAUSA_INIZIALE * 2**attempt)
 
-    raise RuntimeError(f"download fallito: {url}") from last_error
+    # La causa va *dentro* il messaggio, non solo incatenata: `build.py` stampa
+    # `str(errore)`, e senza il tipo dell'eccezione un 404 e una connessione
+    # rifiutata sono la stessa riga di log.
+    raise RuntimeError(
+        f"download fallito dopo {RETRIES} tentativi: {url}"
+        f" — {type(last_error).__name__}: {last_error}"
+    ) from last_error
 
 
 def sdmx_csv(dataflow: str, key: str = "", *, dest_name: str, force: bool = False) -> Path:

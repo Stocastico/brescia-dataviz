@@ -13,7 +13,11 @@ from ..config import ELENCO_COMUNI_URL, PROCESSED_DIR, PROVINCIA_BRESCIA_ISTAT
 from ..fetch import fetch
 from ..tidy import write_csv
 
-COLUMNS = ["codice_istat", "comune", "sigla_provincia", "capoluogo"]
+# `codice_catastale` (il codice Belfiore, `B157` per Brescia) sta qui perché è
+# la chiave con cui l'Agenzia delle Entrate pubblica i volumi di compravendita:
+# senza di lui quella fornitura non si incrocia con niente, e inventarsi la
+# corrispondenza dai nomi dei comuni è il modo di sbagliarla (MET-13).
+COLUMNS = ["codice_istat", "comune", "sigla_provincia", "capoluogo", "codice_catastale"]
 
 
 def comuni_provincia() -> dict[str, str]:
@@ -53,7 +57,7 @@ def build(solo_locale: bool = False) -> dict[str, str]:
 
     out: list[dict[str, str]] = []
     for row in reader:
-        if len(row) <= 14 or row[2].strip() != PROVINCIA_BRESCIA_ISTAT:
+        if len(row) <= 19 or row[2].strip() != PROVINCIA_BRESCIA_ISTAT:
             continue
         out.append(
             {
@@ -61,6 +65,7 @@ def build(solo_locale: bool = False) -> dict[str, str]:
                 "comune": row[6].strip(),
                 "sigla_provincia": row[14].strip(),
                 "capoluogo": "1" if row[13].strip() == "1" else "0",
+                "codice_catastale": row[19].strip() if len(row) > 19 else "",
             }
         )
 

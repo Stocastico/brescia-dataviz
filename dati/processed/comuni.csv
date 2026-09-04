@@ -1,206 +1,206 @@
-codice_istat,comune,sigla_provincia,capoluogo
-017001,Acquafredda,BS,0
-017002,Adro,BS,0
-017003,Agnosine,BS,0
-017004,Alfianello,BS,0
-017005,Anfo,BS,0
-017006,Angolo Terme,BS,0
-017007,Artogne,BS,0
-017008,Azzano Mella,BS,0
-017009,Bagnolo Mella,BS,0
-017010,Bagolino,BS,0
-017011,Barbariga,BS,0
-017012,Barghe,BS,0
-017013,Bassano Bresciano,BS,0
-017014,Bedizzole,BS,0
-017015,Berlingo,BS,0
-017016,Berzo Demo,BS,0
-017017,Berzo Inferiore,BS,0
-017018,Bienno,BS,0
-017019,Bione,BS,0
-017020,Borgo San Giacomo,BS,0
-017021,Borgosatollo,BS,0
-017022,Borno,BS,0
-017023,Botticino,BS,0
-017024,Bovegno,BS,0
-017025,Bovezzo,BS,0
-017026,Brandico,BS,0
-017027,Braone,BS,0
-017028,Breno,BS,0
-017029,Brescia,BS,1
-017030,Brione,BS,0
-017031,Caino,BS,0
-017032,Calcinato,BS,0
-017033,Calvagese della Riviera,BS,0
-017034,Calvisano,BS,0
-017035,Capo di Ponte,BS,0
-017036,Capovalle,BS,0
-017037,Capriano del Colle,BS,0
-017038,Capriolo,BS,0
-017039,Carpenedolo,BS,0
-017040,Castegnato,BS,0
-017041,Castelcovati,BS,0
-017042,Castel Mella,BS,0
-017043,Castenedolo,BS,0
-017044,Casto,BS,0
-017045,Castrezzato,BS,0
-017046,Cazzago San Martino,BS,0
-017047,Cedegolo,BS,0
-017048,Cellatica,BS,0
-017049,Cerveno,BS,0
-017050,Ceto,BS,0
-017051,Cevo,BS,0
-017052,Chiari,BS,0
-017053,Cigole,BS,0
-017054,Cimbergo,BS,0
-017055,Cividate Camuno,BS,0
-017056,Coccaglio,BS,0
-017057,Collebeato,BS,0
-017058,Collio,BS,0
-017059,Cologne,BS,0
-017060,Comezzano-Cizzago,BS,0
-017061,Concesio,BS,0
-017062,Corte Franca,BS,0
-017063,Corteno Golgi,BS,0
-017064,Corzano,BS,0
-017065,Darfo Boario Terme,BS,0
-017066,Dello,BS,0
-017067,Desenzano del Garda,BS,0
-017068,Edolo,BS,0
-017069,Erbusco,BS,0
-017070,Esine,BS,0
-017071,Fiesse,BS,0
-017072,Flero,BS,0
-017073,Gambara,BS,0
-017074,Gardone Riviera,BS,0
-017075,Gardone Val Trompia,BS,0
-017076,Gargnano,BS,0
-017077,Gavardo,BS,0
-017078,Ghedi,BS,0
-017079,Gianico,BS,0
-017080,Gottolengo,BS,0
-017081,Gussago,BS,0
-017082,Idro,BS,0
-017083,Incudine,BS,0
-017084,Irma,BS,0
-017085,Iseo,BS,0
-017086,Isorella,BS,0
-017087,Lavenone,BS,0
-017088,Leno,BS,0
-017089,Limone sul Garda,BS,0
-017090,Lodrino,BS,0
-017091,Lograto,BS,0
-017092,Lonato del Garda,BS,0
-017093,Longhena,BS,0
-017094,Losine,BS,0
-017095,Lozio,BS,0
-017096,Lumezzane,BS,0
-017097,Maclodio,BS,0
-017098,Magasa,BS,0
-017099,Mairano,BS,0
-017100,Malegno,BS,0
-017101,Malonno,BS,0
-017102,Manerba del Garda,BS,0
-017103,Manerbio,BS,0
-017104,Marcheno,BS,0
-017105,Marmentino,BS,0
-017106,Marone,BS,0
-017107,Mazzano,BS,0
-017108,Milzano,BS,0
-017109,Moniga del Garda,BS,0
-017110,Monno,BS,0
-017111,Monte Isola,BS,0
-017112,Monticelli Brusati,BS,0
-017113,Montichiari,BS,0
-017114,Montirone,BS,0
-017115,Mura,BS,0
-017116,Muscoline,BS,0
-017117,Nave,BS,0
-017118,Niardo,BS,0
-017119,Nuvolento,BS,0
-017120,Nuvolera,BS,0
-017121,Odolo,BS,0
-017122,Offlaga,BS,0
-017123,Ome,BS,0
-017124,Ono San Pietro,BS,0
-017125,Orzinuovi,BS,0
-017126,Orzivecchi,BS,0
-017127,Ospitaletto,BS,0
-017128,Ossimo,BS,0
-017129,Padenghe sul Garda,BS,0
-017130,Paderno Franciacorta,BS,0
-017131,Paisco Loveno,BS,0
-017132,Paitone,BS,0
-017133,Palazzolo sull'Oglio,BS,0
-017134,Paratico,BS,0
-017135,Paspardo,BS,0
-017136,Passirano,BS,0
-017137,Pavone del Mella,BS,0
-017138,San Paolo,BS,0
-017139,Pertica Alta,BS,0
-017140,Pertica Bassa,BS,0
-017141,Pezzaze,BS,0
-017142,Pian Camuno,BS,0
-017143,Pisogne,BS,0
-017144,Polaveno,BS,0
-017145,Polpenazze del Garda,BS,0
-017146,Pompiano,BS,0
-017147,Poncarale,BS,0
-017148,Ponte di Legno,BS,0
-017149,Pontevico,BS,0
-017150,Pontoglio,BS,0
-017151,Pozzolengo,BS,0
-017152,Pralboino,BS,0
-017153,Preseglie,BS,0
-017155,Prevalle,BS,0
-017156,Provaglio d'Iseo,BS,0
-017157,Provaglio Val Sabbia,BS,0
-017158,Puegnago del Garda,BS,0
-017159,Quinzano d'Oglio,BS,0
-017160,Remedello,BS,0
-017161,Rezzato,BS,0
-017162,Roccafranca,BS,0
-017163,Rodengo Saiano,BS,0
-017164,Roè Volciano,BS,0
-017165,Roncadelle,BS,0
-017166,Rovato,BS,0
-017167,Rudiano,BS,0
-017168,Sabbio Chiese,BS,0
-017169,Sale Marasino,BS,0
-017170,Salò,BS,0
-017171,San Felice del Benaco,BS,0
-017172,San Gervasio Bresciano,BS,0
-017173,San Zeno Naviglio,BS,0
-017174,Sarezzo,BS,0
-017175,Saviore dell'Adamello,BS,0
-017176,Sellero,BS,0
-017177,Seniga,BS,0
-017178,Serle,BS,0
-017179,Sirmione,BS,0
-017180,Soiano del Lago,BS,0
-017181,Sonico,BS,0
-017182,Sulzano,BS,0
-017183,Tavernole sul Mella,BS,0
-017184,Temù,BS,0
-017185,Tignale,BS,0
-017186,Torbole Casaglia,BS,0
-017187,Toscolano-Maderno,BS,0
-017188,Travagliato,BS,0
-017189,Tremosine sul Garda,BS,0
-017190,Trenzano,BS,0
-017191,Treviso Bresciano,BS,0
-017192,Urago d'Oglio,BS,0
-017193,Vallio Terme,BS,0
-017194,Valvestino,BS,0
-017195,Verolanuova,BS,0
-017196,Verolavecchia,BS,0
-017197,Vestone,BS,0
-017198,Vezza d'Oglio,BS,0
-017199,Villa Carcina,BS,0
-017200,Villachiara,BS,0
-017201,Villanuova sul Clisi,BS,0
-017202,Vione,BS,0
-017203,Visano,BS,0
-017204,Vobarno,BS,0
-017205,Zone,BS,0
-017206,Piancogno,BS,0
+codice_istat,comune,sigla_provincia,capoluogo,codice_catastale
+017001,Acquafredda,BS,0,A034
+017002,Adro,BS,0,A060
+017003,Agnosine,BS,0,A082
+017004,Alfianello,BS,0,A188
+017005,Anfo,BS,0,A288
+017006,Angolo Terme,BS,0,A293
+017007,Artogne,BS,0,A451
+017008,Azzano Mella,BS,0,A529
+017009,Bagnolo Mella,BS,0,A569
+017010,Bagolino,BS,0,A578
+017011,Barbariga,BS,0,A630
+017012,Barghe,BS,0,A661
+017013,Bassano Bresciano,BS,0,A702
+017014,Bedizzole,BS,0,A729
+017015,Berlingo,BS,0,A799
+017016,Berzo Demo,BS,0,A816
+017017,Berzo Inferiore,BS,0,A817
+017018,Bienno,BS,0,A861
+017019,Bione,BS,0,A878
+017020,Borgo San Giacomo,BS,0,B035
+017021,Borgosatollo,BS,0,B040
+017022,Borno,BS,0,B054
+017023,Botticino,BS,0,B091
+017024,Bovegno,BS,0,B100
+017025,Bovezzo,BS,0,B102
+017026,Brandico,BS,0,B120
+017027,Braone,BS,0,B124
+017028,Breno,BS,0,B149
+017029,Brescia,BS,1,B157
+017030,Brione,BS,0,B184
+017031,Caino,BS,0,B365
+017032,Calcinato,BS,0,B394
+017033,Calvagese della Riviera,BS,0,B436
+017034,Calvisano,BS,0,B450
+017035,Capo di Ponte,BS,0,B664
+017036,Capovalle,BS,0,B676
+017037,Capriano del Colle,BS,0,B698
+017038,Capriolo,BS,0,B711
+017039,Carpenedolo,BS,0,B817
+017040,Castegnato,BS,0,C055
+017041,Castelcovati,BS,0,C072
+017042,Castel Mella,BS,0,C208
+017043,Castenedolo,BS,0,C293
+017044,Casto,BS,0,C330
+017045,Castrezzato,BS,0,C332
+017046,Cazzago San Martino,BS,0,C408
+017047,Cedegolo,BS,0,C417
+017048,Cellatica,BS,0,C439
+017049,Cerveno,BS,0,C549
+017050,Ceto,BS,0,C585
+017051,Cevo,BS,0,C591
+017052,Chiari,BS,0,C618
+017053,Cigole,BS,0,C685
+017054,Cimbergo,BS,0,C691
+017055,Cividate Camuno,BS,0,C760
+017056,Coccaglio,BS,0,C806
+017057,Collebeato,BS,0,C850
+017058,Collio,BS,0,C883
+017059,Cologne,BS,0,C893
+017060,Comezzano-Cizzago,BS,0,C925
+017061,Concesio,BS,0,C948
+017062,Corte Franca,BS,0,D058
+017063,Corteno Golgi,BS,0,D064
+017064,Corzano,BS,0,D082
+017065,Darfo Boario Terme,BS,0,D251
+017066,Dello,BS,0,D270
+017067,Desenzano del Garda,BS,0,D284
+017068,Edolo,BS,0,D391
+017069,Erbusco,BS,0,D421
+017070,Esine,BS,0,D434
+017071,Fiesse,BS,0,D576
+017072,Flero,BS,0,D634
+017073,Gambara,BS,0,D891
+017074,Gardone Riviera,BS,0,D917
+017075,Gardone Val Trompia,BS,0,D918
+017076,Gargnano,BS,0,D924
+017077,Gavardo,BS,0,D940
+017078,Ghedi,BS,0,D999
+017079,Gianico,BS,0,E010
+017080,Gottolengo,BS,0,E116
+017081,Gussago,BS,0,E271
+017082,Idro,BS,0,E280
+017083,Incudine,BS,0,E297
+017084,Irma,BS,0,E325
+017085,Iseo,BS,0,E333
+017086,Isorella,BS,0,E364
+017087,Lavenone,BS,0,E497
+017088,Leno,BS,0,E526
+017089,Limone sul Garda,BS,0,E596
+017090,Lodrino,BS,0,E652
+017091,Lograto,BS,0,E654
+017092,Lonato del Garda,BS,0,M312
+017093,Longhena,BS,0,E673
+017094,Losine,BS,0,E698
+017095,Lozio,BS,0,E706
+017096,Lumezzane,BS,0,E738
+017097,Maclodio,BS,0,E787
+017098,Magasa,BS,0,E800
+017099,Mairano,BS,0,E841
+017100,Malegno,BS,0,E851
+017101,Malonno,BS,0,E865
+017102,Manerba del Garda,BS,0,E883
+017103,Manerbio,BS,0,E884
+017104,Marcheno,BS,0,E928
+017105,Marmentino,BS,0,E961
+017106,Marone,BS,0,E967
+017107,Mazzano,BS,0,F063
+017108,Milzano,BS,0,F216
+017109,Moniga del Garda,BS,0,F373
+017110,Monno,BS,0,F375
+017111,Monte Isola,BS,0,F532
+017112,Monticelli Brusati,BS,0,F672
+017113,Montichiari,BS,0,F471
+017114,Montirone,BS,0,F680
+017115,Mura,BS,0,F806
+017116,Muscoline,BS,0,F820
+017117,Nave,BS,0,F851
+017118,Niardo,BS,0,F884
+017119,Nuvolento,BS,0,F989
+017120,Nuvolera,BS,0,F990
+017121,Odolo,BS,0,G001
+017122,Offlaga,BS,0,G006
+017123,Ome,BS,0,G061
+017124,Ono San Pietro,BS,0,G074
+017125,Orzinuovi,BS,0,G149
+017126,Orzivecchi,BS,0,G150
+017127,Ospitaletto,BS,0,G170
+017128,Ossimo,BS,0,G179
+017129,Padenghe sul Garda,BS,0,G213
+017130,Paderno Franciacorta,BS,0,G217
+017131,Paisco Loveno,BS,0,G247
+017132,Paitone,BS,0,G248
+017133,Palazzolo sull'Oglio,BS,0,G264
+017134,Paratico,BS,0,G327
+017135,Paspardo,BS,0,G354
+017136,Passirano,BS,0,G361
+017137,Pavone del Mella,BS,0,G391
+017138,San Paolo,BS,0,G407
+017139,Pertica Alta,BS,0,G474
+017140,Pertica Bassa,BS,0,G475
+017141,Pezzaze,BS,0,G529
+017142,Pian Camuno,BS,0,G546
+017143,Pisogne,BS,0,G710
+017144,Polaveno,BS,0,G779
+017145,Polpenazze del Garda,BS,0,G801
+017146,Pompiano,BS,0,G815
+017147,Poncarale,BS,0,G818
+017148,Ponte di Legno,BS,0,G844
+017149,Pontevico,BS,0,G859
+017150,Pontoglio,BS,0,G869
+017151,Pozzolengo,BS,0,G959
+017152,Pralboino,BS,0,G977
+017153,Preseglie,BS,0,H043
+017155,Prevalle,BS,0,H055
+017156,Provaglio d'Iseo,BS,0,H078
+017157,Provaglio Val Sabbia,BS,0,H077
+017158,Puegnago del Garda,BS,0,H086
+017159,Quinzano d'Oglio,BS,0,H140
+017160,Remedello,BS,0,H230
+017161,Rezzato,BS,0,H256
+017162,Roccafranca,BS,0,H410
+017163,Rodengo Saiano,BS,0,H477
+017164,Roè Volciano,BS,0,H484
+017165,Roncadelle,BS,0,H525
+017166,Rovato,BS,0,H598
+017167,Rudiano,BS,0,H630
+017168,Sabbio Chiese,BS,0,H650
+017169,Sale Marasino,BS,0,H699
+017170,Salò,BS,0,H717
+017171,San Felice del Benaco,BS,0,H838
+017172,San Gervasio Bresciano,BS,0,H865
+017173,San Zeno Naviglio,BS,0,I412
+017174,Sarezzo,BS,0,I433
+017175,Saviore dell'Adamello,BS,0,I476
+017176,Sellero,BS,0,I588
+017177,Seniga,BS,0,I607
+017178,Serle,BS,0,I631
+017179,Sirmione,BS,0,I633
+017180,Soiano del Lago,BS,0,I782
+017181,Sonico,BS,0,I831
+017182,Sulzano,BS,0,L002
+017183,Tavernole sul Mella,BS,0,C698
+017184,Temù,BS,0,L094
+017185,Tignale,BS,0,L169
+017186,Torbole Casaglia,BS,0,L210
+017187,Toscolano-Maderno,BS,0,L312
+017188,Travagliato,BS,0,L339
+017189,Tremosine sul Garda,BS,0,L372
+017190,Trenzano,BS,0,L380
+017191,Treviso Bresciano,BS,0,L406
+017192,Urago d'Oglio,BS,0,L494
+017193,Vallio Terme,BS,0,L626
+017194,Valvestino,BS,0,L468
+017195,Verolanuova,BS,0,L777
+017196,Verolavecchia,BS,0,L778
+017197,Vestone,BS,0,L812
+017198,Vezza d'Oglio,BS,0,L816
+017199,Villa Carcina,BS,0,L919
+017200,Villachiara,BS,0,L923
+017201,Villanuova sul Clisi,BS,0,L995
+017202,Vione,BS,0,M065
+017203,Visano,BS,0,M070
+017204,Vobarno,BS,0,M104
+017205,Zone,BS,0,M188
+017206,Piancogno,BS,0,G549

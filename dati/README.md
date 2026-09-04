@@ -2,20 +2,32 @@
 
 > ⚠️ **Una tabella non è qui**: `migrazioni_comuni.csv` pesa 422 MB e resta
 > fuori da git. Come rifarla in venti minuti, e perché va bene così, sta in
-> [`SCARICHI-LOCALI.md`](SCARICHI-LOCALI.md).
+> [`SCARICHI-LOCALI.md`](SCARICHI-LOCALI.md). I quattro scarichi che richiedono
+> Stefano — un login, una rete italiana, un export a mano — stanno in
+> [`SCARICHI-MANUALI.md`](SCARICHI-MANUALI.md).
 
-Tre cartelle:
+Quattro cartelle:
 
 - **`processed/`** — le tabelle tidy, **versionate**: sono il prodotto del
-  progetto. Circa 12 MB in tutto.
+  progetto. Trenta file, una cinquantina di MB — erano 12 finché non sono arrivate le tre
+  tabelle OMI, che da sole ne fanno 19.
 - **`geo/`** — la geometria di riferimento, **versionata**: i confini dei 205
   comuni in GeoJSON (320 KB). È la base di ogni coropletica.
 - **`raw/`** — le risposte grezze delle fonti, **non versionate** (qualche GB:
   le tavole censuarie arrivano non filtrate, una nazione intera per volta) e
   rigenerabili con `python -m brescia_pipeline.build` da
   [`../pipeline/`](../pipeline/README.md).
+- **`input/<fonte>/`** — gli **input curati**: i file scaricati a mano, con la
+  provenienza dichiarata accanto. **Versionati**, perché un file che nessuno può
+  riscaricare da un URL è l'unico caso in cui il repository *è* la fonte. Oggi
+  contiene `omi/` — 37 archivi dell'Agenzia delle Entrate, 5,7 MB, quotazioni
+  2004–2025 e compravendite 2011–2025
+  ([provenienza](input/omi/PROVENIENZA.md)).
 
-Tutto è ricostruibile: nessun file qui è stato scritto a mano.
+Tutto è ricostruibile: nessun file qui è stato scritto a mano, e i file che
+arriveranno in `input/` non saranno **ritoccati** a mano — le correzioni di
+encoding, intestazioni e zeri iniziali stanno nella pipeline, dove si leggono e
+si ripetono.
 
 ## Convenzioni comuni a tutte le tabelle
 
@@ -38,9 +50,37 @@ Tutto è ricostruibile: nessun file qui è stato scritto a mano.
 
 | File | Righe | Contenuto |
 |---|---|---|
-| `comuni.csv` | 205 | Anagrafica: codice ISTAT, denominazione, sigla, flag capoluogo. |
+| `comuni.csv` | 205 | Anagrafica: codice ISTAT, denominazione, sigla, flag capoluogo e **codice catastale** (il codice Belfiore, `B157` per Brescia). Il codice catastale è la chiave con cui l'Agenzia delle Entrate pubblica i volumi di compravendita: sta qui perché una corrispondenza fra codici è anagrafica, non una nota di un modulo. |
 | `comuni_sintesi.csv` | 205 | Una riga per comune con gli indicatori principali affiancati: popolazione 2024, unità locali e addetti 2023, addetti per 100 abitanti, presenze turistiche 2024. È la vista da aprire per prima. |
 | `comuni_geometria.csv` | 205 | Superficie in km² e centroide (longitudine, latitudine) di ogni comune. Serve alle densità senza dover caricare la geometria, e rende verificabile con un CSV ciò che sta nel GeoJSON. |
+
+### Casa e prezzi
+
+Le due tabelle delle quotazioni OMI non vengono da un URL: nascono dagli archivi
+versionati in [`input/omi/`](input/omi/PROVENIENZA.md), scaricati a mano dietro
+SPID. **Chi le riusa deve citare «Agenzia Entrate - OMI».**
+
+| File | Righe | Contenuto |
+|---|---|---|
+| `quotazioni_zone.csv` | 110.537 | Una riga per record pubblicato: semestre × zona OMI × tipologia × stato conservativo, con gli intervalli min-max di vendita (€/m²) e locazione (€/m² al mese) e la **base di superficie** di ciascuno. 22 semestri, il 2° di ogni anno dal 2004 al 2025. È la grana per guardare dentro il capoluogo, che ha 26 zone censite e 23 quotate. |
+| `quotazioni_comuni.csv` | 107.606 | Aggregata per comune × semestre × tipologia × mercato × base di superficie: `minimo`, `massimo` e `media`. La media è quella **non pesata dei punti medi delle zone** — nei dati OMI non esiste il numero di immobili per zona — e tiene solo i record dello **stato conservativo prevalente**. |
+| `compravendite_comuni.csv` | 52.020 | I **volumi** di compravendita (NTN, transazioni normalizzate sulla quota di proprietà: sono frazionarie di natura) per comune × anno × comparto × segmento, **2011–2025**. Comparti: residenziale per classe di superficie, non residenziale (uffici, negozi e laboratori, depositi, produttivo, agricolo, più quattro categorie catastali `tco_*` che la fonte non scioglie), pertinenze (box e depositi). |
+
+> ⚠️ **203 comuni su 205, non per colpa del filtro.** **Magasa** e
+> **Valvestino** non sono nella fonte: mai nelle compravendite, e nelle
+> quotazioni solo fino al 2015. Sono i due comuni passati da Trento a Brescia nel
+> 1934, quindi la spiegazione più probabile è il **sistema tavolare**, che l'OMI
+> dichiara di escludere — ma la nota dell'Agenzia elenca province, non questi due
+> comuni, quindi resta una spiegazione da confermare e non un fatto verificato.
+> Nelle quotazioni i comuni sono **205 dal 2004 al 2015** e **203 dal 2016**.
+
+> ⚠️ **Due avvertenze che non sono formalità.** La colonna `base_superficie`
+> distingue €/m² su superficie **lorda** da €/m² su superficie **netta**, e negli
+> **affitti la base cambia nel 2025**: netta fino al 2024, lorda dal 2025, per
+> tutta la provincia. Leggere `media` senza `base_superficie` fa apparire un
+> calo che è solo la misura che è cambiata. E queste sono **quotazioni**, non
+> transazioni: l'Agenzia stessa le chiama «indicazioni di valore di larga
+> massima».
 
 ### La geometria
 
