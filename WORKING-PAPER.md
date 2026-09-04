@@ -407,10 +407,10 @@ che i dati non sostengono.
 
 ## 7. Risultati
 
-Otto risultati, con i loro controlli. Nessuno è causale: sono descrizioni di un
+Nove risultati, con i loro controlli. Nessuno è causale: sono descrizioni di un
 territorio, e la §8 dice cosa non permettono di affermare. Quattro di essi —
-§7.1, §7.3, §7.6 e §7.8 — hanno un termine di paragone esterno; §7.4 e §7.7 no,
-e la §8 dice quali conclusioni questo indebolisce.
+§7.1, §7.3, §7.6 e §7.8 — hanno un termine di paragone esterno; §7.4, §7.7 e
+§7.9 no, e la §8 dice quali conclusioni questo indebolisce.
 
 ### 7.1 La domanda di partenza era mal posta
 
@@ -499,11 +499,17 @@ la stessa cosa con la stessa forza (`analysis/convergenza_confronto.py`). Due
 province non sono l'Italia, ma bastano a escludere che sia un artefatto locale e
 a togliere a questo risultato l'aggettivo «bresciano».
 
-Tre avvertenze che il testo pubblicato ripete e che vanno ripetute anche qui:
-sono **euro correnti** (nessun deflatore è entrato nel progetto, quindi parte
-della crescita è inflazione — il che però non tocca la *correlazione*, perché
-l'inflazione è comune a tutti i comuni); sono **contribuenti**, non residenti; e
-sono **redditi dichiarati**, che non sono ricchezza.
+Tre avvertenze che il testo pubblicato ripete e che vanno ripetute anche qui.
+La prima è cambiata a settembre 2026: i livelli e i tassi sono in **euro
+correnti**, ma il progetto adesso ha un deflatore (MET-20) e quindi la frase
+«parte della crescita è inflazione» ha un numero. Fra il 2012 e il 2023
+l'inflazione italiana è del **21,4 %**, e la mediana comunale della crescita
+passa da **+2,23 % l'anno a +0,44 %**: **45 comuni su 205** perdono potere
+d'acquisto invece di guadagnarne. La *convergenza* non ne è toccata — è una
+relazione fra comuni, e l'inflazione è comune a tutti — ma la frase «i redditi
+crescono» non regge da sola, ed è corretta nel testo pubblicato. Le altre due
+restano: sono **contribuenti**, non residenti; e sono **redditi dichiarati**,
+che non sono ricchezza.
 
 ### 7.4 La provincia è due economie, e sono due territori contigui
 
@@ -785,6 +791,70 @@ segmento a valore per notte più basso: la quota del 26,7 % che rende Brescia
 riconoscibile è anche la ragione per cui il decimo posto per presenze non è un
 decimo posto per fatturato turistico. Il collegamento fra questo asse e gli
 addetti dell'alloggio e ristorazione (§7.4) resta da fare e non è fatto qui.
+
+### 7.9 Il prezzo della casa è fermo in euro correnti e perde un terzo in euro costanti
+
+È il risultato più recente (settembre 2026) e l'unico in cui la conclusione
+dipende interamente da **come si misura**. Nel comune di Brescia il prezzo medio
+delle abitazioni civili in vendita è **1.788 €/m² nel 2004 e 1.829 nel 2025**:
+`+2,3 %` in ventun anni, cioè un mercato che sembra non essersi mosso. Nello
+stesso periodo l'inflazione italiana cumulata è del **47,8 %**, quindi quei
+1.788 € sono **2.642 € di oggi**: in euro costanti il metro quadro perde il
+**30,8 %**.
+
+Accanto, i **volumi**. Le compravendite residenziali del capoluogo (NTN, l'unità
+con cui l'Agenzia normalizza le transazioni sulla quota di proprietà) toccano il
+fondo nel 2013 a 1.364 e arrivano a 3.199 nel 2025: **+134,5 %**. Le due serie
+non si contraddicono e nessuna delle due, da sola, dice la frase che le tiene
+insieme — *si vende molto di più a un prezzo reale molto più basso*.
+
+**La grana che al progetto mancava, e la trappola che ci ha portato.** Le
+quotazioni OMI arrivano alla **zona**, che è quanto di più vicino a un quartiere
+esista in un dato ufficiale italiano, e permettono la domanda che di solito si
+fa alle città: il centro si è staccato dalla periferia? La risposta bresciana è
+**no, il contrario**. Sul panel bilanciato delle 13 zone presenti in tutte e 22
+le annate, la forbice fra la più cara e la più economica passa da **2,21 a
+1,97**, e la correlazione fra livello iniziale e variazione reale è **−0,38
+(Pearson) / −0,53 (Spearman)**: chi partiva più caro ha perso di più. Con tredici
+zone è una descrizione di questa città e non una legge urbana, e il leave-one-out
+su due punti diversi — la zona più economica del 2004 e la sola quasi ferma in
+termini reali — lascia il segno e riduce la forza (−0,34 / −0,41 e −0,27 /
+−0,41).
+
+Il panel bilanciato non è prudenza: nel **2024 la zonizzazione del capoluogo
+viene rifatta**, dieci perimetri finiscono nel 2023 e dieci cominciano nel 2024.
+Le zone quotate restano 23 in ogni annata, quindi una media su «quelle che ci
+sono» non solleverebbe nessun sospetto e misurerebbe anche il cambio di
+perimetro. È MET-16, nata sulle centraline, che si applica identica a una rete
+di tutt'altra natura.
+
+**Fuori dal capoluogo.** Su 203 comuni quotati, **181 perdono valore reale**, con
+una mediana di **−1,11 % l'anno**; i pochi in crescita sono il lago e l'alta
+montagna. Il livello, invece, disegna la stessa geografia della §7.4 vista dal
+lato della casa: il metro quadro più caro è a Sirmione (3.535 €) e il più
+economico a Provaglio Val Sabbia (700 €), **cinque volte**, e il capoluogo è solo
+**18° su 203** con 1.829 €/m². Il prezzo si accompagna al reddito comunale
+(+0,52 / +0,50) e il leave-one-out sui quattordici comuni rivieraschi non lo
+sposta, quindi non è una relazione fatta dal Garda.
+
+**Il controllo che questo risultato ha prodotto, ed è metodologico.** Per
+scriverlo è servito un deflatore, e il deflatore non era una formalità: l'indice
+ISTAT dei prezzi al consumo è pubblicato in **tre basi che non si sovrappongono
+in nessun anno**, e attaccarne i livelli disegna due crolli del 30 % mai
+avvenuti — una serie sbagliata che supera ogni controllo ovvio. Il raccordo si fa
+con la variazione annua della fonte stessa: è **MET-20**, e il test che la tiene
+in piedi verifica che ogni rapporto fra anni consecutivi riproduca la variazione
+dichiarata.
+
+**Cosa questo risultato non dice.** Le quotazioni OMI sono *indicazioni di valore
+di larga massima*, non prezzi di transazione: servono a confrontare zone e anni,
+non a stimare quanto vale una casa. Il deflatore è **nazionale**, quindi ogni
+cifra in euro costanti assume che l'inflazione bresciana sia quella italiana.
+Non c'è nessun termine di paragone esterno — non sappiamo se il −30,8 % bresciano
+sia più o meno del resto d'Italia, ed è la lacuna più evidente di questo
+risultato. E non c'è niente sullo **stock**: quante case siano vuote dove il
+prezzo è caduto di più è la domanda successiva, e i dati censuari per rispondere
+sono già in `abitazioni_comuni.csv`.
 
 ## 8. Limiti — cosa questo metodo non può affermare
 

@@ -797,6 +797,22 @@ def scomposizione_province() -> dict[str, Any]:
     }
 
 
+def indice_prezzi() -> dict[str, float]:
+    """`anno -> indice dei prezzi al consumo`, base 2015 = 100 (MET-20).
+
+    È **nazionale**: ogni «euro costante» di questo sito assume che
+    l'inflazione bresciana sia quella italiana, e i testi che lo usano lo
+    dicono.
+    """
+    import csv
+
+    percorso = PROCESSED / "indice_prezzi.csv"
+    if not percorso.exists():
+        return {}
+    with percorso.open(encoding="utf-8") as handle:
+        return {r["anno"]: float(r["indice"]) for r in csv.DictReader(handle)}
+
+
 def casa() -> dict[str, Any]:
     """L'asse casa per l'ottava storia: il capoluogo, le sue zone, la provincia.
 
@@ -823,7 +839,7 @@ def casa() -> dict[str, Any]:
         with percorsi[nome].open(encoding="utf-8") as handle:
             return list(csv.DictReader(handle))
 
-    indice = {r["anno"]: float(r["indice"]) for r in righe("indice_prezzi")}
+    indice = indice_prezzi()
     base = max(indice)
 
     def reale(valore: float, anno: str) -> float:
@@ -975,6 +991,31 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
     fuori["reddito_massimo"] = numero_it(max(red_f.values()))
     fuori["reddito_rapporto"] = numero_it(max(red_f.values()) / min(red_f.values()), 1)
     fuori["reddito_rapporto_iniziale"] = numero_it(max(red_i.values()) / min(red_i.values()), 1)
+
+    # Il reddito in euro costanti. Fino a settembre 2026 questa storia poteva
+    # solo dire «una parte della crescita è inflazione»; adesso può dire quanta,
+    # e la frase che ne esce non è la stessa: la mediana comunale passa da poco
+    # più di due punti l'anno a meno di mezzo, e quarantacinque comuni scendono.
+    indice = indice_prezzi()
+    anni_reddito = [a for a in reddito["periods"] if a in indice]
+    if len(anni_reddito) >= 2:
+        primo_anno, ultimo_anno = anni_reddito[0], anni_reddito[-1]
+        durata_reddito = int(ultimo_anno) - int(primo_anno)
+        red_primo = valori(reddito, primo_anno)
+        red_ultimo = valori(reddito, ultimo_anno)
+        reali = {}
+        for codice, finale in red_ultimo.items():
+            iniziale = red_primo.get(codice)
+            if not iniziale:
+                continue
+            fattore = (finale / indice[ultimo_anno]) / (iniziale / indice[primo_anno])
+            reali[codice] = (fattore ** (1 / durata_reddito) - 1) * 100
+        fuori["reddito_inflazione"] = percento_it(
+            (indice[ultimo_anno] / indice[primo_anno] - 1) * 100
+        )
+        fuori["reddito_crescita_reale_mediana"] = percento_it(mediana(list(reali.values())), 2)
+        fuori["reddito_comuni_in_calo_reale"] = numero_it(sum(1 for v in reali.values() if v < 0))
+        fuori["reddito_comuni_reale"] = numero_it(len(reali))
 
     def decili(valori: dict[str, float]) -> float:
         """p90/p10: la stessa domanda del rapporto fra gli estremi, ma senza

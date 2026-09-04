@@ -918,6 +918,116 @@ def rango_prezzo_capoluogo(anno: str = "2025") -> int:
     return valori.index(euro_mq(CAPOLUOGO, anno)) + 1
 
 
+def _tassi_reddito_reali() -> list[float]:
+    """Tasso annuo composto del reddito medio comunale, in euro costanti."""
+    per_comune: dict[str, dict[str, tuple[float, float]]] = {}
+    for riga in redditi:
+        valore = numero(riga["valore"])
+        if valore is None:
+            continue
+        anni = per_comune.setdefault(riga["codice_istat"], {})
+        somma = anni.get(riga["anno"], (0.0, 0.0))
+        if riga["codice_indicatore"] == IMPONIBILE:
+            anni[riga["anno"]] = (somma[0] + valore, somma[1])
+        else:
+            anni[riga["anno"]] = (somma[0], somma[1] + valore)
+
+    tassi: list[float] = []
+    for anni in per_comune.values():
+        validi = sorted(a for a, (imp, teste) in anni.items() if teste and a in prezzi)
+        if len(validi) < 2:
+            continue
+        primo, ultimo = validi[0], validi[-1]
+        durata = int(ultimo) - int(primo)
+        iniziale = anni[primo][0] / anni[primo][1] / indice_prezzi(primo)
+        finale = anni[ultimo][0] / anni[ultimo][1] / indice_prezzi(ultimo)
+        if durata > 0 and iniziale > 0:
+            tassi.append(((finale / iniziale) ** (1 / durata) - 1) * 100)
+    return tassi
+
+
+def reddito_reale_mediana() -> float:
+    return statistics.median(_tassi_reddito_reali())
+
+
+def reddito_comuni_in_calo_reale() -> int:
+    return sum(1 for tasso in _tassi_reddito_reali() if tasso < 0)
+
+
+def correlazione_rango(x: list[float], y: list[float]) -> float:
+    """Spearman, che MET-6 impone di riportare accanto a Pearson."""
+
+    def ranghi(valori: list[float]) -> list[float]:
+        ordine = sorted(range(len(valori)), key=lambda i: valori[i])
+        fuori_ranghi = [0.0] * len(valori)
+        i = 0
+        while i < len(ordine):
+            j = i
+            while j + 1 < len(ordine) and valori[ordine[j + 1]] == valori[ordine[i]]:
+                j += 1
+            for k in range(i, j + 1):
+                fuori_ranghi[ordine[k]] = (i + j) / 2 + 1
+            i = j + 1
+        return fuori_ranghi
+
+    return correlazione(ranghi(x), ranghi(y))
+
+
+def prezzi_ultimo_anno() -> dict[str, float]:
+    anno = max(r["anno"] for r in quotazioni_comuni)
+    return {
+        r["codice_istat"]: float(r["media"])
+        for r in quotazioni_comuni
+        if r["anno"] == anno
+        and r["tipologia"] == "Abitazioni civili"
+        and r["mercato"] == "vendita"
+        and r["base_superficie"] == "lorda"
+        and r["media"]
+    }
+
+
+def variazioni_reali_comuni() -> dict[str, float]:
+    """Tasso annuo reale del prezzo per comune, sui soli comuni con la serie
+    intera: una variazione su undici anni non sta accanto a una su ventuno."""
+    per_comune: dict[str, dict[str, float]] = {}
+    for riga in quotazioni_comuni:
+        if (
+            riga["tipologia"] != "Abitazioni civili"
+            or riga["mercato"] != "vendita"
+            or riga["base_superficie"] != "lorda"
+            or not riga["media"]
+        ):
+            continue
+        per_comune.setdefault(riga["codice_istat"], {})[riga["anno"]] = float(riga["media"])
+    ultimo_comune = max(a for anni in per_comune.values() for a in anni)
+
+    fuori: dict[str, float] = {}
+    for codice, anni in per_comune.items():
+        if ultimo_comune not in anni:
+            continue
+        primo = min(anni)
+        durata = int(ultimo_comune) - int(primo)
+        iniziale = anni[primo] / indice_prezzi(primo)
+        finale = anni[ultimo_comune] / indice_prezzi(ultimo_comune)
+        if durata > 0 and iniziale > 0:
+            fuori[codice] = ((finale / iniziale) ** (1 / durata) - 1) * 100
+    return fuori
+
+
+def convergenza_zone(misura: str = "pearson") -> float:
+    """Livello iniziale contro variazione reale, sulle zone del panel bilanciato."""
+    panel = zone_capoluogo_panel()
+    anni = sorted({a for serie in panel.values() for a in serie})
+    primo, ultimo = anni[0], anni[-1]
+    livelli = [serie[primo] for serie in panel.values()]
+    variazioni = [
+        ((serie[ultimo] / indice_prezzi(ultimo)) / (serie[primo] / indice_prezzi(primo)) - 1) * 100
+        for serie in panel.values()
+    ]
+    calcola = correlazione if misura == "pearson" else correlazione_rango
+    return calcola(livelli, variazioni)
+
+
 VERIFICHE: list[tuple[str, str, float, object, float]] = [
     (
         "BRIEF §Unità di analisi",
@@ -1950,6 +2060,81 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         47.8,
         lambda: inflazione("2004", "2025"),
         0.05,
+    ),
+    (
+        "sito, seconda storia / WORKING-PAPER §7.2",
+        "reddito, mediana comunale reale 2012–2023: +0,44 % l'anno",
+        0.44,
+        lambda: reddito_reale_mediana(),
+        0.005,
+    ),
+    (
+        "sito, seconda storia",
+        "45 comuni su 205 perdono potere d'acquisto fra il 2012 e il 2023",
+        45,
+        lambda: reddito_comuni_in_calo_reale(),
+        0,
+    ),
+    (
+        "sito, seconda storia",
+        "inflazione fra il 2012 e il 2023: +21,4 %",
+        21.4,
+        lambda: inflazione("2012", "2023"),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.9 / sito, ottava storia",
+        "181 comuni su 203 perdono valore reale",
+        181,
+        lambda: sum(1 for v in variazioni_reali_comuni().values() if v < 0),
+        0,
+    ),
+    (
+        "WORKING-PAPER §7.9 / sito, ottava storia",
+        "mediana della variazione reale del prezzo: -1,11 % l'anno",
+        -1.11,
+        lambda: statistics.median(variazioni_reali_comuni().values()),
+        0.005,
+    ),
+    (
+        "WORKING-PAPER §7.9 / sito, ottava storia",
+        "il metro quadro più caro della provincia: 3.535 € (Sirmione)",
+        3535,
+        lambda: max(prezzi_ultimo_anno().values()),
+        0.5,
+    ),
+    (
+        "WORKING-PAPER §7.9 / sito, ottava storia",
+        "il più economico: 700 € (Provaglio Val Sabbia), cioè 5,0 volte",
+        5.05,
+        lambda: max(prezzi_ultimo_anno().values()) / min(prezzi_ultimo_anno().values()),
+        0.05,
+    ),
+    (
+        "WORKING-PAPER §7.9 / sito, ottava storia",
+        "prezzo contro reddito comunale: +0,52 (Pearson)",
+        0.52,
+        lambda: (
+            lambda prezzi_c, redditi_c: correlazione(
+                [prezzi_c[c] for c in sorted(set(prezzi_c) & set(redditi_c))],
+                [redditi_c[c] for c in sorted(set(prezzi_c) & set(redditi_c))],
+            )
+        )(prezzi_ultimo_anno(), reddito_medio(max(r["anno"] for r in redditi))),
+        0.005,
+    ),
+    (
+        "WORKING-PAPER §7.9",
+        "zone del capoluogo, livello iniziale contro variazione reale: -0,38",
+        -0.38,
+        lambda: convergenza_zone("pearson"),
+        0.005,
+    ),
+    (
+        "WORKING-PAPER §7.9",
+        "le stesse zone, Spearman: -0,53",
+        -0.53,
+        lambda: convergenza_zone("spearman"),
+        0.005,
     ),
     (
         "PROSSIMI-PASSI §4 / README",

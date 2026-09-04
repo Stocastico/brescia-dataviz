@@ -143,10 +143,12 @@ def serie_reddito(nome_file: str = "redditi_comuni.csv", provincia: str | None =
     confronto (`redditi_comuni_confronto.csv`), che ha le stesse colonne più il
     territorio: serve a chiedersi se un risultato bresciano sia bresciano.
 
-    ⚠️ **Nominale.** Le tabelle MEF non portano un deflatore e il progetto non
-    ne ha scaricato uno: fra 2012 e 2023 una parte della crescita è inflazione,
-    e ogni testo che usi questa serie deve dirlo. Il confronto *fra comuni* nello
-    stesso anno non ne soffre; il confronto *fra anni* sì.
+    ⚠️ **Nominale**, e adesso si può fare di meglio. Le tabelle MEF non portano
+    un deflatore, ma dal settembre 2026 il progetto ne ha uno: `in_euro_costanti()`
+    qui sotto, dall'indice ISTAT dei prezzi (MET-20). Vale la pena usarlo, perché
+    la differenza non è una sfumatura — fra 2012 e 2023 l'inflazione è del 21,4 %,
+    e la mediana comunale passa da +2,23 % l'anno a +0,44 %. Il confronto *fra
+    comuni* nello stesso anno regge nominale; il confronto *fra anni* no.
     """
     imponibile: dict[str, dict[str, float]] = {}
     contribuenti: dict[str, dict[str, float]] = {}

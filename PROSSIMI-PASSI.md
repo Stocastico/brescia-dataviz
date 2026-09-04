@@ -89,7 +89,7 @@ Indice:
 | Deploy | 🤖 la **costruzione** è automatica su `main` (test, cifre, sito, artefatto); la **pubblicazione** no: parte solo a mano, con una conferma scritta (§7). ✅ la sorgente di Pages è su «GitHub Actions» dal 4 settembre 2026, quindi il primo lancio ha dove pubblicare |
 | Licenza | ✅ MIT per il codice (`LICENSE`), CC BY 4.0 per testi e dati (`LICENSE-DATI`) (§3.3) |
 | `METODOLOGIA.md` | ⚠️ bozza avanzata: **venti** regole, l'ultima (MET-20) dall'indice dei prezzi pubblicato in tre basi che non si sovrappongono; MET-9 chiusa, MET-16 dal panel bilanciato delle centraline, MET-17 e MET-18 dal confronto sul turismo, MET-19 dalle quotazioni OMI (l'unità di misura è una dimensione, non una nota) |
-| `WORKING-PAPER.md` | ⚠️ bozza, ma la §7 è scritta: **otto risultati** con i loro controlli, e la §7.8 fa cadere il limite che il documento dichiarava più serio. Resta provvisorio il titolo, che cambierà quando sarà chiara la tesi (§8) |
+| `WORKING-PAPER.md` | ⚠️ bozza, ma la §7 è scritta: **nove risultati** con i loro controlli. La §7.8 fa cadere il limite che il documento dichiarava più serio; la §7.9 è la sola in cui la conclusione dipende da come si misura, e la §7.3 è stata corretta da lei. Resta provvisorio il titolo, che cambierà quando sarà chiara la tesi (§8) |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
 fatte e otto storie sono scritte in un sito che si costruisce da solo, e adesso
@@ -944,7 +944,7 @@ entra nel tempo che hai, non a fare un piano.
 | ✅ ~~Decomposizione della popolazione~~ | fatta | ed è diventata MET-15: la prima storia adesso risponde alla domanda che dichiarava di non poter rispondere |
 | ✅ ~~Una storia su aria e clima (asse 4)~~ | fatta | `analysis/aria_e_clima.py` e la sesta storia del sito. Ne è uscita anche MET-16, e la pioggia è entrata nel racconto **proprio perché** non dà segnale |
 | ✅ ~~Estendere il confronto fra province al **turismo**~~ | fatta | `analysis/confronto_turismo.py` e la §7.8 del working paper. Ne sono uscite MET-17 e MET-18, e la scoperta che la provincia è la decima d'Italia per presenze |
-| ✅ ~~Riscrivere la §7 del working paper con le storie~~ | fatta | otto risultati, ciascuno con i suoi controlli |
+| ✅ ~~Riscrivere la §7 del working paper con le storie~~ | fatta | nove risultati, ciascuno con i suoi controlli |
 | ✅ ~~Portare il turismo nel sito come **settima storia**~~ | fatta | «La decima provincia turistica d'Italia», con lo sciame delle 107 province, i diciassette anni di presenze divise fra clienti italiani e stranieri, e lo scarto fra le due fonti disegnato invece che raccontato. Il settimo colore è `--prugna`, scelto con la regola ora scritta in `sito/README.md` |
 | 🤖 Analisi e storia sulla casa (§4) | **mezza giornata** per la prima analisi, un giorno per l'ottava storia | l'unico tema che ha i dati e non ha ancora niente: prezzi fermi contro volumi raddoppiati |
 | 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |

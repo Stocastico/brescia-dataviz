@@ -20,9 +20,13 @@ Le finestre non coincidono, e non vanno appiattite sulla più corta:
 
 Cosa questi numeri **non** dicono:
 
-- il reddito è in **euro correnti**: fra 2012 e 2023 buona parte della crescita
-  è inflazione, e nessun deflatore è entrato nel progetto. Il confronto fra
-  comuni nello stesso anno tiene, quello fra anni no (vedi `_tabelle.py`);
+- il reddito è in **euro correnti**, e questo script non lo deflaziona: fra 2012
+  e 2023 buona parte della crescita è inflazione (21,4 %), e la mediana comunale
+  passa da +2,23 % l'anno a +0,44 % in euro costanti. Il deflatore c'è da
+  settembre 2026 — `_tabelle.in_euro_costanti()`, MET-20 — quindi qui la scelta
+  di restare nominali è **una scelta**: questo script confronta serie diverse
+  sulla stessa scala, e deflazionarne una sola le renderebbe incomparabili. Chi
+  legge un tasso di crescita del reddito da qui deve toglierci l'inflazione;
 - gli addetti sono delle **unità locali**, non delle imprese: una sede
   secondaria conta nel comune dove sta, e un trasferimento fra comuni si legge
   come crollo di uno e boom dell'altro;
