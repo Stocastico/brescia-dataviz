@@ -125,3 +125,36 @@ def test_il_manifesto_elenca_le_tabelle() -> None:
     assert manifesto["comuni"] == 205
     assert "comuni_sintesi.csv" in manifesto["tabelle"]
     assert manifesto["indicatori"] == len(registro())
+
+
+def test_i_prezzi_delle_case_ci_sono_e_dichiarano_le_due_assenze() -> None:
+    """L'asse casa entra nel contratto con due indicatori, e con l'unica
+    copertura del progetto che non è di 205 comuni: **203**. Magasa e
+    Valvestino non sono nella fonte OMI dal 2016, e l'interfaccia deve poterlo
+    dire invece di disegnare due buchi (MET-3)."""
+    # Niente skip: `quotazioni_comuni.csv` è versionata nel repository, quindi
+    # se questo indicatore manca è un errore, non una tabella non costruita.
+    assert "prezzo_case" in [riga["id"] for riga in registro()]
+
+    prezzo = indicatore("prezzo_case")
+    assert prezzo["unit"] == "euro/m²"
+    assert prezzo["confidence"] == "osservato"
+    ultimo = prezzo["periods"][-1]
+    quotati = [c for c, anni in prezzo["values"].items() if anni.get(ultimo) is not None]
+    assert len(quotati) == 203
+    for codice in quotati:
+        assert prezzo["values"][codice][ultimo] > 0
+
+    # e l'assunzione che senza si legge il numero sbagliato (MET-19) è scritta
+    assert any("lorda" in a for a in prezzo["assumptions"])
+
+    reale = indicatore("variazione_prezzo_reale")
+    assert reale["kind"] == "diverging"
+    # gli stessi 203: una variazione su undici anni non sta sulla mappa di una
+    # su ventuno (MET-8), quindi i due comuni usciti nel 2016 restano fuori
+    assert len(reale["values"]) == 203
+    assert reale["confidence"] == "derivato"
+    assert any("nazionale" in a for a in reale["assumptions"])
+    # ventun anni di inflazione: nel capoluogo la variazione reale è negativa
+    valori = list(reale["values"]["017029"].values())
+    assert valori and valori[0] < 0
