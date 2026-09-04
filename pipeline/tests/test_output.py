@@ -507,3 +507,31 @@ def test_le_due_fonti_sul_turismo_bresciano_non_coincidono() -> None:
     assert len(scarti) >= 5
     assert all(0.02 < s < 0.20 for s in scarti.values()), scarti
     assert scarti["2024"] > scarti["2019"], "lo scarto non cresce più: MET-17 va riscritta"
+
+
+def test_l_indice_dei_prezzi_e_una_serie_sola() -> None:
+    """Tre basi ISTAT che non si sovrappongono devono uscire come una serie
+    continua: il controllo è che ogni rapporto fra anni consecutivi riproduca
+    la variazione annua **pubblicata**, giunzioni comprese.
+
+    Attaccare i livelli grezzi delle tre basi supera ogni altro controllo
+    immaginabile — anni tutti presenti, valori positivi, indice crescente a
+    tratti — e fallisce solo questo, con un −30 % nel 2011 e un altro nel 2016.
+    """
+    righe = {r["anno"]: r for r in leggi("indice_prezzi.csv")}
+    anni = sorted(righe)
+    assert int(anni[-1]) - int(anni[0]) + 1 == len(anni), "buco d'anni nella serie"
+    assert float(righe["2015"]["indice"]) == pytest.approx(100.0, abs=1e-6)
+
+    for anno in anni[1:]:
+        dichiarata = righe[anno]["variazione_annua"]
+        if not dichiarata:
+            continue
+        prima = float(righe[str(int(anno) - 1)]["indice"])
+        calcolata = (float(righe[anno]["indice"]) / prima - 1) * 100
+        # 0,05 è la metà dell'ultima cifra pubblicata: più stretto di così si
+        # starebbe misurando l'arrotondamento della fonte, non la catena.
+        assert abs(calcolata - float(dichiarata)) < 0.06, (anno, calcolata, dichiarata)
+
+    marcati = {r["anno"] for r in leggi("indice_prezzi.csv") if r["stato"] == "osservato"}
+    assert marcati == {r["anno"] for r in leggi("indice_prezzi.csv") if r["base_fonte"] == "2015"}

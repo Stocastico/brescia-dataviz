@@ -31,6 +31,7 @@ from .datasets import (
     migrazioni,
     omi,
     popolazione,
+    prezzi,
     province,
     redditi,
     redditi_confronto,
@@ -61,6 +62,8 @@ DATASETS: dict[str, Callable[[dict[str, str]], None]] = {
     "redditi": redditi.build,
     "redditi_confronto": redditi_confronto.build,
     "commercio_estero": commercio_estero.build,
+    # il deflatore: nazionale, e nessun comune lo tocca
+    "prezzi": prezzi.build,
     # non scaricano niente: leggono gli archivi versionati in dati/input/omi/
     "omi": omi.build,
     "compravendite": compravendite.build,

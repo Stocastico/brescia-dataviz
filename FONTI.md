@@ -198,6 +198,18 @@ l'OMI, che ha una grana propria (le **zone OMI**) e sta dietro un login.
 | Patrimonio immobiliare comunale per quartiere | Comune di Brescia — open data | era `dati.comune.brescia.it/.../32-patrimonio-immobiliare-del-comune`, **portale dismesso** | quartiere | 2014, 2016 | **da ritrovare su `dati.lombardia.it`** | serie vecchia; utile solo come contesto |
 | Catasto: fabbricati e terreni attivi (rendita, consistenza, categoria, classe) | Comune di Brescia via Open Data Regione Lombardia | `dati.lombardia.it/resource/j5xd-rtju` (fabbricati), `8jcn-p4vj` (terreni) | foglio/particella/subalterno | snapshot 2021 | **verificata ✓** (schema letto) | ⚠️ **senza coordinate né quartiere**: solo riferimenti catastali. Geolocalizzabile solo con la geometria catastale INSPIRE, che non è confermata come aperta. Stesso vicolo cieco del catastro forale in Donostia. |
 
+**Il deflatore, che serve a questo asse più che a ogni altro.** Una serie di
+prezzi che comincia nel 2004 non si legge in euro correnti, e fino a settembre
+2026 il progetto non aveva un indice dei prezzi. Adesso sì:
+
+| Tema | Fonte | Endpoint | Grana | Copertura | Stato | Licenza |
+|---|---|---|---|---|---|---|
+| Indice dei prezzi al consumo per l'intera collettività (NIC), medie annue | ISTAT — SDMX | `esploradati.istat.it`, dataflow `167_747_DCSP_NIC2B2025_1`, chiave `A.IT...00` | **nazionale** | annuale **1996–2025** | **verificata ✓ e scaricata** (settembre 2026) → `indice_prezzi.csv`. ⚠️ Esce in **tre basi che non si sovrappongono** (1995, 2010, 2015): il raccordo si fa con la variazione annua pubblicata, non con i livelli, o si disegnano due crolli del 30 % mai avvenuti (**MET-20**) | CC BY 4.0 |
+
+⚠️ **Un indice provinciale non c'è per tutta la serie.** ISTAT pubblica i NIC
+per capoluogo di provincia, ma non con la stessa continuità e non per i comuni:
+deflazionare Brescia con l'Italia è un'assunzione dichiarata, non una misura.
+
 **Nota sull'asse casa.** La combinazione realistica è: **ISTAT censuario** per
 lo *stock* (quante abitazioni, quante in affitto, quante vuote, quanto vecchie)
 a grana fine e con due fotografie confrontabili (2011 → 2021); **OMI** per i

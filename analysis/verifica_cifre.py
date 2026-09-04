@@ -57,6 +57,7 @@ meteo = leggi("meteo_mensile.csv")
 popolazione = leggi("popolazione_comuni.csv")
 redditi = leggi("redditi_comuni.csv")
 settore_classe = leggi("imprese_settore_classe.csv")
+prezzi = {riga["anno"]: riga for riga in leggi("indice_prezzi.csv")}
 sezioni = leggi("imprese_sezioni_comuni.csv")
 province = leggi("imprese_province.csv")
 capoluoghi = leggi("imprese_capoluoghi.csv")
@@ -820,6 +821,28 @@ def stazioni_di_temperatura() -> int:
 def variazione_mediana_pioggia() -> float:
     variazioni = sorted((r / b - 1) * 100 for b, r in _due_finestre("Precipitazione", somma=True))
     return mediana_lista(variazioni)
+
+
+def indice_prezzi(anno: str) -> float:
+    """L'indice concatenato, base 2015 = 100 (MET-20)."""
+    return float(prezzi[anno]["indice"])
+
+
+def inflazione(iniziale: str, finale: str) -> float:
+    """Variazione percentuale del livello dei prezzi fra due anni."""
+    return (indice_prezzi(finale) / indice_prezzi(iniziale) - 1) * 100
+
+
+def livello_fonte_ricalcolato(anno: str) -> float:
+    """Il livello pubblicato dalla fonte, **rifatto** dalla serie concatenata.
+
+    È il controllo che rende MET-20 verificabile invece che dichiarata: se il
+    raccordo fosse sbagliato, il numero della fonte non si ritroverebbe.
+    L'anno base della fonte è l'ultimo anno del tratto precedente, cioè quello
+    che vale 100 nella base nuova.
+    """
+    base = str(int(min(a for a, r in prezzi.items() if r["base_fonte"] == prezzi[anno]["base_fonte"])) - 1)
+    return indice_prezzi(anno) / indice_prezzi(base) * 100
 
 
 VERIFICHE: list[tuple[str, str, float, object, float]] = [
@@ -1832,6 +1855,27 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         "e campeggi e villaggi +1,3 %: un evento vero si vedrebbe su tutti",
         1.3,
         lambda: scalino_2025("campeggi e villaggi"),
+        0.05,
+    ),
+    (
+        "METODOLOGIA MET-20 / dati/README §Il deflatore",
+        "il NIC del 2016, primo anno della base 2015: 99,9",
+        99.9,
+        lambda: indice_prezzi("2016"),
+        0.001,
+    ),
+    (
+        "METODOLOGIA MET-20 / dati/README §Il deflatore",
+        "il 2011 vale 102,8 nella base 2010, e la catena lo ritrova",
+        102.8,
+        lambda: livello_fonte_ricalcolato("2011"),
+        0.01,
+    ),
+    (
+        "METODOLOGIA MET-20",
+        "inflazione cumulata fra il 2004 e il 2025: +47,8 %",
+        47.8,
+        lambda: inflazione("2004", "2025"),
         0.05,
     ),
 ]
