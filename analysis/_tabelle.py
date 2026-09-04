@@ -36,6 +36,43 @@ PROVINCIA = "ITC47"
 
 Serie = dict[str, dict[str, float]]  # codice comune -> anno -> valore
 
+# I comuni **affacciati sul lago di Garda**, che MET-5 impone di togliere in un
+# leave-one-out da qualunque correlazione tocchi il turismo — e i prezzi delle
+# case lo toccano. La lista è geografica e sta scritta una volta sola (MET-13),
+# **per nome**: i codici si risolvono dall'anagrafica, così una lista sbagliata
+# fallisce invece di escludere in silenzio il comune sbagliato.
+#
+# ⚠️ Il nome non è il criterio: **Polpenazze del Garda**, **Puegnago del Garda**
+# e **Soiano del Lago** portano il lago nel nome e non lo toccano; **Salò**,
+# **Sirmione**, **Tignale** e **Gargnano** non lo portano e ci stanno sopra.
+GARDESANI = (
+    "Desenzano del Garda",
+    "Gardone Riviera",
+    "Gargnano",
+    "Limone sul Garda",
+    "Lonato del Garda",
+    "Manerba del Garda",
+    "Moniga del Garda",
+    "Padenghe sul Garda",
+    "Salò",
+    "San Felice del Benaco",
+    "Sirmione",
+    "Tignale",
+    "Toscolano-Maderno",
+    "Tremosine sul Garda",
+)
+
+
+def codici_gardesani() -> set[str]:
+    """I codici ISTAT dei comuni gardesani, risolti dall'anagrafica."""
+    per_nome = {riga["comune"]: codice for codice, riga in anagrafica().items()}
+    mancanti = [nome for nome in GARDESANI if nome not in per_nome]
+    if mancanti:
+        raise ValueError(f"comuni gardesani non trovati in anagrafica: {mancanti}")
+    return {per_nome[nome] for nome in GARDESANI}
+
+
+
 
 # --- lettura ------------------------------------------------------------
 
@@ -134,6 +171,43 @@ def serie_reddito(nome_file: str = "redditi_comuni.csv", provincia: str | None =
                 continue
             per_comune.setdefault(codice, {})[anno] = totale / teste
     return per_comune
+
+
+# --- il deflatore -------------------------------------------------------
+
+# L'anno in cui si esprimono gli euro costanti. È l'ultimo della serie dei
+# prezzi, così «euro costanti» vuol dire «euro di oggi» e non richiede al
+# lettore di immaginare quanto valesse un euro del 2015.
+ANNO_EURO_COSTANTI = "2025"
+
+
+def indice_prezzi() -> dict[str, float]:
+    """`anno -> indice dei prezzi al consumo`, base 2015 = 100 (MET-20).
+
+    È l'indice **nazionale**: deflazionare una serie bresciana con l'inflazione
+    italiana è un'assunzione dichiarata, non una misura. Ogni testo che usi
+    questa serie deve dirlo.
+    """
+    return {riga["anno"]: float(riga["indice"]) for riga in leggi("indice_prezzi.csv")}
+
+
+def deflatore(base: str = ANNO_EURO_COSTANTI) -> dict[str, float]:
+    """`anno -> fattore` che porta un euro di quell'anno in euro di `base`."""
+    indice = indice_prezzi()
+    if base not in indice:
+        raise ValueError(f"l'anno {base} non è nella serie dei prezzi")
+    return {anno: indice[base] / valore for anno, valore in indice.items()}
+
+
+def in_euro_costanti(serie: dict[str, float], base: str = ANNO_EURO_COSTANTI) -> dict[str, float]:
+    """La stessa serie `anno -> valore`, in euro di `base`.
+
+    Gli anni fuori dalla serie dei prezzi **spariscono** invece di passare
+    indeformati: un valore non deflazionato in mezzo a valori deflazionati è
+    peggio di un valore mancante, perché non si vede.
+    """
+    fattori = deflatore(base)
+    return {anno: valore * fattori[anno] for anno, valore in serie.items() if anno in fattori}
 
 
 def quote_sezioni(anno: str | None = None) -> tuple[str, dict[str, dict[str, float]]]:

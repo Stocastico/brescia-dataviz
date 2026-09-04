@@ -44,6 +44,7 @@ jobs:
           python analysis/confronto_province.py > /dev/null
           python analysis/convergenza_confronto.py > /dev/null
           python analysis/confronto_turismo.py > /dev/null
+          python analysis/casa_e_prezzi.py > /dev/null
       - name: Il sito si costruisce
         run: |
           python -m brescia_pipeline.build --offline web

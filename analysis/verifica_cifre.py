@@ -58,6 +58,9 @@ popolazione = leggi("popolazione_comuni.csv")
 redditi = leggi("redditi_comuni.csv")
 settore_classe = leggi("imprese_settore_classe.csv")
 prezzi = {riga["anno"]: riga for riga in leggi("indice_prezzi.csv")}
+quotazioni_comuni = leggi("quotazioni_comuni.csv")
+quotazioni_zone = leggi("quotazioni_zone.csv")
+compravendite = leggi("compravendite_comuni.csv")
 sezioni = leggi("imprese_sezioni_comuni.csv")
 province = leggi("imprese_province.csv")
 capoluoghi = leggi("imprese_capoluoghi.csv")
@@ -843,6 +846,76 @@ def livello_fonte_ricalcolato(anno: str) -> float:
     """
     base = str(int(min(a for a, r in prezzi.items() if r["base_fonte"] == prezzi[anno]["base_fonte"])) - 1)
     return indice_prezzi(anno) / indice_prezzi(base) * 100
+
+
+# --- la casa ------------------------------------------------------------
+#
+# Rilette per conto loro, come tutto il resto di questo file: le stesse regole
+# che `casa_e_prezzi.py` applica (tipologia, mercato, base di superficie, stato
+# conservativo prevalente) scritte una seconda volta apposta.
+
+def euro_mq(codice: str, anno: str) -> float:
+    for riga in quotazioni_comuni:
+        if (
+            riga["codice_istat"] == codice
+            and riga["anno"] == anno
+            and riga["tipologia"] == "Abitazioni civili"
+            and riga["mercato"] == "vendita"
+            and riga["base_superficie"] == "lorda"
+        ):
+            return float(riga["media"])
+    raise KeyError((codice, anno))
+
+
+def euro_mq_costanti(codice: str, anno: str, base: str = "2025") -> float:
+    return euro_mq(codice, anno) * indice_prezzi(base) / indice_prezzi(anno)
+
+
+def ntn_residenziale(codice: str, anno: str) -> float:
+    return sum(
+        float(riga["ntn"])
+        for riga in compravendite
+        if riga["codice_istat"] == codice
+        and riga["anno"] == anno
+        and riga["comparto"] == "residenziale"
+        and riga["segmento"] == "totale"
+    )
+
+
+def zone_capoluogo_panel() -> dict[str, dict[str, float]]:
+    """Le zone del capoluogo presenti in **tutti** gli anni (MET-16)."""
+    per_link: dict[str, dict[str, float]] = defaultdict(dict)
+    for riga in quotazioni_zone:
+        if riga["codice_istat"] != CAPOLUOGO or riga["tipologia"] != "Abitazioni civili":
+            continue
+        if riga["stato_prevalente"] != "P":
+            continue
+        per_link[riga["link_zona"]][riga["anno"]] = (
+            float(riga["vendita_min"]) + float(riga["vendita_max"])
+        ) / 2
+    anni = {anno for serie in per_link.values() for anno in serie}
+    return {link: serie for link, serie in per_link.items() if len(serie) == len(anni)}
+
+
+def forbice_zone(anno: str) -> float:
+    valori = [serie[anno] for serie in zone_capoluogo_panel().values()]
+    return max(valori) / min(valori)
+
+
+def rango_prezzo_capoluogo(anno: str = "2025") -> int:
+    valori = sorted(
+        (
+            float(riga["media"])
+            for riga in quotazioni_comuni
+            if riga["anno"] == anno
+            and riga["tipologia"] == "Abitazioni civili"
+            and riga["mercato"] == "vendita"
+            and riga["base_superficie"] == "lorda"
+            and riga["media"]
+        ),
+        reverse=True,
+    )
+    return valori.index(euro_mq(CAPOLUOGO, anno)) + 1
 
 
 VERIFICHE: list[tuple[str, str, float, object, float]] = [
@@ -1877,6 +1950,57 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         47.8,
         lambda: inflazione("2004", "2025"),
         0.05,
+    ),
+    (
+        "PROSSIMI-PASSI §4 / README",
+        "capoluogo, €/m² 2004: 1.788 in euro correnti",
+        1788,
+        lambda: euro_mq(CAPOLUOGO, "2004"),
+        0.5,
+    ),
+    (
+        "PROSSIMI-PASSI §4 / README",
+        "capoluogo, €/m² 2025: 1.829, cioè +2,3 % nominale in ventun anni",
+        2.3,
+        lambda: (euro_mq(CAPOLUOGO, "2025") / euro_mq(CAPOLUOGO, "2004") - 1) * 100,
+        0.05,
+    ),
+    (
+        "PROSSIMI-PASSI §4 / README / METODOLOGIA MET-20",
+        "lo stesso prezzo in euro 2025: -30,8 %",
+        -30.8,
+        lambda: (euro_mq_costanti(CAPOLUOGO, "2025") / euro_mq_costanti(CAPOLUOGO, "2004") - 1)
+        * 100,
+        0.05,
+    ),
+    (
+        "PROSSIMI-PASSI §4 / README",
+        "capoluogo, NTN residenziale dal fondo del 2013 al 2025: +134,5 %",
+        134.5,
+        lambda: (ntn_residenziale(CAPOLUOGO, "2025") / ntn_residenziale(CAPOLUOGO, "2013") - 1)
+        * 100,
+        0.05,
+    ),
+    (
+        "PROSSIMI-PASSI §4",
+        "capoluogo, forbice fra zone: da 2,21 nel 2004",
+        2.21,
+        lambda: forbice_zone("2004"),
+        0.005,
+    ),
+    (
+        "PROSSIMI-PASSI §4",
+        "capoluogo, forbice fra zone: a 1,97 nel 2025",
+        1.97,
+        lambda: forbice_zone("2025"),
+        0.005,
+    ),
+    (
+        "PROSSIMI-PASSI §4 / README",
+        "il capoluogo è 18° su 203 comuni quotati per €/m²",
+        18,
+        rango_prezzo_capoluogo,
+        0,
     ),
 ]
 

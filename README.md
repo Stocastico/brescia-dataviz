@@ -10,18 +10,24 @@ monte.
 
 **Stato: tutti e quattro gli assi portanti hanno la loro storia, e i quattro
 assi economici hanno anche un termine di paragone nazionale.** Dati scaricati e
-puliti in **30 tabelle**, quattordici analisi fatte, sette storie scritte in un
+puliti in **31 tabelle**, quindici analisi fatte, sette storie scritte in un
 documento narrativo autocontenuto ([`sito/`](sito/README.md)) che si costruisce
 da solo e ha già il suo workflow di pubblicazione. La licenza è scelta (MIT per
 il codice, CC BY 4.0 per testi e dati: vedi in fondo).
 
-Da settembre 2026 c'è **un quinto tema con i dati e senza ancora una storia: la
-casa.** Quotazioni immobiliari per zona OMI dal 2004 e volumi di compravendita
-per comune dal 2011 — l'unico dato del progetto che nessun URL restituisce, e
-che quindi vive versionato in [`dati/input/omi/`](dati/input/omi/PROVENIENZA.md).
-Dice già una cosa che nessuna delle due serie direbbe da sola: nel capoluogo i
-**volumi** sono quasi raddoppiati dal fondo del 2013, mentre il **prezzo al
-metro quadro** è dove era vent'anni fa.
+Da settembre 2026 c'è **un quinto tema, con i dati e con la sua prima analisi:
+la casa.** Quotazioni immobiliari per zona OMI dal 2004 e volumi di
+compravendita per comune dal 2011 — l'unico dato del progetto che nessun URL
+restituisce, e che quindi vive versionato in
+[`dati/input/omi/`](dati/input/omi/PROVENIENZA.md). Dice una cosa che nessuna
+delle due serie direbbe da sola: nel capoluogo i **volumi** sono più che
+raddoppiati dal fondo del 2013 (**+134,5 %**), mentre il **prezzo al metro
+quadro** in euro correnti è dove era vent'anni fa (**+2,3 %** dal 2004) — e in
+**euro 2025 ha perso il 30,8 %**. Si vende molto di più a un prezzo reale molto
+più basso. Per poterlo scrivere è servito il deflatore che al progetto mancava:
+l'indice ISTAT dei prezzi al consumo, che la fonte pubblica in tre basi che non
+si sovrappongono (`indice_prezzi.csv`, MET-20). Manca solo il racconto: sarebbe
+l'ottava storia del sito.
 
 ### Quello che richiede te
 
@@ -91,7 +97,7 @@ fare una sessione di lavoro e cosa richiede te**.
 | [`WORKING-PAPER.md`](WORKING-PAPER.md) | ⚠️ **Bozza, versione 2.** Il working paper: metodo per un lettore esterno. La §7 non è più provvisoria — copre tutti e quattro gli assi, con i controlli e i due assi che un termine di paragone esterno non ce l'hanno. Restano provvisori il titolo e la §5. |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco completo delle cose che **richiedono te** (un login SPID, una macchina italiana, una decisione di disegno), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
-| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 30 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza, turismo e — da settembre 2026 — **quotazioni immobiliari OMI in due grane, più i volumi di compravendita**, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no, con l'eccezione degli **input curati** in `dati/input/`, che nessun URL restituisce. |
+| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 31 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza, turismo e — da settembre 2026 — **quotazioni immobiliari OMI in due grane, più i volumi di compravendita**, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no, con l'eccezione degli **input curati** in `dati/input/`, che nessun URL restituisce. |
 | [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: quattordici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
 | [`sito/`](sito/README.md) | **Il documento narrativo**: sette storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
