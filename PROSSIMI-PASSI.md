@@ -77,7 +77,7 @@ Indice:
 | Ricognizione delle fonti | ✅ [`FONTI.md`](FONTI.md), con lo stato di accesso verificato riga per riga |
 | Soggetto e assi | ✅ decisi: la provincia attraverso i 205 comuni, quattro assi portanti ([`BRIEF.md`](BRIEF.md)) |
 | Repository separato | ✅ esiste, `main`, file in radice |
-| Pipeline | ✅ funzionante, `requests` + libreria standard, 222 test verdi |
+| Pipeline | ✅ funzionante, `requests` + libreria standard, 264 test verdi |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
 | Tabelle tidy | ✅ **31 CSV** in [`dati/processed/`](dati/README.md), versionati — tre vengono dall'OMI (quotazioni in grana zona e comunale, volumi di compravendita 2011–2025) e la trentunesima è il **deflatore** `indice_prezzi.csv`, che è arrivato per leggerle; manca solo `migrazioni_comuni.csv` |
 | Asse «casa e prezzi» | ✅ **completo**: i dati (quotazioni OMI 2004–2025 in due grane, compravendite 2011–2025), l'analisi (`casa_e_prezzi.py`, §4) e la **storia** — l'ottava del sito. Prezzo reale −30,8 % in ventun anni mentre i volumi fanno +134,5 % |
