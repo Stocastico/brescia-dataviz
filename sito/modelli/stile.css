@@ -59,6 +59,21 @@
      debole del gruppo. Vedi sito/README.md §Lo stile. */
   --oliva:#7a8b3f; --oliva-d:#5a6830;
   --prugna:#9c4f92; --prugna-d:#74336c;
+  /* L'ottavo, settembre 2026, scelto con la stessa regola e senza correggerla
+     a gusto. Applicata agli altri sette, il buco di tinta piu' largo che
+     restava era **dentro i verdi**: fra oliva (73°) e verde (156°), 83 gradi,
+     e il mezzo cade a 114°. Dista 41 gradi dall'oliva e 42 dal verde — la
+     stessa spaziatura che hanno fra loro mare e verde (40°) e ambra e corallo
+     (41°), quindi non e' piu' vicino di quanto lo siano gia' due colori della
+     famiglia. Contrasto sul fondo 4,3:1 la tinta base e 7,1:1 quella scura,
+     sopra la mediana del gruppo (3,45 e 5,64).
+
+     ⚠️ La conseguenza da sapere: i colori di storia diventano **tre verdi** su
+     otto. Regge perche' le tre storie che li portano sono la 3, la 6 e l'8 e
+     non si toccano mai in pagina; se un giorno se ne aggiungesse una nona
+     accanto a una di loro, la regola andrebbe rinegoziata invece che
+     riapplicata — e questa riga e' li' per ricordarlo. */
+  --alloro:#3c8235; --alloro-d:#2d5d28;
   --oro:#e7b57e;
 
   /* Rampe dei grafici, le stesse dell'originale.
@@ -171,25 +186,27 @@ h3{font-size:1.12rem;margin:2rem 0 .4rem}
 .s1 .badge-num{color:var(--coral)} .s2 .badge-num{color:var(--sea)}
 .s3 .badge-num{color:var(--green)} .s4 .badge-num{color:var(--amber)}
 .s5 .badge-num{color:var(--viola)} .s6 .badge-num{color:var(--oliva)}
-.s7 .badge-num{color:var(--prugna)}
+.s7 .badge-num{color:var(--prugna)} .s8 .badge-num{color:var(--alloro)}
 .sx .badge-num{color:var(--ink2)}
 .s1 .question{border-color:var(--coral)} .s2 .question{border-color:var(--sea)}
 .s3 .question{border-color:var(--green)} .s4 .question{border-color:var(--amber)}
 .s5 .question{border-color:var(--viola)} .s6 .question{border-color:var(--oliva)}
-.s7 .question{border-color:var(--prugna)}
+.s7 .question{border-color:var(--prugna)} .s8 .question{border-color:var(--alloro)}
 .s1 .takeaway{border-left-color:var(--coral)} .s3 .takeaway{border-left-color:var(--green)}
 .s4 .takeaway{border-left-color:var(--amber)} .s5 .takeaway{border-left-color:var(--viola)}
 .s6 .takeaway{border-left-color:var(--oliva)}
 .s7 .takeaway{border-left-color:var(--prugna)}
+.s8 .takeaway{border-left-color:var(--alloro)}
 .s1 .kn .big{color:var(--coral-d)} .s3 .kn .big{color:var(--green-d)}
 .s4 .kn .big{color:var(--amber-d)} .s5 .kn .big{color:var(--viola-d)}
 .s6 .kn .big{color:var(--oliva-d)}
-.s7 .kn .big{color:var(--prugna-d)}
+.s7 .kn .big{color:var(--prugna-d)} .s8 .kn .big{color:var(--alloro-d)}
 .s1 .step.active>div{border-left-color:var(--coral)}
 .s3 .step.active>div{border-left-color:var(--green)}
 .s4 .step.active>div{border-left-color:var(--amber)}
 .s5 .step.active>div{border-left-color:var(--viola)}
 .s7 .step.active>div{border-left-color:var(--prugna)}
+.s8 .step.active>div{border-left-color:var(--alloro)}
 
 /* FIGURE */
 .fig{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px;margin:30px 0}

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Come cambia il bresciano</title>
-<meta name="description" content="Un ritratto in numeri della provincia di Brescia attraverso i suoi 205 comuni: chi si svuota, i redditi che si avvicinano, un crollo industriale che non c'è stato, cosa distingue davvero questa provincia dalle altre, e vent'anni d'aria e di clima.">
+<meta name="description" content="Un ritratto in numeri della provincia di Brescia attraverso i suoi 205 comuni: chi si svuota, i redditi che si avvicinano, un crollo industriale che non c'è stato, cosa distingue davvero questa provincia dalle altre, vent'anni d'aria e di clima, e ventun anni di prezzi delle case.">
 <style>/*{{STILE}}*/</style>
 </head>
 <body>
@@ -16,9 +16,10 @@
     <p class="eyebrow">Provincia di Brescia · {{c:comuni}} comuni · dati aperti</p>
     <h1>Come cambia il bresciano</h1>
     <p class="lede">Un ritratto in numeri costruito solo con fonti pubbliche, comune per comune.
-    Sette storie che i dati reggono — la quinta corregge le quattro che la precedono, la sesta è
-    l'unica che dura vent'anni, la settima è l'unica che nessuno si aspetta — e una lista di cose
-    che questi dati non permettono di dire.</p>
+    Otto storie che i dati reggono — la quinta corregge le quattro che la precedono, la settima è
+    l'unica che nessuno si aspetta, l'ottava è la più lunga di tutte e la sola in cui il
+    risultato dipende da come si misura — e una lista di cose che questi dati non permettono di
+    dire.</p>
     <div class="quicklinks">
       <a class="primary" href="#svuota">Comincia a leggere</a>
       <a href="metodologia.html">Come è stato fatto</a>
@@ -40,6 +41,7 @@
     <a href="#diversa">5 · Brescia è diversa?</a>
     <a href="#aria">6 · L'aria e il clima</a>
     <a href="#turismo">7 · La decima provincia turistica</a>
+    <a href="#casa">8 · La casa</a>
     <a href="#limiti">Cosa non si può dire</a>
     <a class="pagina" href="metodologia.html">Metodo</a>
     <a class="pagina" href="dati.html">Dati</a>
@@ -89,7 +91,7 @@
     <a href="#limiti">sezione finale</a>.</p>
 
     <div class="takeaway">
-      <span class="t-lab">Le conclusioni, in sette righe</span>
+      <span class="t-lab">Le conclusioni, in otto righe</span>
       <ul>
         <li><strong>Metà della provincia si svuota</strong>, e non a caso: i comuni che perdono
           abitanti confinano fra loro, e sono la montagna.</li>
@@ -107,6 +109,9 @@
         <li><strong>È la decima provincia turistica d'Italia</strong>, e la sesta per clienti
           stranieri. Non si vedeva guardando solo Brescia, e nemmeno guardando solo la
           Lombardia.</li>
+        <li><strong>La casa costa come nel {{c:casa_anno_primo}} e vale un terzo in meno.</strong>
+          In euro correnti il metro quadro del capoluogo fa {{c:casa_nominale}} in ventun anni; in
+          euro di oggi fa {{c:casa_reale}}, mentre le compravendite {{c:casa_ntn_variazione}}.</li>
       </ul>
     </div>
   </div></div>
@@ -880,6 +885,173 @@
     valore per notte più basso · Ultimo anno confrontabile {{c:tur_anno}}: il 2025 ha una
     definizione diversa · Fonte diversa da quella comunale usata nel resto della pagina.</p>
 
+    <p class="nextcap">E l'ultimo asse arrivato, che di tutti è il più lungo.
+    <a href="#casa">→ La casa, ventun anni di prezzi</a></p>
+  </div></div>
+</section>
+
+<section class="story s8" id="casa">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">8</div>
+      <div>
+        <p class="eyebrow">Casa · Agenzia delle Entrate, quotazioni OMI, {{c:casa_anno_primo}}–{{c:casa_anno_ultimo}}</p>
+        <h2 class="story-title">La casa costa come nel 2004, e vale un terzo in meno</h2>
+      </div>
+    </div>
+    <p class="question">Nel capoluogo il metro quadro costava {{c:casa_prezzo_primo}} € nel
+    {{c:casa_anno_primo}} e ne costa {{c:casa_prezzo_ultimo}} oggi. Ventun anni per
+    {{c:casa_nominale}}: è un mercato in cui non è successo niente?</p>
+
+    <p>È successo il contrario, e per vederlo basta un numero che a questo progetto è mancato
+    fino a settembre: l'<strong>inflazione</strong>. Fra il {{c:casa_anno_primo}} e il
+    {{c:casa_anno_ultimo}} i prezzi al consumo in Italia sono saliti del
+    <strong>{{c:casa_inflazione}}</strong>, quindi quei {{c:casa_prezzo_primo}} € del
+    {{c:casa_anno_primo}} sono <strong>{{c:casa_prezzo_primo_reale}} € di oggi</strong>. Il metro
+    quadro bresciano non è rimasto fermo: <strong>ha perso {{c:casa_reale}}</strong> del proprio
+    valore. Un mercato che sembra immobile perché lo si guarda con un righello che si accorcia.</p>
+
+    <div class="keynums">
+      <div class="kn"><div class="big">{{c:casa_nominale}}</div>
+        <div class="lbl">€/m² in euro correnti, {{c:casa_anno_primo}}–{{c:casa_anno_ultimo}}</div></div>
+      <div class="kn"><div class="big">{{c:casa_reale}}</div>
+        <div class="lbl">gli stessi €/m² in euro {{c:casa_anno_ultimo}}</div></div>
+      <div class="kn"><div class="big">{{c:casa_ntn_variazione}}</div>
+        <div class="lbl">compravendite dal fondo del {{c:casa_ntn_fondo_anno}}</div></div>
+    </div>
+
+    <figure class="fig">
+      <h3>Lo stesso metro quadro, con due righelli</h3>
+      <p class="cap">Prezzo medio delle abitazioni civili in vendita nel comune di Brescia,
+      €/m² su superficie lorda. La linea alta è la stessa serie della linea bassa, riportata
+      in euro del {{c:casa_anno_ultimo}}: le due si toccano nell'ultimo anno perché lì
+      l'inflazione da scontare è zero.</p>
+      <div id="serie-casa-prezzo"></div>
+    </figure>
+
+    <p>La seconda serie dice che non è un mercato fermo nemmeno nei fatti. Le
+    <strong>compravendite</strong> del capoluogo — transazioni normalizzate sulla quota di
+    proprietà, la misura con cui l'Agenzia conta gli scambi residenziali — toccano il fondo nel
+    {{c:casa_ntn_fondo_anno}} con {{c:casa_ntn_fondo}} e arrivano a
+    {{c:casa_ntn_ultimo}} nel {{c:casa_anno_ultimo}}: <strong>{{c:casa_ntn_variazione}}</strong>.
+    Le due serie non si contraddicono, e messe una accanto all'altra dicono una cosa sola che
+    nessuna delle due dice da sola: <strong>si vende molto di più, a un prezzo reale molto più
+    basso</strong>.</p>
+
+    <figure class="fig">
+      <h3>Prezzo reale e scambi, dal {{c:casa_ntn_anno_primo}}</h3>
+      <p class="cap">Le due serie indicizzate al {{c:casa_ntn_anno_primo}} = 100, che è il primo
+      anno in cui esistono entrambe. Indicizzate e non affiancate in unità proprie: €/m² e numero
+      di transazioni su un asse solo sarebbero due scale diverse nascoste in un grafico.</p>
+      <div id="serie-casa-forbice"></div>
+    </figure>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">la metrica, in chiaro</span>
+        <span>Da dove viene l'inflazione, e perché non era già qui</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Fino a questa storia nessuna cifra in euro di questo progetto era deflazionata, e ogni
+        volta lo diceva: i redditi della <a href="#redditi">seconda storia</a> sono in euro
+        correnti, quindi una parte della loro crescita è inflazione e non si sapeva quanta. Su
+        undici anni era una nota; su <strong>ventuno</strong> è il segno del risultato, e la nota
+        non bastava più.</p>
+        <p>La serie usata è l'indice ISTAT dei prezzi al consumo per l'intera collettività (NIC),
+        medie annue. Ha una trappola che vale la pena raccontare, perché è il genere di errore
+        che non si annuncia: ISTAT lo pubblica in <strong>tre basi diverse che non si
+        sovrappongono in nessun anno</strong> — 1995 = 100 fino al 2010, 2010 = 100 fino al 2015,
+        2015 = 100 da lì. Mettere in colonna quei numeri così come sono e disegnarli produce
+        <strong>due crolli del trenta per cento</strong> che non sono mai avvenuti, e la serie
+        supera qualunque controllo venga in mente: gli anni ci sono tutti, i valori sono positivi,
+        l'indice cresce a tratti.</p>
+        <p>Il raccordo si fa con la <strong>variazione annua</strong> che la stessa fonte
+        pubblica: dentro una base valgono i livelli, alle giunzioni vale la variazione. Il
+        controllo che tiene in piedi la serie non guarda i livelli, guarda che ogni rapporto fra
+        anni consecutivi riproduca la variazione dichiarata.</p>
+        <p><strong>È l'indice italiano, non quello bresciano</strong>, e questa è un'assunzione
+        che non si può togliere: un indice provinciale dei prezzi al consumo non esiste per tutta
+        la serie. Ogni «euro costante» di questa pagina assume che l'inflazione bresciana sia
+        quella italiana.</p>
+      </div>
+    </details>
+
+    <p><strong>Dentro la città.</strong> Le quotazioni OMI hanno una grana che a questo progetto
+    è sempre mancata: la <strong>zona</strong>, che è quanto di più vicino a un quartiere ci sia
+    in un dato ufficiale italiano. Permette la domanda che di solito si fa alle città — il centro
+    si è staccato dalla periferia? — e la risposta bresciana è <strong>no, il contrario</strong>:
+    la forbice fra la zona più cara e la più economica passa da
+    <strong>{{c:casa_forbice_primo}} a {{c:casa_forbice_ultimo}}</strong>. In euro costanti perdono
+    quasi tutte, e chi partiva più caro ha perso di più.</p>
+
+    <figure class="fig">
+      <h3>La zona più cara, quella mediana e la più economica</h3>
+      <p class="cap">€/m² in euro del {{c:casa_anno_ultimo}}, sulle {{c:casa_zone_panel}} zone OMI
+      del comune di Brescia presenti in tutte le {{c:casa_zone_annate}} annate. Tre linee e non
+      tredici: la cosa da vedere è che la distanza fra l'alto e il basso si accorcia.</p>
+      <div id="serie-casa-zone"></div>
+    </figure>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">controllo</span>
+        <span>Le zone del {{c:casa_anno_primo}} non sono le zone di oggi</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Il capoluogo ha <strong>{{c:casa_zone_ultimo}} zone quotate</strong> in ogni annata
+        della serie, e sembrerebbe una rete stabile su cui calcolare medie per ventun anni. Non
+        lo è: nel <strong>{{c:casa_zone_anno_rifatta}}</strong> la zonizzazione viene rifatta,
+        dieci perimetri finiscono e dieci ne cominciano. Le zone restano
+        {{c:casa_zone_ultimo}} ma non sono le stesse {{c:casa_zone_ultimo}}, e una media annua
+        calcolata su «quelle che ci sono» misurerebbe anche il cambio di perimetro.</p>
+        <p>Il confronto lungo si fa quindi sulle <strong>{{c:casa_zone_panel}} zone presenti in
+        tutte le annate</strong>, che è la stessa disciplina con cui la
+        <a href="#aria">sesta storia</a> tratta le centraline: su una rete che apre e chiude
+        stazioni, la media di quello che c'è misura anche la rete.</p>
+      </div>
+    </details>
+
+    <p><strong>Fuori dalla città</strong> il quadro è più netto che dentro. Su
+    {{c:casa_comuni_variazione}} comuni quotati, <strong>{{c:casa_comuni_in_calo}} perdono valore
+    reale</strong>, con una mediana di {{c:casa_variazione_mediana}} l'anno; i pochi che
+    guadagnano sono il lago e l'alta montagna — {{c:casa_comuni_in_crescita}}. Non è una crisi
+    bresciana: è ventun anni di prezzi delle case che non tengono il passo dei prezzi di tutto
+    il resto, in un territorio che nel frattempo <a href="#svuota">si è svuotato a monte</a> e
+    <a href="#redditi">ha visto i redditi avvicinarsi</a>.</p>
+
+    <figure class="fig">
+      <h3>Dove la casa ha perso di più</h3>
+      <p class="cap">Variazione reale del prezzo al metro quadro,
+      {{c:casa_anno_primo}}–{{c:casa_anno_ultimo}}, in per cento all'anno. La scala è la stessa
+      delle altre variazioni di questa pagina: <b>blu dove il calo è più forte</b>, rosso dove il
+      prezzo ha tenuto o è cresciuto. Quasi tutta la provincia è dalla parte fredda. I due comuni
+      tratteggiati non sono a zero: non sono nella fonte.</p>
+      <div id="mappa-casa"></div>
+    </figure>
+
+    <p>La geografia del <em>livello</em>, invece, è quella che questa pagina ha già incontrato due
+    volte. Il metro quadro più caro della provincia è a <strong>{{c:casa_comune_caro}}</strong>
+    ({{c:casa_prezzo_caro}} €), il più economico a {{c:casa_comune_economico}}
+    ({{c:casa_prezzo_economico}} €): <strong>{{c:casa_rapporto_estremi}} volte</strong>. Il
+    capoluogo è <strong>{{c:casa_rango_capoluogo}}º</strong> su {{c:casa_comuni_quotati}} con
+    {{c:casa_prezzo_capoluogo}} €/m². Il vertice non è la città: è il Garda e la montagna del
+    turismo, cioè <a href="#economie">la stessa divisione della quarta storia</a> vista dal lato
+    della casa. Il prezzo si accompagna al reddito comunale
+    ({{c:casa_correlazione_reddito}} di correlazione), il che è quanto di più prevedibile — ma
+    resta una relazione <strong>fra comuni</strong>, non fra persone.</p>
+
+    <div class="takeaway">
+      <span class="t-lab">In una riga</span>
+      <p>Il prezzo della casa a Brescia non è fermo da vent'anni: è sceso di quasi un terzo, e nel
+      frattempo si è venduto il doppio. Sono due serie che dicono la stessa cosa solo se si
+      sconta l'inflazione, ed è il motivo per cui il deflatore è entrato in questo progetto.</p>
+    </div>
+
+    <p class="conf"><span class="dot derivato"></span><b>derivato</b> · Agenzia delle Entrate —
+    OMI, quotazioni immobiliari e volumi di compravendita; ISTAT — indice dei prezzi al consumo ·
+    Le quotazioni sono <b>indicazioni di valore di larga massima</b>, non prezzi di transazione:
+    servono a confrontare zone e anni, non a stimare quanto vale una casa · €/m² su
+    <b>superficie lorda</b>, in vendita: gli affitti hanno un'altra unità e dal 2025 un'altra
+    base · Gli euro costanti sono deflazionati con l'indice <b>nazionale</b> ·
+    {{c:casa_comuni_quotati}} comuni su {{c:comuni}}: {{c:casa_comuni_assenti}} non sono nella
+    fonte dal 2016.</p>
+
     <p class="nextcap">Resta la parte che di solito non si scrive.
     <a href="#limiti">→ Cosa questi dati non permettono di dire</a></p>
   </div></div>
@@ -1342,6 +1514,53 @@
       etichettaY: "scostamento (°C)",
       colonnaNota: "stazioni",
       descrizione: "Scostamento annuo della temperatura media dalla base 2004-2013, una colonna per anno"
+    });
+  }
+
+  // --- storia 8: la casa ------------------------------------------------
+  var casa = DATI.casa;
+  if (casa && casa.anni && casa.anni.length) {
+    /* Due righelli sulla stessa serie. Le due linee si toccano nell'ultimo
+       anno per costruzione — li' l'inflazione da scontare e' zero — e non e'
+       un artefatto da nascondere: e' la lettura del grafico. */
+    G.serie(document.getElementById("serie-casa-prezzo"), {
+      periodi: casa.anni,
+      unita: "€/m²",
+      linee: [
+        { nome: "euro " + casa.anno_base_reale, valori: casa.reali },
+        { nome: "euro correnti", valori: casa.correnti }
+      ],
+      descrizione: "Prezzo al metro quadro delle abitazioni civili nel comune di Brescia, in euro correnti e in euro costanti"
+    });
+
+    G.serie(document.getElementById("serie-casa-forbice"), {
+      periodi: casa.anni_ntn,
+      unita: casa.anni_ntn[0] + " = 100",
+      linee: [
+        { nome: "compravendite", valori: casa.indice_ntn },
+        { nome: "prezzo reale", valori: casa.indice_reale }
+      ],
+      descrizione: "Prezzo reale al metro quadro e numero di compravendite residenziali nel comune di Brescia, indicizzati"
+    });
+
+    if (casa.zone && casa.zone.anni) {
+      G.serie(document.getElementById("serie-casa-zone"), {
+        periodi: casa.zone.anni,
+        unita: "€/m² del " + casa.anno_base_reale,
+        linee: [
+          { nome: "la più cara", valori: casa.zone.alta },
+          { nome: "la mediana", valori: casa.zone.mediana },
+          { nome: "la più economica", valori: casa.zone.bassa }
+        ],
+        descrizione: "Prezzo reale al metro quadro nelle zone OMI del comune di Brescia: la più cara, la mediana e la più economica"
+      });
+    }
+  }
+
+  if (G.metrica("variazione_prezzo_reale")) {
+    G.mappa(document.getElementById("mappa-casa"), {
+      metrica: "variazione_prezzo_reale", decimali: 2,
+      descrizione: "Mappa dei comuni della provincia di Brescia per variazione reale del prezzo delle case fra il 2004 e il 2025"
     });
   }
 })();

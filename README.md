@@ -8,15 +8,15 @@ riprende architettura, metodo e lingua grafica — ma con una domanda di ricerca
 diversa: *come è cambiato questo territorio*, senza una tesi turistica a
 monte.
 
-**Stato: tutti e quattro gli assi portanti hanno la loro storia, e i quattro
-assi economici hanno anche un termine di paragone nazionale.** Dati scaricati e
-puliti in **31 tabelle**, quindici analisi fatte, sette storie scritte in un
+**Stato: tutti e cinque i temi hanno la loro storia, e i quattro assi economici
+hanno anche un termine di paragone nazionale.** Dati scaricati e
+puliti in **31 tabelle**, quindici analisi fatte, otto storie scritte in un
 documento narrativo autocontenuto ([`sito/`](sito/README.md)) che si costruisce
 da solo e ha già il suo workflow di pubblicazione. La licenza è scelta (MIT per
 il codice, CC BY 4.0 per testi e dati: vedi in fondo).
 
-Da settembre 2026 c'è **un quinto tema, con i dati e con la sua prima analisi:
-la casa.** Quotazioni immobiliari per zona OMI dal 2004 e volumi di
+Da settembre 2026 il quinto tema è **la casa**, ed è arrivato in un colpo solo:
+i dati, l'analisi e la storia. Quotazioni immobiliari per zona OMI dal 2004 e volumi di
 compravendita per comune dal 2011 — l'unico dato del progetto che nessun URL
 restituisce, e che quindi vive versionato in
 [`dati/input/omi/`](dati/input/omi/PROVENIENZA.md). Dice una cosa che nessuna
@@ -26,8 +26,7 @@ quadro** in euro correnti è dove era vent'anni fa (**+2,3 %** dal 2004) — e i
 **euro 2025 ha perso il 30,8 %**. Si vende molto di più a un prezzo reale molto
 più basso. Per poterlo scrivere è servito il deflatore che al progetto mancava:
 l'indice ISTAT dei prezzi al consumo, che la fonte pubblica in tre basi che non
-si sovrappongono (`indice_prezzi.csv`, MET-20). Manca solo il racconto: sarebbe
-l'ottava storia del sito.
+si sovrappongono (`indice_prezzi.csv`, MET-20). Ed è anche **l'ottava storia del sito**.
 
 ### Quello che richiede te
 
@@ -35,7 +34,7 @@ l'ottava storia del sito.
 
 | | Cosa | Tempo |
 |---|---|---|
-| 🙋 | **Rileggere i testi del sito** — sono sette storie, e nessuno script controlla se una frase dice più di quanto il dato sostenga | 1 h |
+| 🙋 | **Rileggere i testi del sito** — sono otto storie, e nessuno script controlla se una frase dice più di quanto il dato sostenga | 1 h |
 | 🙋 | **Pubblicare**, quando sarai pronto: *Actions → «Pubblica il sito» → Run workflow → conferma = `pubblica`* | 1 min |
 
 ✅ **La sorgente di Pages è su «GitHub Actions»** (4 settembre 2026). Era il
@@ -99,7 +98,7 @@ fare una sessione di lavoro e cosa richiede te**.
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 31 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza, turismo e — da settembre 2026 — **quotazioni immobiliari OMI in due grane, più i volumi di compravendita**, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no, con l'eccezione degli **input curati** in `dati/input/`, che nessun URL restituisce. |
 | [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: quattordici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
-| [`sito/`](sito/README.md) | **Il documento narrativo**: sette storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
+| [`sito/`](sito/README.md) | **Il documento narrativo**: otto storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
 ## Come leggere il registro
 

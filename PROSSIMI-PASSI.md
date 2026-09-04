@@ -80,9 +80,9 @@ Indice:
 | Pipeline | ✅ funzionante, `requests` + libreria standard, 222 test verdi |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
 | Tabelle tidy | ✅ **31 CSV** in [`dati/processed/`](dati/README.md), versionati — tre vengono dall'OMI (quotazioni in grana zona e comunale, volumi di compravendita 2011–2025) e la trentunesima è il **deflatore** `indice_prezzi.csv`, che è arrivato per leggerle; manca solo `migrazioni_comuni.csv` |
-| Asse «casa e prezzi» | ✅ i **dati** (quotazioni OMI 2004–2025 in due grane, compravendite 2011–2025) e ✅ la **prima analisi** (`casa_e_prezzi.py`, §4): prezzo reale −30,8 % in ventun anni mentre i volumi fanno +134,5 %. 🤖 manca la **storia**, che sarebbe l'ottava del sito |
+| Asse «casa e prezzi» | ✅ **completo**: i dati (quotazioni OMI 2004–2025 in due grane, compravendite 2011–2025), l'analisi (`casa_e_prezzi.py`, §4) e la **storia** — l'ottava del sito. Prezzo reale −30,8 % in ventun anni mentre i volumi fanno +134,5 % |
 | Analisi | ✅ **quindici** script in [`analysis/`](analysis/README.md): velocità di cambio, quadranti, autocorrelazione, tipologia, le due economie, la scomposizione del capoluogo, la rottura del 2020, il confronto fra le 107 province, la scomposizione demografica, l'aria e il clima, il turismo confrontato con le altre province, e da settembre la **casa** — prezzi contro volumi, le zone del capoluogo, i 203 comuni quotati |
-| Storie scelte | ✅ **sette**, scritte e pubblicate nel documento narrativo — la quinta corregge quelle che la precedono, la sesta è l'unica che dura vent'anni, la settima è l'unica che nessuno si aspettava. Le candidate rimaste stanno in `BRIEF.md` |
+| Storie scelte | ✅ **otto**, scritte e pubblicate nel documento narrativo — la quinta corregge quelle che la precedono, la settima è l'unica che nessuno si aspettava, l'ottava è la più lunga e la sola in cui il risultato dipende da come si misura. Le candidate rimaste stanno in `BRIEF.md` |
 | Contratto dati per il sito | ✅ `metric_*.json` + registro, con i cinque invarianti come test |
 | Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega |
 | Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
@@ -92,7 +92,7 @@ Indice:
 | `WORKING-PAPER.md` | ⚠️ bozza, ma la §7 è scritta: **otto risultati** con i loro controlli, e la §7.8 fa cadere il limite che il documento dichiarava più serio. Resta provvisorio il titolo, che cambierà quando sarà chiara la tesi (§8) |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
-fatte e sette storie sono scritte in un sito che si costruisce da solo, e adesso
+fatte e otto storie sono scritte in un sito che si costruisce da solo, e adesso
 ha anche dove pubblicarsi: **manca la tua rilettura, e il clic che pubblica**.
 Il lavoro tecnico che resta è tutto facoltativo — il pannello interattivo e i
 download manuali.
@@ -148,7 +148,7 @@ python -m brescia_pipeline.build migrazioni abitazioni famiglie
 > le quarantamila righe.
 >
 > Per ora è **esclusa da git** (`.gitignore`, con la motivazione accanto) e si
-> rigenera in venti minuti. Nessuna delle sette storie pubblicate la usa, quindi
+> rigenera in venti minuti. Nessuna delle otto storie pubblicate la usa, quindi
 > non blocca niente. Le due strade, quando l'asse 2 verrà affrontato:
 >
 > - **codici al posto delle etichette**, più una legenda in una tabella a parte.
@@ -425,8 +425,8 @@ tre domande erano queste, e hanno tutte una risposta.
   leave-one-out di MET-5 sui quattordici comuni gardesani non sposta niente,
   quindi nessuna delle tre relazioni è fatta dal Garda.
 
-Cosa resta su questo asse, tutto 🤖: **la storia** (i dati e i numeri ci sono, il
-racconto no — sarebbe l'ottava del sito), gli **affitti** — che questo script non
+Cosa resta su questo asse, tutto 🤖 — la storia ✅ **è stata scritta** e sta nel
+sito (l'ottava, `#casa`). Restano gli **affitti** — che questo script non
 tocca perché la base di superficie cambia nel 2025 (MET-19) e vanno letti in due
 tratti — e l'incrocio con lo **stock abitativo** censuario, cioè quante case
 vuote ci sono dove i prezzi sono caduti di più.
@@ -551,7 +551,7 @@ Questa è la parte che si perderebbe. Il progetto Donostia pubblica **due cose
 diverse** sullo stesso sito, ed è una separazione che vale la pena copiare.
 
 > **✅ Il primo dei due artefatti esiste** (agosto 2026), in
-> [`sito/`](sito/README.md): documento narrativo con sette storie, più
+> [`sito/`](sito/README.md): documento narrativo con otto storie, più
 > `metodologia.html` e `dati.html`. Mezzo mega, autocontenuto, mappe e grafici
 > in SVG disegnati a mano. Si costruisce con `python sito/costruisci.py`.
 >
