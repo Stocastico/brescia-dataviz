@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>I dati — Come cambia il bresciano</title>
+<title>I dati · Come cambia il bresciano</title>
 <meta name="description" content="Le fonti, le tabelle scaricabili e le avvertenze: tutto quello che serve per rifare i conti.">
 <style>/*{{STILE}}*/</style>
 </head>
@@ -54,15 +54,15 @@
     <table class="fonti">
       <thead><tr><th>Fonte</th><th>Cosa dà</th><th>Grana</th><th>Avvertenza</th></tr></thead>
       <tbody>
-        <tr><td>ISTAT — registro ASIA</td><td>unità locali e addetti per classe dimensionale e settore</td><td>comune, annuale</td><td>unità locali, non imprese: una sede secondaria conta dove sta</td></tr>
-        <tr><td>ISTAT — popolazione residente</td><td>abitanti, famiglie, convivenze</td><td>comune, annuale</td><td>—</td></tr>
-        <tr><td>ISTAT — confini generalizzati</td><td>la geometria dei comuni</td><td>comune</td><td>i confini sul Garda passano dentro il lago</td></tr>
-        <tr><td>ISTAT — censimento permanente</td><td>lavoro, istruzione, abitazioni, background migratorio</td><td>comune, annuale</td><td>—</td></tr>
-        <tr><td>MEF — dichiarazioni dei redditi</td><td>imponibile e contribuenti per classe di importo</td><td>comune, annuale</td><td>euro correnti; contribuenti, non residenti</td></tr>
+        <tr><td>ISTAT: registro ASIA</td><td>unità locali e addetti per classe dimensionale e settore</td><td>comune, annuale</td><td>unità locali, non imprese: una sede secondaria conta dove sta</td></tr>
+        <tr><td>ISTAT: popolazione residente</td><td>abitanti, famiglie, convivenze</td><td>comune, annuale</td><td>nessuna</td></tr>
+        <tr><td>ISTAT: confini generalizzati</td><td>la geometria dei comuni</td><td>comune</td><td>i confini sul Garda passano dentro il lago</td></tr>
+        <tr><td>ISTAT: censimento permanente</td><td>lavoro, istruzione, abitazioni, background migratorio</td><td>comune, annuale</td><td>nessuna</td></tr>
+        <tr><td>MEF: dichiarazioni dei redditi</td><td>imponibile e contribuenti per classe di importo</td><td>comune, annuale</td><td>euro correnti; contribuenti, non residenti</td></tr>
         <tr><td>Regione Lombardia</td><td>flussi turistici per comune</td><td>comune, mensile</td><td>molti comuni con dato soppresso</td></tr>
         <tr><td>ARPA Lombardia</td><td>qualità dell'aria e clima</td><td>stazione, oraria</td><td>l'unità è la centralina, non il comune: nessuna mappa, e solo le stazioni presenti in tutti gli anni entrano nei confronti</td></tr>
-        <tr><td>ISTAT — indice dei prezzi al consumo (NIC)</td><td>l'indice generale, medie annue dal 1996</td><td>nazionale, annuale</td><td>è il deflatore, e serve a scrivere «euro costanti» invece di «euro correnti». La fonte lo pubblica in tre basi che non si sovrappongono: qui sono raccordate con la variazione annua, e la colonna <code>stato</code> dice quali anni sono stati riscalati. È l'indice italiano, non quello bresciano</td></tr>
-        <tr><td>Agenzia Entrate — OMI</td><td>quotazioni immobiliari in €/m² e volumi di compravendita (NTN)</td><td>zona OMI e comune; semestrale e annuale, dal 2004</td><td>sono quotazioni, non transazioni: «indicazioni di valore di larga massima». Negli affitti la base di misura passa da superficie netta a lorda nel 2025, e 203 comuni su 205 sono coperti. La fornitura sta dietro identità digitale: gli archivi sono nel repository</td></tr>
+        <tr><td>ISTAT: indice dei prezzi al consumo (NIC)</td><td>l'indice generale, medie annue dal 1996</td><td>nazionale, annuale</td><td>è il deflatore, e serve a scrivere «euro costanti» invece di «euro correnti». La fonte lo pubblica in tre basi che non si sovrappongono: qui sono raccordate con la variazione annua, e la colonna <code>stato</code> dice quali anni sono stati riscalati. È l'indice italiano, non quello bresciano</td></tr>
+        <tr><td>Agenzia Entrate: OMI</td><td>quotazioni immobiliari in €/m² e volumi di compravendita (NTN)</td><td>zona OMI e comune; semestrale e annuale, dal 2004</td><td>sono quotazioni, non transazioni: «indicazioni di valore di larga massima». Negli affitti la base di misura passa da superficie netta a lorda nel 2025, e 203 comuni su 205 sono coperti. La fornitura sta dietro identità digitale: gli archivi sono nel repository</td></tr>
       </tbody>
     </table>
 
@@ -94,14 +94,14 @@
     <p>I <strong>testi e le tabelle</strong> di questo sito stanno sotto
     <a href="https://creativecommons.org/licenses/by/4.0/deed.it">Creative Commons
     Attribuzione 4.0</a>: si copiano, si modificano e si riusano anche a fini commerciali,
-    citando la fonte e dichiarando le modifiche. Il <strong>codice</strong> che li produce —
-    pipeline, analisi, i grafici disegnati in questa pagina — sta sotto
+    citando la fonte e dichiarando le modifiche. Il <strong>codice</strong> che li produce, cioè
+    pipeline, analisi e i grafici disegnati in questa pagina, sta sotto
     <a href="https://github.com/Stocastico/brescia-dataviz/blob/main/LICENSE">licenza MIT</a>.</p>
     <p>Attribuzione consigliata: <em>«Brescia Dataviz» di Stefano Masneri (CC BY 4.0),
     github.com/Stocastico/brescia-dataviz</em>.</p>
     <p>Le fonti originali restano da citare comunque, con i loro obblighi: ISTAT e Regione
     Lombardia in CC BY, ARPA Lombardia, MEF. Sono quelle della tabella qui sopra, e il registro
-    completo — endpoint, copertura, licenza — sta nel repository del progetto.</p>
+    completo, con endpoint, copertura e licenza, sta nel repository del progetto.</p>
     <p>Una di queste chiede una formula precisa: chi riusa le tabelle delle quotazioni
     immobiliari o dei volumi di compravendita deve citare <strong>«Agenzia Entrate -
     OMI»</strong>. Non è una raccomandazione del progetto, è la condizione con cui l'Agenzia
