@@ -279,6 +279,15 @@
         qualcun altro arriva.</p>
       </div>
 
+      <p class="conf"><span class="dot osservato"></span><b>osservato</b> · ISTAT: popolazione
+      residente comunale e bilancio demografico; confini generalizzati · Nati, morti, iscritti e
+      cancellati sono <b>contati</b>; i tassi annui composti, i valori per mille abitanti e
+      l'indice di Moran sono calcolati qui · La variazione è <b>netta</b>: dice quanto, non da
+      dove a dove, e le matrici origine-destinazione non sono pubblicate a grana comunale ·
+      L'<b>aggiustamento statistico</b> resta una voce a parte perché è una rettifica anagrafica,
+      non un movimento di persone · I confini sul Garda passano dentro il lago, quindi due comuni
+      su sponde opposte risultano contigui: conta per l'indice di Moran.</p>
+
       <p class="nextcap">E se la popolazione si divide così, il reddito che fa?
       <a href="#redditi">→ I redditi si avvicinano</a></p>
     </div>
@@ -471,6 +480,15 @@
       due divisioni di servizi e un cambio di scala.</p>
     </div>
 
+    <p class="conf"><span class="dot osservato"></span><b>osservato</b> · ISTAT: ASIA, unità
+    locali delle imprese attive · Addetti e unità locali sono osservati; le variazioni e le quote
+    sono calcolate qui · <b>Unità locali, non imprese</b>: una sede di un'impresa registrata
+    altrove conta nel comune dove si trova, ed è esattamente il meccanismo che questa storia
+    scopre · Gli addetti sono <b>medie annue</b>, quindi con decimali, e non teste al 31 dicembre ·
+    Le divisioni sono Ateco a due cifre, la grana più fine confrontabile fra comune e provincia ·
+    La classe ≥250 di un comune solo è una cella che la fonte può sopprimere: un anno assente
+    resta un buco nel grafico, non uno zero.</p>
+
     <p class="nextcap">Se non è la dimensione delle imprese, che cosa divide questa provincia?
     <a href="#economie">→ Le due economie</a></p>
   </div></div>
@@ -542,6 +560,16 @@
       misurata in tutto il progetto.</p>
     </div>
 
+    <p class="conf"><span class="dot derivato"></span><b>derivato</b> · ISTAT: ASIA, unità locali
+    delle imprese attive, per sezione Ateco · Gli addetti per sezione sono osservati; le quote e
+    la specializzazione (quota manifattura meno quota alloggio e ristorazione) sono calcolate qui ·
+    Il denominatore è il <b>totale ASIA dichiarato dalla fonte</b>, non la somma delle sezioni:
+    le due non coincidono esattamente, perché la fonte arrotonda e sopprime le celle piccole ·
+    Una sezione assente <b>resta assente</b> e non diventa zero, quindi i comuni senza la riga
+    della manifattura sono esclusi dalla mappa invece che disegnati a zero ·
+    <b>Niente agricoltura</b>: il registro delle imprese non la osserva, e i comuni della Bassa
+    risultano quindi meno specializzati di quanto siano.</p>
+
     <p class="nextcap">Tutto quanto sopra misura Brescia contro sé stessa. E se la si guardasse da
     fuori? <a href="#diversa">→ Brescia è diversa?</a></p>
   </div></div>
@@ -607,6 +635,15 @@
       precedente e tolto un aggettivo alla storia dei redditi, e ci è costato un filtro su file
       che erano già sul disco.</p>
     </div>
+
+    <p class="conf"><span class="dot derivato"></span><b>derivato</b> · ISTAT: ASIA, unità locali
+    delle imprese attive, aggregate per provincia e per comune capoluogo · Addetti e unità locali
+    sono osservati; quote, ranghi e mediane provinciali sono calcolati qui, sommando i comuni ·
+    La ripartizione provinciale è quella <b>corrente</b>, applicata a tutti gli anni: su una
+    finestra di sei anni è corretta, su serie più lunghe non lo sarebbe · Il rango è su
+    {{c:province_italiane}} province: dice la posizione, non la distanza, ed è il motivo per cui
+    accanto sta sempre la mediana · Stesso registro della terza storia, quindi stesse avvertenze
+    su unità locali e addetti.</p>
 
     <p class="nextcap">Tutto quanto sopra dura sei anni. C'è una serie che ne dura venti.
     <a href="#aria">→ L'aria e il clima</a></p>
@@ -1517,7 +1554,13 @@
       unita: "addetti",
       linee: [
         { nome: "tutte", valori: scomposizione.serie_totale },
-        { nome: "≥250 addetti", valori: scomposizione.serie_grandi.map(function (v) { return v === null ? 0 : v; }) }
+        /* Nessun `|| 0` qui, e vale la pena dire perché. ASIA sopprime le celle
+           piccole, e la classe ≥250 di un comune solo è esattamente il genere
+           di cella che sopprime: un anno mancante trasformato in zero
+           disegnerebbe una linea che precipita a fondo pagina, cioè
+           **il titolo che questa storia esiste per smentire**. Un buco resta un
+           buco (MET-3), e `serie()` lo salta. */
+        { nome: "≥250 addetti", valori: scomposizione.serie_grandi }
       ],
       descrizione: "Due serie storiche degli addetti nel comune di Brescia"
     });
