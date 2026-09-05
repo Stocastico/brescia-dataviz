@@ -22,6 +22,8 @@ from pathlib import Path
 
 import pytest
 
+from conftest import cache_o_salta
+
 from brescia_pipeline import fetch, sdmx
 from brescia_pipeline.datasets import imprese, province, turismo_confronto
 
@@ -269,6 +271,13 @@ def test_il_turismo_si_ferma_se_non_aggancia_tutte_le_province(monkeypatch, scri
         _record_turismo("ITC46: Bergamo", "2019", "500"),
     ]
     _niente_rete(monkeypatch, turismo_confronto, lambda nome: campioni)
+    # Anche l'elenco delle province va sostituito: `build` lo legge da
+    # `province_per_nome()`, che scarica. Senza questo patch il test dipende
+    # dalla cache in `dati/raw/`, che in CI non c'è.
+    monkeypatch.setattr(
+        turismo_confronto, "province_per_nome",
+        lambda: {"Brescia": ("017", "Lombardia"), "Bergamo": ("016", "Lombardia")},
+    )
     with pytest.raises(RuntimeError, match="invece di 107"):
         turismo_confronto.build(COMUNI)
     assert not scritte, "ha scritto una tabella incompleta prima di accorgersene"
@@ -299,13 +308,18 @@ def test_lo_stato_marca_gli_anni_che_non_si_possono_confrontare() -> None:
     assert turismo_confronto._stato("XX", "Lombardia", "") == turismo_confronto.STATO_OSSERVATO
 
 
-def test_le_107_province_si_leggono_per_nome_dallelenco_ufficiale() -> None:
-    """Senza rete: `province_per_nome` legge lo stesso elenco che la pipeline
-    ha già scaricato. Se non ci fosse, il test si salta invece di fallire."""
-    try:
-        per_nome = turismo_confronto.province_per_nome()
-    except (FileNotFoundError, OSError) as errore:
-        pytest.skip(f"elenco ISTAT non in cache: {errore}")
-    assert len(per_nome) == 107
+def test_le_107_province_si_leggono_per_nome_dallelenco_ufficiale(monkeypatch) -> None:
+    """`province_per_nome` sull'elenco ISTAT vero, letto dalla cache.
+
+    `fetch` va sostituito e non solo sperato: la cache sta in `dati/raw/`, che
+    non è versionata, e senza il patch questo test scaricherebbe da ISTAT. In
+    locale non si vedrebbe (il file c'è) e in CI appenderebbe il job.
+    """
+    percorso = cache_o_salta("istat_elenco_comuni.csv")
+    monkeypatch.setattr(turismo_confronto, "fetch", lambda url, nome: percorso)
+
+    per_nome = turismo_confronto.province_per_nome()
+    assert len(per_nome) == 107, "l'elenco ISTAT non dà più 107 province"
     assert per_nome["Brescia"][0] == "017"
+    # il nome bilingue è il caso che la normalizzazione esiste per risolvere
     assert "Bolzano/Bozen" in per_nome
