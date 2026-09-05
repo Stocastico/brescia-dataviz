@@ -765,7 +765,16 @@
 
     const valori = voci.filter(function (v) { return v.valore !== null; })
       .map(function (v) { return v.valore; });
-    const estremo = Math.max.apply(null, valori.map(Math.abs)) * 1.15;
+    /* Due estremi, e per due lavori diversi. `osservato` e' il valore piu'
+       lontano dallo zero che c'e' davvero; `estremo` e' lo stesso con un
+       margine, e serve solo a non far toccare il bordo alla colonna piu' alta.
+       Erano la stessa variabile, e la rampa dei colori usava quella con il
+       margine: l'anno piu' caldo prendeva 4/1,15 = 3,5 passi di classe invece
+       di 4, quindi arrotondava in giu' e le due tinte di fondo della rampa non
+       comparivano mai. Un grafico sul clima che non usa il rosso piu' scuro
+       proprio nell'anno piu' caldo. */
+    const osservato = Math.max.apply(null, valori.map(Math.abs));
+    const estremo = osservato * 1.15;
     /* L'asse resta simmetrico attorno allo zero solo se la serie ha davvero
        due segni — le anomalie di temperatura, per cui questa funzione e' nata:
        li' la simmetria e' il messaggio, perche' un anno sopra e uno sotto la
@@ -808,9 +817,10 @@
        dell'assenza, alto quanto una colonna minima, a cavallo dello zero. */
     const riempimentoAssente = tratteggioAssenza(svg);
 
-    // La rampa divergente scelta sull'estremo osservato: un +1,7 °C prende la
-    // classe di fondo calda, un −0,1 °C il neutro.
-    const passoClasse = estremo / 4;
+    // La rampa divergente scelta sull'estremo **osservato**, non su quello con
+    // il margine: cosi' il valore piu' caldo della serie prende davvero la
+    // classe di fondo calda, e un −0,1 °C il neutro.
+    const passoClasse = osservato / 4;
     const larghezzaColonna = Math.max(3, riquadro.larghezza / voci.length - 3);
 
     voci.forEach(function (voce, indice) {
