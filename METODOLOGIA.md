@@ -1,4 +1,4 @@
-# Nota metodologica (MET-1…MET-21)
+# Nota metodologica (MET-1…MET-26)
 
 > **Cos'è.** Le decisioni che governano il progetto: *perché* misuriamo come
 > misuriamo. È la base di credibilità — qualunque grafico, testo o titolo deve
@@ -6,19 +6,31 @@
 > progetto gemello su Donostia, in parte dai problemi specifici incontrati sui
 > dati bresciani.
 >
-> ## ⚠️ Bozza avanzata — non ancora definitiva
+> ## Versione 1.0 — settembre 2026, con le storie chiuse a otto
 >
-> **Aggiornata a settembre 2026, quando il quinto asse ha avuto la sua prima
-> analisi.** Le ventuno regole qui elencate sono tutte reali e
-> applicate; sei di esse (MET-9, MET-12, MET-13, MET-14, MET-15, MET-21) nascono da
-> errori o incoerenze **effettivamente trovati sui dati bresciani**, non da
-> principi scelti a tavolino.
+> **Questo documento non è più una bozza.** Lo è stato finché mancava la
+> famiglia di regole che dichiarava di non avere: quelle su **come si scelgono
+> e si raccontano le storie**. Otto storie scritte sono abbastanza per
+> ricavarle, e sono **MET-22…MET-26**, in fondo prima delle invarianti
+> tecniche. Non sono state decise a tavolino: sono state ricavate contando cosa
+> le otto storie hanno fatto davvero — ed è il motivo per cui MET-23 è nata
+> insieme alla scoperta che **quattro storie su otto la violavano**.
 >
-> Ultima arrivata: **MET-21**, da una rilettura dei grafici: la linea del
-> massimo e quella del minimo di un insieme sono **inviluppi**, non serie, e
-> chiamarle «la più cara» e «la più economica» fa credere che raccontino il
-> percorso di una zona. Nelle zone OMI del capoluogo quella in fondo cambia tre
-> volte in ventidue annate. Prima: **MET-20**, dal deflatore: l'indice dei prezzi al consumo è
+> Le ventisei regole sono tutte reali e applicate; **sette** di esse (MET-9,
+> MET-12, MET-13, MET-14, MET-15, MET-21, MET-23) nascono da errori o
+> incoerenze **effettivamente trovati sui dati o sulla pagina**, non da principi
+> scelti prima.
+>
+> Cosa resta aperto: niente, in questo documento. Le regole successive
+> arriveranno da revisioni esterne, come è successo nel progetto gemello, dove
+> le tre più importanti sono arrivate **dopo** la pubblicazione.
+>
+> Prima di MET-22, l'ultima arrivata era **MET-21**, da una rilettura dei
+> grafici: la linea del massimo e quella del minimo di un insieme sono
+> **inviluppi**, non serie, e chiamarle «la più cara» e «la più economica» fa
+> credere che raccontino il percorso di una zona. Nelle zone OMI del capoluogo
+> quella in fondo cambia tre volte in ventidue annate. Prima: **MET-20**, dal
+> deflatore: l'indice dei prezzi al consumo è
 > pubblicato in tre basi che non si sovrappongono, e attaccarne i livelli
 > disegna due crolli del 30 % mai avvenuti. Prima: **MET-19**, dalle quotazioni immobiliari OMI — negli affitti
 > la base di misura passa da superficie netta a superficie lorda nel 2025, e la
@@ -35,11 +47,11 @@
 > **MET-15** è nata subito dopo, quando la stessa disciplina applicata alla
 > popolazione ha ribaltato la parola su cui poggiava la prima storia del sito.
 >
-> Cosa manca ancora: le regole su **come si scelgono e si raccontano le
-> storie** — soglie, criteri di inclusione, casi limite. Sei storie sono
-> state scritte, che è abbastanza per intuirle e troppo poco per fissarle. Nel
-> progetto Donostia sono arrivate dalle revisioni esterne, cioè dopo la
-> pubblicazione.
+> ~~Cosa manca ancora: le regole su **come si scelgono e si raccontano le
+> storie**.~~ **Scritte** (MET-22…MET-26). La riga resta barrata invece di
+> sparire, per la stessa ragione per cui la 5ª storia sta al quinto posto e non
+> riscrive le quattro che corregge: un documento che si riscrive all'indietro
+> non ha più un modo per dire cosa gli mancava (MET-25).
 
 ---
 
@@ -794,6 +806,141 @@ e non solo rinominato.
 
 ---
 
+
+## Le regole del racconto (MET-22…MET-26)
+
+> Nate a settembre 2026, quando le storie scritte sono diventate **otto**. Fino
+> ad allora questo documento dichiarava un buco: «mancano le regole su come si
+> scelgono e si raccontano le storie — sei storie sono abbastanza per intuirle
+> e troppo poco per fissarle». Le cinque che seguono non sono state decise a
+> tavolino: sono state **ricavate contando** cosa le otto storie hanno fatto
+> davvero, ed è il motivo per cui una di esse (MET-23) è nata insieme alla
+> scoperta che metà delle storie la violava.
+
+## MET-22 — Una storia si scrive quando dice qualcosa che non si sapeva prima di guardare
+
+Non è il numero grande a fare la storia. Delle otto pubblicate, **quattro
+correggono qualcosa che il progetto già affermava**:
+
+| Storia | Cosa ha corretto |
+|---|---|
+| 1ª — dove si svuota | il titolo: «spopolamento» prometteva una partenza che i dati non contengono |
+| 2ª — i redditi | prima l'aggettivo «bresciana» (Bergamo fa lo stesso), poi il verbo: in euro costanti quarantacinque comuni **perdono** |
+| 3ª — il crollo | è una storia *sull'errore*: il numero era vero, la conclusione falsa |
+| 5ª — Brescia è diversa? | la frase ripetuta dal primo giorno, «territorio di microimprese», descrive l'Italia |
+
+Una quinta, la **7ª**, non corregge: sorprende. Nessuno si aspettava che la
+provincia fosse la decima d'Italia per presenze turistiche, e il numero stava
+nelle tabelle da mesi.
+
+Le altre tre — **4ª** (le due economie), **6ª** (aria e clima), **8ª** (la
+casa) — non correggono e non sorprendono: **misurano per la prima volta** una
+cosa che prima si poteva solo affermare. Che la provincia sia due economie era
+un'impressione finché la specializzazione settoriale per comune non è stata
+scaricabile; che l'aria fosse migliorata era un'opinione finché il panel
+bilanciato non ha dato un numero.
+
+> **Una storia entra se corregge, se sorprende, o se misura per la prima volta
+> qualcosa che prima era un'opinione. Se non fa nessuna delle tre, è un
+> grafico, non una storia.**
+
+Il criterio è deliberatamente esigente perché il costo di una storia in più non
+è scriverla: è che ogni storia debole abbassa la fiducia in quelle forti, e il
+lettore non ha modo di sapere quali sono quali.
+
+## MET-23 — Il controllo sta dentro la storia, non nella sezione finale
+
+Il sito ha una sezione «cosa questi dati non permettono di dire» con dodici
+voci, e non basta: chi legge una storia sola non arriva mai lì. Ogni storia
+porta quindi **con sé** i propri limiti, in due forme:
+
+- la **scheda di confidenza** in coda (MET-4): fonte, cosa è osservato e cosa
+  calcolato, le avvertenze che appartengono a quella storia;
+- dove c'è una lettura alternativa, un riquadro **«controllo»** che la esegue e
+  ne riporta l'esito, favorevole o no.
+
+Questa regola è nata perché il conteggio l'ha smentita. A settembre 2026, su
+otto storie, **quattro non avevano la scheda** — e non a caso: erano le quattro
+più vecchie. Lo standard era salito strada facendo e le prime non erano state
+riportate su. Il difetto era invisibile perché la provenienza per grafico esiste
+solo sulle **mappe**, che la disegnano da sé; le serie, gli scatter e le barre
+no, e nessuno se n'era accorto guardando le mappe.
+
+> **Nessuna storia si pubblica senza dire, al suo interno, da dove vengono i
+> suoi numeri e come potrebbe non tenere. E l'anatomia va contata, non
+> ricordata: uno standard che sale in silenzio lascia indietro quello che c'era
+> prima.**
+
+I controlli che hanno cambiato qualcosa vanno pubblicati con l'esito, non
+riassunti: la 5ª storia esiste *per intero* perché un controllo è andato male,
+e la 2ª porta scritto che la convergenza regge ma la frase «i redditi crescono»
+no.
+
+## MET-24 — Se il risultato dipende da come si misura, la misura entra nel titolo
+
+L'ottava storia si intitola **«La casa costa come nel 2004, e vale un terzo in
+meno»**. Sono due affermazioni contraddittorie sullo stesso dato, e sono
+entrambe vere: la prima in euro correnti, la seconda in euro del 2025. Il
+titolo le tiene insieme invece di scegliere.
+
+Sarebbe stato più efficace scriverne una sola. «Il mercato della casa è fermo
+da vent'anni» è un titolo migliore e sarebbe stato disonesto, perché la
+differenza fra le due letture **è** il risultato: senza deflatore quella storia
+non esiste.
+
+> **Quando due misure legittime della stessa cosa danno risposte diverse, il
+> titolo porta entrambe. Sceglierne una e mettere l'altra in nota è scegliere
+> la conclusione prima di averla misurata.**
+
+Vale anche al contrario: dove le due letture **coincidono**, va detto, perché
+il lettore non ha modo di saperlo. La forbice fra le zone del capoluogo si
+stringe sia come inviluppo sia seguendo le due zone del primo anno (MET-21), e
+quel riquadro esiste perché la coincidenza non era ovvia prima di controllare.
+
+## MET-25 — Una correzione si aggiunge, non si sostituisce
+
+La quinta storia corregge le quattro che la precedono, e sta al quinto posto.
+La seconda dichiara nel proprio testo che l'aggettivo «bresciana» le è stato
+tolto da un controllo su Bergamo. La terza si intitola «Il crollo che non c'è
+stato» e riporta il numero sbagliato prima di smontarlo.
+
+Nessuna di queste correzioni è stata applicata riscrivendo in silenzio il testo
+precedente. È una scelta, e ha un costo: la pagina è più lunga e in tre punti
+dice «quello che avete letto sopra va corretto».
+
+> **Quando un'analisi successiva corregge una precedente, il testo corretto
+> resta e la correzione gli si aggiunge dopo, in ordine di lettura. Un
+> documento che si riscrive all'indietro non ha più un modo per dire quanto
+> spesso ha sbagliato.**
+
+È la stessa disciplina delle voci barrate in [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md):
+una cosa che è caduta resta scritta, perché sapere che un dato è perduto vale
+quanto averlo.
+
+## MET-26 — Una storia non si scrive finché non si sa cosa chiedere alla tabella
+
+Il [`BRIEF.md`](BRIEF.md) elenca **dodici** storie candidate. Ne sono state
+scritte otto. Le quattro rimaste non sono state scartate perché deboli:
+
+- **il background migratorio** ha i dati — 1,8 milioni di righe e 422 MB — e
+  non ha una forma decisa. Finché non si sa quali marginali servono, la tabella
+  resta fuori da git e l'asse 2 del brief resta senza storia;
+- **gli atenei** hanno una fonte che risponde, e una complicazione che nessuna
+  API risolve: Brescia ha due atenei, e la statale da sola sottostima;
+- **i progetti PNRR** cambierebbero gli obblighi di licenza del progetto
+  (ODbL), che è una decisione, non un problema tecnico;
+- **il pendolarismo** è pubblicato a una grana che non regge il soggetto
+  provinciale.
+
+> **Avere i dati non è avere una storia. Una tabella entra nel racconto quando
+> è chiaro cosa le si vuole chiedere; prima di allora resta una tabella, e
+> dirlo è più onesto che pubblicarne una lettura debole.**
+
+Il caso limite che tiene in piedi la regola è l'ottava storia, che ha fatto il
+percorso opposto: le quotazioni OMI sono state acquisite a settembre 2026
+**senza** una domanda, e per due settimane sono state un dato senza lettura.
+La storia è arrivata quando è arrivato il deflatore, cioè quando la domanda è
+diventata «fermo rispetto a cosa?».
 
 ## Invarianti tecniche
 

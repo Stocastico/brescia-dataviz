@@ -1,4 +1,7 @@
-# Working paper — Metodo per un ritratto riproducibile di un territorio industriale: Brescia, comune e provincia
+# Il numero giusto, la frase falsa
+
+**Dieci modi di sbagliare un ritratto territoriale con dati corretti, trovati
+costruendone uno.** Brescia, il comune e i suoi 205 comuni, 1990–2025.
 
 > **Cos'è questo documento.** L'esposizione autocontenuta di **come** si
 > costruisce il ritratto — fonti, disegno dei dati, decisioni metodologiche,
@@ -9,33 +12,29 @@
 > referenzia. Ogni numero citato è riproducibile da
 > [`pipeline/`](pipeline/README.md).
 >
-> ## ⚠️ Bozza — versione 2, settembre 2026
+> ## Versione 1.0 — settembre 2026
 >
-> **La §7 copre adesso tutti e quattro gli assi portanti**, e contiene risultati
-> veri con i loro controlli invece di ciò che era emerso costruendo la pipeline.
-> La §6.1, che era il pezzo più solido del documento, ha la sua conclusione
-> invece della sua domanda.
+> **Questo documento non è più una bozza, e ha finalmente un titolo che dice
+> una tesi invece del suo oggetto.**
 >
-> Cosa è cambiato in questa versione: la **§7.7**, l'asse ambientale, che era
-> l'ultimo scoperto ed è quello con la finestra più lunga — vent'anni contro sei.
-> Porta anche il controllo negativo più netto del lavoro (una serie senza segnale
-> ottenuta con lo stesso metodo di una con segnale) e la regola che l'ha resa
-> leggibile, MET-16. Con essa è stata corretta una cifra della §7.5, che dava la
-> misura dell'aria su una stazione sola.
+> La tesi è quella del titolo. Costruendo un ritratto quantitativo di una
+> provincia italiana con sole fonti aperte, il lavoro difficile non è stato
+> ottenere i dati né calcolarli: è stato il passo fra **un numero corretto e la
+> frase che lo riporta**. Dieci volte un dato giusto stava per produrre
+> un'affermazione falsa, e le dieci si raggruppano in quattro famiglie
+> (§Sintesi). Sette sono state scoperte dopo averle commesse, tre prima. La
+> parte riutilizzabile di questo lavoro è il **catalogo** e la disciplina che
+> lo intercetta, non il ritratto di Brescia.
 >
-> **Il limite più serio della versione precedente era caduto già in agosto**, e
-> in questa revisione è caduto del tutto. Diceva che tutti i risultati
-> descrivevano Brescia senza dire se Brescia fosse diversa da una provincia
-> qualunque. Il confronto esterno c'è su imprese (§7.1), redditi (§7.3),
-> popolazione (§7.6) e adesso **turismo** (§7.8), e su tre dei quattro ha
-> cambiato quello che il progetto diceva: l'ultimo ha scoperto che la provincia
-> è la **decima d'Italia per presenze**. Resta scoperto il solo **ambiente**
-> (§7.7), dove l'unità osservata non è nemmeno il comune. Il turismo, per
-> essere confrontato, ha richiesto una **seconda fonte** sullo stesso fenomeno,
-> e le due non coincidono: da lì MET-17 e MET-18.
+> Cosa è cambiato rispetto alla versione 2: la §7 copre adesso **cinque** assi
+> (è arrivata la casa, §7.9); la sintesi passa da sei episodi a dieci e li
+> raggruppa; le regole del racconto — che questo documento e
+> [`METODOLOGIA.md`](METODOLOGIA.md) dichiaravano mancanti — sono scritte
+> (MET-22…MET-26); §5, §9 e §10 sono aggiornate.
 >
-> Cosa resta provvisorio: il **titolo**, che cambierà quando sarà chiara la
-> tesi; la §5, da rivedere se si aggiungeranno indicatori.
+> Le storie sono **otto** e sono chiuse. Il documento non aspetta altro: le
+> revisioni successive verranno da lettori esterni, che è il modo in cui, nel
+> progetto gemello, sono arrivate le tre regole più importanti.
 
 ---
 
@@ -44,67 +43,117 @@
 Il progetto costruisce un ritratto quantitativo di Brescia — il comune, la
 provincia e i suoi 205 comuni — a partire da fonti esclusivamente aperte:
 ISTAT (censimento permanente, registro ASIA delle unità locali, criminalità,
-forze di lavoro, commercio estero), MEF (dichiarazioni dei redditi per classi
-di importo), ARPA Lombardia (qualità dell'aria dal 1992 e clima dal 1990),
-Regione Lombardia (flussi turistici), ISTAT `demo.istat.it` (bilancio
-demografico comunale). Ventisei tabelle tidy, tutte ricostruibili
-con `requests` e la libreria standard di Python, senza chiavi API — e da lì un
-sito statico autocontenuto, costruito senza alcuna dipendenza a runtime.
+forze di lavoro, commercio estero, indice dei prezzi al consumo), MEF
+(dichiarazioni dei redditi per classi di importo), ARPA Lombardia (qualità
+dell'aria dal 1992 e clima dal 1990), Regione Lombardia (flussi turistici),
+Agenzia delle Entrate (quotazioni immobiliari OMI e volumi di compravendita dal
+2004), ISTAT `demo.istat.it` (bilancio demografico comunale). **Trentuno**
+tabelle tidy, tutte ricostruibili con `requests` e la libreria standard di
+Python, senza chiavi API — e da lì un sito statico autocontenuto, costruito
+senza alcuna dipendenza a runtime, con **otto storie**.
 
 Il problema metodologico centrale **non** è l'N piccolo — 205 comuni sono
 abbastanza — ma tre altre cose: la **eterogeneità delle grane** (alcuni assi si
-fermano alla provincia, altri arrivano al comune, nessuno scende sotto), la
-**disomogeneità delle finestre temporali** (da trentaquattro anni a tre), e
-soprattutto la **fragilità semantica degli aggregati amministrativi**, che
-cambiano per ragioni contabili senza che cambi nulla nel mondo.
+fermano alla provincia, altri arrivano al comune, uno solo scende sotto: le
+zone OMI del capoluogo), la **disomogeneità delle finestre temporali** (da
+trentaquattro anni a sei), e soprattutto la **fragilità semantica degli
+aggregati amministrativi**, che cambiano per ragioni contabili senza che cambi
+nulla nel mondo.
 
-I risultati metodologicamente più utili sono **cinque errori corretti e uno
-evitato**, tutti trovati sui dati e non previsti a tavolino.
+### Il risultato principale: dieci volte un numero giusto stava per dire una cosa falsa
 
-1. **§6.1 — decomporre prima di titolare.** Una variazione aggregata
+Nessuno dei dieci è un errore di programmazione, e nessuno sarebbe stato
+intercettato da un test sui dati: le tabelle erano corrette in tutti e dieci i
+casi. Sono dieci modi diversi di **sbagliare la frase** che riporta un numero
+giusto. **Sette sono stati commessi e corretti; tre intercettati prima di
+finire in una frase.**
+
+**Famiglia A — sul numero: scomporre, o confrontare, prima di dargli un nome.**
+
+1. **§6.1 / MET-9 — decomporre prima di titolare.** Una variazione aggregata
    spettacolare — il crollo dell'occupazione nelle grandi unità locali del
    capoluogo — si è dissolta appena scomposta per settore, e poi ancora appena
    guardata a due scale territoriali: la manifattura grande non si era mossa, e
    le due divisioni di servizi che facevano tutto il calo non avevano perso
    lavoro ma cambiato forma societaria o comune di registrazione.
-2. **§4 — per la convergenza serve il livello iniziale.** Correlare la crescita
-   con il livello finale è un artefatto, perché il livello finale contiene la
-   crescita. Sul reddito bresciano i due calcoli danno **segni opposti**: la
-   convergenza esiste ed è forte, e il calcolo sbagliato la nasconde.
-3. **§4 — una decisione sul dato mancante si prende in un posto solo.** Due
-   parti del progetto rispondevano numeri diversi alla stessa domanda, non per
-   un errore di calcolo ma perché ciascuna aveva deciso per conto suo cosa fare
-   di una cella che la fonte non pubblica. L'ha trovato lo script che ricalcola
-   ogni cifra citata, che è precisamente il motivo per cui esiste.
-4. **§7.1 — un numero senza termine di paragone non è un risultato.** La frase
-   che il progetto ripeteva dal primo giorno — «Brescia è un territorio di
-   microimprese» — è vera in assoluto e fuorviante come descrizione: la
-   provincia italiana mediana è **più** frammentata di Brescia, non meno.
-   Misurare un territorio solo contro sé stesso fa scambiare la normalità di un
-   paese per la caratteristica di un luogo.
-
-5. **§7.6 — una variazione netta non è una spiegazione, e il titolo che le si
-   dà non deve contenerne una.** La prima storia del progetto si intitolava
-   «dove il bresciano si svuota» e la parola *spopolamento* portava con sé un
+2. **§4 / MET-12 — per la convergenza serve il livello iniziale.** Correlare la
+   crescita con il livello finale è un artefatto, perché il livello finale
+   contiene la crescita. Sul reddito bresciano i due calcoli danno **segni
+   opposti**: la convergenza esiste ed è forte, e il calcolo sbagliato la
+   nasconde.
+3. **§7.1 / MET-14 — un numero senza termine di paragone non è un risultato.**
+   La frase che il progetto ripeteva dal primo giorno — «Brescia è un
+   territorio di microimprese» — è vera in assoluto e fuorviante come
+   descrizione: la provincia italiana mediana è **più** frammentata di Brescia,
+   non meno. Misurare un territorio solo contro sé stesso fa scambiare la
+   normalità di un paese per la caratteristica di un luogo.
+4. **§7.6 / MET-15 — una variazione netta non è una spiegazione, e il titolo
+   che le si dà non deve contenerne una.** La prima storia si intitolava «dove
+   il bresciano si svuota» e la parola *spopolamento* portava con sé un
    meccanismo — la gente se ne va — che una differenza fra due stock non
-   contiene. Scomposta nelle sue componenti, la risposta è l'opposto: sui 93
-   comuni in calo la migrazione interna sommata vale **−66 persone in sei anni**
-   contro −10.163 di saldo naturale. È lo stesso errore di §6.1, commesso su una
-   parola invece che su un numero.
+   contiene. Scomposta, la risposta è l'opposto: sui 93 comuni in calo la
+   migrazione interna sommata vale **−66 persone in sei anni** contro −10.163
+   di saldo naturale.
 
-6. **§7.7 — quando la rete di misura cambia, la media misura la rete.** È il
-   solo della lista che non è stato commesso: le centraline dell'aria aprono e
-   chiudono, e la media annua di quelle presenti avrebbe attribuito
-   all'atmosfera un miglioramento che sta in parte nel rimaneggiamento della
-   rete. Guardato prima di calcolare, invece che dopo aver pubblicato. Il conto
-   ingenuo, calcolato apposta per il confronto, esagera due cali di tre punti e
-   **rovescia il segno** del terzo.
+**Famiglia B — sullo strumento: quando cambia il righello, la misura misura il
+righello.**
 
-Nessuno dei sei è un errore di programmazione: sono sei modi diversi di far dire
-a un dato corretto una cosa falsa. Tre di essi — il primo, il quarto e il quinto
-— sono la stessa disciplina applicata a oggetti diversi: **scomporre, o
-confrontare, prima di dare un nome a una variazione.** Il sesto è la stessa
-disciplina applicata allo **strumento** invece che al numero.
+5. **§7.7 / MET-16 — quando la rete di misura cambia, la media misura la rete.**
+   *Intercettato prima.* Le centraline dell'aria aprono e chiudono, e la media
+   annua di quelle presenti avrebbe attribuito all'atmosfera un miglioramento
+   che sta in parte nel rimaneggiamento della rete. Il conto ingenuo, calcolato
+   apposta per il confronto, esagera due cali di tre punti e **rovescia il
+   segno** del terzo.
+6. **§7.9 / MET-20 — un indice pubblicato in più basi non è una serie.**
+   *Intercettato prima.* ISTAT pubblica l'indice dei prezzi al consumo in tre
+   basi che non si sovrappongono in nessun anno. Messi in colonna, quei numeri
+   disegnano **due crolli del trenta per cento mai avvenuti** — e la serie
+   sbagliata supera ogni controllo che verrebbe in mente: gli anni ci sono
+   tutti, i valori sono positivi, l'indice cresce a tratti.
+7. **MET-19 — l'unità di misura è una dimensione della tabella, non una nota.**
+   Sempre nell'OMI, e non è la stessa cosa di sopra: lì cambiava la **base di
+   un indice**, qui cambia il **metro con cui si misura la superficie**. Negli
+   affitti la base passa da netta a lorda nel 2025, e la media del capoluogo
+   «cala» di due decimi senza che il mercato si muova. La colonna che lo dice
+   esiste ed è larga un carattere: guardarla è una decisione, non una
+   distrazione.
+
+**Famiglia C — sulla forma della serie.**
+
+8. **§7.9 / MET-21 — un estremo ricalcolato ogni anno è un inviluppo, non una
+   serie.** Il grafico delle zone OMI del capoluogo ha una linea chiamata «la
+   più economica»: il minimo si ricalcola su ogni annata, e la zona che lo
+   occupa cambia **tre volte in ventidue anni**. Il conto era giusto, il
+   grafico era giusto, e le tre parole sotto le linee dicevano un'altra cosa.
+
+**Famiglia D — sul processo, non sul dato.** Sono i due che nessuna rilettura
+del singolo numero avrebbe trovato, perché il difetto sta fra i pezzi.
+
+9. **§4 / MET-13 — una decisione sul dato mancante si prende in un posto solo.**
+   Due parti del progetto rispondevano numeri diversi alla stessa domanda, non
+   per un errore di calcolo ma perché ciascuna aveva deciso per conto suo cosa
+   fare di una cella che la fonte non pubblica. L'ha trovato lo script che
+   ricalcola ogni cifra citata, che è precisamente il motivo per cui esiste.
+10. **MET-23 — uno standard che sale in silenzio lascia indietro quello che
+    c'era prima.** Contando l'anatomia delle otto storie, **quattro non
+    dichiaravano la propria scheda di confidenza**, che MET-4 impone dal primo
+    giorno — ed erano le quattro più vecchie. Il difetto era invisibile perché
+    la provenienza automatica esiste solo sulle mappe, e chi controllava
+    guardava le mappe.
+
+**Cosa hanno in comune.** Quattro sono la stessa disciplina applicata a oggetti
+diversi (**scomporre, o confrontare, prima di dare un nome a una variazione**);
+tre sono la stessa disciplina applicata allo **strumento** invece che al numero;
+uno alla **forma** della serie; due al **processo** che produce il documento
+invece che al documento. Nessuno di essi richiede statistica avanzata per essere
+evitato, e nessuno di essi si evita con più dati.
+
+**Il costo, dichiarato.** Sette dei dieci sono stati scoperti *dopo* essere stati
+commessi, e tre erano già pubblicati sul sito quando sono stati trovati. Il
+meccanismo che li ha trovati non è la revisione: è avere una **seconda
+implementazione** che ricalcola ogni cifra citata (`analysis/verifica_cifre.py`,
+160 verifiche), un **termine di paragone esterno** su ogni asse, e l'abitudine
+di **contare** l'anatomia di quello che si è scritto invece di ricordarsela.
 
 ---
 
@@ -258,8 +307,38 @@ costruito per sostenere una tesi finisce per confermarla.
   2023, su 145.540 contribuenti, 31.327 dichiarano meno di 10.000 € e 3.213
   più di 120.000.
 
-Nessun «indice di trasformazione» composito è previsto. Se arriverà, dovrà
-avere definizione selezionabile e componenti a vista.
+Arrivati con gli assi successivi, e tutti con la stessa regola — una sola
+operazione fra due grandezze osservate, mai un punteggio:
+
+- **Specializzazione settoriale**: quota di addetti nella manifattura *meno*
+  quota in alloggio e ristorazione. Una differenza fra due quote, non un indice:
+  il segno è il messaggio (rosso manifatturiero, blu turistico) e il lettore può
+  rifarla a mano. La correlazione fra le due quote è **−0,67**, e va detto che è
+  in parte aritmetica: sono due fette della stessa torta, e quando una cresce
+  all'altra resta meno spazio.
+- **Euro costanti** (MET-20): qualunque serie monetaria moltiplicata per il
+  rapporto fra l'indice dei prezzi dell'anno base e quello dell'anno. È
+  l'indicatore derivato con l'assunzione più pesante di tutto il progetto —
+  l'indice è **nazionale** — ed è anche quello che cambia il segno di un
+  risultato: il prezzo delle case passa da +2,3 % a −30,8 %.
+- **Anomalie di temperatura** (MET-16): scostamento di ogni stazione dalla
+  *propria* media 1991–2020, mediato fra stazioni. Non una temperatura media
+  provinciale, che con stazioni fra i 47 e i 2.108 metri non descriverebbe
+  nessun luogo e cambierebbe alla chiusura di una stazione di montagna.
+- **Forbice fra zone**: rapporto fra il massimo e il minimo delle zone OMI del
+  capoluogo nell'anno. È un **inviluppo** e non una serie (MET-21), quindi ogni
+  punto porta il nome della zona che lo produce, e il risultato è ricalcolato
+  anche seguendo le due zone del primo anno.
+- **Indice di Moran**: autocorrelazione spaziale su una matrice di contiguità
+  per vertice condiviso. È l'unico indicatore del progetto che dipende dalla
+  **geometria** e non solo dalla tabella, ed eredita quindi un'assunzione
+  amministrativa: i confini sul Garda passano dentro il lago, quindi due comuni
+  su sponde opposte risultano contigui.
+
+Nessun «indice di trasformazione» composito è previsto, e dopo cinque assi la
+decisione regge: ognuno dei nove risultati della §7 si dice con **una
+grandezza osservata o un rapporto fra due**. Se un indice composito arriverà,
+dovrà avere definizione selezionabile e componenti a vista.
 
 ## 6. Strategia inferenziale
 
@@ -407,8 +486,9 @@ che i dati non sostengono.
 
 ## 7. Risultati
 
-Nove risultati, con i loro controlli. Nessuno è causale: sono descrizioni di un
-territorio, e la §8 dice cosa non permettono di affermare. Quattro di essi —
+Nove risultati sul territorio — da non confondere con i dieci episodi della
+sintesi, che riguardano il metodo e non Brescia. Nessuno è causale: sono
+descrizioni, e la §8 dice cosa non permettono di affermare. Quattro di essi —
 §7.1, §7.3, §7.6 e §7.8 — hanno un termine di paragone esterno; §7.4, §7.7 e
 §7.9 no, e la §8 dice quali conclusioni questo indebolisce.
 
@@ -943,9 +1023,28 @@ perché sarebbe interessante, non perché il portale lo pubblica.
 
 Il rischio specifico qui è opposto a quello di Donostia: non l'ostinazione su
 una tesi, ma la **dispersione**. La ricognizione aveva individuato tredici assi
-possibili; ne sono stati scelti **quattro** (lavoro e imprese, chi vive nel
-bresciano, le due economie, aria e clima), e il resto resta materiale di
-contorno che entra solo se un asse portante lo richiama.
+possibili; ne sono stati scelti quattro (lavoro e imprese, chi vive nel
+bresciano, le due economie, aria e clima) e uno è arrivato dopo, la **casa**,
+quando è arrivato il dato che nessuno riusciva a scaricare. Cinque su tredici,
+e il resto resta materiale di contorno che entra solo se un asse portante lo
+richiama.
+
+**La regola ha funzionato, e si vede da quello che non è stato scritto.** Il
+[`BRIEF.md`](BRIEF.md) elenca dodici storie candidate: ne sono state scritte
+otto. Le quattro rimaste non sono state scartate perché deboli — il background
+migratorio, gli atenei, il PNRR, il pendolarismo sono tutti temi buoni — ma
+perché per nessuna di esse era chiaro **cosa chiedere alla tabella** (MET-26).
+Il caso che tiene in piedi la regola è l'ottavo asse: le quotazioni OMI sono
+state acquisite senza una domanda, e per due settimane sono state un dato senza
+lettura. La storia è arrivata quando è arrivato il deflatore, cioè quando la
+domanda è diventata «fermo rispetto a cosa?».
+
+**Il progetto si ferma qui.** Le storie sono otto, i cinque assi hanno tutti la
+loro, e ogni cifra citata è ricalcolata a ogni push. Quello che resta —
+scaricare nuove fonti, aggiungere un pannello interattivo, scendere sotto il
+comune — è lavoro **dopo la pubblicazione**, non prima: aggiungerlo adesso
+allontanerebbe la pubblicazione invece di avvicinarla, che è la definizione
+stessa della dispersione da cui questa regola protegge.
 
 ## 10. Cosa è riutilizzabile di questo metodo
 
@@ -960,11 +1059,33 @@ trasferibile è quasi tutta:
 - **Le tre trappole tecniche** (header SDMX, chiavi posizionali, separatori
   numerici) si presenteranno identiche, e sono documentate con le ricette che
   le evitano in [`FONTI.md`](FONTI.md) §10-11.
-- **La regola MET-9** — decomporre prima di titolare — è la più generale delle
-  undici, e vale ben oltre questo dominio.
 - **La struttura della pipeline**: un modulo per tema che espone
   `build(comuni)`, registrato in un unico punto, con cache su disco delle
   risposte grezze e tabelle tidy versionate come prodotto.
+
+E soprattutto, la parte che questo documento considera il proprio contributo:
+
+- **Il catalogo dei dieci episodi** (§Sintesi) e le **ventisei regole** che ne
+  sono uscite ([`METODOLOGIA.md`](METODOLOGIA.md)). MET-9 — decomporre prima di
+  titolare — è la più generale, e vale ben oltre questo dominio; MET-14 — un
+  numero senza termine di paragone non è un risultato — è quella che più spesso
+  cambia una conclusione già scritta.
+- **Le tre pratiche che hanno trovato gli errori**, e che si trasferiscono
+  intatte:
+  1. una **seconda implementazione** che ricalcola ogni cifra citata nei
+     documenti e nel sito, deliberatamente senza condividere codice con ciò che
+     verifica (`analysis/verifica_cifre.py`, 160 verifiche a ogni push). Ha
+     trovato l'episodio 9 da sola;
+  2. un **termine di paragone esterno** su ogni asse dove la fonte copre
+     l'Italia — che costa un filtro su file già scaricati e ha cambiato tre
+     conclusioni su quattro;
+  3. **contare l'anatomia** di quello che si è scritto invece di ricordarsela.
+     L'episodio 10 è stato trovato così, contando quante storie avessero la
+     scheda di confidenza.
+- **Il documento narrativo senza dipendenze a runtime**: SVG disegnati a mano,
+  dati incorporati, nessuna `fetch()`. Costa più codice e in cambio la pagina
+  si apre da disco e non invecchia. Il costo va dichiarato: è l'unico pezzo del
+  progetto **senza test automatici**, e si verifica a mano in un browser.
 
 ---
 

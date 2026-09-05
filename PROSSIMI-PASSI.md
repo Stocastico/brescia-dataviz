@@ -89,8 +89,8 @@ Indice:
 | Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
 | Deploy | 🤖 la **costruzione** è automatica su `main` (test, cifre, sito, artefatto); la **pubblicazione** no: parte solo a mano, con una conferma scritta (§7). ✅ la sorgente di Pages è su «GitHub Actions» dal 4 settembre 2026, quindi il primo lancio ha dove pubblicare |
 | Licenza | ✅ MIT per il codice (`LICENSE`), CC BY 4.0 per testi e dati (`LICENSE-DATI`) (§3.3) |
-| `METODOLOGIA.md` | ⚠️ bozza avanzata: **ventuno** regole, l'ultima (MET-21) da una rilettura dei grafici — la linea del massimo e quella del minimo sono inviluppi e non serie, e nelle zone OMI del capoluogo quella in fondo cambia tre volte; MET-20 dall'indice dei prezzi pubblicato in tre basi che non si sovrappongono, MET-9 chiusa, MET-16 dal panel bilanciato delle centraline, MET-17 e MET-18 dal confronto sul turismo, MET-19 dalle quotazioni OMI (l'unità di misura è una dimensione, non una nota) |
-| `WORKING-PAPER.md` | ⚠️ bozza, ma la §7 è scritta: **nove risultati** con i loro controlli. La §7.8 fa cadere il limite che il documento dichiarava più serio; la §7.9 è la sola in cui la conclusione dipende da come si misura, e la §7.3 è stata corretta da lei. Resta provvisorio il titolo, che cambierà quando sarà chiara la tesi (§8) |
+| `METODOLOGIA.md` | ✅ **versione 1.0**, non più bozza: **ventisei** regole. Le ultime cinque (MET-22…MET-26) sono quelle che il documento dichiarava mancanti da sempre — come si **scelgono** e si **raccontano** le storie — e sono state ricavate contando cosa le otto storie hanno fatto davvero, non decise a tavolino. MET-23 è nata insieme alla scoperta che quattro storie su otto la violavano |
+| `WORKING-PAPER.md` | ✅ **versione 1.0**, non più bozza. Ha il titolo che gli mancava, perché ha la tesi: «Il numero giusto, la frase falsa» — **dieci** episodi in cui un dato corretto stava per produrre un'affermazione falsa, in quattro famiglie. Sette scoperti dopo averli commessi, tre prima. La §7 resta la parte sui risultati: nove, sui cinque assi |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
 fatte e otto storie sono scritte in un sito che si costruisce da solo, e adesso
@@ -826,11 +826,27 @@ Dettagli che costano tempo se non li sai:
 
 ---
 
-## 8. I due documenti da scrivere alla fine
+## 8. I due documenti da scrivere alla fine — ✅ scritti
 
-Non ora: **quando i dati saranno completi, le visualizzazioni costruite e le
-storie scelte.** Esistono già come bozze in questo repository, e le bozze
-vanno riscritte, non ampliate.
+~~Non ora: **quando i dati saranno completi, le visualizzazioni costruite e le
+storie scelte.**~~ **È stato adesso** (settembre 2026): i dati ci sono, le otto
+storie sono scritte, e i due documenti sono passati a **versione 1.0**. Le
+bozze sono state riscritte, non ampliate, e le condizioni che questa sezione
+poneva sono state verificate una per una prima di toccarle.
+
+Cosa è cambiato, in due righe. `METODOLOGIA.md` ha chiuso il buco che
+dichiarava da sempre — le regole su **come si scelgono e si raccontano le
+storie**, MET-22…MET-26 — ricavandole dal conteggio di cosa le otto storie
+avevano fatto davvero, e non da un principio scelto prima. `WORKING-PAPER.md`
+ha il titolo che gli mancava perché ha la tesi: **«Il numero giusto, la frase
+falsa»**, dieci episodi in cui un dato corretto stava per produrre
+un'affermazione falsa, in quattro famiglie.
+
+Il testo che segue è quello originale, con il ragionamento su **perché** questi
+due documenti andavano scritti alla fine. Resta perché la previsione si è
+avverata, e sapere che si è avverata vale quanto il risultato: entrambe le
+famiglie di regole nate in questa passata — MET-23 e le altre quattro — non
+sarebbero esistite scrivendole prima.
 
 ### La nota metodologica — [`METODOLOGIA.md`](METODOLOGIA.md)
 
