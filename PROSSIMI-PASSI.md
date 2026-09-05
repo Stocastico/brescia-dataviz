@@ -826,11 +826,27 @@ Dettagli che costano tempo se non li sai:
 
 ---
 
-## 8. I due documenti da scrivere alla fine
+## 8. I due documenti da scrivere alla fine — ✅ scritti
 
-Non ora: **quando i dati saranno completi, le visualizzazioni costruite e le
-storie scelte.** Esistono già come bozze in questo repository, e le bozze
-vanno riscritte, non ampliate.
+~~Non ora: **quando i dati saranno completi, le visualizzazioni costruite e le
+storie scelte.**~~ **È stato adesso** (settembre 2026): i dati ci sono, le otto
+storie sono scritte, e i due documenti sono passati a **versione 1.0**. Le
+bozze sono state riscritte, non ampliate, e le condizioni che questa sezione
+poneva sono state verificate una per una prima di toccarle.
+
+Cosa è cambiato, in due righe. `METODOLOGIA.md` ha chiuso il buco che
+dichiarava da sempre — le regole su **come si scelgono e si raccontano le
+storie**, MET-22…MET-26 — ricavandole dal conteggio di cosa le otto storie
+avevano fatto davvero, e non da un principio scelto prima. `WORKING-PAPER.md`
+ha il titolo che gli mancava perché ha la tesi: **«Il numero giusto, la frase
+falsa»**, dieci episodi in cui un dato corretto stava per produrre
+un'affermazione falsa, in quattro famiglie.
+
+Il testo che segue è quello originale, con il ragionamento su **perché** questi
+due documenti andavano scritti alla fine. Resta perché la previsione si è
+avverata, e sapere che si è avverata vale quanto il risultato: entrambe le
+famiglie di regole nate in questa passata — MET-23 e le altre quattro — non
+sarebbero esistite scrivendole prima.
 
 ### La nota metodologica — [`METODOLOGIA.md`](METODOLOGIA.md)
 
