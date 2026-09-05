@@ -892,6 +892,15 @@ def casa() -> dict[str, Any]:
         valori_anno = [s[anno] for s in zone.values() if anno in s]
         return max(valori_anno) / min(valori_anno)
 
+    def estrema(anno: str, zone: dict[str, dict[str, float]], scelta) -> str:
+        """La zona che occupa un estremo in quell'anno. `scelta` è `max` o `min`.
+
+        Serve perché le tre linee del grafico sono inviluppi: dire «la più
+        economica» senza dire quale sarebbe far credere che sia sempre la
+        stessa, e in ventidue annate non lo è.
+        """
+        return scelta(zone, key=lambda k: zone[k][anno])
+
     anno_ntn_primo = min(volumi)
     fondo = min(volumi, key=lambda a: volumi[a])
     return {
@@ -915,14 +924,36 @@ def casa() -> dict[str, Any]:
             "quante_ultimo": sum(1 for s in per_zona.values() if anni_zone[-1] in s),
             "forbice_panel": [round(forbice(a, panel), 3) for a in anni_zone],
             # Tre linee e non tredici: con tredici linee etichettate in fondo il
-            # grafico diventa un pettine, e la cosa da vedere — che la distanza
-            # fra l'alto e il basso si accorcia — sparisce dentro il pettine.
+            # grafico diventa un pettine, e la cosa da vedere, che la distanza
+            # fra l'alto e il basso si accorcia, sparisce dentro il pettine.
+            #
+            # ⚠️ Sono **inviluppi, non zone**: il massimo e il minimo si
+            # ricalcolano ogni anno, e la zona che li occupa può cambiare. In
+            # cima non cambia mai (B3 per tutte le annate); in fondo cambia
+            # tre volte. È la stessa distinzione di MET-16 sulle centraline:
+            # «la media di quelle che ci sono» misura anche quali ci sono. Il
+            # panel bilanciato tiene ferme *quali zone* si confrontano, non
+            # *quale* sta in cima. Per questo ogni punto porta accanto il nome
+            # della zona che lo produce, nel suggerimento e nella tabella.
             "alta": [round(reale(max(s[a] for s in panel.values()), a), 1) for a in anni_zone],
             "mediana": [
                 round(reale(mediana(sorted(s[a] for s in panel.values())), a), 1)
                 for a in anni_zone
             ],
             "bassa": [round(reale(min(s[a] for s in panel.values()), a), 1) for a in anni_zone],
+            "alta_zona": [nomi_zona[estrema(a, panel, max)] for a in anni_zone],
+            "bassa_zona": [nomi_zona[estrema(a, panel, min)] for a in anni_zone],
+            "quante_zone_in_cima": len({estrema(a, panel, max) for a in anni_zone}),
+            "quante_zone_in_fondo": len({estrema(a, panel, min) for a in anni_zone}),
+            # Il controllo dell'inviluppo: la stessa forbice sulle due zone che
+            # occupavano gli estremi nel primo anno, seguite fino in fondo. Se
+            # le due letture dessero due storie diverse, il grafico andrebbe
+            # rifatto e non solo rinominato.
+            "forbice_fissa": [
+                round(panel[estrema(anni_zone[0], panel, max)][a]
+                      / panel[estrema(anni_zone[0], panel, min)][a], 3)
+                for a in anni_zone
+            ],
             "nomi": {k: nomi_zona[k] for k in panel},
         },
     }
@@ -1397,6 +1428,19 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         # Le **annate**, non gli anni trascorsi: la serie OMI è un semestre per
         # anno, e ventidue annate coprono ventun anni di distanza.
         fuori["casa_zone_annate"] = numero_it(len(zone["anni"]))
+        # Quante zone diverse passano dai due estremi. Sono le cifre che dicono
+        # se «la più cara» e «la più economica» siano una zona o un inviluppo,
+        # e in questa serie la risposta è diversa per i due estremi.
+        fuori["casa_zone_in_cima"] = numero_it(zone["quante_zone_in_cima"])
+        fuori["casa_zone_in_fondo"] = numero_it(zone["quante_zone_in_fondo"])
+        fuori["casa_zona_cima"] = zone["alta_zona"][0]
+        fuori["casa_zone_fondo_elenco"] = ", ".join(dict.fromkeys(zone["bassa_zona"]))
+        # La forbice rifatta sulle **due zone del primo anno**, seguite fino in
+        # fondo invece di lasciare che gli estremi cambino inquilino: è il
+        # controllo che dice se il risultato dipenda dall'inviluppo. Coincidono,
+        # quindi non dipende, e la conclusione della storia regge come è scritta.
+        fuori["casa_forbice_fissa_primo"] = numero_it(zone["forbice_fissa"][0], 2)
+        fuori["casa_forbice_fissa_ultimo"] = numero_it(zone["forbice_fissa"][-1], 2)
 
     prezzi_comuni = valori(metriche["prezzo_case"])
     fuori["casa_comuni_quotati"] = numero_it(len(prezzi_comuni))

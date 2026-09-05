@@ -98,13 +98,13 @@ def _crescita(serie: Valori, etichetta_periodo: str) -> Valori:
 
 # --- gli indicatori ------------------------------------------------------
 
-FONTE_ASIA = "ISTAT — ASIA, unità locali delle imprese attive"
-FONTE_POP = "ISTAT — popolazione residente comunale"
-FONTE_MEF = "MEF — dichiarazioni dei redditi delle persone fisiche"
+FONTE_ASIA = "ISTAT: ASIA, unità locali delle imprese attive"
+FONTE_POP = "ISTAT: popolazione residente comunale"
+FONTE_MEF = "MEF: dichiarazioni dei redditi delle persone fisiche"
 IMPONIBILE = "AGGINCR"  # codice MEF, non etichetta: le etichette cambiano lingua
-FONTE_TURISMO = "Regione Lombardia — flussi turistici per comune"
-FONTE_OMI = "Agenzia delle Entrate — OMI, quotazioni immobiliari"
-FONTE_PREZZI = "ISTAT — indice dei prezzi al consumo (NIC), medie annue"
+FONTE_TURISMO = "Regione Lombardia: flussi turistici per comune"
+FONTE_OMI = "Agenzia delle Entrate: OMI, quotazioni immobiliari"
+FONTE_PREZZI = "ISTAT: indice dei prezzi al consumo (NIC), medie annue"
 
 
 def _indicatori() -> list[dict[str, Any]]:
@@ -273,7 +273,7 @@ def _indicatori() -> list[dict[str, Any]]:
             "unit": "ab./km²",
             "kind": "sequential",
             "theme": "popolazione",
-            "source": f"{FONTE_POP}; ISTAT — confini comunali generalizzati",
+            "source": f"{FONTE_POP}; ISTAT: confini comunali generalizzati",
             "confidence": "derivato",
             "assumptions": ["Superficie amministrativa, lago compreso dove il confine ci entra"],
             "values": _rapporto(popolazione, superficie),
