@@ -85,6 +85,47 @@ A queste si aggiungono tre vincoli operativi.
   una mappa senza riproiettare disegna la provincia al largo dell'Africa, e
   l'errore è silenzioso perché i numeri restano numeri. (`geo.py`)
 
+## I test, e cosa coprono
+
+```bash
+python -m pytest pipeline/tests -q --cov --cov-report=term-missing
+```
+
+I test stanno tutti qui dentro anche quando guardano fuori: la cartella è una
+sola perché il progetto è uno solo, e `conftest.py` mette `analysis/` e `sito/`
+sul percorso di importazione. Coprono i **tre pezzi di codice** del progetto:
+
+| Cosa | Dove | Come |
+|---|---|---|
+| La pipeline | `test_tidy`, `test_geo`, `test_fetch`, `test_omi`, `test_prezzi`, `test_ambiente`, `test_bilancio`, `test_censimento`, `test_compravendite`, `test_output` | unità, senza rete |
+| I dataset che scaricano | `test_datasets_senza_rete` | risposte SDMX finte al posto della rete |
+| L'orchestratore e l'export | `test_build_e_web` | dataset finti; `web.build` su una cartella temporanea |
+| Il contratto con il sito | `test_web` | i cinque invarianti sui JSON prodotti |
+| La statistica delle analisi | `test_statistica` | casi con risposta nota a mano |
+| I quindici script di `analysis/` | `test_analisi` | eseguiti davvero, con `--save` in una cartella usa-e-getta |
+| Ogni cifra citata nei documenti | `test_analisi` | `verifica_cifre.main()`, 160 verifiche |
+| Il costruttore del sito | `test_costruisci` | funzioni pure, dati dei grafici, e la costruzione intera |
+| La punteggiatura pubblicata | `test_testi` | niente lineette lunghe nel testo né nel registro |
+| Il cancello della pubblicazione | `test_workflow_deploy` | nessun evento automatico arriva al job che pubblica |
+
+**La soglia di copertura è l'80 %**, e sta in [`.coveragerc`](../.coveragerc)
+insieme all'elenco dei sorgenti misurati. Oggi il totale è **85%**.
+La soglia fa fallire il comando, non solo stampare un avviso: è la stessa riga
+in locale e in CI.
+
+Due cose che i test **non** coprono, e vanno dette invece di lasciarle
+scoprire:
+
+- **`grafici.js` non ha test.** È l'unico codice del progetto senza rete di
+  sicurezza automatica, e resta fuori dal conto della copertura, che misura
+  solo Python. Si verifica a mano in un browser; il giorno che si volesse
+  automatizzare servirebbe un motore di test JavaScript, cioè la prima
+  dipendenza di sviluppo non-Python del progetto.
+- **La rete non si tocca mai.** I dataset si esercitano con risposte finte:
+  i test dicono che il modulo *interpreta* bene una risposta di quella forma,
+  non che la fonte risponda ancora così. Se un dataflow ISTAT cambia forma, se
+  ne accorge il primo che rifà lo scarico.
+
 ## Dataset
 
 | Nome | Tabelle prodotte | Grana | Fonte |

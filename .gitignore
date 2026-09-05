@@ -29,3 +29,10 @@ _site/
 # più una legenda a parte, oppure le sole marginali che servono all'asse 2.
 # Vedi PROSSIMI-PASSI.md §2.1.
 dati/processed/migrazioni_comuni.csv
+
+# La copertura dei test: il database e i report si rigenerano a ogni esecuzione.
+# `.coveragerc` invece e' versionato: e' la soglia, non un artefatto.
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml

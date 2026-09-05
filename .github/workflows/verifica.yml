@@ -1,7 +1,13 @@
-# I controlli che girano a ogni push: i test della pipeline e il ricalcolo di
-# ogni cifra citata nei documenti. Nessuna richiesta alle fonti — i test che
-# hanno bisogno della rete non esistono, e quelli che hanno bisogno delle
-# tabelle si saltano da soli se non ci sono.
+# I controlli che girano a ogni push. Nessuna richiesta alle fonti: i test che
+# avrebbero bisogno della rete non esistono — i dataset che scaricano si
+# esercitano con risposte finte — e quelli che hanno bisogno delle tabelle si
+# saltano da soli se non ci sono.
+#
+# La suite copre i tre pezzi di codice del progetto: la pipeline, i quindici
+# script di `analysis/` e il costruttore del sito. Prima gli ultimi due
+# giravano qui come due liste di comandi; adesso sono test, quindi falliscono
+# anche in locale e con un nome che dice cosa si è rotto. La soglia di
+# copertura sta in `.coveragerc`, che è anche il posto dove alzarla.
 
 name: Verifica
 
@@ -23,29 +29,19 @@ jobs:
           python-version: "3.12"
       # pyyaml non serve alla pipeline: serve al test che controlla che il
       # workflow di pubblicazione non possa partire da solo.
-      - run: pip install -e ./pipeline pytest pyyaml
-      - name: Test della pipeline
-        run: python -m pytest pipeline/tests -q
+      - run: pip install -e ./pipeline pytest pytest-cov pyyaml
+
+      # I JSON per il sito si rifanno **prima** dei test, dalle tabelle
+      # versionate: così la suite gira su un export fresco invece che su quello
+      # committato, e una divergenza fra i due si vede qui e non dopo il deploy.
+      - name: Ricostruisci l'export per il sito
+        run: python -m brescia_pipeline.build --offline web
+
+      - name: Test, con la soglia di copertura
+        run: python -m pytest pipeline/tests -q --cov --cov-report=term-missing
+
+      # Resta un passo a sé anche se è dentro la suite: è il controllo che i
+      # documenti citano per nome, e un passo rosso che si chiama così dice da
+      # solo cosa è successo.
       - name: Le cifre citate nei documenti tornano
         run: python analysis/verifica_cifre.py
-      - name: Gli script di analisi girano
-        run: |
-          python analysis/variazione_popolazione.py --code 3 > /dev/null
-          python analysis/decomposizione_popolazione.py --code 3 > /dev/null
-          python analysis/velocita_di_cambio.py --code 3 > /dev/null
-          python analysis/livelli_e_variazioni.py > /dev/null
-          python analysis/autocorrelazione_spaziale.py --permutazioni 99 > /dev/null
-          python analysis/decomposizione_capoluogo.py > /dev/null
-          python analysis/due_economie.py > /dev/null
-          python analysis/tipologia_comuni.py > /dev/null
-          python analysis/dove_si_lavora.py > /dev/null
-          python analysis/rottura_covid.py > /dev/null
-          python analysis/aria_e_clima.py > /dev/null
-          python analysis/confronto_province.py > /dev/null
-          python analysis/convergenza_confronto.py > /dev/null
-          python analysis/confronto_turismo.py > /dev/null
-          python analysis/casa_e_prezzi.py > /dev/null
-      - name: Il sito si costruisce
-        run: |
-          python -m brescia_pipeline.build --offline web
-          python sito/costruisci.py --uscita _site

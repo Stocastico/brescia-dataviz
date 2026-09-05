@@ -220,9 +220,12 @@ def quote_sezioni(anno: str | None = None) -> tuple[str, dict[str, dict[str, flo
     producono due numeri diversi per la stessa cosa — ed è successo:
 
     - **il denominatore è il totale ASIA riportato** (`classe_addetti = totale`
-      in `imprese_classe_addetti.csv`), non la somma delle sezioni. In pratica i
-      due coincidono a meno dello 0,01 %, ma il totale riportato è quello che la
-      fonte dichiara e non dipende da quali sezioni siano presenti;
+      in `imprese_classe_addetti.csv`), non la somma delle sezioni. I due non
+      coincidono sempre: sul 2023 le quote di un comune sommano fra il 98,9 % e
+      il 100,8 %, con mediana esatta a 100 — la fonte arrotonda le celle per
+      sezione e sopprime le più piccole. Il totale riportato è quello che la
+      fonte dichiara e non dipende da quali sezioni siano presenti, ed è il
+      motivo per cui è lui il denominatore;
     - **una sezione assente resta assente**, non diventa zero (MET-3). ASIA non
       pubblica la sezione di un comune quando la cella è troppo piccola, e
       «nessun addetto nella manifattura» è un'affermazione diversa da «non lo
