@@ -902,6 +902,32 @@ def forbice_zone(anno: str) -> float:
     return max(valori) / min(valori)
 
 
+def quante_zone_agli_estremi(scelta) -> int:
+    """Quante zone diverse passano da un estremo nel corso della serie.
+
+    `scelta` è `max` o `min`. Uno vuol dire che la linea del grafico è la
+    storia di una zona; più di uno vuol dire che è un **inviluppo**, e va
+    detto: la ottava storia lo dice, e questa è la cifra che lo regge.
+    """
+    panel = zone_capoluogo_panel()
+    anni = sorted({anno for serie in panel.values() for anno in serie})
+    return len({scelta(panel, key=lambda link: panel[link][anno]) for anno in anni})
+
+
+def forbice_zone_fisse(anno: str) -> float:
+    """La forbice sulle due zone che stavano agli estremi nella prima annata.
+
+    È il controllo dell'inviluppo: se questa lettura e `forbice_zone` dessero
+    due storie diverse, la conclusione «la forbice si stringe» dipenderebbe da
+    quale zona sta in fondo, e non dal mercato.
+    """
+    panel = zone_capoluogo_panel()
+    anni = sorted({a for serie in panel.values() for a in serie})
+    alta = max(panel, key=lambda link: panel[link][anni[0]])
+    bassa = min(panel, key=lambda link: panel[link][anni[0]])
+    return panel[alta][anno] / panel[bassa][anno]
+
+
 def rango_prezzo_capoluogo(anno: str = "2025") -> int:
     valori = sorted(
         (
@@ -2186,6 +2212,34 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         18,
         rango_prezzo_capoluogo,
         0,
+    ),
+    (
+        "sito §8",
+        "in cima alle zone del capoluogo c'è sempre la stessa: 1 zona",
+        1,
+        lambda: quante_zone_agli_estremi(max),
+        0,
+    ),
+    (
+        "sito §8",
+        "in fondo se ne alternano 3, quindi la linea è un inviluppo",
+        3,
+        lambda: quante_zone_agli_estremi(min),
+        0,
+    ),
+    (
+        "sito §8",
+        "forbice sulle due zone del 2004, seguite fino in fondo: 2,21 nel 2004",
+        2.21,
+        lambda: forbice_zone_fisse("2004"),
+        0.005,
+    ),
+    (
+        "sito §8",
+        "le stesse due zone nel 2025: 1,97, cioè la conclusione non dipend",
+        1.97,
+        lambda: forbice_zone_fisse("2025"),
+        0.005,
     ),
 ]
 

@@ -640,8 +640,15 @@
         const punto = el("circle", { cx: sx(indice), cy: sy(valore), r: 4.5,
           fill: colori[indiceLinea % colori.length], stroke: css("--card"), "stroke-width": 2 }, svg);
         punto.addEventListener("mousemove", function (evento) {
+          /* La nota per punto esiste per le linee che sono un **inviluppo** e
+             non una serie: «la più economica» delle zone OMI non è una zona
+             seguita nel tempo, è quella che sta in fondo quell'anno, e in
+             ventidue annate cambia tre volte. Senza la nota il grafico dice il
+             contrario di quello che fa. */
+          const nota = linea.note && linea.note[indice] ? "<br>" + linea.note[indice] : "";
           mostraSuggerimento(evento, "<b>" + linea.nome + "</b>" + periodi[indice] + ": " +
-            num(valore, opzioni.decimali === undefined ? 0 : opzioni.decimali) + " " + (opzioni.unita || ""));
+            num(valore, opzioni.decimali === undefined ? 0 : opzioni.decimali) + " " +
+            (opzioni.unita || "") + nota);
         });
         punto.addEventListener("mouseleave", nascondiSuggerimento);
       });
@@ -650,7 +657,17 @@
       // quando si sanno tutte: due linee che finiscono allo stesso valore —
       // e la storia della casa ne ha due, per costruzione — scriverebbero
       // altrimenti le due etichette una sopra l'altra.
-      const ultimo = linea.valori.length - 1;
+      /* L'etichetta va all'**ultimo punto disegnato**, non all'ultima
+         posizione dell'array. Se la serie finisce con un buco — nessuna oggi,
+         ma le tre dell'aria cominciano con dei buchi e la simmetria e' una
+         questione di tempo — `sy(null)` non da' NaN: da' lo zero della scala,
+         e l'etichetta si stacca dalla linea in un punto plausibile. Nessun
+         errore, nessun avviso, un grafico che mente. */
+      let ultimo = linea.valori.length - 1;
+      while (ultimo >= 0 && (linea.valori[ultimo] === null || linea.valori[ultimo] === undefined)) {
+        ultimo--;
+      }
+      if (ultimo < 0) return;
       etichette.push({
         y: sy(linea.valori[ultimo]),
         x: sx(ultimo) + 10,
@@ -673,7 +690,10 @@
 
     const righe = periodi.map(function (periodo, indice) {
       return [periodo].concat(linee.map(function (linea) {
-        return num(linea.valori[indice], opzioni.decimali === undefined ? 0 : opzioni.decimali);
+        const cifra = num(linea.valori[indice], opzioni.decimali === undefined ? 0 : opzioni.decimali);
+        // La nota entra anche qui: la tabella-specchio deve dire quanto dice il
+        // grafico, altrimenti l'alternativa accessibile e' una versione ridotta.
+        return linea.note && linea.note[indice] ? cifra + " (" + linea.note[indice] + ")" : cifra;
       }));
     });
     tabellaSpecchio(contenitore, ["periodo"].concat(linee.map(function (l) { return l.nome; })), righe);

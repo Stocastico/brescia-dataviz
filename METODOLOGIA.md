@@ -1,4 +1,4 @@
-# Nota metodologica (MET-1…MET-20)
+# Nota metodologica (MET-1…MET-21)
 
 > **Cos'è.** Le decisioni che governano il progetto: *perché* misuriamo come
 > misuriamo. È la base di credibilità — qualunque grafico, testo o titolo deve
@@ -9,12 +9,16 @@
 > ## ⚠️ Bozza avanzata — non ancora definitiva
 >
 > **Aggiornata a settembre 2026, quando il quinto asse ha avuto la sua prima
-> analisi.** Le venti regole qui elencate sono tutte reali e
-> applicate; cinque di esse (MET-9, MET-12, MET-13, MET-14, MET-15) nascono da
+> analisi.** Le ventuno regole qui elencate sono tutte reali e
+> applicate; sei di esse (MET-9, MET-12, MET-13, MET-14, MET-15, MET-21) nascono da
 > errori o incoerenze **effettivamente trovati sui dati bresciani**, non da
 > principi scelti a tavolino.
 >
-> Ultima arrivata: **MET-20**, dal deflatore: l'indice dei prezzi al consumo è
+> Ultima arrivata: **MET-21**, da una rilettura dei grafici: la linea del
+> massimo e quella del minimo di un insieme sono **inviluppi**, non serie, e
+> chiamarle «la più cara» e «la più economica» fa credere che raccontino il
+> percorso di una zona. Nelle zone OMI del capoluogo quella in fondo cambia tre
+> volte in ventidue annate. Prima: **MET-20**, dal deflatore: l'indice dei prezzi al consumo è
 > pubblicato in tre basi che non si sovrappongono, e attaccarne i livelli
 > disegna due crolli del 30 % mai avvenuti. Prima: **MET-19**, dalle quotazioni immobiliari OMI — negli affitti
 > la base di misura passa da superficie netta a superficie lorda nel 2025, e la
@@ -742,6 +746,51 @@ le due coincidano; un indice provinciale dei prezzi al consumo esiste per alcuni
 capoluoghi, non per tutta la serie e non per tutti i comuni. Quindi ogni cifra
 in euro costanti di questo progetto è **`derivato`** e non `osservato` (MET-4),
 e la frase che la accompagna dice con cosa è stata deflazionata.
+
+---
+
+
+## MET-21 — Un estremo ricalcolato ogni anno è un inviluppo, non una serie
+
+> Nata rileggendo l'ottava storia, settembre 2026. Il conto era giusto, il
+> grafico era giusto, e le tre parole sotto le linee dicevano un'altra cosa.
+
+Il grafico delle zone OMI del capoluogo ha tre linee: la più cara, la mediana e
+la più economica delle tredici zone del panel bilanciato. Massimo, mediana e
+minimo sono ricalcolati **su ogni annata**, che è il modo giusto di mostrare la
+forbice che si stringe. Ma le etichette erano al singolare, e al singolare una
+linea si legge come il percorso di **una** zona.
+
+Non lo è. In cima non cambia mai inquilino (`B3`, ventidue annate su ventidue);
+in fondo se ne alternano **tre**: `E1` dal 2004 al 2009, `B4` dal 2010 al 2012,
+di nuovo `E1` fino al 2024, `C3` nel 2025. Chi legge la linea di sotto come la
+storia di un quartiere legge una cosa che non esiste, e il grafico non gliel'ha
+mai detto.
+
+È la stessa distinzione di MET-16, spostata di un passo. Là il panel bilanciato
+serviva a fissare **quali** stazioni entrano nella media, perché «la media di
+quelle che ci sono» misura anche quali ci sono. Qui il panel c'era già e faceva
+il suo lavoro: tiene ferme quali zone si confrontano. Ma *quale* zona occupi un
+estremo è una **seconda domanda**, che il panel non tocca, e che nessuno si era
+posto.
+
+> **Una linea costruita come massimo o minimo di un insieme va nominata per
+> quello che è, e ogni suo punto deve poter dire da chi viene.** Se l'identità
+> dell'estremo non cambia mai, il singolare è lecito e va comunque verificato;
+> se cambia, va detto, e la conclusione va rifatta anche sull'altra lettura.
+
+In pratica, sul sito: il suggerimento e la tabella-specchio portano accanto a
+ogni punto il nome della zona che lo produce, un riquadro di controllo dice
+quante zone passano dai due estremi, e la forbice è ricalcolata una seconda
+volta **sulle due zone del primo anno seguite fino in fondo**. Le due letture
+danno le stesse due cifre, da 2,21 a 1,97, quindi la frase «la forbice si
+stringe» regge in entrambe, e le quattro cifre stanno in `verifica_cifre.py`
+come tutte le altre.
+
+**Il controllo è il punto, non l'esito.** Qui l'inviluppo e le zone fisse
+coincidono, e sarebbe stato comodo scoprirlo e tacere. La regola esiste perché
+la prossima volta possono non coincidere, e in quel caso il grafico va rifatto
+e non solo rinominato.
 
 ---
 

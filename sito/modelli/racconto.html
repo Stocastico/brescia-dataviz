@@ -999,9 +999,32 @@
       <h3>La zona più cara, quella mediana e la più economica</h3>
       <p class="cap">€/m² in euro del {{c:casa_anno_ultimo}}, sulle {{c:casa_zone_panel}} zone OMI
       del comune di Brescia presenti in tutte le {{c:casa_zone_annate}} annate. Tre linee e non
-      tredici: la cosa da vedere è che la distanza fra l'alto e il basso si accorcia.</p>
+      tredici: la cosa da vedere è che la distanza fra l'alto e il basso si accorcia. Alto e basso
+      sono ricalcolati ogni anno, e il suggerimento dice quale zona li occupa.</p>
       <div id="serie-casa-zone"></div>
     </figure>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">controllo</span>
+        <span>«La più economica» non è sempre la stessa zona</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Le tre linee qui sopra sono <strong>inviluppi</strong>, non tre zone seguite per
+        ventidue annate: il massimo e il minimo si ricalcolano su ogni anno, e la zona che li
+        occupa può cambiare. In cima non cambia mai, ed è sempre
+        <strong>{{c:casa_zona_cima}}</strong>; in fondo si alternano
+        <strong>{{c:casa_zone_in_fondo}} zone</strong>: {{c:casa_zone_fondo_elenco}}. Chi legge
+        la linea di sotto come il percorso di un quartiere sta leggendo una cosa che non c'è, ed è
+        il motivo per cui adesso ogni punto porta accanto il nome della sua zona.</p>
+        <p>È la stessa distinzione con cui la <a href="#aria">sesta storia</a> tratta le
+        centraline. Il panel bilanciato tiene ferme <em>quali zone</em> entrano nel confronto; non
+        dice nulla su <em>quale</em> stia in cima o in fondo, che è una seconda domanda.</p>
+        <p><strong>Il risultato non dipende da questo.</strong> Rifacendo la forbice sulle due zone
+        che stavano agli estremi nella prima annata e seguendo quelle fino in fondo, si passa da
+        <strong>{{c:casa_forbice_fissa_primo}} a {{c:casa_forbice_fissa_ultimo}}</strong>, cioè le
+        stesse due cifre dell'inviluppo. La frase «la forbice si stringe» regge in entrambe le
+        letture, e questo riquadro esiste perché non era ovvio prima di controllare.</p>
+      </div>
+    </details>
 
     <details class="metric-expl">
       <summary><span class="me-lab">controllo</span>
@@ -1557,15 +1580,19 @@
     });
 
     if (casa.zone && casa.zone.anni) {
+      /* Le tre linee sono **inviluppi**, non tre zone seguite nel tempo: il
+         massimo e il minimo si ricalcolano ogni anno. In cima non cambia mai
+         inquilino, in fondo cambia tre volte, e senza il nome accanto al punto
+         il grafico direbbe che una singola zona ha fatto quel percorso. */
       G.serie(document.getElementById("serie-casa-zone"), {
         periodi: casa.zone.anni,
         unita: "€/m² del " + casa.anno_base_reale,
         linee: [
-          { nome: "la più cara", valori: casa.zone.alta },
+          { nome: "la più cara", valori: casa.zone.alta, note: casa.zone.alta_zona },
           { nome: "la mediana", valori: casa.zone.mediana },
-          { nome: "la più economica", valori: casa.zone.bassa }
+          { nome: "la più economica", valori: casa.zone.bassa, note: casa.zone.bassa_zona }
         ],
-        descrizione: "Prezzo reale al metro quadro nelle zone OMI del comune di Brescia: la più cara, la mediana e la più economica"
+        descrizione: "Prezzo reale al metro quadro nelle zone OMI del comune di Brescia: la zona più cara, quella mediana e la più economica di ogni anno"
       });
     }
   }
