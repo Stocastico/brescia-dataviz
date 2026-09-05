@@ -577,10 +577,12 @@ dipendenze a runtime, che è la homepage del sito.
 - I grafici sono **SVG disegnati a mano in JavaScript**, senza librerie.
   Suona faticoso ed è invece il motivo per cui il file resta autocontenuto e
   non invecchia.
-- La forma è **scrollytelling**: la mappa o il grafico restano fissi
+- La forma è **scrollytelling** dove serve: la mappa o il grafico restano fissi
   (`position: sticky`) mentre il testo scorre e li aggiorna. Tutti i controlli
   restano anche manipolabili a mano — chi vuole esplorare non è costretto a
-  scorrere.
+  scorrere. Ce l'hanno **due storie su otto**, la prima e l'ottava, e il perché
+  di quel due (più i tre vincoli che il prossimo deve rispettare) sta in
+  [`sito/README.md`](sito/README.md) §Lo scrollytelling.
 - Ogni metrica complessa ha un riquadro **«la metrica, in chiaro»** che la
   spiega in due frasi.
 - Le pagine sorelle sono `metodologia.html` e `dati.html`, con la stessa

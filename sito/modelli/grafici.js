@@ -627,18 +627,25 @@
 
     const colori = CATEGORICHE.map(css);
     const etichette = [];
+    /* I nodi di ogni linea, tenuti da parte perche' `mostra()` possa spegnerne
+       una senza ridisegnare niente. Serve allo scrollytelling dell'ottava
+       storia, dove la stessa figura si legge quattro volte e ogni passo
+       aggiunge una linea invece di sostituire un grafico. */
+    const nodiDiLinea = linee.map(function () { return []; });
     linee.forEach(function (linea, indiceLinea) {
       let d = "";
       linea.valori.forEach(function (valore, indice) {
         if (valore === null) return;
         d += (d ? "L" : "M") + sx(indice).toFixed(1) + " " + sy(valore).toFixed(1);
       });
-      el("path", { d: d, fill: "none", stroke: colori[indiceLinea % colori.length],
-        "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
+      nodiDiLinea[indiceLinea].push(
+        el("path", { d: d, fill: "none", stroke: colori[indiceLinea % colori.length],
+          "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg));
       linea.valori.forEach(function (valore, indice) {
         if (valore === null) return;
         const punto = el("circle", { cx: sx(indice), cy: sy(valore), r: 4.5,
           fill: colori[indiceLinea % colori.length], stroke: css("--card"), "stroke-width": 2 }, svg);
+        nodiDiLinea[indiceLinea].push(punto);
         punto.addEventListener("mousemove", function (evento) {
           /* La nota per punto esiste per le linee che sono un **inviluppo** e
              non una serie: «la più economica» delle zone OMI non è una zona
@@ -673,6 +680,7 @@
         x: sx(ultimo) + 10,
         nome: linea.nome,
         colore: colori[indiceLinea % colori.length],
+        linea: indiceLinea,
       });
     });
 
@@ -686,6 +694,7 @@
       const testo = el("text", { x: etichetta.x, y: etichetta.y + 4, fill: etichetta.colore,
         "font-size": 12, "font-weight": 600 }, svg);
       testo.textContent = etichetta.nome;
+      nodiDiLinea[etichetta.linea].push(testo);
     });
 
     const righe = periodi.map(function (periodo, indice) {
@@ -696,7 +705,41 @@
         return linea.note && linea.note[indice] ? cifra + " (" + linea.note[indice] + ")" : cifra;
       }));
     });
-    tabellaSpecchio(contenitore, ["periodo"].concat(linee.map(function (l) { return l.nome; })), righe);
+    /* La tabella-specchio puo' andare fuori dal contenitore del grafico, e
+       serve dove una figura viene nascosta: in un pannello che scambia figura,
+       la tabella della figura spenta sparirebbe anche dalla tastiera e dai
+       lettori di schermo, e l'alternativa accessibile smetterebbe di esistere
+       proprio per chi ci conta. Fuori dal pannello ci sono tutte, sempre. */
+    tabellaSpecchio(opzioni.tabellaIn || contenitore,
+      ["periodo"].concat(linee.map(function (l) { return l.nome; })), righe);
+
+    return {
+      /* Accende le linee elencate e spegne le altre; senza argomento le accende
+         tutte. **Gli assi non si ricalcolano**: il dominio resta quello di tutte
+         le linee, sempre. E' una scelta, non una pigrizia — se la scala si
+         adattasse a quello che e' acceso, aggiungere una linea farebbe muovere
+         anche quella gia' disegnata, e un lettore che vede due curve cambiare
+         forma insieme non sa piu' quale delle due sia la notizia.
+
+         La tabella-specchio resta intera: chi legge da li' deve avere il dato,
+         non lo stato del racconto. */
+      mostra: function (indici) {
+        const acceso = indici ? {} : null;
+        (indici || []).forEach(function (i) { acceso[i] = true; });
+        nodiDiLinea.forEach(function (nodi, indice) {
+          const dentro = !acceso || acceso[indice];
+          /* Una **classe**, non un attributo `display`. La differenza conta:
+             spegnere una linea e' un'intenzione del racconto, e il racconto non
+             c'e' su tutti gli schermi. Sotto i 900 px lo scrollytelling non
+             gira, i passi diventano paragrafi, e una linea spenta resterebbe
+             spenta per sempre — un grafico intitolato «con due righelli» che ne
+             disegna uno. Con la classe e' il CSS a decidere se l'intenzione
+             valga in questo impaginato, ed e' lo stesso meccanismo con cui il
+             pannello sceglie quale figura mostrare. */
+          nodi.forEach(function (nodo) { nodo.classList.toggle("linea-spenta", !dentro); });
+        });
+      },
+    };
   }
 
   // --- barre orizzontali (le decomposizioni) ---------------------------
