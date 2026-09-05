@@ -239,6 +239,9 @@ python -m brescia_pipeline.build          # da zero: scarica e pulisce (ore)
 python -m brescia_pipeline.build --offline web   # solo i JSON per il sito (secondi)
 python sito/costruisci.py                 # -> _site/
 python analysis/verifica_cifre.py         # se una cifra diverge, è quello il primo problema
+
+pip install pytest pytest-cov
+python -m pytest pipeline/tests -q --cov  # 443 test, soglia di copertura all'80 %
 ```
 
 ## Licenza

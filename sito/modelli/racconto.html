@@ -933,31 +933,69 @@
         <div class="lbl">compravendite dal fondo del {{c:casa_ntn_fondo_anno}}</div></div>
     </div>
 
-    <figure class="fig">
-      <h3>Lo stesso metro quadro, con due righelli</h3>
-      <p class="cap">Prezzo medio delle abitazioni civili in vendita nel comune di Brescia,
-      €/m² su superficie lorda. La linea alta è la stessa serie della linea bassa, riportata
-      in euro del {{c:casa_anno_ultimo}}: le due si toccano nell'ultimo anno perché lì
-      l'inflazione da scontare è zero.</p>
-      <div id="serie-casa-prezzo"></div>
-    </figure>
+    <div class="scrolly" id="scrolly-casa">
+      <div class="scrolly-fig">
+        <div class="scambio">
+          <figure class="fig" id="fig-casa-prezzo">
+            <h3>Lo stesso metro quadro, con due righelli</h3>
+            <p class="cap">Prezzo medio delle abitazioni civili in vendita nel comune di
+            Brescia, €/m² su superficie lorda.</p>
+            <div id="serie-casa-prezzo"></div>
+          </figure>
+          <figure class="fig" id="fig-casa-forbice">
+            <h3>Prezzo reale e scambi, dal {{c:casa_ntn_anno_primo}}</h3>
+            <p class="cap">Le due serie indicizzate al {{c:casa_ntn_anno_primo}} = 100, il
+            primo anno in cui esistono entrambe.</p>
+            <div id="serie-casa-forbice"></div>
+          </figure>
+        </div>
+      </div>
+      <div class="scrolly-steps">
+        <div class="step" data-passo="correnti"><div>
+          <span class="steplab">Il prezzo, com'è scritto</span>
+          <p>Il metro quadro del capoluogo in <strong>euro correnti</strong>: da
+          {{c:casa_prezzo_primo}} € nel {{c:casa_anno_primo}} a {{c:casa_prezzo_ultimo}} € nel
+          {{c:casa_anno_ultimo}}. Ventun anni per {{c:casa_nominale}}. Guardata così, questa
+          linea non ha nessuna storia da raccontare.</p>
+        </div></div>
+        <div class="step" data-passo="reali"><div>
+          <span class="steplab">Lo stesso prezzo, in euro di oggi</span>
+          <p>La seconda linea è la <strong>stessa serie</strong>, riportata in euro del
+          {{c:casa_anno_ultimo}}. Non è un altro dato: è lo stesso, misurato con un righello che
+          non si accorcia. Quei {{c:casa_prezzo_primo}} € del {{c:casa_anno_primo}} valevano
+          <strong>{{c:casa_prezzo_primo_reale}} € di oggi</strong>.</p>
+        </div></div>
+        <div class="step" data-passo="divario"><div>
+          <span class="steplab">Il divario è il risultato</span>
+          <p>La distanza fra le due linee è l'inflazione: {{c:casa_inflazione}} in ventun anni. Il
+          prezzo reale <strong>ha perso {{c:casa_reale}}</strong>. E le due si toccano
+          nell'ultimo anno per costruzione, perché lì l'inflazione da scontare è zero: non è un
+          artefatto da nascondere, è la chiave di lettura del grafico.</p>
+        </div></div>
+        <div class="step" data-passo="volumi"><div>
+          <span class="steplab">E intanto si vendeva il doppio</span>
+          <p>Le <strong>compravendite</strong> del capoluogo, cioè le transazioni normalizzate
+          sulla quota di proprietà con cui l'Agenzia conta gli scambi residenziali, toccano il
+          fondo nel {{c:casa_ntn_fondo_anno}} con {{c:casa_ntn_fondo}} e arrivano a
+          {{c:casa_ntn_ultimo}} nel {{c:casa_anno_ultimo}}:
+          <strong>{{c:casa_ntn_variazione}}</strong>. Le due serie sono indicizzate al
+          {{c:casa_ntn_anno_primo}} = 100, e non affiancate in unità proprie: €/m² e numero di
+          transazioni su un asse solo sarebbero due scale diverse nascoste in un grafico.</p>
+        </div></div>
+        <div class="step" data-passo="insieme"><div>
+          <span class="steplab">Le due insieme</span>
+          <p>Non si contraddicono, e messe una accanto all'altra dicono una cosa sola che nessuna
+          delle due dice da sola: <strong>si vende molto di più, a un prezzo reale molto più
+          basso</strong>. È il risultato dell'ottava storia, e sta tutto in questo scarto fra le
+          due curve.</p>
+        </div></div>
+      </div>
+    </div>
 
-    <p>La seconda serie dice che non è un mercato fermo nemmeno nei fatti. Le
-    <strong>compravendite</strong> del capoluogo, cioè le transazioni normalizzate sulla quota di
-    proprietà con cui l'Agenzia conta gli scambi residenziali, toccano il fondo nel
-    {{c:casa_ntn_fondo_anno}} con {{c:casa_ntn_fondo}} e arrivano a
-    {{c:casa_ntn_ultimo}} nel {{c:casa_anno_ultimo}}: <strong>{{c:casa_ntn_variazione}}</strong>.
-    Le due serie non si contraddicono, e messe una accanto all'altra dicono una cosa sola che
-    nessuna delle due dice da sola: <strong>si vende molto di più, a un prezzo reale molto più
-    basso</strong>.</p>
-
-    <figure class="fig">
-      <h3>Prezzo reale e scambi, dal {{c:casa_ntn_anno_primo}}</h3>
-      <p class="cap">Le due serie indicizzate al {{c:casa_ntn_anno_primo}} = 100, che è il primo
-      anno in cui esistono entrambe. Indicizzate e non affiancate in unità proprie: €/m² e numero
-      di transazioni su un asse solo sarebbero due scale diverse nascoste in un grafico.</p>
-      <div id="serie-casa-forbice"></div>
-    </figure>
+    <!-- Le due tabelle-specchio stanno qui e non dentro le figure: nel pannello
+         che scambia figura, quella spenta è `display:none`, e con lei sparirebbe
+         dalla tastiera anche la sua tabella. Fuori, ci sono tutte e due sempre. -->
+    <div id="tabelle-casa"></div>
 
     <details class="metric-expl">
       <summary><span class="me-lab">la metrica, in chiaro</span>
@@ -1559,9 +1597,11 @@
     /* Due righelli sulla stessa serie. Le due linee si toccano nell'ultimo
        anno per costruzione, perche' li' l'inflazione da scontare e' zero, e non e'
        un artefatto da nascondere: e' la lettura del grafico. */
-    G.serie(document.getElementById("serie-casa-prezzo"), {
+    var tabelleCasa = document.getElementById("tabelle-casa");
+    var serieePrezzo = G.serie(document.getElementById("serie-casa-prezzo"), {
       periodi: casa.anni,
       unita: "€/m²",
+      tabellaIn: tabelleCasa,
       linee: [
         { nome: "euro " + casa.anno_base_reale, valori: casa.reali },
         { nome: "euro correnti", valori: casa.correnti }
@@ -1569,15 +1609,60 @@
       descrizione: "Prezzo al metro quadro delle abitazioni civili nel comune di Brescia, in euro correnti e in euro costanti"
     });
 
-    G.serie(document.getElementById("serie-casa-forbice"), {
+    var seriaVolumi = G.serie(document.getElementById("serie-casa-forbice"), {
       periodi: casa.anni_ntn,
       unita: casa.anni_ntn[0] + " = 100",
+      tabellaIn: tabelleCasa,
       linee: [
         { nome: "compravendite", valori: casa.indice_ntn },
         { nome: "prezzo reale", valori: casa.indice_reale }
       ],
       descrizione: "Prezzo reale al metro quadro e numero di compravendite residenziali nel comune di Brescia, indicizzati"
     });
+
+    /* Lo scrollytelling dell'ottava storia. La prima lo usa su **una** mappa
+       riletta cinque volte; qui l'argomento e' una catena, e i passi la
+       percorrono: prima il prezzo come e' scritto, poi lo stesso prezzo in euro
+       di oggi, poi il divario fra i due, e infine i volumi. Le linee si
+       accendono una alla volta sulla stessa figura, e la scala non si muove
+       (`mostra()` non ricalcola gli assi apposta): quello che cambia fra un
+       passo e l'altro e' solo cosa si guarda.
+
+       Il pannello tiene **due** figure e non una, perche' i volumi sono in
+       un'altra unita' e su un'altra finestra di anni. Due sono il massimo
+       sensato: allo scambio il lettore deve riconoscere che il grafico e'
+       cambiato, e con quattro non lo riconoscerebbe piu'.
+
+       Sotto i 900 px il CSS spegne tutto questo: le due figure tornano
+       visibili e impilate, i passi diventano cinque paragrafi, e la storia si
+       legge come si leggeva prima. */
+    var scrollyCasa = document.getElementById("scrolly-casa");
+    if (scrollyCasa && serieePrezzo && seriaVolumi) {
+      var figurePrezzo = document.getElementById("fig-casa-prezzo");
+      var figureVolumi = document.getElementById("fig-casa-forbice");
+
+      /* La didascalia **non** cambia a ogni passo, e in questo lo scrollytelling
+         dell'ottava storia differisce da quello della prima. Li' la figura e'
+         sempre la stessa mappa e la didascalia e' l'unica cosa che puo' dire
+         cosa sia acceso; qui il testo del passo sta a fianco e lo dice gia', e
+         una didascalia che passa da due righe a tre farebbe sobbalzare di venti
+         pixel un pannello che sta fermo per mestiere. */
+      var passiCasa = {
+        correnti: { figura: figurePrezzo, manico: serieePrezzo, linee: [1] },
+        reali:    { figura: figurePrezzo, manico: serieePrezzo, linee: [0, 1] },
+        divario:  { figura: figurePrezzo, manico: serieePrezzo, linee: [0, 1] },
+        volumi:   { figura: figureVolumi, manico: seriaVolumi,  linee: [0] },
+        insieme:  { figura: figureVolumi, manico: seriaVolumi,  linee: [0, 1] }
+      };
+
+      G.scrollytelling(scrollyCasa, function (indice, passo) {
+        var conf = passiCasa[passo.getAttribute("data-passo")];
+        if (!conf) return;
+        figurePrezzo.classList.toggle("on", conf.figura === figurePrezzo);
+        figureVolumi.classList.toggle("on", conf.figura === figureVolumi);
+        conf.manico.mostra(conf.linee);
+      });
+    }
 
     if (casa.zone && casa.zone.anni) {
       /* Le tre linee sono **inviluppi**, non tre zone seguite nel tempo: il

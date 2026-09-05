@@ -80,10 +80,10 @@ jobs:
       - name: Costruisci i dati per il sito
         run: python -m brescia_pipeline.build --offline web
 
-      - name: Verifica gli invarianti del contratto
+      - name: Verifica gli invarianti del contratto, con la soglia di copertura
         run: |
-          pip install pytest pyyaml
-          python -m pytest pipeline/tests -q
+          pip install pytest pytest-cov pyyaml
+          python -m pytest pipeline/tests -q --cov --cov-report=term-missing
 
       # Le cifre citate nei documenti devono tornare: se una diverge, non si
       # pubblica. È la stessa regola del repository, applicata in CI.

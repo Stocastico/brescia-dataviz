@@ -1,0 +1,21 @@
+# Copertura dei test, misurata sui tre pezzi di codice del progetto: la
+# pipeline, gli script di analisi e il costruttore del sito.
+#
+# La soglia sta qui e non solo in CI perche' `pytest --cov` in locale deve
+# fallire per le stesse ragioni per cui fallisce in CI.
+
+[run]
+source =
+    pipeline/src/brescia_pipeline
+    analysis
+    sito
+branch = True
+
+[report]
+fail_under = 80
+show_missing = True
+skip_covered = False
+exclude_lines =
+    pragma: nessun test
+    if __name__ == .__main__.:
+    raise NotImplementedError

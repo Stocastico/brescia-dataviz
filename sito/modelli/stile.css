@@ -330,6 +330,27 @@ table.rank td.num,table.rank th.num{text-align:right;font-variant-numeric:tabula
 .step p{margin:.45em 0;font-size:.95rem}
 .step .steplab{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;
   font-weight:700;color:var(--muted);margin-bottom:6px}
+/* Il pannello che scambia figura. Quando una storia ha piu' grafici che
+   raccontano lo stesso argomento, la colonna appiccicosa ne tiene piu' di uno e
+   i passi decidono quale si vede. La regola sta **dentro** la media query
+   larga di proposito: sotto i 900 px lo scrollytelling non c'e', e allora le
+   figure tornano visibili tutte e impilate, cioe' la pagina di prima. */
+/* Una linea spenta da `serie().mostra()`. Sta fuori dalle media query perche'
+   l'intenzione vale ovunque; la riga dopo la revoca dove il racconto che l'ha
+   espressa non esiste. */
+.linea-spenta{display:none}
+@media(max-width:900px){ .scrolly-fig .linea-spenta{display:inline} }
+
+@media(min-width:901px){
+  .scrolly-fig .scambio>.fig{display:none}
+  .scrolly-fig .scambio>.fig.on{display:block}
+  /* Due righe riservate alla didascalia. Nel pannello che scambia figura le
+     didascalie sono due e di lunghezza diversa, e senza uno spazio prenotato il
+     grafico sussulta nel momento dello scambio. Le due righe reggono anche se
+     il lettore non ha i caratteri del progetto e legge con quelli di sistema,
+     che sono piu' larghi. */
+  .scrolly-fig .cap{min-height:2.9em}
+}
 @media(max-width:900px){
   .scrolly{grid-template-columns:1fr;gap:14px}
   .scrolly-fig{position:static}

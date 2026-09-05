@@ -77,7 +77,8 @@ Indice:
 | Ricognizione delle fonti | ✅ [`FONTI.md`](FONTI.md), con lo stato di accesso verificato riga per riga |
 | Soggetto e assi | ✅ decisi: la provincia attraverso i 205 comuni, quattro assi portanti ([`BRIEF.md`](BRIEF.md)) |
 | Repository separato | ✅ esiste, `main`, file in radice |
-| Pipeline | ✅ funzionante, `requests` + libreria standard, 264 test verdi |
+| Pipeline | ✅ funzionante, `requests` + libreria standard |
+| Test | ✅ **443 test verdi** e **85 % di copertura** su tutti e tre i pezzi di codice — pipeline, i quindici script di `analysis/`, il costruttore del sito. La soglia dell'80 % sta in [`.coveragerc`](.coveragerc) e fa fallire la CI, non stampa un avviso. Fuori dal conto resta `grafici.js`, che non ha test automatici ([`pipeline/README.md`](pipeline/README.md) §I test) |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
 | Tabelle tidy | ✅ **31 CSV** in [`dati/processed/`](dati/README.md), versionati — tre vengono dall'OMI (quotazioni in grana zona e comunale, volumi di compravendita 2011–2025) e la trentunesima è il **deflatore** `indice_prezzi.csv`, che è arrivato per leggerle; manca solo `migrazioni_comuni.csv` |
 | Asse «casa e prezzi» | ✅ **completo**: i dati (quotazioni OMI 2004–2025 in due grane, compravendite 2011–2025), l'analisi (`casa_e_prezzi.py`, §4) e la **storia** — l'ottava del sito. Prezzo reale −30,8 % in ventun anni mentre i volumi fanno +134,5 % |
@@ -577,10 +578,12 @@ dipendenze a runtime, che è la homepage del sito.
 - I grafici sono **SVG disegnati a mano in JavaScript**, senza librerie.
   Suona faticoso ed è invece il motivo per cui il file resta autocontenuto e
   non invecchia.
-- La forma è **scrollytelling**: la mappa o il grafico restano fissi
+- La forma è **scrollytelling** dove serve: la mappa o il grafico restano fissi
   (`position: sticky`) mentre il testo scorre e li aggiorna. Tutti i controlli
   restano anche manipolabili a mano — chi vuole esplorare non è costretto a
-  scorrere.
+  scorrere. Ce l'hanno **due storie su otto**, la prima e l'ottava, e il perché
+  di quel due (più i tre vincoli che il prossimo deve rispettare) sta in
+  [`sito/README.md`](sito/README.md) §Lo scrollytelling.
 - Ogni metrica complessa ha un riquadro **«la metrica, in chiaro»** che la
   spiega in due frasi.
 - Le pagine sorelle sono `metodologia.html` e `dati.html`, con la stessa

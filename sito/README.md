@@ -37,6 +37,46 @@ anni non ci sarà una libreria da aggiornare né una CDN da cui dipendere.
 schermo. Una coropletica da sola è inaccessibile, e la tabella serve anche a chi
 vuole controllare.
 
+## Lo scrollytelling, e quando vale la pena
+
+Due storie su otto ce l'hanno, e non è una svista: costa attenzione al lettore,
+e la si spende dove una figura va **letta più volte**.
+
+- La **prima** (`#svuota`) tiene ferma una mappa e la rilegge cinque volte:
+  tutti i comuni, quelli in calo, le dieci cadute peggiori, i grumi, il verso
+  opposto. La figura non cambia mai, cambia cosa è acceso (`mappa.evidenzia`).
+- L'**ottava** (`#casa`) fa una cosa diversa perché ha un argomento a catena: il
+  prezzo com'è scritto → lo stesso prezzo in euro di oggi → il divario → i
+  volumi. I passi accendono le linee una alla volta (`serie().mostra`), e negli
+  ultimi due il pannello **scambia figura**.
+
+Tre vincoli che valgono per entrambe, e che il prossimo scrollytelling deve
+rispettare:
+
+1. **La scala non si ricalcola** quando una linea si accende. Se si adattasse,
+   aggiungere una linea farebbe muovere anche quella già disegnata, e un lettore
+   che vede due curve cambiare forma insieme non sa più quale sia la notizia. È
+   il motivo per cui il primo passo dell'ottava storia ha molto spazio vuoto
+   sopra: è lo spazio in cui la seconda linea atterrerà.
+2. **Il pannello non deve sobbalzare.** È `position: sticky`, quindi qualunque
+   cosa ne cambi l'altezza (una didascalia che passa da due righe a tre) si vede
+   come un sussulto accanto al testo che si legge. Le didascalie sono fisse per
+   figura e lo spazio è prenotato in CSS.
+3. **Spegnere è un'intenzione, non uno stato.** `mostra()` mette una *classe*,
+   non un attributo `display`, e il CSS decide se quella classe conta.
+   Sotto i 900 px lo scrollytelling non gira: le figure tornano tutte visibili
+   e complete, i passi diventano paragrafi, e la storia si legge come si
+   leggerebbe senza. Un grafico intitolato «con due righelli» che sul telefono
+   ne disegna uno è il modo esatto in cui questa cosa si rompe in silenzio.
+
+E una regola di misura: **due figure per pannello sono il massimo**. Allo
+scambio il lettore deve accorgersi che il grafico è cambiato; con quattro non se
+ne accorgerebbe più, e il pannello diventerebbe una diapositiva.
+
+Le tabelle-specchio dell'ottava storia stanno **fuori** dal pannello
+(`#tabelle-casa`, via l'opzione `tabellaIn` di `serie()`): la figura spenta è
+`display:none`, e con lei sparirebbe dalla tastiera anche la sua tabella.
+
 ## Lo stile viene da `donostia-dataviz`
 
 La lingua grafica non è nuova: è quella del **progetto gemello**
