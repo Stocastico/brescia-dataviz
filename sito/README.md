@@ -172,6 +172,11 @@ invece di restringerla:
    4,3:1 la tinta base e 7,1:1 quella scura, entrambi sopra la mediana del
    gruppo (3,45 e 5,64).
 
+   ✅ **La domanda sul riallineamento con `donostia-dataviz` è chiusa**
+   (7 settembre 2026): la tavolozza va bene com'è, i due progetti restano una
+   collana con tavolozze che divergono, e la regola dei colori resta scritta qui
+   invece che là.
+
    **E al nono la regola ha finito lo spazio** (settembre 2026). Dice ancora dove
    va: il buco più largo rimasto è fra mare (196°) e viola (255°), 59 gradi, e il
    mezzo cade a **226°**, da cui `--indaco` (`#4a63b5`). Ma quel colore dista

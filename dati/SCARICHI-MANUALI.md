@@ -1,9 +1,10 @@
 # I dati che tocca a te scaricare
 
-> **Nota per Stefano.** Istruzioni operative per lo scarico che questo ambiente
-> non raggiunge — ne resta **uno**, l'export Coeweb di §3 — più un comando da
-> lanciare in locale, e la traccia di quelli già fatti: dove andare, cosa
-> chiedere, dove mettere il file, cosa succede dopo. Il contesto sta in
+> **Nota per Stefano.** ✅ **Non ne resta nessuno** (7 settembre 2026): l'ultimo,
+> l'export Coeweb di §3, è stato scartato per scelta, e il comando locale di §4 è
+> stato lanciato. Questo documento è quindi la **traccia** di come sono arrivati
+> i dati che ci sono, più le istruzioni per rifarli: dove andare, cosa chiedere,
+> dove mettere il file, cosa succede dopo. Il contesto sta in
 > [`../PROSSIMI-PASSI.md`](../PROSSIMI-PASSI.md) §2.2, lo stato di accesso fonte
 > per fonte in [`../FONTI.md`](../FONTI.md).
 >
@@ -160,7 +161,19 @@ storia resta quella che è: dichiarata dal 2019, che è quanto la fonte copre.
 
 ---
 
-## 3. Commercio estero provinciale — un export a mano dal databrowser
+## 3. ✗ Commercio estero provinciale — deciso di non farlo (7 settembre 2026)
+
+> **Voce chiusa da una decisione, non da un ostacolo.** L'export si potrebbe
+> fare: il databrowser risponde, e un'ora basterebbe. Non si fa perché quel file
+> sarebbe **l'unico dato del progetto che nessuno può rigenerare con un
+> comando**, e lo sarebbe per un asse che non è fra i quattro portanti. Si resta
+> sulla serie **regionale**, già scaricata e già dichiarata come ripiego
+> (MET-10).
+>
+> Le istruzioni restano qui sotto: se un giorno la decisione cambia, la strada è
+> questa.
+
+### Le istruzioni, se la decisione cambia
 
 **Perché tocca a te:** il portale storico `coeweb.istat.it` è dismesso dal 30
 settembre 2025. Il sostituto <https://esploradati.istat.it/coeweb/databrowser/>
@@ -192,7 +205,20 @@ attuale — dichiarare la Lombardia come contesto — regge (MET-10).
 
 ---
 
-## 4. `migrazioni_comuni.csv` — non è uno scarico, è un comando
+## 4. ✅ `migrazioni_comuni.csv` — fatto il 7 settembre 2026
+
+> **Prodotto.** 1.809.156 righe, 422 MB, **18 minuti e 46 secondi**. La congiunta
+> resta fuori da git; accanto sono entrate due **marginali versionate**
+> (`background_migratorio_comuni.csv` e `background_migratorio_istruzione.csv`),
+> su cui poggiano le cifre che la prima storia adesso cita. Il ragionamento sta
+> in [`SCARICHI-LOCALI.md`](SCARICHI-LOCALI.md).
+>
+> ⚠️ Lo scarico è morto due volte sullo stesso blocco prima di riuscire, e non
+> era quel blocco: `esploradati.istat.it` aveva smesso di accettare **qualsiasi**
+> connessione per una decina di minuti. La cache per blocco fa ripartire da dove
+> si era fermato.
+
+Il comando resta questo, e su una macchina nuova serve ancora.
 
 Nessun login e nessuna rete particolare: è solo un file da 422 MB che sta fuori
 da git.
