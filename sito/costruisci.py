@@ -758,6 +758,45 @@ def scomposizione_demografica() -> dict[str, Any]:
     }
 
 
+def background_migratorio() -> dict[str, Any]:
+    """Lo stock per background migratorio, dalle marginali versionate.
+
+    ⚠️ Legge `background_migratorio_comuni.csv`, **non** la congiunta da 422 MB
+    che sta fuori da git: la regola del progetto e' che nessuna cifra pubblicata
+    puo' dipendere da una tabella che chi clona non ha. La congiunta serve
+    all'analisi (`analysis/chi_vive_nel_bresciano.py`), non alla pagina.
+
+    Sono anni **2021-2023**, cioe' un intervallo diverso da quello del bilancio
+    demografico (2018-2024) su cui poggia il resto della prima storia. Le due
+    misure non vanno sottratte l'una dall'altra: una conta **flussi** annuali di
+    anagrafe, l'altra uno **stock** di censimento. Stanno accanto, e la pagina lo
+    dice.
+    """
+    import csv
+
+    path = PROCESSED / "background_migratorio_comuni.csv"
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as handle:
+        righe = list(csv.DictReader(handle))
+
+    per_anno: dict[str, dict[str, float]] = {}
+    per_comune: dict[str, dict[str, float]] = {}
+    for riga in righe:
+        if not riga["valore"]:
+            continue
+        anno, indicatore = riga["anno"], riga["indicatore"]
+        conti = per_anno.setdefault(anno, {})
+        conti[indicatore] = conti.get(indicatore, 0.0) + float(riga["valore"])
+        if anno == max(r["anno"] for r in righe):
+            per_comune.setdefault(riga["codice_istat"], {})[indicatore] = float(riga["valore"])
+
+    anni = sorted(per_anno)
+    if not anni:
+        return {}
+    return {"anni": anni, "provincia": per_anno, "comuni": per_comune}
+
+
 def scomposizione_province() -> dict[str, Any]:
     """Le stesse componenti su tutte le province: il paragone che mancava.
 
@@ -1117,6 +1156,57 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         fuori["perdita_senza_estero"] = numero_it(
             provinciale["estera"] - provinciale["totale"]
         )
+
+    # Lo stesso fenomeno visto come stock, dal censimento. Non e' un secondo
+    # modo di dire la stessa cosa: il bilancio conta i movimenti dell'anno, il
+    # censimento conta chi c'e' al 31 dicembre e con quale cittadinanza. Le due
+    # frasi stanno accanto, e nessuna cifra dell'una si somma all'altra.
+    stock = background_migratorio()
+    if stock:
+        primo, ultimo = stock["anni"][0], stock["anni"][-1]
+        prima, dopo = stock["provincia"][primo], stock["provincia"][ultimo]
+        fuori["bg_anno_iniziale"] = primo
+        fuori["bg_anno_finale"] = ultimo
+        fuori["bg_stranieri"] = numero_it(dopo["stranieri"])
+        fuori["bg_quota_stranieri"] = percento_it(
+            dopo["stranieri"] / dopo["popolazione_residente"] * 100
+        )
+        fuori["bg_acquisiti"] = numero_it(dopo["italiani_acquisiti"])
+        fuori["bg_quota_background"] = percento_it(
+            (dopo["stranieri"] + dopo["italiani_acquisiti"])
+            / dopo["popolazione_residente"] * 100
+        )
+        fuori["bg_var_dalla_nascita"] = numero_it(
+            dopo["italiani_dalla_nascita"] - prima["italiani_dalla_nascita"]
+        )
+        # La stessa cifra senza segno: «calano di -8.219» non si legge.
+        fuori["bg_calo_dalla_nascita"] = numero_it(
+            prima["italiani_dalla_nascita"] - dopo["italiani_dalla_nascita"]
+        )
+        fuori["bg_stranieri_iniziale"] = numero_it(prima["stranieri"])
+        fuori["bg_var_acquisiti"] = numero_it(
+            dopo["italiani_acquisiti"] - prima["italiani_acquisiti"]
+        )
+        fuori["bg_var_popolazione"] = numero_it(
+            dopo["popolazione_residente"] - prima["popolazione_residente"]
+        )
+        fuori["bg_var_stranieri"] = numero_it(dopo["stranieri"] - prima["stranieri"])
+        fuori["bg_nati_qui_stranieri"] = numero_it(dopo["stranieri_nati_in_italia"])
+        fuori["bg_nati_qui_minorenni"] = numero_it(dopo["stranieri_nati_in_italia_minorenni"])
+        fuori["bg_nati_qui_quota_minori"] = percento_it(
+            dopo["stranieri_nati_in_italia_minorenni"] / dopo["stranieri_nati_in_italia"] * 100
+        )
+
+        quote = {
+            codice: (conti.get("stranieri", 0.0) + conti.get("italiani_acquisiti", 0.0))
+            / conti["popolazione_residente"] * 100
+            for codice, conti in stock["comuni"].items()
+            if conti.get("popolazione_residente")
+        }
+        fuori["bg_quota_capoluogo"] = percento_it(quote[CAPOLUOGO])
+        fuori["bg_quota_mediana"] = percento_it(mediana(list(quote.values())))
+        fuori["bg_quota_massima"] = percento_it(max(quote.values()))
+        fuori["bg_comune_massimo"] = comuni[max(quote, key=quote.get)]["comune"]
 
         per_comune = demografia["comuni"]
         in_calo = {

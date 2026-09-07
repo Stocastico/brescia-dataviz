@@ -242,6 +242,32 @@
         </div>
       </details>
 
+      <p>Il censimento dice la stessa cosa in un altro modo, e più duramente. Le barre qui sopra
+      contano i <em>movimenti</em> di ogni anno; il censimento conta <strong>chi c'è al 31
+      dicembre</strong>, e con quale cittadinanza. Fra il {{c:bg_anno_iniziale}} e il
+      {{c:bg_anno_finale}} la provincia guadagna {{c:bg_var_popolazione}} residenti, ma gli
+      italiani <em>dalla nascita</em> <strong>calano di {{c:bg_calo_dalla_nascita}}</strong> e gli
+      italiani <em>per acquisizione</em> crescono di {{c:bg_var_acquisiti}}, quasi il doppio della
+      crescita totale. Oggi il {{c:bg_quota_background}} dei residenti è straniero o italiano per
+      acquisizione: {{c:bg_quota_capoluogo}} nel capoluogo, {{c:bg_quota_mediana}} nel comune
+      mediano, fino a {{c:bg_quota_massima}} a {{c:bg_comune_massimo}}.</p>
+
+      <details class="metric-expl">
+        <summary><span class="me-lab">attenzione</span>
+          <span>Perché «gli stranieri sono fermi» è un numero giusto e una frase falsa</span><span class="me-tgl"></span></summary>
+        <div class="me-body">
+          <p>Fra il {{c:bg_anno_iniziale}} e il {{c:bg_anno_finale}} i residenti stranieri passano
+          da {{c:bg_stranieri_iniziale}} a {{c:bg_stranieri}}: <b>{{c:bg_var_stranieri}} persone in
+          due anni</b>, cioè un conteggio immobile. Nello stesso biennio
+          {{c:bg_var_acquisiti}} persone hanno <em>lasciato</em> quel conteggio prendendo la
+          cittadinanza italiana.</p>
+          <p>Un livello costante con due rubinetti aperti non è un livello fermo, ed è il motivo
+          per cui questa pagina non scrive «gli stranieri sono stabili»: sarebbe un numero esatto e
+          una descrizione falsa. Quanti siano entrati non si legge da qui, perché nascite, decessi
+          e partenze muovono lo stesso stock: per i flussi ci sono le barre qui sopra.</p>
+        </div>
+      </details>
+
       <p>Sui {{c:comuni_in_calo}} comuni che perdono abitanti la risposta è ancora più netta, e
       ribalta la parola. Sommati, quei comuni perdono {{c:comuni_in_calo_naturale}} persone per
       saldo naturale e <strong>{{c:comuni_in_calo_interna}} per migrazione interna</strong>: la
@@ -1204,8 +1230,24 @@
       {{c:aggiustamento_provinciale}} persone in sei anni, abbastanza da cambiare il segno di un
       comune piccolo, ed è una rettifica anagrafica, non un fenomeno. Qui resta una voce a parte
       proprio perché non si può dire di quale movimento reale sia il residuo.</li>
-      <li><strong>Niente sui prezzi delle case.</strong> Le quotazioni ufficiali sono dietro
-      un'area riservata, e i prezzi di offerta non sono prezzi di vendita.</li>
+      <li><strong>Le quotazioni non sono prezzi di vendita.</strong> Questa voce diceva «niente
+      sui prezzi delle case», e dall'ottava storia in poi era falsa: le quotazioni ufficiali sono
+      arrivate. Resta però il limite vero, che l'Agenzia dichiara da sé chiamandole «indicazioni
+      di valore di larga massima»: sono <em>quotazioni</em> per zona, non transazioni, e nessuna
+      di quelle cifre è il prezzo a cui una casa è passata di mano.</li>
+
+      <li><strong>Stock e flussi non si sottraggono.</strong> La prima storia porta due misure
+      dello stesso fenomeno: le componenti annuali del bilancio anagrafico
+      ({{c:anno_pop_iniziale}}–{{c:anno_pop_finale}}) e lo stock censuario per cittadinanza
+      ({{c:bg_anno_iniziale}}–{{c:bg_anno_finale}}). Sono due rilevazioni con due perimetri e due
+      intervalli: stanno accanto perché si confermano, ma una cifra dell'una meno una cifra
+      dell'altra non è nulla. In particolare i {{c:bg_var_acquisiti}} nuovi cittadini non sono
+      persone <em>arrivate</em>: erano già qui, e hanno cambiato riga.</li>
+
+      <li><strong>Sul background migratorio si sa chi, non quando.</strong> Il censimento dice
+      quanti residenti sono nati all'estero e con quale cittadinanza, non da quanti anni sono qui.
+      «Immigrazione recente» è una frase che questi dati non sostengono, e la serie comincia nel
+      {{c:bg_anno_iniziale}}: tre anni non dicono una tendenza.</li>
       <li><strong>I reati solo a scala provinciale.</strong> Qualunque mappa comunale della
       sicurezza sarebbe inventata.</li>
       <li><strong>Niente agricoltura, e non è un dettaglio.</strong> Il registro delle imprese non

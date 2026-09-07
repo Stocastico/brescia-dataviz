@@ -535,3 +535,83 @@ def test_l_indice_dei_prezzi_e_una_serie_sola() -> None:
 
     marcati = {r["anno"] for r in leggi("indice_prezzi.csv") if r["stato"] == "osservato"}
     assert marcati == {r["anno"] for r in leggi("indice_prezzi.csv") if r["base_fonte"] == "2015"}
+
+
+# --- il background migratorio -------------------------------------------
+
+
+def _background(anno: str = "2023") -> dict[str, int]:
+    """Gli indicatori dello stock, sommati sui 205 comuni."""
+    totali: dict[str, int] = {}
+    for r in leggi("background_migratorio_comuni.csv"):
+        if r["anno"] != anno:
+            continue
+        totali[r["indicatore"]] = totali.get(r["indicatore"], 0) + int(r["valore"])
+    return totali
+
+
+def test_il_background_migratorio_chiude_a_tre_livelli() -> None:
+    """Le partizioni della fonte devono chiudere, e chiudono all'unità.
+
+    È il controllo che ha trovato il doppio conteggio dei minorenni: senza,
+    quella riga sarebbe finita in una storia. Tre identità indipendenti, non
+    una — un errore su una sola dimensione supera le altre due.
+    """
+    t = _background()
+    assert t["italiani"] + t["stranieri"] == t["popolazione_residente"]
+    assert t["italiani_dalla_nascita"] + t["italiani_acquisiti"] == t["italiani"]
+    assert t["stranieri_nati_in_italia"] + t["stranieri_nati_all_estero"] == t["stranieri"]
+    assert (
+        t["italiani_acquisiti_nati_in_italia"] + t["italiani_acquisiti_nati_all_estero"]
+        == t["italiani_acquisiti"]
+    )
+
+
+def test_i_minorenni_sono_un_sottoinsieme_del_totale() -> None:
+    """Il doppio conteggio si vedeva **solo** da qui: i totali di stock
+    tornavano, perché venivano da una tavola dove la dimensione era fissa."""
+    t = _background()
+    assert t["stranieri_nati_in_italia_minorenni"] <= t["stranieri_nati_in_italia"]
+    assert (
+        t["italiani_acquisiti_nati_in_italia_minorenni"]
+        <= t["italiani_acquisiti_nati_in_italia"]
+    )
+
+
+def test_il_background_concorda_con_la_popolazione_censita() -> None:
+    """Due tavole censuarie diverse, la stessa popolazione: devono coincidere.
+
+    Non è una tolleranza: è la stessa rilevazione letta da due famiglie di
+    dataflow, e uno scarto qualsiasi vorrebbe dire che una delle due è filtrata
+    male.
+    """
+    popolazione = sum(
+        int(float(r["valore"]))
+        for r in leggi("popolazione_comuni.csv")
+        if r["anno"] == "2023" and r["indicatore"] == "popolazione_residente" and r["valore"]
+    )
+    assert _background()["popolazione_residente"] == popolazione
+
+
+def test_l_istruzione_copre_solo_i_nove_anni_e_piu() -> None:
+    """La seconda marginale non è un sottoinsieme sommabile alla prima: la
+    fonte pubblica il titolo di studio sui 9 anni e più, e le quattro classi
+    d'età partizionano quel totale, non la popolazione."""
+    righe = leggi("background_migratorio_istruzione.csv")
+    classi = {r["classe_eta"] for r in righe}
+    assert "9 anni e più" in classi
+
+    per_gruppo: dict[str, dict[str, int]] = {}
+    for r in righe:
+        if r["anno"] != "2023" or r["titolo"] != "totale":
+            continue
+        per_gruppo.setdefault(r["gruppo"], {})[r["classe_eta"]] = int(r["valore"])
+
+    assert per_gruppo
+    for gruppo, valori in per_gruppo.items():
+        parti = sum(v for classe, v in valori.items() if classe != "9 anni e più")
+        assert parti == valori["9 anni e più"], gruppo
+
+    # e resta sotto la popolazione totale, perché esclude gli under 9
+    t = _background()
+    assert sum(v["9 anni e più"] for v in per_gruppo.values()) < t["popolazione_residente"]

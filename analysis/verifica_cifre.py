@@ -70,6 +70,8 @@ compravendite_province = leggi("compravendite_province.csv")
 universita_atenei = leggi("universita_atenei.csv")
 universita_sedi = leggi("universita_sedi_brescia.csv")
 universita_residenza = leggi("universita_residenza_comuni.csv")
+background = leggi("background_migratorio_comuni.csv")
+background_istruzione = leggi("background_migratorio_istruzione.csv")
 
 PROVINCIA = "ITC47"
 
@@ -1128,6 +1130,59 @@ def iscritti_in_provincia(anno: str, ateneo: str | None = None) -> float:
 
 def iscritti_residenti(anno: str) -> float:
     return sum(float(r["iscritti"]) for r in universita_residenza if r["anno"] == anno)
+
+
+# --- background migratorio ------------------------------------------------
+
+# ⚠️ Il sito cita queste cifre dalla marginale **versionata**, non dalla
+# congiunta da 422 MB che sta fuori da git. E' il punto di tutto: una cifra
+# pubblicata deve poter essere ricalcolata da chi clona il repository.
+BG_PRIMO, BG_ULTIMO = "2021", "2023"
+
+
+def bg(indicatore: str, anno: str = BG_ULTIMO, comune: str | None = None) -> float:
+    return sum(
+        float(r["valore"])
+        for r in background
+        if r["indicatore"] == indicatore
+        and r["anno"] == anno
+        and (comune is None or r["codice_istat"] == comune)
+        and r["valore"]
+    )
+
+
+def bg_quote() -> dict[str, float]:
+    """Quota di background migratorio per comune: stranieri piu' acquisiti."""
+    per_comune: dict[str, dict[str, float]] = defaultdict(dict)
+    for r in background:
+        if r["anno"] != BG_ULTIMO or not r["valore"]:
+            continue
+        per_comune[r["codice_istat"]][r["indicatore"]] = float(r["valore"])
+    return {
+        codice: (conti.get("stranieri", 0) + conti.get("italiani_acquisiti", 0))
+        / conti["popolazione_residente"] * 100
+        for codice, conti in per_comune.items()
+        if conti.get("popolazione_residente")
+    }
+
+
+def bg_istruzione(gruppo: str, classe: str, titolo: str) -> float:
+    return next(
+        (
+            float(r["valore"])
+            for r in background_istruzione
+            if r["anno"] == BG_ULTIMO
+            and r["gruppo"] == gruppo
+            and r["classe_eta"] == classe
+            and r["titolo"] == titolo
+        ),
+        0.0,
+    )
+
+
+def bg_quota_laurea(gruppo: str, classe: str) -> float:
+    totale = bg_istruzione(gruppo, classe, "totale")
+    return bg_istruzione(gruppo, classe, "titolo universitario o accademico") / totale * 100
 
 
 VERIFICHE: list[tuple[str, str, float, object, float]] = [
@@ -2407,6 +2462,114 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         6090,
         lambda: len(universita_residenza),
         0,
+    ),
+    (
+        "sito prima storia · dati/README §Chi vive nel bresciano",
+        "residenti in provincia 2023: 1.260.955, come il censimento permanente",
+        1260955,
+        lambda: bg("popolazione_residente"),
+        0,
+    ),
+    (
+        "sito prima storia",
+        "italiani dalla nascita, 2021-2023: calano di 8.219",
+        -8219,
+        lambda: bg("italiani_dalla_nascita") - bg("italiani_dalla_nascita", BG_PRIMO),
+        0,
+    ),
+    (
+        "sito prima storia",
+        "italiani per acquisizione, 2021-2023: +15.385",
+        15385,
+        lambda: bg("italiani_acquisiti") - bg("italiani_acquisiti", BG_PRIMO),
+        0,
+    ),
+    (
+        "sito prima storia",
+        "e la popolazione cresce di 7.798, cioe' meno della meta'",
+        7798,
+        lambda: bg("popolazione_residente") - bg("popolazione_residente", BG_PRIMO),
+        0,
+    ),
+    (
+        "sito prima storia",
+        "gli stranieri si muovono di 632 in due anni",
+        632,
+        lambda: bg("stranieri") - bg("stranieri", BG_PRIMO),
+        0,
+    ),
+    (
+        "sito prima storia",
+        "background migratorio in provincia 2023: 18,4 %",
+        18.4,
+        lambda: (bg("stranieri") + bg("italiani_acquisiti")) / bg("popolazione_residente") * 100,
+        0.05,
+    ),
+    (
+        "sito prima storia",
+        "nel capoluogo 26,4 %",
+        26.4,
+        lambda: bg_quote()[CAPOLUOGO],
+        0.05,
+    ),
+    (
+        "sito prima storia",
+        "nel comune mediano 13,0 %",
+        13.0,
+        lambda: mediana_lista(list(bg_quote().values())),
+        0.05,
+    ),
+    (
+        "sito prima storia",
+        "e fino a 29,9 % nel comune piu' alto (Castelcovati)",
+        29.9,
+        lambda: max(bg_quote().values()),
+        0.05,
+    ),
+    (
+        "dati/README §Chi vive nel bresciano",
+        "nati in Italia senza cittadinanza italiana: 26.560, di cui 25.102 minorenni",
+        25102,
+        lambda: bg("stranieri_nati_in_italia_minorenni"),
+        0,
+    ),
+    (
+        "dati/README §Chi vive nel bresciano",
+        "il 94,5 % di chi e' nato qui senza cittadinanza e' minorenne",
+        94.5,
+        lambda: bg("stranieri_nati_in_italia_minorenni") / bg("stranieri_nati_in_italia") * 100,
+        0.05,
+    ),
+    (
+        "dati/README §Chi vive nel bresciano · WORKING-PAPER",
+        "laureati 25-49 anni: 28,0 % fra gli italiani dalla nascita",
+        28.0,
+        lambda: bg_quota_laurea("italiani dalla nascita", "25-49 anni"),
+        0.05,
+    ),
+    (
+        "dati/README §Chi vive nel bresciano · WORKING-PAPER",
+        "contro 14,9 % fra gli stranieri: 13,1 punti di divario",
+        13.1,
+        lambda: bg_quota_laurea("italiani dalla nascita", "25-49 anni")
+        - bg_quota_laurea("stranieri", "25-49 anni"),
+        0.05,
+    ),
+    (
+        "dati/README §Chi vive nel bresciano · WORKING-PAPER",
+        "sopra i 65 anni il divario si rovescia: -6,0 punti",
+        -6.0,
+        lambda: bg_quota_laurea("italiani dalla nascita", "65 anni e più")
+        - bg_quota_laurea("stranieri", "65 anni e più"),
+        0.05,
+    ),
+    (
+        "dati/README §Chi vive nel bresciano",
+        "e l'aggregato 9+ ne mostra 2,5, cioe' nessuno dei due",
+        2.5,
+        lambda: bg_quota_laurea("italiani dalla nascita", "9 anni e più")
+        - bg_quota_laurea("stranieri", "9 anni e più"),
+        0.05,
     ),
 ]
 

@@ -139,7 +139,7 @@ scoprire:
 | `turismo` | `turismo_comuni_annuale.csv`, `turismo_comuni_mensile.csv` | comuni, 2019–2024 | Regione Lombardia |
 | `turismo_confronto` | `turismo_province.csv` | 107 province + regioni + Italia, 2008–2025 | ISTAT (è l'altra fonte turistica: sta accanto a quella regionale, non dentro — MET-17) |
 | `lavoro` | `censimento_lavoro_brescia.csv`, `tasso_occupazione_provincia.csv` | comune / provincia | ISTAT |
-| `migrazioni` ⏳ | `migrazioni_comuni.csv` | 205 comuni | ISTAT Censimento permanente (10 tavole) |
+| `migrazioni` | `background_migratorio_comuni.csv`, `background_migratorio_istruzione.csv`, `migrazioni_comuni.csv` ⏳ | 205 comuni / provincia, 2021–2023 | ISTAT Censimento permanente (10 tavole). Le due marginali sono versionate, la congiunta ⏳ no: 422 MB |
 | `abitazioni` | `abitazioni_comuni.csv` | 205 comuni, 2019 · 2021 · 2023 | ISTAT Censimento permanente |
 | `famiglie` | `famiglie_comuni.csv` | 205 comuni, 2018–2024 | ISTAT Censimento permanente |
 | `sicurezza` | `reati_provincia.csv`, `percezione_sicurezza.csv` | provincia / comune | ISTAT |

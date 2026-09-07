@@ -25,6 +25,7 @@ il punto.
 | `confronto_province.py` | Gli stessi indicatori su tutte e 107 le province italiane: dove sta Brescia, e il controllo esterno di MET-9. |
 | `convergenza_confronto.py` | La convergenza dei redditi rifatta su Bergamo: regge identica, quindi non è bresciana. |
 | `confronto_turismo.py` | Il turismo confrontato con le altre 106 province, dal 2008: era l'ultimo asse senza un altrove. Ne escono MET-17 (le due fonti sul turismo bresciano distano il 10,6 %) e MET-18 (il 2025 ha una definizione nuova dentro). |
+| `chi_vive_nel_bresciano.py` | L'asse 2, l'ultimo che non aveva né analisi né storia: lo stock per background migratorio, 2021–2023. Quattro conti, e due valgono da soli il tempo. **La provincia cresce solo per naturalizzazioni** (i residenti +7.798, gli italiani dalla nascita −8.219, gli acquisiti +15.385), che è la prima storia confermata sullo stock invece che sui flussi. E **sul titolo di studio nessuna media descrive niente**: 13,1 punti di divario fra i 25 e i 49 anni, segno **rovesciato** sopra i 65, e un aggregato che ne mostra 2,5. Legge le due marginali versionate, non la congiunta da 422 MB. |
 | `casa_e_prezzi.py` | Il quinto asse, in tre parti: il capoluogo prezzi contro volumi (in euro correnti e costanti), le zone OMI dentro la città su panel bilanciato, e i 203 comuni quotati contro reddito, addetti e popolazione. È il primo script che usa il deflatore (MET-20). |
 | `_tabelle.py` | Non è un'analisi: è la lettura delle tabelle e la statistica di base che gli script hanno in comune. |
 
