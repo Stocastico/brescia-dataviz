@@ -24,6 +24,7 @@ from .datasets import (
     bilancio,
     commercio_estero,
     compravendite,
+    compravendite_province,
     confini,
     famiglie,
     imprese,
@@ -40,6 +41,7 @@ from .datasets import (
     sintesi,
     turismo,
     turismo_confronto,
+    universita,
 )
 
 # Ogni voce riceve la mappa dei comuni della provincia e scrive in processed/.
@@ -62,11 +64,14 @@ DATASETS: dict[str, Callable[[dict[str, str]], None]] = {
     "redditi": redditi.build,
     "redditi_confronto": redditi_confronto.build,
     "commercio_estero": commercio_estero.build,
+    "universita": universita.build,
     # il deflatore: nazionale, e nessun comune lo tocca
     "prezzi": prezzi.build,
     # non scaricano niente: leggono gli archivi versionati in dati/input/omi/
     "omi": omi.build,
     "compravendite": compravendite.build,
+    # questo invece scarica: e' l'unico pezzo della fornitura OMI in chiaro
+    "compravendite_province": compravendite_province.build,
     # devono restare in coda: leggono le tabelle prodotte dagli altri
     "sintesi": sintesi.build,
     "web": web.build,

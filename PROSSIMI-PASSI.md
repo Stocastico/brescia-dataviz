@@ -48,6 +48,12 @@ cittadina 2005–2013 non è migrata con loro. Dettagli in §2.1, §2.2 e in
 [`dati/SCARICHI-MANUALI.md`](dati/SCARICHI-MANUALI.md) §2 e §5. I numeri liberati
 non sono stati riusati, perché questo documento viene citato per numero.
 
+✅ **E le due che avevano risposto sono state scritte** (7 settembre 2026), così
+questa nota non resta una promessa: `compravendite_province.csv` per l'NTN
+provinciale e trimestrale, e le tre tabelle dell'università. Restano quindi in
+elenco solo la 🙋 6 (l'export a mano dal databrowser ISTAT, che è l'unica cosa
+che una sessione di lavoro non può fare), la 🙋 7, la 🙋 8, la 🙋 9 e la 🙋 10.
+
 Tutto il resto di questo documento è 🤖 o ✅. Questa tabella è ripetuta in forma
 breve in testa al [`README`](README.md), diviso fra ciò che blocca la
 pubblicazione e ciò che no: se ne aggiungi una voce qui, va aggiunta anche lì —
@@ -116,6 +122,8 @@ che manca.
 | **Settore × classe dimensionale** | ✅ `imprese_settore_classe.csv` — **nuovo**, capoluogo e provincia: è la tabella che ha chiuso MET-9 |
 | **Abitazioni** | ✅ `abitazioni_comuni.csv` — `DF_DCSS_ABITAZIONI_TV_1` e `_TV_2` |
 | **Famiglie con stranieri** | ✅ `famiglie_comuni.csv` — `DF_DCSS_FAMIGLIE_TV_1`, `_TV_2`, `_TV_3` |
+| **NTN provinciale e di capoluogo** | ✅ `compravendite_province.csv` — **nuovo** (7 set 2026): l'unico pezzo della fornitura OMI in chiaro, trimestrale dal 2011/T1. Gli URL si leggono dalla pagina, non da una costante |
+| **Università (MUR — USTAT)** | ✅ tre tabelle — **nuove** (7 set 2026): per ateneo, per **sede didattica** in provincia, per comune di residenza. La terza è a grana comunale, quindi entra nell'asse 2 |
 
 Le ultime tre erano rimaste indietro perché `esploradati.istat.it` aveva
 smesso di accettare connessioni a metà lavoro. **Non era un bug del codice: era
@@ -218,7 +226,15 @@ della provenienza esplicita di §9, e sta scritta per intero in
 >   progetto. Dietro il login resta solo il dettaglio **comunale** per settore di
 >   mercato.
 >
-> Nessuna delle due è ancora scritta come modulo: sono da fare, ma sono 🤖.
+> ✅ **Entrambe sono scritte, il 7 settembre 2026.**
+> `datasets/compravendite_province.py` → `compravendite_province.csv` (36.234
+> righe, 99 province, trimestrale 2011/T1–2026/T1) e `datasets/universita.py` →
+> tre tabelle (`universita_atenei.csv`, `universita_sedi_brescia.csv`,
+> `universita_residenza_comuni.csv`). Sono tre perché la nota sui due atenei si
+> risolve solo dal lato **sede didattica**, e da lì è diventata una misura: nel
+> 2024/2025 l'ateneo «Brescia» ha 16.456 iscritti, ma in provincia ce ne
+> studiano **19.873** — 4.288 alla Cattolica. Dettagli in `FONTI.md` e in
+> `dati/README.md` §Università.
 
 ### 2.3 🤖 Da verificare — promettenti, non testate
 

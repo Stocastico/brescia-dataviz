@@ -66,6 +66,10 @@ province = leggi("imprese_province.csv")
 capoluoghi = leggi("imprese_capoluoghi.csv")
 turismo_province = leggi("turismo_province.csv")
 bilancio_province = leggi("bilancio_province.csv")
+compravendite_province = leggi("compravendite_province.csv")
+universita_atenei = leggi("universita_atenei.csv")
+universita_sedi = leggi("universita_sedi_brescia.csv")
+universita_residenza = leggi("universita_residenza_comuni.csv")
 
 PROVINCIA = "ITC47"
 
@@ -1052,6 +1056,78 @@ def convergenza_zone(misura: str = "pearson") -> float:
     ]
     calcola = correlazione if misura == "pearson" else correlazione_rango
     return calcola(livelli, variazioni)
+
+
+# --- NTN provinciale e universita' ---------------------------------------
+
+
+def ntn_provincia(anno: str, stato: str = "definitivo", codice: str = "017") -> float:
+    """Residenziale totale della provincia: capoluogo + resto, che e' il punto
+    della colonna `ambito`.
+
+    Lo `stato` e' un argomento e non un filtro fisso perche' e' la cosa da non
+    sbagliare: la prima stesura di questa verifica sommava il definitivo e
+    confrontava anche il 2025, che definitivo non e'. Il risultato era uno
+    scarto del 100 %, ed e' MET-17 colto sul fatto.
+    """
+    return sum(
+        float(r["ntn"])
+        for r in compravendite_province
+        if r["codice_provincia"] == codice
+        and r["anno"] == anno
+        and r["comparto"] == "residenziale"
+        and r["segmento"] == "totale"
+        and r["stato"] == stato
+    )
+
+
+def ntn_comuni(anno: str) -> float:
+    """Lo stesso totale dall'altra fornitura: i 203 comuni di
+    `compravendite_comuni.csv`."""
+    return sum(
+        float(r["ntn"])
+        for r in compravendite
+        if r["anno"] == anno
+        and r["comparto"] == "residenziale"
+        and r["segmento"] == "totale"
+        and r["ntn"]
+    )
+
+
+def scarto_ntn(anno: str, stato: str = "definitivo") -> float:
+    """Quanto la fornitura provinciale sta sopra quella comunale, in percento."""
+    comunale = ntn_comuni(anno)
+    return (ntn_provincia(anno, stato) - comunale) / comunale * 100
+
+
+def scarto_ntn_massimo(dal: int, al: int) -> float:
+    """Il peggiore scarto in valore assoluto fra due anni: e' la forma in cui
+    «coincidono entro lo 0,05 %» diventa una verifica e non un'impressione."""
+    return max(abs(scarto_ntn(str(a))) for a in range(dal, al + 1))
+
+
+def iscritti_ateneo(codice: str, anno: str) -> float:
+    return sum(
+        float(r["valore"])
+        for r in universita_atenei
+        if r["ateneo_codice"] == codice
+        and r["anno"] == anno
+        and r["indicatore"] == "iscritti"
+    )
+
+
+def iscritti_in_provincia(anno: str, ateneo: str | None = None) -> float:
+    """Iscritti con **sede didattica** in provincia: e' la cifra che l'ateneo
+    «Brescia» da solo non da', perche' la Cattolica ha codice milanese."""
+    return sum(
+        float(r["iscritti"])
+        for r in universita_sedi
+        if r["anno"] == anno and (ateneo is None or r["ateneo_codice"] == ateneo)
+    )
+
+
+def iscritti_residenti(anno: str) -> float:
+    return sum(float(r["iscritti"]) for r in universita_residenza if r["anno"] == anno)
 
 
 VERIFICHE: list[tuple[str, str, float, object, float]] = [
@@ -2240,6 +2316,97 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         1.97,
         lambda: forbice_zone_fisse("2025"),
         0.005,
+    ),
+    (
+        "dati/README §Casa e prezzi",
+        "compravendite_province.csv: 36.234 righe",
+        36234,
+        lambda: len(compravendite_province),
+        0,
+    ),
+    (
+        "dati/README §Casa e prezzi · FONTI",
+        "99 province nella fornitura NTN, non 107",
+        99,
+        lambda: len({r["codice_provincia"] for r in compravendite_province}),
+        0,
+    ),
+    (
+        "dati/README §Casa e prezzi",
+        "sul definitivo le due forniture OMI coincidono entro lo 0,05 % (2013-2024)",
+        0,
+        lambda: scarto_ntn_massimo(2013, 2024),
+        0.05,
+    ),
+    (
+        "dati/README §Casa e prezzi",
+        "e anche il provvisorio 2025 ci sta dentro, confrontato con se stesso",
+        0,
+        lambda: abs(scarto_ntn("2025", "provvisorio")),
+        0.05,
+    ),
+    (
+        "dati/README §Casa e prezzi",
+        "2011: la provinciale sta 1,3 % sopra la comunale",
+        1.34,
+        lambda: scarto_ntn("2011"),
+        0.05,
+    ),
+    (
+        "dati/README §Casa e prezzi",
+        "2012: la provinciale sta 1,7 % sopra la comunale",
+        1.71,
+        lambda: scarto_ntn("2012"),
+        0.05,
+    ),
+    (
+        "dati/README §Università · FONTI · README",
+        "ateneo «Brescia» 2024/2025: 16.456 iscritti",
+        16456,
+        lambda: iscritti_ateneo("1701", "2024"),
+        0,
+    ),
+    (
+        "dati/README §Università · FONTI · README",
+        "sede didattica in provincia 2024/2025: 19.873 iscritti",
+        19873,
+        lambda: iscritti_in_provincia("2024"),
+        0,
+    ),
+    (
+        "dati/README §Università · FONTI · README",
+        "di cui alla Cattolica: 4.288",
+        4288,
+        lambda: iscritti_in_provincia("2024", "1504"),
+        0,
+    ),
+    (
+        "dati/README §Università · FONTI · README",
+        "residenti in provincia iscritti 2024/2025: 32.411",
+        32411,
+        lambda: iscritti_residenti("2024"),
+        0,
+    ),
+    (
+        "dati/README §Università",
+        "universita_atenei.csv: 8.639 righe",
+        8639,
+        lambda: len(universita_atenei),
+        0,
+    ),
+    (
+        "dati/README §Università",
+        "universita_sedi_brescia.csv: 1.816 righe",
+        1816,
+        lambda: len(universita_sedi),
+        0,
+    ),
+    (
+        "dati/README §Università",
+        "universita_residenza_comuni.csv: 6.090 righe",
+        6090,
+        lambda: len(universita_residenza),
+        0,
     ),
 ]
 

@@ -1,0 +1,6091 @@
+codice_istat,comune,anno,sesso,iscritti
+017001,Acquafredda,2010,F,19
+017001,Acquafredda,2010,M,7
+017001,Acquafredda,2011,F,17
+017001,Acquafredda,2011,M,7
+017001,Acquafredda,2012,F,16
+017001,Acquafredda,2012,M,8
+017001,Acquafredda,2013,F,14
+017001,Acquafredda,2013,M,8
+017001,Acquafredda,2014,F,17
+017001,Acquafredda,2014,M,5
+017001,Acquafredda,2015,F,22
+017001,Acquafredda,2015,M,7
+017001,Acquafredda,2016,F,17
+017001,Acquafredda,2016,M,9
+017001,Acquafredda,2017,F,15
+017001,Acquafredda,2017,M,9
+017001,Acquafredda,2018,F,15
+017001,Acquafredda,2018,M,11
+017001,Acquafredda,2019,F,15
+017001,Acquafredda,2019,M,13
+017001,Acquafredda,2020,F,16
+017001,Acquafredda,2020,M,11
+017001,Acquafredda,2021,F,21
+017001,Acquafredda,2021,M,7
+017001,Acquafredda,2022,F,24
+017001,Acquafredda,2022,M,9
+017001,Acquafredda,2023,F,24
+017001,Acquafredda,2023,M,14
+017001,Acquafredda,2024,F,21
+017001,Acquafredda,2024,M,15
+017002,Adro,2010,F,58
+017002,Adro,2010,M,57
+017002,Adro,2011,F,73
+017002,Adro,2011,M,48
+017002,Adro,2012,F,74
+017002,Adro,2012,M,53
+017002,Adro,2013,F,73
+017002,Adro,2013,M,50
+017002,Adro,2014,F,73
+017002,Adro,2014,M,60
+017002,Adro,2015,F,78
+017002,Adro,2015,M,62
+017002,Adro,2016,F,74
+017002,Adro,2016,M,52
+017002,Adro,2017,F,71
+017002,Adro,2017,M,52
+017002,Adro,2018,F,81
+017002,Adro,2018,M,51
+017002,Adro,2019,F,95
+017002,Adro,2019,M,58
+017002,Adro,2020,F,104
+017002,Adro,2020,M,59
+017002,Adro,2021,F,105
+017002,Adro,2021,M,66
+017002,Adro,2022,F,103
+017002,Adro,2022,M,60
+017002,Adro,2023,F,102
+017002,Adro,2023,M,68
+017002,Adro,2024,F,113
+017002,Adro,2024,M,67
+017003,Agnosine,2010,F,21
+017003,Agnosine,2010,M,19
+017003,Agnosine,2011,F,20
+017003,Agnosine,2011,M,15
+017003,Agnosine,2012,F,17
+017003,Agnosine,2012,M,18
+017003,Agnosine,2013,F,17
+017003,Agnosine,2013,M,13
+017003,Agnosine,2014,F,17
+017003,Agnosine,2014,M,10
+017003,Agnosine,2015,F,14
+017003,Agnosine,2015,M,8
+017003,Agnosine,2016,F,13
+017003,Agnosine,2016,M,6
+017003,Agnosine,2017,F,16
+017003,Agnosine,2017,M,8
+017003,Agnosine,2018,F,13
+017003,Agnosine,2018,M,7
+017003,Agnosine,2019,F,13
+017003,Agnosine,2019,M,6
+017003,Agnosine,2020,F,18
+017003,Agnosine,2020,M,6
+017003,Agnosine,2021,F,23
+017003,Agnosine,2021,M,8
+017003,Agnosine,2022,F,23
+017003,Agnosine,2022,M,9
+017003,Agnosine,2023,F,22
+017003,Agnosine,2023,M,12
+017003,Agnosine,2024,F,19
+017003,Agnosine,2024,M,10
+017004,Alfianello,2010,F,24
+017004,Alfianello,2010,M,17
+017004,Alfianello,2011,F,26
+017004,Alfianello,2011,M,21
+017004,Alfianello,2012,F,25
+017004,Alfianello,2012,M,15
+017004,Alfianello,2013,F,27
+017004,Alfianello,2013,M,20
+017004,Alfianello,2014,F,26
+017004,Alfianello,2014,M,19
+017004,Alfianello,2015,F,39
+017004,Alfianello,2015,M,17
+017004,Alfianello,2016,F,40
+017004,Alfianello,2016,M,15
+017004,Alfianello,2017,F,37
+017004,Alfianello,2017,M,13
+017004,Alfianello,2018,F,33
+017004,Alfianello,2018,M,13
+017004,Alfianello,2019,F,31
+017004,Alfianello,2019,M,13
+017004,Alfianello,2020,F,35
+017004,Alfianello,2020,M,14
+017004,Alfianello,2021,F,32
+017004,Alfianello,2021,M,14
+017004,Alfianello,2022,F,34
+017004,Alfianello,2022,M,16
+017004,Alfianello,2023,F,29
+017004,Alfianello,2023,M,21
+017004,Alfianello,2024,F,30
+017004,Alfianello,2024,M,22
+017005,Anfo,2010,F,2
+017005,Anfo,2010,M,1
+017005,Anfo,2011,F,2
+017005,Anfo,2011,M,2
+017005,Anfo,2012,F,3
+017005,Anfo,2012,M,2
+017005,Anfo,2013,F,2
+017005,Anfo,2014,F,2
+017005,Anfo,2014,M,2
+017005,Anfo,2015,F,3
+017005,Anfo,2015,M,2
+017005,Anfo,2016,F,3
+017005,Anfo,2016,M,3
+017005,Anfo,2017,F,3
+017005,Anfo,2017,M,2
+017005,Anfo,2018,F,3
+017005,Anfo,2018,M,4
+017005,Anfo,2019,F,4
+017005,Anfo,2019,M,4
+017005,Anfo,2020,F,3
+017005,Anfo,2020,M,4
+017005,Anfo,2021,F,4
+017005,Anfo,2021,M,4
+017005,Anfo,2022,F,3
+017005,Anfo,2022,M,5
+017005,Anfo,2023,F,5
+017005,Anfo,2023,M,5
+017005,Anfo,2024,F,9
+017005,Anfo,2024,M,3
+017006,Angolo Terme,2010,F,35
+017006,Angolo Terme,2010,M,17
+017006,Angolo Terme,2011,F,37
+017006,Angolo Terme,2011,M,12
+017006,Angolo Terme,2012,F,31
+017006,Angolo Terme,2012,M,11
+017006,Angolo Terme,2013,F,30
+017006,Angolo Terme,2013,M,8
+017006,Angolo Terme,2014,F,28
+017006,Angolo Terme,2014,M,8
+017006,Angolo Terme,2015,F,26
+017006,Angolo Terme,2015,M,8
+017006,Angolo Terme,2016,F,24
+017006,Angolo Terme,2016,M,11
+017006,Angolo Terme,2017,F,25
+017006,Angolo Terme,2017,M,15
+017006,Angolo Terme,2018,F,28
+017006,Angolo Terme,2018,M,18
+017006,Angolo Terme,2019,F,30
+017006,Angolo Terme,2019,M,17
+017006,Angolo Terme,2020,F,33
+017006,Angolo Terme,2020,M,22
+017006,Angolo Terme,2021,F,38
+017006,Angolo Terme,2021,M,23
+017006,Angolo Terme,2022,F,34
+017006,Angolo Terme,2022,M,25
+017006,Angolo Terme,2023,F,30
+017006,Angolo Terme,2023,M,25
+017006,Angolo Terme,2024,F,26
+017006,Angolo Terme,2024,M,19
+017007,Artogne,2010,F,37
+017007,Artogne,2010,M,21
+017007,Artogne,2011,F,41
+017007,Artogne,2011,M,24
+017007,Artogne,2012,F,39
+017007,Artogne,2012,M,24
+017007,Artogne,2013,F,37
+017007,Artogne,2013,M,26
+017007,Artogne,2014,F,35
+017007,Artogne,2014,M,25
+017007,Artogne,2015,F,38
+017007,Artogne,2015,M,23
+017007,Artogne,2016,F,35
+017007,Artogne,2016,M,25
+017007,Artogne,2017,F,34
+017007,Artogne,2017,M,29
+017007,Artogne,2018,F,33
+017007,Artogne,2018,M,29
+017007,Artogne,2019,F,42
+017007,Artogne,2019,M,29
+017007,Artogne,2020,F,44
+017007,Artogne,2020,M,31
+017007,Artogne,2021,F,44
+017007,Artogne,2021,M,31
+017007,Artogne,2022,F,46
+017007,Artogne,2022,M,33
+017007,Artogne,2023,F,50
+017007,Artogne,2023,M,37
+017007,Artogne,2024,F,44
+017007,Artogne,2024,M,35
+017008,Azzano Mella,2010,F,27
+017008,Azzano Mella,2010,M,21
+017008,Azzano Mella,2011,F,29
+017008,Azzano Mella,2011,M,23
+017008,Azzano Mella,2012,F,19
+017008,Azzano Mella,2012,M,22
+017008,Azzano Mella,2013,F,16
+017008,Azzano Mella,2013,M,25
+017008,Azzano Mella,2014,F,17
+017008,Azzano Mella,2014,M,25
+017008,Azzano Mella,2015,F,23
+017008,Azzano Mella,2015,M,27
+017008,Azzano Mella,2016,F,22
+017008,Azzano Mella,2016,M,27
+017008,Azzano Mella,2017,F,25
+017008,Azzano Mella,2017,M,26
+017008,Azzano Mella,2018,F,24
+017008,Azzano Mella,2018,M,29
+017008,Azzano Mella,2019,F,21
+017008,Azzano Mella,2019,M,30
+017008,Azzano Mella,2020,F,27
+017008,Azzano Mella,2020,M,30
+017008,Azzano Mella,2021,F,33
+017008,Azzano Mella,2021,M,31
+017008,Azzano Mella,2022,F,43
+017008,Azzano Mella,2022,M,38
+017008,Azzano Mella,2023,F,48
+017008,Azzano Mella,2023,M,49
+017008,Azzano Mella,2024,F,57
+017008,Azzano Mella,2024,M,49
+017009,Bagnolo Mella,2010,F,170
+017009,Bagnolo Mella,2010,M,100
+017009,Bagnolo Mella,2011,F,149
+017009,Bagnolo Mella,2011,M,93
+017009,Bagnolo Mella,2012,F,142
+017009,Bagnolo Mella,2012,M,100
+017009,Bagnolo Mella,2013,F,141
+017009,Bagnolo Mella,2013,M,109
+017009,Bagnolo Mella,2014,F,144
+017009,Bagnolo Mella,2014,M,122
+017009,Bagnolo Mella,2015,F,136
+017009,Bagnolo Mella,2015,M,122
+017009,Bagnolo Mella,2016,F,146
+017009,Bagnolo Mella,2016,M,120
+017009,Bagnolo Mella,2017,F,140
+017009,Bagnolo Mella,2017,M,122
+017009,Bagnolo Mella,2018,F,149
+017009,Bagnolo Mella,2018,M,137
+017009,Bagnolo Mella,2019,F,154
+017009,Bagnolo Mella,2019,M,136
+017009,Bagnolo Mella,2020,F,162
+017009,Bagnolo Mella,2020,M,138
+017009,Bagnolo Mella,2021,F,160
+017009,Bagnolo Mella,2021,M,121
+017009,Bagnolo Mella,2022,F,157
+017009,Bagnolo Mella,2022,M,118
+017009,Bagnolo Mella,2023,F,159
+017009,Bagnolo Mella,2023,M,116
+017009,Bagnolo Mella,2024,F,165
+017009,Bagnolo Mella,2024,M,127
+017010,Bagolino,2010,F,39
+017010,Bagolino,2010,M,31
+017010,Bagolino,2011,F,33
+017010,Bagolino,2011,M,27
+017010,Bagolino,2012,F,36
+017010,Bagolino,2012,M,28
+017010,Bagolino,2013,F,29
+017010,Bagolino,2013,M,29
+017010,Bagolino,2014,F,33
+017010,Bagolino,2014,M,30
+017010,Bagolino,2015,F,27
+017010,Bagolino,2015,M,30
+017010,Bagolino,2016,F,28
+017010,Bagolino,2016,M,26
+017010,Bagolino,2017,F,31
+017010,Bagolino,2017,M,25
+017010,Bagolino,2018,F,36
+017010,Bagolino,2018,M,27
+017010,Bagolino,2019,F,40
+017010,Bagolino,2019,M,28
+017010,Bagolino,2020,F,39
+017010,Bagolino,2020,M,24
+017010,Bagolino,2021,F,48
+017010,Bagolino,2021,M,24
+017010,Bagolino,2022,F,54
+017010,Bagolino,2022,M,24
+017010,Bagolino,2023,F,48
+017010,Bagolino,2023,M,29
+017010,Bagolino,2024,F,56
+017010,Bagolino,2024,M,29
+017011,Barbariga,2010,F,23
+017011,Barbariga,2010,M,25
+017011,Barbariga,2011,F,25
+017011,Barbariga,2011,M,24
+017011,Barbariga,2012,F,20
+017011,Barbariga,2012,M,24
+017011,Barbariga,2013,F,19
+017011,Barbariga,2013,M,25
+017011,Barbariga,2014,F,17
+017011,Barbariga,2014,M,26
+017011,Barbariga,2015,F,20
+017011,Barbariga,2015,M,21
+017011,Barbariga,2016,F,12
+017011,Barbariga,2016,M,18
+017011,Barbariga,2017,F,18
+017011,Barbariga,2017,M,16
+017011,Barbariga,2018,F,24
+017011,Barbariga,2018,M,16
+017011,Barbariga,2019,F,20
+017011,Barbariga,2019,M,19
+017011,Barbariga,2020,F,24
+017011,Barbariga,2020,M,21
+017011,Barbariga,2021,F,24
+017011,Barbariga,2021,M,20
+017011,Barbariga,2022,F,31
+017011,Barbariga,2022,M,22
+017011,Barbariga,2023,F,24
+017011,Barbariga,2023,M,22
+017011,Barbariga,2024,F,29
+017011,Barbariga,2024,M,27
+017012,Barghe,2010,F,16
+017012,Barghe,2010,M,8
+017012,Barghe,2011,F,15
+017012,Barghe,2011,M,9
+017012,Barghe,2012,F,18
+017012,Barghe,2012,M,10
+017012,Barghe,2013,F,18
+017012,Barghe,2013,M,8
+017012,Barghe,2014,F,17
+017012,Barghe,2014,M,10
+017012,Barghe,2015,F,12
+017012,Barghe,2015,M,6
+017012,Barghe,2016,F,14
+017012,Barghe,2016,M,10
+017012,Barghe,2017,F,16
+017012,Barghe,2017,M,14
+017012,Barghe,2018,F,17
+017012,Barghe,2018,M,16
+017012,Barghe,2019,F,14
+017012,Barghe,2019,M,17
+017012,Barghe,2020,F,15
+017012,Barghe,2020,M,17
+017012,Barghe,2021,F,13
+017012,Barghe,2021,M,19
+017012,Barghe,2022,F,12
+017012,Barghe,2022,M,21
+017012,Barghe,2023,F,11
+017012,Barghe,2023,M,18
+017012,Barghe,2024,F,10
+017012,Barghe,2024,M,17
+017013,Bassano Bresciano,2010,F,35
+017013,Bassano Bresciano,2010,M,21
+017013,Bassano Bresciano,2011,F,33
+017013,Bassano Bresciano,2011,M,20
+017013,Bassano Bresciano,2012,F,29
+017013,Bassano Bresciano,2012,M,19
+017013,Bassano Bresciano,2013,F,28
+017013,Bassano Bresciano,2013,M,17
+017013,Bassano Bresciano,2014,F,26
+017013,Bassano Bresciano,2014,M,14
+017013,Bassano Bresciano,2015,F,26
+017013,Bassano Bresciano,2015,M,17
+017013,Bassano Bresciano,2016,F,24
+017013,Bassano Bresciano,2016,M,15
+017013,Bassano Bresciano,2017,F,27
+017013,Bassano Bresciano,2017,M,19
+017013,Bassano Bresciano,2018,F,28
+017013,Bassano Bresciano,2018,M,23
+017013,Bassano Bresciano,2019,F,25
+017013,Bassano Bresciano,2019,M,21
+017013,Bassano Bresciano,2020,F,21
+017013,Bassano Bresciano,2020,M,21
+017013,Bassano Bresciano,2021,F,20
+017013,Bassano Bresciano,2021,M,24
+017013,Bassano Bresciano,2022,F,33
+017013,Bassano Bresciano,2022,M,22
+017013,Bassano Bresciano,2023,F,27
+017013,Bassano Bresciano,2023,M,20
+017013,Bassano Bresciano,2024,F,37
+017013,Bassano Bresciano,2024,M,21
+017014,Bedizzole,2010,F,117
+017014,Bedizzole,2010,M,66
+017014,Bedizzole,2011,F,108
+017014,Bedizzole,2011,M,69
+017014,Bedizzole,2012,F,103
+017014,Bedizzole,2012,M,81
+017014,Bedizzole,2013,F,107
+017014,Bedizzole,2013,M,78
+017014,Bedizzole,2014,F,100
+017014,Bedizzole,2014,M,88
+017014,Bedizzole,2015,F,103
+017014,Bedizzole,2015,M,89
+017014,Bedizzole,2016,F,109
+017014,Bedizzole,2016,M,102
+017014,Bedizzole,2017,F,115
+017014,Bedizzole,2017,M,98
+017014,Bedizzole,2018,F,110
+017014,Bedizzole,2018,M,95
+017014,Bedizzole,2019,F,129
+017014,Bedizzole,2019,M,89
+017014,Bedizzole,2020,F,145
+017014,Bedizzole,2020,M,85
+017014,Bedizzole,2021,F,140
+017014,Bedizzole,2021,M,79
+017014,Bedizzole,2022,F,143
+017014,Bedizzole,2022,M,80
+017014,Bedizzole,2023,F,153
+017014,Bedizzole,2023,M,88
+017014,Bedizzole,2024,F,169
+017014,Bedizzole,2024,M,92
+017015,Berlingo,2010,F,15
+017015,Berlingo,2010,M,13
+017015,Berlingo,2011,F,18
+017015,Berlingo,2011,M,11
+017015,Berlingo,2012,F,18
+017015,Berlingo,2012,M,11
+017015,Berlingo,2013,F,17
+017015,Berlingo,2013,M,13
+017015,Berlingo,2014,F,19
+017015,Berlingo,2014,M,12
+017015,Berlingo,2015,F,16
+017015,Berlingo,2015,M,13
+017015,Berlingo,2016,F,15
+017015,Berlingo,2016,M,8
+017015,Berlingo,2017,F,22
+017015,Berlingo,2017,M,13
+017015,Berlingo,2018,F,25
+017015,Berlingo,2018,M,12
+017015,Berlingo,2019,F,29
+017015,Berlingo,2019,M,14
+017015,Berlingo,2020,F,34
+017015,Berlingo,2020,M,20
+017015,Berlingo,2021,F,38
+017015,Berlingo,2021,M,18
+017015,Berlingo,2022,F,37
+017015,Berlingo,2022,M,17
+017015,Berlingo,2023,F,37
+017015,Berlingo,2023,M,21
+017015,Berlingo,2024,F,47
+017015,Berlingo,2024,M,21
+017016,Berzo Demo,2010,F,14
+017016,Berzo Demo,2010,M,18
+017016,Berzo Demo,2011,F,18
+017016,Berzo Demo,2011,M,17
+017016,Berzo Demo,2012,F,14
+017016,Berzo Demo,2012,M,19
+017016,Berzo Demo,2013,F,12
+017016,Berzo Demo,2013,M,19
+017016,Berzo Demo,2014,F,16
+017016,Berzo Demo,2014,M,21
+017016,Berzo Demo,2015,F,21
+017016,Berzo Demo,2015,M,18
+017016,Berzo Demo,2016,F,23
+017016,Berzo Demo,2016,M,19
+017016,Berzo Demo,2017,F,24
+017016,Berzo Demo,2017,M,17
+017016,Berzo Demo,2018,F,31
+017016,Berzo Demo,2018,M,14
+017016,Berzo Demo,2019,F,30
+017016,Berzo Demo,2019,M,18
+017016,Berzo Demo,2020,F,25
+017016,Berzo Demo,2020,M,17
+017016,Berzo Demo,2021,F,22
+017016,Berzo Demo,2021,M,18
+017016,Berzo Demo,2022,F,25
+017016,Berzo Demo,2022,M,18
+017016,Berzo Demo,2023,F,25
+017016,Berzo Demo,2023,M,17
+017016,Berzo Demo,2024,F,23
+017016,Berzo Demo,2024,M,8
+017017,Berzo Inferiore,2010,F,37
+017017,Berzo Inferiore,2010,M,16
+017017,Berzo Inferiore,2011,F,30
+017017,Berzo Inferiore,2011,M,16
+017017,Berzo Inferiore,2012,F,27
+017017,Berzo Inferiore,2012,M,15
+017017,Berzo Inferiore,2013,F,23
+017017,Berzo Inferiore,2013,M,16
+017017,Berzo Inferiore,2014,F,17
+017017,Berzo Inferiore,2014,M,15
+017017,Berzo Inferiore,2015,F,25
+017017,Berzo Inferiore,2015,M,14
+017017,Berzo Inferiore,2016,F,31
+017017,Berzo Inferiore,2016,M,15
+017017,Berzo Inferiore,2017,F,38
+017017,Berzo Inferiore,2017,M,17
+017017,Berzo Inferiore,2018,F,41
+017017,Berzo Inferiore,2018,M,17
+017017,Berzo Inferiore,2019,F,40
+017017,Berzo Inferiore,2019,M,15
+017017,Berzo Inferiore,2020,F,46
+017017,Berzo Inferiore,2020,M,19
+017017,Berzo Inferiore,2021,F,46
+017017,Berzo Inferiore,2021,M,23
+017017,Berzo Inferiore,2022,F,47
+017017,Berzo Inferiore,2022,M,23
+017017,Berzo Inferiore,2023,F,52
+017017,Berzo Inferiore,2023,M,24
+017017,Berzo Inferiore,2024,F,48
+017017,Berzo Inferiore,2024,M,26
+017018,Bienno,2010,F,59
+017018,Bienno,2010,M,37
+017018,Bienno,2011,F,62
+017018,Bienno,2011,M,27
+017018,Bienno,2012,F,59
+017018,Bienno,2012,M,30
+017018,Bienno,2013,F,51
+017018,Bienno,2013,M,28
+017018,Bienno,2014,F,46
+017018,Bienno,2014,M,29
+017018,Bienno,2015,F,49
+017018,Bienno,2015,M,30
+017018,Bienno,2016,F,45
+017018,Bienno,2016,M,33
+017018,Bienno,2017,F,47
+017018,Bienno,2017,M,34
+017018,Bienno,2018,F,54
+017018,Bienno,2018,M,37
+017018,Bienno,2019,F,51
+017018,Bienno,2019,M,38
+017018,Bienno,2020,F,55
+017018,Bienno,2020,M,37
+017018,Bienno,2021,F,58
+017018,Bienno,2021,M,36
+017018,Bienno,2022,F,62
+017018,Bienno,2022,M,39
+017018,Bienno,2023,F,66
+017018,Bienno,2023,M,37
+017018,Bienno,2024,F,70
+017018,Bienno,2024,M,34
+017019,Bione,2010,F,11
+017019,Bione,2010,M,9
+017019,Bione,2011,F,12
+017019,Bione,2011,M,8
+017019,Bione,2012,F,15
+017019,Bione,2012,M,8
+017019,Bione,2013,F,15
+017019,Bione,2013,M,13
+017019,Bione,2014,F,15
+017019,Bione,2014,M,9
+017019,Bione,2015,F,12
+017019,Bione,2015,M,8
+017019,Bione,2016,F,15
+017019,Bione,2016,M,10
+017019,Bione,2017,F,21
+017019,Bione,2017,M,13
+017019,Bione,2018,F,23
+017019,Bione,2018,M,11
+017019,Bione,2019,F,18
+017019,Bione,2019,M,13
+017019,Bione,2020,F,16
+017019,Bione,2020,M,11
+017019,Bione,2021,F,22
+017019,Bione,2021,M,11
+017019,Bione,2022,F,14
+017019,Bione,2022,M,7
+017019,Bione,2023,F,10
+017019,Bione,2023,M,7
+017019,Bione,2024,F,12
+017019,Bione,2024,M,6
+017020,Borgo San Giacomo,2010,F,50
+017020,Borgo San Giacomo,2010,M,41
+017020,Borgo San Giacomo,2011,F,50
+017020,Borgo San Giacomo,2011,M,43
+017020,Borgo San Giacomo,2012,F,52
+017020,Borgo San Giacomo,2012,M,40
+017020,Borgo San Giacomo,2013,F,50
+017020,Borgo San Giacomo,2013,M,38
+017020,Borgo San Giacomo,2014,F,52
+017020,Borgo San Giacomo,2014,M,35
+017020,Borgo San Giacomo,2015,F,57
+017020,Borgo San Giacomo,2015,M,32
+017020,Borgo San Giacomo,2016,F,55
+017020,Borgo San Giacomo,2016,M,37
+017020,Borgo San Giacomo,2017,F,61
+017020,Borgo San Giacomo,2017,M,43
+017020,Borgo San Giacomo,2018,F,59
+017020,Borgo San Giacomo,2018,M,44
+017020,Borgo San Giacomo,2019,F,54
+017020,Borgo San Giacomo,2019,M,45
+017020,Borgo San Giacomo,2020,F,59
+017020,Borgo San Giacomo,2020,M,43
+017020,Borgo San Giacomo,2021,F,68
+017020,Borgo San Giacomo,2021,M,42
+017020,Borgo San Giacomo,2022,F,70
+017020,Borgo San Giacomo,2022,M,36
+017020,Borgo San Giacomo,2023,F,62
+017020,Borgo San Giacomo,2023,M,41
+017020,Borgo San Giacomo,2024,F,68
+017020,Borgo San Giacomo,2024,M,51
+017021,Borgosatollo,2010,F,101
+017021,Borgosatollo,2010,M,76
+017021,Borgosatollo,2011,F,92
+017021,Borgosatollo,2011,M,75
+017021,Borgosatollo,2012,F,94
+017021,Borgosatollo,2012,M,84
+017021,Borgosatollo,2013,F,99
+017021,Borgosatollo,2013,M,88
+017021,Borgosatollo,2014,F,102
+017021,Borgosatollo,2014,M,78
+017021,Borgosatollo,2015,F,104
+017021,Borgosatollo,2015,M,82
+017021,Borgosatollo,2016,F,107
+017021,Borgosatollo,2016,M,81
+017021,Borgosatollo,2017,F,116
+017021,Borgosatollo,2017,M,87
+017021,Borgosatollo,2018,F,138
+017021,Borgosatollo,2018,M,103
+017021,Borgosatollo,2019,F,136
+017021,Borgosatollo,2019,M,99
+017021,Borgosatollo,2020,F,145
+017021,Borgosatollo,2020,M,104
+017021,Borgosatollo,2021,F,154
+017021,Borgosatollo,2021,M,113
+017021,Borgosatollo,2022,F,150
+017021,Borgosatollo,2022,M,114
+017021,Borgosatollo,2023,F,149
+017021,Borgosatollo,2023,M,118
+017021,Borgosatollo,2024,F,138
+017021,Borgosatollo,2024,M,111
+017022,Borno,2010,F,34
+017022,Borno,2010,M,21
+017022,Borno,2011,F,28
+017022,Borno,2011,M,19
+017022,Borno,2012,F,29
+017022,Borno,2012,M,16
+017022,Borno,2013,F,31
+017022,Borno,2013,M,14
+017022,Borno,2014,F,29
+017022,Borno,2014,M,19
+017022,Borno,2015,F,31
+017022,Borno,2015,M,22
+017022,Borno,2016,F,36
+017022,Borno,2016,M,19
+017022,Borno,2017,F,36
+017022,Borno,2017,M,22
+017022,Borno,2018,F,37
+017022,Borno,2018,M,28
+017022,Borno,2019,F,35
+017022,Borno,2019,M,25
+017022,Borno,2020,F,38
+017022,Borno,2020,M,25
+017022,Borno,2021,F,42
+017022,Borno,2021,M,26
+017022,Borno,2022,F,42
+017022,Borno,2022,M,26
+017022,Borno,2023,F,40
+017022,Borno,2023,M,28
+017022,Borno,2024,F,40
+017022,Borno,2024,M,22
+017023,Botticino,2010,F,141
+017023,Botticino,2010,M,112
+017023,Botticino,2011,F,137
+017023,Botticino,2011,M,111
+017023,Botticino,2012,F,142
+017023,Botticino,2012,M,115
+017023,Botticino,2013,F,140
+017023,Botticino,2013,M,117
+017023,Botticino,2014,F,140
+017023,Botticino,2014,M,109
+017023,Botticino,2015,F,133
+017023,Botticino,2015,M,103
+017023,Botticino,2016,F,141
+017023,Botticino,2016,M,107
+017023,Botticino,2017,F,141
+017023,Botticino,2017,M,107
+017023,Botticino,2018,F,156
+017023,Botticino,2018,M,113
+017023,Botticino,2019,F,153
+017023,Botticino,2019,M,111
+017023,Botticino,2020,F,158
+017023,Botticino,2020,M,109
+017023,Botticino,2021,F,152
+017023,Botticino,2021,M,119
+017023,Botticino,2022,F,147
+017023,Botticino,2022,M,111
+017023,Botticino,2023,F,141
+017023,Botticino,2023,M,110
+017023,Botticino,2024,F,150
+017023,Botticino,2024,M,118
+017024,Bovegno,2010,F,27
+017024,Bovegno,2010,M,16
+017024,Bovegno,2011,F,23
+017024,Bovegno,2011,M,13
+017024,Bovegno,2012,F,18
+017024,Bovegno,2012,M,11
+017024,Bovegno,2013,F,18
+017024,Bovegno,2013,M,4
+017024,Bovegno,2014,F,16
+017024,Bovegno,2014,M,4
+017024,Bovegno,2015,F,16
+017024,Bovegno,2015,M,6
+017024,Bovegno,2016,F,18
+017024,Bovegno,2016,M,4
+017024,Bovegno,2017,F,21
+017024,Bovegno,2017,M,10
+017024,Bovegno,2018,F,24
+017024,Bovegno,2018,M,9
+017024,Bovegno,2019,F,28
+017024,Bovegno,2019,M,8
+017024,Bovegno,2020,F,28
+017024,Bovegno,2020,M,10
+017024,Bovegno,2021,F,31
+017024,Bovegno,2021,M,9
+017024,Bovegno,2022,F,27
+017024,Bovegno,2022,M,7
+017024,Bovegno,2023,F,30
+017024,Bovegno,2023,M,6
+017024,Bovegno,2024,F,34
+017024,Bovegno,2024,M,8
+017025,Bovezzo,2010,F,99
+017025,Bovezzo,2010,M,94
+017025,Bovezzo,2011,F,95
+017025,Bovezzo,2011,M,94
+017025,Bovezzo,2012,F,94
+017025,Bovezzo,2012,M,93
+017025,Bovezzo,2013,F,95
+017025,Bovezzo,2013,M,91
+017025,Bovezzo,2014,F,98
+017025,Bovezzo,2014,M,83
+017025,Bovezzo,2015,F,101
+017025,Bovezzo,2015,M,89
+017025,Bovezzo,2016,F,103
+017025,Bovezzo,2016,M,91
+017025,Bovezzo,2017,F,114
+017025,Bovezzo,2017,M,93
+017025,Bovezzo,2018,F,108
+017025,Bovezzo,2018,M,92
+017025,Bovezzo,2019,F,121
+017025,Bovezzo,2019,M,99
+017025,Bovezzo,2020,F,119
+017025,Bovezzo,2020,M,99
+017025,Bovezzo,2021,F,123
+017025,Bovezzo,2021,M,108
+017025,Bovezzo,2022,F,117
+017025,Bovezzo,2022,M,99
+017025,Bovezzo,2023,F,114
+017025,Bovezzo,2023,M,91
+017025,Bovezzo,2024,F,116
+017025,Bovezzo,2024,M,89
+017026,Brandico,2010,F,19
+017026,Brandico,2010,M,9
+017026,Brandico,2011,F,22
+017026,Brandico,2011,M,10
+017026,Brandico,2012,F,20
+017026,Brandico,2012,M,10
+017026,Brandico,2013,F,14
+017026,Brandico,2013,M,10
+017026,Brandico,2014,F,9
+017026,Brandico,2014,M,7
+017026,Brandico,2015,F,11
+017026,Brandico,2015,M,10
+017026,Brandico,2016,F,14
+017026,Brandico,2016,M,9
+017026,Brandico,2017,F,12
+017026,Brandico,2017,M,11
+017026,Brandico,2018,F,11
+017026,Brandico,2018,M,10
+017026,Brandico,2019,F,8
+017026,Brandico,2019,M,10
+017026,Brandico,2020,F,11
+017026,Brandico,2020,M,9
+017026,Brandico,2021,F,12
+017026,Brandico,2021,M,11
+017026,Brandico,2022,F,16
+017026,Brandico,2022,M,16
+017026,Brandico,2023,F,18
+017026,Brandico,2023,M,20
+017026,Brandico,2024,F,22
+017026,Brandico,2024,M,24
+017027,Braone,2010,F,9
+017027,Braone,2010,M,7
+017027,Braone,2011,F,6
+017027,Braone,2011,M,5
+017027,Braone,2012,F,6
+017027,Braone,2012,M,4
+017027,Braone,2013,F,9
+017027,Braone,2013,M,4
+017027,Braone,2014,F,9
+017027,Braone,2014,M,5
+017027,Braone,2015,F,8
+017027,Braone,2015,M,4
+017027,Braone,2016,F,4
+017027,Braone,2016,M,2
+017027,Braone,2017,F,5
+017027,Braone,2017,M,1
+017027,Braone,2018,F,9
+017027,Braone,2018,M,2
+017027,Braone,2019,F,9
+017027,Braone,2019,M,5
+017027,Braone,2020,F,13
+017027,Braone,2020,M,7
+017027,Braone,2021,F,9
+017027,Braone,2021,M,6
+017027,Braone,2022,F,11
+017027,Braone,2022,M,4
+017027,Braone,2023,F,14
+017027,Braone,2023,M,8
+017027,Braone,2024,F,14
+017027,Braone,2024,M,6
+017028,Breno,2010,F,63
+017028,Breno,2010,M,46
+017028,Breno,2011,F,58
+017028,Breno,2011,M,51
+017028,Breno,2012,F,58
+017028,Breno,2012,M,51
+017028,Breno,2013,F,60
+017028,Breno,2013,M,48
+017028,Breno,2014,F,57
+017028,Breno,2014,M,49
+017028,Breno,2015,F,56
+017028,Breno,2015,M,48
+017028,Breno,2016,F,61
+017028,Breno,2016,M,53
+017028,Breno,2017,F,64
+017028,Breno,2017,M,53
+017028,Breno,2018,F,64
+017028,Breno,2018,M,59
+017028,Breno,2019,F,66
+017028,Breno,2019,M,54
+017028,Breno,2020,F,73
+017028,Breno,2020,M,59
+017028,Breno,2021,F,71
+017028,Breno,2021,M,69
+017028,Breno,2022,F,78
+017028,Breno,2022,M,63
+017028,Breno,2023,F,76
+017028,Breno,2023,M,66
+017028,Breno,2024,F,78
+017028,Breno,2024,M,77
+017029,Brescia,2010,F,3095
+017029,Brescia,2010,M,2709
+017029,Brescia,2011,F,3021
+017029,Brescia,2011,M,2643
+017029,Brescia,2012,F,2961
+017029,Brescia,2012,M,2604
+017029,Brescia,2013,F,2875
+017029,Brescia,2013,M,2665
+017029,Brescia,2014,F,2886
+017029,Brescia,2014,M,2633
+017029,Brescia,2015,F,2836
+017029,Brescia,2015,M,2600
+017029,Brescia,2016,F,2833
+017029,Brescia,2016,M,2624
+017029,Brescia,2017,F,2886
+017029,Brescia,2017,M,2606
+017029,Brescia,2018,F,2913
+017029,Brescia,2018,M,2609
+017029,Brescia,2019,F,3057
+017029,Brescia,2019,M,2670
+017029,Brescia,2020,F,3166
+017029,Brescia,2020,M,2738
+017029,Brescia,2021,F,3247
+017029,Brescia,2021,M,2737
+017029,Brescia,2022,F,3259
+017029,Brescia,2022,M,2734
+017029,Brescia,2023,F,3346
+017029,Brescia,2023,M,2765
+017029,Brescia,2024,F,3394
+017029,Brescia,2024,M,2831
+017030,Brione,2010,F,6
+017030,Brione,2010,M,1
+017030,Brione,2011,F,5
+017030,Brione,2011,M,1
+017030,Brione,2012,F,6
+017030,Brione,2013,F,4
+017030,Brione,2014,F,3
+017030,Brione,2014,M,1
+017030,Brione,2015,F,8
+017030,Brione,2015,M,2
+017030,Brione,2016,F,10
+017030,Brione,2016,M,4
+017030,Brione,2017,F,9
+017030,Brione,2017,M,5
+017030,Brione,2018,F,11
+017030,Brione,2018,M,5
+017030,Brione,2019,F,10
+017030,Brione,2019,M,5
+017030,Brione,2020,F,11
+017030,Brione,2020,M,3
+017030,Brione,2021,F,9
+017030,Brione,2022,F,12
+017030,Brione,2022,M,2
+017030,Brione,2023,F,10
+017030,Brione,2023,M,2
+017030,Brione,2024,F,8
+017030,Brione,2024,M,2
+017031,Caino,2010,F,20
+017031,Caino,2010,M,25
+017031,Caino,2011,F,20
+017031,Caino,2011,M,22
+017031,Caino,2012,F,23
+017031,Caino,2012,M,21
+017031,Caino,2013,F,21
+017031,Caino,2013,M,24
+017031,Caino,2014,F,20
+017031,Caino,2014,M,24
+017031,Caino,2015,F,15
+017031,Caino,2015,M,24
+017031,Caino,2016,F,17
+017031,Caino,2016,M,24
+017031,Caino,2017,F,24
+017031,Caino,2017,M,22
+017031,Caino,2018,F,23
+017031,Caino,2018,M,26
+017031,Caino,2019,F,22
+017031,Caino,2019,M,29
+017031,Caino,2020,F,27
+017031,Caino,2020,M,27
+017031,Caino,2021,F,29
+017031,Caino,2021,M,25
+017031,Caino,2022,F,29
+017031,Caino,2022,M,22
+017031,Caino,2023,F,30
+017031,Caino,2023,M,20
+017031,Caino,2024,F,34
+017031,Caino,2024,M,25
+017032,Calcinato,2010,F,116
+017032,Calcinato,2010,M,85
+017032,Calcinato,2011,F,108
+017032,Calcinato,2011,M,83
+017032,Calcinato,2012,F,116
+017032,Calcinato,2012,M,80
+017032,Calcinato,2013,F,113
+017032,Calcinato,2013,M,76
+017032,Calcinato,2014,F,126
+017032,Calcinato,2014,M,81
+017032,Calcinato,2015,F,122
+017032,Calcinato,2015,M,91
+017032,Calcinato,2016,F,121
+017032,Calcinato,2016,M,104
+017032,Calcinato,2017,F,112
+017032,Calcinato,2017,M,107
+017032,Calcinato,2018,F,111
+017032,Calcinato,2018,M,110
+017032,Calcinato,2019,F,139
+017032,Calcinato,2019,M,118
+017032,Calcinato,2020,F,161
+017032,Calcinato,2020,M,130
+017032,Calcinato,2021,F,172
+017032,Calcinato,2021,M,126
+017032,Calcinato,2022,F,159
+017032,Calcinato,2022,M,138
+017032,Calcinato,2023,F,160
+017032,Calcinato,2023,M,144
+017032,Calcinato,2024,F,184
+017032,Calcinato,2024,M,159
+017033,Calvagese della Riviera,2010,F,34
+017033,Calvagese della Riviera,2010,M,28
+017033,Calvagese della Riviera,2011,F,34
+017033,Calvagese della Riviera,2011,M,22
+017033,Calvagese della Riviera,2012,F,34
+017033,Calvagese della Riviera,2012,M,19
+017033,Calvagese della Riviera,2013,F,27
+017033,Calvagese della Riviera,2013,M,20
+017033,Calvagese della Riviera,2014,F,31
+017033,Calvagese della Riviera,2014,M,20
+017033,Calvagese della Riviera,2015,F,39
+017033,Calvagese della Riviera,2015,M,21
+017033,Calvagese della Riviera,2016,F,40
+017033,Calvagese della Riviera,2016,M,17
+017033,Calvagese della Riviera,2017,F,47
+017033,Calvagese della Riviera,2017,M,21
+017033,Calvagese della Riviera,2018,F,42
+017033,Calvagese della Riviera,2018,M,20
+017033,Calvagese della Riviera,2019,F,47
+017033,Calvagese della Riviera,2019,M,25
+017033,Calvagese della Riviera,2020,F,46
+017033,Calvagese della Riviera,2020,M,29
+017033,Calvagese della Riviera,2021,F,49
+017033,Calvagese della Riviera,2021,M,30
+017033,Calvagese della Riviera,2022,F,51
+017033,Calvagese della Riviera,2022,M,28
+017033,Calvagese della Riviera,2023,F,58
+017033,Calvagese della Riviera,2023,M,28
+017033,Calvagese della Riviera,2024,F,59
+017033,Calvagese della Riviera,2024,M,38
+017034,Calvisano,2010,F,105
+017034,Calvisano,2010,M,50
+017034,Calvisano,2011,F,102
+017034,Calvisano,2011,M,52
+017034,Calvisano,2012,F,97
+017034,Calvisano,2012,M,51
+017034,Calvisano,2013,F,93
+017034,Calvisano,2013,M,58
+017034,Calvisano,2014,F,95
+017034,Calvisano,2014,M,62
+017034,Calvisano,2015,F,89
+017034,Calvisano,2015,M,63
+017034,Calvisano,2016,F,89
+017034,Calvisano,2016,M,68
+017034,Calvisano,2017,F,98
+017034,Calvisano,2017,M,77
+017034,Calvisano,2018,F,101
+017034,Calvisano,2018,M,66
+017034,Calvisano,2019,F,115
+017034,Calvisano,2019,M,68
+017034,Calvisano,2020,F,120
+017034,Calvisano,2020,M,64
+017034,Calvisano,2021,F,109
+017034,Calvisano,2021,M,71
+017034,Calvisano,2022,F,105
+017034,Calvisano,2022,M,65
+017034,Calvisano,2023,F,108
+017034,Calvisano,2023,M,75
+017034,Calvisano,2024,F,116
+017034,Calvisano,2024,M,84
+017035,Capo di Ponte,2010,F,23
+017035,Capo di Ponte,2010,M,18
+017035,Capo di Ponte,2011,F,21
+017035,Capo di Ponte,2011,M,20
+017035,Capo di Ponte,2012,F,21
+017035,Capo di Ponte,2012,M,17
+017035,Capo di Ponte,2013,F,24
+017035,Capo di Ponte,2013,M,16
+017035,Capo di Ponte,2014,F,28
+017035,Capo di Ponte,2014,M,14
+017035,Capo di Ponte,2015,F,31
+017035,Capo di Ponte,2015,M,13
+017035,Capo di Ponte,2016,F,27
+017035,Capo di Ponte,2016,M,14
+017035,Capo di Ponte,2017,F,26
+017035,Capo di Ponte,2017,M,16
+017035,Capo di Ponte,2018,F,24
+017035,Capo di Ponte,2018,M,22
+017035,Capo di Ponte,2019,F,21
+017035,Capo di Ponte,2019,M,23
+017035,Capo di Ponte,2020,F,22
+017035,Capo di Ponte,2020,M,24
+017035,Capo di Ponte,2021,F,22
+017035,Capo di Ponte,2021,M,23
+017035,Capo di Ponte,2022,F,28
+017035,Capo di Ponte,2022,M,26
+017035,Capo di Ponte,2023,F,30
+017035,Capo di Ponte,2023,M,19
+017035,Capo di Ponte,2024,F,35
+017035,Capo di Ponte,2024,M,16
+017036,Capovalle,2010,F,2
+017036,Capovalle,2010,M,1
+017036,Capovalle,2011,F,2
+017036,Capovalle,2011,M,1
+017036,Capovalle,2012,F,1
+017036,Capovalle,2012,M,2
+017036,Capovalle,2013,F,4
+017036,Capovalle,2013,M,2
+017036,Capovalle,2014,F,4
+017036,Capovalle,2014,M,2
+017036,Capovalle,2015,F,4
+017036,Capovalle,2015,M,2
+017036,Capovalle,2016,F,2
+017036,Capovalle,2016,M,1
+017036,Capovalle,2017,F,2
+017036,Capovalle,2018,F,2
+017036,Capovalle,2019,F,4
+017036,Capovalle,2020,F,4
+017036,Capovalle,2021,F,4
+017036,Capovalle,2021,M,1
+017036,Capovalle,2022,F,2
+017036,Capovalle,2022,M,1
+017036,Capovalle,2023,F,3
+017036,Capovalle,2023,M,1
+017036,Capovalle,2024,F,3
+017036,Capovalle,2024,M,1
+017037,Capriano del Colle,2010,F,49
+017037,Capriano del Colle,2010,M,37
+017037,Capriano del Colle,2011,F,52
+017037,Capriano del Colle,2011,M,29
+017037,Capriano del Colle,2012,F,51
+017037,Capriano del Colle,2012,M,33
+017037,Capriano del Colle,2013,F,48
+017037,Capriano del Colle,2013,M,33
+017037,Capriano del Colle,2014,F,50
+017037,Capriano del Colle,2014,M,35
+017037,Capriano del Colle,2015,F,49
+017037,Capriano del Colle,2015,M,30
+017037,Capriano del Colle,2016,F,53
+017037,Capriano del Colle,2016,M,28
+017037,Capriano del Colle,2017,F,51
+017037,Capriano del Colle,2017,M,23
+017037,Capriano del Colle,2018,F,54
+017037,Capriano del Colle,2018,M,33
+017037,Capriano del Colle,2019,F,51
+017037,Capriano del Colle,2019,M,29
+017037,Capriano del Colle,2020,F,47
+017037,Capriano del Colle,2020,M,35
+017037,Capriano del Colle,2021,F,55
+017037,Capriano del Colle,2021,M,38
+017037,Capriano del Colle,2022,F,47
+017037,Capriano del Colle,2022,M,40
+017037,Capriano del Colle,2023,F,50
+017037,Capriano del Colle,2023,M,45
+017037,Capriano del Colle,2024,F,58
+017037,Capriano del Colle,2024,M,52
+017038,Capriolo,2010,F,72
+017038,Capriolo,2010,M,69
+017038,Capriolo,2011,F,73
+017038,Capriolo,2011,M,76
+017038,Capriolo,2012,F,77
+017038,Capriolo,2012,M,71
+017038,Capriolo,2013,F,85
+017038,Capriolo,2013,M,75
+017038,Capriolo,2014,F,81
+017038,Capriolo,2014,M,71
+017038,Capriolo,2015,F,85
+017038,Capriolo,2015,M,73
+017038,Capriolo,2016,F,85
+017038,Capriolo,2016,M,70
+017038,Capriolo,2017,F,82
+017038,Capriolo,2017,M,82
+017038,Capriolo,2018,F,91
+017038,Capriolo,2018,M,70
+017038,Capriolo,2019,F,87
+017038,Capriolo,2019,M,73
+017038,Capriolo,2020,F,92
+017038,Capriolo,2020,M,82
+017038,Capriolo,2021,F,104
+017038,Capriolo,2021,M,82
+017038,Capriolo,2022,F,105
+017038,Capriolo,2022,M,98
+017038,Capriolo,2023,F,116
+017038,Capriolo,2023,M,109
+017038,Capriolo,2024,F,123
+017038,Capriolo,2024,M,102
+017039,Carpenedolo,2010,F,97
+017039,Carpenedolo,2010,M,80
+017039,Carpenedolo,2011,F,89
+017039,Carpenedolo,2011,M,77
+017039,Carpenedolo,2012,F,90
+017039,Carpenedolo,2012,M,81
+017039,Carpenedolo,2013,F,97
+017039,Carpenedolo,2013,M,92
+017039,Carpenedolo,2014,F,111
+017039,Carpenedolo,2014,M,79
+017039,Carpenedolo,2015,F,118
+017039,Carpenedolo,2015,M,72
+017039,Carpenedolo,2016,F,114
+017039,Carpenedolo,2016,M,81
+017039,Carpenedolo,2017,F,117
+017039,Carpenedolo,2017,M,80
+017039,Carpenedolo,2018,F,124
+017039,Carpenedolo,2018,M,88
+017039,Carpenedolo,2019,F,138
+017039,Carpenedolo,2019,M,87
+017039,Carpenedolo,2020,F,140
+017039,Carpenedolo,2020,M,98
+017039,Carpenedolo,2021,F,142
+017039,Carpenedolo,2021,M,104
+017039,Carpenedolo,2022,F,156
+017039,Carpenedolo,2022,M,99
+017039,Carpenedolo,2023,F,161
+017039,Carpenedolo,2023,M,92
+017039,Carpenedolo,2024,F,155
+017039,Carpenedolo,2024,M,102
+017040,Castegnato,2010,F,87
+017040,Castegnato,2010,M,65
+017040,Castegnato,2011,F,93
+017040,Castegnato,2011,M,63
+017040,Castegnato,2012,F,87
+017040,Castegnato,2012,M,69
+017040,Castegnato,2013,F,97
+017040,Castegnato,2013,M,73
+017040,Castegnato,2014,F,97
+017040,Castegnato,2014,M,75
+017040,Castegnato,2015,F,96
+017040,Castegnato,2015,M,85
+017040,Castegnato,2016,F,105
+017040,Castegnato,2016,M,86
+017040,Castegnato,2017,F,103
+017040,Castegnato,2017,M,90
+017040,Castegnato,2018,F,106
+017040,Castegnato,2018,M,94
+017040,Castegnato,2019,F,106
+017040,Castegnato,2019,M,99
+017040,Castegnato,2020,F,122
+017040,Castegnato,2020,M,91
+017040,Castegnato,2021,F,137
+017040,Castegnato,2021,M,93
+017040,Castegnato,2022,F,143
+017040,Castegnato,2022,M,84
+017040,Castegnato,2023,F,149
+017040,Castegnato,2023,M,92
+017040,Castegnato,2024,F,151
+017040,Castegnato,2024,M,103
+017041,Castelcovati,2010,F,52
+017041,Castelcovati,2010,M,47
+017041,Castelcovati,2011,F,52
+017041,Castelcovati,2011,M,38
+017041,Castelcovati,2012,F,56
+017041,Castelcovati,2012,M,37
+017041,Castelcovati,2013,F,57
+017041,Castelcovati,2013,M,44
+017041,Castelcovati,2014,F,54
+017041,Castelcovati,2014,M,46
+017041,Castelcovati,2015,F,55
+017041,Castelcovati,2015,M,45
+017041,Castelcovati,2016,F,53
+017041,Castelcovati,2016,M,55
+017041,Castelcovati,2017,F,69
+017041,Castelcovati,2017,M,56
+017041,Castelcovati,2018,F,79
+017041,Castelcovati,2018,M,53
+017041,Castelcovati,2019,F,84
+017041,Castelcovati,2019,M,54
+017041,Castelcovati,2020,F,82
+017041,Castelcovati,2020,M,45
+017041,Castelcovati,2021,F,82
+017041,Castelcovati,2021,M,40
+017041,Castelcovati,2022,F,87
+017041,Castelcovati,2022,M,43
+017041,Castelcovati,2023,F,85
+017041,Castelcovati,2023,M,51
+017041,Castelcovati,2024,F,84
+017041,Castelcovati,2024,M,48
+017042,Castel Mella,2010,F,122
+017042,Castel Mella,2010,M,95
+017042,Castel Mella,2011,F,101
+017042,Castel Mella,2011,M,90
+017042,Castel Mella,2012,F,93
+017042,Castel Mella,2012,M,88
+017042,Castel Mella,2013,F,102
+017042,Castel Mella,2013,M,93
+017042,Castel Mella,2014,F,106
+017042,Castel Mella,2014,M,97
+017042,Castel Mella,2015,F,120
+017042,Castel Mella,2015,M,104
+017042,Castel Mella,2016,F,112
+017042,Castel Mella,2016,M,104
+017042,Castel Mella,2017,F,125
+017042,Castel Mella,2017,M,119
+017042,Castel Mella,2018,F,127
+017042,Castel Mella,2018,M,119
+017042,Castel Mella,2019,F,151
+017042,Castel Mella,2019,M,122
+017042,Castel Mella,2020,F,167
+017042,Castel Mella,2020,M,130
+017042,Castel Mella,2021,F,160
+017042,Castel Mella,2021,M,134
+017042,Castel Mella,2022,F,161
+017042,Castel Mella,2022,M,129
+017042,Castel Mella,2023,F,170
+017042,Castel Mella,2023,M,142
+017042,Castel Mella,2024,F,165
+017042,Castel Mella,2024,M,141
+017043,Castenedolo,2010,F,104
+017043,Castenedolo,2010,M,92
+017043,Castenedolo,2011,F,104
+017043,Castenedolo,2011,M,102
+017043,Castenedolo,2012,F,108
+017043,Castenedolo,2012,M,100
+017043,Castenedolo,2013,F,87
+017043,Castenedolo,2013,M,103
+017043,Castenedolo,2014,F,91
+017043,Castenedolo,2014,M,93
+017043,Castenedolo,2015,F,90
+017043,Castenedolo,2015,M,99
+017043,Castenedolo,2016,F,91
+017043,Castenedolo,2016,M,104
+017043,Castenedolo,2017,F,102
+017043,Castenedolo,2017,M,99
+017043,Castenedolo,2018,F,118
+017043,Castenedolo,2018,M,93
+017043,Castenedolo,2019,F,131
+017043,Castenedolo,2019,M,110
+017043,Castenedolo,2020,F,138
+017043,Castenedolo,2020,M,110
+017043,Castenedolo,2021,F,151
+017043,Castenedolo,2021,M,118
+017043,Castenedolo,2022,F,162
+017043,Castenedolo,2022,M,123
+017043,Castenedolo,2023,F,169
+017043,Castenedolo,2023,M,118
+017043,Castenedolo,2024,F,175
+017043,Castenedolo,2024,M,125
+017044,Casto,2010,F,13
+017044,Casto,2010,M,13
+017044,Casto,2011,F,11
+017044,Casto,2011,M,12
+017044,Casto,2012,F,14
+017044,Casto,2012,M,8
+017044,Casto,2013,F,14
+017044,Casto,2013,M,6
+017044,Casto,2014,F,12
+017044,Casto,2014,M,9
+017044,Casto,2015,F,13
+017044,Casto,2015,M,9
+017044,Casto,2016,F,11
+017044,Casto,2016,M,11
+017044,Casto,2017,F,12
+017044,Casto,2017,M,14
+017044,Casto,2018,F,17
+017044,Casto,2018,M,11
+017044,Casto,2019,F,21
+017044,Casto,2019,M,11
+017044,Casto,2020,F,22
+017044,Casto,2020,M,12
+017044,Casto,2021,F,21
+017044,Casto,2021,M,11
+017044,Casto,2022,F,29
+017044,Casto,2022,M,12
+017044,Casto,2023,F,26
+017044,Casto,2023,M,9
+017044,Casto,2024,F,22
+017044,Casto,2024,M,8
+017045,Castrezzato,2010,F,75
+017045,Castrezzato,2010,M,52
+017045,Castrezzato,2011,F,75
+017045,Castrezzato,2011,M,41
+017045,Castrezzato,2012,F,67
+017045,Castrezzato,2012,M,45
+017045,Castrezzato,2013,F,77
+017045,Castrezzato,2013,M,41
+017045,Castrezzato,2014,F,63
+017045,Castrezzato,2014,M,43
+017045,Castrezzato,2015,F,72
+017045,Castrezzato,2015,M,34
+017045,Castrezzato,2016,F,77
+017045,Castrezzato,2016,M,32
+017045,Castrezzato,2017,F,82
+017045,Castrezzato,2017,M,32
+017045,Castrezzato,2018,F,82
+017045,Castrezzato,2018,M,34
+017045,Castrezzato,2019,F,89
+017045,Castrezzato,2019,M,41
+017045,Castrezzato,2020,F,94
+017045,Castrezzato,2020,M,47
+017045,Castrezzato,2021,F,84
+017045,Castrezzato,2021,M,46
+017045,Castrezzato,2022,F,112
+017045,Castrezzato,2022,M,58
+017045,Castrezzato,2023,F,119
+017045,Castrezzato,2023,M,56
+017045,Castrezzato,2024,F,120
+017045,Castrezzato,2024,M,57
+017046,Cazzago San Martino,2010,F,102
+017046,Cazzago San Martino,2010,M,85
+017046,Cazzago San Martino,2011,F,110
+017046,Cazzago San Martino,2011,M,82
+017046,Cazzago San Martino,2012,F,106
+017046,Cazzago San Martino,2012,M,100
+017046,Cazzago San Martino,2013,F,102
+017046,Cazzago San Martino,2013,M,95
+017046,Cazzago San Martino,2014,F,107
+017046,Cazzago San Martino,2014,M,108
+017046,Cazzago San Martino,2015,F,107
+017046,Cazzago San Martino,2015,M,104
+017046,Cazzago San Martino,2016,F,112
+017046,Cazzago San Martino,2016,M,101
+017046,Cazzago San Martino,2017,F,132
+017046,Cazzago San Martino,2017,M,87
+017046,Cazzago San Martino,2018,F,144
+017046,Cazzago San Martino,2018,M,87
+017046,Cazzago San Martino,2019,F,140
+017046,Cazzago San Martino,2019,M,98
+017046,Cazzago San Martino,2020,F,137
+017046,Cazzago San Martino,2020,M,108
+017046,Cazzago San Martino,2021,F,146
+017046,Cazzago San Martino,2021,M,100
+017046,Cazzago San Martino,2022,F,139
+017046,Cazzago San Martino,2022,M,106
+017046,Cazzago San Martino,2023,F,149
+017046,Cazzago San Martino,2023,M,103
+017046,Cazzago San Martino,2024,F,170
+017046,Cazzago San Martino,2024,M,93
+017047,Cedegolo,2010,F,19
+017047,Cedegolo,2010,M,10
+017047,Cedegolo,2011,F,17
+017047,Cedegolo,2011,M,7
+017047,Cedegolo,2012,F,18
+017047,Cedegolo,2012,M,6
+017047,Cedegolo,2013,F,20
+017047,Cedegolo,2013,M,9
+017047,Cedegolo,2014,F,22
+017047,Cedegolo,2014,M,9
+017047,Cedegolo,2015,F,18
+017047,Cedegolo,2015,M,10
+017047,Cedegolo,2016,F,18
+017047,Cedegolo,2016,M,12
+017047,Cedegolo,2017,F,20
+017047,Cedegolo,2017,M,10
+017047,Cedegolo,2018,F,16
+017047,Cedegolo,2018,M,10
+017047,Cedegolo,2019,F,13
+017047,Cedegolo,2019,M,8
+017047,Cedegolo,2020,F,15
+017047,Cedegolo,2020,M,8
+017047,Cedegolo,2021,F,13
+017047,Cedegolo,2021,M,8
+017047,Cedegolo,2022,F,15
+017047,Cedegolo,2022,M,6
+017047,Cedegolo,2023,F,15
+017047,Cedegolo,2023,M,6
+017047,Cedegolo,2024,F,18
+017047,Cedegolo,2024,M,9
+017048,Cellatica,2010,F,77
+017048,Cellatica,2010,M,69
+017048,Cellatica,2011,F,70
+017048,Cellatica,2011,M,68
+017048,Cellatica,2012,F,70
+017048,Cellatica,2012,M,65
+017048,Cellatica,2013,F,76
+017048,Cellatica,2013,M,56
+017048,Cellatica,2014,F,79
+017048,Cellatica,2014,M,60
+017048,Cellatica,2015,F,85
+017048,Cellatica,2015,M,64
+017048,Cellatica,2016,F,81
+017048,Cellatica,2016,M,72
+017048,Cellatica,2017,F,91
+017048,Cellatica,2017,M,71
+017048,Cellatica,2018,F,86
+017048,Cellatica,2018,M,83
+017048,Cellatica,2019,F,89
+017048,Cellatica,2019,M,76
+017048,Cellatica,2020,F,95
+017048,Cellatica,2020,M,68
+017048,Cellatica,2021,F,96
+017048,Cellatica,2021,M,73
+017048,Cellatica,2022,F,85
+017048,Cellatica,2022,M,77
+017048,Cellatica,2023,F,90
+017048,Cellatica,2023,M,84
+017048,Cellatica,2024,F,93
+017048,Cellatica,2024,M,80
+017049,Cerveno,2010,F,6
+017049,Cerveno,2010,M,8
+017049,Cerveno,2011,F,7
+017049,Cerveno,2011,M,7
+017049,Cerveno,2012,F,6
+017049,Cerveno,2012,M,9
+017049,Cerveno,2013,F,4
+017049,Cerveno,2013,M,10
+017049,Cerveno,2014,F,3
+017049,Cerveno,2014,M,9
+017049,Cerveno,2015,F,4
+017049,Cerveno,2015,M,8
+017049,Cerveno,2016,F,4
+017049,Cerveno,2016,M,9
+017049,Cerveno,2017,F,7
+017049,Cerveno,2017,M,8
+017049,Cerveno,2018,F,7
+017049,Cerveno,2018,M,12
+017049,Cerveno,2019,F,6
+017049,Cerveno,2019,M,12
+017049,Cerveno,2020,F,8
+017049,Cerveno,2020,M,10
+017049,Cerveno,2021,F,8
+017049,Cerveno,2021,M,7
+017049,Cerveno,2022,F,9
+017049,Cerveno,2022,M,7
+017049,Cerveno,2023,F,9
+017049,Cerveno,2023,M,7
+017049,Cerveno,2024,F,10
+017049,Cerveno,2024,M,4
+017050,Ceto,2010,F,27
+017050,Ceto,2010,M,21
+017050,Ceto,2011,F,25
+017050,Ceto,2011,M,17
+017050,Ceto,2012,F,22
+017050,Ceto,2012,M,18
+017050,Ceto,2013,F,20
+017050,Ceto,2013,M,15
+017050,Ceto,2014,F,21
+017050,Ceto,2014,M,13
+017050,Ceto,2015,F,23
+017050,Ceto,2015,M,14
+017050,Ceto,2016,F,25
+017050,Ceto,2016,M,16
+017050,Ceto,2017,F,25
+017050,Ceto,2017,M,18
+017050,Ceto,2018,F,25
+017050,Ceto,2018,M,15
+017050,Ceto,2019,F,24
+017050,Ceto,2019,M,15
+017050,Ceto,2020,F,21
+017050,Ceto,2020,M,19
+017050,Ceto,2021,F,23
+017050,Ceto,2021,M,23
+017050,Ceto,2022,F,21
+017050,Ceto,2022,M,24
+017050,Ceto,2023,F,20
+017050,Ceto,2023,M,27
+017050,Ceto,2024,F,19
+017050,Ceto,2024,M,28
+017051,Cevo,2010,F,18
+017051,Cevo,2010,M,10
+017051,Cevo,2011,F,19
+017051,Cevo,2011,M,10
+017051,Cevo,2012,F,20
+017051,Cevo,2012,M,9
+017051,Cevo,2013,F,18
+017051,Cevo,2013,M,6
+017051,Cevo,2014,F,17
+017051,Cevo,2014,M,6
+017051,Cevo,2015,F,13
+017051,Cevo,2015,M,6
+017051,Cevo,2016,F,12
+017051,Cevo,2016,M,6
+017051,Cevo,2017,F,11
+017051,Cevo,2017,M,6
+017051,Cevo,2018,F,6
+017051,Cevo,2018,M,7
+017051,Cevo,2019,F,6
+017051,Cevo,2019,M,6
+017051,Cevo,2020,F,8
+017051,Cevo,2020,M,6
+017051,Cevo,2021,F,7
+017051,Cevo,2021,M,5
+017051,Cevo,2022,F,6
+017051,Cevo,2022,M,5
+017051,Cevo,2023,F,7
+017051,Cevo,2023,M,4
+017051,Cevo,2024,F,6
+017051,Cevo,2024,M,5
+017052,Chiari,2010,F,239
+017052,Chiari,2010,M,197
+017052,Chiari,2011,F,236
+017052,Chiari,2011,M,194
+017052,Chiari,2012,F,241
+017052,Chiari,2012,M,195
+017052,Chiari,2013,F,223
+017052,Chiari,2013,M,201
+017052,Chiari,2014,F,212
+017052,Chiari,2014,M,207
+017052,Chiari,2015,F,204
+017052,Chiari,2015,M,191
+017052,Chiari,2016,F,206
+017052,Chiari,2016,M,197
+017052,Chiari,2017,F,198
+017052,Chiari,2017,M,185
+017052,Chiari,2018,F,204
+017052,Chiari,2018,M,181
+017052,Chiari,2019,F,214
+017052,Chiari,2019,M,191
+017052,Chiari,2020,F,227
+017052,Chiari,2020,M,177
+017052,Chiari,2021,F,246
+017052,Chiari,2021,M,182
+017052,Chiari,2022,F,252
+017052,Chiari,2022,M,194
+017052,Chiari,2023,F,262
+017052,Chiari,2023,M,201
+017052,Chiari,2024,F,274
+017052,Chiari,2024,M,213
+017053,Cigole,2010,F,25
+017053,Cigole,2010,M,13
+017053,Cigole,2011,F,26
+017053,Cigole,2011,M,10
+017053,Cigole,2012,F,23
+017053,Cigole,2012,M,12
+017053,Cigole,2013,F,20
+017053,Cigole,2013,M,11
+017053,Cigole,2014,F,22
+017053,Cigole,2014,M,8
+017053,Cigole,2015,F,22
+017053,Cigole,2015,M,6
+017053,Cigole,2016,F,25
+017053,Cigole,2016,M,5
+017053,Cigole,2017,F,24
+017053,Cigole,2017,M,8
+017053,Cigole,2018,F,23
+017053,Cigole,2018,M,6
+017053,Cigole,2019,F,25
+017053,Cigole,2019,M,8
+017053,Cigole,2020,F,24
+017053,Cigole,2020,M,9
+017053,Cigole,2021,F,26
+017053,Cigole,2021,M,9
+017053,Cigole,2022,F,23
+017053,Cigole,2022,M,9
+017053,Cigole,2023,F,27
+017053,Cigole,2023,M,10
+017053,Cigole,2024,F,23
+017053,Cigole,2024,M,10
+017054,Cimbergo,2010,F,10
+017054,Cimbergo,2010,M,4
+017054,Cimbergo,2011,F,9
+017054,Cimbergo,2011,M,2
+017054,Cimbergo,2012,F,9
+017054,Cimbergo,2012,M,3
+017054,Cimbergo,2013,F,7
+017054,Cimbergo,2013,M,4
+017054,Cimbergo,2014,F,6
+017054,Cimbergo,2014,M,3
+017054,Cimbergo,2015,F,8
+017054,Cimbergo,2015,M,8
+017054,Cimbergo,2016,F,9
+017054,Cimbergo,2016,M,7
+017054,Cimbergo,2017,F,8
+017054,Cimbergo,2017,M,9
+017054,Cimbergo,2018,F,7
+017054,Cimbergo,2018,M,7
+017054,Cimbergo,2019,F,5
+017054,Cimbergo,2019,M,6
+017054,Cimbergo,2020,F,4
+017054,Cimbergo,2020,M,4
+017054,Cimbergo,2021,F,4
+017054,Cimbergo,2021,M,3
+017054,Cimbergo,2022,F,7
+017054,Cimbergo,2022,M,6
+017054,Cimbergo,2023,F,4
+017054,Cimbergo,2023,M,7
+017054,Cimbergo,2024,F,7
+017054,Cimbergo,2024,M,7
+017055,Cividate Camuno,2010,F,31
+017055,Cividate Camuno,2010,M,24
+017055,Cividate Camuno,2011,F,26
+017055,Cividate Camuno,2011,M,21
+017055,Cividate Camuno,2012,F,28
+017055,Cividate Camuno,2012,M,22
+017055,Cividate Camuno,2013,F,25
+017055,Cividate Camuno,2013,M,20
+017055,Cividate Camuno,2014,F,26
+017055,Cividate Camuno,2014,M,15
+017055,Cividate Camuno,2015,F,24
+017055,Cividate Camuno,2015,M,17
+017055,Cividate Camuno,2016,F,29
+017055,Cividate Camuno,2016,M,24
+017055,Cividate Camuno,2017,F,31
+017055,Cividate Camuno,2017,M,28
+017055,Cividate Camuno,2018,F,26
+017055,Cividate Camuno,2018,M,33
+017055,Cividate Camuno,2019,F,28
+017055,Cividate Camuno,2019,M,32
+017055,Cividate Camuno,2020,F,26
+017055,Cividate Camuno,2020,M,32
+017055,Cividate Camuno,2021,F,26
+017055,Cividate Camuno,2021,M,29
+017055,Cividate Camuno,2022,F,21
+017055,Cividate Camuno,2022,M,26
+017055,Cividate Camuno,2023,F,25
+017055,Cividate Camuno,2023,M,27
+017055,Cividate Camuno,2024,F,29
+017055,Cividate Camuno,2024,M,30
+017056,Coccaglio,2010,F,89
+017056,Coccaglio,2010,M,70
+017056,Coccaglio,2011,F,89
+017056,Coccaglio,2011,M,61
+017056,Coccaglio,2012,F,92
+017056,Coccaglio,2012,M,61
+017056,Coccaglio,2013,F,104
+017056,Coccaglio,2013,M,63
+017056,Coccaglio,2014,F,109
+017056,Coccaglio,2014,M,66
+017056,Coccaglio,2015,F,118
+017056,Coccaglio,2015,M,72
+017056,Coccaglio,2016,F,108
+017056,Coccaglio,2016,M,67
+017056,Coccaglio,2017,F,112
+017056,Coccaglio,2017,M,78
+017056,Coccaglio,2018,F,108
+017056,Coccaglio,2018,M,85
+017056,Coccaglio,2019,F,105
+017056,Coccaglio,2019,M,85
+017056,Coccaglio,2020,F,104
+017056,Coccaglio,2020,M,76
+017056,Coccaglio,2021,F,116
+017056,Coccaglio,2021,M,78
+017056,Coccaglio,2022,F,118
+017056,Coccaglio,2022,M,85
+017056,Coccaglio,2023,F,117
+017056,Coccaglio,2023,M,83
+017056,Coccaglio,2024,F,130
+017056,Coccaglio,2024,M,82
+017057,Collebeato,2010,F,96
+017057,Collebeato,2010,M,86
+017057,Collebeato,2011,F,85
+017057,Collebeato,2011,M,80
+017057,Collebeato,2012,F,82
+017057,Collebeato,2012,M,70
+017057,Collebeato,2013,F,86
+017057,Collebeato,2013,M,68
+017057,Collebeato,2014,F,86
+017057,Collebeato,2014,M,73
+017057,Collebeato,2015,F,86
+017057,Collebeato,2015,M,83
+017057,Collebeato,2016,F,89
+017057,Collebeato,2016,M,81
+017057,Collebeato,2017,F,88
+017057,Collebeato,2017,M,82
+017057,Collebeato,2018,F,80
+017057,Collebeato,2018,M,88
+017057,Collebeato,2019,F,89
+017057,Collebeato,2019,M,89
+017057,Collebeato,2020,F,87
+017057,Collebeato,2020,M,79
+017057,Collebeato,2021,F,78
+017057,Collebeato,2021,M,82
+017057,Collebeato,2022,F,80
+017057,Collebeato,2022,M,74
+017057,Collebeato,2023,F,78
+017057,Collebeato,2023,M,64
+017057,Collebeato,2024,F,85
+017057,Collebeato,2024,M,55
+017058,Collio,2010,F,21
+017058,Collio,2010,M,19
+017058,Collio,2011,F,20
+017058,Collio,2011,M,24
+017058,Collio,2012,F,24
+017058,Collio,2012,M,20
+017058,Collio,2013,F,26
+017058,Collio,2013,M,20
+017058,Collio,2014,F,29
+017058,Collio,2014,M,16
+017058,Collio,2015,F,28
+017058,Collio,2015,M,12
+017058,Collio,2016,F,25
+017058,Collio,2016,M,14
+017058,Collio,2017,F,24
+017058,Collio,2017,M,11
+017058,Collio,2018,F,22
+017058,Collio,2018,M,14
+017058,Collio,2019,F,20
+017058,Collio,2019,M,10
+017058,Collio,2020,F,17
+017058,Collio,2020,M,12
+017058,Collio,2021,F,18
+017058,Collio,2021,M,10
+017058,Collio,2022,F,19
+017058,Collio,2022,M,9
+017058,Collio,2023,F,19
+017058,Collio,2023,M,13
+017058,Collio,2024,F,22
+017058,Collio,2024,M,9
+017059,Cologne,2010,F,82
+017059,Cologne,2010,M,67
+017059,Cologne,2011,F,79
+017059,Cologne,2011,M,67
+017059,Cologne,2012,F,77
+017059,Cologne,2012,M,65
+017059,Cologne,2013,F,80
+017059,Cologne,2013,M,65
+017059,Cologne,2014,F,75
+017059,Cologne,2014,M,67
+017059,Cologne,2015,F,80
+017059,Cologne,2015,M,63
+017059,Cologne,2016,F,86
+017059,Cologne,2016,M,71
+017059,Cologne,2017,F,90
+017059,Cologne,2017,M,65
+017059,Cologne,2018,F,98
+017059,Cologne,2018,M,53
+017059,Cologne,2019,F,98
+017059,Cologne,2019,M,53
+017059,Cologne,2020,F,105
+017059,Cologne,2020,M,72
+017059,Cologne,2021,F,87
+017059,Cologne,2021,M,74
+017059,Cologne,2022,F,94
+017059,Cologne,2022,M,78
+017059,Cologne,2023,F,112
+017059,Cologne,2023,M,78
+017059,Cologne,2024,F,113
+017059,Cologne,2024,M,80
+017060,Comezzano-Cizzago,2010,F,32
+017060,Comezzano-Cizzago,2010,M,14
+017060,Comezzano-Cizzago,2011,F,29
+017060,Comezzano-Cizzago,2011,M,14
+017060,Comezzano-Cizzago,2012,F,34
+017060,Comezzano-Cizzago,2012,M,18
+017060,Comezzano-Cizzago,2013,F,29
+017060,Comezzano-Cizzago,2013,M,16
+017060,Comezzano-Cizzago,2014,F,40
+017060,Comezzano-Cizzago,2014,M,18
+017060,Comezzano-Cizzago,2015,F,40
+017060,Comezzano-Cizzago,2015,M,14
+017060,Comezzano-Cizzago,2016,F,39
+017060,Comezzano-Cizzago,2016,M,14
+017060,Comezzano-Cizzago,2017,F,45
+017060,Comezzano-Cizzago,2017,M,15
+017060,Comezzano-Cizzago,2018,F,52
+017060,Comezzano-Cizzago,2018,M,16
+017060,Comezzano-Cizzago,2019,F,55
+017060,Comezzano-Cizzago,2019,M,16
+017060,Comezzano-Cizzago,2020,F,64
+017060,Comezzano-Cizzago,2020,M,18
+017060,Comezzano-Cizzago,2021,F,63
+017060,Comezzano-Cizzago,2021,M,24
+017060,Comezzano-Cizzago,2022,F,58
+017060,Comezzano-Cizzago,2022,M,23
+017060,Comezzano-Cizzago,2023,F,54
+017060,Comezzano-Cizzago,2023,M,27
+017060,Comezzano-Cizzago,2024,F,53
+017060,Comezzano-Cizzago,2024,M,26
+017061,Concesio,2010,F,175
+017061,Concesio,2010,M,146
+017061,Concesio,2011,F,173
+017061,Concesio,2011,M,149
+017061,Concesio,2012,F,170
+017061,Concesio,2012,M,142
+017061,Concesio,2013,F,166
+017061,Concesio,2013,M,136
+017061,Concesio,2014,F,168
+017061,Concesio,2014,M,140
+017061,Concesio,2015,F,179
+017061,Concesio,2015,M,120
+017061,Concesio,2016,F,176
+017061,Concesio,2016,M,118
+017061,Concesio,2017,F,188
+017061,Concesio,2017,M,129
+017061,Concesio,2018,F,212
+017061,Concesio,2018,M,143
+017061,Concesio,2019,F,204
+017061,Concesio,2019,M,152
+017061,Concesio,2020,F,212
+017061,Concesio,2020,M,153
+017061,Concesio,2021,F,203
+017061,Concesio,2021,M,172
+017061,Concesio,2022,F,209
+017061,Concesio,2022,M,168
+017061,Concesio,2023,F,213
+017061,Concesio,2023,M,172
+017061,Concesio,2024,F,231
+017061,Concesio,2024,M,193
+017062,Corte Franca,2010,F,75
+017062,Corte Franca,2010,M,55
+017062,Corte Franca,2011,F,77
+017062,Corte Franca,2011,M,47
+017062,Corte Franca,2012,F,82
+017062,Corte Franca,2012,M,43
+017062,Corte Franca,2013,F,81
+017062,Corte Franca,2013,M,50
+017062,Corte Franca,2014,F,77
+017062,Corte Franca,2014,M,52
+017062,Corte Franca,2015,F,73
+017062,Corte Franca,2015,M,53
+017062,Corte Franca,2016,F,80
+017062,Corte Franca,2016,M,47
+017062,Corte Franca,2017,F,89
+017062,Corte Franca,2017,M,53
+017062,Corte Franca,2018,F,88
+017062,Corte Franca,2018,M,55
+017062,Corte Franca,2019,F,82
+017062,Corte Franca,2019,M,55
+017062,Corte Franca,2020,F,83
+017062,Corte Franca,2020,M,67
+017062,Corte Franca,2021,F,74
+017062,Corte Franca,2021,M,69
+017062,Corte Franca,2022,F,88
+017062,Corte Franca,2022,M,76
+017062,Corte Franca,2023,F,92
+017062,Corte Franca,2023,M,78
+017062,Corte Franca,2024,F,101
+017062,Corte Franca,2024,M,69
+017063,Corteno Golgi,2010,F,22
+017063,Corteno Golgi,2010,M,16
+017063,Corteno Golgi,2011,F,19
+017063,Corteno Golgi,2011,M,14
+017063,Corteno Golgi,2012,F,19
+017063,Corteno Golgi,2012,M,13
+017063,Corteno Golgi,2013,F,15
+017063,Corteno Golgi,2013,M,10
+017063,Corteno Golgi,2014,F,14
+017063,Corteno Golgi,2014,M,11
+017063,Corteno Golgi,2015,F,11
+017063,Corteno Golgi,2015,M,10
+017063,Corteno Golgi,2016,F,11
+017063,Corteno Golgi,2016,M,7
+017063,Corteno Golgi,2017,F,11
+017063,Corteno Golgi,2017,M,8
+017063,Corteno Golgi,2018,F,10
+017063,Corteno Golgi,2018,M,8
+017063,Corteno Golgi,2019,F,13
+017063,Corteno Golgi,2019,M,9
+017063,Corteno Golgi,2020,F,14
+017063,Corteno Golgi,2020,M,8
+017063,Corteno Golgi,2021,F,15
+017063,Corteno Golgi,2021,M,9
+017063,Corteno Golgi,2022,F,20
+017063,Corteno Golgi,2022,M,9
+017063,Corteno Golgi,2023,F,28
+017063,Corteno Golgi,2023,M,10
+017063,Corteno Golgi,2024,F,30
+017063,Corteno Golgi,2024,M,14
+017064,Corzano,2010,F,12
+017064,Corzano,2010,M,4
+017064,Corzano,2011,F,12
+017064,Corzano,2011,M,6
+017064,Corzano,2012,F,8
+017064,Corzano,2012,M,2
+017064,Corzano,2013,F,7
+017064,Corzano,2013,M,3
+017064,Corzano,2014,F,10
+017064,Corzano,2014,M,4
+017064,Corzano,2015,F,11
+017064,Corzano,2015,M,6
+017064,Corzano,2016,F,12
+017064,Corzano,2016,M,7
+017064,Corzano,2017,F,14
+017064,Corzano,2017,M,8
+017064,Corzano,2018,F,13
+017064,Corzano,2018,M,6
+017064,Corzano,2019,F,12
+017064,Corzano,2019,M,7
+017064,Corzano,2020,F,15
+017064,Corzano,2020,M,9
+017064,Corzano,2021,F,19
+017064,Corzano,2021,M,7
+017064,Corzano,2022,F,20
+017064,Corzano,2022,M,9
+017064,Corzano,2023,F,20
+017064,Corzano,2023,M,10
+017064,Corzano,2024,F,24
+017064,Corzano,2024,M,10
+017065,Darfo Boario Terme,2010,F,198
+017065,Darfo Boario Terme,2010,M,164
+017065,Darfo Boario Terme,2011,F,190
+017065,Darfo Boario Terme,2011,M,150
+017065,Darfo Boario Terme,2012,F,176
+017065,Darfo Boario Terme,2012,M,146
+017065,Darfo Boario Terme,2013,F,186
+017065,Darfo Boario Terme,2013,M,148
+017065,Darfo Boario Terme,2014,F,193
+017065,Darfo Boario Terme,2014,M,140
+017065,Darfo Boario Terme,2015,F,189
+017065,Darfo Boario Terme,2015,M,145
+017065,Darfo Boario Terme,2016,F,203
+017065,Darfo Boario Terme,2016,M,158
+017065,Darfo Boario Terme,2017,F,187
+017065,Darfo Boario Terme,2017,M,160
+017065,Darfo Boario Terme,2018,F,190
+017065,Darfo Boario Terme,2018,M,161
+017065,Darfo Boario Terme,2019,F,187
+017065,Darfo Boario Terme,2019,M,166
+017065,Darfo Boario Terme,2020,F,231
+017065,Darfo Boario Terme,2020,M,179
+017065,Darfo Boario Terme,2021,F,245
+017065,Darfo Boario Terme,2021,M,188
+017065,Darfo Boario Terme,2022,F,253
+017065,Darfo Boario Terme,2022,M,186
+017065,Darfo Boario Terme,2023,F,271
+017065,Darfo Boario Terme,2023,M,167
+017065,Darfo Boario Terme,2024,F,265
+017065,Darfo Boario Terme,2024,M,178
+017066,Dello,2010,F,66
+017066,Dello,2010,M,48
+017066,Dello,2011,F,59
+017066,Dello,2011,M,49
+017066,Dello,2012,F,56
+017066,Dello,2012,M,46
+017066,Dello,2013,F,52
+017066,Dello,2013,M,45
+017066,Dello,2014,F,43
+017066,Dello,2014,M,50
+017066,Dello,2015,F,40
+017066,Dello,2015,M,51
+017066,Dello,2016,F,43
+017066,Dello,2016,M,47
+017066,Dello,2017,F,44
+017066,Dello,2017,M,46
+017066,Dello,2018,F,54
+017066,Dello,2018,M,40
+017066,Dello,2019,F,63
+017066,Dello,2019,M,45
+017066,Dello,2020,F,63
+017066,Dello,2020,M,40
+017066,Dello,2021,F,67
+017066,Dello,2021,M,40
+017066,Dello,2022,F,72
+017066,Dello,2022,M,42
+017066,Dello,2023,F,78
+017066,Dello,2023,M,43
+017066,Dello,2024,F,77
+017066,Dello,2024,M,51
+017067,Desenzano del Garda,2010,F,356
+017067,Desenzano del Garda,2010,M,314
+017067,Desenzano del Garda,2011,F,353
+017067,Desenzano del Garda,2011,M,298
+017067,Desenzano del Garda,2012,F,347
+017067,Desenzano del Garda,2012,M,298
+017067,Desenzano del Garda,2013,F,342
+017067,Desenzano del Garda,2013,M,297
+017067,Desenzano del Garda,2014,F,339
+017067,Desenzano del Garda,2014,M,292
+017067,Desenzano del Garda,2015,F,348
+017067,Desenzano del Garda,2015,M,315
+017067,Desenzano del Garda,2016,F,359
+017067,Desenzano del Garda,2016,M,329
+017067,Desenzano del Garda,2017,F,378
+017067,Desenzano del Garda,2017,M,336
+017067,Desenzano del Garda,2018,F,385
+017067,Desenzano del Garda,2018,M,322
+017067,Desenzano del Garda,2019,F,406
+017067,Desenzano del Garda,2019,M,342
+017067,Desenzano del Garda,2020,F,463
+017067,Desenzano del Garda,2020,M,363
+017067,Desenzano del Garda,2021,F,464
+017067,Desenzano del Garda,2021,M,378
+017067,Desenzano del Garda,2022,F,467
+017067,Desenzano del Garda,2022,M,370
+017067,Desenzano del Garda,2023,F,449
+017067,Desenzano del Garda,2023,M,362
+017067,Desenzano del Garda,2024,F,445
+017067,Desenzano del Garda,2024,M,368
+017068,Edolo,2010,F,48
+017068,Edolo,2010,M,45
+017068,Edolo,2011,F,56
+017068,Edolo,2011,M,46
+017068,Edolo,2012,F,51
+017068,Edolo,2012,M,42
+017068,Edolo,2013,F,50
+017068,Edolo,2013,M,49
+017068,Edolo,2014,F,51
+017068,Edolo,2014,M,44
+017068,Edolo,2015,F,47
+017068,Edolo,2015,M,41
+017068,Edolo,2016,F,53
+017068,Edolo,2016,M,44
+017068,Edolo,2017,F,55
+017068,Edolo,2017,M,42
+017068,Edolo,2018,F,50
+017068,Edolo,2018,M,40
+017068,Edolo,2019,F,60
+017068,Edolo,2019,M,36
+017068,Edolo,2020,F,61
+017068,Edolo,2020,M,38
+017068,Edolo,2021,F,57
+017068,Edolo,2021,M,43
+017068,Edolo,2022,F,57
+017068,Edolo,2022,M,40
+017068,Edolo,2023,F,71
+017068,Edolo,2023,M,42
+017068,Edolo,2024,F,75
+017068,Edolo,2024,M,37
+017069,Erbusco,2010,F,92
+017069,Erbusco,2010,M,64
+017069,Erbusco,2011,F,86
+017069,Erbusco,2011,M,61
+017069,Erbusco,2012,F,83
+017069,Erbusco,2012,M,57
+017069,Erbusco,2013,F,86
+017069,Erbusco,2013,M,53
+017069,Erbusco,2014,F,98
+017069,Erbusco,2014,M,59
+017069,Erbusco,2015,F,96
+017069,Erbusco,2015,M,71
+017069,Erbusco,2016,F,81
+017069,Erbusco,2016,M,65
+017069,Erbusco,2017,F,97
+017069,Erbusco,2017,M,67
+017069,Erbusco,2018,F,104
+017069,Erbusco,2018,M,68
+017069,Erbusco,2019,F,104
+017069,Erbusco,2019,M,71
+017069,Erbusco,2020,F,101
+017069,Erbusco,2020,M,76
+017069,Erbusco,2021,F,109
+017069,Erbusco,2021,M,70
+017069,Erbusco,2022,F,107
+017069,Erbusco,2022,M,78
+017069,Erbusco,2023,F,124
+017069,Erbusco,2023,M,75
+017069,Erbusco,2024,F,121
+017069,Erbusco,2024,M,78
+017070,Esine,2010,F,65
+017070,Esine,2010,M,35
+017070,Esine,2011,F,65
+017070,Esine,2011,M,33
+017070,Esine,2012,F,62
+017070,Esine,2012,M,31
+017070,Esine,2013,F,51
+017070,Esine,2013,M,33
+017070,Esine,2014,F,58
+017070,Esine,2014,M,36
+017070,Esine,2015,F,46
+017070,Esine,2015,M,36
+017070,Esine,2016,F,58
+017070,Esine,2016,M,42
+017070,Esine,2017,F,65
+017070,Esine,2017,M,43
+017070,Esine,2018,F,72
+017070,Esine,2018,M,42
+017070,Esine,2019,F,77
+017070,Esine,2019,M,55
+017070,Esine,2020,F,75
+017070,Esine,2020,M,56
+017070,Esine,2021,F,85
+017070,Esine,2021,M,60
+017070,Esine,2022,F,100
+017070,Esine,2022,M,60
+017070,Esine,2023,F,100
+017070,Esine,2023,M,60
+017070,Esine,2024,F,95
+017070,Esine,2024,M,62
+017071,Fiesse,2010,F,19
+017071,Fiesse,2010,M,5
+017071,Fiesse,2011,F,20
+017071,Fiesse,2011,M,2
+017071,Fiesse,2012,F,16
+017071,Fiesse,2012,M,6
+017071,Fiesse,2013,F,18
+017071,Fiesse,2013,M,5
+017071,Fiesse,2014,F,17
+017071,Fiesse,2014,M,5
+017071,Fiesse,2015,F,16
+017071,Fiesse,2015,M,7
+017071,Fiesse,2016,F,17
+017071,Fiesse,2016,M,9
+017071,Fiesse,2017,F,19
+017071,Fiesse,2017,M,12
+017071,Fiesse,2018,F,17
+017071,Fiesse,2018,M,11
+017071,Fiesse,2019,F,20
+017071,Fiesse,2019,M,14
+017071,Fiesse,2020,F,18
+017071,Fiesse,2020,M,13
+017071,Fiesse,2021,F,20
+017071,Fiesse,2021,M,14
+017071,Fiesse,2022,F,23
+017071,Fiesse,2022,M,14
+017071,Fiesse,2023,F,28
+017071,Fiesse,2023,M,13
+017071,Fiesse,2024,F,25
+017071,Fiesse,2024,M,11
+017072,Flero,2010,F,101
+017072,Flero,2010,M,78
+017072,Flero,2011,F,94
+017072,Flero,2011,M,68
+017072,Flero,2012,F,85
+017072,Flero,2012,M,64
+017072,Flero,2013,F,79
+017072,Flero,2013,M,61
+017072,Flero,2014,F,89
+017072,Flero,2014,M,65
+017072,Flero,2015,F,95
+017072,Flero,2015,M,68
+017072,Flero,2016,F,91
+017072,Flero,2016,M,69
+017072,Flero,2017,F,89
+017072,Flero,2017,M,74
+017072,Flero,2018,F,85
+017072,Flero,2018,M,79
+017072,Flero,2019,F,87
+017072,Flero,2019,M,76
+017072,Flero,2020,F,89
+017072,Flero,2020,M,82
+017072,Flero,2021,F,110
+017072,Flero,2021,M,85
+017072,Flero,2022,F,110
+017072,Flero,2022,M,89
+017072,Flero,2023,F,111
+017072,Flero,2023,M,88
+017072,Flero,2024,F,130
+017072,Flero,2024,M,84
+017073,Gambara,2010,F,57
+017073,Gambara,2010,M,38
+017073,Gambara,2011,F,60
+017073,Gambara,2011,M,44
+017073,Gambara,2012,F,67
+017073,Gambara,2012,M,43
+017073,Gambara,2013,F,76
+017073,Gambara,2013,M,51
+017073,Gambara,2014,F,75
+017073,Gambara,2014,M,45
+017073,Gambara,2015,F,75
+017073,Gambara,2015,M,34
+017073,Gambara,2016,F,66
+017073,Gambara,2016,M,36
+017073,Gambara,2017,F,73
+017073,Gambara,2017,M,38
+017073,Gambara,2018,F,66
+017073,Gambara,2018,M,42
+017073,Gambara,2019,F,59
+017073,Gambara,2019,M,35
+017073,Gambara,2020,F,56
+017073,Gambara,2020,M,36
+017073,Gambara,2021,F,60
+017073,Gambara,2021,M,38
+017073,Gambara,2022,F,52
+017073,Gambara,2022,M,43
+017073,Gambara,2023,F,53
+017073,Gambara,2023,M,38
+017073,Gambara,2024,F,46
+017073,Gambara,2024,M,37
+017074,Gardone Riviera,2010,F,31
+017074,Gardone Riviera,2010,M,28
+017074,Gardone Riviera,2011,F,30
+017074,Gardone Riviera,2011,M,22
+017074,Gardone Riviera,2012,F,27
+017074,Gardone Riviera,2012,M,22
+017074,Gardone Riviera,2013,F,28
+017074,Gardone Riviera,2013,M,20
+017074,Gardone Riviera,2014,F,23
+017074,Gardone Riviera,2014,M,25
+017074,Gardone Riviera,2015,F,31
+017074,Gardone Riviera,2015,M,27
+017074,Gardone Riviera,2016,F,28
+017074,Gardone Riviera,2016,M,26
+017074,Gardone Riviera,2017,F,30
+017074,Gardone Riviera,2017,M,29
+017074,Gardone Riviera,2018,F,32
+017074,Gardone Riviera,2018,M,20
+017074,Gardone Riviera,2019,F,36
+017074,Gardone Riviera,2019,M,21
+017074,Gardone Riviera,2020,F,38
+017074,Gardone Riviera,2020,M,26
+017074,Gardone Riviera,2021,F,38
+017074,Gardone Riviera,2021,M,29
+017074,Gardone Riviera,2022,F,40
+017074,Gardone Riviera,2022,M,30
+017074,Gardone Riviera,2023,F,35
+017074,Gardone Riviera,2023,M,30
+017074,Gardone Riviera,2024,F,32
+017074,Gardone Riviera,2024,M,39
+017075,Gardone Val Trompia,2010,F,117
+017075,Gardone Val Trompia,2010,M,78
+017075,Gardone Val Trompia,2011,F,111
+017075,Gardone Val Trompia,2011,M,79
+017075,Gardone Val Trompia,2012,F,125
+017075,Gardone Val Trompia,2012,M,79
+017075,Gardone Val Trompia,2013,F,125
+017075,Gardone Val Trompia,2013,M,74
+017075,Gardone Val Trompia,2014,F,124
+017075,Gardone Val Trompia,2014,M,65
+017075,Gardone Val Trompia,2015,F,125
+017075,Gardone Val Trompia,2015,M,68
+017075,Gardone Val Trompia,2016,F,130
+017075,Gardone Val Trompia,2016,M,75
+017075,Gardone Val Trompia,2017,F,120
+017075,Gardone Val Trompia,2017,M,82
+017075,Gardone Val Trompia,2018,F,124
+017075,Gardone Val Trompia,2018,M,81
+017075,Gardone Val Trompia,2019,F,121
+017075,Gardone Val Trompia,2019,M,84
+017075,Gardone Val Trompia,2020,F,142
+017075,Gardone Val Trompia,2020,M,90
+017075,Gardone Val Trompia,2021,F,137
+017075,Gardone Val Trompia,2021,M,93
+017075,Gardone Val Trompia,2022,F,133
+017075,Gardone Val Trompia,2022,M,103
+017075,Gardone Val Trompia,2023,F,143
+017075,Gardone Val Trompia,2023,M,104
+017075,Gardone Val Trompia,2024,F,150
+017075,Gardone Val Trompia,2024,M,97
+017076,Gargnano,2010,F,23
+017076,Gargnano,2010,M,18
+017076,Gargnano,2011,F,23
+017076,Gargnano,2011,M,19
+017076,Gargnano,2012,F,23
+017076,Gargnano,2012,M,16
+017076,Gargnano,2013,F,24
+017076,Gargnano,2013,M,16
+017076,Gargnano,2014,F,20
+017076,Gargnano,2014,M,13
+017076,Gargnano,2015,F,18
+017076,Gargnano,2015,M,15
+017076,Gargnano,2016,F,16
+017076,Gargnano,2016,M,15
+017076,Gargnano,2017,F,18
+017076,Gargnano,2017,M,18
+017076,Gargnano,2018,F,22
+017076,Gargnano,2018,M,12
+017076,Gargnano,2019,F,23
+017076,Gargnano,2019,M,14
+017076,Gargnano,2020,F,26
+017076,Gargnano,2020,M,16
+017076,Gargnano,2021,F,26
+017076,Gargnano,2021,M,16
+017076,Gargnano,2022,F,25
+017076,Gargnano,2022,M,19
+017076,Gargnano,2023,F,26
+017076,Gargnano,2023,M,19
+017076,Gargnano,2024,F,28
+017076,Gargnano,2024,M,20
+017077,Gavardo,2010,F,127
+017077,Gavardo,2010,M,104
+017077,Gavardo,2011,F,126
+017077,Gavardo,2011,M,107
+017077,Gavardo,2012,F,121
+017077,Gavardo,2012,M,103
+017077,Gavardo,2013,F,119
+017077,Gavardo,2013,M,106
+017077,Gavardo,2014,F,114
+017077,Gavardo,2014,M,97
+017077,Gavardo,2015,F,108
+017077,Gavardo,2015,M,100
+017077,Gavardo,2016,F,119
+017077,Gavardo,2016,M,106
+017077,Gavardo,2017,F,121
+017077,Gavardo,2017,M,101
+017077,Gavardo,2018,F,135
+017077,Gavardo,2018,M,111
+017077,Gavardo,2019,F,149
+017077,Gavardo,2019,M,119
+017077,Gavardo,2020,F,159
+017077,Gavardo,2020,M,119
+017077,Gavardo,2021,F,155
+017077,Gavardo,2021,M,124
+017077,Gavardo,2022,F,151
+017077,Gavardo,2022,M,127
+017077,Gavardo,2023,F,154
+017077,Gavardo,2023,M,126
+017077,Gavardo,2024,F,174
+017077,Gavardo,2024,M,132
+017078,Ghedi,2010,F,158
+017078,Ghedi,2010,M,134
+017078,Ghedi,2011,F,179
+017078,Ghedi,2011,M,137
+017078,Ghedi,2012,F,184
+017078,Ghedi,2012,M,144
+017078,Ghedi,2013,F,204
+017078,Ghedi,2013,M,148
+017078,Ghedi,2014,F,196
+017078,Ghedi,2014,M,154
+017078,Ghedi,2015,F,193
+017078,Ghedi,2015,M,164
+017078,Ghedi,2016,F,188
+017078,Ghedi,2016,M,169
+017078,Ghedi,2017,F,201
+017078,Ghedi,2017,M,177
+017078,Ghedi,2018,F,222
+017078,Ghedi,2018,M,182
+017078,Ghedi,2019,F,261
+017078,Ghedi,2019,M,191
+017078,Ghedi,2020,F,291
+017078,Ghedi,2020,M,201
+017078,Ghedi,2021,F,284
+017078,Ghedi,2021,M,216
+017078,Ghedi,2022,F,290
+017078,Ghedi,2022,M,205
+017078,Ghedi,2023,F,302
+017078,Ghedi,2023,M,219
+017078,Ghedi,2024,F,315
+017078,Ghedi,2024,M,210
+017079,Gianico,2010,F,32
+017079,Gianico,2010,M,12
+017079,Gianico,2011,F,30
+017079,Gianico,2011,M,16
+017079,Gianico,2012,F,28
+017079,Gianico,2012,M,17
+017079,Gianico,2013,F,31
+017079,Gianico,2013,M,17
+017079,Gianico,2014,F,37
+017079,Gianico,2014,M,17
+017079,Gianico,2015,F,37
+017079,Gianico,2015,M,21
+017079,Gianico,2016,F,34
+017079,Gianico,2016,M,20
+017079,Gianico,2017,F,32
+017079,Gianico,2017,M,15
+017079,Gianico,2018,F,34
+017079,Gianico,2018,M,16
+017079,Gianico,2019,F,28
+017079,Gianico,2019,M,19
+017079,Gianico,2020,F,31
+017079,Gianico,2020,M,19
+017079,Gianico,2021,F,32
+017079,Gianico,2021,M,20
+017079,Gianico,2022,F,31
+017079,Gianico,2022,M,18
+017079,Gianico,2023,F,34
+017079,Gianico,2023,M,17
+017079,Gianico,2024,F,33
+017079,Gianico,2024,M,12
+017080,Gottolengo,2010,F,59
+017080,Gottolengo,2010,M,50
+017080,Gottolengo,2011,F,57
+017080,Gottolengo,2011,M,49
+017080,Gottolengo,2012,F,61
+017080,Gottolengo,2012,M,52
+017080,Gottolengo,2013,F,60
+017080,Gottolengo,2013,M,53
+017080,Gottolengo,2014,F,59
+017080,Gottolengo,2014,M,56
+017080,Gottolengo,2015,F,59
+017080,Gottolengo,2015,M,57
+017080,Gottolengo,2016,F,59
+017080,Gottolengo,2016,M,60
+017080,Gottolengo,2017,F,63
+017080,Gottolengo,2017,M,58
+017080,Gottolengo,2018,F,62
+017080,Gottolengo,2018,M,59
+017080,Gottolengo,2019,F,63
+017080,Gottolengo,2019,M,50
+017080,Gottolengo,2020,F,60
+017080,Gottolengo,2020,M,51
+017080,Gottolengo,2021,F,63
+017080,Gottolengo,2021,M,41
+017080,Gottolengo,2022,F,66
+017080,Gottolengo,2022,M,38
+017080,Gottolengo,2023,F,72
+017080,Gottolengo,2023,M,40
+017080,Gottolengo,2024,F,76
+017080,Gottolengo,2024,M,41
+017081,Gussago,2010,F,225
+017081,Gussago,2010,M,197
+017081,Gussago,2011,F,209
+017081,Gussago,2011,M,184
+017081,Gussago,2012,F,210
+017081,Gussago,2012,M,181
+017081,Gussago,2013,F,192
+017081,Gussago,2013,M,189
+017081,Gussago,2014,F,191
+017081,Gussago,2014,M,190
+017081,Gussago,2015,F,202
+017081,Gussago,2015,M,191
+017081,Gussago,2016,F,206
+017081,Gussago,2016,M,189
+017081,Gussago,2017,F,206
+017081,Gussago,2017,M,185
+017081,Gussago,2018,F,208
+017081,Gussago,2018,M,190
+017081,Gussago,2019,F,215
+017081,Gussago,2019,M,198
+017081,Gussago,2020,F,255
+017081,Gussago,2020,M,183
+017081,Gussago,2021,F,263
+017081,Gussago,2021,M,210
+017081,Gussago,2022,F,266
+017081,Gussago,2022,M,209
+017081,Gussago,2023,F,285
+017081,Gussago,2023,M,216
+017081,Gussago,2024,F,287
+017081,Gussago,2024,M,222
+017082,Idro,2010,F,9
+017082,Idro,2010,M,20
+017082,Idro,2011,F,13
+017082,Idro,2011,M,23
+017082,Idro,2012,F,16
+017082,Idro,2012,M,17
+017082,Idro,2013,F,16
+017082,Idro,2013,M,15
+017082,Idro,2014,F,18
+017082,Idro,2014,M,13
+017082,Idro,2015,F,13
+017082,Idro,2015,M,11
+017082,Idro,2016,F,15
+017082,Idro,2016,M,12
+017082,Idro,2017,F,16
+017082,Idro,2017,M,13
+017082,Idro,2018,F,19
+017082,Idro,2018,M,13
+017082,Idro,2019,F,17
+017082,Idro,2019,M,12
+017082,Idro,2020,F,18
+017082,Idro,2020,M,15
+017082,Idro,2021,F,18
+017082,Idro,2021,M,17
+017082,Idro,2022,F,23
+017082,Idro,2022,M,15
+017082,Idro,2023,F,27
+017082,Idro,2023,M,17
+017082,Idro,2024,F,36
+017082,Idro,2024,M,19
+017083,Incudine,2010,F,10
+017083,Incudine,2011,F,9
+017083,Incudine,2012,F,7
+017083,Incudine,2013,F,7
+017083,Incudine,2013,M,2
+017083,Incudine,2014,F,7
+017083,Incudine,2014,M,1
+017083,Incudine,2015,F,3
+017083,Incudine,2015,M,1
+017083,Incudine,2016,F,2
+017083,Incudine,2017,F,2
+017083,Incudine,2017,M,1
+017083,Incudine,2018,F,2
+017083,Incudine,2018,M,1
+017083,Incudine,2019,F,3
+017083,Incudine,2019,M,1
+017083,Incudine,2020,F,4
+017083,Incudine,2020,M,2
+017083,Incudine,2021,F,4
+017083,Incudine,2021,M,3
+017083,Incudine,2022,F,5
+017083,Incudine,2022,M,4
+017083,Incudine,2023,F,4
+017083,Incudine,2023,M,3
+017083,Incudine,2024,F,4
+017083,Incudine,2024,M,4
+017084,Irma,2010,F,4
+017084,Irma,2011,F,4
+017084,Irma,2012,F,4
+017084,Irma,2013,F,3
+017084,Irma,2014,F,1
+017084,Irma,2015,F,1
+017084,Irma,2016,F,1
+017084,Irma,2021,F,1
+017084,Irma,2022,F,2
+017084,Irma,2022,M,1
+017084,Irma,2023,F,2
+017084,Irma,2023,M,1
+017084,Irma,2024,F,3
+017084,Irma,2024,M,1
+017085,Iseo,2010,F,117
+017085,Iseo,2010,M,95
+017085,Iseo,2011,F,103
+017085,Iseo,2011,M,80
+017085,Iseo,2012,F,102
+017085,Iseo,2012,M,81
+017085,Iseo,2013,F,100
+017085,Iseo,2013,M,87
+017085,Iseo,2014,F,104
+017085,Iseo,2014,M,89
+017085,Iseo,2015,F,113
+017085,Iseo,2015,M,98
+017085,Iseo,2016,F,103
+017085,Iseo,2016,M,107
+017085,Iseo,2017,F,105
+017085,Iseo,2017,M,108
+017085,Iseo,2018,F,109
+017085,Iseo,2018,M,110
+017085,Iseo,2019,F,114
+017085,Iseo,2019,M,100
+017085,Iseo,2020,F,126
+017085,Iseo,2020,M,89
+017085,Iseo,2021,F,136
+017085,Iseo,2021,M,85
+017085,Iseo,2022,F,151
+017085,Iseo,2022,M,89
+017085,Iseo,2023,F,155
+017085,Iseo,2023,M,100
+017085,Iseo,2024,F,158
+017085,Iseo,2024,M,108
+017086,Isorella,2010,F,28
+017086,Isorella,2010,M,34
+017086,Isorella,2011,F,30
+017086,Isorella,2011,M,32
+017086,Isorella,2012,F,28
+017086,Isorella,2012,M,31
+017086,Isorella,2013,F,26
+017086,Isorella,2013,M,27
+017086,Isorella,2014,F,26
+017086,Isorella,2014,M,30
+017086,Isorella,2015,F,32
+017086,Isorella,2015,M,30
+017086,Isorella,2016,F,34
+017086,Isorella,2016,M,30
+017086,Isorella,2017,F,36
+017086,Isorella,2017,M,34
+017086,Isorella,2018,F,30
+017086,Isorella,2018,M,34
+017086,Isorella,2019,F,35
+017086,Isorella,2019,M,40
+017086,Isorella,2020,F,41
+017086,Isorella,2020,M,40
+017086,Isorella,2021,F,49
+017086,Isorella,2021,M,39
+017086,Isorella,2022,F,48
+017086,Isorella,2022,M,39
+017086,Isorella,2023,F,45
+017086,Isorella,2023,M,41
+017086,Isorella,2024,F,41
+017086,Isorella,2024,M,48
+017087,Lavenone,2010,F,8
+017087,Lavenone,2011,F,7
+017087,Lavenone,2011,M,1
+017087,Lavenone,2012,F,7
+017087,Lavenone,2012,M,1
+017087,Lavenone,2013,F,5
+017087,Lavenone,2013,M,2
+017087,Lavenone,2014,F,5
+017087,Lavenone,2014,M,3
+017087,Lavenone,2015,F,4
+017087,Lavenone,2015,M,3
+017087,Lavenone,2016,F,3
+017087,Lavenone,2016,M,2
+017087,Lavenone,2017,F,3
+017087,Lavenone,2017,M,2
+017087,Lavenone,2018,F,4
+017087,Lavenone,2018,M,1
+017087,Lavenone,2019,F,3
+017087,Lavenone,2019,M,1
+017087,Lavenone,2020,F,2
+017087,Lavenone,2020,M,1
+017087,Lavenone,2021,F,4
+017087,Lavenone,2022,F,4
+017087,Lavenone,2022,M,2
+017087,Lavenone,2023,F,5
+017087,Lavenone,2023,M,2
+017087,Lavenone,2024,F,4
+017087,Lavenone,2024,M,4
+017088,Leno,2010,F,169
+017088,Leno,2010,M,113
+017088,Leno,2011,F,155
+017088,Leno,2011,M,118
+017088,Leno,2012,F,163
+017088,Leno,2012,M,131
+017088,Leno,2013,F,165
+017088,Leno,2013,M,124
+017088,Leno,2014,F,166
+017088,Leno,2014,M,124
+017088,Leno,2015,F,160
+017088,Leno,2015,M,114
+017088,Leno,2016,F,164
+017088,Leno,2016,M,127
+017088,Leno,2017,F,163
+017088,Leno,2017,M,130
+017088,Leno,2018,F,158
+017088,Leno,2018,M,125
+017088,Leno,2019,F,170
+017088,Leno,2019,M,125
+017088,Leno,2020,F,172
+017088,Leno,2020,M,125
+017088,Leno,2021,F,189
+017088,Leno,2021,M,137
+017088,Leno,2022,F,196
+017088,Leno,2022,M,128
+017088,Leno,2023,F,210
+017088,Leno,2023,M,145
+017088,Leno,2024,F,216
+017088,Leno,2024,M,138
+017089,Limone sul Garda,2010,F,7
+017089,Limone sul Garda,2010,M,7
+017089,Limone sul Garda,2011,F,6
+017089,Limone sul Garda,2011,M,6
+017089,Limone sul Garda,2012,F,8
+017089,Limone sul Garda,2012,M,5
+017089,Limone sul Garda,2013,F,9
+017089,Limone sul Garda,2013,M,2
+017089,Limone sul Garda,2014,F,6
+017089,Limone sul Garda,2014,M,4
+017089,Limone sul Garda,2015,F,6
+017089,Limone sul Garda,2015,M,6
+017089,Limone sul Garda,2016,F,7
+017089,Limone sul Garda,2016,M,7
+017089,Limone sul Garda,2017,F,7
+017089,Limone sul Garda,2017,M,7
+017089,Limone sul Garda,2018,F,8
+017089,Limone sul Garda,2018,M,7
+017089,Limone sul Garda,2019,F,8
+017089,Limone sul Garda,2019,M,7
+017089,Limone sul Garda,2020,F,6
+017089,Limone sul Garda,2020,M,11
+017089,Limone sul Garda,2021,F,9
+017089,Limone sul Garda,2021,M,11
+017089,Limone sul Garda,2022,F,6
+017089,Limone sul Garda,2022,M,15
+017089,Limone sul Garda,2023,F,13
+017089,Limone sul Garda,2023,M,15
+017089,Limone sul Garda,2024,F,13
+017089,Limone sul Garda,2024,M,12
+017090,Lodrino,2010,F,16
+017090,Lodrino,2010,M,10
+017090,Lodrino,2011,F,23
+017090,Lodrino,2011,M,13
+017090,Lodrino,2012,F,27
+017090,Lodrino,2012,M,18
+017090,Lodrino,2013,F,28
+017090,Lodrino,2013,M,15
+017090,Lodrino,2014,F,25
+017090,Lodrino,2014,M,19
+017090,Lodrino,2015,F,32
+017090,Lodrino,2015,M,20
+017090,Lodrino,2016,F,29
+017090,Lodrino,2016,M,20
+017090,Lodrino,2017,F,35
+017090,Lodrino,2017,M,22
+017090,Lodrino,2018,F,37
+017090,Lodrino,2018,M,23
+017090,Lodrino,2019,F,34
+017090,Lodrino,2019,M,18
+017090,Lodrino,2020,F,33
+017090,Lodrino,2020,M,15
+017090,Lodrino,2021,F,39
+017090,Lodrino,2021,M,16
+017090,Lodrino,2022,F,38
+017090,Lodrino,2022,M,14
+017090,Lodrino,2023,F,36
+017090,Lodrino,2023,M,16
+017090,Lodrino,2024,F,27
+017090,Lodrino,2024,M,15
+017091,Lograto,2010,F,39
+017091,Lograto,2010,M,37
+017091,Lograto,2011,F,39
+017091,Lograto,2011,M,38
+017091,Lograto,2012,F,31
+017091,Lograto,2012,M,35
+017091,Lograto,2013,F,29
+017091,Lograto,2013,M,38
+017091,Lograto,2014,F,31
+017091,Lograto,2014,M,37
+017091,Lograto,2015,F,32
+017091,Lograto,2015,M,39
+017091,Lograto,2016,F,33
+017091,Lograto,2016,M,40
+017091,Lograto,2017,F,36
+017091,Lograto,2017,M,34
+017091,Lograto,2018,F,35
+017091,Lograto,2018,M,29
+017091,Lograto,2019,F,41
+017091,Lograto,2019,M,27
+017091,Lograto,2020,F,47
+017091,Lograto,2020,M,31
+017091,Lograto,2021,F,55
+017091,Lograto,2021,M,27
+017091,Lograto,2022,F,49
+017091,Lograto,2022,M,28
+017091,Lograto,2023,F,49
+017091,Lograto,2023,M,33
+017091,Lograto,2024,F,58
+017091,Lograto,2024,M,38
+017092,Lonato del Garda,2010,F,149
+017092,Lonato del Garda,2010,M,117
+017092,Lonato del Garda,2011,F,142
+017092,Lonato del Garda,2011,M,114
+017092,Lonato del Garda,2012,F,143
+017092,Lonato del Garda,2012,M,114
+017092,Lonato del Garda,2013,F,136
+017092,Lonato del Garda,2013,M,115
+017092,Lonato del Garda,2014,F,153
+017092,Lonato del Garda,2014,M,127
+017092,Lonato del Garda,2015,F,153
+017092,Lonato del Garda,2015,M,129
+017092,Lonato del Garda,2016,F,171
+017092,Lonato del Garda,2016,M,134
+017092,Lonato del Garda,2017,F,161
+017092,Lonato del Garda,2017,M,138
+017092,Lonato del Garda,2018,F,167
+017092,Lonato del Garda,2018,M,155
+017092,Lonato del Garda,2019,F,168
+017092,Lonato del Garda,2019,M,150
+017092,Lonato del Garda,2020,F,203
+017092,Lonato del Garda,2020,M,154
+017092,Lonato del Garda,2021,F,217
+017092,Lonato del Garda,2021,M,149
+017092,Lonato del Garda,2022,F,233
+017092,Lonato del Garda,2022,M,146
+017092,Lonato del Garda,2023,F,254
+017092,Lonato del Garda,2023,M,162
+017092,Lonato del Garda,2024,F,251
+017092,Lonato del Garda,2024,M,172
+017093,Longhena,2010,F,13
+017093,Longhena,2010,M,8
+017093,Longhena,2011,F,12
+017093,Longhena,2011,M,5
+017093,Longhena,2012,F,5
+017093,Longhena,2012,M,4
+017093,Longhena,2013,F,4
+017093,Longhena,2013,M,4
+017093,Longhena,2014,F,3
+017093,Longhena,2014,M,4
+017093,Longhena,2015,F,4
+017093,Longhena,2015,M,3
+017093,Longhena,2016,F,6
+017093,Longhena,2016,M,3
+017093,Longhena,2017,F,5
+017093,Longhena,2017,M,4
+017093,Longhena,2018,F,6
+017093,Longhena,2018,M,6
+017093,Longhena,2019,F,7
+017093,Longhena,2019,M,8
+017093,Longhena,2020,F,6
+017093,Longhena,2020,M,7
+017093,Longhena,2021,F,6
+017093,Longhena,2021,M,7
+017093,Longhena,2022,F,5
+017093,Longhena,2022,M,5
+017093,Longhena,2023,F,5
+017093,Longhena,2023,M,4
+017093,Longhena,2024,F,3
+017093,Longhena,2024,M,2
+017094,Losine,2010,F,3
+017094,Losine,2010,M,6
+017094,Losine,2011,F,5
+017094,Losine,2011,M,2
+017094,Losine,2012,F,7
+017094,Losine,2012,M,4
+017094,Losine,2013,F,10
+017094,Losine,2013,M,1
+017094,Losine,2014,F,10
+017094,Losine,2014,M,2
+017094,Losine,2015,F,11
+017094,Losine,2015,M,4
+017094,Losine,2016,F,10
+017094,Losine,2016,M,4
+017094,Losine,2017,F,11
+017094,Losine,2017,M,6
+017094,Losine,2018,F,11
+017094,Losine,2018,M,7
+017094,Losine,2019,F,12
+017094,Losine,2019,M,9
+017094,Losine,2020,F,8
+017094,Losine,2020,M,6
+017094,Losine,2021,F,5
+017094,Losine,2021,M,5
+017094,Losine,2022,F,4
+017094,Losine,2022,M,6
+017094,Losine,2023,F,7
+017094,Losine,2023,M,5
+017094,Losine,2024,F,11
+017094,Losine,2024,M,7
+017095,Lozio,2010,F,5
+017095,Lozio,2010,M,2
+017095,Lozio,2011,F,4
+017095,Lozio,2011,M,3
+017095,Lozio,2012,F,4
+017095,Lozio,2012,M,3
+017095,Lozio,2013,F,4
+017095,Lozio,2013,M,2
+017095,Lozio,2014,F,3
+017095,Lozio,2014,M,3
+017095,Lozio,2015,F,3
+017095,Lozio,2015,M,3
+017095,Lozio,2016,F,4
+017095,Lozio,2016,M,2
+017095,Lozio,2017,F,4
+017095,Lozio,2017,M,1
+017095,Lozio,2018,F,4
+017095,Lozio,2019,F,3
+017095,Lozio,2019,M,1
+017095,Lozio,2020,F,5
+017095,Lozio,2020,M,2
+017095,Lozio,2021,F,4
+017095,Lozio,2021,M,3
+017095,Lozio,2022,F,3
+017095,Lozio,2022,M,2
+017095,Lozio,2023,F,3
+017095,Lozio,2023,M,3
+017095,Lozio,2024,F,4
+017095,Lozio,2024,M,2
+017096,Lumezzane,2010,F,259
+017096,Lumezzane,2010,M,178
+017096,Lumezzane,2011,F,226
+017096,Lumezzane,2011,M,164
+017096,Lumezzane,2012,F,219
+017096,Lumezzane,2012,M,169
+017096,Lumezzane,2013,F,228
+017096,Lumezzane,2013,M,166
+017096,Lumezzane,2014,F,212
+017096,Lumezzane,2014,M,154
+017096,Lumezzane,2015,F,224
+017096,Lumezzane,2015,M,149
+017096,Lumezzane,2016,F,217
+017096,Lumezzane,2016,M,145
+017096,Lumezzane,2017,F,229
+017096,Lumezzane,2017,M,141
+017096,Lumezzane,2018,F,232
+017096,Lumezzane,2018,M,139
+017096,Lumezzane,2019,F,224
+017096,Lumezzane,2019,M,139
+017096,Lumezzane,2020,F,232
+017096,Lumezzane,2020,M,138
+017096,Lumezzane,2021,F,237
+017096,Lumezzane,2021,M,157
+017096,Lumezzane,2022,F,246
+017096,Lumezzane,2022,M,157
+017096,Lumezzane,2023,F,240
+017096,Lumezzane,2023,M,164
+017096,Lumezzane,2024,F,245
+017096,Lumezzane,2024,M,155
+017097,Maclodio,2010,F,18
+017097,Maclodio,2010,M,13
+017097,Maclodio,2011,F,18
+017097,Maclodio,2011,M,11
+017097,Maclodio,2012,F,17
+017097,Maclodio,2012,M,6
+017097,Maclodio,2013,F,17
+017097,Maclodio,2013,M,9
+017097,Maclodio,2014,F,17
+017097,Maclodio,2014,M,8
+017097,Maclodio,2015,F,16
+017097,Maclodio,2015,M,10
+017097,Maclodio,2016,F,11
+017097,Maclodio,2016,M,9
+017097,Maclodio,2017,F,8
+017097,Maclodio,2017,M,7
+017097,Maclodio,2018,F,8
+017097,Maclodio,2018,M,7
+017097,Maclodio,2019,F,7
+017097,Maclodio,2019,M,8
+017097,Maclodio,2020,F,8
+017097,Maclodio,2020,M,9
+017097,Maclodio,2021,F,10
+017097,Maclodio,2021,M,7
+017097,Maclodio,2022,F,18
+017097,Maclodio,2022,M,11
+017097,Maclodio,2023,F,22
+017097,Maclodio,2023,M,16
+017097,Maclodio,2024,F,27
+017097,Maclodio,2024,M,13
+017098,Magasa,2010,M,1
+017098,Magasa,2011,F,1
+017098,Magasa,2011,M,1
+017098,Magasa,2012,F,2
+017098,Magasa,2013,F,2
+017098,Magasa,2013,M,1
+017098,Magasa,2014,F,2
+017098,Magasa,2014,M,1
+017098,Magasa,2015,F,2
+017098,Magasa,2015,M,1
+017098,Magasa,2016,F,2
+017098,Magasa,2016,M,1
+017098,Magasa,2017,F,1
+017098,Magasa,2017,M,1
+017098,Magasa,2018,F,1
+017098,Magasa,2018,M,2
+017098,Magasa,2019,M,3
+017098,Magasa,2020,M,2
+017098,Magasa,2021,M,1
+017098,Magasa,2022,F,1
+017098,Magasa,2022,M,2
+017098,Magasa,2023,M,2
+017098,Magasa,2024,M,2
+017099,Mairano,2010,F,31
+017099,Mairano,2010,M,19
+017099,Mairano,2011,F,34
+017099,Mairano,2011,M,18
+017099,Mairano,2012,F,36
+017099,Mairano,2012,M,18
+017099,Mairano,2013,F,32
+017099,Mairano,2013,M,17
+017099,Mairano,2014,F,37
+017099,Mairano,2014,M,17
+017099,Mairano,2015,F,33
+017099,Mairano,2015,M,21
+017099,Mairano,2016,F,39
+017099,Mairano,2016,M,24
+017099,Mairano,2017,F,35
+017099,Mairano,2017,M,21
+017099,Mairano,2018,F,33
+017099,Mairano,2018,M,19
+017099,Mairano,2019,F,40
+017099,Mairano,2019,M,21
+017099,Mairano,2020,F,36
+017099,Mairano,2020,M,21
+017099,Mairano,2021,F,36
+017099,Mairano,2021,M,19
+017099,Mairano,2022,F,38
+017099,Mairano,2022,M,23
+017099,Mairano,2023,F,38
+017099,Mairano,2023,M,23
+017099,Mairano,2024,F,41
+017099,Mairano,2024,M,29
+017100,Malegno,2010,F,32
+017100,Malegno,2010,M,19
+017100,Malegno,2011,F,28
+017100,Malegno,2011,M,23
+017100,Malegno,2012,F,23
+017100,Malegno,2012,M,21
+017100,Malegno,2013,F,18
+017100,Malegno,2013,M,18
+017100,Malegno,2014,F,16
+017100,Malegno,2014,M,13
+017100,Malegno,2015,F,15
+017100,Malegno,2015,M,15
+017100,Malegno,2016,F,16
+017100,Malegno,2016,M,20
+017100,Malegno,2017,F,20
+017100,Malegno,2017,M,21
+017100,Malegno,2018,F,16
+017100,Malegno,2018,M,20
+017100,Malegno,2019,F,16
+017100,Malegno,2019,M,20
+017100,Malegno,2020,F,21
+017100,Malegno,2020,M,19
+017100,Malegno,2021,F,24
+017100,Malegno,2021,M,22
+017100,Malegno,2022,F,24
+017100,Malegno,2022,M,17
+017100,Malegno,2023,F,24
+017100,Malegno,2023,M,18
+017100,Malegno,2024,F,25
+017100,Malegno,2024,M,15
+017101,Malonno,2010,F,29
+017101,Malonno,2010,M,20
+017101,Malonno,2011,F,35
+017101,Malonno,2011,M,15
+017101,Malonno,2012,F,36
+017101,Malonno,2012,M,9
+017101,Malonno,2013,F,36
+017101,Malonno,2013,M,9
+017101,Malonno,2014,F,31
+017101,Malonno,2014,M,11
+017101,Malonno,2015,F,30
+017101,Malonno,2015,M,13
+017101,Malonno,2016,F,33
+017101,Malonno,2016,M,12
+017101,Malonno,2017,F,34
+017101,Malonno,2017,M,11
+017101,Malonno,2018,F,35
+017101,Malonno,2018,M,13
+017101,Malonno,2019,F,48
+017101,Malonno,2019,M,15
+017101,Malonno,2020,F,50
+017101,Malonno,2020,M,16
+017101,Malonno,2021,F,48
+017101,Malonno,2021,M,22
+017101,Malonno,2022,F,44
+017101,Malonno,2022,M,24
+017101,Malonno,2023,F,45
+017101,Malonno,2023,M,17
+017101,Malonno,2024,F,44
+017101,Malonno,2024,M,20
+017102,Manerba del Garda,2010,F,41
+017102,Manerba del Garda,2010,M,35
+017102,Manerba del Garda,2011,F,46
+017102,Manerba del Garda,2011,M,32
+017102,Manerba del Garda,2012,F,43
+017102,Manerba del Garda,2012,M,35
+017102,Manerba del Garda,2013,F,45
+017102,Manerba del Garda,2013,M,36
+017102,Manerba del Garda,2014,F,50
+017102,Manerba del Garda,2014,M,39
+017102,Manerba del Garda,2015,F,50
+017102,Manerba del Garda,2015,M,35
+017102,Manerba del Garda,2016,F,47
+017102,Manerba del Garda,2016,M,43
+017102,Manerba del Garda,2017,F,51
+017102,Manerba del Garda,2017,M,48
+017102,Manerba del Garda,2018,F,63
+017102,Manerba del Garda,2018,M,54
+017102,Manerba del Garda,2019,F,69
+017102,Manerba del Garda,2019,M,53
+017102,Manerba del Garda,2020,F,76
+017102,Manerba del Garda,2020,M,51
+017102,Manerba del Garda,2021,F,78
+017102,Manerba del Garda,2021,M,52
+017102,Manerba del Garda,2022,F,73
+017102,Manerba del Garda,2022,M,48
+017102,Manerba del Garda,2023,F,78
+017102,Manerba del Garda,2023,M,53
+017102,Manerba del Garda,2024,F,80
+017102,Manerba del Garda,2024,M,49
+017103,Manerbio,2010,F,169
+017103,Manerbio,2010,M,147
+017103,Manerbio,2011,F,174
+017103,Manerbio,2011,M,135
+017103,Manerbio,2012,F,165
+017103,Manerbio,2012,M,133
+017103,Manerbio,2013,F,159
+017103,Manerbio,2013,M,129
+017103,Manerbio,2014,F,163
+017103,Manerbio,2014,M,127
+017103,Manerbio,2015,F,152
+017103,Manerbio,2015,M,136
+017103,Manerbio,2016,F,160
+017103,Manerbio,2016,M,144
+017103,Manerbio,2017,F,160
+017103,Manerbio,2017,M,141
+017103,Manerbio,2018,F,173
+017103,Manerbio,2018,M,151
+017103,Manerbio,2019,F,183
+017103,Manerbio,2019,M,144
+017103,Manerbio,2020,F,193
+017103,Manerbio,2020,M,139
+017103,Manerbio,2021,F,192
+017103,Manerbio,2021,M,132
+017103,Manerbio,2022,F,175
+017103,Manerbio,2022,M,140
+017103,Manerbio,2023,F,178
+017103,Manerbio,2023,M,156
+017103,Manerbio,2024,F,195
+017103,Manerbio,2024,M,151
+017104,Marcheno,2010,F,49
+017104,Marcheno,2010,M,29
+017104,Marcheno,2011,F,42
+017104,Marcheno,2011,M,32
+017104,Marcheno,2012,F,46
+017104,Marcheno,2012,M,39
+017104,Marcheno,2013,F,46
+017104,Marcheno,2013,M,28
+017104,Marcheno,2014,F,45
+017104,Marcheno,2014,M,24
+017104,Marcheno,2015,F,39
+017104,Marcheno,2015,M,35
+017104,Marcheno,2016,F,45
+017104,Marcheno,2016,M,34
+017104,Marcheno,2017,F,50
+017104,Marcheno,2017,M,39
+017104,Marcheno,2018,F,53
+017104,Marcheno,2018,M,38
+017104,Marcheno,2019,F,50
+017104,Marcheno,2019,M,43
+017104,Marcheno,2020,F,52
+017104,Marcheno,2020,M,37
+017104,Marcheno,2021,F,55
+017104,Marcheno,2021,M,33
+017104,Marcheno,2022,F,59
+017104,Marcheno,2022,M,34
+017104,Marcheno,2023,F,62
+017104,Marcheno,2023,M,33
+017104,Marcheno,2024,F,59
+017104,Marcheno,2024,M,33
+017105,Marmentino,2010,F,8
+017105,Marmentino,2010,M,2
+017105,Marmentino,2011,F,7
+017105,Marmentino,2011,M,5
+017105,Marmentino,2012,F,5
+017105,Marmentino,2012,M,5
+017105,Marmentino,2013,F,5
+017105,Marmentino,2013,M,5
+017105,Marmentino,2014,F,7
+017105,Marmentino,2014,M,7
+017105,Marmentino,2015,F,7
+017105,Marmentino,2015,M,7
+017105,Marmentino,2016,F,6
+017105,Marmentino,2016,M,4
+017105,Marmentino,2017,F,3
+017105,Marmentino,2017,M,3
+017105,Marmentino,2018,F,4
+017105,Marmentino,2018,M,2
+017105,Marmentino,2019,F,7
+017105,Marmentino,2019,M,1
+017105,Marmentino,2020,F,6
+017105,Marmentino,2021,F,4
+017105,Marmentino,2022,F,6
+017105,Marmentino,2022,M,2
+017105,Marmentino,2023,F,5
+017105,Marmentino,2023,M,4
+017105,Marmentino,2024,F,6
+017105,Marmentino,2024,M,4
+017106,Marone,2010,F,41
+017106,Marone,2010,M,23
+017106,Marone,2011,F,39
+017106,Marone,2011,M,28
+017106,Marone,2012,F,42
+017106,Marone,2012,M,26
+017106,Marone,2013,F,40
+017106,Marone,2013,M,31
+017106,Marone,2014,F,41
+017106,Marone,2014,M,30
+017106,Marone,2015,F,39
+017106,Marone,2015,M,31
+017106,Marone,2016,F,39
+017106,Marone,2016,M,35
+017106,Marone,2017,F,41
+017106,Marone,2017,M,34
+017106,Marone,2018,F,38
+017106,Marone,2018,M,32
+017106,Marone,2019,F,40
+017106,Marone,2019,M,37
+017106,Marone,2020,F,42
+017106,Marone,2020,M,32
+017106,Marone,2021,F,47
+017106,Marone,2021,M,23
+017106,Marone,2022,F,47
+017106,Marone,2022,M,27
+017106,Marone,2023,F,50
+017106,Marone,2023,M,24
+017106,Marone,2024,F,47
+017106,Marone,2024,M,25
+017107,Mazzano,2010,F,132
+017107,Mazzano,2010,M,83
+017107,Mazzano,2011,F,131
+017107,Mazzano,2011,M,74
+017107,Mazzano,2012,F,142
+017107,Mazzano,2012,M,83
+017107,Mazzano,2013,F,144
+017107,Mazzano,2013,M,82
+017107,Mazzano,2014,F,137
+017107,Mazzano,2014,M,88
+017107,Mazzano,2015,F,126
+017107,Mazzano,2015,M,82
+017107,Mazzano,2016,F,116
+017107,Mazzano,2016,M,95
+017107,Mazzano,2017,F,128
+017107,Mazzano,2017,M,102
+017107,Mazzano,2018,F,135
+017107,Mazzano,2018,M,105
+017107,Mazzano,2019,F,133
+017107,Mazzano,2019,M,126
+017107,Mazzano,2020,F,136
+017107,Mazzano,2020,M,124
+017107,Mazzano,2021,F,143
+017107,Mazzano,2021,M,131
+017107,Mazzano,2022,F,161
+017107,Mazzano,2022,M,123
+017107,Mazzano,2023,F,177
+017107,Mazzano,2023,M,134
+017107,Mazzano,2024,F,183
+017107,Mazzano,2024,M,141
+017108,Milzano,2010,F,14
+017108,Milzano,2010,M,17
+017108,Milzano,2011,F,16
+017108,Milzano,2011,M,13
+017108,Milzano,2012,F,19
+017108,Milzano,2012,M,13
+017108,Milzano,2013,F,16
+017108,Milzano,2013,M,14
+017108,Milzano,2014,F,21
+017108,Milzano,2014,M,14
+017108,Milzano,2015,F,16
+017108,Milzano,2015,M,10
+017108,Milzano,2016,F,20
+017108,Milzano,2016,M,8
+017108,Milzano,2017,F,18
+017108,Milzano,2017,M,12
+017108,Milzano,2018,F,17
+017108,Milzano,2018,M,10
+017108,Milzano,2019,F,17
+017108,Milzano,2019,M,11
+017108,Milzano,2020,F,13
+017108,Milzano,2020,M,11
+017108,Milzano,2021,F,19
+017108,Milzano,2021,M,11
+017108,Milzano,2022,F,21
+017108,Milzano,2022,M,8
+017108,Milzano,2023,F,20
+017108,Milzano,2023,M,9
+017108,Milzano,2024,F,17
+017108,Milzano,2024,M,10
+017109,Moniga del Garda,2010,F,31
+017109,Moniga del Garda,2010,M,26
+017109,Moniga del Garda,2011,F,28
+017109,Moniga del Garda,2011,M,31
+017109,Moniga del Garda,2012,F,25
+017109,Moniga del Garda,2012,M,24
+017109,Moniga del Garda,2013,F,23
+017109,Moniga del Garda,2013,M,23
+017109,Moniga del Garda,2014,F,23
+017109,Moniga del Garda,2014,M,24
+017109,Moniga del Garda,2015,F,20
+017109,Moniga del Garda,2015,M,24
+017109,Moniga del Garda,2016,F,21
+017109,Moniga del Garda,2016,M,25
+017109,Moniga del Garda,2017,F,21
+017109,Moniga del Garda,2017,M,20
+017109,Moniga del Garda,2018,F,23
+017109,Moniga del Garda,2018,M,26
+017109,Moniga del Garda,2019,F,32
+017109,Moniga del Garda,2019,M,26
+017109,Moniga del Garda,2020,F,33
+017109,Moniga del Garda,2020,M,25
+017109,Moniga del Garda,2021,F,36
+017109,Moniga del Garda,2021,M,26
+017109,Moniga del Garda,2022,F,34
+017109,Moniga del Garda,2022,M,26
+017109,Moniga del Garda,2023,F,35
+017109,Moniga del Garda,2023,M,26
+017109,Moniga del Garda,2024,F,37
+017109,Moniga del Garda,2024,M,23
+017110,Monno,2010,F,3
+017110,Monno,2010,M,2
+017110,Monno,2011,F,3
+017110,Monno,2011,M,3
+017110,Monno,2012,F,5
+017110,Monno,2012,M,2
+017110,Monno,2013,F,6
+017110,Monno,2013,M,2
+017110,Monno,2014,F,6
+017110,Monno,2014,M,2
+017110,Monno,2015,F,6
+017110,Monno,2015,M,2
+017110,Monno,2016,F,8
+017110,Monno,2016,M,2
+017110,Monno,2017,F,9
+017110,Monno,2017,M,2
+017110,Monno,2018,F,5
+017110,Monno,2018,M,2
+017110,Monno,2019,F,9
+017110,Monno,2019,M,3
+017110,Monno,2020,F,9
+017110,Monno,2020,M,3
+017110,Monno,2021,F,6
+017110,Monno,2021,M,4
+017110,Monno,2022,F,7
+017110,Monno,2022,M,3
+017110,Monno,2023,F,7
+017110,Monno,2023,M,3
+017110,Monno,2024,F,7
+017110,Monno,2024,M,3
+017111,Monte Isola,2010,F,14
+017111,Monte Isola,2010,M,15
+017111,Monte Isola,2011,F,22
+017111,Monte Isola,2011,M,14
+017111,Monte Isola,2012,F,24
+017111,Monte Isola,2012,M,12
+017111,Monte Isola,2013,F,24
+017111,Monte Isola,2013,M,13
+017111,Monte Isola,2014,F,18
+017111,Monte Isola,2014,M,14
+017111,Monte Isola,2015,F,22
+017111,Monte Isola,2015,M,13
+017111,Monte Isola,2016,F,22
+017111,Monte Isola,2016,M,15
+017111,Monte Isola,2017,F,24
+017111,Monte Isola,2017,M,17
+017111,Monte Isola,2018,F,22
+017111,Monte Isola,2018,M,17
+017111,Monte Isola,2019,F,18
+017111,Monte Isola,2019,M,24
+017111,Monte Isola,2020,F,26
+017111,Monte Isola,2020,M,21
+017111,Monte Isola,2021,F,23
+017111,Monte Isola,2021,M,23
+017111,Monte Isola,2022,F,21
+017111,Monte Isola,2022,M,23
+017111,Monte Isola,2023,F,16
+017111,Monte Isola,2023,M,23
+017111,Monte Isola,2024,F,18
+017111,Monte Isola,2024,M,24
+017112,Monticelli Brusati,2010,F,59
+017112,Monticelli Brusati,2010,M,40
+017112,Monticelli Brusati,2011,F,67
+017112,Monticelli Brusati,2011,M,32
+017112,Monticelli Brusati,2012,F,71
+017112,Monticelli Brusati,2012,M,36
+017112,Monticelli Brusati,2013,F,68
+017112,Monticelli Brusati,2013,M,31
+017112,Monticelli Brusati,2014,F,60
+017112,Monticelli Brusati,2014,M,40
+017112,Monticelli Brusati,2015,F,50
+017112,Monticelli Brusati,2015,M,42
+017112,Monticelli Brusati,2016,F,53
+017112,Monticelli Brusati,2016,M,41
+017112,Monticelli Brusati,2017,F,58
+017112,Monticelli Brusati,2017,M,38
+017112,Monticelli Brusati,2018,F,55
+017112,Monticelli Brusati,2018,M,37
+017112,Monticelli Brusati,2019,F,59
+017112,Monticelli Brusati,2019,M,46
+017112,Monticelli Brusati,2020,F,70
+017112,Monticelli Brusati,2020,M,47
+017112,Monticelli Brusati,2021,F,67
+017112,Monticelli Brusati,2021,M,44
+017112,Monticelli Brusati,2022,F,63
+017112,Monticelli Brusati,2022,M,46
+017112,Monticelli Brusati,2023,F,72
+017112,Monticelli Brusati,2023,M,55
+017112,Monticelli Brusati,2024,F,72
+017112,Monticelli Brusati,2024,M,58
+017113,Montichiari,2010,F,255
+017113,Montichiari,2010,M,181
+017113,Montichiari,2011,F,248
+017113,Montichiari,2011,M,160
+017113,Montichiari,2012,F,236
+017113,Montichiari,2012,M,161
+017113,Montichiari,2013,F,239
+017113,Montichiari,2013,M,161
+017113,Montichiari,2014,F,228
+017113,Montichiari,2014,M,180
+017113,Montichiari,2015,F,235
+017113,Montichiari,2015,M,189
+017113,Montichiari,2016,F,254
+017113,Montichiari,2016,M,200
+017113,Montichiari,2017,F,292
+017113,Montichiari,2017,M,195
+017113,Montichiari,2018,F,294
+017113,Montichiari,2018,M,196
+017113,Montichiari,2019,F,317
+017113,Montichiari,2019,M,205
+017113,Montichiari,2020,F,339
+017113,Montichiari,2020,M,206
+017113,Montichiari,2021,F,348
+017113,Montichiari,2021,M,215
+017113,Montichiari,2022,F,355
+017113,Montichiari,2022,M,238
+017113,Montichiari,2023,F,379
+017113,Montichiari,2023,M,247
+017113,Montichiari,2024,F,404
+017113,Montichiari,2024,M,258
+017114,Montirone,2010,F,42
+017114,Montirone,2010,M,51
+017114,Montirone,2011,F,41
+017114,Montirone,2011,M,45
+017114,Montirone,2012,F,41
+017114,Montirone,2012,M,39
+017114,Montirone,2013,F,37
+017114,Montirone,2013,M,40
+017114,Montirone,2014,F,38
+017114,Montirone,2014,M,35
+017114,Montirone,2015,F,44
+017114,Montirone,2015,M,32
+017114,Montirone,2016,F,49
+017114,Montirone,2016,M,33
+017114,Montirone,2017,F,63
+017114,Montirone,2017,M,31
+017114,Montirone,2018,F,62
+017114,Montirone,2018,M,34
+017114,Montirone,2019,F,64
+017114,Montirone,2019,M,33
+017114,Montirone,2020,F,65
+017114,Montirone,2020,M,41
+017114,Montirone,2021,F,63
+017114,Montirone,2021,M,41
+017114,Montirone,2022,F,65
+017114,Montirone,2022,M,47
+017114,Montirone,2023,F,70
+017114,Montirone,2023,M,48
+017114,Montirone,2024,F,73
+017114,Montirone,2024,M,51
+017115,Mura,2010,F,7
+017115,Mura,2010,M,3
+017115,Mura,2011,F,7
+017115,Mura,2011,M,3
+017115,Mura,2012,F,5
+017115,Mura,2012,M,3
+017115,Mura,2013,F,4
+017115,Mura,2013,M,1
+017115,Mura,2014,F,3
+017115,Mura,2014,M,1
+017115,Mura,2015,F,5
+017115,Mura,2015,M,2
+017115,Mura,2016,F,10
+017115,Mura,2016,M,3
+017115,Mura,2017,F,10
+017115,Mura,2017,M,6
+017115,Mura,2018,F,10
+017115,Mura,2018,M,4
+017115,Mura,2019,F,13
+017115,Mura,2019,M,5
+017115,Mura,2020,F,9
+017115,Mura,2020,M,6
+017115,Mura,2021,F,12
+017115,Mura,2021,M,9
+017115,Mura,2022,F,12
+017115,Mura,2022,M,9
+017115,Mura,2023,F,12
+017115,Mura,2023,M,8
+017115,Mura,2024,F,10
+017115,Mura,2024,M,8
+017116,Muscoline,2010,F,28
+017116,Muscoline,2010,M,21
+017116,Muscoline,2011,F,31
+017116,Muscoline,2011,M,21
+017116,Muscoline,2012,F,26
+017116,Muscoline,2012,M,21
+017116,Muscoline,2013,F,30
+017116,Muscoline,2013,M,23
+017116,Muscoline,2014,F,39
+017116,Muscoline,2014,M,20
+017116,Muscoline,2015,F,35
+017116,Muscoline,2015,M,17
+017116,Muscoline,2016,F,29
+017116,Muscoline,2016,M,21
+017116,Muscoline,2017,F,31
+017116,Muscoline,2017,M,22
+017116,Muscoline,2018,F,32
+017116,Muscoline,2018,M,21
+017116,Muscoline,2019,F,32
+017116,Muscoline,2019,M,22
+017116,Muscoline,2020,F,31
+017116,Muscoline,2020,M,20
+017116,Muscoline,2021,F,38
+017116,Muscoline,2021,M,21
+017116,Muscoline,2022,F,42
+017116,Muscoline,2022,M,21
+017116,Muscoline,2023,F,45
+017116,Muscoline,2023,M,26
+017116,Muscoline,2024,F,49
+017116,Muscoline,2024,M,26
+017117,Nave,2010,F,144
+017117,Nave,2010,M,108
+017117,Nave,2011,F,141
+017117,Nave,2011,M,97
+017117,Nave,2012,F,132
+017117,Nave,2012,M,100
+017117,Nave,2013,F,129
+017117,Nave,2013,M,108
+017117,Nave,2014,F,133
+017117,Nave,2014,M,105
+017117,Nave,2015,F,123
+017117,Nave,2015,M,102
+017117,Nave,2016,F,130
+017117,Nave,2016,M,112
+017117,Nave,2017,F,140
+017117,Nave,2017,M,115
+017117,Nave,2018,F,163
+017117,Nave,2018,M,121
+017117,Nave,2019,F,175
+017117,Nave,2019,M,116
+017117,Nave,2020,F,183
+017117,Nave,2020,M,113
+017117,Nave,2021,F,180
+017117,Nave,2021,M,119
+017117,Nave,2022,F,194
+017117,Nave,2022,M,119
+017117,Nave,2023,F,184
+017117,Nave,2023,M,109
+017117,Nave,2024,F,179
+017117,Nave,2024,M,101
+017118,Niardo,2010,F,24
+017118,Niardo,2010,M,28
+017118,Niardo,2011,F,29
+017118,Niardo,2011,M,25
+017118,Niardo,2012,F,27
+017118,Niardo,2012,M,23
+017118,Niardo,2013,F,23
+017118,Niardo,2013,M,21
+017118,Niardo,2014,F,20
+017118,Niardo,2014,M,18
+017118,Niardo,2015,F,18
+017118,Niardo,2015,M,20
+017118,Niardo,2016,F,22
+017118,Niardo,2016,M,24
+017118,Niardo,2017,F,30
+017118,Niardo,2017,M,24
+017118,Niardo,2018,F,35
+017118,Niardo,2018,M,20
+017118,Niardo,2019,F,34
+017118,Niardo,2019,M,22
+017118,Niardo,2020,F,45
+017118,Niardo,2020,M,19
+017118,Niardo,2021,F,40
+017118,Niardo,2021,M,18
+017118,Niardo,2022,F,44
+017118,Niardo,2022,M,13
+017118,Niardo,2023,F,44
+017118,Niardo,2023,M,18
+017118,Niardo,2024,F,43
+017118,Niardo,2024,M,21
+017119,Nuvolento,2010,F,46
+017119,Nuvolento,2010,M,32
+017119,Nuvolento,2011,F,49
+017119,Nuvolento,2011,M,31
+017119,Nuvolento,2012,F,47
+017119,Nuvolento,2012,M,27
+017119,Nuvolento,2013,F,43
+017119,Nuvolento,2013,M,25
+017119,Nuvolento,2014,F,39
+017119,Nuvolento,2014,M,24
+017119,Nuvolento,2015,F,37
+017119,Nuvolento,2015,M,24
+017119,Nuvolento,2016,F,43
+017119,Nuvolento,2016,M,21
+017119,Nuvolento,2017,F,51
+017119,Nuvolento,2017,M,31
+017119,Nuvolento,2018,F,58
+017119,Nuvolento,2018,M,29
+017119,Nuvolento,2019,F,53
+017119,Nuvolento,2019,M,36
+017119,Nuvolento,2020,F,52
+017119,Nuvolento,2020,M,35
+017119,Nuvolento,2021,F,46
+017119,Nuvolento,2021,M,32
+017119,Nuvolento,2022,F,59
+017119,Nuvolento,2022,M,33
+017119,Nuvolento,2023,F,56
+017119,Nuvolento,2023,M,34
+017119,Nuvolento,2024,F,69
+017119,Nuvolento,2024,M,37
+017120,Nuvolera,2010,F,52
+017120,Nuvolera,2010,M,36
+017120,Nuvolera,2011,F,40
+017120,Nuvolera,2011,M,35
+017120,Nuvolera,2012,F,34
+017120,Nuvolera,2012,M,36
+017120,Nuvolera,2013,F,38
+017120,Nuvolera,2013,M,38
+017120,Nuvolera,2014,F,41
+017120,Nuvolera,2014,M,32
+017120,Nuvolera,2015,F,44
+017120,Nuvolera,2015,M,39
+017120,Nuvolera,2016,F,44
+017120,Nuvolera,2016,M,41
+017120,Nuvolera,2017,F,43
+017120,Nuvolera,2017,M,37
+017120,Nuvolera,2018,F,49
+017120,Nuvolera,2018,M,35
+017120,Nuvolera,2019,F,49
+017120,Nuvolera,2019,M,38
+017120,Nuvolera,2020,F,67
+017120,Nuvolera,2020,M,42
+017120,Nuvolera,2021,F,76
+017120,Nuvolera,2021,M,43
+017120,Nuvolera,2022,F,85
+017120,Nuvolera,2022,M,48
+017120,Nuvolera,2023,F,81
+017120,Nuvolera,2023,M,52
+017120,Nuvolera,2024,F,83
+017120,Nuvolera,2024,M,42
+017121,Odolo,2010,F,30
+017121,Odolo,2010,M,16
+017121,Odolo,2011,F,28
+017121,Odolo,2011,M,15
+017121,Odolo,2012,F,25
+017121,Odolo,2012,M,16
+017121,Odolo,2013,F,23
+017121,Odolo,2013,M,15
+017121,Odolo,2014,F,28
+017121,Odolo,2014,M,14
+017121,Odolo,2015,F,28
+017121,Odolo,2015,M,14
+017121,Odolo,2016,F,28
+017121,Odolo,2016,M,16
+017121,Odolo,2017,F,26
+017121,Odolo,2017,M,15
+017121,Odolo,2018,F,31
+017121,Odolo,2018,M,12
+017121,Odolo,2019,F,29
+017121,Odolo,2019,M,12
+017121,Odolo,2020,F,24
+017121,Odolo,2020,M,11
+017121,Odolo,2021,F,26
+017121,Odolo,2021,M,8
+017121,Odolo,2022,F,28
+017121,Odolo,2022,M,8
+017121,Odolo,2023,F,27
+017121,Odolo,2023,M,8
+017121,Odolo,2024,F,26
+017121,Odolo,2024,M,6
+017122,Offlaga,2010,F,44
+017122,Offlaga,2010,M,24
+017122,Offlaga,2011,F,41
+017122,Offlaga,2011,M,20
+017122,Offlaga,2012,F,34
+017122,Offlaga,2012,M,18
+017122,Offlaga,2013,F,29
+017122,Offlaga,2013,M,17
+017122,Offlaga,2014,F,27
+017122,Offlaga,2014,M,14
+017122,Offlaga,2015,F,30
+017122,Offlaga,2015,M,13
+017122,Offlaga,2016,F,34
+017122,Offlaga,2016,M,16
+017122,Offlaga,2017,F,41
+017122,Offlaga,2017,M,29
+017122,Offlaga,2018,F,40
+017122,Offlaga,2018,M,28
+017122,Offlaga,2019,F,50
+017122,Offlaga,2019,M,31
+017122,Offlaga,2020,F,53
+017122,Offlaga,2020,M,30
+017122,Offlaga,2021,F,63
+017122,Offlaga,2021,M,32
+017122,Offlaga,2022,F,63
+017122,Offlaga,2022,M,39
+017122,Offlaga,2023,F,71
+017122,Offlaga,2023,M,42
+017122,Offlaga,2024,F,70
+017122,Offlaga,2024,M,42
+017123,Ome,2010,F,39
+017123,Ome,2010,M,25
+017123,Ome,2011,F,40
+017123,Ome,2011,M,20
+017123,Ome,2012,F,35
+017123,Ome,2012,M,19
+017123,Ome,2013,F,32
+017123,Ome,2013,M,18
+017123,Ome,2014,F,30
+017123,Ome,2014,M,18
+017123,Ome,2015,F,28
+017123,Ome,2015,M,19
+017123,Ome,2016,F,29
+017123,Ome,2016,M,23
+017123,Ome,2017,F,38
+017123,Ome,2017,M,25
+017123,Ome,2018,F,35
+017123,Ome,2018,M,27
+017123,Ome,2019,F,42
+017123,Ome,2019,M,23
+017123,Ome,2020,F,46
+017123,Ome,2020,M,27
+017123,Ome,2021,F,51
+017123,Ome,2021,M,30
+017123,Ome,2022,F,44
+017123,Ome,2022,M,33
+017123,Ome,2023,F,46
+017123,Ome,2023,M,29
+017123,Ome,2024,F,41
+017123,Ome,2024,M,39
+017124,Ono San Pietro,2010,F,8
+017124,Ono San Pietro,2010,M,6
+017124,Ono San Pietro,2011,F,6
+017124,Ono San Pietro,2011,M,7
+017124,Ono San Pietro,2012,F,8
+017124,Ono San Pietro,2012,M,7
+017124,Ono San Pietro,2013,F,11
+017124,Ono San Pietro,2013,M,7
+017124,Ono San Pietro,2014,F,14
+017124,Ono San Pietro,2014,M,5
+017124,Ono San Pietro,2015,F,13
+017124,Ono San Pietro,2015,M,5
+017124,Ono San Pietro,2016,F,16
+017124,Ono San Pietro,2016,M,5
+017124,Ono San Pietro,2017,F,15
+017124,Ono San Pietro,2017,M,5
+017124,Ono San Pietro,2018,F,13
+017124,Ono San Pietro,2018,M,7
+017124,Ono San Pietro,2019,F,12
+017124,Ono San Pietro,2019,M,10
+017124,Ono San Pietro,2020,F,12
+017124,Ono San Pietro,2020,M,10
+017124,Ono San Pietro,2021,F,12
+017124,Ono San Pietro,2021,M,11
+017124,Ono San Pietro,2022,F,15
+017124,Ono San Pietro,2022,M,14
+017124,Ono San Pietro,2023,F,16
+017124,Ono San Pietro,2023,M,13
+017124,Ono San Pietro,2024,F,16
+017124,Ono San Pietro,2024,M,16
+017125,Orzinuovi,2010,F,142
+017125,Orzinuovi,2010,M,147
+017125,Orzinuovi,2011,F,133
+017125,Orzinuovi,2011,M,139
+017125,Orzinuovi,2012,F,133
+017125,Orzinuovi,2012,M,129
+017125,Orzinuovi,2013,F,139
+017125,Orzinuovi,2013,M,142
+017125,Orzinuovi,2014,F,139
+017125,Orzinuovi,2014,M,131
+017125,Orzinuovi,2015,F,143
+017125,Orzinuovi,2015,M,135
+017125,Orzinuovi,2016,F,149
+017125,Orzinuovi,2016,M,136
+017125,Orzinuovi,2017,F,155
+017125,Orzinuovi,2017,M,147
+017125,Orzinuovi,2018,F,160
+017125,Orzinuovi,2018,M,142
+017125,Orzinuovi,2019,F,166
+017125,Orzinuovi,2019,M,143
+017125,Orzinuovi,2020,F,176
+017125,Orzinuovi,2020,M,144
+017125,Orzinuovi,2021,F,180
+017125,Orzinuovi,2021,M,139
+017125,Orzinuovi,2022,F,188
+017125,Orzinuovi,2022,M,125
+017125,Orzinuovi,2023,F,196
+017125,Orzinuovi,2023,M,122
+017125,Orzinuovi,2024,F,198
+017125,Orzinuovi,2024,M,124
+017126,Orzivecchi,2010,F,19
+017126,Orzivecchi,2010,M,21
+017126,Orzivecchi,2011,F,22
+017126,Orzivecchi,2011,M,22
+017126,Orzivecchi,2012,F,18
+017126,Orzivecchi,2012,M,22
+017126,Orzivecchi,2013,F,22
+017126,Orzivecchi,2013,M,24
+017126,Orzivecchi,2014,F,23
+017126,Orzivecchi,2014,M,19
+017126,Orzivecchi,2015,F,22
+017126,Orzivecchi,2015,M,20
+017126,Orzivecchi,2016,F,23
+017126,Orzivecchi,2016,M,21
+017126,Orzivecchi,2017,F,27
+017126,Orzivecchi,2017,M,26
+017126,Orzivecchi,2018,F,33
+017126,Orzivecchi,2018,M,28
+017126,Orzivecchi,2019,F,36
+017126,Orzivecchi,2019,M,32
+017126,Orzivecchi,2020,F,40
+017126,Orzivecchi,2020,M,27
+017126,Orzivecchi,2021,F,40
+017126,Orzivecchi,2021,M,28
+017126,Orzivecchi,2022,F,46
+017126,Orzivecchi,2022,M,28
+017126,Orzivecchi,2023,F,46
+017126,Orzivecchi,2023,M,35
+017126,Orzivecchi,2024,F,48
+017126,Orzivecchi,2024,M,30
+017127,Ospitaletto,2010,F,131
+017127,Ospitaletto,2010,M,110
+017127,Ospitaletto,2011,F,119
+017127,Ospitaletto,2011,M,105
+017127,Ospitaletto,2012,F,121
+017127,Ospitaletto,2012,M,101
+017127,Ospitaletto,2013,F,116
+017127,Ospitaletto,2013,M,104
+017127,Ospitaletto,2014,F,120
+017127,Ospitaletto,2014,M,108
+017127,Ospitaletto,2015,F,124
+017127,Ospitaletto,2015,M,106
+017127,Ospitaletto,2016,F,135
+017127,Ospitaletto,2016,M,99
+017127,Ospitaletto,2017,F,145
+017127,Ospitaletto,2017,M,93
+017127,Ospitaletto,2018,F,156
+017127,Ospitaletto,2018,M,101
+017127,Ospitaletto,2019,F,163
+017127,Ospitaletto,2019,M,128
+017127,Ospitaletto,2020,F,167
+017127,Ospitaletto,2020,M,132
+017127,Ospitaletto,2021,F,192
+017127,Ospitaletto,2021,M,154
+017127,Ospitaletto,2022,F,202
+017127,Ospitaletto,2022,M,151
+017127,Ospitaletto,2023,F,207
+017127,Ospitaletto,2023,M,158
+017127,Ospitaletto,2024,F,202
+017127,Ospitaletto,2024,M,147
+017128,Ossimo,2010,F,15
+017128,Ossimo,2010,M,11
+017128,Ossimo,2011,F,11
+017128,Ossimo,2011,M,12
+017128,Ossimo,2012,F,12
+017128,Ossimo,2012,M,13
+017128,Ossimo,2013,F,9
+017128,Ossimo,2013,M,10
+017128,Ossimo,2014,F,11
+017128,Ossimo,2014,M,12
+017128,Ossimo,2015,F,12
+017128,Ossimo,2015,M,11
+017128,Ossimo,2016,F,11
+017128,Ossimo,2016,M,11
+017128,Ossimo,2017,F,15
+017128,Ossimo,2017,M,9
+017128,Ossimo,2018,F,14
+017128,Ossimo,2018,M,11
+017128,Ossimo,2019,F,13
+017128,Ossimo,2019,M,11
+017128,Ossimo,2020,F,13
+017128,Ossimo,2020,M,13
+017128,Ossimo,2021,F,17
+017128,Ossimo,2021,M,14
+017128,Ossimo,2022,F,17
+017128,Ossimo,2022,M,16
+017128,Ossimo,2023,F,16
+017128,Ossimo,2023,M,19
+017128,Ossimo,2024,F,16
+017128,Ossimo,2024,M,21
+017129,Padenghe sul Garda,2010,F,64
+017129,Padenghe sul Garda,2010,M,43
+017129,Padenghe sul Garda,2011,F,78
+017129,Padenghe sul Garda,2011,M,46
+017129,Padenghe sul Garda,2012,F,68
+017129,Padenghe sul Garda,2012,M,41
+017129,Padenghe sul Garda,2013,F,66
+017129,Padenghe sul Garda,2013,M,39
+017129,Padenghe sul Garda,2014,F,64
+017129,Padenghe sul Garda,2014,M,42
+017129,Padenghe sul Garda,2015,F,52
+017129,Padenghe sul Garda,2015,M,41
+017129,Padenghe sul Garda,2016,F,53
+017129,Padenghe sul Garda,2016,M,40
+017129,Padenghe sul Garda,2017,F,58
+017129,Padenghe sul Garda,2017,M,39
+017129,Padenghe sul Garda,2018,F,58
+017129,Padenghe sul Garda,2018,M,41
+017129,Padenghe sul Garda,2019,F,60
+017129,Padenghe sul Garda,2019,M,40
+017129,Padenghe sul Garda,2020,F,63
+017129,Padenghe sul Garda,2020,M,41
+017129,Padenghe sul Garda,2021,F,59
+017129,Padenghe sul Garda,2021,M,42
+017129,Padenghe sul Garda,2022,F,66
+017129,Padenghe sul Garda,2022,M,47
+017129,Padenghe sul Garda,2023,F,78
+017129,Padenghe sul Garda,2023,M,58
+017129,Padenghe sul Garda,2024,F,80
+017129,Padenghe sul Garda,2024,M,59
+017130,Paderno Franciacorta,2010,F,50
+017130,Paderno Franciacorta,2010,M,30
+017130,Paderno Franciacorta,2011,F,52
+017130,Paderno Franciacorta,2011,M,30
+017130,Paderno Franciacorta,2012,F,42
+017130,Paderno Franciacorta,2012,M,25
+017130,Paderno Franciacorta,2013,F,45
+017130,Paderno Franciacorta,2013,M,26
+017130,Paderno Franciacorta,2014,F,45
+017130,Paderno Franciacorta,2014,M,31
+017130,Paderno Franciacorta,2015,F,49
+017130,Paderno Franciacorta,2015,M,38
+017130,Paderno Franciacorta,2016,F,48
+017130,Paderno Franciacorta,2016,M,36
+017130,Paderno Franciacorta,2017,F,44
+017130,Paderno Franciacorta,2017,M,41
+017130,Paderno Franciacorta,2018,F,49
+017130,Paderno Franciacorta,2018,M,43
+017130,Paderno Franciacorta,2019,F,53
+017130,Paderno Franciacorta,2019,M,39
+017130,Paderno Franciacorta,2020,F,51
+017130,Paderno Franciacorta,2020,M,49
+017130,Paderno Franciacorta,2021,F,58
+017130,Paderno Franciacorta,2021,M,53
+017130,Paderno Franciacorta,2022,F,65
+017130,Paderno Franciacorta,2022,M,51
+017130,Paderno Franciacorta,2023,F,62
+017130,Paderno Franciacorta,2023,M,48
+017130,Paderno Franciacorta,2024,F,65
+017130,Paderno Franciacorta,2024,M,46
+017131,Paisco Loveno,2012,F,1
+017131,Paisco Loveno,2013,F,2
+017131,Paisco Loveno,2014,F,2
+017131,Paisco Loveno,2015,F,3
+017131,Paisco Loveno,2016,F,2
+017131,Paisco Loveno,2017,F,2
+017131,Paisco Loveno,2018,F,1
+017131,Paisco Loveno,2019,F,1
+017131,Paisco Loveno,2020,F,1
+017131,Paisco Loveno,2021,F,3
+017131,Paisco Loveno,2022,F,2
+017131,Paisco Loveno,2023,F,2
+017131,Paisco Loveno,2024,F,2
+017132,Paitone,2010,F,21
+017132,Paitone,2010,M,17
+017132,Paitone,2011,F,22
+017132,Paitone,2011,M,20
+017132,Paitone,2012,F,22
+017132,Paitone,2012,M,21
+017132,Paitone,2013,F,28
+017132,Paitone,2013,M,20
+017132,Paitone,2014,F,27
+017132,Paitone,2014,M,19
+017132,Paitone,2015,F,29
+017132,Paitone,2015,M,19
+017132,Paitone,2016,F,27
+017132,Paitone,2016,M,18
+017132,Paitone,2017,F,28
+017132,Paitone,2017,M,17
+017132,Paitone,2018,F,30
+017132,Paitone,2018,M,15
+017132,Paitone,2019,F,28
+017132,Paitone,2019,M,18
+017132,Paitone,2020,F,25
+017132,Paitone,2020,M,17
+017132,Paitone,2021,F,32
+017132,Paitone,2021,M,18
+017132,Paitone,2022,F,34
+017132,Paitone,2022,M,23
+017132,Paitone,2023,F,34
+017132,Paitone,2023,M,28
+017132,Paitone,2024,F,34
+017132,Paitone,2024,M,24
+017133,Palazzolo sull'Oglio,2010,F,217
+017133,Palazzolo sull'Oglio,2010,M,168
+017133,Palazzolo sull'Oglio,2011,F,224
+017133,Palazzolo sull'Oglio,2011,M,160
+017133,Palazzolo sull'Oglio,2012,F,209
+017133,Palazzolo sull'Oglio,2012,M,163
+017133,Palazzolo sull'Oglio,2013,F,218
+017133,Palazzolo sull'Oglio,2013,M,160
+017133,Palazzolo sull'Oglio,2014,F,218
+017133,Palazzolo sull'Oglio,2014,M,178
+017133,Palazzolo sull'Oglio,2015,F,224
+017133,Palazzolo sull'Oglio,2015,M,187
+017133,Palazzolo sull'Oglio,2016,F,220
+017133,Palazzolo sull'Oglio,2016,M,206
+017133,Palazzolo sull'Oglio,2017,F,239
+017133,Palazzolo sull'Oglio,2017,M,200
+017133,Palazzolo sull'Oglio,2018,F,252
+017133,Palazzolo sull'Oglio,2018,M,205
+017133,Palazzolo sull'Oglio,2019,F,259
+017133,Palazzolo sull'Oglio,2019,M,219
+017133,Palazzolo sull'Oglio,2020,F,278
+017133,Palazzolo sull'Oglio,2020,M,198
+017133,Palazzolo sull'Oglio,2021,F,290
+017133,Palazzolo sull'Oglio,2021,M,194
+017133,Palazzolo sull'Oglio,2022,F,279
+017133,Palazzolo sull'Oglio,2022,M,181
+017133,Palazzolo sull'Oglio,2023,F,274
+017133,Palazzolo sull'Oglio,2023,M,176
+017133,Palazzolo sull'Oglio,2024,F,274
+017133,Palazzolo sull'Oglio,2024,M,177
+017134,Paratico,2010,F,50
+017134,Paratico,2010,M,32
+017134,Paratico,2011,F,48
+017134,Paratico,2011,M,30
+017134,Paratico,2012,F,41
+017134,Paratico,2012,M,27
+017134,Paratico,2013,F,49
+017134,Paratico,2013,M,29
+017134,Paratico,2014,F,47
+017134,Paratico,2014,M,31
+017134,Paratico,2015,F,48
+017134,Paratico,2015,M,30
+017134,Paratico,2016,F,43
+017134,Paratico,2016,M,31
+017134,Paratico,2017,F,53
+017134,Paratico,2017,M,41
+017134,Paratico,2018,F,61
+017134,Paratico,2018,M,39
+017134,Paratico,2019,F,68
+017134,Paratico,2019,M,44
+017134,Paratico,2020,F,74
+017134,Paratico,2020,M,45
+017134,Paratico,2021,F,63
+017134,Paratico,2021,M,48
+017134,Paratico,2022,F,55
+017134,Paratico,2022,M,40
+017134,Paratico,2023,F,59
+017134,Paratico,2023,M,40
+017134,Paratico,2024,F,58
+017134,Paratico,2024,M,44
+017135,Paspardo,2010,F,8
+017135,Paspardo,2010,M,4
+017135,Paspardo,2011,F,7
+017135,Paspardo,2011,M,2
+017135,Paspardo,2012,F,4
+017135,Paspardo,2012,M,3
+017135,Paspardo,2013,F,3
+017135,Paspardo,2013,M,2
+017135,Paspardo,2014,F,3
+017135,Paspardo,2014,M,2
+017135,Paspardo,2015,F,3
+017135,Paspardo,2015,M,2
+017135,Paspardo,2016,F,4
+017135,Paspardo,2016,M,2
+017135,Paspardo,2017,F,4
+017135,Paspardo,2017,M,3
+017135,Paspardo,2018,F,7
+017135,Paspardo,2018,M,3
+017135,Paspardo,2019,F,6
+017135,Paspardo,2019,M,3
+017135,Paspardo,2020,F,5
+017135,Paspardo,2020,M,3
+017135,Paspardo,2021,F,2
+017135,Paspardo,2021,M,2
+017135,Paspardo,2022,F,4
+017135,Paspardo,2022,M,5
+017135,Paspardo,2023,F,3
+017135,Paspardo,2023,M,5
+017135,Paspardo,2024,F,5
+017135,Paspardo,2024,M,3
+017136,Passirano,2010,F,98
+017136,Passirano,2010,M,54
+017136,Passirano,2011,F,93
+017136,Passirano,2011,M,55
+017136,Passirano,2012,F,76
+017136,Passirano,2012,M,56
+017136,Passirano,2013,F,75
+017136,Passirano,2013,M,66
+017136,Passirano,2014,F,76
+017136,Passirano,2014,M,67
+017136,Passirano,2015,F,86
+017136,Passirano,2015,M,72
+017136,Passirano,2016,F,82
+017136,Passirano,2016,M,72
+017136,Passirano,2017,F,93
+017136,Passirano,2017,M,74
+017136,Passirano,2018,F,101
+017136,Passirano,2018,M,72
+017136,Passirano,2019,F,96
+017136,Passirano,2019,M,82
+017136,Passirano,2020,F,99
+017136,Passirano,2020,M,81
+017136,Passirano,2021,F,104
+017136,Passirano,2021,M,84
+017136,Passirano,2022,F,101
+017136,Passirano,2022,M,81
+017136,Passirano,2023,F,117
+017136,Passirano,2023,M,90
+017136,Passirano,2024,F,119
+017136,Passirano,2024,M,94
+017137,Pavone del Mella,2010,F,43
+017137,Pavone del Mella,2010,M,20
+017137,Pavone del Mella,2011,F,46
+017137,Pavone del Mella,2011,M,18
+017137,Pavone del Mella,2012,F,36
+017137,Pavone del Mella,2012,M,16
+017137,Pavone del Mella,2013,F,38
+017137,Pavone del Mella,2013,M,21
+017137,Pavone del Mella,2014,F,31
+017137,Pavone del Mella,2014,M,23
+017137,Pavone del Mella,2015,F,35
+017137,Pavone del Mella,2015,M,19
+017137,Pavone del Mella,2016,F,35
+017137,Pavone del Mella,2016,M,25
+017137,Pavone del Mella,2017,F,36
+017137,Pavone del Mella,2017,M,20
+017137,Pavone del Mella,2018,F,37
+017137,Pavone del Mella,2018,M,17
+017137,Pavone del Mella,2019,F,48
+017137,Pavone del Mella,2019,M,19
+017137,Pavone del Mella,2020,F,45
+017137,Pavone del Mella,2020,M,24
+017137,Pavone del Mella,2021,F,37
+017137,Pavone del Mella,2021,M,30
+017137,Pavone del Mella,2022,F,36
+017137,Pavone del Mella,2022,M,31
+017137,Pavone del Mella,2023,F,31
+017137,Pavone del Mella,2023,M,33
+017137,Pavone del Mella,2024,F,27
+017137,Pavone del Mella,2024,M,32
+017138,San Paolo,2010,F,58
+017138,San Paolo,2010,M,37
+017138,San Paolo,2011,F,65
+017138,San Paolo,2011,M,40
+017138,San Paolo,2012,F,71
+017138,San Paolo,2012,M,28
+017138,San Paolo,2013,F,62
+017138,San Paolo,2013,M,27
+017138,San Paolo,2014,F,51
+017138,San Paolo,2014,M,31
+017138,San Paolo,2015,F,54
+017138,San Paolo,2015,M,35
+017138,San Paolo,2016,F,51
+017138,San Paolo,2016,M,33
+017138,San Paolo,2017,F,49
+017138,San Paolo,2017,M,30
+017138,San Paolo,2018,F,44
+017138,San Paolo,2018,M,34
+017138,San Paolo,2019,F,45
+017138,San Paolo,2019,M,44
+017138,San Paolo,2020,F,49
+017138,San Paolo,2020,M,38
+017138,San Paolo,2021,F,54
+017138,San Paolo,2021,M,37
+017138,San Paolo,2022,F,55
+017138,San Paolo,2022,M,36
+017138,San Paolo,2023,F,51
+017138,San Paolo,2023,M,41
+017138,San Paolo,2024,F,66
+017138,San Paolo,2024,M,49
+017139,Pertica Alta,2010,F,6
+017139,Pertica Alta,2010,M,2
+017139,Pertica Alta,2011,F,6
+017139,Pertica Alta,2011,M,2
+017139,Pertica Alta,2012,F,4
+017139,Pertica Alta,2012,M,2
+017139,Pertica Alta,2013,F,4
+017139,Pertica Alta,2013,M,2
+017139,Pertica Alta,2014,F,3
+017139,Pertica Alta,2014,M,2
+017139,Pertica Alta,2015,F,4
+017139,Pertica Alta,2015,M,2
+017139,Pertica Alta,2016,F,5
+017139,Pertica Alta,2016,M,5
+017139,Pertica Alta,2017,F,6
+017139,Pertica Alta,2017,M,6
+017139,Pertica Alta,2018,F,3
+017139,Pertica Alta,2018,M,6
+017139,Pertica Alta,2019,F,4
+017139,Pertica Alta,2019,M,4
+017139,Pertica Alta,2020,F,4
+017139,Pertica Alta,2020,M,6
+017139,Pertica Alta,2021,F,3
+017139,Pertica Alta,2021,M,8
+017139,Pertica Alta,2022,F,4
+017139,Pertica Alta,2022,M,8
+017139,Pertica Alta,2023,F,5
+017139,Pertica Alta,2023,M,7
+017139,Pertica Alta,2024,F,4
+017139,Pertica Alta,2024,M,5
+017140,Pertica Bassa,2010,F,6
+017140,Pertica Bassa,2010,M,6
+017140,Pertica Bassa,2011,F,5
+017140,Pertica Bassa,2011,M,4
+017140,Pertica Bassa,2012,F,1
+017140,Pertica Bassa,2012,M,4
+017140,Pertica Bassa,2013,F,1
+017140,Pertica Bassa,2013,M,3
+017140,Pertica Bassa,2014,F,2
+017140,Pertica Bassa,2014,M,3
+017140,Pertica Bassa,2015,F,1
+017140,Pertica Bassa,2015,M,3
+017140,Pertica Bassa,2016,F,1
+017140,Pertica Bassa,2016,M,4
+017140,Pertica Bassa,2017,F,2
+017140,Pertica Bassa,2017,M,2
+017140,Pertica Bassa,2018,F,3
+017140,Pertica Bassa,2018,M,3
+017140,Pertica Bassa,2019,F,6
+017140,Pertica Bassa,2019,M,2
+017140,Pertica Bassa,2020,F,5
+017140,Pertica Bassa,2020,M,3
+017140,Pertica Bassa,2021,F,5
+017140,Pertica Bassa,2021,M,2
+017140,Pertica Bassa,2022,F,5
+017140,Pertica Bassa,2022,M,4
+017140,Pertica Bassa,2023,F,5
+017140,Pertica Bassa,2023,M,5
+017140,Pertica Bassa,2024,F,3
+017140,Pertica Bassa,2024,M,5
+017141,Pezzaze,2010,F,8
+017141,Pezzaze,2010,M,7
+017141,Pezzaze,2011,F,9
+017141,Pezzaze,2011,M,5
+017141,Pezzaze,2012,F,12
+017141,Pezzaze,2012,M,5
+017141,Pezzaze,2013,F,11
+017141,Pezzaze,2013,M,4
+017141,Pezzaze,2014,F,10
+017141,Pezzaze,2014,M,4
+017141,Pezzaze,2015,F,7
+017141,Pezzaze,2015,M,2
+017141,Pezzaze,2016,F,9
+017141,Pezzaze,2016,M,2
+017141,Pezzaze,2017,F,16
+017141,Pezzaze,2017,M,2
+017141,Pezzaze,2018,F,19
+017141,Pezzaze,2018,M,3
+017141,Pezzaze,2019,F,19
+017141,Pezzaze,2019,M,4
+017141,Pezzaze,2020,F,18
+017141,Pezzaze,2020,M,5
+017141,Pezzaze,2021,F,16
+017141,Pezzaze,2021,M,6
+017141,Pezzaze,2022,F,19
+017141,Pezzaze,2022,M,10
+017141,Pezzaze,2023,F,18
+017141,Pezzaze,2023,M,9
+017141,Pezzaze,2024,F,15
+017141,Pezzaze,2024,M,10
+017142,Pian Camuno,2010,F,64
+017142,Pian Camuno,2010,M,22
+017142,Pian Camuno,2011,F,61
+017142,Pian Camuno,2011,M,25
+017142,Pian Camuno,2012,F,50
+017142,Pian Camuno,2012,M,27
+017142,Pian Camuno,2013,F,54
+017142,Pian Camuno,2013,M,25
+017142,Pian Camuno,2014,F,54
+017142,Pian Camuno,2014,M,23
+017142,Pian Camuno,2015,F,61
+017142,Pian Camuno,2015,M,22
+017142,Pian Camuno,2016,F,56
+017142,Pian Camuno,2016,M,24
+017142,Pian Camuno,2017,F,57
+017142,Pian Camuno,2017,M,27
+017142,Pian Camuno,2018,F,53
+017142,Pian Camuno,2018,M,27
+017142,Pian Camuno,2019,F,53
+017142,Pian Camuno,2019,M,21
+017142,Pian Camuno,2020,F,49
+017142,Pian Camuno,2020,M,33
+017142,Pian Camuno,2021,F,55
+017142,Pian Camuno,2021,M,33
+017142,Pian Camuno,2022,F,53
+017142,Pian Camuno,2022,M,45
+017142,Pian Camuno,2023,F,56
+017142,Pian Camuno,2023,M,53
+017142,Pian Camuno,2024,F,70
+017142,Pian Camuno,2024,M,65
+017143,Pisogne,2010,F,105
+017143,Pisogne,2010,M,90
+017143,Pisogne,2011,F,101
+017143,Pisogne,2011,M,89
+017143,Pisogne,2012,F,97
+017143,Pisogne,2012,M,79
+017143,Pisogne,2013,F,100
+017143,Pisogne,2013,M,73
+017143,Pisogne,2014,F,98
+017143,Pisogne,2014,M,71
+017143,Pisogne,2015,F,86
+017143,Pisogne,2015,M,78
+017143,Pisogne,2016,F,87
+017143,Pisogne,2016,M,70
+017143,Pisogne,2017,F,98
+017143,Pisogne,2017,M,74
+017143,Pisogne,2018,F,95
+017143,Pisogne,2018,M,69
+017143,Pisogne,2019,F,92
+017143,Pisogne,2019,M,66
+017143,Pisogne,2020,F,101
+017143,Pisogne,2020,M,73
+017143,Pisogne,2021,F,105
+017143,Pisogne,2021,M,74
+017143,Pisogne,2022,F,107
+017143,Pisogne,2022,M,78
+017143,Pisogne,2023,F,110
+017143,Pisogne,2023,M,80
+017143,Pisogne,2024,F,116
+017143,Pisogne,2024,M,87
+017144,Polaveno,2010,F,16
+017144,Polaveno,2010,M,23
+017144,Polaveno,2011,F,23
+017144,Polaveno,2011,M,18
+017144,Polaveno,2012,F,22
+017144,Polaveno,2012,M,24
+017144,Polaveno,2013,F,22
+017144,Polaveno,2013,M,24
+017144,Polaveno,2014,F,25
+017144,Polaveno,2014,M,28
+017144,Polaveno,2015,F,27
+017144,Polaveno,2015,M,27
+017144,Polaveno,2016,F,21
+017144,Polaveno,2016,M,21
+017144,Polaveno,2017,F,17
+017144,Polaveno,2017,M,15
+017144,Polaveno,2018,F,19
+017144,Polaveno,2018,M,13
+017144,Polaveno,2019,F,24
+017144,Polaveno,2019,M,11
+017144,Polaveno,2020,F,24
+017144,Polaveno,2020,M,14
+017144,Polaveno,2021,F,26
+017144,Polaveno,2021,M,12
+017144,Polaveno,2022,F,27
+017144,Polaveno,2022,M,13
+017144,Polaveno,2023,F,27
+017144,Polaveno,2023,M,18
+017144,Polaveno,2024,F,23
+017144,Polaveno,2024,M,17
+017145,Polpenazze del Garda,2010,F,33
+017145,Polpenazze del Garda,2010,M,30
+017145,Polpenazze del Garda,2011,F,28
+017145,Polpenazze del Garda,2011,M,21
+017145,Polpenazze del Garda,2012,F,30
+017145,Polpenazze del Garda,2012,M,19
+017145,Polpenazze del Garda,2013,F,33
+017145,Polpenazze del Garda,2013,M,23
+017145,Polpenazze del Garda,2014,F,36
+017145,Polpenazze del Garda,2014,M,15
+017145,Polpenazze del Garda,2015,F,34
+017145,Polpenazze del Garda,2015,M,16
+017145,Polpenazze del Garda,2016,F,35
+017145,Polpenazze del Garda,2016,M,16
+017145,Polpenazze del Garda,2017,F,37
+017145,Polpenazze del Garda,2017,M,17
+017145,Polpenazze del Garda,2018,F,38
+017145,Polpenazze del Garda,2018,M,16
+017145,Polpenazze del Garda,2019,F,38
+017145,Polpenazze del Garda,2019,M,23
+017145,Polpenazze del Garda,2020,F,32
+017145,Polpenazze del Garda,2020,M,23
+017145,Polpenazze del Garda,2021,F,32
+017145,Polpenazze del Garda,2021,M,21
+017145,Polpenazze del Garda,2022,F,30
+017145,Polpenazze del Garda,2022,M,23
+017145,Polpenazze del Garda,2023,F,31
+017145,Polpenazze del Garda,2023,M,23
+017145,Polpenazze del Garda,2024,F,35
+017145,Polpenazze del Garda,2024,M,23
+017146,Pompiano,2010,F,47
+017146,Pompiano,2010,M,24
+017146,Pompiano,2011,F,45
+017146,Pompiano,2011,M,22
+017146,Pompiano,2012,F,43
+017146,Pompiano,2012,M,19
+017146,Pompiano,2013,F,44
+017146,Pompiano,2013,M,23
+017146,Pompiano,2014,F,40
+017146,Pompiano,2014,M,24
+017146,Pompiano,2015,F,31
+017146,Pompiano,2015,M,24
+017146,Pompiano,2016,F,29
+017146,Pompiano,2016,M,23
+017146,Pompiano,2017,F,33
+017146,Pompiano,2017,M,23
+017146,Pompiano,2018,F,37
+017146,Pompiano,2018,M,21
+017146,Pompiano,2019,F,38
+017146,Pompiano,2019,M,22
+017146,Pompiano,2020,F,41
+017146,Pompiano,2020,M,23
+017146,Pompiano,2021,F,33
+017146,Pompiano,2021,M,22
+017146,Pompiano,2022,F,33
+017146,Pompiano,2022,M,19
+017146,Pompiano,2023,F,34
+017146,Pompiano,2023,M,20
+017146,Pompiano,2024,F,43
+017146,Pompiano,2024,M,21
+017147,Poncarale,2010,F,42
+017147,Poncarale,2010,M,36
+017147,Poncarale,2011,F,43
+017147,Poncarale,2011,M,38
+017147,Poncarale,2012,F,46
+017147,Poncarale,2012,M,48
+017147,Poncarale,2013,F,53
+017147,Poncarale,2013,M,51
+017147,Poncarale,2014,F,59
+017147,Poncarale,2014,M,57
+017147,Poncarale,2015,F,57
+017147,Poncarale,2015,M,60
+017147,Poncarale,2016,F,68
+017147,Poncarale,2016,M,51
+017147,Poncarale,2017,F,73
+017147,Poncarale,2017,M,55
+017147,Poncarale,2018,F,74
+017147,Poncarale,2018,M,56
+017147,Poncarale,2019,F,80
+017147,Poncarale,2019,M,55
+017147,Poncarale,2020,F,91
+017147,Poncarale,2020,M,60
+017147,Poncarale,2021,F,89
+017147,Poncarale,2021,M,56
+017147,Poncarale,2022,F,99
+017147,Poncarale,2022,M,57
+017147,Poncarale,2023,F,92
+017147,Poncarale,2023,M,57
+017147,Poncarale,2024,F,82
+017147,Poncarale,2024,M,56
+017148,Ponte di Legno,2010,F,30
+017148,Ponte di Legno,2010,M,18
+017148,Ponte di Legno,2011,F,27
+017148,Ponte di Legno,2011,M,14
+017148,Ponte di Legno,2012,F,26
+017148,Ponte di Legno,2012,M,18
+017148,Ponte di Legno,2013,F,22
+017148,Ponte di Legno,2013,M,16
+017148,Ponte di Legno,2014,F,19
+017148,Ponte di Legno,2014,M,15
+017148,Ponte di Legno,2015,F,18
+017148,Ponte di Legno,2015,M,13
+017148,Ponte di Legno,2016,F,16
+017148,Ponte di Legno,2016,M,11
+017148,Ponte di Legno,2017,F,15
+017148,Ponte di Legno,2017,M,10
+017148,Ponte di Legno,2018,F,16
+017148,Ponte di Legno,2018,M,8
+017148,Ponte di Legno,2019,F,13
+017148,Ponte di Legno,2019,M,8
+017148,Ponte di Legno,2020,F,19
+017148,Ponte di Legno,2020,M,9
+017148,Ponte di Legno,2021,F,24
+017148,Ponte di Legno,2021,M,12
+017148,Ponte di Legno,2022,F,27
+017148,Ponte di Legno,2022,M,13
+017148,Ponte di Legno,2023,F,28
+017148,Ponte di Legno,2023,M,17
+017148,Ponte di Legno,2024,F,34
+017148,Ponte di Legno,2024,M,22
+017149,Pontevico,2010,F,78
+017149,Pontevico,2010,M,55
+017149,Pontevico,2011,F,71
+017149,Pontevico,2011,M,55
+017149,Pontevico,2012,F,70
+017149,Pontevico,2012,M,50
+017149,Pontevico,2013,F,65
+017149,Pontevico,2013,M,47
+017149,Pontevico,2014,F,60
+017149,Pontevico,2014,M,50
+017149,Pontevico,2015,F,68
+017149,Pontevico,2015,M,55
+017149,Pontevico,2016,F,83
+017149,Pontevico,2016,M,53
+017149,Pontevico,2017,F,99
+017149,Pontevico,2017,M,49
+017149,Pontevico,2018,F,100
+017149,Pontevico,2018,M,48
+017149,Pontevico,2019,F,96
+017149,Pontevico,2019,M,51
+017149,Pontevico,2020,F,95
+017149,Pontevico,2020,M,54
+017149,Pontevico,2021,F,98
+017149,Pontevico,2021,M,59
+017149,Pontevico,2022,F,90
+017149,Pontevico,2022,M,59
+017149,Pontevico,2023,F,108
+017149,Pontevico,2023,M,63
+017149,Pontevico,2024,F,103
+017149,Pontevico,2024,M,69
+017150,Pontoglio,2010,F,59
+017150,Pontoglio,2010,M,64
+017150,Pontoglio,2011,F,59
+017150,Pontoglio,2011,M,68
+017150,Pontoglio,2012,F,64
+017150,Pontoglio,2012,M,63
+017150,Pontoglio,2013,F,54
+017150,Pontoglio,2013,M,68
+017150,Pontoglio,2014,F,60
+017150,Pontoglio,2014,M,67
+017150,Pontoglio,2015,F,62
+017150,Pontoglio,2015,M,53
+017150,Pontoglio,2016,F,64
+017150,Pontoglio,2016,M,59
+017150,Pontoglio,2017,F,65
+017150,Pontoglio,2017,M,58
+017150,Pontoglio,2018,F,69
+017150,Pontoglio,2018,M,61
+017150,Pontoglio,2019,F,68
+017150,Pontoglio,2019,M,63
+017150,Pontoglio,2020,F,68
+017150,Pontoglio,2020,M,65
+017150,Pontoglio,2021,F,75
+017150,Pontoglio,2021,M,62
+017150,Pontoglio,2022,F,80
+017150,Pontoglio,2022,M,60
+017150,Pontoglio,2023,F,79
+017150,Pontoglio,2023,M,52
+017150,Pontoglio,2024,F,89
+017150,Pontoglio,2024,M,50
+017151,Pozzolengo,2010,F,32
+017151,Pozzolengo,2010,M,25
+017151,Pozzolengo,2011,F,31
+017151,Pozzolengo,2011,M,27
+017151,Pozzolengo,2012,F,27
+017151,Pozzolengo,2012,M,27
+017151,Pozzolengo,2013,F,33
+017151,Pozzolengo,2013,M,25
+017151,Pozzolengo,2014,F,32
+017151,Pozzolengo,2014,M,24
+017151,Pozzolengo,2015,F,41
+017151,Pozzolengo,2015,M,23
+017151,Pozzolengo,2016,F,38
+017151,Pozzolengo,2016,M,23
+017151,Pozzolengo,2017,F,37
+017151,Pozzolengo,2017,M,30
+017151,Pozzolengo,2018,F,40
+017151,Pozzolengo,2018,M,32
+017151,Pozzolengo,2019,F,43
+017151,Pozzolengo,2019,M,29
+017151,Pozzolengo,2020,F,41
+017151,Pozzolengo,2020,M,36
+017151,Pozzolengo,2021,F,50
+017151,Pozzolengo,2021,M,33
+017151,Pozzolengo,2022,F,46
+017151,Pozzolengo,2022,M,33
+017151,Pozzolengo,2023,F,46
+017151,Pozzolengo,2023,M,42
+017151,Pozzolengo,2024,F,52
+017151,Pozzolengo,2024,M,50
+017152,Pralboino,2010,F,22
+017152,Pralboino,2010,M,22
+017152,Pralboino,2011,F,21
+017152,Pralboino,2011,M,24
+017152,Pralboino,2012,F,27
+017152,Pralboino,2012,M,28
+017152,Pralboino,2013,F,30
+017152,Pralboino,2013,M,23
+017152,Pralboino,2014,F,34
+017152,Pralboino,2014,M,25
+017152,Pralboino,2015,F,36
+017152,Pralboino,2015,M,25
+017152,Pralboino,2016,F,37
+017152,Pralboino,2016,M,24
+017152,Pralboino,2017,F,33
+017152,Pralboino,2017,M,30
+017152,Pralboino,2018,F,25
+017152,Pralboino,2018,M,24
+017152,Pralboino,2019,F,28
+017152,Pralboino,2019,M,31
+017152,Pralboino,2020,F,26
+017152,Pralboino,2020,M,30
+017152,Pralboino,2021,F,28
+017152,Pralboino,2021,M,22
+017152,Pralboino,2022,F,30
+017152,Pralboino,2022,M,26
+017152,Pralboino,2023,F,24
+017152,Pralboino,2023,M,24
+017152,Pralboino,2024,F,28
+017152,Pralboino,2024,M,29
+017153,Preseglie,2010,F,14
+017153,Preseglie,2010,M,9
+017153,Preseglie,2011,F,15
+017153,Preseglie,2011,M,8
+017153,Preseglie,2012,F,11
+017153,Preseglie,2012,M,8
+017153,Preseglie,2013,F,6
+017153,Preseglie,2013,M,11
+017153,Preseglie,2014,F,10
+017153,Preseglie,2014,M,10
+017153,Preseglie,2015,F,6
+017153,Preseglie,2015,M,14
+017153,Preseglie,2016,F,11
+017153,Preseglie,2016,M,12
+017153,Preseglie,2017,F,12
+017153,Preseglie,2017,M,10
+017153,Preseglie,2018,F,13
+017153,Preseglie,2018,M,9
+017153,Preseglie,2019,F,12
+017153,Preseglie,2019,M,13
+017153,Preseglie,2020,F,13
+017153,Preseglie,2020,M,12
+017153,Preseglie,2021,F,11
+017153,Preseglie,2021,M,13
+017153,Preseglie,2022,F,15
+017153,Preseglie,2022,M,13
+017153,Preseglie,2023,F,19
+017153,Preseglie,2023,M,12
+017153,Preseglie,2024,F,23
+017153,Preseglie,2024,M,15
+017155,Prevalle,2010,F,55
+017155,Prevalle,2010,M,32
+017155,Prevalle,2011,F,57
+017155,Prevalle,2011,M,38
+017155,Prevalle,2012,F,48
+017155,Prevalle,2012,M,43
+017155,Prevalle,2013,F,47
+017155,Prevalle,2013,M,43
+017155,Prevalle,2014,F,52
+017155,Prevalle,2014,M,38
+017155,Prevalle,2015,F,46
+017155,Prevalle,2015,M,47
+017155,Prevalle,2016,F,43
+017155,Prevalle,2016,M,48
+017155,Prevalle,2017,F,52
+017155,Prevalle,2017,M,58
+017155,Prevalle,2018,F,61
+017155,Prevalle,2018,M,55
+017155,Prevalle,2019,F,61
+017155,Prevalle,2019,M,58
+017155,Prevalle,2020,F,60
+017155,Prevalle,2020,M,50
+017155,Prevalle,2021,F,65
+017155,Prevalle,2021,M,46
+017155,Prevalle,2022,F,82
+017155,Prevalle,2022,M,47
+017155,Prevalle,2023,F,86
+017155,Prevalle,2023,M,52
+017155,Prevalle,2024,F,87
+017155,Prevalle,2024,M,69
+017156,Provaglio d'Iseo,2010,F,70
+017156,Provaglio d'Iseo,2010,M,64
+017156,Provaglio d'Iseo,2011,F,69
+017156,Provaglio d'Iseo,2011,M,58
+017156,Provaglio d'Iseo,2012,F,71
+017156,Provaglio d'Iseo,2012,M,56
+017156,Provaglio d'Iseo,2013,F,65
+017156,Provaglio d'Iseo,2013,M,56
+017156,Provaglio d'Iseo,2014,F,67
+017156,Provaglio d'Iseo,2014,M,59
+017156,Provaglio d'Iseo,2015,F,72
+017156,Provaglio d'Iseo,2015,M,56
+017156,Provaglio d'Iseo,2016,F,77
+017156,Provaglio d'Iseo,2016,M,53
+017156,Provaglio d'Iseo,2017,F,76
+017156,Provaglio d'Iseo,2017,M,60
+017156,Provaglio d'Iseo,2018,F,83
+017156,Provaglio d'Iseo,2018,M,65
+017156,Provaglio d'Iseo,2019,F,94
+017156,Provaglio d'Iseo,2019,M,64
+017156,Provaglio d'Iseo,2020,F,102
+017156,Provaglio d'Iseo,2020,M,67
+017156,Provaglio d'Iseo,2021,F,99
+017156,Provaglio d'Iseo,2021,M,68
+017156,Provaglio d'Iseo,2022,F,99
+017156,Provaglio d'Iseo,2022,M,67
+017156,Provaglio d'Iseo,2023,F,96
+017156,Provaglio d'Iseo,2023,M,76
+017156,Provaglio d'Iseo,2024,F,109
+017156,Provaglio d'Iseo,2024,M,80
+017157,Provaglio Val Sabbia,2010,F,7
+017157,Provaglio Val Sabbia,2010,M,3
+017157,Provaglio Val Sabbia,2011,F,5
+017157,Provaglio Val Sabbia,2011,M,4
+017157,Provaglio Val Sabbia,2012,F,6
+017157,Provaglio Val Sabbia,2012,M,3
+017157,Provaglio Val Sabbia,2013,F,6
+017157,Provaglio Val Sabbia,2013,M,4
+017157,Provaglio Val Sabbia,2014,F,8
+017157,Provaglio Val Sabbia,2014,M,2
+017157,Provaglio Val Sabbia,2015,F,8
+017157,Provaglio Val Sabbia,2015,M,4
+017157,Provaglio Val Sabbia,2016,F,7
+017157,Provaglio Val Sabbia,2016,M,5
+017157,Provaglio Val Sabbia,2017,F,11
+017157,Provaglio Val Sabbia,2017,M,4
+017157,Provaglio Val Sabbia,2018,F,9
+017157,Provaglio Val Sabbia,2018,M,7
+017157,Provaglio Val Sabbia,2019,F,14
+017157,Provaglio Val Sabbia,2019,M,5
+017157,Provaglio Val Sabbia,2020,F,11
+017157,Provaglio Val Sabbia,2020,M,6
+017157,Provaglio Val Sabbia,2021,F,14
+017157,Provaglio Val Sabbia,2021,M,5
+017157,Provaglio Val Sabbia,2022,F,10
+017157,Provaglio Val Sabbia,2022,M,5
+017157,Provaglio Val Sabbia,2023,F,12
+017157,Provaglio Val Sabbia,2023,M,4
+017157,Provaglio Val Sabbia,2024,F,13
+017157,Provaglio Val Sabbia,2024,M,6
+017158,Puegnago del Garda,2010,F,40
+017158,Puegnago del Garda,2010,M,15
+017158,Puegnago del Garda,2011,F,41
+017158,Puegnago del Garda,2011,M,16
+017158,Puegnago del Garda,2012,F,49
+017158,Puegnago del Garda,2012,M,16
+017158,Puegnago del Garda,2013,F,49
+017158,Puegnago del Garda,2013,M,18
+017158,Puegnago del Garda,2014,F,51
+017158,Puegnago del Garda,2014,M,16
+017158,Puegnago del Garda,2015,F,49
+017158,Puegnago del Garda,2015,M,18
+017158,Puegnago del Garda,2016,F,51
+017158,Puegnago del Garda,2016,M,20
+017158,Puegnago del Garda,2017,F,48
+017158,Puegnago del Garda,2017,M,20
+017158,Puegnago del Garda,2018,F,50
+017158,Puegnago del Garda,2018,M,22
+017158,Puegnago del Garda,2019,F,43
+017158,Puegnago del Garda,2019,M,30
+017158,Puegnago del Garda,2020,F,42
+017158,Puegnago del Garda,2020,M,35
+017158,Puegnago del Garda,2021,F,41
+017158,Puegnago del Garda,2021,M,36
+017158,Puegnago del Garda,2022,F,44
+017158,Puegnago del Garda,2022,M,34
+017158,Puegnago del Garda,2023,F,50
+017158,Puegnago del Garda,2023,M,32
+017158,Puegnago del Garda,2024,F,47
+017158,Puegnago del Garda,2024,M,35
+017159,Quinzano d'Oglio,2010,F,50
+017159,Quinzano d'Oglio,2010,M,40
+017159,Quinzano d'Oglio,2011,F,49
+017159,Quinzano d'Oglio,2011,M,34
+017159,Quinzano d'Oglio,2012,F,52
+017159,Quinzano d'Oglio,2012,M,39
+017159,Quinzano d'Oglio,2013,F,53
+017159,Quinzano d'Oglio,2013,M,37
+017159,Quinzano d'Oglio,2014,F,46
+017159,Quinzano d'Oglio,2014,M,35
+017159,Quinzano d'Oglio,2015,F,55
+017159,Quinzano d'Oglio,2015,M,38
+017159,Quinzano d'Oglio,2016,F,46
+017159,Quinzano d'Oglio,2016,M,38
+017159,Quinzano d'Oglio,2017,F,55
+017159,Quinzano d'Oglio,2017,M,42
+017159,Quinzano d'Oglio,2018,F,60
+017159,Quinzano d'Oglio,2018,M,50
+017159,Quinzano d'Oglio,2019,F,69
+017159,Quinzano d'Oglio,2019,M,47
+017159,Quinzano d'Oglio,2020,F,74
+017159,Quinzano d'Oglio,2020,M,46
+017159,Quinzano d'Oglio,2021,F,89
+017159,Quinzano d'Oglio,2021,M,44
+017159,Quinzano d'Oglio,2022,F,94
+017159,Quinzano d'Oglio,2022,M,59
+017159,Quinzano d'Oglio,2023,F,95
+017159,Quinzano d'Oglio,2023,M,64
+017159,Quinzano d'Oglio,2024,F,97
+017159,Quinzano d'Oglio,2024,M,57
+017160,Remedello,2010,F,58
+017160,Remedello,2010,M,30
+017160,Remedello,2011,F,51
+017160,Remedello,2011,M,27
+017160,Remedello,2012,F,48
+017160,Remedello,2012,M,32
+017160,Remedello,2013,F,47
+017160,Remedello,2013,M,32
+017160,Remedello,2014,F,38
+017160,Remedello,2014,M,38
+017160,Remedello,2015,F,47
+017160,Remedello,2015,M,38
+017160,Remedello,2016,F,43
+017160,Remedello,2016,M,40
+017160,Remedello,2017,F,37
+017160,Remedello,2017,M,39
+017160,Remedello,2018,F,42
+017160,Remedello,2018,M,37
+017160,Remedello,2019,F,35
+017160,Remedello,2019,M,39
+017160,Remedello,2020,F,34
+017160,Remedello,2020,M,33
+017160,Remedello,2021,F,37
+017160,Remedello,2021,M,33
+017160,Remedello,2022,F,39
+017160,Remedello,2022,M,18
+017160,Remedello,2023,F,37
+017160,Remedello,2023,M,23
+017160,Remedello,2024,F,46
+017160,Remedello,2024,M,30
+017161,Rezzato,2010,F,174
+017161,Rezzato,2010,M,167
+017161,Rezzato,2011,F,166
+017161,Rezzato,2011,M,155
+017161,Rezzato,2012,F,161
+017161,Rezzato,2012,M,148
+017161,Rezzato,2013,F,170
+017161,Rezzato,2013,M,140
+017161,Rezzato,2014,F,184
+017161,Rezzato,2014,M,137
+017161,Rezzato,2015,F,179
+017161,Rezzato,2015,M,121
+017161,Rezzato,2016,F,176
+017161,Rezzato,2016,M,137
+017161,Rezzato,2017,F,171
+017161,Rezzato,2017,M,127
+017161,Rezzato,2018,F,173
+017161,Rezzato,2018,M,147
+017161,Rezzato,2019,F,168
+017161,Rezzato,2019,M,142
+017161,Rezzato,2020,F,166
+017161,Rezzato,2020,M,147
+017161,Rezzato,2021,F,180
+017161,Rezzato,2021,M,140
+017161,Rezzato,2022,F,178
+017161,Rezzato,2022,M,141
+017161,Rezzato,2023,F,191
+017161,Rezzato,2023,M,137
+017161,Rezzato,2024,F,210
+017161,Rezzato,2024,M,138
+017162,Roccafranca,2010,F,33
+017162,Roccafranca,2010,M,32
+017162,Roccafranca,2011,F,32
+017162,Roccafranca,2011,M,32
+017162,Roccafranca,2012,F,29
+017162,Roccafranca,2012,M,33
+017162,Roccafranca,2013,F,27
+017162,Roccafranca,2013,M,29
+017162,Roccafranca,2014,F,29
+017162,Roccafranca,2014,M,27
+017162,Roccafranca,2015,F,30
+017162,Roccafranca,2015,M,33
+017162,Roccafranca,2016,F,37
+017162,Roccafranca,2016,M,28
+017162,Roccafranca,2017,F,39
+017162,Roccafranca,2017,M,30
+017162,Roccafranca,2018,F,35
+017162,Roccafranca,2018,M,32
+017162,Roccafranca,2019,F,40
+017162,Roccafranca,2019,M,37
+017162,Roccafranca,2020,F,48
+017162,Roccafranca,2020,M,33
+017162,Roccafranca,2021,F,46
+017162,Roccafranca,2021,M,30
+017162,Roccafranca,2022,F,47
+017162,Roccafranca,2022,M,29
+017162,Roccafranca,2023,F,50
+017162,Roccafranca,2023,M,35
+017162,Roccafranca,2024,F,49
+017162,Roccafranca,2024,M,37
+017163,Rodengo Saiano,2010,F,116
+017163,Rodengo Saiano,2010,M,95
+017163,Rodengo Saiano,2011,F,116
+017163,Rodengo Saiano,2011,M,92
+017163,Rodengo Saiano,2012,F,117
+017163,Rodengo Saiano,2012,M,106
+017163,Rodengo Saiano,2013,F,107
+017163,Rodengo Saiano,2013,M,105
+017163,Rodengo Saiano,2014,F,127
+017163,Rodengo Saiano,2014,M,104
+017163,Rodengo Saiano,2015,F,126
+017163,Rodengo Saiano,2015,M,102
+017163,Rodengo Saiano,2016,F,130
+017163,Rodengo Saiano,2016,M,114
+017163,Rodengo Saiano,2017,F,126
+017163,Rodengo Saiano,2017,M,113
+017163,Rodengo Saiano,2018,F,138
+017163,Rodengo Saiano,2018,M,125
+017163,Rodengo Saiano,2019,F,136
+017163,Rodengo Saiano,2019,M,121
+017163,Rodengo Saiano,2020,F,156
+017163,Rodengo Saiano,2020,M,139
+017163,Rodengo Saiano,2021,F,177
+017163,Rodengo Saiano,2021,M,133
+017163,Rodengo Saiano,2022,F,173
+017163,Rodengo Saiano,2022,M,137
+017163,Rodengo Saiano,2023,F,188
+017163,Rodengo Saiano,2023,M,147
+017163,Rodengo Saiano,2024,F,194
+017163,Rodengo Saiano,2024,M,135
+017164,Roè Volciano,2010,F,46
+017164,Roè Volciano,2010,M,54
+017164,Roè Volciano,2011,F,49
+017164,Roè Volciano,2011,M,45
+017164,Roè Volciano,2012,F,48
+017164,Roè Volciano,2012,M,47
+017164,Roè Volciano,2013,F,52
+017164,Roè Volciano,2013,M,49
+017164,Roè Volciano,2014,F,63
+017164,Roè Volciano,2014,M,55
+017164,Roè Volciano,2015,F,57
+017164,Roè Volciano,2015,M,40
+017164,Roè Volciano,2016,F,48
+017164,Roè Volciano,2016,M,44
+017164,Roè Volciano,2017,F,51
+017164,Roè Volciano,2017,M,48
+017164,Roè Volciano,2018,F,53
+017164,Roè Volciano,2018,M,51
+017164,Roè Volciano,2019,F,56
+017164,Roè Volciano,2019,M,46
+017164,Roè Volciano,2020,F,63
+017164,Roè Volciano,2020,M,45
+017164,Roè Volciano,2021,F,75
+017164,Roè Volciano,2021,M,50
+017164,Roè Volciano,2022,F,78
+017164,Roè Volciano,2022,M,45
+017164,Roè Volciano,2023,F,74
+017164,Roè Volciano,2023,M,51
+017164,Roè Volciano,2024,F,81
+017164,Roè Volciano,2024,M,50
+017165,Roncadelle,2010,F,127
+017165,Roncadelle,2010,M,105
+017165,Roncadelle,2011,F,118
+017165,Roncadelle,2011,M,98
+017165,Roncadelle,2012,F,108
+017165,Roncadelle,2012,M,98
+017165,Roncadelle,2013,F,114
+017165,Roncadelle,2013,M,82
+017165,Roncadelle,2014,F,109
+017165,Roncadelle,2014,M,79
+017165,Roncadelle,2015,F,112
+017165,Roncadelle,2015,M,89
+017165,Roncadelle,2016,F,109
+017165,Roncadelle,2016,M,89
+017165,Roncadelle,2017,F,128
+017165,Roncadelle,2017,M,85
+017165,Roncadelle,2018,F,127
+017165,Roncadelle,2018,M,90
+017165,Roncadelle,2019,F,144
+017165,Roncadelle,2019,M,95
+017165,Roncadelle,2020,F,139
+017165,Roncadelle,2020,M,105
+017165,Roncadelle,2021,F,134
+017165,Roncadelle,2021,M,110
+017165,Roncadelle,2022,F,149
+017165,Roncadelle,2022,M,100
+017165,Roncadelle,2023,F,156
+017165,Roncadelle,2023,M,99
+017165,Roncadelle,2024,F,159
+017165,Roncadelle,2024,M,99
+017166,Rovato,2010,F,163
+017166,Rovato,2010,M,135
+017166,Rovato,2011,F,163
+017166,Rovato,2011,M,125
+017166,Rovato,2012,F,165
+017166,Rovato,2012,M,117
+017166,Rovato,2013,F,172
+017166,Rovato,2013,M,122
+017166,Rovato,2014,F,173
+017166,Rovato,2014,M,115
+017166,Rovato,2015,F,173
+017166,Rovato,2015,M,131
+017166,Rovato,2016,F,174
+017166,Rovato,2016,M,147
+017166,Rovato,2017,F,191
+017166,Rovato,2017,M,159
+017166,Rovato,2018,F,202
+017166,Rovato,2018,M,153
+017166,Rovato,2019,F,205
+017166,Rovato,2019,M,161
+017166,Rovato,2020,F,211
+017166,Rovato,2020,M,163
+017166,Rovato,2021,F,211
+017166,Rovato,2021,M,162
+017166,Rovato,2022,F,204
+017166,Rovato,2022,M,158
+017166,Rovato,2023,F,231
+017166,Rovato,2023,M,165
+017166,Rovato,2024,F,256
+017166,Rovato,2024,M,180
+017167,Rudiano,2010,F,51
+017167,Rudiano,2010,M,36
+017167,Rudiano,2011,F,48
+017167,Rudiano,2011,M,38
+017167,Rudiano,2012,F,49
+017167,Rudiano,2012,M,40
+017167,Rudiano,2013,F,52
+017167,Rudiano,2013,M,44
+017167,Rudiano,2014,F,48
+017167,Rudiano,2014,M,49
+017167,Rudiano,2015,F,48
+017167,Rudiano,2015,M,46
+017167,Rudiano,2016,F,53
+017167,Rudiano,2016,M,49
+017167,Rudiano,2017,F,52
+017167,Rudiano,2017,M,51
+017167,Rudiano,2018,F,66
+017167,Rudiano,2018,M,48
+017167,Rudiano,2019,F,64
+017167,Rudiano,2019,M,50
+017167,Rudiano,2020,F,81
+017167,Rudiano,2020,M,44
+017167,Rudiano,2021,F,87
+017167,Rudiano,2021,M,45
+017167,Rudiano,2022,F,91
+017167,Rudiano,2022,M,40
+017167,Rudiano,2023,F,101
+017167,Rudiano,2023,M,44
+017167,Rudiano,2024,F,96
+017167,Rudiano,2024,M,46
+017168,Sabbio Chiese,2010,F,25
+017168,Sabbio Chiese,2010,M,19
+017168,Sabbio Chiese,2011,F,28
+017168,Sabbio Chiese,2011,M,19
+017168,Sabbio Chiese,2012,F,27
+017168,Sabbio Chiese,2012,M,25
+017168,Sabbio Chiese,2013,F,29
+017168,Sabbio Chiese,2013,M,28
+017168,Sabbio Chiese,2014,F,31
+017168,Sabbio Chiese,2014,M,28
+017168,Sabbio Chiese,2015,F,31
+017168,Sabbio Chiese,2015,M,18
+017168,Sabbio Chiese,2016,F,33
+017168,Sabbio Chiese,2016,M,22
+017168,Sabbio Chiese,2017,F,40
+017168,Sabbio Chiese,2017,M,25
+017168,Sabbio Chiese,2018,F,44
+017168,Sabbio Chiese,2018,M,20
+017168,Sabbio Chiese,2019,F,49
+017168,Sabbio Chiese,2019,M,25
+017168,Sabbio Chiese,2020,F,52
+017168,Sabbio Chiese,2020,M,23
+017168,Sabbio Chiese,2021,F,57
+017168,Sabbio Chiese,2021,M,25
+017168,Sabbio Chiese,2022,F,62
+017168,Sabbio Chiese,2022,M,22
+017168,Sabbio Chiese,2023,F,59
+017168,Sabbio Chiese,2023,M,31
+017168,Sabbio Chiese,2024,F,51
+017168,Sabbio Chiese,2024,M,34
+017169,Sale Marasino,2010,F,36
+017169,Sale Marasino,2010,M,26
+017169,Sale Marasino,2011,F,37
+017169,Sale Marasino,2011,M,29
+017169,Sale Marasino,2012,F,33
+017169,Sale Marasino,2012,M,31
+017169,Sale Marasino,2013,F,32
+017169,Sale Marasino,2013,M,30
+017169,Sale Marasino,2014,F,36
+017169,Sale Marasino,2014,M,32
+017169,Sale Marasino,2015,F,39
+017169,Sale Marasino,2015,M,35
+017169,Sale Marasino,2016,F,48
+017169,Sale Marasino,2016,M,32
+017169,Sale Marasino,2017,F,49
+017169,Sale Marasino,2017,M,36
+017169,Sale Marasino,2018,F,48
+017169,Sale Marasino,2018,M,39
+017169,Sale Marasino,2019,F,44
+017169,Sale Marasino,2019,M,39
+017169,Sale Marasino,2020,F,53
+017169,Sale Marasino,2020,M,37
+017169,Sale Marasino,2021,F,52
+017169,Sale Marasino,2021,M,35
+017169,Sale Marasino,2022,F,53
+017169,Sale Marasino,2022,M,41
+017169,Sale Marasino,2023,F,47
+017169,Sale Marasino,2023,M,37
+017169,Sale Marasino,2024,F,45
+017169,Sale Marasino,2024,M,33
+017170,Salò,2010,F,149
+017170,Salò,2010,M,115
+017170,Salò,2011,F,144
+017170,Salò,2011,M,107
+017170,Salò,2012,F,138
+017170,Salò,2012,M,99
+017170,Salò,2013,F,149
+017170,Salò,2013,M,103
+017170,Salò,2014,F,139
+017170,Salò,2014,M,97
+017170,Salò,2015,F,141
+017170,Salò,2015,M,100
+017170,Salò,2016,F,147
+017170,Salò,2016,M,108
+017170,Salò,2017,F,141
+017170,Salò,2017,M,118
+017170,Salò,2018,F,144
+017170,Salò,2018,M,126
+017170,Salò,2019,F,149
+017170,Salò,2019,M,122
+017170,Salò,2020,F,170
+017170,Salò,2020,M,117
+017170,Salò,2021,F,188
+017170,Salò,2021,M,114
+017170,Salò,2022,F,183
+017170,Salò,2022,M,116
+017170,Salò,2023,F,175
+017170,Salò,2023,M,117
+017170,Salò,2024,F,168
+017170,Salò,2024,M,113
+017171,San Felice del Benaco,2010,F,45
+017171,San Felice del Benaco,2010,M,32
+017171,San Felice del Benaco,2011,F,49
+017171,San Felice del Benaco,2011,M,31
+017171,San Felice del Benaco,2012,F,54
+017171,San Felice del Benaco,2012,M,29
+017171,San Felice del Benaco,2013,F,47
+017171,San Felice del Benaco,2013,M,37
+017171,San Felice del Benaco,2014,F,52
+017171,San Felice del Benaco,2014,M,37
+017171,San Felice del Benaco,2015,F,50
+017171,San Felice del Benaco,2015,M,35
+017171,San Felice del Benaco,2016,F,63
+017171,San Felice del Benaco,2016,M,32
+017171,San Felice del Benaco,2017,F,55
+017171,San Felice del Benaco,2017,M,39
+017171,San Felice del Benaco,2018,F,58
+017171,San Felice del Benaco,2018,M,37
+017171,San Felice del Benaco,2019,F,62
+017171,San Felice del Benaco,2019,M,37
+017171,San Felice del Benaco,2020,F,58
+017171,San Felice del Benaco,2020,M,33
+017171,San Felice del Benaco,2021,F,52
+017171,San Felice del Benaco,2021,M,37
+017171,San Felice del Benaco,2022,F,49
+017171,San Felice del Benaco,2022,M,38
+017171,San Felice del Benaco,2023,F,49
+017171,San Felice del Benaco,2023,M,38
+017171,San Felice del Benaco,2024,F,39
+017171,San Felice del Benaco,2024,M,36
+017172,San Gervasio Bresciano,2010,F,16
+017172,San Gervasio Bresciano,2010,M,14
+017172,San Gervasio Bresciano,2011,F,12
+017172,San Gervasio Bresciano,2011,M,18
+017172,San Gervasio Bresciano,2012,F,13
+017172,San Gervasio Bresciano,2012,M,24
+017172,San Gervasio Bresciano,2013,F,15
+017172,San Gervasio Bresciano,2013,M,21
+017172,San Gervasio Bresciano,2014,F,15
+017172,San Gervasio Bresciano,2014,M,20
+017172,San Gervasio Bresciano,2015,F,14
+017172,San Gervasio Bresciano,2015,M,22
+017172,San Gervasio Bresciano,2016,F,17
+017172,San Gervasio Bresciano,2016,M,20
+017172,San Gervasio Bresciano,2017,F,19
+017172,San Gervasio Bresciano,2017,M,14
+017172,San Gervasio Bresciano,2018,F,26
+017172,San Gervasio Bresciano,2018,M,13
+017172,San Gervasio Bresciano,2019,F,30
+017172,San Gervasio Bresciano,2019,M,16
+017172,San Gervasio Bresciano,2020,F,30
+017172,San Gervasio Bresciano,2020,M,17
+017172,San Gervasio Bresciano,2021,F,25
+017172,San Gervasio Bresciano,2021,M,18
+017172,San Gervasio Bresciano,2022,F,28
+017172,San Gervasio Bresciano,2022,M,17
+017172,San Gervasio Bresciano,2023,F,25
+017172,San Gervasio Bresciano,2023,M,21
+017172,San Gervasio Bresciano,2024,F,23
+017172,San Gervasio Bresciano,2024,M,22
+017173,San Zeno Naviglio,2010,F,55
+017173,San Zeno Naviglio,2010,M,36
+017173,San Zeno Naviglio,2011,F,55
+017173,San Zeno Naviglio,2011,M,34
+017173,San Zeno Naviglio,2012,F,50
+017173,San Zeno Naviglio,2012,M,37
+017173,San Zeno Naviglio,2013,F,47
+017173,San Zeno Naviglio,2013,M,31
+017173,San Zeno Naviglio,2014,F,59
+017173,San Zeno Naviglio,2014,M,40
+017173,San Zeno Naviglio,2015,F,61
+017173,San Zeno Naviglio,2015,M,43
+017173,San Zeno Naviglio,2016,F,58
+017173,San Zeno Naviglio,2016,M,41
+017173,San Zeno Naviglio,2017,F,54
+017173,San Zeno Naviglio,2017,M,42
+017173,San Zeno Naviglio,2018,F,56
+017173,San Zeno Naviglio,2018,M,47
+017173,San Zeno Naviglio,2019,F,63
+017173,San Zeno Naviglio,2019,M,51
+017173,San Zeno Naviglio,2020,F,66
+017173,San Zeno Naviglio,2020,M,46
+017173,San Zeno Naviglio,2021,F,68
+017173,San Zeno Naviglio,2021,M,55
+017173,San Zeno Naviglio,2022,F,69
+017173,San Zeno Naviglio,2022,M,48
+017173,San Zeno Naviglio,2023,F,78
+017173,San Zeno Naviglio,2023,M,49
+017173,San Zeno Naviglio,2024,F,80
+017173,San Zeno Naviglio,2024,M,49
+017174,Sarezzo,2010,F,162
+017174,Sarezzo,2010,M,102
+017174,Sarezzo,2011,F,172
+017174,Sarezzo,2011,M,106
+017174,Sarezzo,2012,F,167
+017174,Sarezzo,2012,M,105
+017174,Sarezzo,2013,F,156
+017174,Sarezzo,2013,M,103
+017174,Sarezzo,2014,F,155
+017174,Sarezzo,2014,M,99
+017174,Sarezzo,2015,F,151
+017174,Sarezzo,2015,M,108
+017174,Sarezzo,2016,F,145
+017174,Sarezzo,2016,M,111
+017174,Sarezzo,2017,F,151
+017174,Sarezzo,2017,M,117
+017174,Sarezzo,2018,F,160
+017174,Sarezzo,2018,M,114
+017174,Sarezzo,2019,F,171
+017174,Sarezzo,2019,M,106
+017174,Sarezzo,2020,F,190
+017174,Sarezzo,2020,M,129
+017174,Sarezzo,2021,F,193
+017174,Sarezzo,2021,M,130
+017174,Sarezzo,2022,F,196
+017174,Sarezzo,2022,M,120
+017174,Sarezzo,2023,F,204
+017174,Sarezzo,2023,M,129
+017174,Sarezzo,2024,F,212
+017174,Sarezzo,2024,M,128
+017175,Saviore dell'Adamello,2010,F,10
+017175,Saviore dell'Adamello,2010,M,8
+017175,Saviore dell'Adamello,2011,F,11
+017175,Saviore dell'Adamello,2011,M,6
+017175,Saviore dell'Adamello,2012,F,10
+017175,Saviore dell'Adamello,2012,M,5
+017175,Saviore dell'Adamello,2013,F,11
+017175,Saviore dell'Adamello,2013,M,5
+017175,Saviore dell'Adamello,2014,F,14
+017175,Saviore dell'Adamello,2014,M,4
+017175,Saviore dell'Adamello,2015,F,11
+017175,Saviore dell'Adamello,2015,M,3
+017175,Saviore dell'Adamello,2016,F,9
+017175,Saviore dell'Adamello,2016,M,2
+017175,Saviore dell'Adamello,2017,F,9
+017175,Saviore dell'Adamello,2017,M,4
+017175,Saviore dell'Adamello,2018,F,7
+017175,Saviore dell'Adamello,2018,M,3
+017175,Saviore dell'Adamello,2019,F,10
+017175,Saviore dell'Adamello,2019,M,4
+017175,Saviore dell'Adamello,2020,F,10
+017175,Saviore dell'Adamello,2020,M,6
+017175,Saviore dell'Adamello,2021,F,8
+017175,Saviore dell'Adamello,2021,M,7
+017175,Saviore dell'Adamello,2022,F,11
+017175,Saviore dell'Adamello,2022,M,8
+017175,Saviore dell'Adamello,2023,F,11
+017175,Saviore dell'Adamello,2023,M,6
+017175,Saviore dell'Adamello,2024,F,13
+017175,Saviore dell'Adamello,2024,M,6
+017176,Sellero,2010,F,18
+017176,Sellero,2010,M,9
+017176,Sellero,2011,F,20
+017176,Sellero,2011,M,7
+017176,Sellero,2012,F,15
+017176,Sellero,2012,M,5
+017176,Sellero,2013,F,11
+017176,Sellero,2013,M,5
+017176,Sellero,2014,F,10
+017176,Sellero,2014,M,6
+017176,Sellero,2015,F,11
+017176,Sellero,2015,M,6
+017176,Sellero,2016,F,9
+017176,Sellero,2016,M,5
+017176,Sellero,2017,F,9
+017176,Sellero,2017,M,5
+017176,Sellero,2018,F,10
+017176,Sellero,2018,M,8
+017176,Sellero,2019,F,20
+017176,Sellero,2019,M,8
+017176,Sellero,2020,F,22
+017176,Sellero,2020,M,13
+017176,Sellero,2021,F,20
+017176,Sellero,2021,M,11
+017176,Sellero,2022,F,16
+017176,Sellero,2022,M,9
+017176,Sellero,2023,F,21
+017176,Sellero,2023,M,8
+017176,Sellero,2024,F,24
+017176,Sellero,2024,M,9
+017177,Seniga,2010,F,5
+017177,Seniga,2010,M,6
+017177,Seniga,2011,F,12
+017177,Seniga,2011,M,6
+017177,Seniga,2012,F,13
+017177,Seniga,2012,M,7
+017177,Seniga,2013,F,14
+017177,Seniga,2013,M,6
+017177,Seniga,2014,F,12
+017177,Seniga,2014,M,4
+017177,Seniga,2015,F,12
+017177,Seniga,2015,M,7
+017177,Seniga,2016,F,11
+017177,Seniga,2016,M,11
+017177,Seniga,2017,F,9
+017177,Seniga,2017,M,10
+017177,Seniga,2018,F,12
+017177,Seniga,2018,M,10
+017177,Seniga,2019,F,12
+017177,Seniga,2019,M,12
+017177,Seniga,2020,F,14
+017177,Seniga,2020,M,12
+017177,Seniga,2021,F,17
+017177,Seniga,2021,M,12
+017177,Seniga,2022,F,18
+017177,Seniga,2022,M,11
+017177,Seniga,2023,F,15
+017177,Seniga,2023,M,12
+017177,Seniga,2024,F,14
+017177,Seniga,2024,M,10
+017178,Serle,2010,F,21
+017178,Serle,2010,M,13
+017178,Serle,2011,F,28
+017178,Serle,2011,M,18
+017178,Serle,2012,F,25
+017178,Serle,2012,M,15
+017178,Serle,2013,F,22
+017178,Serle,2013,M,21
+017178,Serle,2014,F,21
+017178,Serle,2014,M,22
+017178,Serle,2015,F,27
+017178,Serle,2015,M,22
+017178,Serle,2016,F,26
+017178,Serle,2016,M,21
+017178,Serle,2017,F,26
+017178,Serle,2017,M,15
+017178,Serle,2018,F,28
+017178,Serle,2018,M,17
+017178,Serle,2019,F,24
+017178,Serle,2019,M,18
+017178,Serle,2020,F,28
+017178,Serle,2020,M,15
+017178,Serle,2021,F,32
+017178,Serle,2021,M,12
+017178,Serle,2022,F,39
+017178,Serle,2022,M,13
+017178,Serle,2023,F,37
+017178,Serle,2023,M,19
+017178,Serle,2024,F,29
+017178,Serle,2024,M,19
+017179,Sirmione,2010,F,87
+017179,Sirmione,2010,M,71
+017179,Sirmione,2011,F,91
+017179,Sirmione,2011,M,64
+017179,Sirmione,2012,F,102
+017179,Sirmione,2012,M,59
+017179,Sirmione,2013,F,97
+017179,Sirmione,2013,M,60
+017179,Sirmione,2014,F,111
+017179,Sirmione,2014,M,54
+017179,Sirmione,2015,F,110
+017179,Sirmione,2015,M,59
+017179,Sirmione,2016,F,110
+017179,Sirmione,2016,M,72
+017179,Sirmione,2017,F,97
+017179,Sirmione,2017,M,75
+017179,Sirmione,2018,F,102
+017179,Sirmione,2018,M,69
+017179,Sirmione,2019,F,97
+017179,Sirmione,2019,M,78
+017179,Sirmione,2020,F,103
+017179,Sirmione,2020,M,73
+017179,Sirmione,2021,F,97
+017179,Sirmione,2021,M,75
+017179,Sirmione,2022,F,107
+017179,Sirmione,2022,M,73
+017179,Sirmione,2023,F,109
+017179,Sirmione,2023,M,66
+017179,Sirmione,2024,F,109
+017179,Sirmione,2024,M,70
+017180,Soiano del Lago,2010,F,27
+017180,Soiano del Lago,2010,M,7
+017180,Soiano del Lago,2011,F,31
+017180,Soiano del Lago,2011,M,10
+017180,Soiano del Lago,2012,F,30
+017180,Soiano del Lago,2012,M,12
+017180,Soiano del Lago,2013,F,27
+017180,Soiano del Lago,2013,M,13
+017180,Soiano del Lago,2014,F,20
+017180,Soiano del Lago,2014,M,14
+017180,Soiano del Lago,2015,F,16
+017180,Soiano del Lago,2015,M,15
+017180,Soiano del Lago,2016,F,13
+017180,Soiano del Lago,2016,M,16
+017180,Soiano del Lago,2017,F,16
+017180,Soiano del Lago,2017,M,18
+017180,Soiano del Lago,2018,F,16
+017180,Soiano del Lago,2018,M,15
+017180,Soiano del Lago,2019,F,18
+017180,Soiano del Lago,2019,M,19
+017180,Soiano del Lago,2020,F,18
+017180,Soiano del Lago,2020,M,20
+017180,Soiano del Lago,2021,F,24
+017180,Soiano del Lago,2021,M,14
+017180,Soiano del Lago,2022,F,21
+017180,Soiano del Lago,2022,M,14
+017180,Soiano del Lago,2023,F,27
+017180,Soiano del Lago,2023,M,12
+017180,Soiano del Lago,2024,F,31
+017180,Soiano del Lago,2024,M,14
+017181,Sonico,2010,F,12
+017181,Sonico,2010,M,11
+017181,Sonico,2011,F,12
+017181,Sonico,2011,M,16
+017181,Sonico,2012,F,9
+017181,Sonico,2012,M,13
+017181,Sonico,2013,F,8
+017181,Sonico,2013,M,10
+017181,Sonico,2014,F,6
+017181,Sonico,2014,M,7
+017181,Sonico,2015,F,4
+017181,Sonico,2015,M,7
+017181,Sonico,2016,F,3
+017181,Sonico,2016,M,7
+017181,Sonico,2017,F,6
+017181,Sonico,2017,M,7
+017181,Sonico,2018,F,7
+017181,Sonico,2018,M,7
+017181,Sonico,2019,F,10
+017181,Sonico,2019,M,8
+017181,Sonico,2020,F,14
+017181,Sonico,2020,M,8
+017181,Sonico,2021,F,14
+017181,Sonico,2021,M,7
+017181,Sonico,2022,F,14
+017181,Sonico,2022,M,5
+017181,Sonico,2023,F,19
+017181,Sonico,2023,M,7
+017181,Sonico,2024,F,17
+017181,Sonico,2024,M,7
+017182,Sulzano,2010,F,12
+017182,Sulzano,2010,M,9
+017182,Sulzano,2011,F,12
+017182,Sulzano,2011,M,8
+017182,Sulzano,2012,F,15
+017182,Sulzano,2012,M,5
+017182,Sulzano,2013,F,16
+017182,Sulzano,2013,M,4
+017182,Sulzano,2014,F,14
+017182,Sulzano,2014,M,7
+017182,Sulzano,2015,F,14
+017182,Sulzano,2015,M,7
+017182,Sulzano,2016,F,15
+017182,Sulzano,2016,M,10
+017182,Sulzano,2017,F,16
+017182,Sulzano,2017,M,13
+017182,Sulzano,2018,F,15
+017182,Sulzano,2018,M,13
+017182,Sulzano,2019,F,14
+017182,Sulzano,2019,M,14
+017182,Sulzano,2020,F,17
+017182,Sulzano,2020,M,13
+017182,Sulzano,2021,F,17
+017182,Sulzano,2021,M,14
+017182,Sulzano,2022,F,19
+017182,Sulzano,2022,M,16
+017182,Sulzano,2023,F,27
+017182,Sulzano,2023,M,15
+017182,Sulzano,2024,F,27
+017182,Sulzano,2024,M,23
+017183,Tavernole sul Mella,2010,F,22
+017183,Tavernole sul Mella,2010,M,14
+017183,Tavernole sul Mella,2011,F,16
+017183,Tavernole sul Mella,2011,M,17
+017183,Tavernole sul Mella,2012,F,18
+017183,Tavernole sul Mella,2012,M,15
+017183,Tavernole sul Mella,2013,F,13
+017183,Tavernole sul Mella,2013,M,19
+017183,Tavernole sul Mella,2014,F,10
+017183,Tavernole sul Mella,2014,M,17
+017183,Tavernole sul Mella,2015,F,6
+017183,Tavernole sul Mella,2015,M,17
+017183,Tavernole sul Mella,2016,F,6
+017183,Tavernole sul Mella,2016,M,18
+017183,Tavernole sul Mella,2017,F,10
+017183,Tavernole sul Mella,2017,M,14
+017183,Tavernole sul Mella,2018,F,12
+017183,Tavernole sul Mella,2018,M,14
+017183,Tavernole sul Mella,2019,F,14
+017183,Tavernole sul Mella,2019,M,13
+017183,Tavernole sul Mella,2020,F,15
+017183,Tavernole sul Mella,2020,M,12
+017183,Tavernole sul Mella,2021,F,18
+017183,Tavernole sul Mella,2021,M,13
+017183,Tavernole sul Mella,2022,F,19
+017183,Tavernole sul Mella,2022,M,11
+017183,Tavernole sul Mella,2023,F,23
+017183,Tavernole sul Mella,2023,M,13
+017183,Tavernole sul Mella,2024,F,20
+017183,Tavernole sul Mella,2024,M,14
+017184,Temù,2010,F,7
+017184,Temù,2010,M,11
+017184,Temù,2011,F,9
+017184,Temù,2011,M,12
+017184,Temù,2012,F,8
+017184,Temù,2012,M,11
+017184,Temù,2013,F,11
+017184,Temù,2013,M,6
+017184,Temù,2014,F,9
+017184,Temù,2014,M,6
+017184,Temù,2015,F,10
+017184,Temù,2015,M,5
+017184,Temù,2016,F,11
+017184,Temù,2016,M,4
+017184,Temù,2017,F,10
+017184,Temù,2017,M,5
+017184,Temù,2018,F,8
+017184,Temù,2018,M,5
+017184,Temù,2019,F,10
+017184,Temù,2019,M,7
+017184,Temù,2020,F,10
+017184,Temù,2020,M,9
+017184,Temù,2021,F,12
+017184,Temù,2021,M,9
+017184,Temù,2022,F,15
+017184,Temù,2022,M,7
+017184,Temù,2023,F,11
+017184,Temù,2023,M,9
+017184,Temù,2024,F,18
+017184,Temù,2024,M,12
+017185,Tignale,2010,F,11
+017185,Tignale,2010,M,8
+017185,Tignale,2011,F,11
+017185,Tignale,2011,M,8
+017185,Tignale,2012,F,11
+017185,Tignale,2012,M,6
+017185,Tignale,2013,F,14
+017185,Tignale,2013,M,7
+017185,Tignale,2014,F,13
+017185,Tignale,2014,M,9
+017185,Tignale,2015,F,16
+017185,Tignale,2015,M,9
+017185,Tignale,2016,F,16
+017185,Tignale,2016,M,10
+017185,Tignale,2017,F,21
+017185,Tignale,2017,M,9
+017185,Tignale,2018,F,17
+017185,Tignale,2018,M,10
+017185,Tignale,2019,F,18
+017185,Tignale,2019,M,12
+017185,Tignale,2020,F,15
+017185,Tignale,2020,M,10
+017185,Tignale,2021,F,12
+017185,Tignale,2021,M,9
+017185,Tignale,2022,F,9
+017185,Tignale,2022,M,11
+017185,Tignale,2023,F,10
+017185,Tignale,2023,M,8
+017185,Tignale,2024,F,13
+017185,Tignale,2024,M,10
+017186,Torbole Casaglia,2010,F,53
+017186,Torbole Casaglia,2010,M,49
+017186,Torbole Casaglia,2011,F,55
+017186,Torbole Casaglia,2011,M,50
+017186,Torbole Casaglia,2012,F,61
+017186,Torbole Casaglia,2012,M,46
+017186,Torbole Casaglia,2013,F,71
+017186,Torbole Casaglia,2013,M,47
+017186,Torbole Casaglia,2014,F,75
+017186,Torbole Casaglia,2014,M,47
+017186,Torbole Casaglia,2015,F,74
+017186,Torbole Casaglia,2015,M,50
+017186,Torbole Casaglia,2016,F,69
+017186,Torbole Casaglia,2016,M,54
+017186,Torbole Casaglia,2017,F,83
+017186,Torbole Casaglia,2017,M,59
+017186,Torbole Casaglia,2018,F,78
+017186,Torbole Casaglia,2018,M,57
+017186,Torbole Casaglia,2019,F,89
+017186,Torbole Casaglia,2019,M,58
+017186,Torbole Casaglia,2020,F,81
+017186,Torbole Casaglia,2020,M,64
+017186,Torbole Casaglia,2021,F,80
+017186,Torbole Casaglia,2021,M,54
+017186,Torbole Casaglia,2022,F,75
+017186,Torbole Casaglia,2022,M,57
+017186,Torbole Casaglia,2023,F,84
+017186,Torbole Casaglia,2023,M,57
+017186,Torbole Casaglia,2024,F,94
+017186,Torbole Casaglia,2024,M,67
+017187,Toscolano-Maderno,2010,F,73
+017187,Toscolano-Maderno,2010,M,73
+017187,Toscolano-Maderno,2011,F,71
+017187,Toscolano-Maderno,2011,M,77
+017187,Toscolano-Maderno,2012,F,79
+017187,Toscolano-Maderno,2012,M,68
+017187,Toscolano-Maderno,2013,F,72
+017187,Toscolano-Maderno,2013,M,73
+017187,Toscolano-Maderno,2014,F,81
+017187,Toscolano-Maderno,2014,M,70
+017187,Toscolano-Maderno,2015,F,79
+017187,Toscolano-Maderno,2015,M,62
+017187,Toscolano-Maderno,2016,F,73
+017187,Toscolano-Maderno,2016,M,60
+017187,Toscolano-Maderno,2017,F,76
+017187,Toscolano-Maderno,2017,M,53
+017187,Toscolano-Maderno,2018,F,76
+017187,Toscolano-Maderno,2018,M,59
+017187,Toscolano-Maderno,2019,F,86
+017187,Toscolano-Maderno,2019,M,66
+017187,Toscolano-Maderno,2020,F,93
+017187,Toscolano-Maderno,2020,M,63
+017187,Toscolano-Maderno,2021,F,98
+017187,Toscolano-Maderno,2021,M,65
+017187,Toscolano-Maderno,2022,F,100
+017187,Toscolano-Maderno,2022,M,68
+017187,Toscolano-Maderno,2023,F,99
+017187,Toscolano-Maderno,2023,M,53
+017187,Toscolano-Maderno,2024,F,105
+017187,Toscolano-Maderno,2024,M,58
+017188,Travagliato,2010,F,145
+017188,Travagliato,2010,M,86
+017188,Travagliato,2011,F,153
+017188,Travagliato,2011,M,85
+017188,Travagliato,2012,F,143
+017188,Travagliato,2012,M,86
+017188,Travagliato,2013,F,147
+017188,Travagliato,2013,M,85
+017188,Travagliato,2014,F,155
+017188,Travagliato,2014,M,94
+017188,Travagliato,2015,F,152
+017188,Travagliato,2015,M,99
+017188,Travagliato,2016,F,147
+017188,Travagliato,2016,M,101
+017188,Travagliato,2017,F,156
+017188,Travagliato,2017,M,108
+017188,Travagliato,2018,F,153
+017188,Travagliato,2018,M,120
+017188,Travagliato,2019,F,162
+017188,Travagliato,2019,M,122
+017188,Travagliato,2020,F,183
+017188,Travagliato,2020,M,131
+017188,Travagliato,2021,F,210
+017188,Travagliato,2021,M,145
+017188,Travagliato,2022,F,218
+017188,Travagliato,2022,M,142
+017188,Travagliato,2023,F,227
+017188,Travagliato,2023,M,155
+017188,Travagliato,2024,F,215
+017188,Travagliato,2024,M,159
+017189,Tremosine sul Garda,2010,F,20
+017189,Tremosine sul Garda,2010,M,18
+017189,Tremosine sul Garda,2011,F,19
+017189,Tremosine sul Garda,2011,M,20
+017189,Tremosine sul Garda,2012,F,17
+017189,Tremosine sul Garda,2012,M,19
+017189,Tremosine sul Garda,2013,F,18
+017189,Tremosine sul Garda,2013,M,17
+017189,Tremosine sul Garda,2014,F,19
+017189,Tremosine sul Garda,2014,M,18
+017189,Tremosine sul Garda,2015,F,20
+017189,Tremosine sul Garda,2015,M,13
+017189,Tremosine sul Garda,2016,F,20
+017189,Tremosine sul Garda,2016,M,15
+017189,Tremosine sul Garda,2017,F,18
+017189,Tremosine sul Garda,2017,M,16
+017189,Tremosine sul Garda,2018,F,18
+017189,Tremosine sul Garda,2018,M,16
+017189,Tremosine sul Garda,2019,F,18
+017189,Tremosine sul Garda,2019,M,12
+017189,Tremosine sul Garda,2020,F,19
+017189,Tremosine sul Garda,2020,M,13
+017189,Tremosine sul Garda,2021,F,19
+017189,Tremosine sul Garda,2021,M,14
+017189,Tremosine sul Garda,2022,F,19
+017189,Tremosine sul Garda,2022,M,12
+017189,Tremosine sul Garda,2023,F,21
+017189,Tremosine sul Garda,2023,M,14
+017189,Tremosine sul Garda,2024,F,18
+017189,Tremosine sul Garda,2024,M,14
+017190,Trenzano,2010,F,67
+017190,Trenzano,2010,M,55
+017190,Trenzano,2011,F,61
+017190,Trenzano,2011,M,54
+017190,Trenzano,2012,F,55
+017190,Trenzano,2012,M,53
+017190,Trenzano,2013,F,47
+017190,Trenzano,2013,M,51
+017190,Trenzano,2014,F,50
+017190,Trenzano,2014,M,49
+017190,Trenzano,2015,F,51
+017190,Trenzano,2015,M,47
+017190,Trenzano,2016,F,48
+017190,Trenzano,2016,M,47
+017190,Trenzano,2017,F,49
+017190,Trenzano,2017,M,34
+017190,Trenzano,2018,F,54
+017190,Trenzano,2018,M,28
+017190,Trenzano,2019,F,56
+017190,Trenzano,2019,M,36
+017190,Trenzano,2020,F,63
+017190,Trenzano,2020,M,37
+017190,Trenzano,2021,F,72
+017190,Trenzano,2021,M,35
+017190,Trenzano,2022,F,72
+017190,Trenzano,2022,M,34
+017190,Trenzano,2023,F,74
+017190,Trenzano,2023,M,37
+017190,Trenzano,2024,F,76
+017190,Trenzano,2024,M,35
+017191,Treviso Bresciano,2010,F,6
+017191,Treviso Bresciano,2010,M,7
+017191,Treviso Bresciano,2011,F,6
+017191,Treviso Bresciano,2011,M,5
+017191,Treviso Bresciano,2012,F,7
+017191,Treviso Bresciano,2012,M,4
+017191,Treviso Bresciano,2013,F,4
+017191,Treviso Bresciano,2013,M,3
+017191,Treviso Bresciano,2014,F,5
+017191,Treviso Bresciano,2014,M,2
+017191,Treviso Bresciano,2015,F,7
+017191,Treviso Bresciano,2015,M,2
+017191,Treviso Bresciano,2016,F,5
+017191,Treviso Bresciano,2016,M,2
+017191,Treviso Bresciano,2017,F,7
+017191,Treviso Bresciano,2017,M,2
+017191,Treviso Bresciano,2018,F,6
+017191,Treviso Bresciano,2018,M,3
+017191,Treviso Bresciano,2019,F,7
+017191,Treviso Bresciano,2019,M,3
+017191,Treviso Bresciano,2020,F,7
+017191,Treviso Bresciano,2020,M,3
+017191,Treviso Bresciano,2021,F,11
+017191,Treviso Bresciano,2021,M,3
+017191,Treviso Bresciano,2022,F,10
+017191,Treviso Bresciano,2022,M,3
+017191,Treviso Bresciano,2023,F,12
+017191,Treviso Bresciano,2023,M,3
+017191,Treviso Bresciano,2024,F,11
+017191,Treviso Bresciano,2024,M,2
+017192,Urago d'Oglio,2010,F,26
+017192,Urago d'Oglio,2010,M,22
+017192,Urago d'Oglio,2011,F,26
+017192,Urago d'Oglio,2011,M,24
+017192,Urago d'Oglio,2012,F,29
+017192,Urago d'Oglio,2012,M,26
+017192,Urago d'Oglio,2013,F,28
+017192,Urago d'Oglio,2013,M,31
+017192,Urago d'Oglio,2014,F,29
+017192,Urago d'Oglio,2014,M,27
+017192,Urago d'Oglio,2015,F,30
+017192,Urago d'Oglio,2015,M,26
+017192,Urago d'Oglio,2016,F,25
+017192,Urago d'Oglio,2016,M,24
+017192,Urago d'Oglio,2017,F,37
+017192,Urago d'Oglio,2017,M,25
+017192,Urago d'Oglio,2018,F,38
+017192,Urago d'Oglio,2018,M,18
+017192,Urago d'Oglio,2019,F,40
+017192,Urago d'Oglio,2019,M,21
+017192,Urago d'Oglio,2020,F,36
+017192,Urago d'Oglio,2020,M,19
+017192,Urago d'Oglio,2021,F,44
+017192,Urago d'Oglio,2021,M,25
+017192,Urago d'Oglio,2022,F,42
+017192,Urago d'Oglio,2022,M,21
+017192,Urago d'Oglio,2023,F,54
+017192,Urago d'Oglio,2023,M,20
+017192,Urago d'Oglio,2024,F,56
+017192,Urago d'Oglio,2024,M,21
+017193,Vallio Terme,2010,F,12
+017193,Vallio Terme,2010,M,10
+017193,Vallio Terme,2011,F,14
+017193,Vallio Terme,2011,M,8
+017193,Vallio Terme,2012,F,9
+017193,Vallio Terme,2012,M,9
+017193,Vallio Terme,2013,F,9
+017193,Vallio Terme,2013,M,8
+017193,Vallio Terme,2014,F,10
+017193,Vallio Terme,2014,M,8
+017193,Vallio Terme,2015,F,11
+017193,Vallio Terme,2015,M,10
+017193,Vallio Terme,2016,F,11
+017193,Vallio Terme,2016,M,8
+017193,Vallio Terme,2017,F,15
+017193,Vallio Terme,2017,M,9
+017193,Vallio Terme,2018,F,13
+017193,Vallio Terme,2018,M,7
+017193,Vallio Terme,2019,F,13
+017193,Vallio Terme,2019,M,9
+017193,Vallio Terme,2020,F,14
+017193,Vallio Terme,2020,M,14
+017193,Vallio Terme,2021,F,15
+017193,Vallio Terme,2021,M,10
+017193,Vallio Terme,2022,F,14
+017193,Vallio Terme,2022,M,9
+017193,Vallio Terme,2023,F,14
+017193,Vallio Terme,2023,M,5
+017193,Vallio Terme,2024,F,15
+017193,Vallio Terme,2024,M,8
+017194,Valvestino,2010,F,4
+017194,Valvestino,2010,M,3
+017194,Valvestino,2011,F,2
+017194,Valvestino,2011,M,2
+017194,Valvestino,2012,F,2
+017194,Valvestino,2012,M,2
+017194,Valvestino,2013,F,3
+017194,Valvestino,2013,M,2
+017194,Valvestino,2014,F,4
+017194,Valvestino,2014,M,2
+017194,Valvestino,2015,F,4
+017194,Valvestino,2015,M,2
+017194,Valvestino,2016,F,3
+017194,Valvestino,2016,M,2
+017194,Valvestino,2017,F,5
+017194,Valvestino,2017,M,1
+017194,Valvestino,2018,F,3
+017194,Valvestino,2019,F,5
+017194,Valvestino,2019,M,1
+017194,Valvestino,2020,F,5
+017194,Valvestino,2020,M,1
+017194,Valvestino,2021,F,4
+017194,Valvestino,2021,M,1
+017194,Valvestino,2022,F,3
+017194,Valvestino,2022,M,1
+017194,Valvestino,2023,F,1
+017194,Valvestino,2024,F,1
+017195,Verolanuova,2010,F,104
+017195,Verolanuova,2010,M,77
+017195,Verolanuova,2011,F,95
+017195,Verolanuova,2011,M,75
+017195,Verolanuova,2012,F,90
+017195,Verolanuova,2012,M,66
+017195,Verolanuova,2013,F,95
+017195,Verolanuova,2013,M,81
+017195,Verolanuova,2014,F,93
+017195,Verolanuova,2014,M,75
+017195,Verolanuova,2015,F,103
+017195,Verolanuova,2015,M,87
+017195,Verolanuova,2016,F,86
+017195,Verolanuova,2016,M,83
+017195,Verolanuova,2017,F,101
+017195,Verolanuova,2017,M,81
+017195,Verolanuova,2018,F,99
+017195,Verolanuova,2018,M,76
+017195,Verolanuova,2019,F,104
+017195,Verolanuova,2019,M,80
+017195,Verolanuova,2020,F,112
+017195,Verolanuova,2020,M,88
+017195,Verolanuova,2021,F,118
+017195,Verolanuova,2021,M,81
+017195,Verolanuova,2022,F,120
+017195,Verolanuova,2022,M,83
+017195,Verolanuova,2023,F,124
+017195,Verolanuova,2023,M,81
+017195,Verolanuova,2024,F,131
+017195,Verolanuova,2024,M,79
+017196,Verolavecchia,2010,F,48
+017196,Verolavecchia,2010,M,26
+017196,Verolavecchia,2011,F,42
+017196,Verolavecchia,2011,M,23
+017196,Verolavecchia,2012,F,40
+017196,Verolavecchia,2012,M,23
+017196,Verolavecchia,2013,F,33
+017196,Verolavecchia,2013,M,19
+017196,Verolavecchia,2014,F,33
+017196,Verolavecchia,2014,M,20
+017196,Verolavecchia,2015,F,35
+017196,Verolavecchia,2015,M,20
+017196,Verolavecchia,2016,F,33
+017196,Verolavecchia,2016,M,23
+017196,Verolavecchia,2017,F,32
+017196,Verolavecchia,2017,M,27
+017196,Verolavecchia,2018,F,40
+017196,Verolavecchia,2018,M,26
+017196,Verolavecchia,2019,F,47
+017196,Verolavecchia,2019,M,26
+017196,Verolavecchia,2020,F,47
+017196,Verolavecchia,2020,M,23
+017196,Verolavecchia,2021,F,53
+017196,Verolavecchia,2021,M,29
+017196,Verolavecchia,2022,F,54
+017196,Verolavecchia,2022,M,22
+017196,Verolavecchia,2023,F,52
+017196,Verolavecchia,2023,M,31
+017196,Verolavecchia,2024,F,52
+017196,Verolavecchia,2024,M,28
+017197,Vestone,2010,F,44
+017197,Vestone,2010,M,30
+017197,Vestone,2011,F,46
+017197,Vestone,2011,M,31
+017197,Vestone,2012,F,41
+017197,Vestone,2012,M,28
+017197,Vestone,2013,F,39
+017197,Vestone,2013,M,29
+017197,Vestone,2014,F,33
+017197,Vestone,2014,M,33
+017197,Vestone,2015,F,29
+017197,Vestone,2015,M,34
+017197,Vestone,2016,F,36
+017197,Vestone,2016,M,33
+017197,Vestone,2017,F,44
+017197,Vestone,2017,M,38
+017197,Vestone,2018,F,47
+017197,Vestone,2018,M,40
+017197,Vestone,2019,F,64
+017197,Vestone,2019,M,37
+017197,Vestone,2020,F,63
+017197,Vestone,2020,M,33
+017197,Vestone,2021,F,64
+017197,Vestone,2021,M,28
+017197,Vestone,2022,F,60
+017197,Vestone,2022,M,35
+017197,Vestone,2023,F,55
+017197,Vestone,2023,M,36
+017197,Vestone,2024,F,59
+017197,Vestone,2024,M,32
+017198,Vezza d'Oglio,2010,F,19
+017198,Vezza d'Oglio,2010,M,11
+017198,Vezza d'Oglio,2011,F,23
+017198,Vezza d'Oglio,2011,M,9
+017198,Vezza d'Oglio,2012,F,24
+017198,Vezza d'Oglio,2012,M,8
+017198,Vezza d'Oglio,2013,F,22
+017198,Vezza d'Oglio,2013,M,9
+017198,Vezza d'Oglio,2014,F,27
+017198,Vezza d'Oglio,2014,M,7
+017198,Vezza d'Oglio,2015,F,31
+017198,Vezza d'Oglio,2015,M,7
+017198,Vezza d'Oglio,2016,F,28
+017198,Vezza d'Oglio,2016,M,11
+017198,Vezza d'Oglio,2017,F,26
+017198,Vezza d'Oglio,2017,M,10
+017198,Vezza d'Oglio,2018,F,19
+017198,Vezza d'Oglio,2018,M,10
+017198,Vezza d'Oglio,2019,F,20
+017198,Vezza d'Oglio,2019,M,15
+017198,Vezza d'Oglio,2020,F,20
+017198,Vezza d'Oglio,2020,M,16
+017198,Vezza d'Oglio,2021,F,25
+017198,Vezza d'Oglio,2021,M,13
+017198,Vezza d'Oglio,2022,F,27
+017198,Vezza d'Oglio,2022,M,14
+017198,Vezza d'Oglio,2023,F,36
+017198,Vezza d'Oglio,2023,M,19
+017198,Vezza d'Oglio,2024,F,26
+017198,Vezza d'Oglio,2024,M,20
+017199,Villa Carcina,2010,F,138
+017199,Villa Carcina,2010,M,99
+017199,Villa Carcina,2011,F,141
+017199,Villa Carcina,2011,M,105
+017199,Villa Carcina,2012,F,133
+017199,Villa Carcina,2012,M,103
+017199,Villa Carcina,2013,F,131
+017199,Villa Carcina,2013,M,98
+017199,Villa Carcina,2014,F,136
+017199,Villa Carcina,2014,M,100
+017199,Villa Carcina,2015,F,134
+017199,Villa Carcina,2015,M,94
+017199,Villa Carcina,2016,F,119
+017199,Villa Carcina,2016,M,99
+017199,Villa Carcina,2017,F,107
+017199,Villa Carcina,2017,M,88
+017199,Villa Carcina,2018,F,109
+017199,Villa Carcina,2018,M,91
+017199,Villa Carcina,2019,F,94
+017199,Villa Carcina,2019,M,107
+017199,Villa Carcina,2020,F,98
+017199,Villa Carcina,2020,M,112
+017199,Villa Carcina,2021,F,104
+017199,Villa Carcina,2021,M,97
+017199,Villa Carcina,2022,F,99
+017199,Villa Carcina,2022,M,105
+017199,Villa Carcina,2023,F,111
+017199,Villa Carcina,2023,M,104
+017199,Villa Carcina,2024,F,127
+017199,Villa Carcina,2024,M,100
+017200,Villachiara,2010,F,9
+017200,Villachiara,2010,M,9
+017200,Villachiara,2011,F,12
+017200,Villachiara,2011,M,11
+017200,Villachiara,2012,F,12
+017200,Villachiara,2012,M,14
+017200,Villachiara,2013,F,10
+017200,Villachiara,2013,M,13
+017200,Villachiara,2014,F,13
+017200,Villachiara,2014,M,7
+017200,Villachiara,2015,F,15
+017200,Villachiara,2015,M,9
+017200,Villachiara,2016,F,21
+017200,Villachiara,2016,M,11
+017200,Villachiara,2017,F,25
+017200,Villachiara,2017,M,6
+017200,Villachiara,2018,F,25
+017200,Villachiara,2018,M,5
+017200,Villachiara,2019,F,24
+017200,Villachiara,2019,M,7
+017200,Villachiara,2020,F,27
+017200,Villachiara,2020,M,6
+017200,Villachiara,2021,F,23
+017200,Villachiara,2021,M,8
+017200,Villachiara,2022,F,22
+017200,Villachiara,2022,M,10
+017200,Villachiara,2023,F,17
+017200,Villachiara,2023,M,9
+017200,Villachiara,2024,F,15
+017200,Villachiara,2024,M,10
+017201,Villanuova sul Clisi,2010,F,67
+017201,Villanuova sul Clisi,2010,M,37
+017201,Villanuova sul Clisi,2011,F,61
+017201,Villanuova sul Clisi,2011,M,35
+017201,Villanuova sul Clisi,2012,F,66
+017201,Villanuova sul Clisi,2012,M,31
+017201,Villanuova sul Clisi,2013,F,63
+017201,Villanuova sul Clisi,2013,M,28
+017201,Villanuova sul Clisi,2014,F,71
+017201,Villanuova sul Clisi,2014,M,30
+017201,Villanuova sul Clisi,2015,F,71
+017201,Villanuova sul Clisi,2015,M,38
+017201,Villanuova sul Clisi,2016,F,68
+017201,Villanuova sul Clisi,2016,M,38
+017201,Villanuova sul Clisi,2017,F,63
+017201,Villanuova sul Clisi,2017,M,42
+017201,Villanuova sul Clisi,2018,F,63
+017201,Villanuova sul Clisi,2018,M,40
+017201,Villanuova sul Clisi,2019,F,72
+017201,Villanuova sul Clisi,2019,M,50
+017201,Villanuova sul Clisi,2020,F,69
+017201,Villanuova sul Clisi,2020,M,56
+017201,Villanuova sul Clisi,2021,F,74
+017201,Villanuova sul Clisi,2021,M,57
+017201,Villanuova sul Clisi,2022,F,65
+017201,Villanuova sul Clisi,2022,M,70
+017201,Villanuova sul Clisi,2023,F,75
+017201,Villanuova sul Clisi,2023,M,72
+017201,Villanuova sul Clisi,2024,F,78
+017201,Villanuova sul Clisi,2024,M,69
+017202,Vione,2010,F,13
+017202,Vione,2010,M,8
+017202,Vione,2011,F,12
+017202,Vione,2011,M,5
+017202,Vione,2012,F,10
+017202,Vione,2012,M,5
+017202,Vione,2013,F,10
+017202,Vione,2013,M,4
+017202,Vione,2014,F,9
+017202,Vione,2014,M,3
+017202,Vione,2015,F,6
+017202,Vione,2015,M,2
+017202,Vione,2016,F,4
+017202,Vione,2016,M,3
+017202,Vione,2017,F,6
+017202,Vione,2017,M,4
+017202,Vione,2018,F,5
+017202,Vione,2018,M,4
+017202,Vione,2019,F,6
+017202,Vione,2019,M,5
+017202,Vione,2020,F,6
+017202,Vione,2020,M,4
+017202,Vione,2021,F,7
+017202,Vione,2021,M,4
+017202,Vione,2022,F,5
+017202,Vione,2022,M,6
+017202,Vione,2023,F,5
+017202,Vione,2023,M,8
+017202,Vione,2024,F,5
+017202,Vione,2024,M,8
+017203,Visano,2010,F,17
+017203,Visano,2010,M,16
+017203,Visano,2011,F,21
+017203,Visano,2011,M,21
+017203,Visano,2012,F,19
+017203,Visano,2012,M,21
+017203,Visano,2013,F,20
+017203,Visano,2013,M,22
+017203,Visano,2014,F,20
+017203,Visano,2014,M,19
+017203,Visano,2015,F,16
+017203,Visano,2015,M,18
+017203,Visano,2016,F,23
+017203,Visano,2016,M,17
+017203,Visano,2017,F,24
+017203,Visano,2017,M,21
+017203,Visano,2018,F,30
+017203,Visano,2018,M,21
+017203,Visano,2019,F,30
+017203,Visano,2019,M,15
+017203,Visano,2020,F,32
+017203,Visano,2020,M,21
+017203,Visano,2021,F,34
+017203,Visano,2021,M,16
+017203,Visano,2022,F,34
+017203,Visano,2022,M,20
+017203,Visano,2023,F,28
+017203,Visano,2023,M,23
+017203,Visano,2024,F,24
+017203,Visano,2024,M,22
+017204,Vobarno,2010,F,62
+017204,Vobarno,2010,M,54
+017204,Vobarno,2011,F,67
+017204,Vobarno,2011,M,49
+017204,Vobarno,2012,F,66
+017204,Vobarno,2012,M,51
+017204,Vobarno,2013,F,74
+017204,Vobarno,2013,M,54
+017204,Vobarno,2014,F,56
+017204,Vobarno,2014,M,64
+017204,Vobarno,2015,F,63
+017204,Vobarno,2015,M,55
+017204,Vobarno,2016,F,72
+017204,Vobarno,2016,M,62
+017204,Vobarno,2017,F,76
+017204,Vobarno,2017,M,60
+017204,Vobarno,2018,F,82
+017204,Vobarno,2018,M,59
+017204,Vobarno,2019,F,85
+017204,Vobarno,2019,M,56
+017204,Vobarno,2020,F,97
+017204,Vobarno,2020,M,62
+017204,Vobarno,2021,F,89
+017204,Vobarno,2021,M,61
+017204,Vobarno,2022,F,92
+017204,Vobarno,2022,M,56
+017204,Vobarno,2023,F,93
+017204,Vobarno,2023,M,58
+017204,Vobarno,2024,F,95
+017204,Vobarno,2024,M,57
+017205,Zone,2010,F,8
+017205,Zone,2010,M,12
+017205,Zone,2011,F,8
+017205,Zone,2011,M,9
+017205,Zone,2012,F,5
+017205,Zone,2012,M,10
+017205,Zone,2013,F,5
+017205,Zone,2013,M,8
+017205,Zone,2014,F,7
+017205,Zone,2014,M,6
+017205,Zone,2015,F,8
+017205,Zone,2015,M,8
+017205,Zone,2016,F,5
+017205,Zone,2016,M,6
+017205,Zone,2017,F,7
+017205,Zone,2017,M,5
+017205,Zone,2018,F,9
+017205,Zone,2018,M,12
+017205,Zone,2019,F,10
+017205,Zone,2019,M,13
+017205,Zone,2020,F,11
+017205,Zone,2020,M,12
+017205,Zone,2021,F,9
+017205,Zone,2021,M,13
+017205,Zone,2022,F,8
+017205,Zone,2022,M,9
+017205,Zone,2023,F,8
+017205,Zone,2023,M,13
+017205,Zone,2024,F,12
+017205,Zone,2024,M,11
+017206,Piancogno,2010,F,46
+017206,Piancogno,2010,M,45
+017206,Piancogno,2011,F,50
+017206,Piancogno,2011,M,39
+017206,Piancogno,2012,F,52
+017206,Piancogno,2012,M,34
+017206,Piancogno,2013,F,53
+017206,Piancogno,2013,M,34
+017206,Piancogno,2014,F,50
+017206,Piancogno,2014,M,34
+017206,Piancogno,2015,F,59
+017206,Piancogno,2015,M,37
+017206,Piancogno,2016,F,65
+017206,Piancogno,2016,M,42
+017206,Piancogno,2017,F,64
+017206,Piancogno,2017,M,46
+017206,Piancogno,2018,F,64
+017206,Piancogno,2018,M,45
+017206,Piancogno,2019,F,67
+017206,Piancogno,2019,M,47
+017206,Piancogno,2020,F,72
+017206,Piancogno,2020,M,46
+017206,Piancogno,2021,F,69
+017206,Piancogno,2021,M,43
+017206,Piancogno,2022,F,63
+017206,Piancogno,2022,M,48
+017206,Piancogno,2023,F,62
+017206,Piancogno,2023,M,52
+017206,Piancogno,2024,F,74
+017206,Piancogno,2024,M,52

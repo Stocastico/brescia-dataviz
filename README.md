@@ -62,11 +62,20 @@ rimasto dov'era.
 | 🙋 | **`migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git e si rigenera in locale. Serve solo quando l'asse 2 diventerà una storia | 20 min di attesa |
 | 🙋 | **Dire se la tavolozza va riallineata con `donostia-dataviz`** — le storie qui sono sette, i colori ereditati cinque, quindi ne sono stati aggiunti due (`--oliva`, `--prugna`) con la regola che li sceglie scritta accanto. Qui è coerente; la domanda è se i due progetti debbano restare una collana stretta | riguarda la lingua grafica **condivisa fra i due progetti**: [`sito/README.md`](sito/README.md) §Lo stile | 10 min, o mezz'ora se porti regola e toni anche di là |
 
-🤖 **Tre voci sono uscite da questo elenco il 4 settembre 2026**, riprovando gli
-host una per una. Due perché hanno risposto: i **dati MUR sui due atenei**
-(`dati-ustat.mur.gov.it` è un CKAN funzionante) e le **compravendite NTN a grana
-provinciale e di capoluogo** (pubblicate in chiaro; il login serve solo per il
-dettaglio comunale). La terza per la ragione opposta: gli **open data del Comune
+✅ **Le due voci che erano uscite da questo elenco sono anche state fatte**
+(7 settembre 2026). Le **compravendite NTN a grana provinciale e di capoluogo**
+sono in `compravendite_province.csv` (36.234 righe, trimestrale 2011/T1–2026/T1,
+99 province): l'unico pezzo della fornitura OMI in chiaro, e la pipeline legge
+gli URL dalla pagina invece di scriverli in una costante, perché portano un UUID
+che cambia a ogni ripubblicazione. I **dati MUR sui due atenei** sono in tre
+tabelle, e sono tre perché la nota che questo progetto porta da mesi — «la
+statale da sola sottostima» — si risolve solo dal lato **sede didattica**: nel
+2024/2025 l'ateneo «Brescia» ha **16.456** iscritti, ma in provincia ne studiano
+**19.873**, di cui 4.288 alla Cattolica. E i bresciani iscritti da qualche parte
+sono **32.411**: tre cifre, tre domande diverse.
+
+🤖 **Le tre voci erano uscite da questo elenco il 4 settembre 2026**, riprovando gli
+host una per una. Due perché hanno risposto (quelle qui sopra). La terza per la ragione opposta: gli **open data del Comune
 di Brescia** non erano invisibili da qui, **non esistono più** — il portale è
 dismesso (`comune.brescia.it/opendata` risponde `410 Gone`) e i dataset sono
 migrati su `dati.lombardia.it`, che la pipeline già interroga. Il prezzo è una
@@ -81,10 +90,11 @@ che servono: sono estensioni e finiture.
 **Il sito non si pubblica da solo**, ed è voluto finché l'analisi non è finita:
 ogni push su `main` lo ricostruisce e lo verifica lasciandolo come artefatto da
 scaricare, ma per mandarlo online serve quel lancio a mano con la conferma
-scritta. Il lavoro che resta e che **non** richiede te — i dati MUR sui due
-atenei, le compravendite NTN — è in
+scritta. Il lavoro che resta è in
 [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md), che distingue riga per riga **cosa può
-fare una sessione di lavoro e cosa richiede te**.
+fare una sessione di lavoro e cosa richiede te**: dopo il 7 settembre 2026 la
+colonna 🤖 sugli scarichi è vuota, e l'unico dato che non si scarica da qui resta
+l'export a mano del commercio estero provinciale.
 
 ## I documenti
 
@@ -96,7 +106,7 @@ fare una sessione di lavoro e cosa richiede te**.
 | [`WORKING-PAPER.md`](WORKING-PAPER.md) | ✅ **Versione 1.1**, e non è più una bozza. «Il numero giusto, la frase falsa»: **undici volte** un dato corretto stava per produrre un'affermazione falsa, raggruppate in quattro famiglie. È la tesi che mancava al titolo. L'undicesimo episodio è il primo nato dal **prodotto** invece che dall'analisi, ed è MET-27. La §7 copre i cinque assi con nove risultati; §5, §9 e §10 sono aggiornate. |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco completo delle cose che **richiedono te** (un login SPID, una macchina italiana, una decisione di disegno), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
-| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 31 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza, turismo e — da settembre 2026 — **quotazioni immobiliari OMI in due grane, più i volumi di compravendita**, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no, con l'eccezione degli **input curati** in `dati/input/`, che nessun URL restituisce. |
+| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 35 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza, turismo, **università** e — da settembre 2026 — **quotazioni immobiliari OMI in due grane, più i volumi di compravendita comunali e quelli provinciali trimestrali**, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no, con l'eccezione degli **input curati** in `dati/input/`, che nessun URL restituisce. |
 | [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: sedici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
 | [`sito/`](sito/README.md) | **Il documento narrativo e lo strumento**: otto storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`; accanto, `esplora.html`, che mette tutti e **diciannove** gli indicatori su tutti i comuni e lascia scegliere a chi legge. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 

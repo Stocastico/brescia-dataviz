@@ -146,6 +146,8 @@ scoprire:
 | `redditi` | `redditi_comuni.csv` | comuni | MEF via ISTAT |
 | `redditi_confronto` | `redditi_comuni_confronto.csv` | comuni di Bergamo | MEF via ISTAT |
 | `commercio_estero` | `commercio_estero_lombardia.csv` | **regione** (ripiego) | ISTAT |
+| `compravendite_province` | `compravendite_province.csv` | 99 province × capoluogo/resto, trimestrale 2011/T1–2026/T1 | Agenzia delle Entrate — OMI, pagina pubblica (URL letti dalla pagina) |
+| `universita` | `universita_atenei.csv`, `universita_sedi_brescia.csv`, `universita_residenza_comuni.csv` | ateneo / provincia della sede / 205 comuni, 2010/11–2024/25 | MUR — USTAT (CKAN) |
 | `sintesi` | `comuni_sintesi.csv` | 205 comuni | *nessuna*: rilegge le tabelle sopra |
 | `web` | `../web/src/data/*.json` | 205 comuni | *nessuna*: rilegge le tabelle sopra |
 

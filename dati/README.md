@@ -9,8 +9,9 @@
 Quattro cartelle:
 
 - **`processed/`** — le tabelle tidy, **versionate**: sono il prodotto del
-  progetto. Trenta file, una cinquantina di MB — erano 12 finché non sono arrivate le tre
-  tabelle OMI, che da sole ne fanno 19.
+  progetto. Trentacinque file, una sessantina di MB — erano 12 finché non sono arrivate le tre
+  tabelle OMI, che da sole ne fanno 19; le ultime quattro sono di settembre 2026
+  (l'NTN provinciale e le tre dell'università).
 - **`geo/`** — la geometria di riferimento, **versionata**: i confini dei 205
   comuni in GeoJSON (320 KB). È la base di ogni coropletica.
 - **`raw/`** — le risposte grezze delle fonti, **non versionate** (qualche GB:
@@ -58,13 +59,17 @@ si ripetono.
 
 Le due tabelle delle quotazioni OMI non vengono da un URL: nascono dagli archivi
 versionati in [`input/omi/`](input/omi/PROVENIENZA.md), scaricati a mano dietro
-SPID. **Chi le riusa deve citare «Agenzia Entrate - OMI».**
+SPID. La quarta, `compravendite_province.csv`, viene invece dall'unico pezzo
+della fornitura OMI che sta **in chiaro**: la pagina pubblica *Volumi di
+compravendita*, che la pipeline scarica da sé. **Chi le riusa deve citare
+«Agenzia Entrate - OMI».**
 
 | File | Righe | Contenuto |
 |---|---|---|
 | `quotazioni_zone.csv` | 110.537 | Una riga per record pubblicato: semestre × zona OMI × tipologia × stato conservativo, con gli intervalli min-max di vendita (€/m²) e locazione (€/m² al mese) e la **base di superficie** di ciascuno. 22 semestri, il 2° di ogni anno dal 2004 al 2025. È la grana per guardare dentro il capoluogo, che ha 26 zone censite e 23 quotate. |
 | `quotazioni_comuni.csv` | 107.606 | Aggregata per comune × semestre × tipologia × mercato × base di superficie: `minimo`, `massimo` e `media`. La media è quella **non pesata dei punti medi delle zone** — nei dati OMI non esiste il numero di immobili per zona — e tiene solo i record dello **stato conservativo prevalente**. |
 | `compravendite_comuni.csv` | 52.020 | I **volumi** di compravendita (NTN, transazioni normalizzate sulla quota di proprietà: sono frazionarie di natura) per comune × anno × comparto × segmento, **2011–2025**. Comparti: residenziale per classe di superficie, non residenziale (uffici, negozi e laboratori, depositi, produttivo, agricolo, più quattro categorie catastali `tco_*` che la fonte non scioglie), pertinenze (box e depositi). |
+| `compravendite_province.csv` | 36.234 | Gli stessi volumi a grana **provinciale e trimestrale**, per tutte le province × trimestre × ambito × segmento, **2011/T1–2026/T1**. `ambito` separa il **capoluogo** dal **resto della provincia**: sommati danno la provincia, presi uno solo sono una metà che non lo dice. Segmenti: residenziale totale, box, depositi pertinenziali. La colonna `stato` distingue il **definitivo** (fino al 2024) dal **provvisorio** (2025–2026), che la fonte ricalcola. |
 
 > ⚠️ **203 comuni su 205, non per colpa del filtro.** **Magasa** e
 > **Valvestino** non sono nella fonte: mai nelle compravendite, e nelle
@@ -81,6 +86,24 @@ SPID. **Chi le riusa deve citare «Agenzia Entrate - OMI».**
 > calo che è solo la misura che è cambiata. E queste sono **quotazioni**, non
 > transazioni: l'Agenzia stessa le chiama «indicazioni di valore di larga
 > massima».
+
+> ⚠️ **Le due forniture non dicono la stessa cosa nel 2011 e nel 2012.**
+> Sommando `capoluogo` + `resto_provincia` sul residenziale si ottiene la
+> provincia, che è quello che dà anche `compravendite_comuni.csv` sommando i 203
+> comuni. Sul **definitivo**, dal 2013 al 2024, coincidono entro lo **0,05 %**,
+> e il **provvisorio** 2025 ci sta dentro anche lui purché confrontato col 2025
+> dell'altra fornitura, che provvisorio è a sua volta — mescolare i due `stato`
+> dà uno scarto del 100 %, ed è il primo errore che questa verifica ha preso.
+> Nel 2011 e nel 2012 la serie provinciale sta **1,3 %** e **1,7 %** più in alto. Non è copertura
+> mancante — i comuni sono 203 in tutti gli anni — è una **revisione** che ha
+> toccato una fornitura e non l'altra. Resta dichiarata, non aggiustata.
+
+> ⚠️ **Le province di `compravendite_province.csv` sono 99, non 107.** Mancano
+> le quattro del sistema tavolare (Bolzano, Trento, Gorizia, Trieste) e le
+> quattro nate dopo il 2004, che restano dentro la provincia madre: **Monza e
+> Brianza è dentro Milano**, Fermo dentro Ascoli, Barletta-Andria-Trani dentro
+> Bari, Sud Sardegna dentro Cagliari. Per un confronto lombardo la prima conta:
+> «Milano» qui è Milano più Monza, e non è la Milano delle altre tabelle.
 
 ### Il deflatore
 
@@ -193,6 +216,28 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
    perché contengano qualcosa.
 3. **Gli anni non sono una serie annuale piena**: le abitazioni ci sono solo
    per 2019, 2021 e 2023.
+
+### Università
+
+Tre tabelle e non una, per una ragione che è anche il risultato: **la Brescia
+che studia non si vede contando gli atenei**. La Cattolica è un solo ateneo, con
+codice milanese e quattro sedi, e una di quelle sedi è Brescia — quindi la
+riga «ateneo Brescia» ne lascia fuori un quinto. Il taglio per **provincia della
+sede didattica** la ritrova. Fonte: **MUR — USTAT**, licenza IODL 2.0.
+
+| File | Righe | Contenuto |
+|---|---|---|
+| `universita_atenei.csv` | 8.639 | Iscritti e laureati per **ateneo × anno × sesso**, tutti gli atenei italiani: iscritti dal **2000/2001**, laureati dal **2001**. La colonna `anno_tipo` dice quale dei due calendari vale per la riga — `accademico` per gli iscritti, `solare` per i laureati — perché ridotti tutti e due a un numero sembrerebbero la stessa serie. |
+| `universita_sedi_brescia.csv` | 1.816 | Gli iscritti con **sede didattica in provincia di Brescia**, per anno × ateneo × gruppo disciplinare × provincia di residenza, **2010/2011–2024/2025**. È la tabella che risolve l'avvertenza dei due atenei. |
+| `universita_residenza_comuni.csv` | 6.090 | Gli iscritti **residenti** nei 205 comuni, per comune × anno × sesso, **2010/2011–2024/2025**, ovunque studino. Prestine è sommato a Bienno, come negli archivi OMI. |
+
+> **Il conto che le tre tabelle permettono, nel 2024/2025.** L'ateneo «Brescia»
+> ha **16.456** iscritti. Con sede didattica in provincia ce ne sono **19.873**:
+> 15.424 alla statale, **4.288 alla Cattolica**, 161 alla Statale di Milano. E i
+> residenti in provincia che risultano iscritti da qualche parte sono **32.411**.
+> Le tre cifre rispondono a tre domande diverse, e confonderle è facile: la
+> prima è la dimensione di un ente, la seconda è quanta università c'è nel
+> territorio, la terza quanti bresciani studiano. Nessuna storia le usa ancora.
 
 ### Ambiente
 

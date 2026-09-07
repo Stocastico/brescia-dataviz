@@ -1,0 +1,1817 @@
+anno,ateneo_codice,ateneo,gruppo_codice,gruppo,regione_residenza,provincia_residenza,iscritti
+2010,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,27
+2010,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,59
+2010,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,11
+2010,1501,Milano,13,Agrario-Forestale e Veterinario,PIEMONTE,NOVARA,7
+2010,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,27
+2010,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,7
+2010,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,VARESE,6
+2010,1504,Milano Cattolica,1,Educazione e Formazione,SICILIA,AGRIGENTO,7
+2010,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,131
+2010,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,1007
+2010,1504,Milano Cattolica,1,Educazione e Formazione,SICILIA,CALTANISSETTA,6
+2010,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,84
+2010,1504,Milano Cattolica,1,Educazione e Formazione,PUGLIA,LECCE,7
+2010,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,60
+2010,1504,Milano Cattolica,1,Educazione e Formazione,EMILIA ROMAGNA,PIACENZA,11
+2010,1504,Milano Cattolica,1,Educazione e Formazione,SICILIA,SIRACUSA,5
+2010,1504,Milano Cattolica,1,Educazione e Formazione,SICILIA,TRAPANI,5
+2010,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,36
+2010,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,47
+2010,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,LOMBARDIA,BRESCIA,6
+2010,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,17
+2010,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,310
+2010,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,10
+2010,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,5
+2010,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,BASILICATA,POTENZA,5
+2010,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,30
+2010,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,199
+2010,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,CREMONA,20
+2010,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MANTOVA,5
+2010,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,20
+2010,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MONZA E BRIANZA,9
+2010,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,12
+2010,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,22
+2010,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,427
+2010,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,20
+2010,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,16
+2010,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,27
+2010,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,650
+2010,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,51
+2010,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,37
+2010,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MILANO,5
+2010,1504,Milano Cattolica,4,Linguistico,EMILIA ROMAGNA,PIACENZA,5
+2010,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,27
+2010,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,6
+2010,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,289
+2010,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,5
+2010,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,10
+2010,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,6
+2010,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,21
+2010,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,224
+2010,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,8
+2010,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,MANTOVA,8
+2010,1504,Milano Cattolica,9,Scientifico,VENETO,VERONA,5
+2010,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,93
+2010,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,1557
+2010,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,34
+2010,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,50
+2010,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,50
+2010,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,127
+2010,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,2042
+2010,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,46
+2010,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,95
+2010,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,5
+2010,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,12
+2010,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,104
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,AGRIGENTO,9
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,429
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,7
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2305
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,BRINDISI,5
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CALTANISSETTA,7
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CATANIA,5
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CALABRIA,COSENZA,10
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,117
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,ENNA,8
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,FOGGIA,6
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,LECCE,14
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,77
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,MESSINA,5
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,13
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CAMPANIA,NAPOLI,9
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,PADOVA,9
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,PALERMO,11
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PARMA,17
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,19
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,18
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,RAGUSA,5
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,REGGIO EMILIA,7
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CAMPANIA,SALERNO,8
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,SONDRIO,6
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,TRAPANI,21
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,43
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,39
+2010,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,21
+2010,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,82
+2010,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,335
+2010,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,24
+2010,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,15
+2010,1701,Brescia,2,Arte e Design,LOMBARDIA,BRESCIA,94
+2010,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,95
+2010,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,3185
+2010,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,63
+2010,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,115
+2010,1701,Brescia,7,Economico,LOMBARDIA,MILANO,5
+2010,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,8
+2010,1701,Brescia,7,Economico,LAZIO,ROMA,7
+2010,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,11
+2010,1701,Brescia,7,Economico,VENETO,VERONA,25
+2010,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,125
+2010,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1959
+2010,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,56
+2010,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,73
+2010,1701,Brescia,8,Giuridico,LOMBARDIA,MILANO,7
+2010,1701,Brescia,8,Giuridico,EMILIA ROMAGNA,PIACENZA,7
+2010,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,10
+2010,1701,Brescia,8,Giuridico,VENETO,VERONA,21
+2010,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,19
+2010,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,100
+2011,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,35
+2011,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,53
+2011,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,11
+2011,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,5
+2011,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,24
+2011,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,9
+2011,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,VARESE,8
+2011,1504,Milano Cattolica,1,Educazione e Formazione,SICILIA,AGRIGENTO,5
+2011,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,107
+2011,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,941
+2011,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,82
+2011,1504,Milano Cattolica,1,Educazione e Formazione,PUGLIA,LECCE,9
+2011,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,57
+2011,1504,Milano Cattolica,1,Educazione e Formazione,EMILIA ROMAGNA,PIACENZA,6
+2011,1504,Milano Cattolica,1,Educazione e Formazione,SICILIA,SIRACUSA,5
+2011,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,36
+2011,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,37
+2011,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,21
+2011,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,281
+2011,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,15
+2011,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,PUGLIA,LECCE,7
+2011,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,5
+2011,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,31
+2011,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,163
+2011,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,CREMONA,16
+2011,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MANTOVA,7
+2011,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,17
+2011,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MONZA E BRIANZA,10
+2011,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,11
+2011,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,19
+2011,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,398
+2011,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,19
+2011,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,13
+2011,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MILANO,9
+2011,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,44
+2011,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,663
+2011,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,52
+2011,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,40
+2011,1504,Milano Cattolica,4,Linguistico,EMILIA ROMAGNA,PIACENZA,6
+2011,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,29
+2011,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,11
+2011,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,328
+2011,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,8
+2011,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,12
+2011,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,10
+2011,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,23
+2011,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,215
+2011,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,9
+2011,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,MANTOVA,8
+2011,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,91
+2011,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,1506
+2011,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,36
+2011,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,43
+2011,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,50
+2011,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,135
+2011,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,2043
+2011,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,46
+2011,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,95
+2011,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,6
+2011,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,6
+2011,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,8
+2011,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,97
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,AGRIGENTO,8
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,BARI,6
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,473
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,10
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2348
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,BRINDISI,6
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CALTANISSETTA,10
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,COMO,5
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CALABRIA,COSENZA,6
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,122
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,ENNA,10
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,LECCE,12
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,86
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,MESSINA,7
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,10
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,5
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CAMPANIA,NAPOLI,5
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,PADOVA,9
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,PALERMO,11
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PARMA,15
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,19
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,21
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,RAGUSA,5
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,REGGIO EMILIA,5
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CAMPANIA,SALERNO,11
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,TRAPANI,22
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,48
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,50
+2011,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,20
+2011,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,94
+2011,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,341
+2011,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,27
+2011,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,15
+2011,1701,Brescia,15,Scienze motorie e sportive,Provincia autonoma di TRENTO,TRENTO,6
+2011,1701,Brescia,2,Arte e Design,LOMBARDIA,BRESCIA,63
+2011,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,93
+2011,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,3007
+2011,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,56
+2011,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,112
+2011,1701,Brescia,7,Economico,LOMBARDIA,MILANO,6
+2011,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,9
+2011,1701,Brescia,7,Economico,LAZIO,ROMA,5
+2011,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,10
+2011,1701,Brescia,7,Economico,VENETO,VERONA,29
+2011,1701,Brescia,7,Economico,VENETO,VICENZA,6
+2011,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,122
+2011,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1866
+2011,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,63
+2011,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,77
+2011,1701,Brescia,8,Giuridico,LOMBARDIA,MILANO,5
+2011,1701,Brescia,8,Giuridico,EMILIA ROMAGNA,PIACENZA,6
+2011,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,10
+2011,1701,Brescia,8,Giuridico,VENETO,VERONA,18
+2011,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,11
+2011,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,103
+2012,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,35
+2012,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,70
+2012,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,10
+2012,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,5
+2012,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,7
+2012,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,24
+2012,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,10
+2012,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,VARESE,5
+2012,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,86
+2012,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,903
+2012,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,75
+2012,1504,Milano Cattolica,1,Educazione e Formazione,PUGLIA,LECCE,6
+2012,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,53
+2012,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,38
+2012,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,38
+2012,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,30
+2012,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,302
+2012,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,15
+2012,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,PUGLIA,LECCE,11
+2012,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,6
+2012,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,34
+2012,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,161
+2012,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,CREMONA,10
+2012,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MANTOVA,7
+2012,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,18
+2012,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MONZA E BRIANZA,7
+2012,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,9
+2012,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,16
+2012,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,350
+2012,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,18
+2012,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,18
+2012,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,41
+2012,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,669
+2012,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,57
+2012,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,35
+2012,1504,Milano Cattolica,4,Linguistico,EMILIA ROMAGNA,PIACENZA,8
+2012,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,30
+2012,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,12
+2012,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,314
+2012,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,12
+2012,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,12
+2012,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,15
+2012,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,15
+2012,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,222
+2012,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,9
+2012,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,MANTOVA,7
+2012,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,85
+2012,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,1438
+2012,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,41
+2012,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,40
+2012,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,43
+2012,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,133
+2012,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,2123
+2012,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,54
+2012,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,96
+2012,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,6
+2012,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,8
+2012,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,8
+2012,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,88
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,AGRIGENTO,9
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,BARI,6
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,504
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,12
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2345
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CALTANISSETTA,8
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CATANIA,5
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,COMO,5
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CALABRIA,COSENZA,5
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,130
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,ENNA,12
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,LECCE,8
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,85
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,9
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,7
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,PADOVA,9
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,PALERMO,5
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PARMA,13
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,14
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,21
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,RAGUSA,8
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,REGGIO EMILIA,5
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CAMPANIA,SALERNO,7
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,TRAPANI,16
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,60
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,68
+2012,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,22
+2012,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,92
+2012,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,353
+2012,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,31
+2012,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,15
+2012,1701,Brescia,15,Scienze motorie e sportive,Provincia autonoma di TRENTO,TRENTO,8
+2012,1701,Brescia,2,Arte e Design,LOMBARDIA,BRESCIA,35
+2012,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,89
+2012,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,2875
+2012,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,74
+2012,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,117
+2012,1701,Brescia,7,Economico,LOMBARDIA,MILANO,7
+2012,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,6
+2012,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,12
+2012,1701,Brescia,7,Economico,VENETO,VERONA,21
+2012,1701,Brescia,7,Economico,VENETO,VICENZA,6
+2012,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,106
+2012,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1829
+2012,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,72
+2012,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,74
+2012,1701,Brescia,8,Giuridico,LOMBARDIA,MILANO,5
+2012,1701,Brescia,8,Giuridico,EMILIA ROMAGNA,PIACENZA,5
+2012,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,9
+2012,1701,Brescia,8,Giuridico,VENETO,VERONA,14
+2012,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,13
+2012,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,114
+2012,1701,Brescia,9,Scientifico,LOMBARDIA,CREMONA,7
+2013,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,41
+2013,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,77
+2013,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,5
+2013,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,7
+2013,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,5
+2013,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,16
+2013,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,16
+2013,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,VARESE,5
+2013,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,76
+2013,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,846
+2013,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,71
+2013,1504,Milano Cattolica,1,Educazione e Formazione,PUGLIA,LECCE,5
+2013,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,49
+2013,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,30
+2013,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,36
+2013,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,28
+2013,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,295
+2013,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,13
+2013,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,PUGLIA,LECCE,12
+2013,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,9
+2013,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,7
+2013,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,27
+2013,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,124
+2013,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,CREMONA,11
+2013,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MANTOVA,6
+2013,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,16
+2013,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MONZA E BRIANZA,6
+2013,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,9
+2013,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,14
+2013,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,301
+2013,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,17
+2013,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,13
+2013,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,45
+2013,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,668
+2013,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,63
+2013,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,41
+2013,1504,Milano Cattolica,4,Linguistico,EMILIA ROMAGNA,PIACENZA,7
+2013,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,28
+2013,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,10
+2013,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,313
+2013,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,25
+2013,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,12
+2013,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,14
+2013,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,12
+2013,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,210
+2013,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,8
+2013,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,MANTOVA,5
+2013,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,79
+2013,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,1346
+2013,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,47
+2013,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,32
+2013,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,45
+2013,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,140
+2013,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,2217
+2013,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,50
+2013,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,102
+2013,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,6
+2013,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,13
+2013,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,9
+2013,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,89
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,AGRIGENTO,10
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,BARI,6
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,582
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,9
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2340
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CALTANISSETTA,6
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CATANIA,6
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,COMO,5
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,126
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,ENNA,12
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,LECCE,9
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,88
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,9
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,6
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,PADOVA,6
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,PALERMO,7
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PARMA,11
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,12
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,24
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CAMPANIA,SALERNO,8
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,TRAPANI,12
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,54
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,62
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CALABRIA,VIBO VALENTIA,5
+2013,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,24
+2013,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,90
+2013,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,347
+2013,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,36
+2013,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,10
+2013,1701,Brescia,15,Scienze motorie e sportive,Provincia autonoma di TRENTO,TRENTO,5
+2013,1701,Brescia,2,Arte e Design,LOMBARDIA,BRESCIA,16
+2013,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,91
+2013,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,2793
+2013,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,88
+2013,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,127
+2013,1701,Brescia,7,Economico,LOMBARDIA,MILANO,5
+2013,1701,Brescia,7,Economico,SARDEGNA,NUORO,5
+2013,1701,Brescia,7,Economico,EMILIA ROMAGNA,PIACENZA,5
+2013,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,9
+2013,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,12
+2013,1701,Brescia,7,Economico,VENETO,VERONA,29
+2013,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,99
+2013,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1806
+2013,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,81
+2013,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,68
+2013,1701,Brescia,8,Giuridico,EMILIA ROMAGNA,PIACENZA,6
+2013,1701,Brescia,8,Giuridico,CALABRIA,REGGIO CALABRIA,5
+2013,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,7
+2013,1701,Brescia,8,Giuridico,VENETO,VERONA,13
+2013,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,11
+2013,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,113
+2013,1701,Brescia,9,Scientifico,LOMBARDIA,CREMONA,5
+2013,1701,Brescia,9,Scientifico,LOMBARDIA,MANTOVA,5
+2013,1701,Brescia,9,Scientifico,VENETO,VERONA,6
+2014,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,40
+2014,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,83
+2014,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,5
+2014,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,LECCO,6
+2014,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,10
+2014,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,6
+2014,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,18
+2014,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,18
+2014,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,VARESE,7
+2014,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,68
+2014,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,830
+2014,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,64
+2014,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,49
+2014,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,29
+2014,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,34
+2014,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,SICILIA,AGRIGENTO,5
+2014,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,23
+2014,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,284
+2014,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,9
+2014,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,PUGLIA,LECCE,8
+2014,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,10
+2014,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,7
+2014,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,20
+2014,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,121
+2014,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,CREMONA,10
+2014,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,13
+2014,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MONZA E BRIANZA,6
+2014,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,6
+2014,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,9
+2014,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,284
+2014,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,16
+2014,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,13
+2014,1504,Milano Cattolica,3,Letterario-Umanistico,Provincia autonoma di TRENTO,TRENTO,5
+2014,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,39
+2014,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,697
+2014,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,63
+2014,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,38
+2014,1504,Milano Cattolica,4,Linguistico,EMILIA ROMAGNA,PIACENZA,5
+2014,1504,Milano Cattolica,4,Linguistico,Provincia autonoma di TRENTO,TRENTO,6
+2014,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,29
+2014,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,8
+2014,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,324
+2014,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,28
+2014,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,16
+2014,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MILANO,9
+2014,1504,Milano Cattolica,6,Psicologico,Provincia autonoma di TRENTO,TRENTO,5
+2014,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,VARESE,5
+2014,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,12
+2014,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,12
+2014,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,202
+2014,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,6
+2014,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,MANTOVA,5
+2014,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,73
+2014,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,1243
+2014,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,52
+2014,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,31
+2014,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MILANO,6
+2014,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,47
+2014,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,157
+2014,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,2307
+2014,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,52
+2014,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,111
+2014,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,5
+2014,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,14
+2014,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,8
+2014,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,80
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,AGRIGENTO,9
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,BARI,6
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,633
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,10
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2347
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CALTANISSETTA,6
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CATANIA,7
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,124
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,ENNA,10
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,LECCE,13
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,LECCO,5
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,90
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,15
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,8
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,PADOVA,7
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,PALERMO,9
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PARMA,8
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,10
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,24
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CAMPANIA,SALERNO,6
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,TRAPANI,8
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,54
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VENEZIA,5
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,82
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CALABRIA,VIBO VALENTIA,5
+2014,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,21
+2014,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,87
+2014,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,330
+2014,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,34
+2014,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,9
+2014,1701,Brescia,15,Scienze motorie e sportive,Provincia autonoma di TRENTO,TRENTO,10
+2014,1701,Brescia,2,Arte e Design,LOMBARDIA,BRESCIA,6
+2014,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,99
+2014,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,2765
+2014,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,95
+2014,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,139
+2014,1701,Brescia,7,Economico,LOMBARDIA,MILANO,6
+2014,1701,Brescia,7,Economico,EMILIA ROMAGNA,PIACENZA,9
+2014,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,7
+2014,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,12
+2014,1701,Brescia,7,Economico,VENETO,VERONA,32
+2014,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,87
+2014,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1632
+2014,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,85
+2014,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,65
+2014,1701,Brescia,8,Giuridico,EMILIA ROMAGNA,PIACENZA,6
+2014,1701,Brescia,8,Giuridico,CALABRIA,REGGIO CALABRIA,5
+2014,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,8
+2014,1701,Brescia,8,Giuridico,VENETO,VERONA,12
+2014,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,12
+2014,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,121
+2014,1701,Brescia,9,Scientifico,LOMBARDIA,CREMONA,6
+2014,1701,Brescia,9,Scientifico,LOMBARDIA,MANTOVA,6
+2014,1701,Brescia,9,Scientifico,VENETO,VERONA,5
+2015,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,37
+2015,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,80
+2015,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,5
+2015,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,LECCO,6
+2015,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,12
+2015,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,6
+2015,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,15
+2015,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,19
+2015,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,VARESE,9
+2015,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,68
+2015,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,827
+2015,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,62
+2015,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,54
+2015,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,30
+2015,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,29
+2015,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,15
+2015,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,285
+2015,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,12
+2015,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,10
+2015,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,8
+2015,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,14
+2015,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,103
+2015,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,CREMONA,8
+2015,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,13
+2015,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,12
+2015,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,11
+2015,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,251
+2015,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,13
+2015,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,16
+2015,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,41
+2015,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,698
+2015,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,63
+2015,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,45
+2015,1504,Milano Cattolica,4,Linguistico,REGIONE ESTERA,PROVINCIA ESTERA,6
+2015,1504,Milano Cattolica,4,Linguistico,Provincia autonoma di TRENTO,TRENTO,8
+2015,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,29
+2015,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BRESCIA,58
+2015,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,9
+2015,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,306
+2015,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,32
+2015,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,18
+2015,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MILANO,8
+2015,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,VARESE,5
+2015,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,11
+2015,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,8
+2015,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,203
+2015,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,9
+2015,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,MANTOVA,6
+2015,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,81
+2015,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,1085
+2015,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,51
+2015,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,30
+2015,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,47
+2015,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,177
+2015,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,2453
+2015,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,56
+2015,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,116
+2015,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,7
+2015,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,12
+2015,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,6
+2015,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,80
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,BARI,5
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,664
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,7
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2288
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CALTANISSETTA,5
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CATANIA,7
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,135
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,ENNA,7
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,LECCE,11
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,LECCO,8
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,89
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,23
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,11
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,PADOVA,6
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,PALERMO,11
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PARMA,6
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,11
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,20
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CAMPANIA,SALERNO,5
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,TRAPANI,6
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,51
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VENEZIA,5
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,87
+2015,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,21
+2015,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,84
+2015,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,337
+2015,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,41
+2015,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,9
+2015,1701,Brescia,15,Scienze motorie e sportive,Provincia autonoma di TRENTO,TRENTO,8
+2015,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,100
+2015,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,2705
+2015,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,109
+2015,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,130
+2015,1701,Brescia,7,Economico,LOMBARDIA,MILANO,9
+2015,1701,Brescia,7,Economico,SARDEGNA,NUORO,5
+2015,1701,Brescia,7,Economico,EMILIA ROMAGNA,PIACENZA,8
+2015,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,7
+2015,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,19
+2015,1701,Brescia,7,Economico,VENETO,TREVISO,5
+2015,1701,Brescia,7,Economico,VENETO,VERONA,40
+2015,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,67
+2015,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1546
+2015,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,81
+2015,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,63
+2015,1701,Brescia,8,Giuridico,CALABRIA,REGGIO CALABRIA,5
+2015,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,8
+2015,1701,Brescia,8,Giuridico,VENETO,VERONA,10
+2015,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,14
+2015,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,123
+2015,1701,Brescia,9,Scientifico,LOMBARDIA,CREMONA,6
+2016,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,34
+2016,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,87
+2016,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,7
+2016,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,LECCO,7
+2016,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,13
+2016,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,6
+2016,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,14
+2016,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,20
+2016,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,VARESE,11
+2016,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,68
+2016,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,875
+2016,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,61
+2016,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,50
+2016,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,29
+2016,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,27
+2016,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VICENZA,6
+2016,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,SICILIA,AGRIGENTO,5
+2016,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,11
+2016,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,280
+2016,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,10
+2016,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,9
+2016,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,6
+2016,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,12
+2016,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,90
+2016,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,CREMONA,5
+2016,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MANTOVA,5
+2016,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,10
+2016,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,12
+2016,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,13
+2016,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,247
+2016,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,16
+2016,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,15
+2016,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,55
+2016,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,700
+2016,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,53
+2016,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,41
+2016,1504,Milano Cattolica,4,Linguistico,EMILIA ROMAGNA,PIACENZA,6
+2016,1504,Milano Cattolica,4,Linguistico,REGIONE ESTERA,PROVINCIA ESTERA,6
+2016,1504,Milano Cattolica,4,Linguistico,Provincia autonoma di TRENTO,TRENTO,10
+2016,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,21
+2016,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BERGAMO,10
+2016,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BRESCIA,120
+2016,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MANTOVA,5
+2016,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,13
+2016,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,281
+2016,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,24
+2016,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,17
+2016,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MILANO,12
+2016,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,11
+2016,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,9
+2016,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,188
+2016,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,9
+2016,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,MANTOVA,7
+2016,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,83
+2016,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,987
+2016,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,46
+2016,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,22
+2016,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MILANO,6
+2016,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,42
+2016,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,176
+2016,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,2596
+2016,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,57
+2016,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,113
+2016,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,7
+2016,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,16
+2016,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,6
+2016,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,79
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,AGRIGENTO,5
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,BARI,5
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,657
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,6
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2213
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CALTANISSETTA,7
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,129
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,ENNA,5
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,PUGLIA,LECCE,11
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,LECCO,9
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,84
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,26
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,15
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CAMPANIA,NAPOLI,5
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,PADOVA,5
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,PALERMO,11
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PARMA,8
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,8
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,23
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,52
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,87
+2016,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,22
+2016,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,82
+2016,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,293
+2016,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,26
+2016,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,6
+2016,1701,Brescia,15,Scienze motorie e sportive,Provincia autonoma di TRENTO,TRENTO,10
+2016,1701,Brescia,15,Scienze motorie e sportive,VENETO,VERONA,7
+2016,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,121
+2016,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,2756
+2016,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,119
+2016,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,147
+2016,1701,Brescia,7,Economico,LOMBARDIA,MILANO,11
+2016,1701,Brescia,7,Economico,SARDEGNA,NUORO,6
+2016,1701,Brescia,7,Economico,EMILIA ROMAGNA,PIACENZA,6
+2016,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,13
+2016,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,27
+2016,1701,Brescia,7,Economico,VENETO,TREVISO,6
+2016,1701,Brescia,7,Economico,VENETO,VERONA,58
+2016,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,65
+2016,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1483
+2016,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,81
+2016,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,64
+2016,1701,Brescia,8,Giuridico,REGIONE ESTERA,PROVINCIA ESTERA,5
+2016,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,6
+2016,1701,Brescia,8,Giuridico,VENETO,VERONA,13
+2016,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,16
+2016,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,119
+2016,1701,Brescia,9,Scientifico,LOMBARDIA,MANTOVA,5
+2017,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,30
+2017,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,87
+2017,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,6
+2017,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,LECCO,7
+2017,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,19
+2017,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,7
+2017,1501,Milano,13,Agrario-Forestale e Veterinario,PIEMONTE,NOVARA,5
+2017,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,11
+2017,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,19
+2017,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,VARESE,11
+2017,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,75
+2017,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,1048
+2017,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,65
+2017,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,70
+2017,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MILANO,5
+2017,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,30
+2017,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,38
+2017,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VICENZA,6
+2017,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,16
+2017,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,278
+2017,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,8
+2017,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,5
+2017,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,8
+2017,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,96
+2017,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,CREMONA,7
+2017,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,7
+2017,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,13
+2017,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,10
+2017,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,241
+2017,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,16
+2017,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,10
+2017,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,61
+2017,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,732
+2017,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,58
+2017,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,44
+2017,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MILANO,5
+2017,1504,Milano Cattolica,4,Linguistico,EMILIA ROMAGNA,PIACENZA,6
+2017,1504,Milano Cattolica,4,Linguistico,Provincia autonoma di TRENTO,TRENTO,9
+2017,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,16
+2017,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BERGAMO,8
+2017,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BRESCIA,154
+2017,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,CREMONA,7
+2017,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MANTOVA,5
+2017,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,14
+2017,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,298
+2017,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,26
+2017,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,15
+2017,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MILANO,5
+2017,1504,Milano Cattolica,6,Psicologico,Provincia autonoma di TRENTO,TRENTO,6
+2017,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,10
+2017,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,7
+2017,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,181
+2017,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,7
+2017,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,85
+2017,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,886
+2017,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,38
+2017,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,21
+2017,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MILANO,6
+2017,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,39
+2017,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,197
+2017,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,2766
+2017,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,59
+2017,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,135
+2017,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,11
+2017,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,19
+2017,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,10
+2017,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,68
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,AGRIGENTO,5
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,638
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,7
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2107
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CALTANISSETTA,6
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,129
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,LECCO,10
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,78
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,31
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,16
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,PADOVA,5
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,PALERMO,7
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PARMA,7
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,6
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,29
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,REGGIO EMILIA,5
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CAMPANIA,SALERNO,6
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,SONDRIO,5
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,49
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,95
+2017,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,19
+2017,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,79
+2017,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,284
+2017,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,23
+2017,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,7
+2017,1701,Brescia,15,Scienze motorie e sportive,Provincia autonoma di TRENTO,TRENTO,8
+2017,1701,Brescia,15,Scienze motorie e sportive,VENETO,VERONA,7
+2017,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,148
+2017,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,2817
+2017,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,131
+2017,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,141
+2017,1701,Brescia,7,Economico,LOMBARDIA,MILANO,8
+2017,1701,Brescia,7,Economico,SARDEGNA,NUORO,5
+2017,1701,Brescia,7,Economico,EMILIA ROMAGNA,PIACENZA,8
+2017,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,16
+2017,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,34
+2017,1701,Brescia,7,Economico,VENETO,TREVISO,5
+2017,1701,Brescia,7,Economico,VENETO,VERONA,69
+2017,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,73
+2017,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1418
+2017,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,78
+2017,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,72
+2017,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,8
+2017,1701,Brescia,8,Giuridico,VENETO,VERONA,10
+2017,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,15
+2017,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,130
+2017,1701,Brescia,9,Scientifico,LOMBARDIA,MANTOVA,5
+2018,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,33
+2018,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,79
+2018,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,7
+2018,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,LECCO,9
+2018,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,24
+2018,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,6
+2018,1501,Milano,13,Agrario-Forestale e Veterinario,PIEMONTE,NOVARA,5
+2018,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,9
+2018,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,23
+2018,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,VARESE,9
+2018,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,85
+2018,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,1142
+2018,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,75
+2018,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,78
+2018,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MILANO,10
+2018,1504,Milano Cattolica,1,Educazione e Formazione,EMILIA ROMAGNA,PIACENZA,8
+2018,1504,Milano Cattolica,1,Educazione e Formazione,REGIONE ESTERA,PROVINCIA ESTERA,5
+2018,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,41
+2018,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,41
+2018,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VICENZA,7
+2018,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,15
+2018,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,265
+2018,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,5
+2018,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,10
+2018,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,100
+2018,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,CREMONA,9
+2018,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MANTOVA,6
+2018,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,7
+2018,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,8
+2018,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,9
+2018,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,243
+2018,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,16
+2018,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,11
+2018,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,64
+2018,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,760
+2018,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,55
+2018,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,37
+2018,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MILANO,6
+2018,1504,Milano Cattolica,4,Linguistico,EMILIA ROMAGNA,PIACENZA,5
+2018,1504,Milano Cattolica,4,Linguistico,Provincia autonoma di TRENTO,TRENTO,9
+2018,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,10
+2018,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BERGAMO,12
+2018,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BRESCIA,189
+2018,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,CREMONA,9
+2018,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MILANO,12
+2018,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,VENETO,VERONA,5
+2018,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,23
+2018,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,317
+2018,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,24
+2018,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,12
+2018,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MILANO,5
+2018,1504,Milano Cattolica,6,Psicologico,Provincia autonoma di TRENTO,TRENTO,6
+2018,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,17
+2018,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,6
+2018,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,204
+2018,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,7
+2018,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,83
+2018,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,844
+2018,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,34
+2018,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,15
+2018,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MILANO,7
+2018,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,41
+2018,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,195
+2018,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,2861
+2018,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,77
+2018,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,129
+2018,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,11
+2018,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,19
+2018,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,15
+2018,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,88
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,AGRIGENTO,5
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,625
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,8
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2058
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CALTANISSETTA,6
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,CATANIA,5
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,135
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,LECCO,11
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,81
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,35
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,15
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,PADOVA,6
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,PALERMO,6
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PARMA,6
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,8
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,29
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,RAGUSA,5
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,REGGIO EMILIA,5
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CAMPANIA,SALERNO,6
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,47
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,99
+2018,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,15
+2018,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,84
+2018,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,274
+2018,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,17
+2018,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,8
+2018,1701,Brescia,15,Scienze motorie e sportive,Provincia autonoma di TRENTO,TRENTO,5
+2018,1701,Brescia,15,Scienze motorie e sportive,VENETO,VERONA,5
+2018,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,156
+2018,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,2897
+2018,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,125
+2018,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,147
+2018,1701,Brescia,7,Economico,LOMBARDIA,MILANO,6
+2018,1701,Brescia,7,Economico,EMILIA ROMAGNA,PIACENZA,7
+2018,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,19
+2018,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,40
+2018,1701,Brescia,7,Economico,VENETO,VERONA,68
+2018,1701,Brescia,7,Economico,VENETO,VICENZA,5
+2018,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,66
+2018,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1310
+2018,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,69
+2018,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,68
+2018,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,6
+2018,1701,Brescia,8,Giuridico,VENETO,VERONA,9
+2018,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,16
+2018,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,137
+2018,1701,Brescia,9,Scientifico,LOMBARDIA,MANTOVA,7
+2019,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,31
+2019,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,71
+2019,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,8
+2019,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,LECCO,11
+2019,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,22
+2019,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,7
+2019,1501,Milano,13,Agrario-Forestale e Veterinario,PIEMONTE,NOVARA,5
+2019,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,12
+2019,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,22
+2019,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,VARESE,10
+2019,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,82
+2019,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,1268
+2019,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,90
+2019,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,85
+2019,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MILANO,18
+2019,1504,Milano Cattolica,1,Educazione e Formazione,EMILIA ROMAGNA,PIACENZA,9
+2019,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,59
+2019,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,VARESE,6
+2019,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,57
+2019,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VICENZA,8
+2019,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,SICILIA,AGRIGENTO,5
+2019,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,16
+2019,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,292
+2019,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,7
+2019,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,11
+2019,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,109
+2019,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,CREMONA,9
+2019,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,9
+2019,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MONZA E BRIANZA,5
+2019,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,7
+2019,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,7
+2019,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,232
+2019,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,13
+2019,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,11
+2019,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,63
+2019,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,795
+2019,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,52
+2019,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,33
+2019,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MILANO,6
+2019,1504,Milano Cattolica,4,Linguistico,REGIONE ESTERA,PROVINCIA ESTERA,5
+2019,1504,Milano Cattolica,4,Linguistico,Provincia autonoma di TRENTO,TRENTO,9
+2019,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,16
+2019,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BERGAMO,20
+2019,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BRESCIA,201
+2019,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,CREMONA,9
+2019,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MANTOVA,7
+2019,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MILANO,22
+2019,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,VENETO,VERONA,9
+2019,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,25
+2019,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,332
+2019,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,25
+2019,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,12
+2019,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MILANO,5
+2019,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,20
+2019,1504,Milano Cattolica,7,Economico,LOMBARDIA,BRESCIA,19
+2019,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,10
+2019,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,242
+2019,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,8
+2019,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,85
+2019,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,837
+2019,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,34
+2019,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,14
+2019,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MILANO,6
+2019,1701,Brescia,11,Architettura e Ingegneria civile,REGIONE ESTERA,PROVINCIA ESTERA,8
+2019,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,36
+2019,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,221
+2019,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,3006
+2019,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,89
+2019,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,136
+2019,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,11
+2019,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MONZA E BRIANZA,5
+2019,1701,Brescia,12,Ingegneria industriale e dell'informazione,EMILIA ROMAGNA,PIACENZA,6
+2019,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,43
+2019,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,19
+2019,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,85
+2019,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,12
+2019,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,121
+2019,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,MANTOVA,11
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,633
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,8
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2021
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,138
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,LECCO,10
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,72
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,36
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,16
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,PALERMO,6
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PARMA,7
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,7
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,28
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,CAMPANIA,SALERNO,5
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,41
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,106
+2019,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,14
+2019,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,76
+2019,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,263
+2019,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,21
+2019,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,13
+2019,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,174
+2019,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,3012
+2019,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,140
+2019,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,142
+2019,1701,Brescia,7,Economico,LOMBARDIA,MILANO,10
+2019,1701,Brescia,7,Economico,EMILIA ROMAGNA,PIACENZA,6
+2019,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,20
+2019,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,47
+2019,1701,Brescia,7,Economico,VENETO,TREVISO,5
+2019,1701,Brescia,7,Economico,VENETO,VERONA,81
+2019,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,67
+2019,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1274
+2019,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,75
+2019,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,69
+2019,1701,Brescia,8,Giuridico,REGIONE ESTERA,PROVINCIA ESTERA,7
+2019,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,7
+2019,1701,Brescia,8,Giuridico,VENETO,VERONA,11
+2019,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,9
+2019,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,139
+2019,1701,Brescia,9,Scientifico,LOMBARDIA,MANTOVA,7
+2020,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,32
+2020,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,58
+2020,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,5
+2020,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,LECCO,12
+2020,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,15
+2020,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,5
+2020,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,9
+2020,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,21
+2020,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,VARESE,8
+2020,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,82
+2020,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,1287
+2020,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,99
+2020,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,83
+2020,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MILANO,18
+2020,1504,Milano Cattolica,1,Educazione e Formazione,EMILIA ROMAGNA,PIACENZA,8
+2020,1504,Milano Cattolica,1,Educazione e Formazione,REGIONE ESTERA,PROVINCIA ESTERA,5
+2020,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,60
+2020,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,VARESE,6
+2020,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,67
+2020,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VICENZA,7
+2020,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,LOMBARDIA,BRESCIA,7
+2020,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,16
+2020,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,266
+2020,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,7
+2020,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,5
+2020,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,15
+2020,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,122
+2020,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,CREMONA,5
+2020,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MANTOVA,7
+2020,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,16
+2020,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MONZA E BRIANZA,6
+2020,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,8
+2020,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,249
+2020,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,8
+2020,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,6
+2020,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,62
+2020,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,764
+2020,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,46
+2020,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,32
+2020,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MILANO,9
+2020,1504,Milano Cattolica,4,Linguistico,CAMPANIA,NAPOLI,7
+2020,1504,Milano Cattolica,4,Linguistico,REGIONE ESTERA,PROVINCIA ESTERA,13
+2020,1504,Milano Cattolica,4,Linguistico,Provincia autonoma di TRENTO,TRENTO,10
+2020,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,15
+2020,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BERGAMO,26
+2020,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BRESCIA,194
+2020,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,COMO,6
+2020,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,CREMONA,15
+2020,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MANTOVA,12
+2020,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MILANO,25
+2020,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MONZA E BRIANZA,9
+2020,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,VARESE,5
+2020,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,VENETO,VERONA,18
+2020,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,22
+2020,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,328
+2020,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,17
+2020,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,15
+2020,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MILANO,7
+2020,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,19
+2020,1504,Milano Cattolica,7,Economico,LOMBARDIA,BRESCIA,48
+2020,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,13
+2020,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,235
+2020,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,9
+2020,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,88
+2020,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,782
+2020,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,30
+2020,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,21
+2020,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MILANO,5
+2020,1701,Brescia,11,Architettura e Ingegneria civile,REGIONE ESTERA,PROVINCIA ESTERA,13
+2020,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,35
+2020,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,241
+2020,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,3010
+2020,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,97
+2020,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,134
+2020,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,13
+2020,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MONZA E BRIANZA,6
+2020,1701,Brescia,12,Ingegneria industriale e dell'informazione,EMILIA ROMAGNA,PIACENZA,6
+2020,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,56
+2020,1701,Brescia,12,Ingegneria industriale e dell'informazione,CALABRIA,REGGIO CALABRIA,6
+2020,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,16
+2020,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,80
+2020,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,18
+2020,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,194
+2020,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,CREMONA,12
+2020,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,MANTOVA,12
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,641
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,8
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2007
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,124
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,LECCO,11
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,74
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,38
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,16
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,SICILIA,PALERMO,5
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PARMA,5
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,6
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,26
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,SONDRIO,7
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,41
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,98
+2020,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,13
+2020,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,59
+2020,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,262
+2020,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,18
+2020,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,12
+2020,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,195
+2020,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,3096
+2020,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,163
+2020,1701,Brescia,7,Economico,LOMBARDIA,LECCO,6
+2020,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,160
+2020,1701,Brescia,7,Economico,LOMBARDIA,MILANO,36
+2020,1701,Brescia,7,Economico,LOMBARDIA,MONZA E BRIANZA,5
+2020,1701,Brescia,7,Economico,EMILIA ROMAGNA,PIACENZA,7
+2020,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,38
+2020,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,50
+2020,1701,Brescia,7,Economico,VENETO,VERONA,86
+2020,1701,Brescia,7,Economico,VENETO,VICENZA,7
+2020,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,72
+2020,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1276
+2020,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,72
+2020,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,61
+2020,1701,Brescia,8,Giuridico,REGIONE ESTERA,PROVINCIA ESTERA,7
+2020,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,9
+2020,1701,Brescia,8,Giuridico,VENETO,VERONA,7
+2020,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,10
+2020,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,146
+2020,1701,Brescia,9,Scientifico,LOMBARDIA,CREMONA,6
+2020,1701,Brescia,9,Scientifico,LOMBARDIA,MANTOVA,7
+2021,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,28
+2021,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,57
+2021,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,LECCO,12
+2021,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,15
+2021,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,8
+2021,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,9
+2021,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,19
+2021,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,VARESE,5
+2021,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,88
+2021,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,1328
+2021,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,105
+2021,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,84
+2021,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MILANO,22
+2021,1504,Milano Cattolica,1,Educazione e Formazione,EMILIA ROMAGNA,PIACENZA,9
+2021,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,63
+2021,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,73
+2021,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,LOMBARDIA,BRESCIA,10
+2021,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,LOMBARDIA,MILANO,6
+2021,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,23
+2021,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,272
+2021,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,6
+2021,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,7
+2021,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,18
+2021,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,119
+2021,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MANTOVA,7
+2021,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,16
+2021,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MONZA E BRIANZA,9
+2021,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,5
+2021,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,8
+2021,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,234
+2021,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,7
+2021,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,11
+2021,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,56
+2021,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,648
+2021,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,44
+2021,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,28
+2021,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MILANO,6
+2021,1504,Milano Cattolica,4,Linguistico,CAMPANIA,NAPOLI,7
+2021,1504,Milano Cattolica,4,Linguistico,REGIONE ESTERA,PROVINCIA ESTERA,15
+2021,1504,Milano Cattolica,4,Linguistico,Provincia autonoma di TRENTO,TRENTO,9
+2021,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,13
+2021,1504,Milano Cattolica,4,Linguistico,VENETO,VICENZA,5
+2021,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BERGAMO,29
+2021,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BRESCIA,188
+2021,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,COMO,6
+2021,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,CREMONA,21
+2021,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MANTOVA,14
+2021,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MILANO,29
+2021,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MONZA E BRIANZA,12
+2021,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,VENETO,TREVISO,5
+2021,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,VARESE,5
+2021,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,VENETO,VERONA,16
+2021,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,20
+2021,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,349
+2021,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,20
+2021,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,10
+2021,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MILANO,11
+2021,1504,Milano Cattolica,6,Psicologico,Provincia autonoma di TRENTO,TRENTO,5
+2021,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,12
+2021,1504,Milano Cattolica,7,Economico,LOMBARDIA,BRESCIA,57
+2021,1504,Milano Cattolica,7,Economico,LOMBARDIA,MANTOVA,7
+2021,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,13
+2021,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,217
+2021,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,7
+2021,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,92
+2021,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,755
+2021,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,33
+2021,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,24
+2021,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MILANO,7
+2021,1701,Brescia,11,Architettura e Ingegneria civile,REGIONE ESTERA,PROVINCIA ESTERA,16
+2021,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,27
+2021,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,231
+2021,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,2960
+2021,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,102
+2021,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,137
+2021,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,20
+2021,1701,Brescia,12,Ingegneria industriale e dell'informazione,EMILIA ROMAGNA,PIACENZA,9
+2021,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,71
+2021,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,11
+2021,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,70
+2021,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,20
+2021,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,240
+2021,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,CREMONA,14
+2021,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,MANTOVA,15
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,669
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,7
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2061
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,118
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,LECCO,10
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,80
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,38
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,15
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PARMA,5
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,25
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,SONDRIO,8
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,45
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,91
+2021,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,11
+2021,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,50
+2021,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,259
+2021,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,17
+2021,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,14
+2021,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,228
+2021,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,3231
+2021,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,179
+2021,1701,Brescia,7,Economico,LOMBARDIA,LECCO,6
+2021,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,168
+2021,1701,Brescia,7,Economico,LOMBARDIA,MILANO,49
+2021,1701,Brescia,7,Economico,LOMBARDIA,MONZA E BRIANZA,6
+2021,1701,Brescia,7,Economico,EMILIA ROMAGNA,PIACENZA,6
+2021,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,45
+2021,1701,Brescia,7,Economico,CALABRIA,REGGIO CALABRIA,5
+2021,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,45
+2021,1701,Brescia,7,Economico,VENETO,TREVISO,5
+2021,1701,Brescia,7,Economico,VENETO,VERONA,92
+2021,1701,Brescia,7,Economico,VENETO,VICENZA,10
+2021,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,74
+2021,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1238
+2021,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,78
+2021,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,49
+2021,1701,Brescia,8,Giuridico,REGIONE ESTERA,PROVINCIA ESTERA,9
+2021,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,9
+2021,1701,Brescia,8,Giuridico,VENETO,VERONA,7
+2021,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,9
+2021,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,166
+2021,1701,Brescia,9,Scientifico,LOMBARDIA,MANTOVA,11
+2022,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,27
+2022,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,56
+2022,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,CREMONA,6
+2022,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,LECCO,7
+2022,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,11
+2022,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,7
+2022,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,8
+2022,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,15
+2022,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,114
+2022,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,1330
+2022,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,123
+2022,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,77
+2022,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MILANO,24
+2022,1504,Milano Cattolica,1,Educazione e Formazione,EMILIA ROMAGNA,PIACENZA,8
+2022,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,77
+2022,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,76
+2022,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,LOMBARDIA,BRESCIA,9
+2022,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,LOMBARDIA,MILANO,10
+2022,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,REGIONE ESTERA,PROVINCIA ESTERA,9
+2022,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,28
+2022,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,273
+2022,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,8
+2022,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,9
+2022,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,21
+2022,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,121
+2022,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,20
+2022,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MONZA E BRIANZA,8
+2022,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,5
+2022,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,226
+2022,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,6
+2022,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,9
+2022,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,55
+2022,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,558
+2022,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,35
+2022,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,15
+2022,1504,Milano Cattolica,4,Linguistico,REGIONE ESTERA,PROVINCIA ESTERA,15
+2022,1504,Milano Cattolica,4,Linguistico,Provincia autonoma di TRENTO,TRENTO,10
+2022,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,11
+2022,1504,Milano Cattolica,4,Linguistico,VENETO,VICENZA,5
+2022,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BERGAMO,30
+2022,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BRESCIA,225
+2022,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,CREMONA,22
+2022,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MANTOVA,11
+2022,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MILANO,25
+2022,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MONZA E BRIANZA,13
+2022,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,REGIONE ESTERA,PROVINCIA ESTERA,5
+2022,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,Provincia autonoma di TRENTO,TRENTO,5
+2022,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,VARESE,5
+2022,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,VENETO,VERONA,11
+2022,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,20
+2022,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,355
+2022,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,20
+2022,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,9
+2022,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MILANO,9
+2022,1504,Milano Cattolica,6,Psicologico,Provincia autonoma di TRENTO,TRENTO,6
+2022,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,9
+2022,1504,Milano Cattolica,7,Economico,LOMBARDIA,BRESCIA,53
+2022,1504,Milano Cattolica,7,Economico,LOMBARDIA,MANTOVA,7
+2022,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,14
+2022,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,204
+2022,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,10
+2022,1701,Brescia,10,Informatica e Tecnologie ICT,LOMBARDIA,BRESCIA,15
+2022,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,98
+2022,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,796
+2022,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,32
+2022,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,23
+2022,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MILANO,6
+2022,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MONZA E BRIANZA,6
+2022,1701,Brescia,11,Architettura e Ingegneria civile,REGIONE ESTERA,PROVINCIA ESTERA,15
+2022,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,26
+2022,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,245
+2022,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,2963
+2022,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,106
+2022,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,128
+2022,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,17
+2022,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MONZA E BRIANZA,5
+2022,1701,Brescia,12,Ingegneria industriale e dell'informazione,EMILIA ROMAGNA,PIACENZA,9
+2022,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,72
+2022,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,17
+2022,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,81
+2022,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VICENZA,5
+2022,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,20
+2022,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,221
+2022,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,CREMONA,13
+2022,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,MANTOVA,10
+2022,1701,Brescia,13,Agrario-Forestale e Veterinario,VENETO,VERONA,7
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,675
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,6
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2132
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,117
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,LECCO,9
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,79
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,44
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,16
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,6
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,32
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,SONDRIO,5
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,47
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,80
+2022,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,10
+2022,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,40
+2022,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,270
+2022,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,13
+2022,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,11
+2022,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,264
+2022,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,3191
+2022,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,169
+2022,1701,Brescia,7,Economico,LOMBARDIA,LECCO,8
+2022,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,163
+2022,1701,Brescia,7,Economico,LOMBARDIA,MILANO,47
+2022,1701,Brescia,7,Economico,LOMBARDIA,MONZA E BRIANZA,11
+2022,1701,Brescia,7,Economico,EMILIA ROMAGNA,PIACENZA,6
+2022,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,53
+2022,1701,Brescia,7,Economico,LOMBARDIA,SONDRIO,6
+2022,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,43
+2022,1701,Brescia,7,Economico,VENETO,TREVISO,5
+2022,1701,Brescia,7,Economico,VENETO,VERONA,95
+2022,1701,Brescia,7,Economico,VENETO,VICENZA,9
+2022,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,85
+2022,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1247
+2022,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,80
+2022,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,50
+2022,1701,Brescia,8,Giuridico,REGIONE ESTERA,PROVINCIA ESTERA,8
+2022,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,11
+2022,1701,Brescia,8,Giuridico,VENETO,VERONA,7
+2022,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,12
+2022,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,181
+2022,1701,Brescia,9,Scientifico,LOMBARDIA,MANTOVA,6
+2022,1701,Brescia,9,Scientifico,VENETO,VERONA,5
+2023,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,25
+2023,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,57
+2023,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,5
+2023,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,CREMONA,6
+2023,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,LECCO,10
+2023,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,11
+2023,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,8
+2023,1501,Milano,13,Agrario-Forestale e Veterinario,REGIONE ESTERA,PROVINCIA ESTERA,5
+2023,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,9
+2023,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,14
+2023,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,122
+2023,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,1326
+2023,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,119
+2023,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,89
+2023,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MILANO,17
+2023,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,PAVIA,5
+2023,1504,Milano Cattolica,1,Educazione e Formazione,EMILIA ROMAGNA,PIACENZA,8
+2023,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,69
+2023,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,75
+2023,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VICENZA,6
+2023,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,LOMBARDIA,BRESCIA,7
+2023,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,LOMBARDIA,MILANO,7
+2023,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,REGIONE ESTERA,PROVINCIA ESTERA,10
+2023,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,33
+2023,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,263
+2023,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,6
+2023,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,6
+2023,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,6
+2023,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,5
+2023,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,19
+2023,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,119
+2023,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,19
+2023,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MONZA E BRIANZA,7
+2023,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,6
+2023,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,8
+2023,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,224
+2023,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,CREMONA,6
+2023,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,11
+2023,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,48
+2023,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,511
+2023,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,20
+2023,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,11
+2023,1504,Milano Cattolica,4,Linguistico,REGIONE ESTERA,PROVINCIA ESTERA,10
+2023,1504,Milano Cattolica,4,Linguistico,Provincia autonoma di TRENTO,TRENTO,7
+2023,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,9
+2023,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BERGAMO,31
+2023,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BRESCIA,218
+2023,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,CREMONA,18
+2023,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MANTOVA,11
+2023,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MILANO,16
+2023,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MONZA E BRIANZA,7
+2023,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,REGIONE ESTERA,PROVINCIA ESTERA,7
+2023,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,VARESE,5
+2023,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,VENETO,VERONA,8
+2023,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,22
+2023,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,413
+2023,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,26
+2023,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,7
+2023,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MILANO,7
+2023,1504,Milano Cattolica,6,Psicologico,Provincia autonoma di TRENTO,TRENTO,5
+2023,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,9
+2023,1504,Milano Cattolica,7,Economico,LOMBARDIA,BRESCIA,40
+2023,1504,Milano Cattolica,7,Economico,LOMBARDIA,MANTOVA,6
+2023,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,17
+2023,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,203
+2023,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,13
+2023,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,MANTOVA,5
+2023,1701,Brescia,10,Informatica e Tecnologie ICT,LOMBARDIA,BRESCIA,33
+2023,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,103
+2023,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,827
+2023,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,32
+2023,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,27
+2023,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MILANO,7
+2023,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MONZA E BRIANZA,9
+2023,1701,Brescia,11,Architettura e Ingegneria civile,REGIONE ESTERA,PROVINCIA ESTERA,22
+2023,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,22
+2023,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,270
+2023,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,3090
+2023,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,127
+2023,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,134
+2023,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,16
+2023,1701,Brescia,12,Ingegneria industriale e dell'informazione,EMILIA ROMAGNA,PIACENZA,6
+2023,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,83
+2023,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,20
+2023,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,92
+2023,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VICENZA,6
+2023,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,20
+2023,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,221
+2023,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,CREMONA,13
+2023,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,MANTOVA,14
+2023,1701,Brescia,13,Agrario-Forestale e Veterinario,VENETO,VERONA,9
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,687
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,6
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2253
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,127
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,LECCO,9
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,76
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,55
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,18
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,PAVIA,5
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,6
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,37
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,SONDRIO,7
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,42
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,72
+2023,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,10
+2023,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,51
+2023,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,260
+2023,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,16
+2023,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,6
+2023,1701,Brescia,15,Scienze motorie e sportive,Provincia autonoma di TRENTO,TRENTO,8
+2023,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,316
+2023,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,3172
+2023,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,168
+2023,1701,Brescia,7,Economico,LOMBARDIA,LECCO,7
+2023,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,169
+2023,1701,Brescia,7,Economico,LOMBARDIA,MILANO,41
+2023,1701,Brescia,7,Economico,LOMBARDIA,MONZA E BRIANZA,6
+2023,1701,Brescia,7,Economico,EMILIA ROMAGNA,PIACENZA,8
+2023,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,69
+2023,1701,Brescia,7,Economico,LOMBARDIA,SONDRIO,6
+2023,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,40
+2023,1701,Brescia,7,Economico,VENETO,TREVISO,6
+2023,1701,Brescia,7,Economico,VENETO,VERONA,94
+2023,1701,Brescia,7,Economico,VENETO,VICENZA,10
+2023,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,88
+2023,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1272
+2023,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,76
+2023,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,56
+2023,1701,Brescia,8,Giuridico,REGIONE ESTERA,PROVINCIA ESTERA,10
+2023,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,12
+2023,1701,Brescia,8,Giuridico,VENETO,VERONA,7
+2023,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,10
+2023,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,174
+2023,1701,Brescia,9,Scientifico,LOMBARDIA,CREMONA,6
+2023,1701,Brescia,9,Scientifico,LOMBARDIA,MANTOVA,6
+2023,1701,Brescia,9,Scientifico,VENETO,VERONA,6
+2024,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,27
+2024,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,54
+2024,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,COMO,8
+2024,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,CREMONA,5
+2024,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,LECCO,9
+2024,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MILANO,12
+2024,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,MONZA E BRIANZA,9
+2024,1501,Milano,13,Agrario-Forestale e Veterinario,REGIONE ESTERA,PROVINCIA ESTERA,8
+2024,1501,Milano,13,Agrario-Forestale e Veterinario,LOMBARDIA,SONDRIO,14
+2024,1501,Milano,13,Agrario-Forestale e Veterinario,Provincia autonoma di TRENTO,TRENTO,15
+2024,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BERGAMO,121
+2024,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,BRESCIA,1340
+2024,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,CREMONA,115
+2024,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MANTOVA,107
+2024,1504,Milano Cattolica,1,Educazione e Formazione,LOMBARDIA,MILANO,19
+2024,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,PADOVA,5
+2024,1504,Milano Cattolica,1,Educazione e Formazione,EMILIA ROMAGNA,PIACENZA,8
+2024,1504,Milano Cattolica,1,Educazione e Formazione,Provincia autonoma di TRENTO,TRENTO,70
+2024,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VERONA,85
+2024,1504,Milano Cattolica,1,Educazione e Formazione,VENETO,VICENZA,12
+2024,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,LOMBARDIA,BERGAMO,5
+2024,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,LOMBARDIA,BRESCIA,6
+2024,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,LOMBARDIA,MILANO,8
+2024,1504,Milano Cattolica,10,Informatica e Tecnologie ICT,REGIONE ESTERA,PROVINCIA ESTERA,6
+2024,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,26
+2024,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,236
+2024,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,5
+2024,1504,Milano Cattolica,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,5
+2024,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BERGAMO,10
+2024,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,BRESCIA,122
+2024,1504,Milano Cattolica,2,Arte e Design,LOMBARDIA,MILANO,14
+2024,1504,Milano Cattolica,2,Arte e Design,VENETO,VERONA,9
+2024,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BERGAMO,11
+2024,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,BRESCIA,204
+2024,1504,Milano Cattolica,3,Letterario-Umanistico,LOMBARDIA,MANTOVA,8
+2024,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BERGAMO,35
+2024,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,BRESCIA,466
+2024,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,CREMONA,23
+2024,1504,Milano Cattolica,4,Linguistico,LOMBARDIA,MANTOVA,9
+2024,1504,Milano Cattolica,4,Linguistico,REGIONE ESTERA,PROVINCIA ESTERA,10
+2024,1504,Milano Cattolica,4,Linguistico,VENETO,VERONA,8
+2024,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BERGAMO,27
+2024,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,BRESCIA,233
+2024,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,CREMONA,19
+2024,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MANTOVA,8
+2024,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,LOMBARDIA,MILANO,14
+2024,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,REGIONE ESTERA,PROVINCIA ESTERA,7
+2024,1504,Milano Cattolica,5,Politico-Sociale e Comunicazione,VENETO,VERONA,6
+2024,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BERGAMO,28
+2024,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,BRESCIA,461
+2024,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,CREMONA,28
+2024,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MANTOVA,12
+2024,1504,Milano Cattolica,6,Psicologico,LOMBARDIA,MILANO,10
+2024,1504,Milano Cattolica,6,Psicologico,VENETO,VERONA,13
+2024,1504,Milano Cattolica,7,Economico,LOMBARDIA,BERGAMO,6
+2024,1504,Milano Cattolica,7,Economico,LOMBARDIA,BRESCIA,61
+2024,1504,Milano Cattolica,7,Economico,LOMBARDIA,CREMONA,5
+2024,1504,Milano Cattolica,7,Economico,LOMBARDIA,MANTOVA,5
+2024,1504,Milano Cattolica,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,25
+2024,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BERGAMO,18
+2024,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,BRESCIA,175
+2024,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,CREMONA,13
+2024,1504,Milano Cattolica,9,Scientifico,LOMBARDIA,MANTOVA,6
+2024,1701,Brescia,10,Informatica e Tecnologie ICT,LOMBARDIA,BERGAMO,5
+2024,1701,Brescia,10,Informatica e Tecnologie ICT,LOMBARDIA,BRESCIA,44
+2024,1701,Brescia,10,Informatica e Tecnologie ICT,REGIONE ESTERA,PROVINCIA ESTERA,7
+2024,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BERGAMO,112
+2024,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,BRESCIA,856
+2024,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,CREMONA,34
+2024,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MANTOVA,31
+2024,1701,Brescia,11,Architettura e Ingegneria civile,LOMBARDIA,MONZA E BRIANZA,9
+2024,1701,Brescia,11,Architettura e Ingegneria civile,REGIONE ESTERA,PROVINCIA ESTERA,24
+2024,1701,Brescia,11,Architettura e Ingegneria civile,VENETO,VERONA,20
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,MARCHE,ANCONA,5
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BERGAMO,278
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,BRESCIA,3185
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,CREMONA,144
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,LODI,5
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MANTOVA,128
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MILANO,23
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,MONZA E BRIANZA,7
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,PAVIA,5
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,EMILIA ROMAGNA,PIACENZA,7
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,REGIONE ESTERA,PROVINCIA ESTERA,80
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,LOMBARDIA,SONDRIO,5
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,PUGLIA,TARANTO,5
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,Provincia autonoma di TRENTO,TRENTO,20
+2024,1701,Brescia,12,Ingegneria industriale e dell'informazione,VENETO,VERONA,98
+2024,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,BERGAMO,19
+2024,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,BRESCIA,221
+2024,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,CREMONA,10
+2024,1701,Brescia,13,Agrario-Forestale e Veterinario,LOMBARDIA,MANTOVA,13
+2024,1701,Brescia,13,Agrario-Forestale e Veterinario,VENETO,VERONA,8
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BERGAMO,699
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di BOLZANO,BOLZANO,5
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,BRESCIA,2312
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,CREMONA,153
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,LECCO,12
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MANTOVA,84
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MILANO,63
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,MONZA E BRIANZA,21
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,PADOVA,6
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,PAVIA,6
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,EMILIA ROMAGNA,PIACENZA,6
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,REGIONE ESTERA,PROVINCIA ESTERA,44
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,LOMBARDIA,SONDRIO,9
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,Provincia autonoma di TRENTO,TRENTO,41
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VERONA,68
+2024,1701,Brescia,14,Medico-Sanitario e Farmaceutico,VENETO,VICENZA,11
+2024,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BERGAMO,49
+2024,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,BRESCIA,249
+2024,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,CREMONA,16
+2024,1701,Brescia,15,Scienze motorie e sportive,LOMBARDIA,MANTOVA,6
+2024,1701,Brescia,15,Scienze motorie e sportive,Provincia autonoma di TRENTO,TRENTO,8
+2024,1701,Brescia,5,Politico-Sociale e Comunicazione,LOMBARDIA,BRESCIA,36
+2024,1701,Brescia,7,Economico,LOMBARDIA,BERGAMO,338
+2024,1701,Brescia,7,Economico,LOMBARDIA,BRESCIA,3302
+2024,1701,Brescia,7,Economico,LOMBARDIA,CREMONA,173
+2024,1701,Brescia,7,Economico,LOMBARDIA,MANTOVA,173
+2024,1701,Brescia,7,Economico,LOMBARDIA,MILANO,48
+2024,1701,Brescia,7,Economico,LOMBARDIA,MONZA E BRIANZA,5
+2024,1701,Brescia,7,Economico,EMILIA ROMAGNA,PARMA,5
+2024,1701,Brescia,7,Economico,EMILIA ROMAGNA,PIACENZA,10
+2024,1701,Brescia,7,Economico,REGIONE ESTERA,PROVINCIA ESTERA,87
+2024,1701,Brescia,7,Economico,LOMBARDIA,SONDRIO,5
+2024,1701,Brescia,7,Economico,Provincia autonoma di TRENTO,TRENTO,41
+2024,1701,Brescia,7,Economico,VENETO,VERONA,98
+2024,1701,Brescia,7,Economico,VENETO,VICENZA,9
+2024,1701,Brescia,8,Giuridico,LOMBARDIA,BERGAMO,87
+2024,1701,Brescia,8,Giuridico,LOMBARDIA,BRESCIA,1360
+2024,1701,Brescia,8,Giuridico,LOMBARDIA,CREMONA,78
+2024,1701,Brescia,8,Giuridico,LOMBARDIA,MANTOVA,55
+2024,1701,Brescia,8,Giuridico,REGIONE ESTERA,PROVINCIA ESTERA,9
+2024,1701,Brescia,8,Giuridico,Provincia autonoma di TRENTO,TRENTO,9
+2024,1701,Brescia,8,Giuridico,VENETO,VERONA,7
+2024,1701,Brescia,9,Scientifico,LOMBARDIA,BERGAMO,20
+2024,1701,Brescia,9,Scientifico,LOMBARDIA,BRESCIA,176
+2024,1701,Brescia,9,Scientifico,LOMBARDIA,CREMONA,8
+2024,1701,Brescia,9,Scientifico,LOMBARDIA,MANTOVA,9
