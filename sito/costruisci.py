@@ -45,6 +45,8 @@ DATI_WEB = RADICE / "web" / "src" / "data"
 PROCESSED = RADICE / "dati" / "processed"
 
 CAPOLUOGO = "017029"
+# La provincia, non il comune: le tabelle INPS e INAIL stanno a questa grana.
+PROVINCIA_CODICE = "017"
 
 # Gli indicatori che finiscono nel documento. Tenerli espliciti invece di
 # incorporare tutto: il file autocontenuto pesa quanto ci si mette dentro.
@@ -104,7 +106,7 @@ def percento_it(valore: float, decimali: int = 1) -> str:
 def metriche_esplora() -> list[str]:
     """Gli indicatori che il registro dichiara `live`, in ordine.
 
-    Il racconto ne usa quindici perché racconta otto storie; la pagina che
+    Il racconto ne usa quindici perché racconta nove storie; la pagina che
     esplora li prende tutti, e li prende **da qui** e non da una lista scritta a
     mano, così il giorno che la pipeline ne esporta uno nuovo la mappa lo trova
     senza che nessuno se ne ricordi.
@@ -876,6 +878,93 @@ def indice_prezzi() -> dict[str, float]:
         return {r["anno"]: float(r["indice"]) for r in csv.DictReader(handle)}
 
 
+def salari() -> dict[str, Any]:
+    """Le retribuzioni per la nona storia: il capoluogo di provincia e le altre.
+
+    Tre serie sulla stessa tabella, e il ponte fra loro e' di nuovo il
+    **deflatore** (MET-20): senza, la retribuzione cresce del venticinque per
+    cento e la storia non esiste.
+
+    - la retribuzione **annua** per dipendente, in euro correnti e costanti;
+    - la retribuzione **giornaliera**, che e' il controllo: se il calo reale
+      dell'annua fosse composizione (piu' part-time, contratti piu' corti) la
+      giornaliera reggerebbe. Non regge, e i due numeri quasi coincidono;
+    - la variazione reale di **tutte le province** fra il primo e l'ultimo anno,
+      per lo sciame.
+
+    ⚠️ Il perimetro e' quello dell'INPS: **dipendenti privati non agricoli**.
+    Non sono tutti i lavoratori, e questa tabella non si somma ne' agli addetti
+    del registro delle imprese ne' ai contribuenti del MEF.
+    """
+    import csv
+    from collections import defaultdict
+
+    percorso = PROCESSED / "retribuzioni_province.csv"
+    indice = indice_prezzi()
+    if not percorso.exists() or not indice:
+        return {}
+    with percorso.open(encoding="utf-8") as handle:
+        righe = list(csv.DictReader(handle))
+    if not righe:
+        return {}
+
+    conti: dict[tuple[str, str], dict[str, float]] = defaultdict(dict)
+    nomi: dict[str, str] = {}
+    for r in righe:
+        if not r["valore"]:
+            continue
+        conti[(r["codice_provincia"], r["anno"])][r["indicatore"]] = float(r["valore"])
+        nomi[r["codice_provincia"]] = r["provincia"]
+
+    anni = sorted({a for _, a in conti})
+    base = anni[-1]
+
+    def reale(valore: float, anno: str) -> float:
+        return valore * indice[base] / indice[anno]
+
+    def media(codice: str, anno: str, per: str = "lavoratori") -> float | None:
+        voce = conti.get((codice, anno), {})
+        if not voce.get(per) or not voce.get("retribuzione_totale"):
+            return None
+        return voce["retribuzione_totale"] / voce[per]
+
+    correnti = [media(PROVINCIA_CODICE, a) for a in anni]
+    if not all(correnti):
+        return {}
+    reali = [reale(v, a) for v, a in zip(correnti, anni)]
+    giornaliere = [media(PROVINCIA_CODICE, a, "giornate_retribuite") for a in anni]
+    giornaliere_reali = [reale(v, a) for v, a in zip(giornaliere, anni)]
+    giornate = [
+        conti[(PROVINCIA_CODICE, a)]["giornate_retribuite"]
+        / conti[(PROVINCIA_CODICE, a)]["lavoratori"]
+        for a in anni
+    ]
+
+    # Solo le province che hanno **entrambi** gli estremi: quelle nate dopo il
+    # 2004 non hanno il primo anno, e contarle come «in calo» sarebbe inventare.
+    variazioni = {}
+    for codice in nomi:
+        primo, ultimo = media(codice, anni[0]), media(codice, base)
+        if primo and ultimo:
+            variazioni[codice] = (ultimo / reale(primo, anni[0]) - 1) * 100
+
+    livelli = {c: media(c, base) for c in nomi if media(c, base)}
+    return {
+        "anni": anni,
+        "anno_base": base,
+        "correnti": correnti,
+        "reali": reali,
+        "giornaliere": giornaliere,
+        "giornaliere_reali": giornaliere_reali,
+        "giornate_per_lavoratore": giornate,
+        "variazioni": variazioni,
+        "livelli": livelli,
+        "nomi": nomi,
+        "mediana_variazione": mediana(list(variazioni.values())),
+        "mediana_livello": mediana(list(livelli.values())),
+    }
+
+
 def casa() -> dict[str, Any]:
     """L'asse casa per l'ottava storia: il capoluogo, le sue zone, la provincia.
 
@@ -1584,6 +1673,87 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         pearson([prezzi_comuni[c] for c in condivisi], [reddito_comuni[c] for c in condivisi]), 2
     )
 
+    # --- la nona storia: i salari ---------------------------------------
+    dati_salari = salari()
+    if dati_salari:
+        anni = dati_salari["anni"]
+        correnti, reali = dati_salari["correnti"], dati_salari["reali"]
+        giorni = dati_salari["giornate_per_lavoratore"]
+        gio_reali = dati_salari["giornaliere_reali"]
+        indice = {a: i for i, a in enumerate(anni)}
+
+        fuori["sal_anno_primo"] = anni[0]
+        fuori["sal_anno_ultimo"] = anni[-1]
+        fuori["sal_anni"] = numero_it(int(anni[-1]) - int(anni[0]))
+        fuori["sal_corrente_primo"] = numero_it(correnti[0])
+        fuori["sal_corrente_ultimo"] = numero_it(correnti[-1])
+        fuori["sal_reale_primo"] = numero_it(reali[0])
+        nominale = (correnti[-1] / correnti[0] - 1) * 100
+        fuori["sal_nominale"] = f"{'+' if nominale > 0 else ''}{numero_it(nominale, 1)} %"
+        fuori["sal_reale"] = percento_it((reali[-1] / reali[0] - 1) * 100)
+        fuori["sal_inflazione"] = f"+{numero_it((reali[0] / correnti[0] - 1) * 100, 1)} %"
+        # Le stesse cifre **senza segno**, per le frasi in cui il segno lo porta
+        # gia' la parola: «sono saliti del 25,4 %», «ne vale il 5,7 % in meno».
+        # Con il segno si leggerebbero «saliti del +25,4 %» e «vale il -5,7 % in
+        # meno», che e' una doppia negazione.
+        fuori["sal_nominale_nudo"] = f"{numero_it(abs(nominale), 1)} %"
+        fuori["sal_reale_nudo"] = f"{numero_it(abs((reali[-1] / reali[0] - 1) * 100), 1)} %"
+
+        # La forma della caduta: dodici anni fermi, poi cinque in discesa.
+        svolta = "2019"
+        if svolta in indice:
+            i = indice[svolta]
+            fuori["sal_anno_svolta"] = svolta
+            fuori["sal_reale_prima"] = percento_it((reali[i] / reali[0] - 1) * 100)
+            fuori["sal_reale_dopo"] = percento_it((reali[-1] / reali[i] - 1) * 100)
+            fuori["sal_anni_prima"] = numero_it(int(svolta) - int(anni[0]))
+            fuori["sal_anni_dopo"] = numero_it(int(anni[-1]) - int(svolta))
+            fuori["sal_reale_svolta"] = numero_it(reali[i])
+            fuori["sal_reale_dopo_nudo"] = f"{numero_it(abs((reali[-1] / reali[i] - 1) * 100), 1)} %"
+        picco = max(range(len(reali)), key=lambda i: reali[i])
+        fuori["sal_anno_picco"] = anni[picco]
+        fuori["sal_dal_picco"] = percento_it((reali[-1] / reali[picco] - 1) * 100)
+        fuori["sal_dal_picco_nudo"] = f"{numero_it(abs((reali[-1] / reali[picco] - 1) * 100), 1)} %"
+
+        # Il controllo: giornate ferme, quindi non e' composizione.
+        fuori["sal_giornate_primo"] = numero_it(giorni[0], 1)
+        fuori["sal_giornate_ultimo"] = numero_it(giorni[-1], 1)
+        fuori["sal_giornaliera_primo"] = numero_it(gio_reali[0], 1)
+        fuori["sal_giornaliera_ultimo"] = numero_it(gio_reali[-1], 1)
+        fuori["sal_giornaliera_reale"] = percento_it((gio_reali[-1] / gio_reali[0] - 1) * 100)
+
+        variazioni = dati_salari["variazioni"]
+        in_calo = [c for c, v in variazioni.items() if v < 0]
+        fuori["sal_province"] = numero_it(len(variazioni))
+        fuori["sal_province_in_calo"] = numero_it(len(in_calo))
+        fuori["sal_mediana_province"] = percento_it(dati_salari["mediana_variazione"], 1)
+        fuori["sal_brescia_variazione"] = percento_it(variazioni[PROVINCIA_CODICE], 1)
+        ordinate = sorted(variazioni.items(), key=lambda kv: -kv[1])
+        fuori["sal_rango_variazione"] = numero_it(
+            [c for c, _ in ordinate].index(PROVINCIA_CODICE) + 1
+        )
+        nomi = dati_salari["nomi"]
+        migliore, peggiore = ordinate[0], ordinate[-1]
+        fuori["sal_provincia_migliore"] = nomi[migliore[0]]
+        # `percento_it` non mette il piu' da sola (c'e' un test che lo fissa), e
+        # qui serve: la cifra vive in una frase dove l'unico segno che conta e'
+        # quello, perche' e' l'unica provincia che cresce.
+        fuori["sal_migliore"] = f"+{numero_it(migliore[1], 1)} %"
+        fuori["sal_provincia_peggiore"] = nomi[peggiore[0]]
+        fuori["sal_peggiore"] = percento_it(peggiore[1], 1)
+        in_crescita = [c for c, v in variazioni.items() if v > 0]
+        fuori["sal_province_in_crescita"] = numero_it(len(in_crescita))
+
+        livelli = dati_salari["livelli"]
+        per_livello = sorted(livelli.items(), key=lambda kv: -kv[1])
+        fuori["sal_rango_livello"] = numero_it(
+            [c for c, _ in per_livello].index(PROVINCIA_CODICE) + 1
+        )
+        fuori["sal_province_livello"] = numero_it(len(livelli))
+        fuori["sal_livello_massimo_provincia"] = nomi[per_livello[0][0]]
+        fuori["sal_livello_massimo"] = numero_it(per_livello[0][1])
+        fuori["sal_mediana_livello"] = numero_it(dati_salari["mediana_livello"])
+
     return fuori
 
 
@@ -1651,6 +1821,7 @@ def dati_incorporati(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict
         "clima": clima(),
         "capoluoghi": controllo_capoluoghi(),
         "casa": casa(),
+        "salari": salari(),
         "metriche": sunto_metriche(metriche),
     }
 
@@ -1727,7 +1898,7 @@ def costruisci(uscita: Path, data_build: str | None) -> int:
     grafici = (MODELLI / "grafici.js").read_text(encoding="utf-8")
 
     # Due blocchi di dati, e la differenza è solo negli indicatori. Le pagine
-    # del racconto portano i quindici che le otto storie citano; la pagina che
+    # del racconto portano i quindici che le nove storie citano; la pagina che
     # esplora li porta tutti. Tenerli distinti costa qualche riga qui e risparmia
     # una ottantina di KB su ciascuna delle tre pagine che non ne hanno bisogno.
     # Il resto — geometria, anagrafica, le serie delle figure — è calcolato una

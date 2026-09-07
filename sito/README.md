@@ -14,7 +14,7 @@ apre da disco, si manda per email, si archivia.
 | File | Cos'è |
 |---|---|
 | `costruisci.py` | assembla `_site/`: incorpora i dati, sostituisce le cifre e le date, copia i CSV |
-| `modelli/racconto.html` | il documento narrativo: otto storie e la sezione dei limiti |
+| `modelli/racconto.html` | il documento narrativo: nove storie e la sezione dei limiti |
 | `modelli/esplora.html` | lo strumento: i diciannove indicatori su tutti i comuni, a scelta di chi legge |
 | `modelli/metodologia.html` | le regole del progetto, per un lettore che non ha letto il repository |
 | `modelli/dati.html` | fonti, tabelle scaricabili e avvertenze |
@@ -172,8 +172,26 @@ invece di restringerla:
    4,3:1 la tinta base e 7,1:1 quella scura, entrambi sopra la mediana del
    gruppo (3,45 e 5,64).
 
+   **E al nono la regola ha finito lo spazio** (settembre 2026). Dice ancora dove
+   va: il buco più largo rimasto è fra mare (196°) e viola (255°), 59 gradi, e il
+   mezzo cade a **226°**, da cui `--indaco` (`#4a63b5`). Ma quel colore dista
+   **30 gradi dal mare e 29 dal viola**, mentre la coppia più stretta della
+   famiglia ne aveva 40: è il primo colore più vicino ai suoi vicini di quanto
+   lo siano già due colori fra loro.
+
+   Regge per la stessa ragione dei tre verdi, ed è quella scritta due righe
+   sotto: **conta la vicinanza in pagina, non nella ruota**. La nona storia
+   segue l'ottava, che è verde; mare e viola sono la seconda e la quinta.
+   Contrasto sul fondo 5,15:1 la tinta base e 8,16:1 la scura, dentro
+   l'intervallo della famiglia e sopra la mediana.
+
+   ⚠️ **Il decimo colore non si sceglie riapplicando questa regola.** Lo spazio
+   di tinta è pieno: o si rinegozia la famiglia, o si differenzia per
+   luminosità invece che per tinta. È scritto qui e in `stile.css` perché non
+   lo scopra qualcun altro fra sei mesi.
+
    ⚠️ **La conseguenza, dichiarata invece che scoperta dopo:** i colori di storia
-   sono adesso **tre verdi su otto**. Regge perché le tre storie che li portano —
+   sono **tre verdi su nove**. Regge perché le tre storie che li portano —
    la terza, la sesta e l'ottava — non si toccano mai in pagina. Se una nona
    storia cadesse accanto a una di loro, la regola andrebbe **rinegoziata invece
    che riapplicata**: una regola che dà un risultato scomodo va discussa, non

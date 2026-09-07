@@ -854,6 +854,21 @@ bilanciato non ha dato un numero.
 > qualcosa che prima era un'opinione. Se non fa nessuna delle tre, è un
 > grafico, non una storia.**
 
+**La nona è la prima a farle tutte e tre** (settembre 2026). *Misura per la
+prima volta* i salari, che nessuna fonte del progetto conteneva prima dell'INPS;
+*sorprende*, perché su 103 province ne cresce **una** in termini reali;
+*corregge* la frase «le retribuzioni crescono», che è vera e incompleta. Il
+criterio esigente di questa regola serviva proprio a questo: la storia c'era
+prima che i dati arrivassero, e non si poteva scriverla.
+
+⚠️ E porta con sé una cosa che la regola non prevedeva: **il terzo incontro con
+lo stesso divario**. La seconda storia lo trova sui redditi dichiarati,
+l'ottava sul prezzo delle case, la nona sulle buste paga. Tre fonti diverse, tre
+misure diverse, la stessa distanza fra quello che è scritto e quello che compra.
+Quando lo stesso divario compare tre volte in un documento, smette di essere un
+risultato per diventare **una proprietà del righello**, e la pagina lo dice
+invece di ripeterlo tre volte come se fosse una scoperta nuova.
+
 Il criterio è deliberatamente esigente perché il costo di una storia in più non
 è scriverla: è che ogni storia debole abbassa la fiducia in quelle forti, e il
 lettore non ha modo di sapere quali sono quali.

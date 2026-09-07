@@ -1199,9 +1199,23 @@ def retribuzione(anno: str, codice: str = "017", indicatore: str = "retribuzione
     )
 
 
-def retribuzione_media(anno: str, codice: str = "017") -> float:
-    lavoratori = retribuzione(anno, codice, "lavoratori")
-    return retribuzione(anno, codice) / lavoratori if lavoratori else 0.0
+def retribuzione_media(anno: str, codice: str = "017", per: str = "lavoratori") -> float:
+    """Retribuzione per lavoratore, o per **giornata** se `per` lo chiede.
+
+    Le due rispondono a domande diverse: l'annua conta anche chi ha lavorato un
+    mese solo, la giornaliera no. La nona storia le usa entrambe, ed e' il suo
+    controllo.
+    """
+    denominatore = retribuzione(anno, codice, per)
+    return retribuzione(anno, codice) / denominatore if denominatore else 0.0
+
+
+def rango_variazione_reale(anno: str = "2024", primo: str = "2008", codice: str = "017") -> int:
+    entrambi = province_con_retribuzione(primo) & province_con_retribuzione(anno)
+    variazioni = {
+        c: retribuzione_media(anno, c) / retribuzione_reale(primo, anno, c) for c in entrambi
+    }
+    return sorted(variazioni, key=lambda c: -variazioni[c]).index(codice) + 1
 
 
 def retribuzione_reale(anno: str, base: str = "2024", codice: str = "017") -> float:
@@ -2759,6 +2773,79 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         lambda: bg_quota_laurea("italiani dalla nascita", "9 anni e più")
         - bg_quota_laurea("stranieri", "9 anni e più"),
         0.05,
+    ),
+(
+        "sito nona storia",
+        "retribuzione media a Brescia nel 2019, in euro del 2024: 26.931",
+        26931,
+        lambda: retribuzione_reale("2019"),
+        1,
+    ),
+    (
+        "sito nona storia",
+        "quindi fra il 2008 e il 2019 la retribuzione reale non si muove",
+        0,
+        lambda: (retribuzione_reale("2019") / retribuzione_reale("2008") - 1) * 100,
+        0.1,
+    ),
+    (
+        "sito nona storia",
+        "e perde il 5,6 % nei cinque anni successivi",
+        -5.6,
+        lambda: (retribuzione_media("2024") / retribuzione_reale("2019") - 1) * 100,
+        0.05,
+    ),
+    (
+        "sito nona storia",
+        "il massimo reale e' il 2016, e da li' manca il 7,0 %",
+        -7.0,
+        lambda: (retribuzione_media("2024") / retribuzione_reale("2016") - 1) * 100,
+        0.05,
+    ),
+    (
+        "sito nona storia · il controllo",
+        "giornate retribuite per lavoratore: 256,9 nel 2008",
+        256.9,
+        lambda: retribuzione("2008", indicatore="giornate_retribuite")
+        / retribuzione("2008", indicatore="lavoratori"),
+        0.05,
+    ),
+    (
+        "sito nona storia · il controllo",
+        "e 256,6 nel 2024: ferme, quindi il calo non e' composizione",
+        256.6,
+        lambda: retribuzione("2024", indicatore="giornate_retribuite")
+        / retribuzione("2024", indicatore="lavoratori"),
+        0.05,
+    ),
+    (
+        "sito nona storia · il controllo",
+        "la retribuzione giornaliera reale perde il 5,6 %, come l'annua",
+        -5.6,
+        lambda: (
+            retribuzione_media("2024", per="giornate_retribuite")
+            / (retribuzione_media("2008", per="giornate_retribuite")
+               * indice_prezzi("2024") / indice_prezzi("2008"))
+            - 1
+        ) * 100,
+        0.05,
+    ),
+    (
+        "sito nona storia",
+        "l'unica provincia in crescita reale e' Belluno, +0,2 %",
+        1,
+        lambda: sum(
+            1 for c in province_con_retribuzione("2008") & province_con_retribuzione("2024")
+            if retribuzione_media("2024", c) > retribuzione_reale("2008", "2024", c)
+        ),
+        0,
+    ),
+    (
+        "sito nona storia",
+        "Brescia e' 31a su 103 per variazione reale",
+        31,
+        rango_variazione_reale,
+        0,
     ),
 ]
 
