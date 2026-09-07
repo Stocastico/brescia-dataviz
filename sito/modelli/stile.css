@@ -371,6 +371,64 @@ table.fonti th{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;co
 ul.elenco{padding-left:1.15em;color:var(--ink2)}
 ul.elenco li{margin-bottom:.6em}
 
+/* LA PAGINA CHE ESPLORA
+   Il racconto è una colonna stretta e una figura per volta; qui la figura è una
+   sola e resta accesa, e accanto le sta il ritratto del comune scelto. Sotto i
+   980 px le due colonne si impilano, con la mappa sopra: su un telefono si
+   sceglie il comune toccandolo, e la scheda deve arrivare dopo il tocco. */
+/* Griglia e non flex, e `minmax(0,…)` ovunque. La larghezza naturale di un
+   `<select>` è quella della sua opzione più lunga, e qui l'opzione più lunga è
+   «Reddito imponibile medio per contribuente»: in un contenitore flessibile
+   quella misura diventa un minimo che non si comprime, e su un telefono
+   allarga la pagina intera invece di andare a capo. */
+.picker{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin:26px 0 6px}
+.pk-field{display:flex;flex-direction:column;gap:6px;margin:0;min-width:0}
+.pk-field label,.pk-lab{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;
+  font-weight:700;color:var(--muted)}
+.pk-field select{font:inherit;font-size:.94rem;color:var(--ink);background:#fff;
+  border:1px solid var(--line);border-radius:8px;padding:9px 12px;
+  width:min(360px,100%);max-width:100%;box-shadow:var(--shadow)}
+.pk-field select:focus-visible{outline:3px solid var(--oro);outline-offset:1px}
+.pk-field .controls{margin:0}
+/* Il racconto ha comandi da due o cinque voci; qui gli anni di un indicatore
+   arrivano a ventidue, e una riga sola non li tiene. Senza il ritorno a capo
+   esplicito l'ultima casella finisce sotto il bordo che il gruppo si porta
+   dietro. */
+#scelta-periodo .segmented{flex-wrap:wrap}
+#scelta-periodo .segmented button{border-bottom:1px solid var(--line)}
+
+.esplora-griglia{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:24px;align-items:start;margin:8px 0 30px}
+@media(max-width:980px){ .esplora-griglia{grid-template-columns:minmax(0,1fr)} }
+.esplora-griglia .fig{margin:0}
+/* La provincia è alta e stretta: a piena larghezza di colonna la mappa sarebbe
+   più lunga della finestra, e per vedere la legenda bisognerebbe scorrere via
+   la mappa. Qui si vincola l'altezza e si lascia calcolare la larghezza dal
+   `viewBox`, così la figura e la sua legenda stanno insieme in una schermata. */
+.fig svg.mappa.grande{width:auto;height:min(74vh,820px);max-width:100%;margin:0 auto}
+@media(max-width:980px){ .fig svg.mappa.grande{width:100%;height:auto;max-width:520px} }
+
+/* Il ritratto non è appiccicoso, ed è una scelta: con diciannove righe è più
+   alto della finestra, e un pannello appiccicoso più alto della finestra si
+   incolla in cima e nasconde la propria coda. */
+.scheda{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px}
+.scheda h3{margin:14px 0 10px;font-size:1.14rem}
+.scheda .hint{margin:10px 0 0;line-height:1.5}
+
+.ritrattowrap{max-width:100%;overflow-x:auto}
+table.ritratto{width:100%;border-collapse:collapse;font-size:.82rem}
+table.ritratto th,table.ritratto td{text-align:left;padding:6px 8px;
+  border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+table.ritratto thead th{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--muted);font-weight:700}
+table.ritratto td.num,table.ritratto th.num{text-align:right;
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+table.ritratto tbody th{font-weight:600;color:var(--ink)}
+
+a.csv{display:inline-block;margin-top:14px;font-size:.78rem;font-weight:700;
+  color:var(--sea-d);text-decoration:none;border-bottom:1px solid var(--line)}
+a.csv:hover{border-bottom-color:var(--sea)}
+
 /* PIEDE */
 footer.foot{background:#0f2233;color:#c9d6e2;margin-top:60px;padding:54px 0 64px}
 footer.foot h3{color:#fff;font-size:1.1rem;margin:0 0 10px}
