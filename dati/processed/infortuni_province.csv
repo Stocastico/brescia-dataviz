@@ -1,0 +1,1726 @@
+codice_provincia,provincia,anno,sezione_ateco,indicatore,valore
+012,Varese,2020,A,denunce,3
+012,Varese,2020,B,denunce,2
+012,Varese,2020,C,casi_mortali,3
+012,Varese,2020,C,denunce,1635
+012,Varese,2020,D,denunce,8
+012,Varese,2020,E,casi_mortali,1
+012,Varese,2020,E,denunce,119
+012,Varese,2020,F,casi_mortali,3
+012,Varese,2020,F,denunce,420
+012,Varese,2020,G,casi_mortali,1
+012,Varese,2020,G,denunce,588
+012,Varese,2020,H,casi_mortali,1
+012,Varese,2020,H,denunce,676
+012,Varese,2020,I,denunce,276
+012,Varese,2020,J,denunce,24
+012,Varese,2020,K,casi_mortali,1
+012,Varese,2020,K,denunce,40
+012,Varese,2020,L,denunce,15
+012,Varese,2020,M,denunce,65
+012,Varese,2020,N,casi_mortali,1
+012,Varese,2020,N,denunce,346
+012,Varese,2020,O,casi_mortali,1
+012,Varese,2020,O,denunce,114
+012,Varese,2020,P,denunce,115
+012,Varese,2020,Q,casi_mortali,3
+012,Varese,2020,Q,denunce,4190
+012,Varese,2020,R,denunce,31
+012,Varese,2020,S,casi_mortali,1
+012,Varese,2020,S,denunce,69
+012,Varese,2020,non determinato,casi_mortali,2
+012,Varese,2020,non determinato,denunce,1388
+012,Varese,2020,totale,casi_mortali,18
+012,Varese,2020,totale,denunce,10124
+012,Varese,2021,A,denunce,2
+012,Varese,2021,B,denunce,4
+012,Varese,2021,C,casi_mortali,2
+012,Varese,2021,C,denunce,1946
+012,Varese,2021,D,denunce,3
+012,Varese,2021,E,denunce,119
+012,Varese,2021,F,casi_mortali,3
+012,Varese,2021,F,denunce,526
+012,Varese,2021,G,casi_mortali,1
+012,Varese,2021,G,denunce,642
+012,Varese,2021,H,casi_mortali,2
+012,Varese,2021,H,denunce,931
+012,Varese,2021,I,denunce,316
+012,Varese,2021,J,denunce,45
+012,Varese,2021,K,denunce,27
+012,Varese,2021,L,denunce,16
+012,Varese,2021,M,casi_mortali,1
+012,Varese,2021,M,denunce,71
+012,Varese,2021,N,denunce,382
+012,Varese,2021,O,denunce,97
+012,Varese,2021,P,denunce,162
+012,Varese,2021,Q,denunce,1351
+012,Varese,2021,R,denunce,72
+012,Varese,2021,S,denunce,95
+012,Varese,2021,non determinato,casi_mortali,4
+012,Varese,2021,non determinato,denunce,1854
+012,Varese,2021,totale,casi_mortali,13
+012,Varese,2021,totale,denunce,8661
+012,Varese,2022,A,denunce,2
+012,Varese,2022,B,denunce,6
+012,Varese,2022,C,casi_mortali,4
+012,Varese,2022,C,denunce,1938
+012,Varese,2022,D,denunce,18
+012,Varese,2022,E,denunce,138
+012,Varese,2022,F,casi_mortali,6
+012,Varese,2022,F,denunce,561
+012,Varese,2022,G,casi_mortali,1
+012,Varese,2022,G,denunce,746
+012,Varese,2022,H,casi_mortali,4
+012,Varese,2022,H,denunce,1037
+012,Varese,2022,I,denunce,426
+012,Varese,2022,J,denunce,35
+012,Varese,2022,K,denunce,36
+012,Varese,2022,L,denunce,14
+012,Varese,2022,M,denunce,106
+012,Varese,2022,N,denunce,465
+012,Varese,2022,O,denunce,98
+012,Varese,2022,P,denunce,177
+012,Varese,2022,Q,denunce,1601
+012,Varese,2022,R,denunce,59
+012,Varese,2022,S,casi_mortali,1
+012,Varese,2022,S,denunce,79
+012,Varese,2022,non determinato,casi_mortali,1
+012,Varese,2022,non determinato,denunce,2391
+012,Varese,2022,totale,casi_mortali,17
+012,Varese,2022,totale,denunce,9933
+012,Varese,2023,A,denunce,3
+012,Varese,2023,B,denunce,4
+012,Varese,2023,C,casi_mortali,2
+012,Varese,2023,C,denunce,1976
+012,Varese,2023,D,denunce,10
+012,Varese,2023,E,denunce,159
+012,Varese,2023,F,denunce,529
+012,Varese,2023,G,casi_mortali,1
+012,Varese,2023,G,denunce,791
+012,Varese,2023,H,casi_mortali,2
+012,Varese,2023,H,denunce,1013
+012,Varese,2023,I,denunce,474
+012,Varese,2023,J,denunce,38
+012,Varese,2023,K,denunce,41
+012,Varese,2023,L,denunce,17
+012,Varese,2023,M,denunce,78
+012,Varese,2023,N,denunce,493
+012,Varese,2023,O,casi_mortali,1
+012,Varese,2023,O,denunce,101
+012,Varese,2023,P,casi_mortali,1
+012,Varese,2023,P,denunce,224
+012,Varese,2023,Q,denunce,726
+012,Varese,2023,R,denunce,62
+012,Varese,2023,S,denunce,80
+012,Varese,2023,non determinato,casi_mortali,1
+012,Varese,2023,non determinato,denunce,2492
+012,Varese,2023,totale,casi_mortali,8
+012,Varese,2023,totale,denunce,9311
+012,Varese,2024,A,denunce,2
+012,Varese,2024,B,denunce,2
+012,Varese,2024,C,casi_mortali,4
+012,Varese,2024,C,denunce,1834
+012,Varese,2024,D,denunce,15
+012,Varese,2024,E,denunce,164
+012,Varese,2024,F,casi_mortali,1
+012,Varese,2024,F,denunce,620
+012,Varese,2024,G,casi_mortali,2
+012,Varese,2024,G,denunce,733
+012,Varese,2024,H,casi_mortali,1
+012,Varese,2024,H,denunce,1059
+012,Varese,2024,I,denunce,442
+012,Varese,2024,J,denunce,36
+012,Varese,2024,K,denunce,36
+012,Varese,2024,L,denunce,11
+012,Varese,2024,M,denunce,97
+012,Varese,2024,N,casi_mortali,1
+012,Varese,2024,N,denunce,535
+012,Varese,2024,O,denunce,105
+012,Varese,2024,P,denunce,383
+012,Varese,2024,Q,denunce,695
+012,Varese,2024,R,denunce,67
+012,Varese,2024,S,denunce,78
+012,Varese,2024,non determinato,denunce,2993
+012,Varese,2024,totale,casi_mortali,9
+012,Varese,2024,totale,denunce,9907
+013,Como,2020,A,denunce,5
+013,Como,2020,B,denunce,1
+013,Como,2020,C,casi_mortali,3
+013,Como,2020,C,denunce,828
+013,Como,2020,D,denunce,4
+013,Como,2020,E,denunce,59
+013,Como,2020,F,casi_mortali,1
+013,Como,2020,F,denunce,273
+013,Como,2020,G,casi_mortali,2
+013,Como,2020,G,denunce,333
+013,Como,2020,H,casi_mortali,1
+013,Como,2020,H,denunce,308
+013,Como,2020,I,denunce,191
+013,Como,2020,J,denunce,19
+013,Como,2020,K,denunce,19
+013,Como,2020,L,denunce,12
+013,Como,2020,M,denunce,33
+013,Como,2020,N,casi_mortali,1
+013,Como,2020,N,denunce,211
+013,Como,2020,O,casi_mortali,2
+013,Como,2020,O,denunce,64
+013,Como,2020,P,denunce,53
+013,Como,2020,Q,casi_mortali,3
+013,Como,2020,Q,denunce,2443
+013,Como,2020,R,denunce,27
+013,Como,2020,S,denunce,35
+013,Como,2020,non determinato,denunce,923
+013,Como,2020,totale,casi_mortali,13
+013,Como,2020,totale,denunce,5841
+013,Como,2021,A,denunce,4
+013,Como,2021,B,denunce,3
+013,Como,2021,C,casi_mortali,2
+013,Como,2021,C,denunce,986
+013,Como,2021,D,denunce,6
+013,Como,2021,E,denunce,87
+013,Como,2021,F,casi_mortali,2
+013,Como,2021,F,denunce,356
+013,Como,2021,G,casi_mortali,1
+013,Como,2021,G,denunce,421
+013,Como,2021,H,casi_mortali,1
+013,Como,2021,H,denunce,445
+013,Como,2021,I,casi_mortali,2
+013,Como,2021,I,denunce,211
+013,Como,2021,J,denunce,27
+013,Como,2021,K,denunce,20
+013,Como,2021,L,denunce,20
+013,Como,2021,M,denunce,39
+013,Como,2021,N,casi_mortali,1
+013,Como,2021,N,denunce,204
+013,Como,2021,O,denunce,63
+013,Como,2021,P,casi_mortali,1
+013,Como,2021,P,denunce,68
+013,Como,2021,Q,casi_mortali,1
+013,Como,2021,Q,denunce,898
+013,Como,2021,R,denunce,28
+013,Como,2021,S,denunce,41
+013,Como,2021,T,denunce,1
+013,Como,2021,non determinato,casi_mortali,3
+013,Como,2021,non determinato,denunce,1246
+013,Como,2021,totale,casi_mortali,14
+013,Como,2021,totale,denunce,5174
+013,Como,2022,A,denunce,4
+013,Como,2022,B,denunce,1
+013,Como,2022,C,denunce,1083
+013,Como,2022,D,denunce,12
+013,Como,2022,E,denunce,99
+013,Como,2022,F,casi_mortali,2
+013,Como,2022,F,denunce,371
+013,Como,2022,G,casi_mortali,1
+013,Como,2022,G,denunce,444
+013,Como,2022,H,casi_mortali,1
+013,Como,2022,H,denunce,417
+013,Como,2022,I,casi_mortali,1
+013,Como,2022,I,denunce,302
+013,Como,2022,J,denunce,22
+013,Como,2022,K,denunce,26
+013,Como,2022,L,denunce,8
+013,Como,2022,M,denunce,35
+013,Como,2022,N,denunce,213
+013,Como,2022,O,denunce,56
+013,Como,2022,P,denunce,103
+013,Como,2022,Q,denunce,573
+013,Como,2022,R,denunce,58
+013,Como,2022,S,casi_mortali,1
+013,Como,2022,S,denunce,33
+013,Como,2022,T,denunce,1
+013,Como,2022,non determinato,casi_mortali,4
+013,Como,2022,non determinato,denunce,1325
+013,Como,2022,totale,casi_mortali,10
+013,Como,2022,totale,denunce,5186
+013,Como,2023,A,denunce,6
+013,Como,2023,B,denunce,1
+013,Como,2023,C,casi_mortali,2
+013,Como,2023,C,denunce,1038
+013,Como,2023,D,denunce,8
+013,Como,2023,E,denunce,91
+013,Como,2023,F,casi_mortali,1
+013,Como,2023,F,denunce,394
+013,Como,2023,G,casi_mortali,2
+013,Como,2023,G,denunce,451
+013,Como,2023,H,casi_mortali,2
+013,Como,2023,H,denunce,359
+013,Como,2023,I,denunce,315
+013,Como,2023,J,denunce,20
+013,Como,2023,K,denunce,22
+013,Como,2023,L,denunce,5
+013,Como,2023,M,denunce,33
+013,Como,2023,N,denunce,225
+013,Como,2023,O,casi_mortali,1
+013,Como,2023,O,denunce,52
+013,Como,2023,P,denunce,97
+013,Como,2023,Q,denunce,443
+013,Como,2023,R,denunce,35
+013,Como,2023,S,denunce,31
+013,Como,2023,non determinato,denunce,1472
+013,Como,2023,totale,casi_mortali,8
+013,Como,2023,totale,denunce,5098
+013,Como,2024,A,denunce,6
+013,Como,2024,B,denunce,2
+013,Como,2024,C,casi_mortali,3
+013,Como,2024,C,denunce,1055
+013,Como,2024,D,denunce,12
+013,Como,2024,E,denunce,83
+013,Como,2024,F,casi_mortali,1
+013,Como,2024,F,denunce,384
+013,Como,2024,G,casi_mortali,1
+013,Como,2024,G,denunce,432
+013,Como,2024,H,casi_mortali,1
+013,Como,2024,H,denunce,333
+013,Como,2024,I,casi_mortali,1
+013,Como,2024,I,denunce,330
+013,Como,2024,J,denunce,11
+013,Como,2024,K,denunce,26
+013,Como,2024,L,denunce,8
+013,Como,2024,M,denunce,71
+013,Como,2024,N,denunce,212
+013,Como,2024,O,denunce,71
+013,Como,2024,P,denunce,131
+013,Como,2024,Q,denunce,400
+013,Como,2024,R,denunce,37
+013,Como,2024,S,denunce,29
+013,Como,2024,U,denunce,1
+013,Como,2024,non determinato,casi_mortali,1
+013,Como,2024,non determinato,denunce,1622
+013,Como,2024,totale,casi_mortali,8
+013,Como,2024,totale,denunce,5256
+014,Sondrio,2020,A,denunce,3
+014,Sondrio,2020,B,denunce,4
+014,Sondrio,2020,C,denunce,339
+014,Sondrio,2020,D,denunce,5
+014,Sondrio,2020,E,denunce,14
+014,Sondrio,2020,F,casi_mortali,1
+014,Sondrio,2020,F,denunce,163
+014,Sondrio,2020,G,denunce,130
+014,Sondrio,2020,H,casi_mortali,4
+014,Sondrio,2020,H,denunce,115
+014,Sondrio,2020,I,denunce,76
+014,Sondrio,2020,J,denunce,5
+014,Sondrio,2020,K,denunce,7
+014,Sondrio,2020,L,denunce,1
+014,Sondrio,2020,M,denunce,16
+014,Sondrio,2020,N,denunce,32
+014,Sondrio,2020,O,denunce,19
+014,Sondrio,2020,P,denunce,11
+014,Sondrio,2020,Q,casi_mortali,2
+014,Sondrio,2020,Q,denunce,1029
+014,Sondrio,2020,R,denunce,6
+014,Sondrio,2020,S,denunce,14
+014,Sondrio,2020,non determinato,casi_mortali,2
+014,Sondrio,2020,non determinato,denunce,509
+014,Sondrio,2020,totale,casi_mortali,9
+014,Sondrio,2020,totale,denunce,2498
+014,Sondrio,2021,A,denunce,10
+014,Sondrio,2021,B,denunce,4
+014,Sondrio,2021,C,casi_mortali,1
+014,Sondrio,2021,C,denunce,354
+014,Sondrio,2021,D,denunce,12
+014,Sondrio,2021,E,denunce,10
+014,Sondrio,2021,F,denunce,209
+014,Sondrio,2021,G,denunce,147
+014,Sondrio,2021,H,denunce,102
+014,Sondrio,2021,I,denunce,72
+014,Sondrio,2021,J,denunce,5
+014,Sondrio,2021,K,denunce,11
+014,Sondrio,2021,L,denunce,3
+014,Sondrio,2021,M,denunce,18
+014,Sondrio,2021,N,denunce,67
+014,Sondrio,2021,O,denunce,14
+014,Sondrio,2021,P,denunce,10
+014,Sondrio,2021,Q,denunce,298
+014,Sondrio,2021,R,denunce,8
+014,Sondrio,2021,S,denunce,10
+014,Sondrio,2021,non determinato,casi_mortali,1
+014,Sondrio,2021,non determinato,denunce,603
+014,Sondrio,2021,totale,casi_mortali,2
+014,Sondrio,2021,totale,denunce,1967
+014,Sondrio,2022,A,casi_mortali,2
+014,Sondrio,2022,A,denunce,8
+014,Sondrio,2022,B,denunce,6
+014,Sondrio,2022,C,casi_mortali,1
+014,Sondrio,2022,C,denunce,388
+014,Sondrio,2022,D,denunce,7
+014,Sondrio,2022,E,denunce,16
+014,Sondrio,2022,F,denunce,210
+014,Sondrio,2022,G,casi_mortali,1
+014,Sondrio,2022,G,denunce,150
+014,Sondrio,2022,H,casi_mortali,1
+014,Sondrio,2022,H,denunce,175
+014,Sondrio,2022,I,denunce,104
+014,Sondrio,2022,J,denunce,6
+014,Sondrio,2022,K,denunce,8
+014,Sondrio,2022,L,denunce,3
+014,Sondrio,2022,M,denunce,9
+014,Sondrio,2022,N,denunce,58
+014,Sondrio,2022,O,denunce,28
+014,Sondrio,2022,P,denunce,16
+014,Sondrio,2022,Q,denunce,283
+014,Sondrio,2022,R,denunce,18
+014,Sondrio,2022,S,denunce,14
+014,Sondrio,2022,non determinato,casi_mortali,1
+014,Sondrio,2022,non determinato,denunce,712
+014,Sondrio,2022,totale,casi_mortali,6
+014,Sondrio,2022,totale,denunce,2219
+014,Sondrio,2023,A,denunce,5
+014,Sondrio,2023,C,denunce,392
+014,Sondrio,2023,D,casi_mortali,1
+014,Sondrio,2023,D,denunce,4
+014,Sondrio,2023,E,denunce,15
+014,Sondrio,2023,F,denunce,226
+014,Sondrio,2023,G,casi_mortali,1
+014,Sondrio,2023,G,denunce,154
+014,Sondrio,2023,H,denunce,132
+014,Sondrio,2023,I,casi_mortali,1
+014,Sondrio,2023,I,denunce,112
+014,Sondrio,2023,J,denunce,5
+014,Sondrio,2023,K,denunce,11
+014,Sondrio,2023,L,denunce,2
+014,Sondrio,2023,M,denunce,14
+014,Sondrio,2023,N,casi_mortali,2
+014,Sondrio,2023,N,denunce,55
+014,Sondrio,2023,O,denunce,19
+014,Sondrio,2023,P,denunce,14
+014,Sondrio,2023,Q,denunce,157
+014,Sondrio,2023,R,denunce,14
+014,Sondrio,2023,S,denunce,8
+014,Sondrio,2023,non determinato,denunce,750
+014,Sondrio,2023,totale,casi_mortali,5
+014,Sondrio,2023,totale,denunce,2089
+014,Sondrio,2024,A,denunce,4
+014,Sondrio,2024,B,denunce,7
+014,Sondrio,2024,C,casi_mortali,1
+014,Sondrio,2024,C,denunce,405
+014,Sondrio,2024,D,denunce,3
+014,Sondrio,2024,E,denunce,14
+014,Sondrio,2024,F,casi_mortali,3
+014,Sondrio,2024,F,denunce,239
+014,Sondrio,2024,G,denunce,154
+014,Sondrio,2024,H,denunce,120
+014,Sondrio,2024,I,denunce,146
+014,Sondrio,2024,J,denunce,4
+014,Sondrio,2024,K,denunce,9
+014,Sondrio,2024,L,denunce,4
+014,Sondrio,2024,M,denunce,19
+014,Sondrio,2024,N,denunce,64
+014,Sondrio,2024,O,denunce,18
+014,Sondrio,2024,P,denunce,29
+014,Sondrio,2024,Q,denunce,145
+014,Sondrio,2024,R,denunce,13
+014,Sondrio,2024,S,denunce,12
+014,Sondrio,2024,non determinato,denunce,778
+014,Sondrio,2024,totale,casi_mortali,4
+014,Sondrio,2024,totale,denunce,2187
+015,Milano,2020,A,denunce,8
+015,Milano,2020,B,denunce,6
+015,Milano,2020,C,casi_mortali,7
+015,Milano,2020,C,denunce,2805
+015,Milano,2020,D,denunce,64
+015,Milano,2020,E,casi_mortali,3
+015,Milano,2020,E,denunce,512
+015,Milano,2020,F,casi_mortali,9
+015,Milano,2020,F,denunce,1753
+015,Milano,2020,G,casi_mortali,4
+015,Milano,2020,G,denunce,2597
+015,Milano,2020,H,casi_mortali,14
+015,Milano,2020,H,denunce,3022
+015,Milano,2020,I,casi_mortali,7
+015,Milano,2020,I,denunce,1519
+015,Milano,2020,J,denunce,450
+015,Milano,2020,K,casi_mortali,3
+015,Milano,2020,K,denunce,422
+015,Milano,2020,L,casi_mortali,1
+015,Milano,2020,L,denunce,162
+015,Milano,2020,M,casi_mortali,4
+015,Milano,2020,M,denunce,532
+015,Milano,2020,N,casi_mortali,3
+015,Milano,2020,N,denunce,2093
+015,Milano,2020,O,casi_mortali,7
+015,Milano,2020,O,denunce,1370
+015,Milano,2020,P,casi_mortali,3
+015,Milano,2020,P,denunce,471
+015,Milano,2020,Q,casi_mortali,15
+015,Milano,2020,Q,denunce,15408
+015,Milano,2020,R,denunce,225
+015,Milano,2020,S,casi_mortali,1
+015,Milano,2020,S,denunce,275
+015,Milano,2020,T,denunce,6
+015,Milano,2020,U,denunce,4
+015,Milano,2020,non determinato,casi_mortali,5
+015,Milano,2020,non determinato,denunce,5949
+015,Milano,2020,totale,casi_mortali,86
+015,Milano,2020,totale,denunce,39653
+015,Milano,2021,A,denunce,15
+015,Milano,2021,B,denunce,8
+015,Milano,2021,C,casi_mortali,6
+015,Milano,2021,C,denunce,3465
+015,Milano,2021,D,denunce,66
+015,Milano,2021,E,casi_mortali,1
+015,Milano,2021,E,denunce,627
+015,Milano,2021,F,casi_mortali,7
+015,Milano,2021,F,denunce,2395
+015,Milano,2021,G,casi_mortali,8
+015,Milano,2021,G,denunce,3208
+015,Milano,2021,H,casi_mortali,13
+015,Milano,2021,H,denunce,3836
+015,Milano,2021,I,casi_mortali,2
+015,Milano,2021,I,denunce,1725
+015,Milano,2021,J,casi_mortali,1
+015,Milano,2021,J,denunce,521
+015,Milano,2021,K,casi_mortali,1
+015,Milano,2021,K,denunce,390
+015,Milano,2021,L,casi_mortali,1
+015,Milano,2021,L,denunce,168
+015,Milano,2021,M,denunce,599
+015,Milano,2021,N,casi_mortali,2
+015,Milano,2021,N,denunce,2337
+015,Milano,2021,O,casi_mortali,3
+015,Milano,2021,O,denunce,1365
+015,Milano,2021,P,denunce,591
+015,Milano,2021,Q,casi_mortali,1
+015,Milano,2021,Q,denunce,6104
+015,Milano,2021,R,casi_mortali,1
+015,Milano,2021,R,denunce,245
+015,Milano,2021,S,casi_mortali,1
+015,Milano,2021,S,denunce,311
+015,Milano,2021,T,denunce,11
+015,Milano,2021,U,denunce,3
+015,Milano,2021,non determinato,casi_mortali,8
+015,Milano,2021,non determinato,denunce,7896
+015,Milano,2021,totale,casi_mortali,56
+015,Milano,2021,totale,denunce,35886
+015,Milano,2022,A,denunce,6
+015,Milano,2022,B,denunce,3
+015,Milano,2022,C,casi_mortali,11
+015,Milano,2022,C,denunce,3722
+015,Milano,2022,D,denunce,83
+015,Milano,2022,E,casi_mortali,2
+015,Milano,2022,E,denunce,640
+015,Milano,2022,F,casi_mortali,14
+015,Milano,2022,F,denunce,2505
+015,Milano,2022,G,casi_mortali,4
+015,Milano,2022,G,denunce,3476
+015,Milano,2022,H,casi_mortali,11
+015,Milano,2022,H,denunce,4112
+015,Milano,2022,I,casi_mortali,4
+015,Milano,2022,I,denunce,2621
+015,Milano,2022,J,casi_mortali,1
+015,Milano,2022,J,denunce,565
+015,Milano,2022,K,denunce,483
+015,Milano,2022,L,casi_mortali,2
+015,Milano,2022,L,denunce,183
+015,Milano,2022,M,casi_mortali,3
+015,Milano,2022,M,denunce,696
+015,Milano,2022,N,casi_mortali,4
+015,Milano,2022,N,denunce,2608
+015,Milano,2022,O,casi_mortali,1
+015,Milano,2022,O,denunce,1454
+015,Milano,2022,P,casi_mortali,1
+015,Milano,2022,P,denunce,838
+015,Milano,2022,Q,casi_mortali,3
+015,Milano,2022,Q,denunce,13109
+015,Milano,2022,R,denunce,327
+015,Milano,2022,S,casi_mortali,1
+015,Milano,2022,S,denunce,302
+015,Milano,2022,T,denunce,4
+015,Milano,2022,U,denunce,1
+015,Milano,2022,non determinato,casi_mortali,7
+015,Milano,2022,non determinato,denunce,9603
+015,Milano,2022,totale,casi_mortali,69
+015,Milano,2022,totale,denunce,47341
+015,Milano,2023,A,denunce,14
+015,Milano,2023,B,denunce,10
+015,Milano,2023,C,casi_mortali,5
+015,Milano,2023,C,denunce,3818
+015,Milano,2023,D,denunce,79
+015,Milano,2023,E,denunce,623
+015,Milano,2023,F,casi_mortali,9
+015,Milano,2023,F,denunce,2399
+015,Milano,2023,G,casi_mortali,5
+015,Milano,2023,G,denunce,3293
+015,Milano,2023,H,casi_mortali,12
+015,Milano,2023,H,denunce,3679
+015,Milano,2023,I,casi_mortali,3
+015,Milano,2023,I,denunce,2442
+015,Milano,2023,J,casi_mortali,1
+015,Milano,2023,J,denunce,588
+015,Milano,2023,K,casi_mortali,2
+015,Milano,2023,K,denunce,565
+015,Milano,2023,L,casi_mortali,2
+015,Milano,2023,L,denunce,189
+015,Milano,2023,M,casi_mortali,2
+015,Milano,2023,M,denunce,769
+015,Milano,2023,N,casi_mortali,6
+015,Milano,2023,N,denunce,2664
+015,Milano,2023,O,casi_mortali,1
+015,Milano,2023,O,denunce,688
+015,Milano,2023,P,denunce,659
+015,Milano,2023,Q,casi_mortali,1
+015,Milano,2023,Q,denunce,3897
+015,Milano,2023,R,denunce,320
+015,Milano,2023,S,casi_mortali,1
+015,Milano,2023,S,denunce,287
+015,Milano,2023,T,denunce,5
+015,Milano,2023,non determinato,casi_mortali,6
+015,Milano,2023,non determinato,denunce,9705
+015,Milano,2023,totale,casi_mortali,56
+015,Milano,2023,totale,denunce,36693
+015,Milano,2024,A,denunce,11
+015,Milano,2024,B,denunce,5
+015,Milano,2024,C,casi_mortali,8
+015,Milano,2024,C,denunce,3644
+015,Milano,2024,D,casi_mortali,1
+015,Milano,2024,D,denunce,90
+015,Milano,2024,E,casi_mortali,5
+015,Milano,2024,E,denunce,624
+015,Milano,2024,F,casi_mortali,9
+015,Milano,2024,F,denunce,2373
+015,Milano,2024,G,casi_mortali,5
+015,Milano,2024,G,denunce,3659
+015,Milano,2024,H,casi_mortali,7
+015,Milano,2024,H,denunce,3574
+015,Milano,2024,I,denunce,2554
+015,Milano,2024,J,casi_mortali,4
+015,Milano,2024,J,denunce,599
+015,Milano,2024,K,casi_mortali,1
+015,Milano,2024,K,denunce,526
+015,Milano,2024,L,denunce,177
+015,Milano,2024,M,denunce,739
+015,Milano,2024,N,casi_mortali,6
+015,Milano,2024,N,denunce,2747
+015,Milano,2024,O,casi_mortali,2
+015,Milano,2024,O,denunce,887
+015,Milano,2024,P,denunce,715
+015,Milano,2024,Q,casi_mortali,1
+015,Milano,2024,Q,denunce,3120
+015,Milano,2024,R,casi_mortali,1
+015,Milano,2024,R,denunce,349
+015,Milano,2024,S,denunce,346
+015,Milano,2024,T,denunce,11
+015,Milano,2024,U,denunce,3
+015,Milano,2024,non determinato,casi_mortali,3
+015,Milano,2024,non determinato,denunce,9946
+015,Milano,2024,totale,casi_mortali,53
+015,Milano,2024,totale,denunce,36699
+016,Bergamo,2020,A,denunce,6
+016,Bergamo,2020,B,denunce,1
+016,Bergamo,2020,C,casi_mortali,12
+016,Bergamo,2020,C,denunce,2558
+016,Bergamo,2020,D,denunce,11
+016,Bergamo,2020,E,denunce,134
+016,Bergamo,2020,F,casi_mortali,4
+016,Bergamo,2020,F,denunce,736
+016,Bergamo,2020,G,casi_mortali,8
+016,Bergamo,2020,G,denunce,693
+016,Bergamo,2020,H,casi_mortali,11
+016,Bergamo,2020,H,denunce,734
+016,Bergamo,2020,I,casi_mortali,1
+016,Bergamo,2020,I,denunce,285
+016,Bergamo,2020,J,casi_mortali,1
+016,Bergamo,2020,J,denunce,60
+016,Bergamo,2020,K,denunce,45
+016,Bergamo,2020,L,denunce,22
+016,Bergamo,2020,M,denunce,53
+016,Bergamo,2020,N,casi_mortali,4
+016,Bergamo,2020,N,denunce,412
+016,Bergamo,2020,O,casi_mortali,3
+016,Bergamo,2020,O,denunce,137
+016,Bergamo,2020,P,denunce,159
+016,Bergamo,2020,Q,casi_mortali,13
+016,Bergamo,2020,Q,denunce,3643
+016,Bergamo,2020,R,denunce,49
+016,Bergamo,2020,S,casi_mortali,2
+016,Bergamo,2020,S,denunce,66
+016,Bergamo,2020,T,denunce,1
+016,Bergamo,2020,non determinato,casi_mortali,10
+016,Bergamo,2020,non determinato,denunce,2298
+016,Bergamo,2020,totale,casi_mortali,69
+016,Bergamo,2020,totale,denunce,12103
+016,Bergamo,2021,A,denunce,12
+016,Bergamo,2021,B,denunce,9
+016,Bergamo,2021,C,casi_mortali,6
+016,Bergamo,2021,C,denunce,3281
+016,Bergamo,2021,D,denunce,16
+016,Bergamo,2021,E,denunce,153
+016,Bergamo,2021,F,casi_mortali,6
+016,Bergamo,2021,F,denunce,918
+016,Bergamo,2021,G,denunce,826
+016,Bergamo,2021,H,casi_mortali,3
+016,Bergamo,2021,H,denunce,924
+016,Bergamo,2021,I,casi_mortali,1
+016,Bergamo,2021,I,denunce,326
+016,Bergamo,2021,J,casi_mortali,1
+016,Bergamo,2021,J,denunce,88
+016,Bergamo,2021,K,denunce,54
+016,Bergamo,2021,L,denunce,14
+016,Bergamo,2021,M,denunce,118
+016,Bergamo,2021,N,casi_mortali,1
+016,Bergamo,2021,N,denunce,463
+016,Bergamo,2021,O,denunce,104
+016,Bergamo,2021,P,denunce,289
+016,Bergamo,2021,Q,denunce,1064
+016,Bergamo,2021,R,denunce,80
+016,Bergamo,2021,S,casi_mortali,1
+016,Bergamo,2021,S,denunce,85
+016,Bergamo,2021,non determinato,casi_mortali,3
+016,Bergamo,2021,non determinato,denunce,3283
+016,Bergamo,2021,totale,casi_mortali,22
+016,Bergamo,2021,totale,denunce,12107
+016,Bergamo,2022,A,denunce,11
+016,Bergamo,2022,B,denunce,7
+016,Bergamo,2022,C,casi_mortali,7
+016,Bergamo,2022,C,denunce,3501
+016,Bergamo,2022,D,denunce,4
+016,Bergamo,2022,E,denunce,155
+016,Bergamo,2022,F,casi_mortali,3
+016,Bergamo,2022,F,denunce,921
+016,Bergamo,2022,G,casi_mortali,6
+016,Bergamo,2022,G,denunce,824
+016,Bergamo,2022,H,casi_mortali,5
+016,Bergamo,2022,H,denunce,1091
+016,Bergamo,2022,I,denunce,359
+016,Bergamo,2022,J,denunce,48
+016,Bergamo,2022,K,denunce,61
+016,Bergamo,2022,L,denunce,13
+016,Bergamo,2022,M,denunce,113
+016,Bergamo,2022,N,denunce,536
+016,Bergamo,2022,O,denunce,97
+016,Bergamo,2022,P,denunce,400
+016,Bergamo,2022,Q,denunce,1320
+016,Bergamo,2022,R,casi_mortali,1
+016,Bergamo,2022,R,denunce,68
+016,Bergamo,2022,S,denunce,91
+016,Bergamo,2022,non determinato,casi_mortali,1
+016,Bergamo,2022,non determinato,denunce,3799
+016,Bergamo,2022,totale,casi_mortali,23
+016,Bergamo,2022,totale,denunce,13419
+016,Bergamo,2023,A,denunce,11
+016,Bergamo,2023,B,denunce,7
+016,Bergamo,2023,C,casi_mortali,9
+016,Bergamo,2023,C,denunce,3434
+016,Bergamo,2023,D,denunce,4
+016,Bergamo,2023,E,casi_mortali,1
+016,Bergamo,2023,E,denunce,174
+016,Bergamo,2023,F,casi_mortali,4
+016,Bergamo,2023,F,denunce,1010
+016,Bergamo,2023,G,casi_mortali,3
+016,Bergamo,2023,G,denunce,863
+016,Bergamo,2023,H,casi_mortali,5
+016,Bergamo,2023,H,denunce,973
+016,Bergamo,2023,I,denunce,416
+016,Bergamo,2023,J,denunce,59
+016,Bergamo,2023,K,denunce,45
+016,Bergamo,2023,L,denunce,15
+016,Bergamo,2023,M,denunce,112
+016,Bergamo,2023,N,casi_mortali,2
+016,Bergamo,2023,N,denunce,538
+016,Bergamo,2023,O,denunce,101
+016,Bergamo,2023,P,denunce,475
+016,Bergamo,2023,Q,denunce,799
+016,Bergamo,2023,R,denunce,99
+016,Bergamo,2023,S,denunce,88
+016,Bergamo,2023,T,denunce,1
+016,Bergamo,2023,non determinato,casi_mortali,4
+016,Bergamo,2023,non determinato,denunce,4297
+016,Bergamo,2023,totale,casi_mortali,28
+016,Bergamo,2023,totale,denunce,13521
+016,Bergamo,2024,A,denunce,10
+016,Bergamo,2024,B,denunce,8
+016,Bergamo,2024,C,casi_mortali,7
+016,Bergamo,2024,C,denunce,3153
+016,Bergamo,2024,D,denunce,17
+016,Bergamo,2024,E,denunce,183
+016,Bergamo,2024,F,casi_mortali,5
+016,Bergamo,2024,F,denunce,908
+016,Bergamo,2024,G,casi_mortali,3
+016,Bergamo,2024,G,denunce,910
+016,Bergamo,2024,H,casi_mortali,2
+016,Bergamo,2024,H,denunce,873
+016,Bergamo,2024,I,denunce,447
+016,Bergamo,2024,J,casi_mortali,1
+016,Bergamo,2024,J,denunce,57
+016,Bergamo,2024,K,denunce,46
+016,Bergamo,2024,L,denunce,14
+016,Bergamo,2024,M,denunce,99
+016,Bergamo,2024,N,denunce,564
+016,Bergamo,2024,O,denunce,99
+016,Bergamo,2024,P,denunce,525
+016,Bergamo,2024,Q,casi_mortali,1
+016,Bergamo,2024,Q,denunce,726
+016,Bergamo,2024,R,denunce,106
+016,Bergamo,2024,S,denunce,92
+016,Bergamo,2024,non determinato,casi_mortali,3
+016,Bergamo,2024,non determinato,denunce,4183
+016,Bergamo,2024,totale,casi_mortali,22
+016,Bergamo,2024,totale,denunce,13020
+017,Brescia,2020,A,denunce,14
+017,Brescia,2020,B,denunce,11
+017,Brescia,2020,C,casi_mortali,12
+017,Brescia,2020,C,denunce,3294
+017,Brescia,2020,D,denunce,22
+017,Brescia,2020,E,denunce,219
+017,Brescia,2020,F,casi_mortali,1
+017,Brescia,2020,F,denunce,767
+017,Brescia,2020,G,casi_mortali,10
+017,Brescia,2020,G,denunce,847
+017,Brescia,2020,H,casi_mortali,3
+017,Brescia,2020,H,denunce,661
+017,Brescia,2020,I,casi_mortali,3
+017,Brescia,2020,I,denunce,307
+017,Brescia,2020,J,denunce,51
+017,Brescia,2020,K,casi_mortali,1
+017,Brescia,2020,K,denunce,44
+017,Brescia,2020,L,denunce,21
+017,Brescia,2020,M,casi_mortali,1
+017,Brescia,2020,M,denunce,106
+017,Brescia,2020,N,casi_mortali,1
+017,Brescia,2020,N,denunce,409
+017,Brescia,2020,O,casi_mortali,2
+017,Brescia,2020,O,denunce,192
+017,Brescia,2020,P,casi_mortali,1
+017,Brescia,2020,P,denunce,115
+017,Brescia,2020,Q,casi_mortali,6
+017,Brescia,2020,Q,denunce,4250
+017,Brescia,2020,R,denunce,57
+017,Brescia,2020,S,denunce,84
+017,Brescia,2020,non determinato,casi_mortali,5
+017,Brescia,2020,non determinato,denunce,3037
+017,Brescia,2020,totale,casi_mortali,46
+017,Brescia,2020,totale,denunce,14508
+017,Brescia,2021,A,denunce,22
+017,Brescia,2021,B,casi_mortali,1
+017,Brescia,2021,B,denunce,20
+017,Brescia,2021,C,casi_mortali,10
+017,Brescia,2021,C,denunce,4006
+017,Brescia,2021,D,denunce,28
+017,Brescia,2021,E,denunce,251
+017,Brescia,2021,F,casi_mortali,11
+017,Brescia,2021,F,denunce,982
+017,Brescia,2021,G,casi_mortali,4
+017,Brescia,2021,G,denunce,921
+017,Brescia,2021,H,casi_mortali,9
+017,Brescia,2021,H,denunce,871
+017,Brescia,2021,I,casi_mortali,2
+017,Brescia,2021,I,denunce,450
+017,Brescia,2021,J,denunce,57
+017,Brescia,2021,K,denunce,58
+017,Brescia,2021,L,denunce,26
+017,Brescia,2021,M,casi_mortali,2
+017,Brescia,2021,M,denunce,120
+017,Brescia,2021,N,casi_mortali,2
+017,Brescia,2021,N,denunce,524
+017,Brescia,2021,O,denunce,161
+017,Brescia,2021,P,denunce,239
+017,Brescia,2021,Q,denunce,1708
+017,Brescia,2021,R,denunce,57
+017,Brescia,2021,S,casi_mortali,1
+017,Brescia,2021,S,denunce,103
+017,Brescia,2021,T,denunce,1
+017,Brescia,2021,U,denunce,1
+017,Brescia,2021,non determinato,casi_mortali,4
+017,Brescia,2021,non determinato,denunce,3672
+017,Brescia,2021,totale,casi_mortali,46
+017,Brescia,2021,totale,denunce,14278
+017,Brescia,2022,A,denunce,22
+017,Brescia,2022,B,denunce,13
+017,Brescia,2022,C,casi_mortali,11
+017,Brescia,2022,C,denunce,4180
+017,Brescia,2022,D,denunce,20
+017,Brescia,2022,E,denunce,230
+017,Brescia,2022,F,casi_mortali,8
+017,Brescia,2022,F,denunce,1102
+017,Brescia,2022,G,casi_mortali,3
+017,Brescia,2022,G,denunce,1007
+017,Brescia,2022,H,casi_mortali,3
+017,Brescia,2022,H,denunce,1076
+017,Brescia,2022,I,casi_mortali,1
+017,Brescia,2022,I,denunce,514
+017,Brescia,2022,J,denunce,43
+017,Brescia,2022,K,denunce,50
+017,Brescia,2022,L,denunce,20
+017,Brescia,2022,M,denunce,144
+017,Brescia,2022,N,casi_mortali,3
+017,Brescia,2022,N,denunce,577
+017,Brescia,2022,O,casi_mortali,1
+017,Brescia,2022,O,denunce,141
+017,Brescia,2022,P,denunce,235
+017,Brescia,2022,Q,denunce,6107
+017,Brescia,2022,R,denunce,64
+017,Brescia,2022,S,casi_mortali,1
+017,Brescia,2022,S,denunce,115
+017,Brescia,2022,non determinato,casi_mortali,6
+017,Brescia,2022,non determinato,denunce,4640
+017,Brescia,2022,totale,casi_mortali,37
+017,Brescia,2022,totale,denunce,20300
+017,Brescia,2023,A,casi_mortali,1
+017,Brescia,2023,A,denunce,23
+017,Brescia,2023,B,denunce,22
+017,Brescia,2023,C,casi_mortali,9
+017,Brescia,2023,C,denunce,4125
+017,Brescia,2023,D,denunce,24
+017,Brescia,2023,E,casi_mortali,2
+017,Brescia,2023,E,denunce,249
+017,Brescia,2023,F,casi_mortali,5
+017,Brescia,2023,F,denunce,1051
+017,Brescia,2023,G,casi_mortali,2
+017,Brescia,2023,G,denunce,1030
+017,Brescia,2023,H,casi_mortali,5
+017,Brescia,2023,H,denunce,737
+017,Brescia,2023,I,casi_mortali,1
+017,Brescia,2023,I,denunce,505
+017,Brescia,2023,J,denunce,33
+017,Brescia,2023,K,denunce,50
+017,Brescia,2023,L,casi_mortali,1
+017,Brescia,2023,L,denunce,22
+017,Brescia,2023,M,denunce,89
+017,Brescia,2023,N,casi_mortali,1
+017,Brescia,2023,N,denunce,584
+017,Brescia,2023,O,denunce,155
+017,Brescia,2023,P,denunce,261
+017,Brescia,2023,Q,denunce,1220
+017,Brescia,2023,R,denunce,71
+017,Brescia,2023,S,denunce,129
+017,Brescia,2023,non determinato,casi_mortali,13
+017,Brescia,2023,non determinato,denunce,4942
+017,Brescia,2023,totale,casi_mortali,40
+017,Brescia,2023,totale,denunce,15322
+017,Brescia,2024,A,denunce,25
+017,Brescia,2024,B,denunce,14
+017,Brescia,2024,C,casi_mortali,12
+017,Brescia,2024,C,denunce,3902
+017,Brescia,2024,D,denunce,24
+017,Brescia,2024,E,casi_mortali,1
+017,Brescia,2024,E,denunce,240
+017,Brescia,2024,F,casi_mortali,8
+017,Brescia,2024,F,denunce,1072
+017,Brescia,2024,G,casi_mortali,2
+017,Brescia,2024,G,denunce,1004
+017,Brescia,2024,H,casi_mortali,9
+017,Brescia,2024,H,denunce,765
+017,Brescia,2024,I,casi_mortali,1
+017,Brescia,2024,I,denunce,560
+017,Brescia,2024,J,denunce,39
+017,Brescia,2024,K,denunce,52
+017,Brescia,2024,L,denunce,21
+017,Brescia,2024,M,denunce,111
+017,Brescia,2024,N,casi_mortali,3
+017,Brescia,2024,N,denunce,552
+017,Brescia,2024,O,casi_mortali,1
+017,Brescia,2024,O,denunce,138
+017,Brescia,2024,P,casi_mortali,1
+017,Brescia,2024,P,denunce,404
+017,Brescia,2024,Q,denunce,980
+017,Brescia,2024,R,casi_mortali,1
+017,Brescia,2024,R,denunce,91
+017,Brescia,2024,S,denunce,117
+017,Brescia,2024,non determinato,casi_mortali,5
+017,Brescia,2024,non determinato,denunce,5222
+017,Brescia,2024,totale,casi_mortali,44
+017,Brescia,2024,totale,denunce,15333
+018,Pavia,2020,A,denunce,3
+018,Pavia,2020,B,denunce,3
+018,Pavia,2020,C,casi_mortali,1
+018,Pavia,2020,C,denunce,525
+018,Pavia,2020,D,denunce,5
+018,Pavia,2020,E,denunce,78
+018,Pavia,2020,F,casi_mortali,2
+018,Pavia,2020,F,denunce,213
+018,Pavia,2020,G,casi_mortali,1
+018,Pavia,2020,G,denunce,262
+018,Pavia,2020,H,casi_mortali,3
+018,Pavia,2020,H,denunce,552
+018,Pavia,2020,I,denunce,107
+018,Pavia,2020,J,denunce,19
+018,Pavia,2020,K,denunce,23
+018,Pavia,2020,M,denunce,37
+018,Pavia,2020,N,casi_mortali,1
+018,Pavia,2020,N,denunce,265
+018,Pavia,2020,O,casi_mortali,1
+018,Pavia,2020,O,denunce,31
+018,Pavia,2020,P,casi_mortali,1
+018,Pavia,2020,P,denunce,37
+018,Pavia,2020,Q,casi_mortali,5
+018,Pavia,2020,Q,denunce,2487
+018,Pavia,2020,R,denunce,9
+018,Pavia,2020,S,casi_mortali,2
+018,Pavia,2020,S,denunce,32
+018,Pavia,2020,non determinato,casi_mortali,3
+018,Pavia,2020,non determinato,denunce,1133
+018,Pavia,2020,totale,casi_mortali,20
+018,Pavia,2020,totale,denunce,5821
+018,Pavia,2021,A,denunce,5
+018,Pavia,2021,B,denunce,6
+018,Pavia,2021,C,casi_mortali,5
+018,Pavia,2021,C,denunce,634
+018,Pavia,2021,D,denunce,9
+018,Pavia,2021,E,denunce,103
+018,Pavia,2021,F,casi_mortali,4
+018,Pavia,2021,F,denunce,287
+018,Pavia,2021,G,casi_mortali,3
+018,Pavia,2021,G,denunce,317
+018,Pavia,2021,H,casi_mortali,2
+018,Pavia,2021,H,denunce,693
+018,Pavia,2021,I,casi_mortali,1
+018,Pavia,2021,I,denunce,123
+018,Pavia,2021,J,denunce,36
+018,Pavia,2021,K,denunce,25
+018,Pavia,2021,L,denunce,4
+018,Pavia,2021,M,denunce,39
+018,Pavia,2021,N,denunce,317
+018,Pavia,2021,O,denunce,49
+018,Pavia,2021,P,denunce,53
+018,Pavia,2021,Q,casi_mortali,1
+018,Pavia,2021,Q,denunce,834
+018,Pavia,2021,R,denunce,12
+018,Pavia,2021,S,denunce,39
+018,Pavia,2021,non determinato,casi_mortali,3
+018,Pavia,2021,non determinato,denunce,1453
+018,Pavia,2021,totale,casi_mortali,19
+018,Pavia,2021,totale,denunce,5038
+018,Pavia,2022,A,denunce,6
+018,Pavia,2022,B,denunce,3
+018,Pavia,2022,C,casi_mortali,1
+018,Pavia,2022,C,denunce,698
+018,Pavia,2022,D,denunce,6
+018,Pavia,2022,E,casi_mortali,1
+018,Pavia,2022,E,denunce,104
+018,Pavia,2022,F,casi_mortali,1
+018,Pavia,2022,F,denunce,298
+018,Pavia,2022,G,denunce,316
+018,Pavia,2022,H,casi_mortali,2
+018,Pavia,2022,H,denunce,671
+018,Pavia,2022,I,denunce,184
+018,Pavia,2022,J,denunce,21
+018,Pavia,2022,K,denunce,23
+018,Pavia,2022,L,casi_mortali,1
+018,Pavia,2022,L,denunce,5
+018,Pavia,2022,M,denunce,54
+018,Pavia,2022,N,casi_mortali,2
+018,Pavia,2022,N,denunce,273
+018,Pavia,2022,O,denunce,53
+018,Pavia,2022,P,denunce,70
+018,Pavia,2022,Q,denunce,1185
+018,Pavia,2022,R,denunce,16
+018,Pavia,2022,S,denunce,47
+018,Pavia,2022,non determinato,denunce,1760
+018,Pavia,2022,totale,casi_mortali,8
+018,Pavia,2022,totale,denunce,5793
+018,Pavia,2023,A,denunce,7
+018,Pavia,2023,B,denunce,2
+018,Pavia,2023,C,casi_mortali,1
+018,Pavia,2023,C,denunce,637
+018,Pavia,2023,D,denunce,5
+018,Pavia,2023,E,denunce,91
+018,Pavia,2023,F,casi_mortali,1
+018,Pavia,2023,F,denunce,317
+018,Pavia,2023,G,casi_mortali,2
+018,Pavia,2023,G,denunce,322
+018,Pavia,2023,H,denunce,782
+018,Pavia,2023,I,denunce,112
+018,Pavia,2023,J,denunce,24
+018,Pavia,2023,K,denunce,22
+018,Pavia,2023,L,denunce,15
+018,Pavia,2023,M,denunce,39
+018,Pavia,2023,N,denunce,243
+018,Pavia,2023,O,casi_mortali,1
+018,Pavia,2023,O,denunce,50
+018,Pavia,2023,P,denunce,61
+018,Pavia,2023,Q,denunce,498
+018,Pavia,2023,R,denunce,11
+018,Pavia,2023,S,denunce,41
+018,Pavia,2023,non determinato,casi_mortali,1
+018,Pavia,2023,non determinato,denunce,1527
+018,Pavia,2023,totale,casi_mortali,6
+018,Pavia,2023,totale,denunce,4806
+018,Pavia,2024,A,denunce,6
+018,Pavia,2024,B,denunce,6
+018,Pavia,2024,C,casi_mortali,2
+018,Pavia,2024,C,denunce,617
+018,Pavia,2024,D,denunce,19
+018,Pavia,2024,E,denunce,81
+018,Pavia,2024,F,casi_mortali,3
+018,Pavia,2024,F,denunce,297
+018,Pavia,2024,G,casi_mortali,1
+018,Pavia,2024,G,denunce,351
+018,Pavia,2024,H,casi_mortali,5
+018,Pavia,2024,H,denunce,741
+018,Pavia,2024,I,denunce,127
+018,Pavia,2024,J,denunce,35
+018,Pavia,2024,K,denunce,23
+018,Pavia,2024,L,denunce,7
+018,Pavia,2024,M,denunce,50
+018,Pavia,2024,N,casi_mortali,1
+018,Pavia,2024,N,denunce,270
+018,Pavia,2024,O,denunce,46
+018,Pavia,2024,P,denunce,47
+018,Pavia,2024,Q,denunce,483
+018,Pavia,2024,R,denunce,20
+018,Pavia,2024,S,denunce,34
+018,Pavia,2024,non determinato,casi_mortali,7
+018,Pavia,2024,non determinato,denunce,1480
+018,Pavia,2024,totale,casi_mortali,19
+018,Pavia,2024,totale,denunce,4740
+019,Cremona,2020,A,denunce,17
+019,Cremona,2020,C,casi_mortali,4
+019,Cremona,2020,C,denunce,1020
+019,Cremona,2020,D,denunce,4
+019,Cremona,2020,E,denunce,38
+019,Cremona,2020,F,casi_mortali,4
+019,Cremona,2020,F,denunce,229
+019,Cremona,2020,G,casi_mortali,2
+019,Cremona,2020,G,denunce,213
+019,Cremona,2020,H,casi_mortali,5
+019,Cremona,2020,H,denunce,283
+019,Cremona,2020,I,casi_mortali,1
+019,Cremona,2020,I,denunce,65
+019,Cremona,2020,J,denunce,10
+019,Cremona,2020,K,denunce,15
+019,Cremona,2020,L,denunce,8
+019,Cremona,2020,M,denunce,20
+019,Cremona,2020,N,denunce,172
+019,Cremona,2020,O,casi_mortali,3
+019,Cremona,2020,O,denunce,56
+019,Cremona,2020,P,denunce,21
+019,Cremona,2020,Q,casi_mortali,9
+019,Cremona,2020,Q,denunce,1976
+019,Cremona,2020,R,denunce,33
+019,Cremona,2020,S,denunce,29
+019,Cremona,2020,non determinato,casi_mortali,4
+019,Cremona,2020,non determinato,denunce,1078
+019,Cremona,2020,totale,casi_mortali,32
+019,Cremona,2020,totale,denunce,5287
+019,Cremona,2021,A,denunce,17
+019,Cremona,2021,B,denunce,1
+019,Cremona,2021,C,denunce,1174
+019,Cremona,2021,D,denunce,8
+019,Cremona,2021,E,casi_mortali,1
+019,Cremona,2021,E,denunce,52
+019,Cremona,2021,F,casi_mortali,1
+019,Cremona,2021,F,denunce,241
+019,Cremona,2021,G,denunce,279
+019,Cremona,2021,H,casi_mortali,3
+019,Cremona,2021,H,denunce,340
+019,Cremona,2021,I,denunce,94
+019,Cremona,2021,J,denunce,13
+019,Cremona,2021,K,denunce,17
+019,Cremona,2021,L,denunce,2
+019,Cremona,2021,M,denunce,32
+019,Cremona,2021,N,denunce,219
+019,Cremona,2021,O,denunce,43
+019,Cremona,2021,P,denunce,34
+019,Cremona,2021,Q,denunce,577
+019,Cremona,2021,R,denunce,35
+019,Cremona,2021,S,denunce,38
+019,Cremona,2021,non determinato,casi_mortali,3
+019,Cremona,2021,non determinato,denunce,1444
+019,Cremona,2021,totale,casi_mortali,8
+019,Cremona,2021,totale,denunce,4660
+019,Cremona,2022,A,denunce,22
+019,Cremona,2022,C,casi_mortali,4
+019,Cremona,2022,C,denunce,1231
+019,Cremona,2022,D,denunce,9
+019,Cremona,2022,E,denunce,53
+019,Cremona,2022,F,casi_mortali,2
+019,Cremona,2022,F,denunce,271
+019,Cremona,2022,G,casi_mortali,1
+019,Cremona,2022,G,denunce,269
+019,Cremona,2022,H,denunce,366
+019,Cremona,2022,I,denunce,87
+019,Cremona,2022,J,denunce,7
+019,Cremona,2022,K,denunce,15
+019,Cremona,2022,L,denunce,3
+019,Cremona,2022,M,denunce,36
+019,Cremona,2022,N,casi_mortali,1
+019,Cremona,2022,N,denunce,211
+019,Cremona,2022,O,denunce,46
+019,Cremona,2022,P,denunce,52
+019,Cremona,2022,Q,denunce,1165
+019,Cremona,2022,R,denunce,53
+019,Cremona,2022,S,denunce,33
+019,Cremona,2022,non determinato,casi_mortali,4
+019,Cremona,2022,non determinato,denunce,1407
+019,Cremona,2022,totale,casi_mortali,12
+019,Cremona,2022,totale,denunce,5336
+019,Cremona,2023,A,denunce,26
+019,Cremona,2023,B,denunce,2
+019,Cremona,2023,C,casi_mortali,3
+019,Cremona,2023,C,denunce,1185
+019,Cremona,2023,D,denunce,4
+019,Cremona,2023,E,denunce,45
+019,Cremona,2023,F,casi_mortali,3
+019,Cremona,2023,F,denunce,230
+019,Cremona,2023,G,denunce,265
+019,Cremona,2023,H,casi_mortali,3
+019,Cremona,2023,H,denunce,336
+019,Cremona,2023,I,denunce,84
+019,Cremona,2023,J,denunce,15
+019,Cremona,2023,K,denunce,10
+019,Cremona,2023,L,denunce,3
+019,Cremona,2023,M,denunce,15
+019,Cremona,2023,N,denunce,223
+019,Cremona,2023,O,denunce,23
+019,Cremona,2023,P,denunce,61
+019,Cremona,2023,Q,casi_mortali,1
+019,Cremona,2023,Q,denunce,501
+019,Cremona,2023,R,denunce,46
+019,Cremona,2023,S,denunce,37
+019,Cremona,2023,T,denunce,1
+019,Cremona,2023,non determinato,casi_mortali,4
+019,Cremona,2023,non determinato,denunce,1493
+019,Cremona,2023,totale,casi_mortali,14
+019,Cremona,2023,totale,denunce,4605
+019,Cremona,2024,A,denunce,18
+019,Cremona,2024,B,denunce,1
+019,Cremona,2024,C,casi_mortali,1
+019,Cremona,2024,C,denunce,1139
+019,Cremona,2024,D,denunce,16
+019,Cremona,2024,E,denunce,49
+019,Cremona,2024,F,casi_mortali,1
+019,Cremona,2024,F,denunce,257
+019,Cremona,2024,G,casi_mortali,1
+019,Cremona,2024,G,denunce,280
+019,Cremona,2024,H,casi_mortali,1
+019,Cremona,2024,H,denunce,322
+019,Cremona,2024,I,denunce,99
+019,Cremona,2024,J,denunce,11
+019,Cremona,2024,K,denunce,11
+019,Cremona,2024,L,denunce,3
+019,Cremona,2024,M,denunce,26
+019,Cremona,2024,N,denunce,212
+019,Cremona,2024,O,denunce,38
+019,Cremona,2024,P,casi_mortali,1
+019,Cremona,2024,P,denunce,54
+019,Cremona,2024,Q,casi_mortali,1
+019,Cremona,2024,Q,denunce,433
+019,Cremona,2024,R,denunce,47
+019,Cremona,2024,S,denunce,32
+019,Cremona,2024,non determinato,casi_mortali,3
+019,Cremona,2024,non determinato,denunce,1625
+019,Cremona,2024,totale,casi_mortali,9
+019,Cremona,2024,totale,denunce,4673
+020,Mantova,2020,A,denunce,21
+020,Mantova,2020,B,denunce,9
+020,Mantova,2020,C,casi_mortali,6
+020,Mantova,2020,C,denunce,1227
+020,Mantova,2020,D,denunce,5
+020,Mantova,2020,E,denunce,57
+020,Mantova,2020,F,casi_mortali,4
+020,Mantova,2020,F,denunce,254
+020,Mantova,2020,G,casi_mortali,2
+020,Mantova,2020,G,denunce,236
+020,Mantova,2020,H,denunce,290
+020,Mantova,2020,I,casi_mortali,2
+020,Mantova,2020,I,denunce,72
+020,Mantova,2020,J,denunce,10
+020,Mantova,2020,K,denunce,10
+020,Mantova,2020,L,denunce,1
+020,Mantova,2020,M,denunce,17
+020,Mantova,2020,N,denunce,188
+020,Mantova,2020,O,denunce,29
+020,Mantova,2020,P,casi_mortali,1
+020,Mantova,2020,P,denunce,32
+020,Mantova,2020,Q,denunce,1585
+020,Mantova,2020,R,denunce,8
+020,Mantova,2020,S,casi_mortali,1
+020,Mantova,2020,S,denunce,23
+020,Mantova,2020,non determinato,casi_mortali,1
+020,Mantova,2020,non determinato,denunce,1224
+020,Mantova,2020,totale,casi_mortali,17
+020,Mantova,2020,totale,denunce,5298
+020,Mantova,2021,A,denunce,30
+020,Mantova,2021,B,denunce,2
+020,Mantova,2021,C,casi_mortali,2
+020,Mantova,2021,C,denunce,1274
+020,Mantova,2021,D,denunce,4
+020,Mantova,2021,E,denunce,58
+020,Mantova,2021,F,denunce,291
+020,Mantova,2021,G,denunce,302
+020,Mantova,2021,H,denunce,393
+020,Mantova,2021,I,denunce,87
+020,Mantova,2021,J,denunce,10
+020,Mantova,2021,K,denunce,15
+020,Mantova,2021,L,denunce,4
+020,Mantova,2021,M,denunce,34
+020,Mantova,2021,N,casi_mortali,2
+020,Mantova,2021,N,denunce,223
+020,Mantova,2021,O,denunce,45
+020,Mantova,2021,P,denunce,48
+020,Mantova,2021,Q,casi_mortali,2
+020,Mantova,2021,Q,denunce,536
+020,Mantova,2021,R,denunce,12
+020,Mantova,2021,S,casi_mortali,1
+020,Mantova,2021,S,denunce,25
+020,Mantova,2021,non determinato,casi_mortali,2
+020,Mantova,2021,non determinato,denunce,1416
+020,Mantova,2021,totale,casi_mortali,9
+020,Mantova,2021,totale,denunce,4809
+020,Mantova,2022,A,denunce,20
+020,Mantova,2022,B,denunce,2
+020,Mantova,2022,C,casi_mortali,4
+020,Mantova,2022,C,denunce,1338
+020,Mantova,2022,D,denunce,2
+020,Mantova,2022,E,denunce,40
+020,Mantova,2022,F,casi_mortali,2
+020,Mantova,2022,F,denunce,331
+020,Mantova,2022,G,denunce,317
+020,Mantova,2022,H,casi_mortali,3
+020,Mantova,2022,H,denunce,394
+020,Mantova,2022,I,casi_mortali,1
+020,Mantova,2022,I,denunce,84
+020,Mantova,2022,J,denunce,9
+020,Mantova,2022,K,denunce,8
+020,Mantova,2022,L,denunce,3
+020,Mantova,2022,M,denunce,34
+020,Mantova,2022,N,denunce,230
+020,Mantova,2022,O,denunce,36
+020,Mantova,2022,P,denunce,57
+020,Mantova,2022,Q,denunce,1093
+020,Mantova,2022,R,denunce,10
+020,Mantova,2022,S,denunce,28
+020,Mantova,2022,non determinato,casi_mortali,6
+020,Mantova,2022,non determinato,denunce,1587
+020,Mantova,2022,totale,casi_mortali,16
+020,Mantova,2022,totale,denunce,5623
+020,Mantova,2023,A,casi_mortali,1
+020,Mantova,2023,A,denunce,23
+020,Mantova,2023,B,casi_mortali,1
+020,Mantova,2023,B,denunce,4
+020,Mantova,2023,C,casi_mortali,3
+020,Mantova,2023,C,denunce,1358
+020,Mantova,2023,D,denunce,4
+020,Mantova,2023,E,denunce,65
+020,Mantova,2023,F,casi_mortali,1
+020,Mantova,2023,F,denunce,312
+020,Mantova,2023,G,denunce,300
+020,Mantova,2023,H,denunce,336
+020,Mantova,2023,I,denunce,103
+020,Mantova,2023,J,denunce,8
+020,Mantova,2023,K,denunce,17
+020,Mantova,2023,L,denunce,7
+020,Mantova,2023,M,denunce,19
+020,Mantova,2023,N,denunce,209
+020,Mantova,2023,O,denunce,29
+020,Mantova,2023,P,denunce,65
+020,Mantova,2023,Q,casi_mortali,1
+020,Mantova,2023,Q,denunce,334
+020,Mantova,2023,R,denunce,20
+020,Mantova,2023,S,denunce,34
+020,Mantova,2023,non determinato,denunce,1698
+020,Mantova,2023,totale,casi_mortali,7
+020,Mantova,2023,totale,denunce,4945
+020,Mantova,2024,A,denunce,14
+020,Mantova,2024,B,denunce,2
+020,Mantova,2024,C,casi_mortali,1
+020,Mantova,2024,C,denunce,1344
+020,Mantova,2024,D,denunce,6
+020,Mantova,2024,E,denunce,64
+020,Mantova,2024,F,casi_mortali,1
+020,Mantova,2024,F,denunce,325
+020,Mantova,2024,G,casi_mortali,1
+020,Mantova,2024,G,denunce,301
+020,Mantova,2024,H,denunce,394
+020,Mantova,2024,I,denunce,93
+020,Mantova,2024,J,denunce,7
+020,Mantova,2024,K,denunce,25
+020,Mantova,2024,L,denunce,6
+020,Mantova,2024,M,denunce,42
+020,Mantova,2024,N,casi_mortali,1
+020,Mantova,2024,N,denunce,230
+020,Mantova,2024,O,denunce,40
+020,Mantova,2024,P,denunce,80
+020,Mantova,2024,Q,denunce,299
+020,Mantova,2024,R,denunce,19
+020,Mantova,2024,S,denunce,28
+020,Mantova,2024,non determinato,casi_mortali,5
+020,Mantova,2024,non determinato,denunce,1728
+020,Mantova,2024,totale,casi_mortali,9
+020,Mantova,2024,totale,denunce,5047
+097,Lecco,2020,A,casi_mortali,1
+097,Lecco,2020,A,denunce,3
+097,Lecco,2020,C,casi_mortali,3
+097,Lecco,2020,C,denunce,926
+097,Lecco,2020,D,denunce,2
+097,Lecco,2020,E,casi_mortali,1
+097,Lecco,2020,E,denunce,33
+097,Lecco,2020,F,casi_mortali,1
+097,Lecco,2020,F,denunce,134
+097,Lecco,2020,G,denunce,157
+097,Lecco,2020,H,casi_mortali,2
+097,Lecco,2020,H,denunce,155
+097,Lecco,2020,I,denunce,64
+097,Lecco,2020,J,denunce,6
+097,Lecco,2020,K,casi_mortali,1
+097,Lecco,2020,K,denunce,13
+097,Lecco,2020,L,denunce,10
+097,Lecco,2020,M,denunce,29
+097,Lecco,2020,N,denunce,87
+097,Lecco,2020,O,casi_mortali,1
+097,Lecco,2020,O,denunce,23
+097,Lecco,2020,P,denunce,36
+097,Lecco,2020,Q,denunce,1205
+097,Lecco,2020,R,denunce,22
+097,Lecco,2020,S,denunce,13
+097,Lecco,2020,non determinato,casi_mortali,1
+097,Lecco,2020,non determinato,denunce,564
+097,Lecco,2020,totale,casi_mortali,11
+097,Lecco,2020,totale,denunce,3482
+097,Lecco,2021,A,denunce,1
+097,Lecco,2021,B,denunce,1
+097,Lecco,2021,C,casi_mortali,1
+097,Lecco,2021,C,denunce,1216
+097,Lecco,2021,E,denunce,35
+097,Lecco,2021,F,denunce,194
+097,Lecco,2021,G,casi_mortali,1
+097,Lecco,2021,G,denunce,189
+097,Lecco,2021,H,casi_mortali,1
+097,Lecco,2021,H,denunce,199
+097,Lecco,2021,I,denunce,67
+097,Lecco,2021,J,denunce,10
+097,Lecco,2021,K,denunce,11
+097,Lecco,2021,L,denunce,12
+097,Lecco,2021,M,denunce,26
+097,Lecco,2021,N,denunce,117
+097,Lecco,2021,O,denunce,24
+097,Lecco,2021,P,denunce,61
+097,Lecco,2021,Q,denunce,451
+097,Lecco,2021,R,denunce,16
+097,Lecco,2021,S,denunce,21
+097,Lecco,2021,non determinato,casi_mortali,1
+097,Lecco,2021,non determinato,denunce,783
+097,Lecco,2021,totale,casi_mortali,4
+097,Lecco,2021,totale,denunce,3434
+097,Lecco,2022,A,denunce,4
+097,Lecco,2022,C,denunce,1176
+097,Lecco,2022,E,denunce,40
+097,Lecco,2022,F,casi_mortali,2
+097,Lecco,2022,F,denunce,191
+097,Lecco,2022,G,denunce,216
+097,Lecco,2022,H,denunce,222
+097,Lecco,2022,I,denunce,101
+097,Lecco,2022,J,denunce,5
+097,Lecco,2022,K,denunce,10
+097,Lecco,2022,L,denunce,13
+097,Lecco,2022,M,denunce,31
+097,Lecco,2022,N,denunce,145
+097,Lecco,2022,O,denunce,25
+097,Lecco,2022,P,denunce,73
+097,Lecco,2022,Q,casi_mortali,1
+097,Lecco,2022,Q,denunce,1118
+097,Lecco,2022,R,denunce,22
+097,Lecco,2022,S,denunce,15
+097,Lecco,2022,non determinato,denunce,1050
+097,Lecco,2022,totale,casi_mortali,3
+097,Lecco,2022,totale,denunce,4457
+097,Lecco,2023,C,casi_mortali,3
+097,Lecco,2023,C,denunce,1213
+097,Lecco,2023,D,denunce,1
+097,Lecco,2023,E,denunce,28
+097,Lecco,2023,F,casi_mortali,3
+097,Lecco,2023,F,denunce,227
+097,Lecco,2023,G,casi_mortali,1
+097,Lecco,2023,G,denunce,222
+097,Lecco,2023,H,casi_mortali,1
+097,Lecco,2023,H,denunce,182
+097,Lecco,2023,I,denunce,124
+097,Lecco,2023,J,denunce,9
+097,Lecco,2023,K,denunce,10
+097,Lecco,2023,L,denunce,10
+097,Lecco,2023,M,denunce,32
+097,Lecco,2023,N,denunce,122
+097,Lecco,2023,O,denunce,21
+097,Lecco,2023,P,denunce,77
+097,Lecco,2023,Q,denunce,259
+097,Lecco,2023,R,denunce,26
+097,Lecco,2023,S,denunce,8
+097,Lecco,2023,non determinato,denunce,974
+097,Lecco,2023,totale,casi_mortali,8
+097,Lecco,2023,totale,denunce,3545
+097,Lecco,2024,A,denunce,2
+097,Lecco,2024,C,casi_mortali,1
+097,Lecco,2024,C,denunce,1186
+097,Lecco,2024,D,denunce,2
+097,Lecco,2024,E,denunce,33
+097,Lecco,2024,F,denunce,198
+097,Lecco,2024,G,denunce,218
+097,Lecco,2024,H,denunce,165
+097,Lecco,2024,I,denunce,119
+097,Lecco,2024,J,denunce,8
+097,Lecco,2024,K,denunce,14
+097,Lecco,2024,L,denunce,7
+097,Lecco,2024,M,denunce,34
+097,Lecco,2024,N,casi_mortali,1
+097,Lecco,2024,N,denunce,145
+097,Lecco,2024,O,denunce,23
+097,Lecco,2024,P,denunce,101
+097,Lecco,2024,Q,denunce,211
+097,Lecco,2024,R,denunce,39
+097,Lecco,2024,S,denunce,17
+097,Lecco,2024,non determinato,casi_mortali,1
+097,Lecco,2024,non determinato,denunce,979
+097,Lecco,2024,totale,casi_mortali,3
+097,Lecco,2024,totale,denunce,3501
+098,Lodi,2020,A,denunce,4
+098,Lodi,2020,C,casi_mortali,1
+098,Lodi,2020,C,denunce,340
+098,Lodi,2020,D,denunce,4
+098,Lodi,2020,E,denunce,20
+098,Lodi,2020,F,denunce,99
+098,Lodi,2020,G,casi_mortali,2
+098,Lodi,2020,G,denunce,180
+098,Lodi,2020,H,casi_mortali,4
+098,Lodi,2020,H,denunce,247
+098,Lodi,2020,I,casi_mortali,1
+098,Lodi,2020,I,denunce,37
+098,Lodi,2020,J,denunce,15
+098,Lodi,2020,K,denunce,9
+098,Lodi,2020,L,denunce,3
+098,Lodi,2020,M,denunce,17
+098,Lodi,2020,N,denunce,160
+098,Lodi,2020,O,casi_mortali,1
+098,Lodi,2020,O,denunce,24
+098,Lodi,2020,P,denunce,9
+098,Lodi,2020,Q,denunce,997
+098,Lodi,2020,R,denunce,2
+098,Lodi,2020,S,denunce,28
+098,Lodi,2020,non determinato,casi_mortali,3
+098,Lodi,2020,non determinato,denunce,437
+098,Lodi,2020,totale,casi_mortali,12
+098,Lodi,2020,totale,denunce,2632
+098,Lodi,2021,A,denunce,7
+098,Lodi,2021,B,denunce,1
+098,Lodi,2021,C,denunce,419
+098,Lodi,2021,D,denunce,9
+098,Lodi,2021,E,denunce,25
+098,Lodi,2021,F,denunce,116
+098,Lodi,2021,G,denunce,177
+098,Lodi,2021,H,denunce,303
+098,Lodi,2021,I,denunce,56
+098,Lodi,2021,J,denunce,16
+098,Lodi,2021,K,denunce,13
+098,Lodi,2021,L,denunce,2
+098,Lodi,2021,M,denunce,16
+098,Lodi,2021,N,denunce,130
+098,Lodi,2021,O,denunce,21
+098,Lodi,2021,P,denunce,8
+098,Lodi,2021,Q,denunce,480
+098,Lodi,2021,R,denunce,3
+098,Lodi,2021,S,denunce,22
+098,Lodi,2021,non determinato,denunce,583
+098,Lodi,2021,totale,denunce,2407
+098,Lodi,2022,A,denunce,6
+098,Lodi,2022,C,denunce,460
+098,Lodi,2022,D,denunce,5
+098,Lodi,2022,E,denunce,45
+098,Lodi,2022,F,denunce,156
+098,Lodi,2022,G,denunce,206
+098,Lodi,2022,H,denunce,334
+098,Lodi,2022,I,denunce,79
+098,Lodi,2022,J,denunce,10
+098,Lodi,2022,K,denunce,8
+098,Lodi,2022,M,denunce,27
+098,Lodi,2022,N,casi_mortali,1
+098,Lodi,2022,N,denunce,169
+098,Lodi,2022,O,denunce,26
+098,Lodi,2022,P,denunce,11
+098,Lodi,2022,Q,casi_mortali,1
+098,Lodi,2022,Q,denunce,614
+098,Lodi,2022,R,denunce,2
+098,Lodi,2022,S,denunce,33
+098,Lodi,2022,non determinato,denunce,685
+098,Lodi,2022,totale,casi_mortali,2
+098,Lodi,2022,totale,denunce,2876
+098,Lodi,2023,A,denunce,5
+098,Lodi,2023,B,denunce,1
+098,Lodi,2023,C,denunce,508
+098,Lodi,2023,D,denunce,6
+098,Lodi,2023,E,denunce,35
+098,Lodi,2023,F,casi_mortali,2
+098,Lodi,2023,F,denunce,154
+098,Lodi,2023,G,denunce,197
+098,Lodi,2023,H,casi_mortali,2
+098,Lodi,2023,H,denunce,344
+098,Lodi,2023,I,denunce,43
+098,Lodi,2023,J,casi_mortali,1
+098,Lodi,2023,J,denunce,18
+098,Lodi,2023,K,denunce,11
+098,Lodi,2023,L,denunce,5
+098,Lodi,2023,M,denunce,24
+098,Lodi,2023,N,denunce,138
+098,Lodi,2023,O,denunce,13
+098,Lodi,2023,P,denunce,16
+098,Lodi,2023,Q,denunce,163
+098,Lodi,2023,R,denunce,5
+098,Lodi,2023,S,denunce,17
+098,Lodi,2023,non determinato,denunce,761
+098,Lodi,2023,totale,casi_mortali,5
+098,Lodi,2023,totale,denunce,2464
+098,Lodi,2024,A,casi_mortali,1
+098,Lodi,2024,A,denunce,11
+098,Lodi,2024,C,denunce,421
+098,Lodi,2024,D,denunce,6
+098,Lodi,2024,E,denunce,21
+098,Lodi,2024,F,casi_mortali,2
+098,Lodi,2024,F,denunce,132
+098,Lodi,2024,G,casi_mortali,2
+098,Lodi,2024,G,denunce,208
+098,Lodi,2024,H,casi_mortali,1
+098,Lodi,2024,H,denunce,371
+098,Lodi,2024,I,denunce,52
+098,Lodi,2024,J,denunce,18
+098,Lodi,2024,K,denunce,13
+098,Lodi,2024,L,denunce,3
+098,Lodi,2024,M,denunce,32
+098,Lodi,2024,N,denunce,150
+098,Lodi,2024,O,denunce,18
+098,Lodi,2024,P,casi_mortali,1
+098,Lodi,2024,P,denunce,20
+098,Lodi,2024,Q,denunce,177
+098,Lodi,2024,S,denunce,17
+098,Lodi,2024,non determinato,casi_mortali,3
+098,Lodi,2024,non determinato,denunce,700
+098,Lodi,2024,totale,casi_mortali,10
+098,Lodi,2024,totale,denunce,2370
+108,Monza e della Brianza,2020,A,denunce,4
+108,Monza e della Brianza,2020,B,denunce,1
+108,Monza e della Brianza,2020,C,casi_mortali,6
+108,Monza e della Brianza,2020,C,denunce,1213
+108,Monza e della Brianza,2020,D,denunce,11
+108,Monza e della Brianza,2020,E,denunce,97
+108,Monza e della Brianza,2020,F,denunce,377
+108,Monza e della Brianza,2020,G,casi_mortali,2
+108,Monza e della Brianza,2020,G,denunce,535
+108,Monza e della Brianza,2020,H,denunce,405
+108,Monza e della Brianza,2020,I,casi_mortali,1
+108,Monza e della Brianza,2020,I,denunce,189
+108,Monza e della Brianza,2020,J,denunce,57
+108,Monza e della Brianza,2020,K,denunce,52
+108,Monza e della Brianza,2020,L,denunce,16
+108,Monza e della Brianza,2020,M,denunce,66
+108,Monza e della Brianza,2020,N,denunce,284
+108,Monza e della Brianza,2020,O,denunce,97
+108,Monza e della Brianza,2020,P,denunce,70
+108,Monza e della Brianza,2020,Q,casi_mortali,2
+108,Monza e della Brianza,2020,Q,denunce,3058
+108,Monza e della Brianza,2020,R,denunce,27
+108,Monza e della Brianza,2020,S,denunce,42
+108,Monza e della Brianza,2020,T,denunce,1
+108,Monza e della Brianza,2020,non determinato,casi_mortali,1
+108,Monza e della Brianza,2020,non determinato,denunce,1201
+108,Monza e della Brianza,2020,totale,casi_mortali,12
+108,Monza e della Brianza,2020,totale,denunce,7803
+108,Monza e della Brianza,2021,B,denunce,1
+108,Monza e della Brianza,2021,C,casi_mortali,2
+108,Monza e della Brianza,2021,C,denunce,1430
+108,Monza e della Brianza,2021,D,denunce,10
+108,Monza e della Brianza,2021,E,denunce,108
+108,Monza e della Brianza,2021,F,casi_mortali,4
+108,Monza e della Brianza,2021,F,denunce,484
+108,Monza e della Brianza,2021,G,casi_mortali,1
+108,Monza e della Brianza,2021,G,denunce,671
+108,Monza e della Brianza,2021,H,casi_mortali,3
+108,Monza e della Brianza,2021,H,denunce,572
+108,Monza e della Brianza,2021,I,casi_mortali,1
+108,Monza e della Brianza,2021,I,denunce,254
+108,Monza e della Brianza,2021,J,denunce,52
+108,Monza e della Brianza,2021,K,denunce,56
+108,Monza e della Brianza,2021,L,denunce,20
+108,Monza e della Brianza,2021,M,denunce,63
+108,Monza e della Brianza,2021,N,denunce,314
+108,Monza e della Brianza,2021,O,denunce,107
+108,Monza e della Brianza,2021,P,denunce,89
+108,Monza e della Brianza,2021,Q,denunce,1214
+108,Monza e della Brianza,2021,R,denunce,40
+108,Monza e della Brianza,2021,S,denunce,60
+108,Monza e della Brianza,2021,non determinato,denunce,1912
+108,Monza e della Brianza,2021,totale,casi_mortali,11
+108,Monza e della Brianza,2021,totale,denunce,7457
+108,Monza e della Brianza,2022,A,denunce,3
+108,Monza e della Brianza,2022,B,denunce,1
+108,Monza e della Brianza,2022,C,casi_mortali,1
+108,Monza e della Brianza,2022,C,denunce,1613
+108,Monza e della Brianza,2022,D,denunce,5
+108,Monza e della Brianza,2022,E,casi_mortali,1
+108,Monza e della Brianza,2022,E,denunce,123
+108,Monza e della Brianza,2022,F,casi_mortali,4
+108,Monza e della Brianza,2022,F,denunce,488
+108,Monza e della Brianza,2022,G,casi_mortali,1
+108,Monza e della Brianza,2022,G,denunce,706
+108,Monza e della Brianza,2022,H,denunce,560
+108,Monza e della Brianza,2022,I,casi_mortali,1
+108,Monza e della Brianza,2022,I,denunce,274
+108,Monza e della Brianza,2022,J,denunce,53
+108,Monza e della Brianza,2022,K,denunce,48
+108,Monza e della Brianza,2022,L,denunce,12
+108,Monza e della Brianza,2022,M,denunce,90
+108,Monza e della Brianza,2022,N,casi_mortali,1
+108,Monza e della Brianza,2022,N,denunce,357
+108,Monza e della Brianza,2022,O,denunce,76
+108,Monza e della Brianza,2022,P,denunce,129
+108,Monza e della Brianza,2022,Q,denunce,3037
+108,Monza e della Brianza,2022,R,denunce,56
+108,Monza e della Brianza,2022,S,casi_mortali,1
+108,Monza e della Brianza,2022,S,denunce,54
+108,Monza e della Brianza,2022,non determinato,denunce,2253
+108,Monza e della Brianza,2022,totale,casi_mortali,10
+108,Monza e della Brianza,2022,totale,denunce,9938
+108,Monza e della Brianza,2023,A,denunce,5
+108,Monza e della Brianza,2023,C,casi_mortali,2
+108,Monza e della Brianza,2023,C,denunce,1624
+108,Monza e della Brianza,2023,D,denunce,8
+108,Monza e della Brianza,2023,E,denunce,126
+108,Monza e della Brianza,2023,F,casi_mortali,2
+108,Monza e della Brianza,2023,F,denunce,501
+108,Monza e della Brianza,2023,G,casi_mortali,1
+108,Monza e della Brianza,2023,G,denunce,743
+108,Monza e della Brianza,2023,H,casi_mortali,2
+108,Monza e della Brianza,2023,H,denunce,522
+108,Monza e della Brianza,2023,I,denunce,351
+108,Monza e della Brianza,2023,J,casi_mortali,1
+108,Monza e della Brianza,2023,J,denunce,51
+108,Monza e della Brianza,2023,K,denunce,39
+108,Monza e della Brianza,2023,L,denunce,13
+108,Monza e della Brianza,2023,M,denunce,86
+108,Monza e della Brianza,2023,N,denunce,365
+108,Monza e della Brianza,2023,O,denunce,111
+108,Monza e della Brianza,2023,P,denunce,131
+108,Monza e della Brianza,2023,Q,denunce,817
+108,Monza e della Brianza,2023,R,denunce,52
+108,Monza e della Brianza,2023,S,denunce,63
+108,Monza e della Brianza,2023,non determinato,denunce,2371
+108,Monza e della Brianza,2023,totale,casi_mortali,8
+108,Monza e della Brianza,2023,totale,denunce,7979
+108,Monza e della Brianza,2024,A,denunce,1
+108,Monza e della Brianza,2024,B,denunce,1
+108,Monza e della Brianza,2024,C,casi_mortali,6
+108,Monza e della Brianza,2024,C,denunce,1609
+108,Monza e della Brianza,2024,D,denunce,10
+108,Monza e della Brianza,2024,E,denunce,114
+108,Monza e della Brianza,2024,F,casi_mortali,3
+108,Monza e della Brianza,2024,F,denunce,492
+108,Monza e della Brianza,2024,G,casi_mortali,1
+108,Monza e della Brianza,2024,G,denunce,724
+108,Monza e della Brianza,2024,H,casi_mortali,1
+108,Monza e della Brianza,2024,H,denunce,555
+108,Monza e della Brianza,2024,I,denunce,286
+108,Monza e della Brianza,2024,J,denunce,60
+108,Monza e della Brianza,2024,K,denunce,54
+108,Monza e della Brianza,2024,L,denunce,15
+108,Monza e della Brianza,2024,M,casi_mortali,1
+108,Monza e della Brianza,2024,M,denunce,75
+108,Monza e della Brianza,2024,N,casi_mortali,2
+108,Monza e della Brianza,2024,N,denunce,413
+108,Monza e della Brianza,2024,O,denunce,103
+108,Monza e della Brianza,2024,P,casi_mortali,1
+108,Monza e della Brianza,2024,P,denunce,140
+108,Monza e della Brianza,2024,Q,denunce,616
+108,Monza e della Brianza,2024,R,denunce,77
+108,Monza e della Brianza,2024,S,denunce,54
+108,Monza e della Brianza,2024,T,denunce,1
+108,Monza e della Brianza,2024,non determinato,casi_mortali,1
+108,Monza e della Brianza,2024,non determinato,denunce,2439
+108,Monza e della Brianza,2024,totale,casi_mortali,16
+108,Monza e della Brianza,2024,totale,denunce,7839

@@ -147,6 +147,8 @@ scoprire:
 | `redditi` | `redditi_comuni.csv` | comuni | MEF via ISTAT |
 | `redditi_confronto` | `redditi_comuni_confronto.csv` | comuni di Bergamo | MEF via ISTAT |
 | `commercio_estero` | `commercio_estero_lombardia.csv` | **regione** (ripiego) | ISTAT |
+| `inps` | `retribuzioni_province.csv` | 107 province, annuale 2008–2024 | INPS, Osservatori statistici. ⚠️ API non documentata: corpo JSON **senza spazi**, e i numeri hanno il punto come separatore di migliaia (parser dedicato, non `tidy.to_number`) |
+| `inail` | `infortuni_province.csv` | province lombarde × sezione Ateco, 2020–2024 | INAIL, API REST. ⚠️ **Microdati**: aggrega prima di scrivere, e `MeseAccadimento` vuole lo zero iniziale |
 | `universita` | `universita_atenei.csv`, `universita_sedi_brescia.csv`, `universita_residenza_comuni.csv` | ateneo / provincia della sede / 205 comuni, 2010/11–2024/25 | MUR — USTAT (CKAN) |
 | `prezzi` | `indice_prezzi.csv` | **nazionale**, medie annue 1996–2025 | ISTAT, indice NIC. È il deflatore: nessun comune lo tocca |
 | `omi` | `quotazioni_zone.csv`, `quotazioni_comuni.csv` | zona OMI / comune, 22 semestri 2004–2025 | Agenzia delle Entrate — OMI. **Non scarica**: legge gli archivi versionati in `../dati/input/omi/`, presi a mano dietro SPID |

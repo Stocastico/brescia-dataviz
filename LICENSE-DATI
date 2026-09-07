@@ -28,12 +28,24 @@ Due cose che questa licenza NON copre:
    `quotazioni_comuni.csv`, `compravendite_comuni.csv`,
    `compravendite_province.csv` e per gli archivi in
    `dati/input/omi/`, che sono la fornitura originale e non una lavorazione.
-   Una seconda fonte porta una licenza propria e non CC BY: l'open data del
-   MUR (USTAT) sta sotto **Italian Open Data License 2.0 (IODL 2.0)**, che
-   chiede l'attribuzione e nient'altro — quindi è compatibile con la scelta
-   di questo repository. Citazione: **«MUR — USTAT»**, per
-   `universita_atenei.csv`, `universita_sedi_brescia.csv` e
-   `universita_residenza_comuni.csv`.
+   Due fonti portano la **Italian Open Data License 2.0 (IODL 2.0)**, che
+   chiede l'attribuzione e nient'altro — quindi sono compatibili con la
+   scelta di questo repository: l'open data del **MUR (USTAT)**, citazione
+   **«MUR — USTAT»**, per `universita_atenei.csv`,
+   `universita_sedi_brescia.csv` e `universita_residenza_comuni.csv`; e
+   l'open data **INAIL**, citazione **«INAIL»**, per
+   `infortuni_province.csv`. Gli Osservatori statistici **INPS** stanno
+   invece sotto **CC BY 4.0** (verificata sui dataset INPS pubblicati su
+   `dati.gov.it`), citazione **«INPS — Osservatori statistici»**, per
+   `retribuzioni_province.csv`.
+
+   ⚠️ Su `infortuni_province.csv` c'è una cosa in più da sapere, e non è di
+   licenza. L'API INAIL pubblica **microdati per singolo caso**: età, sesso,
+   date, esito. La tabella di questo repository è **solo aggregata** —
+   conteggi per provincia, anno e sezione Ateco — e i microdati restano in
+   `dati/raw/`, che non è versionata. Chi rigenera la pipeline li scarica e
+   li ha in locale: **non ridistribuirli**, e in particolare non pubblicare
+   incroci che rendano identificabile una persona.
    Se un giorno
    entrassero dati OpenStreetMap o OpenPNRR (ODbL, con share-alike sui dati
    derivati) questa scelta andrebbe rifatta: vedi `PROSSIMI-PASSI.md` §3.3.

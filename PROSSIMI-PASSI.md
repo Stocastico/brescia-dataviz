@@ -260,27 +260,55 @@ della provenienza esplicita di §9, e sta scritta per intero in
 > studiano **19.873** — 4.288 alla Cattolica. Dettagli in `FONTI.md` e in
 > `dati/README.md` §Università.
 
-### 2.3 🤖 Da verificare — promettenti, non testate
+### 2.3 ✅ Le due che valevano la pena sono dentro, le altre sono chiuse
 
-Nessuna è stata interrogata davvero: della tabella in `FONTI.md` §8 sappiamo
-solo che l'host risponde.
+Questa sezione elencava sei fonti «promettenti, non testate», e diceva che di
+nessuna sapevamo altro se non che l'host risponde. Il 7 settembre 2026 sono
+state interrogate davvero: **le due che contavano sono in pipeline, le altre
+quattro sono state chiuse per scelta.** Chiuse, non rinviate — così questo
+elenco smette di crescere.
 
-- **INPS** — lavoratori dipendenti per provincia e settore, retribuzioni per
-  classi e **cittadinanza**. È la più interessante delle tre, perché è l'unica
-  fonte sulle **retribuzioni** e incrocia la cittadinanza, che è l'asse 2. Ma
-  attenzione: `servizi2.inps.it` risponde 200 restituendo **la pagina HTML del
-  portale**, non JSON. Gli osservatori sono un'applicazione web, non un'API
-  documentata: il primo lavoro è trovare l'endpoint che l'applicazione stessa
-  chiama, e potrebbe non essercene uno stabile.
-- **INAIL** — infortuni sul lavoro. In un territorio industriale è pertinente,
-  e a grana provinciale ci sta bene.
-- **Sezioni di censimento ISTAT** — variabili censuarie sotto il comune (2011 e
-  2021). Servono solo se si vorrà scendere sotto il comune per il capoluogo:
-  con il soggetto provinciale non è più una priorità.
-- **Mappatura acustica** dell'agglomerato · **progetti PNRR** da OpenPNRR
-  (ODbL, e attenzione: aggiungerli cambia gli obblighi di licenza, §3.3) ·
-  **risultati elettorali per sezione** da Eligendo
-  (`elezioni.interno.gov.it` risponde; `eligendo.interno.gov.it` no).
+| | Cosa | Esito |
+|---|---|---|
+| ✅ | **INPS** — retribuzioni per provincia | `datasets/inps.py` → `retribuzioni_province.csv`, **107 province × 2008-2024**. È l'unica fonte del progetto sui **salari** |
+| ✅ | **INAIL** — infortuni sul lavoro | `datasets/inail.py` → `infortuni_province.csv`, province lombarde × 2020-2024 per sezione Ateco |
+| ✗ | **Sezioni di censimento ISTAT** | **chiusa**: servono solo per scendere sotto il comune, e il soggetto è provinciale. Era già dichiarata «non più una priorità», adesso è una voce in meno |
+| ✗ | **Mappatura acustica** dell'agglomerato | **chiusa**: nessun asse del brief la chiede, e un dato ambientale in più senza una storia è una tabella orfana (MET-25) |
+| ✗ | **OpenPNRR** | **chiusa, e per una ragione che non è di merito**: è ODbL, con share-alike sui dati derivati. Aggiungerla cambierebbe gli obblighi di licenza di **tutto** il repository (§3.3). Il prezzo è troppo alto per il valore |
+| ✗ | **Eligendo** — elettorale per sezione | **chiusa**: `eligendo.interno.gov.it` non risponde, e il voto non è fra i quattro assi |
+
+**L'endpoint INPS c'era, e la profezia era mezza giusta.** Questa sezione
+scriveva: «gli osservatori sono un'applicazione web, non un'API documentata: il
+primo lavoro è trovare l'endpoint che l'applicazione stessa chiama, e potrebbe
+non essercene uno stabile». L'endpoint è `api/getDatiOsservatorio/` in POST, non
+chiede né sessione né cookie, ed è stabile. Ma per arrivarci ci sono volute tre
+scoperte, e ognuna falliva in silenzio:
+
+1. **il corpo JSON non può avere spazi.** Con i separatori di default di
+   `json.dumps` il server risponde «The input is not a valid Base-64 string»;
+   con `separators=(",", ":")` la stessa richiesta funziona;
+2. **i numeri hanno il punto come separatore di migliaia**, e `tidy.to_number`
+   legge `702.557` come settecento virgola cinque. In un anno solo, **106 valori
+   su 321** avrebbero avuto l'ordine di grandezza sbagliato senza un errore. Da
+   qui un parser dedicato in `inps.py`, con il contro-test accanto;
+3. **le dimensioni si chiamano col loro id interno.** `Provincia` funziona,
+   `Sezione ATECO 2007` no: quell'id non è documentato e si trova solo
+   intercettando l'applicazione. **Per questo il taglio settoriale non c'è**, ed
+   è la prima estensione da fare: in una provincia manifatturiera è la cosa più
+   interessante che questa fonte potrebbe dire.
+
+⚠️ **E una riga di `FONTI.md` era sbagliata.** Diceva che INPS «incrocia la
+cittadinanza, che è l'asse 2». Questo osservatorio **no**: le sue dimensioni
+sono anno, classe di età, settimane retribuite, part-time, qualifica, sesso,
+tipologia contrattuale, Ateco e territorio. La cittadinanza starà in un altro
+osservatorio, e va cercata a parte invece di essere data per acquisita.
+
+⚠️ **INAIL pubblica microdati, non aggregati.** Una riga per caso denunciato,
+con età, sesso, date ed esito. Il sito dichiara fra i limiti che «tutte le fonti
+sono aggregate»: `inail.py` **aggrega prima di scrivere** e in
+`dati/processed/` finiscono solo conteggi. Nessun record individuale entra in
+git — e la voce dei limiti va comunque riscritta, perché adesso una fonte del
+progetto *arriva* a grana individuale anche se non ci resta.
 
 ### 2.4 ✅ Le etichette censuarie sono in italiano
 

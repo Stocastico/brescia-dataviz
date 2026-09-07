@@ -28,6 +28,8 @@ from .datasets import (
     confini,
     famiglie,
     imprese,
+    inail,
+    inps,
     lavoro,
     migrazioni,
     omi,
@@ -64,6 +66,10 @@ DATASETS: dict[str, Callable[[dict[str, str]], None]] = {
     "redditi": redditi.build,
     "redditi_confronto": redditi_confronto.build,
     "commercio_estero": commercio_estero.build,
+    # l'unica fonte del progetto sui salari, e l'unica API non documentata
+    "inps": inps.build,
+    # microdati: aggrega prima di scrivere, e non versiona i singoli casi
+    "inail": inail.build,
     "universita": universita.build,
     # il deflatore: nazionale, e nessun comune lo tocca
     "prezzi": prezzi.build,

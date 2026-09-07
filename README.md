@@ -74,6 +74,22 @@ statale da sola sottostima» — si risolve solo dal lato **sede didattica**: ne
 **19.873**, di cui 4.288 alla Cattolica. E i bresciani iscritti da qualche parte
 sono **32.411**: tre cifre, tre domande diverse.
 
+✅ **E le tre fonti «promettenti, non testate» sono state interrogate davvero**
+(7 settembre 2026). Le due che contavano sono in pipeline: **INPS** dà le
+retribuzioni per 107 province dal 2008, ed è l'unica fonte sui **salari** che il
+progetto abbia; **INAIL** dà gli infortuni denunciati per provincia e settore.
+Le altre quattro — sezioni di censimento, mappatura acustica, OpenPNRR,
+Eligendo — sono **chiuse per scelta**, non rinviate: dettagli e motivi in
+[`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) §2.3. Da qui in avanti l'elenco delle
+fonti da provare è vuoto.
+
+> **La prima cosa che dicono i salari.** Fra il 2008 e il 2024 la retribuzione
+> media di un dipendente bresciano passa da 20.272 a 25.418 euro: **+25,4 %**.
+> Nello stesso periodo i prezzi salgono del 32,9 %, quindi in euro di oggi
+> **scende del 5,7 %**. E non è un fatto locale: **102 province su 103**
+> chiudono il periodo con la retribuzione reale più bassa di come l'avevano
+> aperta.
+
 🤖 **Le tre voci erano uscite da questo elenco il 4 settembre 2026**, riprovando gli
 host una per una. Due perché hanno risposto (quelle qui sopra). La terza per la ragione opposta: gli **open data del Comune
 di Brescia** non erano invisibili da qui, **non esistono più** — il portale è
@@ -106,7 +122,7 @@ l'export a mano del commercio estero provinciale.
 | [`WORKING-PAPER.md`](WORKING-PAPER.md) | ✅ **Versione 1.1**, e non è più una bozza. «Il numero giusto, la frase falsa»: **undici volte** un dato corretto stava per produrre un'affermazione falsa, raggruppate in quattro famiglie. È la tesi che mancava al titolo. L'undicesimo episodio è il primo nato dal **prodotto** invece che dall'analisi, ed è MET-27. La §7 copre i cinque assi con nove risultati; §5, §9 e §10 sono aggiornate. |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco completo delle cose che **richiedono te** (un login SPID, una macchina italiana, una decisione di disegno), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
-| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 37 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza, turismo, **università**, **background migratorio** e — da settembre 2026 — **quotazioni immobiliari OMI in due grane, più i volumi di compravendita comunali e quelli provinciali trimestrali**, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no, con l'eccezione degli **input curati** in `dati/input/`, che nessun URL restituisce. |
+| [`dati/`](dati/README.md) | **Le tabelle prodotte**: 39 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, **retribuzioni**, **infortuni sul lavoro**, ambiente, sicurezza, turismo, **università**, **background migratorio** e — da settembre 2026 — **quotazioni immobiliari OMI in due grane, più i volumi di compravendita comunali e quelli provinciali trimestrali**, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no, con l'eccezione degli **input curati** in `dati/input/`, che nessun URL restituisce. |
 | [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: diciassette script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
 | [`sito/`](sito/README.md) | **Il documento narrativo e lo strumento**: otto storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`; accanto, `esplora.html`, che mette tutti e **diciannove** gli indicatori su tutti i comuni e lascia scegliere a chi legge. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
