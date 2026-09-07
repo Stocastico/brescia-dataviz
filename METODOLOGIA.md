@@ -832,19 +832,26 @@ e non solo rinominato.
 Non è il numero grande a fare la storia. Delle otto pubblicate, **quattro
 correggono qualcosa che il progetto già affermava**:
 
+> ⚠️ **Le storie sono indicate per nome e non per numero**, e la ragione è che
+> l'ordine è cambiato il 7 settembre 2026 e questa tabella si è rotta. Un
+> riferimento ordinale a una storia è un riferimento a una posizione, e la
+> posizione non è una proprietà della storia. Vale anche nel sito, dove
+> ventidue riferimenti del tipo «l'ottava storia» sono diventati «la storia
+> della casa».
+
 | Storia | Cosa ha corretto |
 |---|---|
-| 1ª — dove si svuota | il titolo: «spopolamento» prometteva una partenza che i dati non contengono |
-| 2ª — i redditi | prima l'aggettivo «bresciana» (Bergamo fa lo stesso), poi il verbo: in euro costanti quarantacinque comuni **perdono** |
-| 3ª — il crollo | è una storia *sull'errore*: il numero era vero, la conclusione falsa |
-| 5ª — Brescia è diversa? | la frase ripetuta dal primo giorno, «territorio di microimprese», descrive l'Italia |
+| dove si svuota | il titolo: «spopolamento» prometteva una partenza che i dati non contengono |
+| i redditi | prima l'aggettivo «bresciana» (Bergamo fa lo stesso), poi il verbo: in euro costanti quarantacinque comuni **perdono** |
+| il crollo | è una storia *sull'errore*: il numero era vero, la conclusione falsa |
+| Brescia è diversa? | la frase ripetuta dal primo giorno, «territorio di microimprese», descrive l'Italia |
 
-Una quinta, la **7ª**, non corregge: sorprende. Nessuno si aspettava che la
+Una quinta, **il turismo**, non corregge: sorprende. Nessuno si aspettava che la
 provincia fosse la decima d'Italia per presenze turistiche, e il numero stava
 nelle tabelle da mesi.
 
-Le altre tre — **4ª** (le due economie), **6ª** (aria e clima), **8ª** (la
-casa) — non correggono e non sorprendono: **misurano per la prima volta** una
+Le altre tre — **le due economie**, **aria e clima**, **la casa** — non
+correggono e non sorprendono: **misurano per la prima volta** una
 cosa che prima si poteva solo affermare. Che la provincia sia due economie era
 un'impressione finché la specializzazione settoriale per comune non è stata
 scaricabile; che l'aria fosse migliorata era un'opinione finché il panel

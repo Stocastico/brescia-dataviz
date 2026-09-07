@@ -14,7 +14,7 @@ apre da disco, si manda per email, si archivia.
 | File | Cos'è |
 |---|---|
 | `costruisci.py` | assembla `_site/`: incorpora i dati, sostituisce le cifre e le date, copia i CSV |
-| `modelli/racconto.html` | il documento narrativo: nove storie e la sezione dei limiti |
+| `modelli/racconto.html` | il documento narrativo: nove storie e la sezione dei limiti. L'ordine è: redditi, stipendi, casa, crollo, due economie, turismo, aria e clima, popolazione, confronto |
 | `modelli/esplora.html` | lo strumento: i diciannove indicatori su tutti i comuni, a scelta di chi legge |
 | `modelli/metodologia.html` | le regole del progetto, per un lettore che non ha letto il repository |
 | `modelli/dati.html` | fonti, tabelle scaricabili e avvertenze |
@@ -40,16 +40,23 @@ vuole controllare.
 
 ## Lo scrollytelling, e quando vale la pena
 
-Due storie su otto ce l'hanno, e non è una svista: costa attenzione al lettore,
+Due storie su nove ce l'hanno, e non è una svista: costa attenzione al lettore,
 e la si spende dove una figura va **letta più volte**.
 
-- La **prima** (`#svuota`) tiene ferma una mappa e la rilegge cinque volte:
-  tutti i comuni, quelli in calo, le dieci cadute peggiori, i grumi, il verso
-  opposto. La figura non cambia mai, cambia cosa è acceso (`mappa.evidenzia`).
-- L'**ottava** (`#casa`) fa una cosa diversa perché ha un argomento a catena: il
-  prezzo com'è scritto → lo stesso prezzo in euro di oggi → il divario → i
-  volumi. I passi accendono le linee una alla volta (`serie().mostra`), e negli
-  ultimi due il pannello **scambia figura**.
+> ⚠️ **Indicate per nome e non per posizione.** L'ordine delle storie è cambiato
+> il 7 settembre 2026, e con lui si sono rotti ventidue riferimenti del tipo
+> «l'ottava storia» sparsi nel racconto. Da allora la regola è: **una storia si
+> cita per nome o per ancora, mai per numero.** La posizione non è una proprietà
+> della storia.
+
+- **Quella sulla popolazione** (`#svuota`) tiene ferma una mappa e la rilegge
+  cinque volte: tutti i comuni, quelli in calo, le dieci cadute peggiori, i
+  grumi, il verso opposto. La figura non cambia mai, cambia cosa è acceso
+  (`mappa.evidenzia`).
+- **Quella della casa** (`#casa`) fa una cosa diversa perché ha un argomento a
+  catena: il prezzo com'è scritto → lo stesso prezzo in euro di oggi → il
+  divario → i volumi. I passi accendono le linee una alla volta
+  (`serie().mostra`), e negli ultimi due il pannello **scambia figura**.
 
 Tre vincoli che valgono per entrambe, e che il prossimo scrollytelling deve
 rispettare:
