@@ -31,10 +31,10 @@ nessuno può prendere al posto tuo perché riguarda due repository insieme.
 | 🙋 9 | **Pubblicare**, quando l'analisi sarà finita (§7): *Actions → «Pubblica il sito» → Run workflow → conferma = `pubblica`* | è la decisione di pubblicare, e non la prende un workflow | 1 min | che il sito diventi visibile. Prima di allora si costruisce a ogni push e resta un artefatto da scaricare |
 | ✅ 3 | ~~**Scaricare le quotazioni OMI**~~ — **fatta il 4 settembre 2026**: 22 semestri (2004–2025) più le compravendite comunali 2011–2025, in [`dati/input/omi/`](dati/input/omi/PROVENIENZA.md). Restano da chiedere solo i perimetri KML, se un giorno si scenderà sotto il capoluogo | serviva il tuo SPID: era l'unico scarico del progetto con un login | 1 h | niente più: l'asse «casa e prezzi» ha i dati, gli manca la pipeline (🤖) |
 | ✗ 4 | ~~**Scaricare gli open data del Comune di Brescia**~~ — **la voce cade** (4 settembre 2026): il portale è dismesso, non irraggiungibile ([perché](dati/SCARICHI-MANUALI.md) §2) | non era la nostra rete: `comune.brescia.it/opendata` risponde `410 Gone`. I dataset sono su `dati.lombardia.it`, quindi 🤖; il turismo cittadino 2005–2013 non è migrato e resta perduto | — | niente, tranne l'estensione indietro della settima storia, che va dichiarata come non disponibile |
-| 🙋 6 | **Esportare a mano il commercio estero provinciale** (§2.2, [istruzioni](dati/SCARICHI-MANUALI.md) §3) | il databrowser ISTAT è una SPA senza API | 1 h | niente: la serie regionale è già scaricata come ripiego dichiarato |
+| ✗ 6 | ~~**Esportare a mano il commercio estero provinciale**~~ — **decisa il 7 settembre 2026: non si fa.** L'export a mano resterebbe l'unico dato del progetto che nessuno può rigenerare con un comando, e il ripiego regionale è già scaricato e già dichiarato (MET-10). Le istruzioni restano in [`dati/SCARICHI-MANUALI.md`](dati/SCARICHI-MANUALI.md) §3 se un giorno la decisione cambia | il databrowser ISTAT è una SPA senza API | — | niente |
 | 🙋 7 | **Rileggere i testi prima di pubblicare** (§8) | è il tuo nome sopra | — | la pubblicazione |
-| 🙋 8 | **Scaricare in locale `migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git, e serve solo quando l'asse 2 diventerà una storia | 20 min di attesa | niente di quello che è pubblicato |
-| 🙋 10 | **Dire se la tavolozza va riallineata con `donostia-dataviz`** ([`sito/README.md`](sito/README.md) §Lo stile) | le storie qui sono sette e i colori ereditati sono cinque, quindi ne sono stati aggiunti due (`--oliva` e `--prugna`), con accanto la **regola** che li sceglie: il buco di tinta più largo che resta, alla luminosità della famiglia. Qui il sito è coerente; la domanda che resta tua riguarda la lingua grafica **condivisa fra i due progetti** — tenerli una collana stretta o lasciarli divergere | 10 min per dire di sì com'è, mezz'ora se porti regola e toni anche nell'altro repository | niente |
+| ✅ 8 | ~~**Scaricare in locale `migrazioni_comuni.csv`**~~ — **fatto il 7 settembre 2026**: 1.809.156 righe in 18 minuti e 46 secondi. La congiunta resta fuori da git, ma le **due marginali** che la prima storia cita sono versionate, quindi su una macchina nuova questo comando serve solo per rifare l'analisi, non per leggere il sito | serviva il tuo disco: 422 MB e ~2 GB di risposte grezze | — | niente più |
+| ✅ 10 | ~~**Dire se la tavolozza va riallineata con `donostia-dataviz`**~~ — **decisa il 7 settembre 2026: va bene com'è.** I due progetti restano una collana con una tavolozza che diverge, e la regola dei colori resta scritta qui invece che là. ⚠️ La decisione arriva nello stesso giorno in cui la regola ha **finito lo spazio** al nono colore (`--indaco`, 29 gradi dal vicino contro i 40 della coppia più stretta): approvare l'esistente non rimanda quel problema, lo lascia esattamente dov'è, e il decimo colore va deciso e non calcolato ([`sito/README.md`](sito/README.md) §Lo stile) | — | — | niente |
 
 🤖 **Tre voci non sono più tue, e per due ragioni diverse.** Il 4 settembre 2026
 ho riprovato gli host di questo elenco uno per uno. La 🙋 5 e metà della 🙋 3
@@ -51,8 +51,9 @@ non sono stati riusati, perché questo documento viene citato per numero.
 ✅ **E le due che avevano risposto sono state scritte** (7 settembre 2026), così
 questa nota non resta una promessa: `compravendite_province.csv` per l'NTN
 provinciale e trimestrale, e le tre tabelle dell'università. Restano quindi in
-elenco solo la 🙋 6 (l'export a mano dal databrowser ISTAT, che è l'unica cosa
-che una sessione di lavoro non può fare), la 🙋 7, la 🙋 8, la 🙋 9 e la 🙋 10.
+elenco solo la 🙋 7 (rileggere i testi) e la 🙋 9 (pubblicare), che sono
+consecutive: prima leggi, poi pubblichi. Tutto il resto è chiuso, e la 🙋 6 e la
+🙋 10 sono state chiuse **da una decisione** invece che da un lavoro.
 
 Tutto il resto di questo documento è 🤖 o ✅. Questa tabella è ripetuta in forma
 breve in testa al [`README`](README.md), diviso fra ciò che blocca la
@@ -225,7 +226,7 @@ perché.
 |---|---|---|---|
 | ✅ 3 | **Quotazioni immobiliari OMI** — **acquisite** il 4 settembre 2026 | area riservata Agenzia delle Entrate (SPID/CIE/Fisconline, gratuito) | Fatto: 22 semestri, il 2° di ogni anno **dal 2004 al 2025**, filtrati sulla provincia, più i volumi di compravendita comunali 2011–2025. Stanno in `dati/input/omi/` come archivi zip, letti dalla pipeline con `zipfile`. Le quotazioni sono libere **dal 1° semestre 2004** e l'ultimo pubblicato è il **2° semestre 2025**. I perimetri delle zone (KML, dal 2010/2) servono **solo** per scendere sotto il capoluogo — a grana comunale il file delle quotazioni porta già il codice del comune, quindi la seconda geometria, che è il punto pericoloso di §9, non entra affatto. Le **compravendite NTN** non sono più qui: vedi §2.1 |
 | ✗ 4 | **Open data del Comune di Brescia** — **voce chiusa**, non rinviata | il portale CKAN è **dismesso**: DNS che risolve ma nessuna connessione, `comune.brescia.it/opendata` a `410 Gone`, ultimo passaggio dell'Internet Archive a gennaio 2021. Ad agosto 2026 lo avevamo letto come un problema di rete, e non lo era | I dataset comunali sono **migrati su `dati.lombardia.it`** (una ventina di `comune-brescia-*`, censiti su `dati.gov.it` sotto Regione Lombardia): sono 🤖. Il **turismo cittadino 2005–2013** non è nella migrazione né nell'Internet Archive — la sola strada che resta è chiederlo all'ufficio statistica del Comune, il cui sito intanto **ha riaperto** (200, era 403) |
-| 🙋 6 | **Commercio estero provinciale** | il portale Coeweb storico è dismesso (confermato: l'host non risponde), il sostituto è una SPA senza API | Esportare a mano dal databrowser via browser e versionare come input curato. In alternativa restare sulla serie **regionale**, già scaricata, dichiarandola — che è la scelta attuale e regge (MET-10) |
+| ✗ 6 | **Commercio estero provinciale** — **voce chiusa** (7 set 2026) | il portale Coeweb storico è dismesso, il sostituto è una SPA senza API | **Si resta sulla serie regionale**, già scaricata e dichiarata (MET-10). L'alternativa era un export a mano da versionare come input curato: scartata perché sarebbe l'unico dato del progetto non rigenerabile con un comando, per un asse che non è fra i quattro portanti |
 
 Quando arriva un file scaricato a mano, **non va copiato in
 `dati/processed/`**: va messo in `dati/input/<fonte>/` col nome originale e
@@ -1064,7 +1065,7 @@ entra nel tempo che hai, non a fare un piano.
 | ✅ ~~Portare il turismo nel sito come **settima storia**~~ | fatta | «La decima provincia turistica d'Italia», con lo sciame delle 107 province, i diciassette anni di presenze divise fra clienti italiani e stranieri, e lo scarto fra le due fonti disegnato invece che raccontato. Il settimo colore è `--prugna`, scelto con la regola ora scritta in `sito/README.md` |
 | 🤖 Analisi e storia sulla casa (§4) | **mezza giornata** per la prima analisi, un giorno per l'ottava storia | l'unico tema che ha i dati e non ha ancora niente: prezzi fermi contro volumi raddoppiati |
 | ✅ ~~Pannello interattivo~~ | fatto, e in un pomeriggio invece dei 2–3 giorni stimati | `esplora.html`: non l'app React della stima, ma una pagina che riusa `grafici.js`. La stima era giusta per l'app e sbagliata per il problema (§6.1) |
-| 🙋 Quel che resta dei download manuali: l'export Coeweb (§2.2, [istruzioni](dati/SCARICHI-MANUALI.md) §3) | **1 h**, ed erano 2–4 prima che tre voci uscissero dall'elenco e l'OMI arrivasse | estensioni, nessun asse portante |
+| ✗ ~~Quel che resta dei download manuali~~ — **niente**: l'export Coeweb è stato scartato il 7 settembre 2026, e con lui l'ultimo scarico che richiedeva te | — | si resta sulla serie regionale, dichiarata (MET-10) |
 
 ### Se hai venti minuti
 

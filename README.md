@@ -42,10 +42,25 @@ passaggio che mancava perché l'indirizzo pubblico servisse il racconto invece d
 questo README: adesso il workflow ha dove pubblicare, e resta solo la decisione
 di farlo.
 
-**Che non blocca la pubblicazione, ma nessuno può farlo al posto tuo.** Due sono
-scarichi che questo ambiente non raggiunge — serve la tua rete o il tuo disco — e
-uno è una decisione. Le istruzioni passo per passo stanno in
-[`dati/SCARICHI-MANUALI.md`](dati/SCARICHI-MANUALI.md).
+✅ **E questo elenco adesso è vuoto** (7 settembre 2026). Portava tre voci che
+non bloccavano la pubblicazione e che nessuno poteva fare al posto tuo: due si
+sono chiuse con una **decisione** e una è stata fatta.
+
+- **La tavolozza condivisa con `donostia-dataviz`**: approvata com'è. I due
+  progetti restano una collana con tavolozze che divergono. ⚠️ La decisione
+  arriva nel giorno in cui la regola dei colori ha **finito lo spazio** al nono
+  (`--indaco` dista 29 gradi dal vicino, contro i 40 della coppia più stretta):
+  approvare l'esistente non rimanda quel problema, e il decimo colore andrà
+  deciso, non calcolato ([`sito/README.md`](sito/README.md) §Lo stile).
+- **Il commercio estero provinciale**: non si fa. L'export a mano sarebbe
+  l'unico dato del progetto che nessuno può rigenerare con un comando, per un
+  asse che non è fra i quattro portanti; si resta sulla serie **regionale**, già
+  scaricata e già dichiarata (MET-10). Le istruzioni restano in
+  [`dati/SCARICHI-MANUALI.md`](dati/SCARICHI-MANUALI.md) §3 se un giorno la
+  decisione cambia.
+- **`migrazioni_comuni.csv`**: scaricato, 1.809.156 righe in diciotto minuti. La
+  congiunta resta fuori da git, ma le due marginali che la prima storia cita
+  sono versionate.
 
 ✅ **Le quotazioni OMI sono arrivate e sono già tabelle** (4 settembre 2026): 22
 semestri, 2004–2025, in [`dati/input/omi/`](dati/input/omi/PROVENIENZA.md), letti
@@ -55,12 +70,6 @@ un login. Anche le **compravendite comunali 2011–2025** sono in pipeline, con
 `datasets/compravendite.py` → `compravendite_comuni.csv` (52.020 righe): i volumi
 del capoluogo sono quasi raddoppiati dal 2013, mentre il prezzo al metro quadro è
 rimasto dov'era.
-
-| | Cosa | Perché tocca a te | Tempo |
-|---|---|---|---|
-| 🙋 | **Commercio estero provinciale** | il databrowser ISTAT è una SPA senza API, si esporta a mano. La serie regionale è già scaricata come ripiego dichiarato | 1 h |
-| 🙋 | **`migrazioni_comuni.csv`** ([istruzioni](dati/SCARICHI-LOCALI.md)) | 422 MB: sta fuori da git e si rigenera in locale. Serve solo quando l'asse 2 diventerà una storia | 20 min di attesa |
-| 🙋 | **Dire se la tavolozza va riallineata con `donostia-dataviz`** — le storie qui sono sette, i colori ereditati cinque, quindi ne sono stati aggiunti due (`--oliva`, `--prugna`) con la regola che li sceglie scritta accanto. Qui è coerente; la domanda è se i due progetti debbano restare una collana stretta | riguarda la lingua grafica **condivisa fra i due progetti**: [`sito/README.md`](sito/README.md) §Lo stile | 10 min, o mezz'ora se porti regola e toni anche di là |
 
 ✅ **Le due voci che erano uscite da questo elenco sono anche state fatte**
 (7 settembre 2026). Le **compravendite NTN a grana provinciale e di capoluogo**
