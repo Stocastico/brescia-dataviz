@@ -35,7 +35,7 @@ MODELLI = Path(__file__).resolve().parents[2] / "sito" / "modelli"
 LINEETTA_LUNGA = "—"  # —  em dash
 TRATTINO_MEDIO = "–"  # –  en dash: legittimo, e non si tocca
 
-PAGINE = ("racconto.html", "dati.html", "metodologia.html")
+PAGINE = ("racconto.html", "esplora.html", "dati.html", "metodologia.html")
 
 
 def righe_con(percorso: Path, segno: str) -> list[str]:

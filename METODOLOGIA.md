@@ -1,4 +1,4 @@
-# Nota metodologica (MET-1…MET-26)
+# Nota metodologica (MET-1…MET-27)
 
 > **Cos'è.** Le decisioni che governano il progetto: *perché* misuriamo come
 > misuriamo. È la base di credibilità — qualunque grafico, testo o titolo deve
@@ -6,7 +6,14 @@
 > progetto gemello su Donostia, in parte dai problemi specifici incontrati sui
 > dati bresciani.
 >
-> ## Versione 1.0 — settembre 2026, con le storie chiuse a otto
+> ## Versione 1.1 — settembre 2026, con le storie chiuse a otto
+>
+> **L'ultima arrivata è MET-27**, e viene da un posto nuovo: non dai dati e non
+> da una storia, ma dal **prodotto**. È nata costruendo la pagina che esplora
+> gli indicatori ([`sito/README.md`](sito/README.md)), quando si è visto che
+> `dati.html` dichiarava diciannove indicatori e ne elencava quindici. Sta in
+> fondo alle regole del racconto perché è una regola sulla pagina, non sul
+> dato.
 >
 > **Questo documento non è più una bozza.** Lo è stato finché mancava la
 > famiglia di regole che dichiarava di non avere: quelle su **come si scelgono
@@ -16,8 +23,8 @@
 > le otto storie hanno fatto davvero — ed è il motivo per cui MET-23 è nata
 > insieme alla scoperta che **quattro storie su otto la violavano**.
 >
-> Le ventisei regole sono tutte reali e applicate; **sette** di esse (MET-9,
-> MET-12, MET-13, MET-14, MET-15, MET-21, MET-23) nascono da errori o
+> Le ventisette regole sono tutte reali e applicate; **otto** di esse (MET-9,
+> MET-12, MET-13, MET-14, MET-15, MET-21, MET-23, MET-27) nascono da errori o
 > incoerenze **effettivamente trovati sui dati o sulla pagina**, non da principi
 > scelti prima.
 >
@@ -807,15 +814,18 @@ e non solo rinominato.
 ---
 
 
-## Le regole del racconto (MET-22…MET-26)
+## Le regole del racconto (MET-22…MET-27)
 
 > Nate a settembre 2026, quando le storie scritte sono diventate **otto**. Fino
 > ad allora questo documento dichiarava un buco: «mancano le regole su come si
 > scelgono e si raccontano le storie — sei storie sono abbastanza per intuirle
-> e troppo poco per fissarle». Le cinque che seguono non sono state decise a
+> e troppo poco per fissarle». Le prime cinque non sono state decise a
 > tavolino: sono state **ricavate contando** cosa le otto storie hanno fatto
 > davvero, ed è il motivo per cui una di esse (MET-23) è nata insieme alla
 > scoperta che metà delle storie la violava.
+>
+> La sesta, **MET-27**, è arrivata dopo e da un'altra parte: dal prodotto,
+> costruendo la pagina che esplora gli indicatori.
 
 ## MET-22 — Una storia si scrive quando dice qualcosa che non si sapeva prima di guardare
 
@@ -941,6 +951,34 @@ percorso opposto: le quotazioni OMI sono state acquisite a settembre 2026
 **senza** una domanda, e per due settimane sono state un dato senza lettura.
 La storia è arrivata quando è arrivato il deflatore, cioè quando la domanda è
 diventata «fermo rispetto a cosa?».
+
+## MET-27 — Un numero dichiarato e l'elenco che lo mostra vengono dalla stessa sorgente
+
+`dati.html` è la pagina che documenta i dati del progetto. Scriveva «gli N
+indicatori» prendendo N dal manifesto della pipeline, dove gli indicatori sono
+**diciannove**, e due paragrafi più sotto costruiva l'elenco leggendo i dati
+incorporati in quella pagina, che erano i **quindici** citati dal racconto.
+Diciannove promessi, quindici elencati, per mesi.
+
+Nessuno dei due numeri era sbagliato, e nessun test poteva accorgersene: erano
+due fatti veri su due oggetti diversi, e a metterli d'accordo non era tenuto
+nessuno. Il difetto è nato dall'averli scritti a un paragrafo di distanza.
+
+> **Quando una pagina dichiara una quantità e poi la mostra, il numero e
+> l'elenco devono venire dalla stessa sorgente. Se non possono, un test li
+> lega. Due sorgenti indipendenti per lo stesso fatto prima o poi divergono, e
+> il giorno che divergono nessuna delle due sembra sbagliata.**
+
+È **MET-13** spostata dai dati alla pagina. Là erano due parti del progetto che decidevano
+ciascuna per conto proprio cosa fare di una cella che la fonte non pubblica;
+qui sono due parti della **stessa pagina** che contano per conto proprio la
+stessa cosa. Il difetto è dello stesso tipo — sta fra i pezzi, non dentro a uno
+— e si trova nello stesso modo: mettendo un controllo che li obbliga a
+rispondere insieme (`pipeline/tests/test_esplora.py`).
+
+Nel caso concreto la sorgente unica esisteva già e bastava usarla: adesso
+`dati.html` porta tutti gli indicatori del registro, come la pagina che
+esplora, e un test lega la lunghezza dell'elenco al numero del manifesto.
 
 ## Invarianti tecniche
 

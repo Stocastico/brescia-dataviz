@@ -81,8 +81,8 @@ che servono: sono estensioni e finiture.
 **Il sito non si pubblica da solo**, ed è voluto finché l'analisi non è finita:
 ogni push su `main` lo ricostruisce e lo verifica lasciandolo come artefatto da
 scaricare, ma per mandarlo online serve quel lancio a mano con la conferma
-scritta. Il lavoro che resta e che **non** richiede te — il pannello
-interattivo, i dati MUR sui due atenei, le compravendite NTN — è in
+scritta. Il lavoro che resta e che **non** richiede te — i dati MUR sui due
+atenei, le compravendite NTN — è in
 [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md), che distingue riga per riga **cosa può
 fare una sessione di lavoro e cosa richiede te**.
 
@@ -92,13 +92,13 @@ fare una sessione di lavoro e cosa richiede te**.
 |---|---|
 | [`BRIEF.md`](BRIEF.md) | Il brief: la domanda, il soggetto e i **quattro assi scelti** — tutti e quattro ora hanno una storia —, le due analisi dedicate al capoluogo, le storie candidate, i principi. |
 | [`FONTI.md`](FONTI.md) | **Il registro delle fonti.** Per ogni fonte: endpoint, grana geografica e temporale, copertura, licenza e stato di accesso verificato. In coda: la nota tecnica sull'SDMX di ISTAT (§10), le **ricette copiabili già collaudate** (§11) e la traccia storica della separazione del repository (§12). |
-| [`METODOLOGIA.md`](METODOLOGIA.md) | ✅ **Versione 1.0.** Le **ventisei** regole che governano il progetto: perché misuriamo come misuriamo. Sette nascono da errori veri trovati sui dati o sulla pagina — MET-9 (un titolo sbagliato), MET-12 (una correlazione con il segno rovesciato), MET-13 (due script che rispondevano numeri diversi alla stessa domanda), MET-14 (una frase che questo progetto ripeteva dal primo giorno e che il confronto con le altre province ha smontato), MET-15 (una parola, «spopolamento», che conteneva già una risposta, e quella sbagliata), MET-21 (una linea chiamata «la più economica» che non era una zona ma un inviluppo) e MET-23 (quattro storie su otto che non dichiaravano da dove venissero i loro numeri). Tre nascono da errori **evitati prima di commetterli**: MET-16 sulla rete di centraline che apre e chiude, MET-20 sull'indice pubblicato in tre basi che non si sovrappongono, MET-19 sull'unità di misura che cambia dentro la stessa colonna. Le ultime cinque, **MET-22…MET-26**, sono le regole del racconto: quando una storia si scrive, dove sta il suo controllo, cosa entra nel titolo, come si aggiunge una correzione, e perché avere i dati non è avere una storia. |
-| [`WORKING-PAPER.md`](WORKING-PAPER.md) | ✅ **Versione 1.0**, e non è più una bozza. «Il numero giusto, la frase falsa»: **dieci volte** un dato corretto stava per produrre un'affermazione falsa, raggruppate in quattro famiglie. È la tesi che mancava al titolo. La §7 copre i cinque assi con nove risultati; §5, §9 e §10 sono aggiornate. |
+| [`METODOLOGIA.md`](METODOLOGIA.md) | ✅ **Versione 1.1.** Le **ventisette** regole che governano il progetto: perché misuriamo come misuriamo. Otto nascono da errori veri trovati sui dati o sulla pagina — MET-9 (un titolo sbagliato), MET-12 (una correlazione con il segno rovesciato), MET-13 (due script che rispondevano numeri diversi alla stessa domanda), MET-14 (una frase che questo progetto ripeteva dal primo giorno e che il confronto con le altre province ha smontato), MET-15 (una parola, «spopolamento», che conteneva già una risposta, e quella sbagliata), MET-21 (una linea chiamata «la più economica» che non era una zona ma un inviluppo) MET-23 (quattro storie su otto che non dichiaravano da dove venissero i loro numeri) e MET-27 (una pagina che annunciava diciannove indicatori e ne elencava quindici). Tre nascono da errori **evitati prima di commetterli**: MET-16 sulla rete di centraline che apre e chiude, MET-20 sull'indice pubblicato in tre basi che non si sovrappongono, MET-19 sull'unità di misura che cambia dentro la stessa colonna. Le ultime sei, **MET-22…MET-27**, sono le regole del racconto: quando una storia si scrive, dove sta il suo controllo, cosa entra nel titolo, come si aggiunge una correzione, perché avere i dati non è avere una storia, e perché un numero dichiarato e l'elenco che lo mostra devono venire dalla stessa sorgente. |
+| [`WORKING-PAPER.md`](WORKING-PAPER.md) | ✅ **Versione 1.1**, e non è più una bozza. «Il numero giusto, la frase falsa»: **undici volte** un dato corretto stava per produrre un'affermazione falsa, raggruppate in quattro famiglie. È la tesi che mancava al titolo. L'undicesimo episodio è il primo nato dal **prodotto** invece che dall'analisi, ed è MET-27. La §7 copre i cinque assi con nove risultati; §5, §9 e §10 sono aggiornate. |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco completo delle cose che **richiedono te** (un login SPID, una macchina italiana, una decisione di disegno), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 31 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza, turismo e — da settembre 2026 — **quotazioni immobiliari OMI in due grane, più i volumi di compravendita**, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no, con l'eccezione degli **input curati** in `dati/input/`, che nessun URL restituisce. |
-| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: quattordici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
-| [`sito/`](sito/README.md) | **Il documento narrativo**: otto storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
+| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: sedici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
+| [`sito/`](sito/README.md) | **Il documento narrativo e lo strumento**: otto storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`; accanto, `esplora.html`, che mette tutti e **diciannove** gli indicatori su tutti i comuni e lascia scegliere a chi legge. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
 ## Come leggere il registro
 
@@ -241,7 +241,7 @@ python sito/costruisci.py                 # -> _site/
 python analysis/verifica_cifre.py         # se una cifra diverge, è quello il primo problema
 
 pip install pytest pytest-cov
-python -m pytest pipeline/tests -q --cov  # 443 test, soglia di copertura all'80 %
+python -m pytest pipeline/tests -q --cov  # 452 test, soglia di copertura all'80 %
 ```
 
 ## Licenza

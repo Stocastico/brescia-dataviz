@@ -37,9 +37,15 @@
 
   function num(valore, decimali) {
     if (valore === null || valore === undefined || Number.isNaN(valore)) return "n.d.";
+    const quanti = decimali === undefined ? 0 : decimali;
+    /* Lo zero col segno meno. Una crescita di -0,04 %/anno arrotondata a un
+       decimale è zero, e «-0,0 %/anno» è uno zero con davanti un segno che non
+       vuol dire niente: chi legge ci vede un calo, e il calo non c'è. Il segno
+       si toglie quando è il numero arrotondato a essere zero, non prima. */
+    if (valore < 0 && Math.round(valore * Math.pow(10, quanti)) === 0) valore = 0;
     return valore.toLocaleString("it-IT", {
       minimumFractionDigits: decimali || 0,
-      maximumFractionDigits: decimali === undefined ? 0 : decimali,
+      maximumFractionDigits: quanti,
     });
   }
 
@@ -373,7 +379,21 @@
           (valore === undefined ? "nessun dato" : num(valore, decimali) + " " + m.unit));
       });
       forma.addEventListener("mouseleave", nascondiSuggerimento);
+      if (opzioni.alClic) {
+        forma.style.cursor = "pointer";
+        forma.addEventListener("click", function () { opzioni.alClic(comune.c); });
+      }
     });
+
+    /* Il contorno del comune scelto sta in un tracciato suo, disegnato per
+       ultimo. Ingrossare il bordo della forma non basterebbe: in SVG l'ordine
+       di disegno è l'ordine del documento, e il bordo del comune scelto
+       finirebbe sotto quelli dei vicini disegnati dopo, cioè visibile su tre
+       lati e mangiato sul quarto. */
+    const contorno = el("path", {
+      fill: "none", stroke: css("--ink"), "stroke-width": 2,
+      "stroke-linejoin": "round", "pointer-events": "none", d: "",
+    }, svg);
 
     const piede = document.createElement("div");
     contenitore.appendChild(piede);
@@ -402,7 +422,10 @@
     }
 
     aggiorna(opzioni.periodo);
-    return { aggiorna: aggiorna, evidenzia: function (codici) {
+    return { aggiorna: aggiorna, seleziona: function (codice) {
+      const scelto = DATI.geo.comuni.filter(function (c) { return c.c === codice; })[0];
+      contorno.setAttribute("d", scelto ? tracciato(scelto) : "");
+    }, evidenzia: function (codici) {
       const insieme = codici ? {} : null;
       (codici || []).forEach(function (c) { insieme[c] = true; });
       DATI.geo.comuni.forEach(function (comune) {

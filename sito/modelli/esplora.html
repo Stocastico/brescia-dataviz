@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Esplora i comuni · Come cambia il bresciano</title>
+<meta name="description" content="I {{N_INDICATORI}} indicatori del progetto su tutti i {{c:comuni}} comuni della provincia di Brescia: scegli l'indicatore, scegli l'anno, scegli il comune.">
+<style>/*{{STILE}}*/</style>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Salta al contenuto</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Come cambia il bresciano</p>
+    <h1>Esplora i comuni</h1>
+    <p class="lede">Il racconto sceglie otto storie e le racconta con quindici indicatori. Questa
+    pagina non sceglie niente: ci sono tutti gli indicatori del progetto, su tutti i comuni, e
+    l'ordine in cui guardarli lo decidi tu.</p>
+    <div class="quicklinks">
+      <a class="primary" href="index.html">Il racconto</a>
+      <a href="metodologia.html">Il metodo</a>
+      <a href="dati.html">I dati</a>
+    </div>
+    <p class="meta">{{N_INDICATORI}} indicatori · {{c:comuni}} comuni · {{N_TABELLE}} tabelle</p>
+    <p class="freshness">Pagina costruita il {{BUILD_DATE}} · dati aggiornati al {{DATA_DATE}}</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Indice">
+  <div class="wrap">
+    <span class="brand">Come cambia il bresciano</span>
+    <a class="pagina" href="index.html">Il racconto</a>
+    <a class="pagina" href="esplora.html" aria-current="page">Esplora</a>
+    <a class="pagina" href="metodologia.html">Metodo</a>
+    <a class="pagina" href="dati.html">Dati</a>
+  </div>
+</nav>
+
+<main id="contenuto">
+<section class="story sx">
+  <div class="wrap">
+    <div class="narrow">
+      <div class="story-head">
+        <div class="badge-num">·</div>
+        <div>
+          <p class="eyebrow">Lo strumento</p>
+          <h2 class="story-title">La provincia, un indicatore alla volta</h2>
+        </div>
+      </div>
+      <p class="question">Le storie rispondono a domande che qualcuno ha scelto. Qui le domande
+      le fai tu, e la mappa risponde con i numeri che stanno dietro al racconto: gli stessi,
+      dagli stessi file.</p>
+      <p>Tre cose sole. In alto si sceglie <strong>l'indicatore</strong>, raggruppato per tema, e
+      quando ne ha più di uno anche <strong>l'anno</strong>. Sotto, la mappa dei comuni, con la
+      sua legenda, la tabella con gli stessi numeri e la riga che dice da dove vengono. A destra
+      si sceglie un <strong>comune</strong>, cliccandolo sulla mappa o cercandolo nell'elenco, e
+      si vede come sta su tutti gli indicatori insieme.</p>
+      <p class="hint">Ogni scelta finisce nell'indirizzo della pagina: il collegamento che hai
+      nella barra è già quello da mandare a qualcuno per fargli vedere esattamente questa mappa.</p>
+    </div>
+
+    <div class="picker">
+      <p class="pk-field">
+        <label for="scelta-indicatore">Indicatore</label>
+        <select id="scelta-indicatore"></select>
+      </p>
+      <div class="pk-field" id="scelta-periodo"></div>
+    </div>
+
+    <div class="esplora-griglia">
+      <div class="fig" id="riquadro-mappa">
+        <h3 id="titolo-mappa">&nbsp;</h3>
+        <p class="cap" id="didascalia-mappa">&nbsp;</p>
+        <div id="mappa"></div>
+      </div>
+
+      <aside class="scheda" id="scheda-comune" aria-label="Il comune scelto">
+        <p class="pk-field">
+          <label for="scelta-comune">Comune</label>
+          <select id="scelta-comune"></select>
+        </p>
+        <div id="ritratto-comune"></div>
+      </aside>
+    </div>
+
+    <div class="narrow">
+      <div class="takeaway">
+        <p class="t-lab">Come leggerla</p>
+        <ul>
+          <li>Le classi di colore sono per <strong>quantile</strong>, non a intervallo uguale:
+          con un capoluogo che su quasi tutto sta un ordine di grandezza sopra gli altri, le
+          classi a intervallo uguale metterebbero duecento comuni nella prima e la mappa
+          sarebbe tutta di un colore.</li>
+          <li>Sulle variazioni la scala è <strong>divergente e simmetrica attorno allo zero</strong>,
+          centrata sul 95º percentile dei valori assoluti: freddo vuol dire in calo, caldo in
+          crescita, e il grigio del mezzo è lo zero.</li>
+          <li>Il <strong>tratteggio</strong> non è uno zero: è «non lo sappiamo». Sulle presenze
+          turistiche i comuni senza dato sono decine, e un grigio pieno accanto al grigio neutro
+          della scala li farebbe leggere come comuni fermi.</li>
+          <li>Nella scheda del comune la <strong>posizione</strong> è sempre in ordine
+          decrescente, dal valore più alto al più basso, e il denominatore cambia da indicatore
+          a indicatore perché cambia quanti comuni hanno quel dato.</li>
+        </ul>
+      </div>
+      <p class="nextcap">Se ti interessa più il perché dei numeri che i numeri,
+      <a href="index.html">il racconto</a> è di là. Se ti interessa rifarli,
+      <a href="dati.html">le tabelle</a> sono tutte scaricabili.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="fine">Pagina costruita il {{BUILD_DATE}} · dati aggiornati al {{DATA_DATE}} ·
+    Fonti pubbliche, nessuna chiave API, nessun tracciamento.</p>
+    <p class="fine">Testi e dati <a href="https://creativecommons.org/licenses/by/4.0/deed.it">CC BY 4.0</a>, codice <a href="https://github.com/Stocastico/brescia-dataviz/blob/main/LICENSE">MIT</a>.</p>
+  </div>
+</footer>
+
+<script>/*{{DATI}}*/</script>
+<script>/*{{GRAFICI}}*/</script>
+<script>
+/* Il pannello interattivo.
+ *
+ * Nessuna libreria, come il resto del sito: la mappa, la legenda, la tabella e
+ * la riga di provenienza sono quelle di `grafici.js`, che il racconto usa già.
+ * L'unica cosa che questa pagina aggiunge sono i due menù e il ritratto del
+ * comune, e sono un centinaio di righe.
+ *
+ * La lista degli indicatori non è scritta qui: viene da `window.DATI.metriche`,
+ * cioè dal registro della pipeline. Un indicatore nuovo compare in questo menù
+ * senza che nessuno tocchi questo file.
+ */
+(function () {
+  "use strict";
+  var G = window.GRAFICI, DATI = window.DATI;
+
+  /* I nomi leggibili dei temi. Se il registro ne porta uno che qui non c'è, il
+     menù usa la chiave così com'è: un gruppo con un nome brutto è meglio di un
+     indicatore che sparisce. */
+  var TEMI = {
+    popolazione: "Popolazione",
+    imprese: "Imprese e addetti",
+    settori: "Settori",
+    redditi: "Redditi",
+    casa: "Casa e prezzi",
+    turismo: "Turismo"
+  };
+  var ORDINE_TEMI = ["popolazione", "imprese", "settori", "redditi", "casa", "turismo"];
+
+  /* Quanti decimali per indicatore. I conteggi non ne vogliono, le quote e le
+     variazioni sì, e l'unità di misura lo dice già: si legge quella invece di
+     tenere una tabella a mano che va aggiornata insieme al registro. */
+  function decimaliDi(m) {
+    if (m.unit === "abitanti" || m.unit === "presenze" || m.unit === "unità locali") return 0;
+    if (m.unit === "euro correnti" || m.unit === "euro/m²") return 0;
+    return 1;
+  }
+
+  var idMetriche = Object.keys(DATI.metriche);
+  var codiciComuni = Object.keys(DATI.comuni).sort(function (a, b) {
+    return DATI.comuni[a][0].localeCompare(DATI.comuni[b][0], "it");
+  });
+
+  var stato = { indicatore: null, periodo: null, comune: null };
+  var mappaViva = null;
+  var comandiPeriodo = null;
+
+  // --- l'indirizzo della pagina ------------------------------------------
+
+  /* Le scelte stanno nel frammento, non in una `history.pushState` per ogni
+     clic: un menù che riempie la cronologia rende il tasto «indietro» inutile
+     per uscire dalla pagina. */
+  function leggiIndirizzo() {
+    var pezzi = (location.hash || "").replace(/^#/, "").split("/");
+    return { indicatore: pezzi[0] || null, periodo: pezzi[1] || null, comune: pezzi[2] || null };
+  }
+
+  function scriviIndirizzo() {
+    var nuovo = "#" + stato.indicatore + "/" + stato.periodo + (stato.comune ? "/" + stato.comune : "");
+    if (location.hash !== nuovo) history.replaceState(null, "", nuovo);
+  }
+
+  // --- il menù degli indicatori ------------------------------------------
+
+  function costruisciMenuIndicatori() {
+    var menu = document.getElementById("scelta-indicatore");
+    var temiPresenti = ORDINE_TEMI.filter(function (tema) {
+      return idMetriche.some(function (id) { return DATI.metriche[id].theme === tema; });
+    });
+    idMetriche.forEach(function (id) {
+      var tema = DATI.metriche[id].theme;
+      if (temiPresenti.indexOf(tema) === -1) temiPresenti.push(tema);
+    });
+    temiPresenti.forEach(function (tema) {
+      var gruppo = document.createElement("optgroup");
+      gruppo.label = TEMI[tema] || tema;
+      idMetriche.filter(function (id) { return DATI.metriche[id].theme === tema; })
+        .sort(function (a, b) { return DATI.metriche[a].label.localeCompare(DATI.metriche[b].label, "it"); })
+        .forEach(function (id) {
+          var voce = document.createElement("option");
+          voce.value = id;
+          voce.textContent = DATI.metriche[id].label;
+          gruppo.appendChild(voce);
+        });
+      menu.appendChild(gruppo);
+    });
+    menu.addEventListener("change", function () { scegliIndicatore(menu.value, null); });
+    return menu;
+  }
+
+  function costruisciMenuComuni() {
+    var menu = document.getElementById("scelta-comune");
+    var vuoto = document.createElement("option");
+    vuoto.value = "";
+    vuoto.textContent = "nessuno, mostrami la provincia";
+    menu.appendChild(vuoto);
+    codiciComuni.forEach(function (codice) {
+      var voce = document.createElement("option");
+      voce.value = codice;
+      voce.textContent = DATI.comuni[codice][0] + (DATI.comuni[codice][1] ? " (capoluogo)" : "");
+      menu.appendChild(voce);
+    });
+    menu.addEventListener("change", function () { scegliComune(menu.value || null); });
+    return menu;
+  }
+
+  // --- il ritratto del comune --------------------------------------------
+
+  function posizione(id, codice, periodo) {
+    var valori = G.valoriDi(id, periodo);
+    if (valori[codice] === undefined) return null;
+    var ordinati = Object.keys(valori).sort(function (a, b) { return valori[b] - valori[a]; });
+    return { posto: ordinati.indexOf(codice) + 1, su: ordinati.length, valore: valori[codice] };
+  }
+
+  function disegnaRitratto() {
+    var dove = document.getElementById("ritratto-comune");
+    dove.innerHTML = "";
+    if (!stato.comune) {
+      var invito = document.createElement("p");
+      invito.className = "hint";
+      invito.textContent = "Scegli un comune dall'elenco, o cliccalo sulla mappa: qui compaiono "
+        + "i suoi valori su tutti gli indicatori, con la posizione che occupa fra i comuni che "
+        + "quel dato ce l'hanno.";
+      dove.appendChild(invito);
+      return;
+    }
+
+    var titolo = document.createElement("h3");
+    titolo.textContent = G.nomeComune(stato.comune);
+    dove.appendChild(titolo);
+
+    var righe = idMetriche.map(function (id) {
+      var m = DATI.metriche[id];
+      var ultimo = m.periods[m.periods.length - 1];
+      var p = posizione(id, stato.comune, ultimo);
+      return [
+        m.label,
+        p ? G.num(p.valore, decimaliDi(m)) + " " + m.unit : "n.d.",
+        ultimo,
+        p ? p.posto + " / " + p.su : "n.d."
+      ];
+    });
+    var tabella = document.createElement("table");
+    tabella.className = "ritratto";
+    var testa = document.createElement("thead");
+    testa.innerHTML = "<tr><th scope=\"col\">indicatore</th><th scope=\"col\" class=\"num\">valore</th>"
+      + "<th scope=\"col\" class=\"num\">anno</th><th scope=\"col\" class=\"num\">posizione</th></tr>";
+    tabella.appendChild(testa);
+    var corpo = document.createElement("tbody");
+    righe.forEach(function (riga) {
+      var tr = document.createElement("tr");
+      riga.forEach(function (cella, indice) {
+        var td = document.createElement(indice === 0 ? "th" : "td");
+        if (indice === 0) td.scope = "row"; else td.className = "num";
+        td.textContent = cella;
+        tr.appendChild(td);
+      });
+      corpo.appendChild(tr);
+    });
+    tabella.appendChild(corpo);
+    /* Il contenitore che scorre. Le colonne dei numeri non vanno a capo, e su
+       uno schermo stretto la tabella è più larga della colonna: senza questo,
+       a scorrere di lato è la pagina intera. */
+    var involucro = document.createElement("div");
+    involucro.className = "ritrattowrap";
+    involucro.appendChild(tabella);
+    dove.appendChild(involucro);
+
+    var nota = document.createElement("p");
+    nota.className = "hint";
+    nota.textContent = "Ogni riga è l'anno più recente di quell'indicatore, e gli anni non sono "
+      + "gli stessi per tutti. La posizione è in ordine decrescente, sui soli comuni con dato.";
+    dove.appendChild(nota);
+  }
+
+  // --- lo scarico dei numeri della mappa ----------------------------------
+
+  function bottoneCsv(dove) {
+    var m = DATI.metriche[stato.indicatore];
+    var valori = G.valoriDi(stato.indicatore, stato.periodo);
+    var testo = "codice_istat,comune,indicatore,periodo,valore,unita\n";
+    codiciComuni.forEach(function (codice) {
+      if (valori[codice] === undefined) return;
+      testo += [codice, "\"" + G.nomeComune(codice) + "\"", stato.indicatore,
+        stato.periodo, valori[codice], "\"" + m.unit + "\""].join(",") + "\n";
+    });
+    var collegamento = document.createElement("a");
+    collegamento.className = "csv";
+    collegamento.textContent = "↓ CSV di questa mappa";
+    collegamento.href = URL.createObjectURL(new Blob([testo], { type: "text/csv;charset=utf-8" }));
+    collegamento.download = stato.indicatore + "_" + stato.periodo + ".csv";
+    dove.appendChild(collegamento);
+  }
+
+  // --- il disegno ---------------------------------------------------------
+
+  function disegnaMappa() {
+    var m = DATI.metriche[stato.indicatore];
+    var contenitore = document.getElementById("mappa");
+    contenitore.innerHTML = "";
+    document.getElementById("titolo-mappa").textContent = m.label;
+    document.getElementById("didascalia-mappa").textContent =
+      m.unit + " · " + (m.periods.length > 1 ? stato.periodo : "periodo " + stato.periodo)
+      + " · " + m.coverage.comuni + " comuni su " + m.coverage.attesi + " con dato";
+
+    mappaViva = G.mappa(contenitore, {
+      metrica: stato.indicatore,
+      periodo: stato.periodo,
+      decimali: decimaliDi(m),
+      descrizione: m.label + ", " + stato.periodo + ", per comune",
+      alClic: function (codice) { scegliComune(codice); }
+    });
+    contenitore.querySelector("svg.mappa").classList.add("grande");
+    bottoneCsv(contenitore);
+    if (mappaViva && stato.comune) mappaViva.seleziona(stato.comune);
+  }
+
+  function disegnaPeriodi() {
+    var m = DATI.metriche[stato.indicatore];
+    var dove = document.getElementById("scelta-periodo");
+    dove.innerHTML = "";
+    comandiPeriodo = null;
+    if (m.periods.length < 2) return;
+    var etichetta = document.createElement("span");
+    etichetta.className = "pk-lab";
+    etichetta.textContent = "Anno";
+    dove.appendChild(etichetta);
+    comandiPeriodo = G.comandi(dove, m.periods.map(function (p) {
+      return { etichetta: p, periodo: p };
+    }), function (voce) {
+      stato.periodo = voce.periodo;
+      if (mappaViva) {
+        mappaViva.aggiorna(stato.periodo);
+        var vecchio = document.querySelector("#mappa a.csv");
+        if (vecchio) { URL.revokeObjectURL(vecchio.href); vecchio.remove(); }
+        bottoneCsv(document.getElementById("mappa"));
+      }
+      document.getElementById("didascalia-mappa").textContent =
+        m.unit + " · " + stato.periodo + " · " + m.coverage.comuni + " comuni su "
+        + m.coverage.attesi + " con dato";
+      scriviIndirizzo();
+    });
+    comandiPeriodo.seleziona(m.periods.indexOf(stato.periodo));
+  }
+
+  // --- le scelte ----------------------------------------------------------
+
+  function scegliIndicatore(id, periodo) {
+    if (!DATI.metriche[id]) id = idMetriche[0];
+    var m = DATI.metriche[id];
+    stato.indicatore = id;
+    stato.periodo = m.periods.indexOf(periodo) >= 0 ? periodo : m.periods[m.periods.length - 1];
+    document.getElementById("scelta-indicatore").value = id;
+    disegnaMappa();
+    disegnaPeriodi();
+    disegnaRitratto();
+    scriviIndirizzo();
+  }
+
+  function scegliComune(codice) {
+    stato.comune = DATI.comuni[codice] ? codice : null;
+    document.getElementById("scelta-comune").value = stato.comune || "";
+    if (mappaViva) mappaViva.seleziona(stato.comune);
+    disegnaRitratto();
+    scriviIndirizzo();
+  }
+
+  function applicaIndirizzo() {
+    var scelte = leggiIndirizzo();
+    scegliComune(scelte.comune);
+    scegliIndicatore(scelte.indicatore || idMetriche[0], scelte.periodo);
+  }
+
+  costruisciMenuIndicatori();
+  costruisciMenuComuni();
+  applicaIndirizzo();
+
+  /* Un indirizzo incollato nella barra di una pagina già aperta cambia solo il
+     frammento, e il browser non ricarica niente: senza questa riga il
+     collegamento che la pagina stessa produce funziona da un segnalibro e non
+     funziona da una finestra aperta, che è il modo in cui lo si prova per
+     primo. `replaceState` non fa scattare questo evento, quindi le scelte fatte
+     con i menù non rientrano da qui. */
+  window.addEventListener("hashchange", applicaIndirizzo);
+})();
+</script>
+</body>
+</html>

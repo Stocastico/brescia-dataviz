@@ -78,7 +78,7 @@ Indice:
 | Soggetto e assi | ✅ decisi: la provincia attraverso i 205 comuni, quattro assi portanti ([`BRIEF.md`](BRIEF.md)) |
 | Repository separato | ✅ esiste, `main`, file in radice |
 | Pipeline | ✅ funzionante, `requests` + libreria standard |
-| Test | ✅ **443 test verdi** e **85 % di copertura** su tutti e tre i pezzi di codice — pipeline, i quindici script di `analysis/`, il costruttore del sito. La soglia dell'80 % sta in [`.coveragerc`](.coveragerc) e fa fallire la CI, non stampa un avviso. Fuori dal conto resta `grafici.js`, che non ha test automatici ([`pipeline/README.md`](pipeline/README.md) §I test) |
+| Test | ✅ **452 test verdi** e **85 % di copertura** su tutti e tre i pezzi di codice — pipeline, i sedici script di `analysis/`, il costruttore del sito. La soglia dell'80 % sta in [`.coveragerc`](.coveragerc) e fa fallire la CI, non stampa un avviso. Fuori dal conto resta `grafici.js`, che non ha test automatici ([`pipeline/README.md`](pipeline/README.md) §I test) |
 | Base geografica | ✅ i confini dei 205 comuni in GeoJSON, verificati contro l'area nota della provincia |
 | Tabelle tidy | ✅ **31 CSV** in [`dati/processed/`](dati/README.md), versionati — tre vengono dall'OMI (quotazioni in grana zona e comunale, volumi di compravendita 2011–2025) e la trentunesima è il **deflatore** `indice_prezzi.csv`, che è arrivato per leggerle; manca solo `migrazioni_comuni.csv` |
 | Asse «casa e prezzi» | ✅ **completo**: i dati (quotazioni OMI 2004–2025 in due grane, compravendite 2011–2025), l'analisi (`casa_e_prezzi.py`, §4) e la **storia** — l'ottava del sito. Prezzo reale −30,8 % in ventun anni mentre i volumi fanno +134,5 % |
@@ -86,17 +86,18 @@ Indice:
 | Storie scelte | ✅ **otto**, scritte e pubblicate nel documento narrativo — la quinta corregge quelle che la precedono, la settima è l'unica che nessuno si aspettava, l'ottava è la più lunga e la sola in cui il risultato dipende da come si misura. Le candidate rimaste stanno in `BRIEF.md` |
 | Contratto dati per il sito | ✅ `metric_*.json` + registro, con i cinque invarianti come test |
 | Documento narrativo | ✅ [`sito/`](sito/README.md), un file HTML autocontenuto da mezzo mega. Riletto a settembre 2026 riga per riga: le **centoundici lineette lunghe** sono uscite dal testo pubblicato (un test le tiene fuori, `pipeline/tests/test_testi.py`), e i grafici sono stati passati in un browser headless — zero errori JS, zero attributi malformati, niente fuori dal riquadro, con tutti i comandi premuti |
-| Pannello interattivo | 🤖 no, e viene dopo (§6.1) |
+| Pannello interattivo | ✅ **fatto** (settembre 2026), e non come la specifica lo prevedeva: è `sito/modelli/esplora.html`, una quarta pagina dello stesso sito autocontenuto, non un'app React servita sotto `/app/`. Tutti e **diciannove** gli indicatori del registro — non i quindici del racconto — su tutti i comuni, con l'anno a scelta, il ritratto del comune cliccato e ogni scelta nell'indirizzo. Il perché della differenza sta in §6.1 |
 | Deploy | 🤖 la **costruzione** è automatica su `main` (test, cifre, sito, artefatto); la **pubblicazione** no: parte solo a mano, con una conferma scritta (§7). ✅ la sorgente di Pages è su «GitHub Actions» dal 4 settembre 2026, quindi il primo lancio ha dove pubblicare |
 | Licenza | ✅ MIT per il codice (`LICENSE`), CC BY 4.0 per testi e dati (`LICENSE-DATI`) (§3.3) |
-| `METODOLOGIA.md` | ✅ **versione 1.0**, non più bozza: **ventisei** regole. Le ultime cinque (MET-22…MET-26) sono quelle che il documento dichiarava mancanti da sempre — come si **scelgono** e si **raccontano** le storie — e sono state ricavate contando cosa le otto storie hanno fatto davvero, non decise a tavolino. MET-23 è nata insieme alla scoperta che quattro storie su otto la violavano |
-| `WORKING-PAPER.md` | ✅ **versione 1.0**, non più bozza. Ha il titolo che gli mancava, perché ha la tesi: «Il numero giusto, la frase falsa» — **dieci** episodi in cui un dato corretto stava per produrre un'affermazione falsa, in quattro famiglie. Sette scoperti dopo averli commessi, tre prima. La §7 resta la parte sui risultati: nove, sui cinque assi |
+| `METODOLOGIA.md` | ✅ **versione 1.1**, non più bozza: **ventisette** regole. Cinque delle ultime sei (MET-22…MET-26) sono quelle che il documento dichiarava mancanti da sempre — come si **scelgono** e si **raccontano** le storie — e sono state ricavate contando cosa le otto storie hanno fatto davvero, non decise a tavolino. MET-23 è nata insieme alla scoperta che quattro storie su otto la violavano; **MET-27** è arrivata dopo, dal prodotto invece che dall'analisi |
+| `WORKING-PAPER.md` | ✅ **versione 1.1**, non più bozza. Ha il titolo che gli mancava, perché ha la tesi: «Il numero giusto, la frase falsa» — **undici** episodi in cui un dato corretto stava per produrre un'affermazione falsa, in quattro famiglie. Otto scoperti dopo averli commessi, tre prima. L'undicesimo è nato costruendo la pagina che esplora. La §7 resta la parte sui risultati: nove, sui cinque assi |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
 fatte e otto storie sono scritte in un sito che si costruisce da solo, e adesso
 ha anche dove pubblicarsi: **manca la tua rilettura, e il clic che pubblica**.
-Il lavoro tecnico che resta è tutto facoltativo — il pannello interattivo e i
-download manuali.
+Il lavoro tecnico che resta è tutto facoltativo: i download manuali. Il
+pannello interattivo, che era la voce grossa, **è stato fatto** a settembre
+2026 (§6.1).
 
 ---
 
@@ -564,8 +565,10 @@ diverse** sullo stesso sito, ed è una separazione che vale la pena copiare.
 > regola «ogni numero ha uno script dietro» applicata in avanti, al prodotto,
 > invece che a posteriori sui documenti.
 >
-> Il pannello React (b) resta da fare, e resta il secondo in ordine di
-> importanza.
+> ✅ **Anche il secondo artefatto esiste** (settembre 2026), e non è quello
+> che questa sezione descriveva: è `esplora.html`, una quarta pagina dello
+> stesso sito, non un'app React sotto `/app/`. Il §6.1 (b) qui sotto è stato
+> riscritto e dice perché.
 
 ### 6.1 I due artefatti
 
@@ -589,34 +592,52 @@ dipendenze a runtime, che è la homepage del sito.
 - Le pagine sorelle sono `metodologia.html` e `dati.html`, con la stessa
   struttura.
 
-**(b) Il pannello interattivo** — un'app React + Vite servita sotto `/app/`.
+**(b) Il pannello interattivo** — ✅ fatto, ed è `sito/modelli/esplora.html`.
 
-Dipendenze essenziali (versioni del progetto precedente, da aggiornare):
+**La specifica diceva un'app React + Vite sotto `/app/`, e non è stata
+seguita.** Vale la pena scrivere perché, perché il ragionamento si ripeterà.
 
-```
-react + react-dom · maplibre-gl (mappe) · recharts (grafici)
-d3-array, d3-scale, d3-scale-chromatic (scale e palette)
-vite · typescript · vitest + jsdom + @testing-library/react
-```
+Questa sezione era stata copiata dal progetto precedente, dove il pannello era
+un'app servita a parte con `react`, `maplibre-gl`, `recharts`, `d3-scale` e
+`vite`. Fra quella copia e oggi però il documento narrativo è stato scritto, e
+scrivendolo è nato `grafici.js`: mille e cento righe che contengono già la
+coropletica dei 205 comuni, le rotture per quantile e quelle simmetriche, la
+legenda, il tratteggio del «nessun dato», la tabella-specchio e la riga di
+provenienza. Le cinque dipendenze servivano a ottenere cose che il progetto
+aveva già scritto a mano, e in cambio avrebbero portato una catena di
+costruzione Node dentro una CI che oggi è **solo Python** (§7).
 
-Tre scelte che hanno funzionato:
+Quello che mancava davvero erano due menù e il ritratto del comune:
+centosessanta righe di JavaScript in fondo al modello. La regola «nessuna
+dipendenza a runtime» non era una regola del racconto: era una regola del
+progetto, e vale anche per lo strumento.
 
-- **Nessun tile esterno.** La mappa usa uno stile vuoto (`sources: {}`) e
-  disegna solo il GeoJSON: funziona offline, senza chiavi API e senza dipendere
-  da un servizio di terzi.
+Cosa fa la pagina:
 
-  ```ts
-  const BLANK_STYLE = { version: 8, sources: {}, layers: [] };
-  ```
+- **tutti e diciannove gli indicatori** del registro, raggruppati per tema, e
+  non i quindici che le otto storie citano. La lista non è scritta nel modello:
+  `metriche_esplora()` legge `metrics.json` e prende quelli `live`, così un
+  indicatore nuovo compare da solo. È la §6.2 presa sul serio;
+- **l'anno**, per gli indicatori che ne hanno più di uno, fino ai ventidue
+  semestri annualizzati delle quotazioni OMI;
+- **il ritratto del comune**: i diciannove indicatori insieme per un comune
+  solo, con la posizione fra i comuni che quel dato ce l'hanno — e il
+  denominatore cambia da riga a riga, perché cambia la copertura;
+- il comune si sceglie dall'elenco **o cliccandolo sulla mappa**;
+- **ogni scelta sta nell'indirizzo**: `#prezzo_case/2012/017068`. La pagina lo
+  scrive e lo rilegge, anche quando cambia sotto una finestra già aperta;
+- **«↓ CSV di questa mappa»**, costruito nel browser dai dati già incorporati:
+  è la §6.4 senza dover generare un file per indicatore per anno.
 
-- **Chunk separati** per maplibre e recharts in `vite.config.ts`: sono molto
-  più pesanti del codice dell'app e così restano in cache fra un deploy e
-  l'altro.
-- **Una tabella-specchio accessibile** accanto a ogni mappa, navigabile da
-  tastiera e da lettore di schermo. Una coropletica da sola è inaccessibile.
+Le due cose della vecchia specifica che sono rimaste, perché erano scelte e non
+dipendenze: **nessun tile esterno** (qui non c'è nemmeno una mappa a
+piastrelle: si disegna il GeoJSON e basta) e **una tabella-specchio accanto a
+ogni mappa**, navigabile da tastiera. Una coropletica da sola è inaccessibile.
 
 > **Se il tempo è poco, il documento narrativo viene prima** — nel progetto
-> precedente ha avuto molto più valore del pannello (§9).
+> precedente ha avuto molto più valore del pannello (§9). È rimasto vero: il
+> racconto è costato settimane, questa pagina un pomeriggio, e il motivo per
+> cui è costata un pomeriggio è che il racconto era già stato scritto.
 
 ### 6.2 Il contratto fra pipeline e frontend
 
@@ -745,11 +766,13 @@ poco e rende il lavoro verificabile da chiunque. Qui esistono già:
 > la decisione di pubblicarlo.
 
 Un solo workflow, `.github/workflows/deploy-pages.yml`. Struttura del sito
-**pubblicata oggi** — niente `app/`: il pannello interattivo non esiste ancora
-(§6.1), e quando esisterà questa sezione va riscritta insieme al workflow.
+**pubblicata oggi**. Non c'è nessun `app/` e non ci sarà: il pannello
+interattivo è una pagina di questo stesso sito (§6.1), quindi il workflow non
+ha avuto bisogno di cambiare per accoglierlo.
 
 ```
 /index.html           il documento narrativo
+/esplora.html         i diciannove indicatori, a scelta di chi legge
 /metodologia.html     le regole del progetto
 /dati.html            fonti, vigenza, avvertenze, licenza
 /dati/processed/*.csv le tabelle scaricabili
@@ -841,6 +864,12 @@ avevano fatto davvero, e non da un principio scelto prima. `WORKING-PAPER.md`
 ha il titolo che gli mancava perché ha la tesi: **«Il numero giusto, la frase
 falsa»**, dieci episodi in cui un dato corretto stava per produrre
 un'affermazione falsa, in quattro famiglie.
+
+⏳ **E poi sono diventati undici e ventisette** (settembre 2026, versioni 1.1).
+L'undicesimo episodio non viene dall'analisi ma dal **prodotto**: costruendo la
+pagina che esplora si è visto che `dati.html` annunciava diciannove indicatori
+e ne elencava quindici, presi da due sorgenti diverse. Ne è uscita **MET-27**.
+La riga sopra resta com'era scritta, per MET-25.
 
 Il testo che segue è quello originale, con il ragionamento su **perché** questi
 due documenti andavano scritti alla fine. Resta perché la previsione si è
@@ -966,7 +995,7 @@ entra nel tempo che hai, non a fare un piano.
 | ✅ ~~Riscrivere la §7 del working paper con le storie~~ | fatta | nove risultati, ciascuno con i suoi controlli |
 | ✅ ~~Portare il turismo nel sito come **settima storia**~~ | fatta | «La decima provincia turistica d'Italia», con lo sciame delle 107 province, i diciassette anni di presenze divise fra clienti italiani e stranieri, e lo scarto fra le due fonti disegnato invece che raccontato. Il settimo colore è `--prugna`, scelto con la regola ora scritta in `sito/README.md` |
 | 🤖 Analisi e storia sulla casa (§4) | **mezza giornata** per la prima analisi, un giorno per l'ottava storia | l'unico tema che ha i dati e non ha ancora niente: prezzi fermi contro volumi raddoppiati |
-| 🤖 Pannello React | **2–3 giorni** | l'esplorazione; il contratto dati che gli serve è già scritto e testato |
+| ✅ ~~Pannello interattivo~~ | fatto, e in un pomeriggio invece dei 2–3 giorni stimati | `esplora.html`: non l'app React della stima, ma una pagina che riusa `grafici.js`. La stima era giusta per l'app e sbagliata per il problema (§6.1) |
 | 🙋 Quel che resta dei download manuali: l'export Coeweb (§2.2, [istruzioni](dati/SCARICHI-MANUALI.md) §3) | **1 h**, ed erano 2–4 prima che tre voci uscissero dall'elenco e l'OMI arrivasse | estensioni, nessun asse portante |
 
 ### Se hai venti minuti
@@ -995,7 +1024,9 @@ riallineare i due, e sono due righe più un commento.
 
 ### Se hai un weekend
 
-**Il pannello React** (§6.1).
+**Il pannello era il lavoro da weekend, ed è fatto** (§6.1). Quello che resta
+in quella misura è l'analisi: una nona storia dalle candidate di `BRIEF.md`,
+oppure portare l'asse 2 fino in fondo scaricando `migrazioni_comuni.csv`.
 
 Il confronto fra province è servito più di qualunque altra analisi — ha smontato
 una frase che il progetto ripeteva dal primo giorno (MET-14), ha ribaltato la

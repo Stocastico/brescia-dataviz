@@ -68,9 +68,21 @@ METRICHE_USATE = [
 
 PAGINE = {
     "racconto.html": "index.html",
+    "esplora.html": "esplora.html",
     "metodologia.html": "metodologia.html",
     "dati.html": "dati.html",
 }
+
+# Due pagine non scelgono: mostrano tutto quello che il registro dichiara vivo.
+# Tenerle legate al registro invece che a una lista qui dentro è ciò che rende
+# vera la riga «aggiungere un dataset = un JSON in più e una riga nel registro»:
+# un indicatore nuovo compare da solo, senza toccare questo file.
+#
+# `dati.html` è nell'insieme perché ci è entrata a forza. Scriveva «gli N
+# indicatori» con N preso dal manifesto e sotto ne elencava quindici, che erano
+# quelli che il racconto le passava: due numeri giusti, e fra loro una frase
+# falsa. La pagina che documenta i dati deve documentarli tutti.
+PAGINE_CON_TUTTI_GLI_INDICATORI = {"esplora.html", "dati.html"}
 
 
 # --- numeri in italiano --------------------------------------------------
@@ -87,6 +99,18 @@ def percento_it(valore: float, decimali: int = 1) -> str:
 
 
 # --- lettura dei JSON della pipeline ------------------------------------
+
+
+def metriche_esplora() -> list[str]:
+    """Gli indicatori che il registro dichiara `live`, in ordine.
+
+    Il racconto ne usa quindici perché racconta otto storie; la pagina che
+    esplora li prende tutti, e li prende **da qui** e non da una lista scritta a
+    mano, così il giorno che la pipeline ne esporta uno nuovo la mappa lo trova
+    senza che nessuno se ne ricordi.
+    """
+    registro = json.loads((DATI_WEB / "metrics.json").read_text(encoding="utf-8"))
+    return sorted(voce["id"] for voce in registro if voce["status"] == "live")
 
 
 def leggi_metrica(id_metrica: str) -> dict[str, Any] | None:
@@ -1498,6 +1522,32 @@ def geometria_compatta(precisione: int = 4) -> dict[str, Any]:
     return {"comuni": features}
 
 
+def sunto_metriche(metriche: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    """Gli indicatori come li vede il JavaScript.
+
+    Non tutto il JSON della pipeline: `livello` e `id` non servono a nessuno
+    nella pagina, e il file autocontenuto pesa quanto ci si mette dentro. Il
+    `theme` invece serve, ed è arrivato con la pagina che esplora: è quello che
+    raggruppa le voci del menù, e senza di lui il raggruppamento andrebbe
+    scritto a mano nel modello, cioè fuori dal registro.
+    """
+    return {
+        id_metrica: {
+            "label": metrica["label"],
+            "unit": metrica["unit"],
+            "kind": metrica["kind"],
+            "theme": metrica["theme"],
+            "source": metrica["source"],
+            "confidence": metrica["confidence"],
+            "assumptions": metrica["assumptions"],
+            "periods": metrica["periods"],
+            "values": metrica["values"],
+            "coverage": metrica["coverage"],
+        }
+        for id_metrica, metrica in metriche.items()
+    }
+
+
 def dati_incorporati(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]) -> dict[str, Any]:
     return {
         "comuni": {
@@ -1511,20 +1561,7 @@ def dati_incorporati(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict
         "clima": clima(),
         "capoluoghi": controllo_capoluoghi(),
         "casa": casa(),
-        "metriche": {
-            id_metrica: {
-                "label": metrica["label"],
-                "unit": metrica["unit"],
-                "kind": metrica["kind"],
-                "source": metrica["source"],
-                "confidence": metrica["confidence"],
-                "assumptions": metrica["assumptions"],
-                "periods": metrica["periods"],
-                "values": metrica["values"],
-                "coverage": metrica["coverage"],
-            }
-            for id_metrica, metrica in metriche.items()
-        },
+        "metriche": sunto_metriche(metriche),
     }
 
 
@@ -1586,21 +1623,39 @@ def costruisci(uscita: Path, data_build: str | None) -> int:
     if mancanti:
         print(f"  indicatori non ancora costruiti, il sito li salta: {', '.join(mancanti)}")
 
+    metriche_tutte = dict(metriche)
+    for id_metrica in metriche_esplora():
+        if id_metrica not in metriche_tutte:
+            metrica = leggi_metrica(id_metrica)
+            if metrica is not None:
+                metriche_tutte[id_metrica] = metrica
+
     manifesto = json.loads((DATI_WEB / "manifest.json").read_text(encoding="utf-8"))
     valori_cifre = cifre(metriche, comuni)
 
     stile = (MODELLI / "stile.css").read_text(encoding="utf-8")
     grafici = (MODELLI / "grafici.js").read_text(encoding="utf-8")
-    dati = json.dumps(dati_incorporati(metriche, comuni), ensure_ascii=False, separators=(",", ":"))
+
+    # Due blocchi di dati, e la differenza è solo negli indicatori. Le pagine
+    # del racconto portano i quindici che le otto storie citano; la pagina che
+    # esplora li porta tutti. Tenerli distinti costa qualche riga qui e risparmia
+    # una ottantina di KB su ciascuna delle tre pagine che non ne hanno bisogno.
+    # Il resto — geometria, anagrafica, le serie delle figure — è calcolato una
+    # volta sola e riusato: sono i conti lunghi.
+    comune_a_tutte = dati_incorporati(metriche, comuni)
+    dati = json.dumps(comune_a_tutte, ensure_ascii=False, separators=(",", ":"))
+    comune_a_tutte["metriche"] = sunto_metriche(metriche_tutte)
+    dati_completi = json.dumps(comune_a_tutte, ensure_ascii=False, separators=(",", ":"))
 
     uscita.mkdir(parents=True, exist_ok=True)
     for modello, destinazione in PAGINE.items():
         sorgente = (MODELLI / modello).read_text(encoding="utf-8")
         pagina = sostituisci(sorgente, valori_cifre, modello)
+        suoi_dati = dati_completi if modello in PAGINE_CON_TUTTI_GLI_INDICATORI else dati
         pagina = (
             pagina.replace("/*{{STILE}}*/", stile)
             .replace("/*{{GRAFICI}}*/", grafici)
-            .replace("/*{{DATI}}*/", f"window.DATI={dati};")
+            .replace("/*{{DATI}}*/", f"window.DATI={suoi_dati};")
             .replace("{{BUILD_DATE}}", data_build or date.today().isoformat())
             .replace("{{DATA_DATE}}", data_dei_dati())
             .replace("{{N_INDICATORI}}", str(manifesto["indicatori"]))
