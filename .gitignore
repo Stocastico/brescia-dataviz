@@ -30,6 +30,12 @@ _site/
 # Vedi PROSSIMI-PASSI.md §2.1.
 dati/processed/migrazioni_comuni.csv
 
+# Configurazione locale dell'editor: `launch.json` serve solo a servire `_site/`
+# per guardare la pagina mentre si lavora, e non e' parte del progetto. Ci e'
+# finita dentro una volta per sbaglio, ed e' il motivo per cui questa riga
+# esiste invece di una nota.
+.claude/
+
 # La copertura dei test: il database e i report si rigenerano a ogni esecuzione.
 # `.coveragerc` invece e' versionato: e' la soglia, non un artefatto.
 .coverage
