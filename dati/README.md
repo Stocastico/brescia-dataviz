@@ -9,10 +9,10 @@
 Quattro cartelle:
 
 - **`processed/`** — le tabelle tidy, **versionate**: sono il prodotto del
-  progetto. Trentasette file, una sessantina di MB — erano 12 finché non sono arrivate le tre
-  tabelle OMI, che da sole ne fanno 19; le ultime sei sono di settembre 2026
-  (l'NTN provinciale, le tre dell'università, le retribuzioni INPS e gli
-  infortuni INAIL).
+  progetto. Trentanove file, una sessantina di MB — erano 12 finché non sono arrivate le tre
+  tabelle OMI, che da sole ne fanno 19; le ultime otto sono di settembre 2026
+  (l'NTN provinciale, le tre dell'università, le retribuzioni INPS, gli
+  infortuni INAIL e le due marginali del background migratorio).
 - **`geo/`** — la geometria di riferimento, **versionata**: i confini dei 205
   comuni in GeoJSON (320 KB). È la base di ogni coropletica.
 - **`raw/`** — le risposte grezze delle fonti, **non versionate** (qualche GB:
@@ -194,19 +194,31 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
 |---|---|---|
 | `famiglie_comuni.csv` | 30.126 | Famiglie per numero di componenti, con **almeno uno** o **tutti** i componenti stranieri, per comune, 2018–2024. Le due situazioni restano separate come le tiene la fonte: la colonna `tavola` vale `tutte`, `almeno_uno_straniero` o `tutti_stranieri`, e la prima fa da denominatore quando serve una quota. |
 | `abitazioni_comuni.csv` | 3.074 | Abitazioni occupate e non occupate, e quelle occupate per **proprietà, affitto, altro titolo** (`ownership_type`), per comune, 2019 · 2021 · 2023. È la risposta a «quante case in affitto» che non passa per i prezzi. |
-| `migrazioni_comuni.csv` | ⏳ | Background migratorio per comune: **stranieri immigrati**, **stranieri nati in Italia** e **italiani per acquisizione**, per sesso, età, cittadinanza, luogo di nascita dei genitori e titolo di studio. Dieci tavole censuarie in una tabella, distinte dalla colonna `tavola`. Scarico in corso: sono le tavole più pesanti del progetto. |
+| `background_migratorio_comuni.csv` | 7.776 | Lo **stock** per comune × anno × indicatore, 2021–2023: italiani dalla nascita, italiani per acquisizione, stranieri, e per ciascuno la distinzione fra **nati in Italia** e **nati all'estero**, più le due righe dei **minorenni** nati in Italia. Tredici indicatori, e le partizioni chiudono all'unità. |
+| `background_migratorio_istruzione.csv` | 270 | Il **titolo di studio** dei tre gruppi, per classe d'età, a grana **provinciale** e non comunale: per comune sarebbero 55.000 righe che nessuna storia legge. Popolazione dei **9 anni e più**, che è quella su cui la fonte lo pubblica. |
+| `migrazioni_comuni.csv` | ⏳ **fuori da git** | La distribuzione **congiunta** completa da cui vengono le due righe qui sopra: 1,8 milioni di righe e 422 MB, dieci tavole censuarie per sesso, età, cittadinanza, cittadinanza precedente, luogo di nascita dei genitori e titolo di studio. È l'unica che tiene gli incroci fini, e si rigenera in venti minuti ([`SCARICHI-LOCALI.md`](SCARICHI-LOCALI.md)). |
 
 > A differenza di `censimento_lavoro_brescia.csv`, queste tabelle tengono
 > **una riga per osservazione con tutte le dimensioni in colonna**: dentro
 > ciascuna famiglia le dimensioni sono fisse, e appiattirle distruggerebbe la
 > distribuzione congiunta — che è l'informazione per cui valgono la pena.
 
-⚠️ Tre avvertenze su queste tre tabelle.
+> **Le tre tabelle del background non si sommano fra loro, e la ragione non è
+> ovvia.** `background_migratorio_comuni.csv` conta tutta la popolazione;
+> `background_migratorio_istruzione.csv` solo i **9 anni e più**, perché è la
+> popolazione su cui la fonte pubblica il titolo di studio. Confrontare un
+> totale della seconda con uno della prima significa attribuire agli under 9 un
+> «nessun titolo di studio» che la fonte non ha mai scritto.
 
-1. **Le modalità sono in inglese** (`private households on 31st December`,
-   `4 and over`). Non è una scelta: manca `Accept-Language: it` nella richiesta
-   a ISTAT. Vale anche per `censimento_lavoro_brescia.csv`. Si corregge con una
-   riga di codice e un riscarico completo — vedi
+⚠️ Tre avvertenze su queste tabelle.
+
+1. ✅ **Le modalità erano in inglese, e non lo sono più.** Questa riga diceva
+   «`private households on 31st December`, `4 and over`, e non è una scelta»: era
+   vero, ed è stato corretto a settembre 2026 aggiungendo `Accept-Language: it`
+   alla richiesta e riscaricando. Oggi si legge «proprietà», «affitto», «15 anni
+   e più», «tutte le voci». La riga resta perché la lezione vale: **l'etichetta
+   non è una chiave**, e i moduli filtrano sui codici proprio perché una
+   riscaricata può cambiarle tutte (MET-13). Il dettaglio in
    [`../PROSSIMI-PASSI.md`](../PROSSIMI-PASSI.md) §2.4.
 2. **In `abitazioni_comuni.csv` cinque colonne su sette sono costanti**:
    `numb_room`, `use_floor_spacegroup`, `heating_system_type`,
@@ -216,7 +228,32 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
    sotto il livello provinciale. Le colonne restano per fedeltà alla fonte, non
    perché contengano qualcosa.
 3. **Gli anni non sono una serie annuale piena**: le abitazioni ci sono solo
-   per 2019, 2021 e 2023.
+   per 2019, 2021 e 2023, e il background migratorio solo per 2021, 2022 e 2023.
+   Tre anni non sono una tendenza.
+
+> **Quattro cose che queste tabelle dicono**, e che
+> [`../analysis/chi_vive_nel_bresciano.py`](../analysis/README.md) ricalcola.
+>
+> 1. **La provincia cresce solo per naturalizzazioni.** Fra il 2021 e il 2023 i
+>    residenti crescono di **7.798**, ma gli italiani *dalla nascita* **calano di
+>    8.219** e gli italiani *per acquisizione* crescono di **15.385**: quasi il
+>    doppio della crescita totale. È la prima storia del sito, che lo dice sui
+>    flussi anagrafici, confermata sullo stock censuario.
+> 2. **«Gli stranieri sono fermi a 153 mila» è un numero giusto e una frase
+>    falsa.** Lo stock si muove di **+632** in due anni, mentre **15.385** persone
+>    lo lasciano prendendo la cittadinanza. Un livello costante con due rubinetti
+>    aperti non è un livello fermo.
+> 3. **25.102 minorenni nati in provincia non hanno la cittadinanza italiana**,
+>    il **94,5 %** di chi è nato qui senza averla. Non è una stima: è una riga di
+>    censimento.
+> 4. **Sul titolo di studio nessuna media descrive niente.** Fra i 25 e i 49 anni
+>    i laureati sono il **28,0 %** fra gli italiani dalla nascita e il **14,9 %**
+>    fra gli stranieri, **13,1 punti**; sopra i 65 il divario si **rovescia**
+>    (6,5 % contro 12,5 %, cioè −6,0 punti), perché la coorte italiana anziana è
+>    andata a scuola quando l'università era rara. L'aggregato sui 9 anni e più ne
+>    mostra **2,5**, cioè nessuno dei due, e la standardizzazione per età lo
+>    sposta di mezzo punto: il problema non è la composizione, è che i divari
+>    specifici hanno **segno opposto**. Vanno pubblicate le classi.
 
 ### Retribuzioni e infortuni
 

@@ -117,7 +117,7 @@ che manca.
 | Cosa | Stato |
 |---|---|
 | **Confini comunali** | ✅ `datasets/confini.py` + `geo.py`, con lettore di shapefile e riproiezione in libreria standard: niente `pyshp`, per lo stesso motivo per cui §5 reimplementa k-means. Prodotti `dati/geo/comuni_brescia.geojson` e `comuni_geometria.csv`, verificati contro l'area nota della provincia e contro lo `Shape_Area` di ISTAT |
-| **Background migratorio** | ✅ scaricato — dieci tavole `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM`. Erano «le più pesanti di tutte», e lo erano solo perché si scaricava l'Italia intera: con le chiavi a blocchi sono venti minuti. ⚠️ Ma la tabella prodotta **non è versionata**: vedi il riquadro qui sotto |
+| **Background migratorio** | ✅ scaricato **e prodotto** (7 set 2026) — dieci tavole `DF_DCSS_MIGR_BACKG_PAR_TV_*_COM`, 1,8 milioni di righe in 18 minuti e 46 secondi. Erano «le più pesanti di tutte», e lo erano solo perché si scaricava l'Italia intera. La congiunta resta fuori da git, ma le **due marginali** che la prima storia cita sono versionate: vedi il riquadro qui sotto |
 | **Sezioni Ateco per comune** | ✅ `imprese_sezioni_comuni.csv` — **nuovo**, ed è quello che ha sbloccato l'asse 3: vedi il riquadro qui sotto |
 | **Settore × classe dimensionale** | ✅ `imprese_settore_classe.csv` — **nuovo**, capoluogo e provincia: è la tabella che ha chiuso MET-9 |
 | **Abitazioni** | ✅ `abitazioni_comuni.csv` — `DF_DCSS_ABITAZIONI_TV_1` e `_TV_2` |
@@ -151,6 +151,30 @@ python -m brescia_pipeline.build migrazioni abitazioni famiglie
 > La cosa che avrebbe dovuto far sospettare: `redditi.py` usava i blocchi da
 > sempre, sotto gli occhi di tutti.
 
+> ✅ **Decisione presa il 7 settembre 2026: la seconda strada.** Questo riquadro
+> chiedeva che forma dare a `migrazioni_comuni.csv`, e diceva che la risposta
+> «va scelta guardando la storia che si vuole raccontare, non prima». La storia
+> adesso c'è, quindi la scelta si è potuta fare come quel vincolo chiedeva.
+>
+> La congiunta **resta fuori da git** e resta l'unica che tiene gli incroci
+> fini; accanto entrano due **marginali versionate**, prodotte dallo stesso
+> modulo e dalle stesse righe (nessuna richiesta in più):
+> `background_migratorio_comuni.csv` (7.776 righe, lo stock per comune) e
+> `background_migratorio_istruzione.csv` (270 righe, il titolo di studio a grana
+> provinciale). Da lì poggiano le cifre che la **prima storia** adesso cita, e
+> `verifica_cifre.py` le ricalcola: la regola «nessuna cifra pubblicata dipende
+> da una tabella che non è nel repository» è rispettata senza versionare 422 MB.
+>
+> ⚠️ **E la marginale è nata sbagliata**, il che è la parte utile: le due righe
+> dei minorenni venivano *esattamente il doppio*, perché in due delle dieci
+> tavole la cittadinanza porta il totale **e** i due sottoinsiemi UE ed extra-UE
+> come modalità della stessa dimensione. I totali di stock tornavano all'unità
+> contro `popolazione_comuni.csv`, quindi la tabella sembrava giusta. L'ha presa
+> il confronto fra i minorenni e il totale di cui sono un sottoinsieme, che
+> adesso è un test (`test_output.py`).
+>
+> Il testo originale della decisione, per memoria:
+>
 > 🤖 **Una decisione da prendere: che forma dare a `migrazioni_comuni.csv`.**
 > Scaricato, è **1,8 milioni di righe e 422 MB** — la distribuzione congiunta di
 > sei dimensioni censuarie su 205 comuni, con le etichette italiane ripetute per

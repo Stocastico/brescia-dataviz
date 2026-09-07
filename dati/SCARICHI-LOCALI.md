@@ -46,14 +46,44 @@ ottenere esattamente la stessa cosa: il progetto non chiede di fidarsi di un CSV
 che qualcuno ha caricato, chiede di poterlo rigenerare.
 
 Il costo reale è un altro, e va tenuto d'occhio: **finché la tabella non è nel
-repository, nessuna cifra pubblicata può dipendere da lei.** Oggi è vero — le
-sette storie del sito non la usano, e `analysis/verifica_cifre.py` non la
-tocca. Il giorno in cui l'asse 2 («chi vive nel bresciano») diventerà una
-storia, quel giorno la tabella deve entrare, e in una forma versionabile.
+repository, nessuna cifra pubblicata può dipendere da lei.** Questa riga
+prometteva che «il giorno in cui l'asse 2 diventerà una storia, quel giorno la
+tabella deve entrare, e in una forma versionabile».
 
-## Quando servirà davvero: le due strade
+✅ **Quel giorno è il 7 settembre 2026**, e la promessa è stata mantenuta senza
+versionare 422 MB: l'asse 2 è entrato nella prima storia, e la forma
+versionabile sono **due marginali** da 570 KB in tutto, che
+`analysis/verifica_cifre.py` ricalcola cifra per cifra. La congiunta resta fuori
+da git e nessuna cifra pubblicata dipende da lei. Come, e perché quella forma,
+nella sezione qui sotto.
 
-Non è una decisione da prendere adesso. Quando l'asse 2 verrà affrontato, le
+## ✅ La decisione è stata presa: la seconda strada (7 settembre 2026)
+
+Questa sezione diceva «non è una decisione da prendere adesso», e aveva ragione:
+la condizione era **guardare la storia che si vuole raccontare**. La prima storia
+del sito adesso cita il background migratorio, quindi la condizione è
+soddisfatta, e la scelta è stata la **seconda**.
+
+La congiunta resta qui, fuori da git. Accanto, `datasets/migrazioni.py` scrive
+due **marginali versionate** dalle stesse righe, senza una richiesta in più:
+
+| tabella | righe | cosa tiene |
+|---|---|---|
+| `background_migratorio_comuni.csv` | 7.776 | lo stock per comune × anno × indicatore, 2021–2023 |
+| `background_migratorio_istruzione.csv` | 270 | il titolo di studio dei tre gruppi per classe d'età, a grana provinciale |
+
+Sono 570 KB in tutto invece di 422 MB, e su di loro poggia ogni cifra che la
+pagina pubblica: `verifica_cifre.py` le ricalcola, quindi il vincolo qui sotto
+è rispettato senza versionare la congiunta.
+
+**Cosa resta vero.** La congiunta è l'unica che tiene gli incroci fini, e chi
+vuole scendere sotto quello che le marginali portano deve rigenerarla. Il giorno
+in cui una storia userà un incrocio che le marginali non hanno, si aggiunge una
+voce a `SINTESI` o una classe a `ISTRUZIONE`: è una riga, non una decisione.
+
+Il ragionamento originale, per memoria.
+
+Non era una decisione da prendere allora. Quando l'asse 2 verrà affrontato, le
 opzioni sono due, e la seconda è quasi certamente quella giusta:
 
 1. **Codici al posto delle etichette**, più una tabella-legenda a parte
