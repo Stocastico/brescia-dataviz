@@ -137,6 +137,7 @@ scoprire:
 | `sezioni` | `imprese_sezioni_comuni.csv` | 205 comuni × sezione Ateco, 2018–2023 | ISTAT ASIA |
 | `province` | `imprese_province.csv`, `imprese_capoluoghi.csv` | 107 province + capoluoghi, 2018–2023 | ISTAT ASIA (stessi file grezzi, riaggregati) |
 | `turismo` | `turismo_comuni_annuale.csv`, `turismo_comuni_mensile.csv` | comuni, 2019–2024 | Regione Lombardia |
+| `turismo_confronto` | `turismo_province.csv` | 107 province + regioni + Italia, 2008–2025 | ISTAT (è l'altra fonte turistica: sta accanto a quella regionale, non dentro — MET-17) |
 | `lavoro` | `censimento_lavoro_brescia.csv`, `tasso_occupazione_provincia.csv` | comune / provincia | ISTAT |
 | `migrazioni` ⏳ | `migrazioni_comuni.csv` | 205 comuni | ISTAT Censimento permanente (10 tavole) |
 | `abitazioni` | `abitazioni_comuni.csv` | 205 comuni, 2019 · 2021 · 2023 | ISTAT Censimento permanente |
@@ -146,19 +147,35 @@ scoprire:
 | `redditi` | `redditi_comuni.csv` | comuni | MEF via ISTAT |
 | `redditi_confronto` | `redditi_comuni_confronto.csv` | comuni di Bergamo | MEF via ISTAT |
 | `commercio_estero` | `commercio_estero_lombardia.csv` | **regione** (ripiego) | ISTAT |
+| `universita` | `universita_atenei.csv`, `universita_sedi_brescia.csv`, `universita_residenza_comuni.csv` | ateneo / provincia della sede / 205 comuni, 2010/11–2024/25 | MUR — USTAT (CKAN) |
+| `prezzi` | `indice_prezzi.csv` | **nazionale**, medie annue 1996–2025 | ISTAT, indice NIC. È il deflatore: nessun comune lo tocca |
+| `omi` | `quotazioni_zone.csv`, `quotazioni_comuni.csv` | zona OMI / comune, 22 semestri 2004–2025 | Agenzia delle Entrate — OMI. **Non scarica**: legge gli archivi versionati in `../dati/input/omi/`, presi a mano dietro SPID |
+| `compravendite` | `compravendite_comuni.csv` | 203 comuni, annuale 2011–2025 | idem, cartella `volumi/`. **Non scarica** nemmeno lui |
+| `compravendite_province` | `compravendite_province.csv` | 99 province × capoluogo/resto, trimestrale 2011/T1–2026/T1 | Agenzia delle Entrate — OMI, pagina pubblica: è l'unico pezzo della fornitura che **si scarica**, e gli URL si leggono dalla pagina |
 | `sintesi` | `comuni_sintesi.csv` | 205 comuni | *nessuna*: rilegge le tabelle sopra |
 | `web` | `../web/src/data/*.json` | 205 comuni | *nessuna*: rilegge le tabelle sopra |
 
 Gli ultimi due **devono restare in coda**: leggono ciò che gli altri hanno
 scritto, e girarli prima produce un export della tornata precedente.
 
-⏳ = **modulo scritto, tabella non ancora prodotta.** `famiglie` e
-`abitazioni` sono state prodotte ad agosto 2026, quando
-`esploradati.istat.it` è tornato ad accettare connessioni; `migrazioni` no, e
-il motivo è la dimensione: dieci tavole nazionali da centinaia di MB l'una, su
-un host che lascia cadere la connessione a metà. Ogni caduta fa **ripartire il
-download da zero**, perché la cache è per file intero e non c'è ripresa
-parziale. Si rilancia con:
+⏳ = **tabella prodotta ma non versionata**, che non è la stessa cosa di «non
+prodotta». `migrazioni_comuni.csv` è stata costruita il **7 settembre 2026** —
+1.809.156 righe, 422 MB, **18 minuti e 46 secondi** — e resta fuori da git per la
+dimensione, non per la difficoltà: il perché e le due forme in cui potrebbe
+entrare stanno in [`../dati/SCARICHI-LOCALI.md`](../dati/SCARICHI-LOCALI.md).
+Chi clona il repository non la trova e la rifà con un comando.
+
+~~Ogni caduta fa ripartire il download da zero, perché la cache è per file
+intero e non c'è ripresa parziale.~~ **Era vero prima delle chiavi a blocchi, e
+adesso no:** la cache è per blocco (dieci tavole × quattordici blocchi = 140
+file in `../dati/raw/`), quindi una caduta perde il blocco in corso e non
+l'intero scarico. Lo scarico del 7 settembre l'ha dimostrato tre volte: due
+tentativi sono morti sullo **stesso blocco** — la settima tavola, comuni da
+`017167` — perché `esploradati.istat.it` aveva smesso di accettare **qualsiasi**
+connessione (timeout in connessione anche su una richiesta di soli metadati: non
+era quel blocco, era l'host), e il terzo è ripartito da 95 blocchi su 140 e ha
+finito. È la strozzatura per host descritta in `fetch.py`, e dura più dei
+«qualche minuto» che quel commento promette: qui una decina. Si rilancia con:
 
 ```bash
 python -m brescia_pipeline.build migrazioni

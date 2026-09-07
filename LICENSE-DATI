@@ -25,8 +25,15 @@ Due cose che questa licenza NON copre:
    una formula esatta: le quotazioni immobiliari e i volumi di compravendita
    dell'Osservatorio del Mercato Immobiliare obbligano a citare
    **«Agenzia Entrate - OMI»**. Vale per `quotazioni_zone.csv`,
-   `quotazioni_comuni.csv`, `compravendite_comuni.csv` e per gli archivi in
+   `quotazioni_comuni.csv`, `compravendite_comuni.csv`,
+   `compravendite_province.csv` e per gli archivi in
    `dati/input/omi/`, che sono la fornitura originale e non una lavorazione.
+   Una seconda fonte porta una licenza propria e non CC BY: l'open data del
+   MUR (USTAT) sta sotto **Italian Open Data License 2.0 (IODL 2.0)**, che
+   chiede l'attribuzione e nient'altro — quindi è compatibile con la scelta
+   di questo repository. Citazione: **«MUR — USTAT»**, per
+   `universita_atenei.csv`, `universita_sedi_brescia.csv` e
+   `universita_residenza_comuni.csv`.
    Se un giorno
    entrassero dati OpenStreetMap o OpenPNRR (ODbL, con share-alike sui dati
    derivati) questa scelta andrebbe rifatta: vedi `PROSSIMI-PASSI.md` §3.3.

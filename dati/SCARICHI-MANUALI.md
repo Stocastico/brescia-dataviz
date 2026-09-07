@@ -8,10 +8,11 @@
 > per fonte in [`../FONTI.md`](../FONTI.md).
 >
 > **Erano cinque, e in un giorno sono diventati uno.** MUR e compravendite NTN
-> sono tornati lavoro della pipeline perché quegli host hanno risposto (§5); gli
-> open data del Comune di Brescia sono usciti dall'elenco per la ragione opposta,
-> ed è quella che vale la pena leggere (§2); le quotazioni OMI sono **arrivate**
-> (§1).
+> sono tornati lavoro della pipeline perché quegli host hanno risposto (§5) — e
+> il 7 settembre 2026 quel lavoro è stato fatto, quindi non sono più nemmeno
+> arretrato; gli open data del Comune di Brescia sono usciti dall'elenco per la
+> ragione opposta, ed è quella che vale la pena leggere (§2); le quotazioni OMI
+> sono **arrivate** (§1).
 
 ## La regola, prima delle istruzioni
 
@@ -206,10 +207,16 @@ per versionarlo un giorno, stanno in [`SCARICHI-LOCALI.md`](SCARICHI-LOCALI.md).
 
 ---
 
-## 5. Le due voci che non sono più tue
+## 5. Le due voci che non sono più tue — ✅ e adesso sono fatte
 
 Il 4 settembre 2026 ho riprovato tutti gli host di questo elenco. Due hanno
-risposto, e quindi sono tornati lavoro della pipeline:
+risposto, e quindi sono tornati lavoro della pipeline. **Il 7 settembre 2026
+sono diventate moduli**, quindi questa sezione è storia e non un promemoria:
+`datasets/compravendite_province.py` → `compravendite_province.csv` e
+`datasets/universita.py` → tre tabelle. La cosa che vale la pena portarsi via è
+che il taglio per **sede didattica** ha trasformato l'avvertenza sui due atenei
+in una misura: in provincia studiano 19.873 iscritti, non i 16.456 dell'ateneo
+«Brescia». Quello che segue è la ricognizione originale:
 
 - **MUR, i due atenei.** `dati-ustat.mur.gov.it` risponde, ed è un CKAN vero:
   `api/3/action/package_search?q=iscritti` restituisce 31 dataset, e quello
