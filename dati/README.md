@@ -9,9 +9,10 @@
 Quattro cartelle:
 
 - **`processed/`** — le tabelle tidy, **versionate**: sono il prodotto del
-  progetto. Trentacinque file, una sessantina di MB — erano 12 finché non sono arrivate le tre
-  tabelle OMI, che da sole ne fanno 19; le ultime quattro sono di settembre 2026
-  (l'NTN provinciale e le tre dell'università).
+  progetto. Trentasette file, una sessantina di MB — erano 12 finché non sono arrivate le tre
+  tabelle OMI, che da sole ne fanno 19; le ultime sei sono di settembre 2026
+  (l'NTN provinciale, le tre dell'università, le retribuzioni INPS e gli
+  infortuni INAIL).
 - **`geo/`** — la geometria di riferimento, **versionata**: i confini dei 205
   comuni in GeoJSON (320 KB). È la base di ogni coropletica.
 - **`raw/`** — le risposte grezze delle fonti, **non versionate** (qualche GB:
@@ -217,6 +218,67 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
 3. **Gli anni non sono una serie annuale piena**: le abitazioni ci sono solo
    per 2019, 2021 e 2023.
 
+### Retribuzioni e infortuni
+
+Due fonti nuove, e insieme coprono il buco più grosso che il progetto avesse:
+il registro delle imprese dice **quanti** lavorano, queste dicono **quanto
+prendono** e **cosa gli succede**.
+
+| File | Righe | Contenuto |
+|---|---|---|
+| `retribuzioni_province.csv` | 5.289 | Lavoratori dipendenti, **retribuzione totale** e giornate retribuite per **provincia × anno**, tutte le 107 province, **2008–2024**. Fonte: INPS, Osservatori statistici (CC BY 4.0). È l'**unica fonte del progetto sui salari**. |
+| `infortuni_province.csv` | 1.725 | Infortuni **denunciati** e casi mortali per **provincia × anno × sezione Ateco**, dodici province lombarde, **2020–2024**. Fonte: INAIL (IODL 2.0). |
+
+> **La prima cosa che dicono i salari, ed è un'altra volta «il numero giusto,
+> la frase falsa».** La retribuzione media di un dipendente bresciano passa da
+> **20.272 €** (2008) a **25.418 €** (2024): **+25,4 %**. Nello stesso periodo
+> i prezzi al consumo salgono del **32,9 %**, quindi in euro di oggi quella
+> retribuzione **scende del 5,7 %**. E non è un fatto bresciano: **102 province
+> su 103** con entrambi gli estremi chiudono il periodo con la retribuzione
+> reale più bassa di come l'hanno aperta. Brescia è **25ª su 107** per
+> retribuzione media nel 2024.
+
+⚠️ **La media annua e quella giornaliera non rispondono alla stessa domanda.**
+`retribuzione_totale / lavoratori` conta anche chi ha lavorato un mese solo,
+quindi part-time e contratti brevi la tirano giù; `retribuzione_totale /
+giornate_retribuite` no. La tabella tiene i tre conteggi della fonte e non
+calcola nessuna delle due: la scelta sta in `analysis/`, dove si legge.
+
+⚠️ **Le retribuzioni non hanno il taglio settoriale, e non è un limite della
+fonte.** L'API vuole l'id interno della dimensione, e quello di «Sezione ATECO
+2007» non è documentato: si trova solo intercettando l'applicazione. In una
+provincia manifatturiera è la prima estensione da fare.
+
+⚠️ **Tre cose su `infortuni_province.csv`, e la seconda è la più importante.**
+>
+> 1. **Denunciato non è riconosciuto.** La fonte pubblica le denunce, e fra
+>    quelle ci sono i casi definiti negativamente. Un conteggio di denunce non è
+>    un conteggio di infortuni accertati.
+> 2. **La sezione Ateco manca in un terzo dei casi, e la quota cresce**: dal
+>    **20,9 %** nel 2020 al **34,1 %** nel 2024, su Brescia. Vuol dire che il
+>    taglio settoriale **non è confrontabile fra gli anni**: un settore che
+>    «scende» può semplicemente essere finito in `non determinato`. I totali
+>    per provincia, invece, sono completi.
+> 3. **Il 2022 è un picco** (20.300 denunce contro le ~15.000 degli anni
+>    accanto). L'ipotesi ovvia è il contagio da Covid riconosciuto come
+>    infortunio sul lavoro, ma questa tabella **non lo dimostra**: resta un
+>    picco dichiarato, non spiegato.
+
+⚠️ **E un tasso di infortuni per addetto non è calcolabile qui.** Il
+denominatore naturale sarebbe `retribuzioni_province.csv` o il registro delle
+imprese, ma i tre perimetri sono diversi: l'INPS conta i dipendenti privati non
+agricoli, l'INAIL la popolazione assicurata (che è più larga), l'ASIA gli
+addetti delle unità locali. Incrociarli è una scelta da fare in `analysis/`
+dichiarandola, non una divisione da fare qui (è MET-17).
+
+> **Quello che la letalità permette di dire, con cautela.** Nel 2024 Brescia ha
+> **15.333** denunce e **44** casi mortali; Milano ne ha **36.699** e **53**.
+> Rapportati alle denunce sono **2,87 morti per mille** a Brescia contro
+> **1,44** a Milano: il doppio, ed è coerente con due economie diverse. Ma
+> attenzione al denominatore: è per **mille denunce**, non per mille lavoratori,
+> e i numeri assoluti dei morti sono piccoli — Lodi e Pavia stanno sopra
+> Brescia con dieci e diciannove casi, che è troppo poco per una graduatoria.
+
 ### Università
 
 Tre tabelle e non una, per una ragione che è anche il risultato: **la Brescia
@@ -227,7 +289,7 @@ sede didattica** la ritrova. Fonte: **MUR — USTAT**, licenza IODL 2.0.
 
 | File | Righe | Contenuto |
 |---|---|---|
-| `universita_atenei.csv` | 8.639 | Iscritti e laureati per **ateneo × anno × sesso**, tutti gli atenei italiani: iscritti dal **2000/2001**, laureati dal **2001**. La colonna `anno_tipo` dice quale dei due calendari vale per la riga — `accademico` per gli iscritti, `solare` per i laureati — perché ridotti tutti e due a un numero sembrerebbero la stessa serie. |
+| `universita_atenei.csv` | 13.450 | Iscritti, **immatricolati** e laureati per **ateneo × anno × sesso**, tutti gli atenei italiani: iscritti dal **2000/2001**, laureati dal **2001**, immatricolati dal **1998/1999** — la serie più lunga delle tre, quindi chi le mette sullo stesso grafico deve partire dall'anno in cui esistono tutte. La colonna `anno_tipo` dice quale dei due calendari vale per la riga — `accademico` per gli iscritti, `solare` per i laureati — perché ridotti tutti e due a un numero sembrerebbero la stessa serie. |
 | `universita_sedi_brescia.csv` | 1.816 | Gli iscritti con **sede didattica in provincia di Brescia**, per anno × ateneo × gruppo disciplinare × provincia di residenza, **2010/2011–2024/2025**. È la tabella che risolve l'avvertenza dei due atenei. |
 | `universita_residenza_comuni.csv` | 6.090 | Gli iscritti **residenti** nei 205 comuni, per comune × anno × sesso, **2010/2011–2024/2025**, ovunque studino. Prestine è sommato a Bienno, come negli archivi OMI. |
 
