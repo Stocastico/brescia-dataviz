@@ -16,7 +16,7 @@ fuori dal conto. Le tre tabelle rispondono a tre domande diverse:
 
 | tabella | domanda |
 |---|---|
-| `universita_atenei.csv` | quanto è grande ogni ateneo italiano, e come cambia |
+| `universita_atenei.csv` | quanto è grande ogni ateneo italiano, e come cambia: iscritti, immatricolati, laureati |
 | `universita_sedi_brescia.csv` | **chi studia in provincia**, per ateneo e disciplina, e da dove viene |
 | `universita_residenza_comuni.csv` | **quanti studiano i residenti**, comune per comune |
 
@@ -46,9 +46,18 @@ UTF-8 non è nemmeno un byte valido.
 codice resta com'è: la fonte non lo scioglie, e scioglierlo a intuito è
 l'invenzione che questo progetto evita.
 
-**Cosa resta fuori.** Immatricolati, fuori corso, internazionali per paese,
-corsi di studio: la stessa API, la stessa forma, un `RISORSE` più lungo. Non
-entrano finché non c'è una storia che li usa. Le etichette dei gruppi
+**Cosa resta fuori, e perché.** Gli **immatricolati** sono entrati (settembre
+2026): stessa forma, `RISORSE` più lungo, e la serie più lunga delle tre —
+comincia nel **1998/99**. I **fuori corso** no, e la ragione è che non hanno la
+dimensione ateneo: `19_iscrittixfuoricorso.csv` è **solo nazionale**, quindi in
+un progetto provinciale è un numero senza territorio. Restano fuori anche gli
+internazionali per paese e i corsi di studio, per la ragione ordinaria: nessuna
+storia li usa. La prossima estensione utile è
+`12_immatricolatixresidenzasedecorsogruppo.csv`, che è il gemello per sede
+didattica di quello che qui alimenta `universita_sedi_brescia.csv`: darebbe gli
+**ingressi** in provincia e non solo lo stock.
+
+Le etichette dei gruppi
 disciplinari vengono da `03_iscrittixgruppo.csv`, cioè dalla fonte stessa, e non
 dal foglio `gruppidisciplinari.xlsx`: questo progetto non apre XLSX, di
 proposito.
@@ -75,6 +84,7 @@ CKAN = "https://dati-ustat.mur.gov.it/api/3/action/package_show"
 # cambiano quando il MUR ne ripubblica una, il nome no.
 RISORSE = {
     "iscritti_ateneo": ("iscritti", "02_iscrittixateneo.csv"),
+    "immatricolati_ateneo": ("immatricolati", "02_immatricolatixateneo.csv"),
     "iscritti_gruppo": ("iscritti", "03_iscrittixgruppo.csv"),
     "iscritti_sede": ("iscritti", "14a_iscrittixresidenzasedecorsogruppo.csv"),
     "iscritti_residenza": ("iscritti", "07_iscrittixresidenza.csv"),
@@ -153,6 +163,11 @@ def _atenei(file: dict[str, Path]) -> None:
     righe: list[dict[str, str]] = []
     for chiave, indicatore, colonna, anno_tipo in [
         ("iscritti_ateneo", "iscritti", "Isc", "accademico"),
+        # Gli immatricolati sono la porta d'ingresso, e la loro serie è la più
+        # lunga delle tre: comincia nel 1998/99, dieci anni prima degli
+        # iscritti per ateneo. Chi confronta i tre indicatori sullo stesso
+        # grafico deve partire dall'anno in cui esistono tutti.
+        ("immatricolati_ateneo", "immatricolati", "Immatricolati", "accademico"),
         ("laureati_ateneo", "laureati", "Lau", "solare"),
     ]:
         for record in _righe(file[chiave]):

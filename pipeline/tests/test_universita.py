@@ -37,6 +37,13 @@ FILE = {
         "2024/2025;Milano Cattolica;1504;F;27783",
         "2023/2024;Brescia;1701;F;7572",
     ],
+    "immatricolati_ateneo": [
+        "AnnoA;AteneoNOME;AteneoCOD;SESSO;Immatricolati",
+        "2024/2025;Brescia;1701;F;1800",
+        "2024/2025;Brescia;1701;M;1791",
+        # la serie degli immatricolati comincia dieci anni prima delle altre
+        "1998/1999;Brescia;1701;F;900",
+    ],
     "laureati_ateneo": [
         "AnnoS;AteneoCOD;AteneoNOME;SESSO;Lau",
         "2025;1701;Brescia;F;1980",
@@ -89,9 +96,24 @@ def tabelle(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
     return leggi
 
 
-def test_iscritti_e_laureati_stanno_nella_stessa_tabella(tabelle) -> None:
+def test_i_tre_indicatori_stanno_nella_stessa_tabella(tabelle) -> None:
     righe = tabelle("universita_atenei.csv")
-    assert {r["indicatore"] for r in righe} == {"iscritti", "laureati"}
+    assert {r["indicatore"] for r in righe} == {"iscritti", "immatricolati", "laureati"}
+
+
+def test_gli_immatricolati_hanno_la_serie_piu_lunga(tabelle) -> None:
+    """Comincia nel 1998/99, dieci anni prima degli iscritti per ateneo.
+
+    Chi mette i tre indicatori sullo stesso grafico deve partire dall'anno in
+    cui esistono tutti, o la linea degli immatricolati sembra l'unica cosa che
+    esisteva prima del 2000.
+    """
+    righe = tabelle("universita_atenei.csv")
+    per_indicatore = {}
+    for r in righe:
+        per_indicatore.setdefault(r["indicatore"], set()).add(r["anno"])
+    assert min(per_indicatore["immatricolati"]) < min(per_indicatore["iscritti"])
+    assert "1998" in per_indicatore["immatricolati"]
 
 
 def test_l_anno_accademico_e_dichiarato_diverso_da_quello_solare(tabelle) -> None:
@@ -103,8 +125,10 @@ def test_l_anno_accademico_e_dichiarato_diverso_da_quello_solare(tabelle) -> Non
     """
     righe = tabelle("universita_atenei.csv")
     isc = [r for r in righe if r["indicatore"] == "iscritti"]
+    imm = [r for r in righe if r["indicatore"] == "immatricolati"]
     lau = [r for r in righe if r["indicatore"] == "laureati"]
     assert {r["anno_tipo"] for r in isc} == {"accademico"}
+    assert {r["anno_tipo"] for r in imm} == {"accademico"}
     assert {r["anno_tipo"] for r in lau} == {"solare"}
     assert {r["anno"] for r in isc} == {"2024", "2023"}
     assert {r["anno"] for r in lau} == {"2025"}

@@ -70,6 +70,8 @@ compravendite_province = leggi("compravendite_province.csv")
 universita_atenei = leggi("universita_atenei.csv")
 universita_sedi = leggi("universita_sedi_brescia.csv")
 universita_residenza = leggi("universita_residenza_comuni.csv")
+retribuzioni = leggi("retribuzioni_province.csv")
+infortuni = leggi("infortuni_province.csv")
 
 PROVINCIA = "ITC47"
 
@@ -1128,6 +1130,74 @@ def iscritti_in_provincia(anno: str, ateneo: str | None = None) -> float:
 
 def iscritti_residenti(anno: str) -> float:
     return sum(float(r["iscritti"]) for r in universita_residenza if r["anno"] == anno)
+
+
+# --- retribuzioni INPS e infortuni INAIL ---------------------------------
+
+
+def retribuzione(anno: str, codice: str = "017", indicatore: str = "retribuzione_totale") -> float:
+    return next(
+        (float(r["valore"]) for r in retribuzioni
+         if r["codice_provincia"] == codice and r["anno"] == anno
+         and r["indicatore"] == indicatore),
+        0.0,
+    )
+
+
+def retribuzione_media(anno: str, codice: str = "017") -> float:
+    lavoratori = retribuzione(anno, codice, "lavoratori")
+    return retribuzione(anno, codice) / lavoratori if lavoratori else 0.0
+
+
+def retribuzione_reale(anno: str, base: str = "2024", codice: str = "017") -> float:
+    """La stessa media in euro dell'anno `base`, col deflatore del progetto."""
+    return retribuzione_media(anno, codice) * indice_prezzi(base) / indice_prezzi(anno)
+
+
+def province_con_retribuzione(anno: str) -> set[str]:
+    return {
+        r["codice_provincia"] for r in retribuzioni
+        if r["anno"] == anno and r["indicatore"] == "lavoratori" and r["valore"]
+    }
+
+
+def province_in_calo_reale(primo: str = "2008", ultimo: str = "2024") -> int:
+    """Quante province chiudono con la retribuzione **reale** piu' bassa.
+
+    Solo quelle che hanno entrambi gli estremi: le province nate dopo il 2004
+    non hanno il 2008, e contarle come «in calo» sarebbe inventare.
+    """
+    entrambi = province_con_retribuzione(primo) & province_con_retribuzione(ultimo)
+    return sum(
+        1 for c in entrambi
+        if retribuzione_media(ultimo, c) < retribuzione_reale(primo, ultimo, c)
+    )
+
+
+def rango_retribuzione(anno: str = "2024", codice: str = "017") -> int:
+    medie = {c: retribuzione_media(anno, c) for c in province_con_retribuzione(anno)}
+    return sorted(medie, key=lambda c: -medie[c]).index(codice) + 1
+
+
+def infortunio(anno: str, indicatore: str, codice: str = "017", sezione: str = "totale") -> float:
+    return next(
+        (float(r["valore"]) for r in infortuni
+         if r["codice_provincia"] == codice and r["anno"] == anno
+         and r["sezione_ateco"] == sezione and r["indicatore"] == indicatore),
+        0.0,
+    )
+
+
+def letalita(anno: str, codice: str = "017") -> float:
+    """Morti per mille denunce. ⚠️ Non per mille lavoratori: il denominatore
+    sono le denunce, e i due numeri non si confrontano."""
+    denunce = infortunio(anno, "denunce", codice)
+    return infortunio(anno, "casi_mortali", codice) / denunce * 1000 if denunce else 0.0
+
+
+def quota_settore_ignoto(anno: str, codice: str = "017") -> float:
+    denunce = infortunio(anno, "denunce", codice)
+    return infortunio(anno, "denunce", codice, "non determinato") / denunce * 100
 
 
 VERIFICHE: list[tuple[str, str, float, object, float]] = [
@@ -2389,8 +2459,8 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
     ),
     (
         "dati/README §Università",
-        "universita_atenei.csv: 8.639 righe",
-        8639,
+        "universita_atenei.csv: 13.450 righe (immatricolati compresi, da sett. 2026)",
+        13450,
         lambda: len(universita_atenei),
         0,
     ),
@@ -2406,6 +2476,125 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         "universita_residenza_comuni.csv: 6.090 righe",
         6090,
         lambda: len(universita_residenza),
+        0,
+    ),
+    (
+        "dati/README §Retribuzioni e infortuni",
+        "retribuzioni_province.csv: 5.289 righe",
+        5289,
+        lambda: len(retribuzioni),
+        0,
+    ),
+    (
+        "dati/README §Retribuzioni e infortuni",
+        "e le province sono tutte e 107",
+        107,
+        lambda: len({r["codice_provincia"] for r in retribuzioni}),
+        0,
+    ),
+    (
+        "README · dati/README §Retribuzioni e infortuni",
+        "retribuzione media a Brescia nel 2008: 20.272 euro",
+        20272,
+        lambda: retribuzione_media("2008"),
+        1,
+    ),
+    (
+        "README · dati/README §Retribuzioni e infortuni",
+        "e nel 2024: 25.418 euro, cioe' +25,4 % in euro correnti",
+        25418,
+        lambda: retribuzione_media("2024"),
+        1,
+    ),
+    (
+        "README · dati/README §Retribuzioni e infortuni",
+        "in euro del 2024 il 2008 valeva 26.942: la variazione reale e' -5,7 %",
+        -5.7,
+        lambda: (retribuzione_media("2024") / retribuzione_reale("2008") - 1) * 100,
+        0.05,
+    ),
+    (
+        "README · dati/README §Retribuzioni e infortuni",
+        "l'inflazione cumulata 2008-2024 e' il 32,9 %",
+        32.9,
+        lambda: (indice_prezzi("2024") / indice_prezzi("2008") - 1) * 100,
+        0.05,
+    ),
+    (
+        "README · dati/README §Retribuzioni e infortuni",
+        "102 province su 103 chiudono con la retribuzione reale piu' bassa",
+        102,
+        province_in_calo_reale,
+        0,
+    ),
+    (
+        "dati/README §Retribuzioni e infortuni",
+        "e le province con entrambi gli estremi sono 103, non 107",
+        103,
+        lambda: len(province_con_retribuzione("2008") & province_con_retribuzione("2024")),
+        0,
+    ),
+    (
+        "dati/README §Retribuzioni e infortuni",
+        "Brescia e' 25a su 107 per retribuzione media nel 2024",
+        25,
+        rango_retribuzione,
+        0,
+    ),
+    (
+        "dati/README §Retribuzioni e infortuni",
+        "infortuni_province.csv: 1.725 righe su 12 province lombarde",
+        1725,
+        lambda: len(infortuni),
+        0,
+    ),
+    (
+        "dati/README §Retribuzioni e infortuni",
+        "Brescia 2024: 15.333 denunce",
+        15333,
+        lambda: infortunio("2024", "denunce"),
+        0,
+    ),
+    (
+        "dati/README §Retribuzioni e infortuni",
+        "e 44 casi mortali, contro i 53 di Milano su piu' del doppio di denunce",
+        44,
+        lambda: infortunio("2024", "casi_mortali"),
+        0,
+    ),
+    (
+        "dati/README §Retribuzioni e infortuni",
+        "letalita' per mille denunce: 2,87 a Brescia",
+        2.87,
+        lambda: letalita("2024"),
+        0.01,
+    ),
+    (
+        "dati/README §Retribuzioni e infortuni",
+        "contro 1,44 a Milano, cioe' il doppio",
+        1.44,
+        lambda: letalita("2024", "015"),
+        0.01,
+    ),
+    (
+        "dati/README §Retribuzioni e infortuni",
+        "il settore ignoto passa dal 20,9 % del 2020...",
+        20.9,
+        lambda: quota_settore_ignoto("2020"),
+        0.05,
+    ),
+    (
+        "dati/README §Retribuzioni e infortuni",
+        "...al 34,1 % del 2024, quindi il taglio settoriale non e' confrontabile",
+        34.1,
+        lambda: quota_settore_ignoto("2024"),
+        0.05,
+    ),
+    (
+        "dati/README §Retribuzioni e infortuni",
+        "il 2022 e' un picco: 20.300 denunce contro le 15 mila degli anni accanto",
+        20300,
+        lambda: infortunio("2022", "denunce"),
         0,
     ),
 ]
