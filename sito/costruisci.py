@@ -1129,6 +1129,13 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
     anno_pop_i, anno_pop_f = popolazione["periods"][0], popolazione["periods"][-1]
 
     fuori["comuni"] = numero_it(len(comuni))
+    # Quante storie ha la pagina, contate **dal modello** invece che scritte a
+    # mano. La riga della testata diceva «Otto storie» quando erano nove: un
+    # numero scritto a mano in un documento che si ricostruisce da solo e' un
+    # numero che prima o poi mente.
+    fuori["storie"] = numero_it(
+        len(re.findall(r'class="story s\d', (MODELLI / "racconto.html").read_text(encoding="utf-8")))
+    )
     fuori["anno_pop_iniziale"] = anno_pop_i
     fuori["anno_pop_finale"] = anno_pop_f
     fuori["popolazione_provinciale"] = numero_it(sum(pop_ultimo.values()))
