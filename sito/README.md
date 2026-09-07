@@ -15,6 +15,7 @@ apre da disco, si manda per email, si archivia.
 |---|---|
 | `costruisci.py` | assembla `_site/`: incorpora i dati, sostituisce le cifre e le date, copia i CSV |
 | `modelli/racconto.html` | il documento narrativo: otto storie e la sezione dei limiti |
+| `modelli/esplora.html` | lo strumento: i diciannove indicatori su tutti i comuni, a scelta di chi legge |
 | `modelli/metodologia.html` | le regole del progetto, per un lettore che non ha letto il repository |
 | `modelli/dati.html` | fonti, tabelle scaricabili e avvertenze |
 | `modelli/stile.css` | la tavolozza e l'impaginazione, in variabili CSS |
@@ -76,6 +77,42 @@ ne accorgerebbe più, e il pannello diventerebbe una diapositiva.
 Le tabelle-specchio dell'ottava storia stanno **fuori** dal pannello
 (`#tabelle-casa`, via l'opzione `tabellaIn` di `serie()`): la figura spenta è
 `display:none`, e con lei sparirebbe dalla tastiera anche la sua tabella.
+
+## Le due pagine che fanno cose diverse
+
+`racconto.html` sceglie. Otto storie, quindici indicatori, e per ognuna una
+figura tagliata su quella frase.
+
+`esplora.html` non sceglie: tutti e diciannove gli indicatori del registro, su
+tutti i comuni, e l'ordine lo decide chi legge. Le due pagine hanno lo stesso
+peso e lo stesso stile, e non hanno lo stesso mestiere: la prima risponde a
+domande che qualcuno ha già fatto, la seconda serve a farne di nuove.
+
+**Non è l'app React della specifica** ([`PROSSIMI-PASSI.md`](../PROSSIMI-PASSI.md)
+§6.1), ed è una differenza voluta. La specifica era stata copiata dal progetto
+precedente, dove il pannello era servito a parte con React, Vite, maplibre e
+recharts. Qui `grafici.js` ha già la coropletica, le due scale, la legenda, la
+tabella-specchio e la riga di provenienza: seguire la specifica voleva dire
+riscriverle in quattro dipendenze e aggiungere alla CI una catena di
+costruzione Node che oggi non esiste. Quello che mancava davvero sono due menù
+e il ritratto del comune, e sono centosessanta righe in fondo al modello. La
+regola «nessuna dipendenza a runtime» vale anche per lo strumento.
+
+Tre cose che la pagina fa e che vale la pena non rompere:
+
+1. **L'elenco degli indicatori viene dal registro, non dal modello.**
+   `metriche_esplora()` legge `web/src/data/metrics.json` e prende quelli
+   `live`. Un indicatore nuovo compare nel menù senza che nessuno tocchi né il
+   modello né il costruttore, ed è quello che rende vera la riga «aggiungere un
+   dataset = un JSON in più e una riga nel registro».
+2. **I dati incorporati sono due, non uno.** Le pagine del racconto portano i
+   quindici indicatori che le storie citano; `esplora.html` e `dati.html` li
+   portano tutti. Il resto (geometria, anagrafica, le serie delle figure) è
+   calcolato una volta sola e condiviso.
+3. **Ogni scelta sta nell'indirizzo**, e ci sta in tutte e due le direzioni:
+   `#prezzo_case/2012/017068` è indicatore, anno e comune. La pagina lo scrive
+   con `replaceState` (un menù che riempie la cronologia rende inutile il tasto
+   «indietro») e lo rilegge anche quando cambia sotto una finestra già aperta.
 
 ## Lo stile viene da `donostia-dataviz`
 

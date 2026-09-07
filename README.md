@@ -81,8 +81,8 @@ che servono: sono estensioni e finiture.
 **Il sito non si pubblica da solo**, ed è voluto finché l'analisi non è finita:
 ogni push su `main` lo ricostruisce e lo verifica lasciandolo come artefatto da
 scaricare, ma per mandarlo online serve quel lancio a mano con la conferma
-scritta. Il lavoro che resta e che **non** richiede te — il pannello
-interattivo, i dati MUR sui due atenei, le compravendite NTN — è in
+scritta. Il lavoro che resta e che **non** richiede te — i dati MUR sui due
+atenei, le compravendite NTN — è in
 [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md), che distingue riga per riga **cosa può
 fare una sessione di lavoro e cosa richiede te**.
 
@@ -97,8 +97,8 @@ fare una sessione di lavoro e cosa richiede te**.
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco completo delle cose che **richiedono te** (un login SPID, una macchina italiana, una decisione di disegno), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 31 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, ambiente, sicurezza, turismo e — da settembre 2026 — **quotazioni immobiliari OMI in due grane, più i volumi di compravendita**, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no, con l'eccezione degli **input curati** in `dati/input/`, che nessun URL restituisce. |
-| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: quattordici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
-| [`sito/`](sito/README.md) | **Il documento narrativo**: otto storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
+| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: sedici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
+| [`sito/`](sito/README.md) | **Il documento narrativo e lo strumento**: otto storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`; accanto, `esplora.html`, che mette tutti e **diciannove** gli indicatori su tutti i comuni e lascia scegliere a chi legge. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
 ## Come leggere il registro
 
@@ -241,7 +241,7 @@ python sito/costruisci.py                 # -> _site/
 python analysis/verifica_cifre.py         # se una cifra diverge, è quello il primo problema
 
 pip install pytest pytest-cov
-python -m pytest pipeline/tests -q --cov  # 443 test, soglia di copertura all'80 %
+python -m pytest pipeline/tests -q --cov  # 452 test, soglia di copertura all'80 %
 ```
 
 ## Licenza
