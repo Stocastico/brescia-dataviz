@@ -190,10 +190,28 @@ invece di restringerla:
    Contrasto sul fondo 5,15:1 la tinta base e 8,16:1 la scura, dentro
    l'intervallo della famiglia e sopra la mediana.
 
-   ⚠️ **Il decimo colore non si sceglie riapplicando questa regola.** Lo spazio
-   di tinta è pieno: o si rinegozia la famiglia, o si differenzia per
-   luminosità invece che per tinta. È scritto qui e in `stile.css` perché non
-   lo scopra qualcun altro fra sei mesi.
+   ✅ **Il decimo colore è stato deciso** (7 settembre 2026), e non con questa
+   regola, perché lo spazio di tinta è pieno: si è deciso sull'**altro asse**,
+   la luminosità.
+
+   `--bruno` **`#6d4e22`**, scuro `#513815`. È la tinta dell'ambra (35°) portata
+   a luminosità 28 %: **25 punti sotto l'ambra e 5 sotto il mare**, che era il
+   più scuro della famiglia. Contrasto 6,98:1 e 10,01:1, sopra l'intervallo
+   delle tinte base (2,35–5,20) ma dentro quello delle scure (3,45–8,73) — e la
+   regola guarda che un colore non sia il **più debole** del gruppo, non che non
+   sia il più forte. Non è scritto come variabile finché non c'è una decima
+   storia: una variabile senza consumatore è CSS morto.
+
+   ⚠️ **E il bruno è l'ultimo che questo asse concede.** Verso il chiaro la
+   strada è chiusa dal contrasto e non dal gusto: il viola sta a luminosità 63 %
+   e ha già il minimo della famiglia (3,31:1); a 66 % si scende a 2,88 e si passa
+   **sotto la soglia AA** per il testo grande. Verso lo scuro si esce dalla banda
+   della famiglia, e il bruno è il primo passo fuori.
+
+   Quindi un **undicesimo** colore non si aggiunge. Le due strade sono
+   rinegoziare la famiglia intera, oppure **riusare** il colore della storia più
+   lontana in pagina: che è esattamente quello che i tre verdi fanno già, e la
+   ragione per cui reggono.
 
    ⚠️ **La conseguenza, dichiarata invece che scoperta dopo:** i colori di storia
    sono **tre verdi su nove**. Regge perché le tre storie che li portano —

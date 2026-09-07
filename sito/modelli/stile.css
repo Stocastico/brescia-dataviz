@@ -86,10 +86,25 @@
      segue l'ottava, che e' verde; mare e viola sono la seconda e la quinta, e
      non si toccano mai con lei.
 
-     ⚠️ Il decimo colore non si sceglie riapplicando questa regola. Lo spazio di
-     tinta e' pieno: o si rinegozia la famiglia, o si differenzia per
-     luminosita' invece che per tinta. Questa riga e' li' per non farlo scoprire
-     a qualcun altro fra sei mesi.
+     ⚠️ Il decimo colore non si sceglie riapplicando questa regola: lo spazio di
+     tinta e' pieno. **Ed e' stato deciso** (7 settembre 2026), sull'altro asse:
+     `--bruno` `#6d4e22`, scuro `#513815`. E' la tinta dell'ambra (35°) portata a
+     luminosita' 28 %, cioe' **25 punti sotto l'ambra e 5 sotto il mare**, che
+     era il piu' scuro della famiglia. Contrasto 6,98:1 e 10,01:1 — sopra
+     l'intervallo delle tinte base (2,35-5,20) ma dentro quello delle scure
+     (3,45-8,73), e la regola guarda che un colore non sia il **piu' debole** del
+     gruppo, non che non sia il piu' forte.
+     Non e' scritto come variabile finche' non c'e' una decima storia: una
+     variabile senza consumatore e' CSS morto.
+
+     ⚠️ **E il bruno e' l'ultimo che questo asse concede.** Verso il chiaro la
+     strada e' chiusa dal contrasto, non dal gusto: il viola sta a luminosita'
+     63 % e ha gia' il minimo della famiglia (3,31:1); a 66 % si scende a 2,88 e
+     si passa **sotto la soglia AA** per il testo grande. Verso lo scuro si esce
+     dalla banda della famiglia, e il bruno e' il primo passo fuori. Un
+     undicesimo colore non si aggiunge: o si rinegozia la famiglia intera, o si
+     **riusa** il colore della storia piu' lontana in pagina, che e' quello che
+     i tre verdi fanno gia'.
 
      Contrasto sul fondo 5,15:1 la tinta base e 8,16:1 quella scura: dentro
      l'intervallo della famiglia (2,35-5,20 e 3,45-8,73) e sopra la mediana
