@@ -59,6 +59,7 @@ import requests
 from ..config import RAW_DIR
 from ..fetch import DEFAULT_TIMEOUT
 from ..tidy import write_csv
+from .province import province_italiane
 
 API = "https://dati.inail.it/api/OpenData/DatiConCadenzaSemestraleInfortuni"
 
@@ -165,8 +166,11 @@ def aggrega(casi: list[dict], anno: str) -> dict[tuple[str, str, str], int]:
 def build(comuni: dict[str, str]) -> None:
     del comuni  # tabella provinciale
 
-    from .province import province_italiane
-
+    # ⚠️ `province_italiane()` sotto sotto fa `fetch()` sull'elenco ISTAT, che
+    # in locale sta in cache e in CI no. L'import sta in cima e non qui dentro
+    # proprio perche' un test possa sostituirla: e' la lezione scritta in testa
+    # a `conftest.py`, e questo modulo l'ha imparata facendo diventare rossa la
+    # CI dopo una suite verde in locale.
     nomi = {codice: nome for codice, (nome, _) in province_italiane().items()}
     per_anno: dict[str, dict[tuple[str, str, str], int]] = defaultdict(lambda: defaultdict(int))
     coperti: list[str] = []

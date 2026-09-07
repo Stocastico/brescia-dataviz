@@ -104,6 +104,14 @@ def test_i_casi_senza_luogo_si_scartano() -> None:
 def tabella(tmp_path, monkeypatch):
     from brescia_pipeline import tidy as tidy_mod
 
+    # ⚠️ senza questo la suite passa in locale e fallisce in CI: `province_italiane`
+    # legge l'elenco ISTAT da `dati/raw/`, che in locale c'e' e in CI no, quindi
+    # parte un download vero. E' il caso raccontato in testa a `conftest.py`, e
+    # questo file l'ha rifatto uguale.
+    monkeypatch.setattr(inail, "province_italiane", lambda: {
+        "017": ("Brescia", "Lombardia"),
+        "015": ("Milano", "Lombardia"),
+    })
     monkeypatch.setattr(inail, "REGIONI", ["Lombardia"])
     monkeypatch.setattr(inail, "ANNI", ["2023", "2024"])
     monkeypatch.setattr(inail, "MESI", ["01"])
@@ -148,6 +156,7 @@ def test_le_righe_sono_ordinate(tabella) -> None:
 def test_una_fonte_muta_ferma_il_build(tmp_path, monkeypatch) -> None:
     from brescia_pipeline import tidy as tidy_mod
 
+    monkeypatch.setattr(inail, "province_italiane", lambda: {"017": ("Brescia", "Lombardia")})
     monkeypatch.setattr(inail, "ANNI", ["2023"])
     monkeypatch.setattr(inail, "MESI", ["01"])
     monkeypatch.setattr(inail, "scarica", lambda regione, anno, mese: [])
