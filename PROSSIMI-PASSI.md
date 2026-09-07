@@ -89,8 +89,8 @@ Indice:
 | Pannello interattivo | ✅ **fatto** (settembre 2026), e non come la specifica lo prevedeva: è `sito/modelli/esplora.html`, una quarta pagina dello stesso sito autocontenuto, non un'app React servita sotto `/app/`. Tutti e **diciannove** gli indicatori del registro — non i quindici del racconto — su tutti i comuni, con l'anno a scelta, il ritratto del comune cliccato e ogni scelta nell'indirizzo. Il perché della differenza sta in §6.1 |
 | Deploy | 🤖 la **costruzione** è automatica su `main` (test, cifre, sito, artefatto); la **pubblicazione** no: parte solo a mano, con una conferma scritta (§7). ✅ la sorgente di Pages è su «GitHub Actions» dal 4 settembre 2026, quindi il primo lancio ha dove pubblicare |
 | Licenza | ✅ MIT per il codice (`LICENSE`), CC BY 4.0 per testi e dati (`LICENSE-DATI`) (§3.3) |
-| `METODOLOGIA.md` | ✅ **versione 1.0**, non più bozza: **ventisei** regole. Le ultime cinque (MET-22…MET-26) sono quelle che il documento dichiarava mancanti da sempre — come si **scelgono** e si **raccontano** le storie — e sono state ricavate contando cosa le otto storie hanno fatto davvero, non decise a tavolino. MET-23 è nata insieme alla scoperta che quattro storie su otto la violavano |
-| `WORKING-PAPER.md` | ✅ **versione 1.0**, non più bozza. Ha il titolo che gli mancava, perché ha la tesi: «Il numero giusto, la frase falsa» — **dieci** episodi in cui un dato corretto stava per produrre un'affermazione falsa, in quattro famiglie. Sette scoperti dopo averli commessi, tre prima. La §7 resta la parte sui risultati: nove, sui cinque assi |
+| `METODOLOGIA.md` | ✅ **versione 1.1**, non più bozza: **ventisette** regole. Cinque delle ultime sei (MET-22…MET-26) sono quelle che il documento dichiarava mancanti da sempre — come si **scelgono** e si **raccontano** le storie — e sono state ricavate contando cosa le otto storie hanno fatto davvero, non decise a tavolino. MET-23 è nata insieme alla scoperta che quattro storie su otto la violavano; **MET-27** è arrivata dopo, dal prodotto invece che dall'analisi |
+| `WORKING-PAPER.md` | ✅ **versione 1.1**, non più bozza. Ha il titolo che gli mancava, perché ha la tesi: «Il numero giusto, la frase falsa» — **undici** episodi in cui un dato corretto stava per produrre un'affermazione falsa, in quattro famiglie. Otto scoperti dopo averli commessi, tre prima. L'undicesimo è nato costruendo la pagina che esplora. La §7 resta la parte sui risultati: nove, sui cinque assi |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
 fatte e otto storie sono scritte in un sito che si costruisce da solo, e adesso
@@ -864,6 +864,12 @@ avevano fatto davvero, e non da un principio scelto prima. `WORKING-PAPER.md`
 ha il titolo che gli mancava perché ha la tesi: **«Il numero giusto, la frase
 falsa»**, dieci episodi in cui un dato corretto stava per produrre
 un'affermazione falsa, in quattro famiglie.
+
+⏳ **E poi sono diventati undici e ventisette** (settembre 2026, versioni 1.1).
+L'undicesimo episodio non viene dall'analisi ma dal **prodotto**: costruendo la
+pagina che esplora si è visto che `dati.html` annunciava diciannove indicatori
+e ne elencava quindici, presi da due sorgenti diverse. Ne è uscita **MET-27**.
+La riga sopra resta com'era scritta, per MET-25.
 
 Il testo che segue è quello originale, con il ragionamento su **perché** questi
 due documenti andavano scritti alla fine. Resta perché la previsione si è

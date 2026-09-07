@@ -1,6 +1,6 @@
 # Il numero giusto, la frase falsa
 
-**Dieci modi di sbagliare un ritratto territoriale con dati corretti, trovati
+**Undici modi di sbagliare un ritratto territoriale con dati corretti, trovati
 costruendone uno.** Brescia, il comune e i suoi 205 comuni, 1990–2025.
 
 > **Cos'è questo documento.** L'esposizione autocontenuta di **come** si
@@ -12,7 +12,7 @@ costruendone uno.** Brescia, il comune e i suoi 205 comuni, 1990–2025.
 > referenzia. Ogni numero citato è riproducibile da
 > [`pipeline/`](pipeline/README.md).
 >
-> ## Versione 1.0 — settembre 2026
+> ## Versione 1.1 — settembre 2026
 >
 > **Questo documento non è più una bozza, e ha finalmente un titolo che dice
 > una tesi invece del suo oggetto.**
@@ -20,14 +20,19 @@ costruendone uno.** Brescia, il comune e i suoi 205 comuni, 1990–2025.
 > La tesi è quella del titolo. Costruendo un ritratto quantitativo di una
 > provincia italiana con sole fonti aperte, il lavoro difficile non è stato
 > ottenere i dati né calcolarli: è stato il passo fra **un numero corretto e la
-> frase che lo riporta**. Dieci volte un dato giusto stava per produrre
-> un'affermazione falsa, e le dieci si raggruppano in quattro famiglie
-> (§Sintesi). Sette sono state scoperte dopo averle commesse, tre prima. La
+> frase che lo riporta**. Undici volte un dato giusto stava per produrre
+> un'affermazione falsa, e le undici si raggruppano in quattro famiglie
+> (§Sintesi). Otto sono state scoperte dopo averle commesse, tre prima. La
 > parte riutilizzabile di questo lavoro è il **catalogo** e la disciplina che
 > lo intercetta, non il ritratto di Brescia.
 >
-> Cosa è cambiato rispetto alla versione 2: la §7 copre adesso **cinque** assi
-> (è arrivata la casa, §7.9); la sintesi passa da sei episodi a dieci e li
+> Cosa è cambiato nella 1.1: l'**undicesimo episodio**, trovato costruendo la
+> pagina che esplora gli indicatori. Non è un errore nuovo di tipo: è la
+> famiglia D che si allarga, ed è il primo episodio che nasce dal **prodotto**
+> invece che dall'analisi. Ne è uscita MET-27.
+>
+> Cosa era cambiato nella 1.0 rispetto alla versione 2: la §7 copre **cinque**
+> assi (è arrivata la casa, §7.9); la sintesi passa da sei episodi a dieci e li
 > raggruppa; le regole del racconto — che questo documento e
 > [`METODOLOGIA.md`](METODOLOGIA.md) dichiaravano mancanti — sono scritte
 > (MET-22…MET-26); §5, §9 e §10 sono aggiornate.
@@ -60,13 +65,13 @@ trentaquattro anni a sei), e soprattutto la **fragilità semantica degli
 aggregati amministrativi**, che cambiano per ragioni contabili senza che cambi
 nulla nel mondo.
 
-### Il risultato principale: dieci volte un numero giusto stava per dire una cosa falsa
+### Il risultato principale: undici volte un numero giusto stava per dire una cosa falsa
 
-Nessuno dei dieci è un errore di programmazione, e nessuno sarebbe stato
-intercettato da un test sui dati: le tabelle erano corrette in tutti e dieci i
-casi. Sono dieci modi diversi di **sbagliare la frase** che riporta un numero
-giusto. **Sette sono stati commessi e corretti; tre intercettati prima di
-finire in una frase.**
+Nessuno degli undici è un errore di programmazione, e nessuno sarebbe stato
+intercettato da un test sui dati: le tabelle erano corrette in tutti e undici i
+casi. Sono undici modi diversi di **sbagliare la frase** che riporta un numero
+giusto. **Otto sono stati commessi e corretti; tre intercettati prima di finire
+in una frase.**
 
 **Famiglia A — sul numero: scomporre, o confrontare, prima di dargli un nome.**
 
@@ -126,7 +131,7 @@ righello.**
    occupa cambia **tre volte in ventidue anni**. Il conto era giusto, il
    grafico era giusto, e le tre parole sotto le linee dicevano un'altra cosa.
 
-**Famiglia D — sul processo, non sul dato.** Sono i due che nessuna rilettura
+**Famiglia D — sul processo, non sul dato.** Sono i tre che nessuna rilettura
 del singolo numero avrebbe trovato, perché il difetto sta fra i pezzi.
 
 9. **§4 / MET-13 — una decisione sul dato mancante si prende in un posto solo.**
@@ -140,16 +145,27 @@ del singolo numero avrebbe trovato, perché il difetto sta fra i pezzi.
     giorno — ed erano le quattro più vecchie. Il difetto era invisibile perché
     la provenienza automatica esiste solo sulle mappe, e chi controllava
     guardava le mappe.
+11. **MET-27 — un numero dichiarato e l'elenco che lo mostra vengono dalla
+    stessa sorgente.** `dati.html`, cioè proprio la pagina che documenta i
+    dati, annunciava «gli N indicatori» con N preso dal manifesto della
+    pipeline — **diciannove** — e due paragrafi sotto costruiva l'elenco dai
+    dati incorporati in quella pagina, che erano i **quindici** del racconto.
+    Diciannove promessi, quindici elencati, per mesi. Nessuno dei due numeri
+    era sbagliato: la frase falsa nasceva dall'averli presi da due sorgenti
+    diverse e messi a un paragrafo di distanza. È l'unico degli undici trovato
+    non analizzando ma **costruendo** — è saltato fuori scrivendo la pagina che
+    esplora, che gli indicatori li mostra tutti.
 
 **Cosa hanno in comune.** Quattro sono la stessa disciplina applicata a oggetti
 diversi (**scomporre, o confrontare, prima di dare un nome a una variazione**);
 tre sono la stessa disciplina applicata allo **strumento** invece che al numero;
-uno alla **forma** della serie; due al **processo** che produce il documento
+uno alla **forma** della serie; tre al **processo** che produce il documento
 invece che al documento. Nessuno di essi richiede statistica avanzata per essere
 evitato, e nessuno di essi si evita con più dati.
 
-**Il costo, dichiarato.** Sette dei dieci sono stati scoperti *dopo* essere stati
-commessi, e tre erano già pubblicati sul sito quando sono stati trovati. Il
+**Il costo, dichiarato.** Otto degli undici sono stati scoperti *dopo* essere
+stati commessi, e quattro erano già nel sito costruito quando sono stati
+trovati. Il
 meccanismo che li ha trovati non è la revisione: è avere una **seconda
 implementazione** che ricalcola ogni cifra citata (`analysis/verifica_cifre.py`,
 160 verifiche), un **termine di paragone esterno** su ogni asse, e l'abitudine
@@ -486,7 +502,7 @@ che i dati non sostengono.
 
 ## 7. Risultati
 
-Nove risultati sul territorio — da non confondere con i dieci episodi della
+Nove risultati sul territorio — da non confondere con gli undici episodi della
 sintesi, che riguardano il metodo e non Brescia. Nessuno è causale: sono
 descrizioni, e la §8 dice cosa non permettono di affermare. Quattro di essi —
 §7.1, §7.3, §7.6 e §7.8 — hanno un termine di paragone esterno; §7.4, §7.7 e
@@ -1065,7 +1081,7 @@ trasferibile è quasi tutta:
 
 E soprattutto, la parte che questo documento considera il proprio contributo:
 
-- **Il catalogo dei dieci episodi** (§Sintesi) e le **ventisei regole** che ne
+- **Il catalogo degli undici episodi** (§Sintesi) e le **ventisette regole** che ne
   sono uscite ([`METODOLOGIA.md`](METODOLOGIA.md)). MET-9 — decomporre prima di
   titolare — è la più generale, e vale ben oltre questo dominio; MET-14 — un
   numero senza termine di paragone non è un risultato — è quella che più spesso
