@@ -99,7 +99,7 @@ Indice:
 | `WORKING-PAPER.md` | ✅ **versione 1.1**, non più bozza. Ha il titolo che gli mancava, perché ha la tesi: «Il numero giusto, la frase falsa» — **undici** episodi in cui un dato corretto stava per produrre un'affermazione falsa, in quattro famiglie. Otto scoperti dopo averli commessi, tre prima. L'undicesimo è nato costruendo la pagina che esplora. La §7 resta la parte sui risultati: nove, sui cinque assi |
 
 **Dove sta il progetto, in una frase.** I dati ci sono, le analisi sono state
-fatte e otto storie sono scritte in un sito che si costruisce da solo, e adesso
+fatte e nove storie sono scritte in un sito che si costruisce da solo, e adesso
 ha anche dove pubblicarsi: **manca la tua rilettura, e il clic che pubblica**.
 Il lavoro tecnico che resta è tutto facoltativo: i download manuali. Il
 pannello interattivo, che era la voce grossa, **è stato fatto** a settembre
@@ -621,7 +621,7 @@ Questa è la parte che si perderebbe. Il progetto Donostia pubblica **due cose
 diverse** sullo stesso sito, ed è una separazione che vale la pena copiare.
 
 > **✅ Il primo dei due artefatti esiste** (agosto 2026), in
-> [`sito/`](sito/README.md): documento narrativo con otto storie, più
+> [`sito/`](sito/README.md): documento narrativo con nove storie, più
 > `metodologia.html` e `dati.html`. Mezzo mega, autocontenuto, mappe e grafici
 > in SVG disegnati a mano. Si costruisce con `python sito/costruisci.py`.
 >
@@ -683,7 +683,7 @@ progetto, e vale anche per lo strumento.
 Cosa fa la pagina:
 
 - **tutti e diciannove gli indicatori** del registro, raggruppati per tema, e
-  non i quindici che le otto storie citano. La lista non è scritta nel modello:
+  non i quindici che le nove storie citano. La lista non è scritta nel modello:
   `metriche_esplora()` legge `metrics.json` e prende quelli `live`, così un
   indicatore nuovo compare da solo. È la §6.2 presa sul serio;
 - **l'anno**, per gli indicatori che ne hanno più di uno, fino ai ventidue

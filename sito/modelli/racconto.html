@@ -43,6 +43,7 @@
     <a href="#aria">6 · L'aria e il clima</a>
     <a href="#turismo">7 · La decima provincia turistica</a>
     <a href="#casa">8 · La casa</a>
+    <a href="#salari">9 · Gli stipendi</a>
     <a href="#limiti">Cosa non si può dire</a>
     <a class="pagina" href="esplora.html">Esplora</a>
     <a class="pagina" href="metodologia.html">Metodo</a>
@@ -114,6 +115,9 @@
         <li><strong>La casa costa come nel {{c:casa_anno_primo}} e vale un terzo in meno.</strong>
           In euro correnti il metro quadro del capoluogo fa {{c:casa_nominale}} in ventun anni; in
           euro di oggi fa {{c:casa_reale}}, mentre le compravendite {{c:casa_ntn_variazione}}.</li>
+        <li><strong>E gli stipendi fanno lo stesso.</strong> {{c:sal_nominale}} in
+          {{c:sal_anni}} anni, il {{c:sal_reale_nudo}} in meno una volta scontati i prezzi. Non è
+          bresciano: sono {{c:sal_province_in_calo}} province su {{c:sal_province}}.</li>
       </ul>
     </div>
   </div></div>
@@ -242,15 +246,15 @@
         </div>
       </details>
 
-      <p>Il censimento dice la stessa cosa in un altro modo, e più duramente. Le barre qui sopra
-      contano i <em>movimenti</em> di ogni anno; il censimento conta <strong>chi c'è al 31
-      dicembre</strong>, e con quale cittadinanza. Fra il {{c:bg_anno_iniziale}} e il
-      {{c:bg_anno_finale}} la provincia guadagna {{c:bg_var_popolazione}} residenti, ma gli
-      italiani <em>dalla nascita</em> <strong>calano di {{c:bg_calo_dalla_nascita}}</strong> e gli
-      italiani <em>per acquisizione</em> crescono di {{c:bg_var_acquisiti}}, quasi il doppio della
-      crescita totale. Oggi il {{c:bg_quota_background}} dei residenti è straniero o italiano per
-      acquisizione: {{c:bg_quota_capoluogo}} nel capoluogo, {{c:bg_quota_mediana}} nel comune
-      mediano, fino a {{c:bg_quota_massima}} a {{c:bg_comune_massimo}}.</p>
+      <p>Il censimento lo dice più duramente. Le barre qui sopra contano i <em>movimenti</em>
+      dell'anno; il censimento conta <strong>chi c'è al 31 dicembre</strong>, e con quale
+      cittadinanza. Fra il {{c:bg_anno_iniziale}} e il {{c:bg_anno_finale}} la provincia guadagna
+      {{c:bg_var_popolazione}} residenti, ma gli italiani <em>dalla nascita</em>
+      <strong>calano di {{c:bg_calo_dalla_nascita}}</strong> e quelli <em>per acquisizione</em>
+      crescono di {{c:bg_var_acquisiti}}: quasi il doppio della crescita totale. Oggi il
+      {{c:bg_quota_background}} dei residenti è straniero o italiano per acquisizione,
+      {{c:bg_quota_capoluogo}} nel capoluogo e fino a {{c:bg_quota_massima}} a
+      {{c:bg_comune_massimo}}.</p>
 
       <details class="metric-expl">
         <summary><span class="me-lab">attenzione</span>
@@ -261,19 +265,19 @@
           due anni</b>, cioè un conteggio immobile. Nello stesso biennio
           {{c:bg_var_acquisiti}} persone hanno <em>lasciato</em> quel conteggio prendendo la
           cittadinanza italiana.</p>
-          <p>Un livello costante con due rubinetti aperti non è un livello fermo, ed è il motivo
-          per cui questa pagina non scrive «gli stranieri sono stabili»: sarebbe un numero esatto e
-          una descrizione falsa. Quanti siano entrati non si legge da qui, perché nascite, decessi
-          e partenze muovono lo stesso stock: per i flussi ci sono le barre qui sopra.</p>
+          <p>Un livello costante con due rubinetti aperti non è fermo, ed è il motivo per cui questa
+          pagina non scrive «gli stranieri sono stabili»: numero esatto, descrizione falsa. Quanti
+          siano entrati non si legge da qui: nascite, decessi e partenze muovono lo stesso
+          stock.</p>
         </div>
       </details>
 
-      <p>Sui {{c:comuni_in_calo}} comuni che perdono abitanti la risposta è ancora più netta, e
-      ribalta la parola. Sommati, quei comuni perdono {{c:comuni_in_calo_naturale}} persone per
-      saldo naturale e <strong>{{c:comuni_in_calo_interna}} per migrazione interna</strong>: la
-      seconda cifra non è piccola, è quasi zero. Chi ci abita <em>non</em> se ne sta andando. In
-      {{c:comuni_calo_per_naturale}} di quei comuni la componente che tira più giù è il saldo
-      naturale, in {{c:comuni_calo_per_interna}} la migrazione interna.</p>
+      <p>Sui {{c:comuni_in_calo}} comuni che perdono abitanti la risposta ribalta la parola.
+      Sommati, perdono {{c:comuni_in_calo_naturale}} persone per saldo naturale e
+      <strong>{{c:comuni_in_calo_interna}} per migrazione interna</strong>: la seconda non è
+      piccola, è quasi zero. Chi ci abita <em>non</em> se ne sta andando. A tirare più giù è il
+      saldo naturale in {{c:comuni_calo_per_naturale}} di quei comuni, la migrazione interna in
+      {{c:comuni_calo_per_interna}}.</p>
 
       <figure class="fig">
         <h3>Le due componenti, comune per comune</h3>
@@ -289,22 +293,20 @@
       montagna bresciana: fra le {{c:province_confrontate}} province italiane è positivo in
       <strong>{{c:province_naturale_positivo}}</strong>.</p>
 
-      <p>Che è anche il modo di rispondere alla domanda che questa storia non poteva porsi: la
-      provincia di Brescia si svuota più o meno delle altre? <strong>Meno.</strong> Su
-      {{c:province_confrontate}} province Brescia è la <strong>{{c:rango_crescita_provincia}}ª per
-      crescita</strong> ({{c:crescita_provinciale_mille}} abitanti ogni mille contro una mediana
-      di −{{c:mediana_province_mille}}), e solo {{c:province_in_crescita}} province italiane
-      crescono. Anche il suo saldo naturale, per quanto negativo, è il
-      {{c:rango_naturale_provincia}}º migliore d'Italia: −{{c:naturale_provinciale_mille}} contro
-      una mediana di −{{c:mediana_naturale_mille}}. Quello che distingue Brescia non è che qui si
-      faccia più figli, perché non se ne fanno: è quanta gente arriva.</p>
+      <p>Che risponde anche alla domanda che questa storia non poteva porsi: Brescia si svuota più
+      o meno delle altre? <strong>Meno.</strong> Su {{c:province_confrontate}} province è la
+      <strong>{{c:rango_crescita_provincia}}ª per crescita</strong>
+      ({{c:crescita_provinciale_mille}} abitanti ogni mille contro una mediana di
+      −{{c:mediana_province_mille}}), e solo {{c:province_in_crescita}} crescono. Anche il saldo
+      naturale, per quanto negativo, è il {{c:rango_naturale_provincia}}º d'Italia:
+      −{{c:naturale_provinciale_mille}} contro −{{c:mediana_naturale_mille}}. A distinguerla non
+      sono i figli, che non si fanno: è quanta gente arriva.</p>
 
       <div class="takeaway">
         <span class="t-lab">In una riga</span>
-        <p>Metà provincia si svuota, in una fascia continua di montagna, mentre l'altra metà
-        cresce attorno alla città e al lago. Ma non si svuota perché la gente se ne va: si svuota
-        perché ci muore più gente di quanta ne nasca, e la provincia sta in piedi solo perché
-        qualcun altro arriva.</p>
+        <p>Metà provincia si svuota, in una fascia continua di montagna, mentre l'altra cresce
+        attorno alla città e al lago. Ma non perché la gente se ne vada: perché ci muore più gente
+        di quanta ne nasca, e la provincia sta in piedi solo perché qualcun altro arriva.</p>
       </div>
 
       <p class="conf"><span class="dot osservato"></span><b>osservato</b> · ISTAT: popolazione
@@ -340,14 +342,13 @@
     cresce <strong>di più dove partiva basso</strong>.</p>
 
     <p>«Quasi», e non «ovunque», per una ragione che questa pagina ha potuto scrivere solo
-    dall'<a href="#casa">ottava storia</a> in poi: quel
-    {{c:crescita_reddito_mediana}} è in <strong>euro correnti</strong>, e nello stesso periodo i
-    prezzi al consumo sono saliti del {{c:reddito_inflazione}}. Al netto dell'inflazione la
-    mediana comunale scende a <strong>{{c:reddito_crescita_reale_mediana}} l'anno</strong>, e
+    dall'<a href="#casa">ottava storia</a> in poi: quel {{c:crescita_reddito_mediana}} è in
+    <strong>euro correnti</strong>, e nello stesso periodo i prezzi sono saliti del
+    {{c:reddito_inflazione}}. Al netto dell'inflazione la mediana scende a
+    <strong>{{c:reddito_crescita_reale_mediana}} l'anno</strong>, e
     <strong>{{c:reddito_comuni_in_calo_reale}} comuni su {{c:reddito_comuni_reale}}</strong>
-    perdono potere d'acquisto invece di guadagnarne. La convergenza resta quella che è, perché è
-    una relazione fra comuni e l'inflazione è la stessa per tutti, ma la frase «i redditi
-    crescono» non regge da sola.</p>
+    perdono potere d'acquisto. La convergenza regge, perché è una relazione fra comuni e
+    l'inflazione è la stessa per tutti; la frase «i redditi crescono» no.</p>
 
     <figure class="fig">
       <h3>Reddito di partenza e crescita successiva</h3>
@@ -615,11 +616,11 @@
     <p class="question">Quando un numero descrive un luogo e quando descrive semplicemente il
     paese in cui quel luogo si trova?</p>
 
-    <p>Fin qui abbiamo misurato Brescia contro sé stessa. È il modo in cui si scrivono quasi tutti
-    i ritratti di territorio, ed è il modo in cui si prende per caratteristica di un posto quello
-    che è la normalità di un paese. Le fonti usate qui coprono l'Italia intera, quindi la verifica
-    costa poco, e il risultato ci ha costretto a riscrivere una frase che questo progetto
-    ripeteva dal primo giorno.</p>
+    <p>Fin qui abbiamo misurato Brescia contro sé stessa: è così che si scrivono quasi tutti i
+    ritratti di territorio, ed è così che si prende per caratteristica di un posto quella che è la
+    normalità di un paese. Le fonti qui coprono l'Italia intera, quindi la verifica costa poco, e
+    il risultato ci ha costretti a riscrivere una frase che il progetto ripeteva dal primo
+    giorno.</p>
 
     <figure class="fig">
       <h3>Dove sta Brescia fra le province italiane</h3>
@@ -690,14 +691,13 @@
     <p class="question">Sono le due serie più lunghe di questo progetto e raccontano cose
     opposte. Come fa la stessa provincia a migliorare e a peggiorare insieme?</p>
 
-    <p>Tutto quello che avete letto fin qui dura sei anni, o dodici nel caso dei redditi. Qui i
-    dati cominciano quando il resto del progetto non esisteva: l'aria dal {{c:no2_anno_i}}, la
-    temperatura da prima ancora. Sono anche gli unici dati che non hanno per unità il comune, e
-    non per una scelta di comodo: <strong>l'unità qui è la centralina</strong>. In vent'anni ne
-    sono esistite in {{c:aria_comuni}} comuni su {{c:comuni}}: {{c:aria_stazioni_capoluogo}} nel
-    solo capoluogo, una per ciascuno degli altri, e nessuna negli altri
-    {{c:aria_comuni_senza}}. Non c'è quindi nessuna mappa da disegnare, e disegnarla comunque
-    significherebbe colorare una manciata di comuni e lasciare grigia una provincia.</p>
+    <p>Tutto quello che avete letto fin qui dura sei anni, dodici sui redditi. Qui i dati
+    cominciano quando il resto del progetto non esisteva: l'aria dal {{c:no2_anno_i}}, la
+    temperatura da prima. E sono gli unici la cui unità non è il comune ma
+    <strong>la centralina</strong>: in vent'anni ne sono esistite in {{c:aria_comuni}} comuni su
+    {{c:comuni}}, {{c:aria_stazioni_capoluogo}} nel solo capoluogo e nessuna negli altri
+    {{c:aria_comuni_senza}}. Non c'è nessuna mappa da disegnare: colorerebbe una manciata di
+    comuni e lascerebbe grigia una provincia.</p>
 
     <figure class="fig">
       <h3>Quello che si respira, {{c:no2_anno_i}}–{{c:no2_anno_f}}</h3>
@@ -707,11 +707,11 @@
     </figure>
 
     <p>Due delle tre righe crollano. Il <strong>PM10</strong> passa da {{c:pm10_inizio}} a
-    {{c:pm10_fine}} microgrammi per metro cubo fra i primi e gli ultimi tre anni della serie, cioè
+    {{c:pm10_fine}} microgrammi per metro cubo fra i primi e gli ultimi tre anni,
     {{c:pm10_variazione}}; il <strong>biossido di azoto</strong> da {{c:no2_inizio}} a
-    {{c:no2_fine}}, cioè {{c:no2_variazione}}. Su vent'anni sono i cali più grandi misurati in
-    tutto questo lavoro, e non hanno bisogno di essere interpretati: è quello che le stesse
-    centraline, nello stesso posto, hanno respirato prima e dopo.</p>
+    {{c:no2_fine}}, {{c:no2_variazione}}. Sono i cali più grandi di tutto questo lavoro, e non
+    vanno interpretati: è quello che le stesse centraline, nello stesso posto, hanno respirato
+    prima e dopo.</p>
 
     <div class="keynums">
       <div class="kn"><div class="big">{{c:pm10_variazione}}</div>
@@ -722,30 +722,26 @@
         <div class="lbl">ozono, che è la riga interessante</div></div>
     </div>
 
-    <p>La terza riga è quella che vale la pena guardare: l'<strong>ozono</strong> non si muove.
-    {{c:ozono_variazione}} in vent'anni, che a queste scale vuol dire fermo. Non è un dettaglio
-    tecnico: è il promemoria che «l'aria» non è una cosa sola. Il particolato e il biossido di
-    azoto escono da qualcosa: un camino, un tubo di scappamento, una caldaia. L'ozono no, si forma
-    in atmosfera, e la sua chimica non risponde alle stesse leve. Questa pagina può dire che non
-    scende; <strong>perché</strong> non scenda è una domanda a cui queste tabelle non rispondono, e
-    non ci proviamo.</p>
+    <p>La terza riga è quella da guardare: l'<strong>ozono</strong> non si muove,
+    {{c:ozono_variazione}} in vent'anni. È il promemoria che «l'aria» non è una cosa sola.
+    Particolato e biossido di azoto escono da qualcosa: un camino, un tubo di scappamento, una
+    caldaia. L'ozono si forma in atmosfera, e non risponde alle stesse leve. Questa pagina può dire
+    che non scende; <strong>perché</strong> non scenda, queste tabelle non lo dicono.</p>
 
     <details class="metric-expl">
       <summary><span class="me-lab">la metrica, in chiaro</span>
         <span>Perché contiamo solo le centraline che ci sono sempre</span><span class="me-tgl"></span></summary>
       <div class="me-body">
-        <p>Le centraline aprono e chiudono. Sul PM10 la rete bresciana passa da due stazioni a
-        sette nell'arco della serie, e non sono le stesse: fare ogni anno la media di quelle che
-        ci sono significa misurare <em>anche</em> il cambio della rete e chiamarlo qualità
-        dell'aria. Se le stazioni che aprono stanno in posti più puliti, e tendenzialmente è così
-        perché le prime nascono dove il problema era grosso, il miglioramento si gonfia da
-        solo.</p>
-        <p>Il rimedio è tenere solo le stazioni osservate in <strong>tutti</strong> gli anni della
-        finestra: {{c:pm10_stazioni}} per il PM10, {{c:no2_stazioni}} per il biossido di azoto,
-        {{c:ozono_stazioni}} per l'ozono. Il prezzo è che sono poche e la serie si accorcia; in
-        cambio il numero risponde alla domanda che gli abbiamo fatto. Il conto ingenuo, per
-        cronaca, esagera il calo di qualche punto, e la differenza fra i due è essa stessa un
-        risultato.</p>
+        <p>Le centraline aprono e chiudono. Sul PM10 la rete passa da due stazioni a sette, e non
+        sono le stesse: fare ogni anno la media di quelle che ci sono misura <em>anche</em> il
+        cambio della rete e lo chiama qualità dell'aria. E siccome le prime nascono dove il
+        problema era grosso, quelle che aprono dopo stanno in posti più puliti: il miglioramento
+        si gonfia da solo.</p>
+        <p>Il rimedio è tenere solo le stazioni osservate in <strong>tutti</strong> gli anni:
+        {{c:pm10_stazioni}} per il PM10, {{c:no2_stazioni}} per il biossido di azoto,
+        {{c:ozono_stazioni}} per l'ozono. Sono poche e la serie si accorcia; in cambio il numero
+        risponde alla domanda che gli abbiamo fatto. Il conto ingenuo esagera il calo di qualche
+        punto, e la differenza fra i due è essa stessa un risultato.</p>
         <p>I confronti sono fra <strong>medie di tre anni</strong>, non fra il primo e l'ultimo:
         un singolo anno può essere un inverno ventoso, e una storia non deve poggiare su di
         lui.</p>
@@ -857,13 +853,12 @@
         <div class="lbl">per presenze <em>per abitante</em></div></div>
     </div>
 
-    <p>I tre numeri qui sopra sono lo stesso turismo misurato in tre modi, e vanno letti
-    insieme perché il primo da solo direbbe una cosa falsa. <strong>Brescia è decima perché è
-    grande.</strong> Per abitante fa {{c:tur_per_abitante}} notti contro una mediana di
-    {{c:tur_per_abitante_mediana}}: sopra la media, ma lontanissima dalle province che del
-    turismo vivono. È lo stesso errore che la <a href="#diversa">quinta storia</a> ha trovato
-    sulle imprese, con il segno rovesciato: là un valore relativo faceva sembrare Brescia
-    ordinaria, qui un valore assoluto la fa sembrare eccezionale.</p>
+    <p>I tre numeri qui sopra sono lo stesso turismo misurato in tre modi, e il primo da solo
+    direbbe una cosa falsa. <strong>Brescia è decima perché è grande.</strong> Per abitante fa
+    {{c:tur_per_abitante}} notti contro una mediana di {{c:tur_per_abitante_mediana}}: sopra la
+    media, lontanissima dalle province che di turismo vivono. È l'errore della
+    <a href="#diversa">quinta storia</a> col segno rovesciato: là un valore relativo faceva
+    sembrare Brescia ordinaria, qui un valore assoluto la fa sembrare eccezionale.</p>
 
     <figure class="fig">
       <h3>Dove sta Brescia, fra le {{c:tur_province}} province</h3>
@@ -892,21 +887,21 @@
       <div id="serie-turismo"></div>
     </figure>
 
-    <p>Dal {{c:tur_anno_primo}} le presenze crescono del <strong>{{c:tur_crescita}} l'anno</strong>
-    composto, contro una mediana provinciale che sta sotto l'uno. Ma le due linee del grafico
-    dicono una cosa più precisa della somma: le notti dei clienti <strong>italiani</strong> vanno
-    da {{c:tur_italia_primo}} a {{c:tur_italia_finale}}, cioè {{c:tur_italia_variazione}} in
-    diciassette anni. Ferme. Quelle dei clienti <strong>stranieri</strong> vanno da
-    {{c:tur_estero_primo}} a {{c:tur_estero_finale}}: {{c:tur_estero_variazione}}. La quota estera
-    passa da {{c:tur_estera_primo}} a {{c:tur_estera}} non perché sia arrivato qualcuno in meno
-    dall'Italia, ma perché <strong>tutta la crescita di questa provincia è venuta da fuori</strong>.</p>
+    <p>Dal {{c:tur_anno_primo}} le presenze crescono del <strong>{{c:tur_crescita}} l'anno</strong>,
+    contro una mediana provinciale sotto l'uno. Ma le due linee dicono più della somma: le notti
+    dei clienti <strong>italiani</strong> vanno da {{c:tur_italia_primo}} a
+    {{c:tur_italia_finale}}, {{c:tur_italia_variazione}} in diciassette anni. Ferme. Quelle degli
+    <strong>stranieri</strong> da {{c:tur_estero_primo}} a {{c:tur_estero_finale}}:
+    {{c:tur_estero_variazione}}. La quota estera passa da {{c:tur_estera_primo}} a
+    {{c:tur_estera}} non perché dall'Italia sia arrivato qualcuno in meno, ma perché
+    <strong>tutta la crescita è venuta da fuori</strong>.</p>
 
-    <p>Nel mezzo c'è il {{c:tur_caduta_2020}} del 2020, che è la caduta più profonda misurata in
-    tutto questo lavoro: più di metà delle notti, contro il calo di pochi punti che il 2020 lascia
-    sugli addetti. Una domanda che per tre quarti viene da fuori confine è esattamente quella che
-    i confini chiusi cancellano. Ma il recupero è più rapido della mediana: nel {{c:tur_anno}} la
-    provincia sta {{c:tur_ripresa}} sopra il 2019, mentre {{c:tur_sotto_il_2019}} province su
-    {{c:tur_province}} non hanno ancora riguadagnato il livello di partenza.</p>
+    <p>Nel mezzo c'è il {{c:tur_caduta_2020}} del 2020, la caduta più profonda di tutto questo
+    lavoro: più di metà delle notti, contro i pochi punti che il 2020 lascia sugli addetti. Una
+    domanda che per tre quarti viene da fuori confine è quella che i confini chiusi cancellano. Ma
+    il recupero batte la mediana: nel {{c:tur_anno}} la provincia sta {{c:tur_ripresa}} sopra il
+    2019, mentre {{c:tur_sotto_il_2019}} province su {{c:tur_province}} non ci sono ancora
+    tornate.</p>
 
     <details class="metric-expl">
       <summary><span class="me-lab">la metrica, in chiaro</span>
@@ -940,12 +935,12 @@
         {{c:tur_fonti_scarto_i}} del {{c:tur_fonti_anno_i}} al {{c:tur_fonti_scarto_f}} del
         {{c:tur_fonti_anno_f}}.</p>
         <div id="fonti-turismo"></div>
-        <p>Nessuna delle due è sbagliata: sono due filiere di rilevazione con due perimetri, e
-        stabilire quale sia più vicina al vero richiederebbe la documentazione metodologica delle
-        due, non un'analisi di dati. Quello che si può fare è <strong>non mescolarle</strong>: in
-        questa pagina le cifre comunali vengono tutte dalla prima e il confronto fra province
-        tutto dalla seconda, e un numeratore preso da una con un denominatore preso dall'altra
-        darebbe una quota sbagliata del dieci per cento, che sembrerebbe giusta.</p>
+        <p>Nessuna delle due è sbagliata: sono due filiere con due perimetri, e dire quale sia più
+        vicina al vero richiederebbe la loro documentazione metodologica, non un'analisi. Quello
+        che si può fare è <strong>non mescolarle</strong>: qui le cifre comunali vengono tutte
+        dalla prima e il confronto fra province dalla seconda. Un numeratore preso da una e un
+        denominatore dall'altra darebbero una quota sbagliata del dieci per cento, e
+        plausibile.</p>
       </div>
     </details>
 
@@ -981,13 +976,13 @@
     {{c:casa_anno_primo}} e ne costa {{c:casa_prezzo_ultimo}} oggi. Ventun anni per
     {{c:casa_nominale}}: è un mercato in cui non è successo niente?</p>
 
-    <p>È successo il contrario, e per vederlo basta un numero che a questo progetto è mancato
-    fino a settembre: l'<strong>inflazione</strong>. Fra il {{c:casa_anno_primo}} e il
-    {{c:casa_anno_ultimo}} i prezzi al consumo in Italia sono saliti del
+    <p>È successo il contrario, e per vederlo basta un numero che al progetto mancava fino a
+    settembre: l'<strong>inflazione</strong>. Fra il {{c:casa_anno_primo}} e il
+    {{c:casa_anno_ultimo}} i prezzi al consumo salgono del
     <strong>{{c:casa_inflazione}}</strong>, quindi quei {{c:casa_prezzo_primo}} € del
     {{c:casa_anno_primo}} sono <strong>{{c:casa_prezzo_primo_reale}} € di oggi</strong>. Il metro
-    quadro bresciano non è rimasto fermo: <strong>ha perso {{c:casa_reale}}</strong> del proprio
-    valore. Un mercato che sembra immobile perché lo si guarda con un righello che si accorcia.</p>
+    quadro non è fermo: <strong>ha perso {{c:casa_reale}}</strong>. Un mercato sembra immobile se
+    lo si misura con un righello che si accorcia.</p>
 
     <div class="keynums">
       <div class="kn"><div class="big">{{c:casa_nominale}}</div>
@@ -1066,19 +1061,16 @@
       <summary><span class="me-lab">la metrica, in chiaro</span>
         <span>Da dove viene l'inflazione, e perché non era già qui</span><span class="me-tgl"></span></summary>
       <div class="me-body">
-        <p>Fino a questa storia nessuna cifra in euro di questo progetto era deflazionata, e ogni
-        volta lo diceva: i redditi della <a href="#redditi">seconda storia</a> sono in euro
-        correnti, quindi una parte della loro crescita è inflazione e non si sapeva quanta. Su
-        undici anni era una nota; su <strong>ventuno</strong> è il segno del risultato, e la nota
-        non bastava più.</p>
-        <p>La serie usata è l'indice ISTAT dei prezzi al consumo per l'intera collettività (NIC),
-        medie annue. Ha una trappola che vale la pena raccontare, perché è il genere di errore
-        che non si annuncia: ISTAT lo pubblica in <strong>tre basi diverse che non si
-        sovrappongono in nessun anno</strong>: 1995 = 100 fino al 2010, 2010 = 100 fino al 2015,
-        2015 = 100 da lì. Mettere in colonna quei numeri così come sono e disegnarli produce
-        <strong>due crolli del trenta per cento</strong> che non sono mai avvenuti, e la serie
-        supera qualunque controllo venga in mente: gli anni ci sono tutti, i valori sono positivi,
-        l'indice cresce a tratti.</p>
+        <p>Fino a questa storia nessuna cifra in euro del progetto era deflazionata, e ogni volta lo
+        diceva: i redditi della <a href="#redditi">seconda storia</a> sono in euro correnti,
+        quindi una parte della crescita è inflazione e non si sapeva quanta. Su undici anni era
+        una nota; su <strong>ventuno</strong> è il segno del risultato.</p>
+        <p>La serie è l'indice ISTAT dei prezzi al consumo (NIC), medie annue, e ha una trappola che
+        non si annuncia: ISTAT lo pubblica in <strong>tre basi che non si sovrappongono mai</strong>:
+        1995 = 100 fino al 2010, 2010 = 100 fino al 2015, 2015 = 100 da lì. Incolonnarle così
+        produce <strong>due crolli del trenta per cento</strong> mai avvenuti, e la serie supera
+        ogni controllo che venga in mente: anni tutti presenti, valori positivi, indice crescente a
+        tratti.</p>
         <p>Il raccordo si fa con la <strong>variazione annua</strong> che la stessa fonte
         pubblica: dentro una base valgono i livelli, alle giunzioni vale la variazione. Il
         controllo che tiene in piedi la serie non guarda i livelli, guarda che ogni rapporto fra
@@ -1090,13 +1082,13 @@
       </div>
     </details>
 
-    <p><strong>Dentro la città.</strong> Le quotazioni OMI hanno una grana che a questo progetto
-    è sempre mancata: la <strong>zona</strong>, che è quanto di più vicino a un quartiere ci sia
-    in un dato ufficiale italiano. Permette la domanda che di solito si fa alle città, «il centro
-    si è staccato dalla periferia?», e la risposta bresciana è <strong>no, il contrario</strong>:
-    la forbice fra la zona più cara e la più economica passa da
-    <strong>{{c:casa_forbice_primo}} a {{c:casa_forbice_ultimo}}</strong>. In euro costanti perdono
-    quasi tutte, e chi partiva più caro ha perso di più.</p>
+    <p><strong>Dentro la città.</strong> Le quotazioni OMI portano una grana che al progetto è
+    sempre mancata: la <strong>zona</strong>, quanto di più vicino a un quartiere esista in un
+    dato ufficiale italiano. Permette la domanda che si fa alle città, «il centro si è staccato
+    dalla periferia?», e la risposta bresciana è <strong>il contrario</strong>: la forbice fra la
+    zona più cara e la più economica passa da <strong>{{c:casa_forbice_primo}} a
+    {{c:casa_forbice_ultimo}}</strong>. In euro costanti perdono quasi tutte, e chi partiva più
+    caro ha perso di più.</p>
 
     <figure class="fig">
       <h3>La zona più cara, quella mediana e la più economica</h3>
@@ -1111,13 +1103,12 @@
       <summary><span class="me-lab">controllo</span>
         <span>«La più economica» non è sempre la stessa zona</span><span class="me-tgl"></span></summary>
       <div class="me-body">
-        <p>Le tre linee qui sopra sono <strong>inviluppi</strong>, non tre zone seguite per
-        ventidue annate: il massimo e il minimo si ricalcolano su ogni anno, e la zona che li
-        occupa può cambiare. In cima non cambia mai, ed è sempre
-        <strong>{{c:casa_zona_cima}}</strong>; in fondo si alternano
-        <strong>{{c:casa_zone_in_fondo}} zone</strong>: {{c:casa_zone_fondo_elenco}}. Chi legge
-        la linea di sotto come il percorso di un quartiere sta leggendo una cosa che non c'è, ed è
-        il motivo per cui adesso ogni punto porta accanto il nome della sua zona.</p>
+        <p>Le tre linee qui sopra sono <strong>inviluppi</strong>, non tre zone seguite per ventidue
+        annate: massimo e minimo si ricalcolano ogni anno, e la zona che li occupa può cambiare.
+        In cima non cambia mai, è sempre <strong>{{c:casa_zona_cima}}</strong>; in fondo si
+        alternano <strong>{{c:casa_zone_in_fondo}} zone</strong>: {{c:casa_zone_fondo_elenco}}.
+        Chi legge la linea di sotto come il percorso di un quartiere legge una cosa che non c'è,
+        ed è per questo che ogni punto porta accanto il nome della sua zona.</p>
         <p>È la stessa distinzione con cui la <a href="#aria">sesta storia</a> tratta le
         centraline. Il panel bilanciato tiene ferme <em>quali zone</em> entrano nel confronto; non
         dice nulla su <em>quale</em> stia in cima o in fondo, che è una seconda domanda.</p>
@@ -1133,12 +1124,12 @@
       <summary><span class="me-lab">controllo</span>
         <span>Le zone del {{c:casa_anno_primo}} non sono le zone di oggi</span><span class="me-tgl"></span></summary>
       <div class="me-body">
-        <p>Il capoluogo ha <strong>{{c:casa_zone_ultimo}} zone quotate</strong> in ogni annata
-        della serie, e sembrerebbe una rete stabile su cui calcolare medie per ventun anni. Non
-        lo è: nel <strong>{{c:casa_zone_anno_rifatta}}</strong> la zonizzazione viene rifatta,
-        dieci perimetri finiscono e dieci ne cominciano. Le zone restano
-        {{c:casa_zone_ultimo}} ma non sono le stesse {{c:casa_zone_ultimo}}, e una media annua
-        calcolata su «quelle che ci sono» misurerebbe anche il cambio di perimetro.</p>
+        <p>Il capoluogo ha <strong>{{c:casa_zone_ultimo}} zone quotate</strong> in ogni annata, e
+        sembrerebbe una rete stabile. Non lo è: nel
+        <strong>{{c:casa_zone_anno_rifatta}}</strong> la zonizzazione viene rifatta, dieci
+        perimetri finiscono e dieci cominciano. Le zone restano {{c:casa_zone_ultimo}} ma non sono
+        le stesse, e una media su «quelle che ci sono» misurerebbe anche il cambio di
+        perimetro.</p>
         <p>Il confronto lungo si fa quindi sulle <strong>{{c:casa_zone_panel}} zone presenti in
         tutte le annate</strong>, che è la stessa disciplina con cui la
         <a href="#aria">sesta storia</a> tratta le centraline: su una rete che apre e chiude
@@ -1146,13 +1137,13 @@
       </div>
     </details>
 
-    <p><strong>Fuori dalla città</strong> il quadro è più netto che dentro. Su
+    <p><strong>Fuori dalla città</strong> il quadro è più netto. Su
     {{c:casa_comuni_variazione}} comuni quotati, <strong>{{c:casa_comuni_in_calo}} perdono valore
-    reale</strong>, con una mediana di {{c:casa_variazione_mediana}} l'anno; i pochi che
-    guadagnano sono il lago e l'alta montagna: {{c:casa_comuni_in_crescita}}. Non è una crisi
-    bresciana: è ventun anni di prezzi delle case che non tengono il passo dei prezzi di tutto
-    il resto, in un territorio che nel frattempo <a href="#svuota">si è svuotato a monte</a> e
-    <a href="#redditi">ha visto i redditi avvicinarsi</a>.</p>
+    reale</strong>, mediana {{c:casa_variazione_mediana}} l'anno; i pochi che guadagnano sono il
+    lago e l'alta montagna: {{c:casa_comuni_in_crescita}}. Non è una crisi bresciana: sono ventun
+    anni di case che non tengono il passo di tutto il resto, in un territorio che intanto
+    <a href="#svuota">si è svuotato a monte</a> e <a href="#redditi">ha visto i redditi
+    avvicinarsi</a>.</p>
 
     <figure class="fig">
       <h3>Dove la casa ha perso di più</h3>
@@ -1164,16 +1155,15 @@
       <div id="mappa-casa"></div>
     </figure>
 
-    <p>La geografia del <em>livello</em>, invece, è quella che questa pagina ha già incontrato due
-    volte. Il metro quadro più caro della provincia è a <strong>{{c:casa_comune_caro}}</strong>
+    <p>La geografia del <em>livello</em> è quella che questa pagina ha già incontrato due volte.
+    Il metro quadro più caro è a <strong>{{c:casa_comune_caro}}</strong>
     ({{c:casa_prezzo_caro}} €), il più economico a {{c:casa_comune_economico}}
     ({{c:casa_prezzo_economico}} €): <strong>{{c:casa_rapporto_estremi}} volte</strong>. Il
     capoluogo è <strong>{{c:casa_rango_capoluogo}}º</strong> su {{c:casa_comuni_quotati}} con
     {{c:casa_prezzo_capoluogo}} €/m². Il vertice non è la città: è il Garda e la montagna del
-    turismo, cioè <a href="#economie">la stessa divisione della quarta storia</a> vista dal lato
-    della casa. Il prezzo si accompagna al reddito comunale
-    ({{c:casa_correlazione_reddito}} di correlazione), il che è quanto di più prevedibile, ma
-    resta una relazione <strong>fra comuni</strong>, non fra persone.</p>
+    turismo, cioè <a href="#economie">la quarta storia</a> vista dal lato della casa. Il prezzo
+    segue il reddito comunale ({{c:casa_correlazione_reddito}}), il che è prevedibile, ma è una
+    relazione <strong>fra comuni</strong>, non fra persone.</p>
 
     <div class="takeaway">
       <span class="t-lab">In una riga</span>
@@ -1190,6 +1180,101 @@
     base · Gli euro costanti sono deflazionati con l'indice <b>nazionale</b> ·
     {{c:casa_comuni_quotati}} comuni su {{c:comuni}}: {{c:casa_comuni_assenti}} non sono nella
     fonte dal 2016.</p>
+
+    <p class="nextcap">Lo stesso divario, su quello che si guadagna.
+    <a href="#salari">→ Gli stipendi sono saliti, e valgono meno</a></p>
+  </div></div>
+</section>
+
+<section class="story s9" id="salari">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">9</div>
+      <div>
+        <p class="eyebrow">Retribuzioni · {{c:sal_anno_primo}}–{{c:sal_anno_ultimo}}</p>
+        <h2 class="story-title">Gli stipendi sono saliti del {{c:sal_nominale_nudo}}, e valgono
+        il {{c:sal_reale_nudo}} in meno</h2>
+      </div>
+    </div>
+    <p class="question">Le retribuzioni crescono quasi ogni anno da sedici anni. Perché non si
+    vede?</p>
+
+    <p>Un dipendente bresciano guadagnava <strong>{{c:sal_corrente_primo}} euro</strong> l'anno
+    nel {{c:sal_anno_primo}} e ne guadagna <strong>{{c:sal_corrente_ultimo}}</strong> nel
+    {{c:sal_anno_ultimo}}: <strong>{{c:sal_nominale}}</strong>. È il numero che si può citare, ed
+    è vero.</p>
+
+    <p>Nello stesso periodo i prezzi al consumo salgono del {{c:sal_inflazione}}. In euro di oggi
+    quei {{c:sal_corrente_primo}} del {{c:sal_anno_primo}} valevano
+    <strong>{{c:sal_reale_primo}}</strong>: la retribuzione di oggi ne vale
+    <strong>il {{c:sal_reale_nudo}} in meno</strong>. Le due frasi descrivono la stessa busta
+    paga.</p>
+
+    <figure class="fig">
+      <h3>Sedici anni di retribuzione media, in due modi</h3>
+      <p class="cap">Retribuzione annua per dipendente privato non agricolo in provincia di
+      Brescia, in euro correnti e in euro del {{c:sal_anno_ultimo}}. Le due linee si toccano
+      nell'ultimo anno perché lì l'inflazione da scontare è zero.</p>
+      <div id="serie-salari"></div>
+    </figure>
+
+    <p>La forma conta più della cifra. In euro costanti la retribuzione sta
+    <strong>ferma per {{c:sal_anni_prima}} anni</strong>: {{c:sal_reale_primo}} nel
+    {{c:sal_anno_primo}}, {{c:sal_reale_svolta}} nel {{c:sal_anno_svolta}}. Poi ne perde
+    <strong>il {{c:sal_reale_dopo_nudo}}</strong> in {{c:sal_anni_dopo}} anni. Dal massimo del
+    {{c:sal_anno_picco}} manca il {{c:sal_dal_picco_nudo}}.</p>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">controllo</span>
+        <span>Non è che si lavorano meno giorni?</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>La retribuzione annua conta anche chi ha lavorato un mese solo, quindi più part-time e
+        contratti più corti la farebbero scendere <em>senza</em> che nessuno venga pagato di
+        meno. È la lettura alternativa, e va misurata.</p>
+        <p><b>Non regge.</b> Le giornate retribuite per lavoratore vanno da
+        {{c:sal_giornate_primo}} a {{c:sal_giornate_ultimo}}: ferme. E la retribuzione
+        <b>giornaliera</b> in euro di oggi fa {{c:sal_giornaliera_primo}} €
+        → {{c:sal_giornaliera_ultimo}} €, cioè {{c:sal_giornaliera_reale}}: lo stesso calo
+        dell'annua. A scendere non è il tempo lavorato, è il prezzo di una giornata.</p>
+      </div>
+    </details>
+
+    <p>E non è bresciano. Su {{c:sal_province}} province con entrambi gli estremi,
+    <strong>{{c:sal_province_in_calo}} chiudono più in basso di come hanno aperto</strong>, con
+    una mediana di {{c:sal_mediana_province}}. L'unica che cresce è
+    <strong>{{c:sal_provincia_migliore}}</strong>, di {{c:sal_migliore}}; la peggiore è
+    {{c:sal_provincia_peggiore}}, a {{c:sal_peggiore}}. Brescia sta a
+    {{c:sal_brescia_variazione}}, <strong>{{c:sal_rango_variazione}}ª</strong>: sopra la mediana,
+    e comunque sotto zero.</p>
+
+    <figure class="fig">
+      <h3>Le province italiane, variazione reale {{c:sal_anno_primo}}–{{c:sal_anno_ultimo}}</h3>
+      <p class="cap">Ogni punto è una provincia. La posizione verticale non significa niente:
+      serve solo a non sovrapporre i punti vicini.</p>
+      <div id="sciame-salari"></div>
+    </figure>
+
+    <p>È la terza volta che questa pagina incontra lo stesso divario. La
+    <a href="#redditi">seconda storia</a> lo ha trovato sui redditi dichiarati, l'<a href="#casa">ottava</a>
+    sul prezzo delle case, questa sulle buste paga: tre misure diverse, tre fonti diverse, la
+    stessa distanza fra quello che è scritto e quello che compra. Il deflatore è entrato in
+    questo progetto per l'ottava storia; a quel punto le altre due erano già da riscrivere.</p>
+
+    <div class="takeaway">
+      <span class="t-lab">In una riga</span>
+      <p>Le retribuzioni bresciane crescono del {{c:sal_nominale_nudo}} in
+      {{c:sal_anni}} anni e comprano il {{c:sal_reale_nudo}} in meno. Non è part-time e non è
+      Brescia: sono {{c:sal_province_in_calo}} province italiane su {{c:sal_province}}.</p>
+    </div>
+
+    <p class="conf"><span class="dot derivato"></span><b>derivato</b> · INPS, Osservatori
+    statistici; ISTAT: indice dei prezzi al consumo (NIC) · Il perimetro è <b>dipendenti privati
+    non agricoli</b>: non sono tutti i lavoratori, e questa tabella non si somma agli addetti del
+    registro delle imprese né ai contribuenti del MEF · La retribuzione media è un rapporto fra
+    due conteggi della fonte, non una stima · Gli euro costanti sono deflazionati con l'indice
+    <b>nazionale</b> · {{c:sal_province}} province su {{c:sal_province_livello}} nel confronto:
+    quelle nate dopo il 2004 non hanno il {{c:sal_anno_primo}} · Il taglio per settore non c'è:
+    l'API della fonte lo espone con un identificativo non documentato.</p>
 
     <p class="nextcap">Resta la parte che di solito non si scrive.
     <a href="#limiti">→ Cosa questi dati non permettono di dire</a></p>
@@ -1217,32 +1302,31 @@
       diventare più ricco perché chi ci vive guadagna di più o perché ci si trasferisce gente più
       ricca. Con dati aggregati per comune i due casi sono indistinguibili.</li>
       <li><strong>Il confronto non copre l'aria.</strong> Brescia è collocata fra le
-      {{c:province_confrontate}} province italiane sul registro delle imprese, sulla demografia e
-      sui flussi turistici, e la convergenza dei redditi è stata replicata su Bergamo. Sull'aria
-      non si può: l'unità osservata è la centralina, non il comune, e le reti delle altre province
-      non sono confrontabili con questa. La sesta storia resta quindi misurata contro sé stessa.</li>
-      <li><strong>Il turismo ha due fonti, e non danno lo stesso numero.</strong> I comuni vengono
-      da Regione Lombardia, il confronto fra province da ISTAT, e sulle presenze provinciali del
-      {{c:anno_pop_finale}} le due distano il 10,6 %, una distanza che cresce di anno in anno.
-      Nessuna delle due è sbagliata: sono due rilevazioni con due perimetri. In questo sito le
-      cifre comunali vengono tutte dalla prima, e non si mescolano con la seconda.</li>
+      {{c:province_confrontate}} province su imprese, demografia, turismo e retribuzioni, e la
+      convergenza dei redditi è replicata su Bergamo. Sull'aria no: l'unità è la centralina, non
+      il comune, e le reti delle altre province non sono confrontabili. La sesta storia resta
+      misurata contro sé stessa.</li>
+      <li><strong>Il turismo ha due fonti, e non danno lo stesso numero.</strong> I comuni vengono da
+      Regione Lombardia, il confronto fra province da ISTAT: sulle presenze provinciali del
+      {{c:anno_pop_finale}} distano il 10,6 %, e la distanza cresce ogni anno. Sono due
+      rilevazioni con due perimetri, nessuna sbagliata. Qui le cifre comunali vengono tutte dalla
+      prima e non si mescolano con la seconda.</li>
       <li><strong>L'aggiustamento statistico non si sa a cosa attribuirlo.</strong> Vale
       {{c:aggiustamento_provinciale}} persone in sei anni, abbastanza da cambiare il segno di un
       comune piccolo, ed è una rettifica anagrafica, non un fenomeno. Qui resta una voce a parte
       proprio perché non si può dire di quale movimento reale sia il residuo.</li>
-      <li><strong>Le quotazioni non sono prezzi di vendita.</strong> Questa voce diceva «niente
-      sui prezzi delle case», e dall'ottava storia in poi era falsa: le quotazioni ufficiali sono
-      arrivate. Resta però il limite vero, che l'Agenzia dichiara da sé chiamandole «indicazioni
-      di valore di larga massima»: sono <em>quotazioni</em> per zona, non transazioni, e nessuna
-      di quelle cifre è il prezzo a cui una casa è passata di mano.</li>
+      <li><strong>Le quotazioni non sono prezzi di vendita.</strong> Questa voce diceva «niente sui
+      prezzi delle case», e dall'ottava storia era falsa. Resta il limite vero, che l'Agenzia
+      dichiara da sé chiamandole «indicazioni di valore di larga massima»: sono
+      <em>quotazioni</em> per zona, e nessuna è il prezzo a cui una casa è passata di mano.</li>
 
-      <li><strong>Stock e flussi non si sottraggono.</strong> La prima storia porta due misure
-      dello stesso fenomeno: le componenti annuali del bilancio anagrafico
-      ({{c:anno_pop_iniziale}}–{{c:anno_pop_finale}}) e lo stock censuario per cittadinanza
-      ({{c:bg_anno_iniziale}}–{{c:bg_anno_finale}}). Sono due rilevazioni con due perimetri e due
-      intervalli: stanno accanto perché si confermano, ma una cifra dell'una meno una cifra
-      dell'altra non è nulla. In particolare i {{c:bg_var_acquisiti}} nuovi cittadini non sono
-      persone <em>arrivate</em>: erano già qui, e hanno cambiato riga.</li>
+      <li><strong>Stock e flussi non si sottraggono.</strong> La prima storia porta due misure dello
+      stesso fenomeno: le componenti annuali del bilancio anagrafico
+      ({{c:anno_pop_iniziale}}–{{c:anno_pop_finale}}) e lo stock censuario
+      ({{c:bg_anno_iniziale}}–{{c:bg_anno_finale}}). Due perimetri e due intervalli: stanno
+      accanto perché si confermano, ma una cifra dell'una meno una dell'altra non è nulla. I
+      {{c:bg_var_acquisiti}} nuovi cittadini non sono persone <em>arrivate</em>: erano già qui, e
+      hanno cambiato riga.</li>
 
       <li><strong>Sul background migratorio si sa chi, non quando.</strong> Il censimento dice
       quanti residenti sono nati all'estero e con quale cittadinanza, non da quanti anni sono qui.
@@ -1253,16 +1337,18 @@
       <li><strong>Niente agricoltura, e non è un dettaglio.</strong> Il registro delle imprese non
       la osserva, quindi in tutta la parte settoriale i comuni della Bassa appaiono meno
       specializzati di quanto siano.</li>
-      <li><strong>Nulla su singole persone o singole imprese.</strong> Tutte le fonti sono
-      aggregate, e dove il numero è troppo piccolo la fonte lo sopprime: sulle presenze turistiche
-      del {{c:anno_pop_finale}} mancano decine di comuni, e <strong>un dato mancante non è uno
-      zero</strong>.</li>
-      <li><strong>L'aria si misura dove c'è una centralina.</strong> Le stazioni sono poche e
-      non stanno a caso: nascono dove il problema era grosso. Dicono cosa hanno respirato loro, non
-      cosa respira la provincia, e per {{c:comuni}} comuni meno una manciata non c'è nessun dato.
-      Nessuna delle variazioni di quella sezione è attribuita a una causa: la meteorologia governa
-      la dispersione degli inquinanti quanto le emissioni, e separarle richiederebbe una
-      normalizzazione che queste medie mensili non sostengono.</li>
+      <li><strong>Nulla su singole persone o singole imprese.</strong> Tutte le tabelle pubblicate
+      qui sono aggregate, e dove il numero è troppo piccolo la fonte lo sopprime: sulle presenze
+      turistiche del {{c:anno_pop_finale}} mancano decine di comuni, e <strong>un dato mancante
+      non è uno zero</strong>. Una fonte fa eccezione a monte: l'INAIL pubblica un record per
+      singolo infortunio, e la pipeline lo <strong>aggrega prima di scrivere</strong> proprio
+      perché questa riga resti vera.</li>
+      <li><strong>L'aria si misura dove c'è una centralina.</strong> Le stazioni sono poche e non
+      stanno a caso: nascono dove il problema era grosso. Dicono cosa hanno respirato loro, non
+      cosa respira la provincia, e per quasi tutti i {{c:comuni}} comuni non c'è nessun dato.
+      Nessuna variazione è attribuita a una causa: la meteorologia governa la dispersione quanto
+      le emissioni, e separarle richiede una normalizzazione che queste medie mensili non
+      sostengono.</li>
       <li><strong>Sulla pioggia non sappiamo.</strong> Stessa fonte e stesso metodo della
       temperatura, e il segno non è concorde: {{c:pioggia_in_aumento}} stazioni in aumento e
       {{c:pioggia_in_calo}} in calo su {{c:pioggia_stazioni}}. È scritto nella sesta storia invece
@@ -1675,6 +1761,32 @@
       etichettaY: "scostamento (°C)",
       colonnaNota: "stazioni",
       descrizione: "Scostamento annuo della temperatura media dalla base 2004-2013, una colonna per anno"
+    });
+  }
+
+  // --- storia 9: i salari -----------------------------------------------
+  var salari = DATI.salari;
+  if (salari && salari.anni && salari.anni.length) {
+    /* Le due linee si toccano nell'ultimo anno per costruzione, come nell'ottava
+       storia: li' l'inflazione da scontare e' zero. */
+    G.serie(document.getElementById("serie-salari"), {
+      periodi: salari.anni,
+      unita: "€",
+      linee: [
+        { nome: "euro " + salari.anno_base, valori: salari.reali },
+        { nome: "euro correnti", valori: salari.correnti }
+      ],
+      descrizione: "Retribuzione annua media dei dipendenti privati non agricoli in provincia di Brescia, in euro correnti e costanti"
+    });
+
+    G.sciame(document.getElementById("sciame-salari"), {
+      valori: salari.variazioni,
+      nomi: salari.nomi,
+      evidenziati: { "017": "Brescia", "015": "Milano" },
+      mediana: salari.mediana_variazione,
+      etichetta: "variazione reale " + salari.anni[0] + "–" + salari.anno_base + " (%)",
+      decimali: 1,
+      descrizione: "Distribuzione delle province italiane per variazione reale della retribuzione media"
     });
   }
 

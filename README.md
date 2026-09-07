@@ -10,7 +10,7 @@ monte.
 
 **Stato: tutti e cinque i temi hanno la loro storia, e i quattro assi economici
 hanno anche un termine di paragone nazionale.** Dati scaricati e
-puliti in **31 tabelle**, quindici analisi fatte, otto storie scritte in un
+puliti in **39 tabelle**, sedici analisi fatte, nove storie scritte in un
 documento narrativo autocontenuto ([`sito/`](sito/README.md)) che si costruisce
 da solo e ha già il suo workflow di pubblicazione. La licenza è scelta (MIT per
 il codice, CC BY 4.0 per testi e dati: vedi in fondo).
@@ -34,7 +34,7 @@ si sovrappongono (`indice_prezzi.csv`, MET-20). Ed è anche **l'ottava storia de
 
 | | Cosa | Tempo |
 |---|---|---|
-| 🙋 | **Rileggere i testi del sito** — sono otto storie, e nessuno script controlla se una frase dice più di quanto il dato sostenga | 1 h |
+| 🙋 | **Rileggere i testi del sito** — sono nove storie, e nessuno script controlla se una frase dice più di quanto il dato sostenga | 1 h |
 | 🙋 | **Pubblicare**, quando sarai pronto: *Actions → «Pubblica il sito» → Run workflow → conferma = `pubblica`* | 1 min |
 
 ✅ **La sorgente di Pages è su «GitHub Actions»** (4 settembre 2026). Era il
@@ -124,7 +124,7 @@ l'export a mano del commercio estero provinciale.
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 39 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, **retribuzioni**, **infortuni sul lavoro**, ambiente, sicurezza, turismo, **università**, **background migratorio** e — da settembre 2026 — **quotazioni immobiliari OMI in due grane, più i volumi di compravendita comunali e quelli provinciali trimestrali**, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no, con l'eccezione degli **input curati** in `dati/input/`, che nessun URL restituisce. |
 | [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: diciassette script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
-| [`sito/`](sito/README.md) | **Il documento narrativo e lo strumento**: otto storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`; accanto, `esplora.html`, che mette tutti e **diciannove** gli indicatori su tutti i comuni e lascia scegliere a chi legge. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
+| [`sito/`](sito/README.md) | **Il documento narrativo e lo strumento**: nove storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`; accanto, `esplora.html`, che mette tutti e **diciannove** gli indicatori su tutti i comuni e lascia scegliere a chi legge. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
 ## Come leggere il registro
 

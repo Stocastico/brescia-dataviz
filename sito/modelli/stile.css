@@ -74,6 +74,27 @@
      accanto a una di loro, la regola andrebbe rinegoziata invece che
      riapplicata — e questa riga e' li' per ricordarlo. */
   --alloro:#3c8235; --alloro-d:#2d5d28;
+  /* Il nono, settembre 2026. La regola dice ancora dove va — il buco piu' largo
+     rimasto e' fra mare (196°) e viola (255°), 59 gradi, mezzo a 226° — ma
+     **questa volta la regola ha finito lo spazio, e va detto invece di
+     nasconderlo**: 226° dista 30 gradi dal mare e 29 dal viola, mentre la coppia
+     piu' stretta della famiglia ne aveva 40. E' il primo colore piu' vicino ai
+     suoi vicini di quanto lo siano gia' due colori fra loro.
+
+     Regge per la stessa ragione dei tre verdi, ed e' la ragione scritta sopra
+     l'alloro: **conta la vicinanza in pagina, non nella ruota**. La nona storia
+     segue l'ottava, che e' verde; mare e viola sono la seconda e la quinta, e
+     non si toccano mai con lei.
+
+     ⚠️ Il decimo colore non si sceglie riapplicando questa regola. Lo spazio di
+     tinta e' pieno: o si rinegozia la famiglia, o si differenzia per
+     luminosita' invece che per tinta. Questa riga e' li' per non farlo scoprire
+     a qualcun altro fra sei mesi.
+
+     Contrasto sul fondo 5,15:1 la tinta base e 8,16:1 quella scura: dentro
+     l'intervallo della famiglia (2,35-5,20 e 3,45-8,73) e sopra la mediana
+     (3,72 e 5,83), quindi non e' il colore piu' debole del gruppo. */
+  --indaco:#4a63b5; --indaco-d:#2f458e;
   --oro:#e7b57e;
 
   /* Rampe dei grafici, le stesse dell'originale.
@@ -187,26 +208,31 @@ h3{font-size:1.12rem;margin:2rem 0 .4rem}
 .s3 .badge-num{color:var(--green)} .s4 .badge-num{color:var(--amber)}
 .s5 .badge-num{color:var(--viola)} .s6 .badge-num{color:var(--oliva)}
 .s7 .badge-num{color:var(--prugna)} .s8 .badge-num{color:var(--alloro)}
+.s9 .badge-num{color:var(--indaco)}
 .sx .badge-num{color:var(--ink2)}
 .s1 .question{border-color:var(--coral)} .s2 .question{border-color:var(--sea)}
 .s3 .question{border-color:var(--green)} .s4 .question{border-color:var(--amber)}
 .s5 .question{border-color:var(--viola)} .s6 .question{border-color:var(--oliva)}
 .s7 .question{border-color:var(--prugna)} .s8 .question{border-color:var(--alloro)}
+.s9 .question{border-color:var(--indaco)}
 .s1 .takeaway{border-left-color:var(--coral)} .s3 .takeaway{border-left-color:var(--green)}
 .s4 .takeaway{border-left-color:var(--amber)} .s5 .takeaway{border-left-color:var(--viola)}
 .s6 .takeaway{border-left-color:var(--oliva)}
 .s7 .takeaway{border-left-color:var(--prugna)}
 .s8 .takeaway{border-left-color:var(--alloro)}
+.s9 .takeaway{border-left-color:var(--indaco)}
 .s1 .kn .big{color:var(--coral-d)} .s3 .kn .big{color:var(--green-d)}
 .s4 .kn .big{color:var(--amber-d)} .s5 .kn .big{color:var(--viola-d)}
 .s6 .kn .big{color:var(--oliva-d)}
 .s7 .kn .big{color:var(--prugna-d)} .s8 .kn .big{color:var(--alloro-d)}
+.s9 .kn .big{color:var(--indaco-d)}
 .s1 .step.active>div{border-left-color:var(--coral)}
 .s3 .step.active>div{border-left-color:var(--green)}
 .s4 .step.active>div{border-left-color:var(--amber)}
 .s5 .step.active>div{border-left-color:var(--viola)}
 .s7 .step.active>div{border-left-color:var(--prugna)}
 .s8 .step.active>div{border-left-color:var(--alloro)}
+.s9 .step.active>div{border-left-color:var(--indaco)}
 
 /* FIGURE */
 .fig{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px;margin:30px 0}
