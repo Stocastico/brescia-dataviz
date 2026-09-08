@@ -399,6 +399,23 @@ table.rank td.num,table.rank th.num{text-align:right;font-variant-numeric:tabula
   .step{min-height:0}
   .step>div{opacity:1}
   .scrolly-steps{gap:12px;padding:0 0 10px}
+  /* Impilando, il pannello che scambia figura metterebbe **le due figure** in
+     cima e poi i cinque passi: si leggerebbero tre testi lontani dal grafico
+     che spiegano e due dall'altro. Qui i contenitori spariscono
+     (`display:contents` toglie il box, non l'elemento: i selettori discendenti
+     qui sopra continuano a valere) e ogni figura si tira dietro i suoi passi.
+     L'ordine e' scritto a mano perche' quali passi appartengano a quale figura
+     lo sa il racconto, non il CSS; un secondo `.scambio` vorra' le sue righe. */
+  #scrolly-casa .scrolly-fig,
+  #scrolly-casa .scambio,
+  #scrolly-casa .scrolly-steps{display:contents}
+  #scrolly-casa #fig-casa-prezzo{order:1}
+  #scrolly-casa .step[data-passo="correnti"]{order:2}
+  #scrolly-casa .step[data-passo="reali"]{order:3}
+  #scrolly-casa .step[data-passo="divario"]{order:4}
+  #scrolly-casa #fig-casa-forbice{order:5}
+  #scrolly-casa .step[data-passo="volumi"]{order:6}
+  #scrolly-casa .step[data-passo="insieme"]{order:7}
 }
 @media (prefers-reduced-motion: reduce){
   .step>div{opacity:1}

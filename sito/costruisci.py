@@ -89,6 +89,13 @@ PAGINE_CON_TUTTI_GLI_INDICATORI = {"esplora.html", "dati.html"}
 
 # --- numeri in italiano --------------------------------------------------
 
+# Lo spazio prima del segno di percentuale e' **unificatore** (U+00A0). E' la
+# convenzione tipografica italiana, e soprattutto tiene il `%` attaccato al
+# numero: con uno spazio normale il segno puo' finire a capo da solo, e nei
+# titoli, dove il punto di ritorno a capo cambia con la larghezza della
+# finestra, succede davvero.
+PERCENTO = "\u00a0%"
+
 
 def numero_it(valore: float, decimali: int = 0) -> str:
     """1234.5 -> «1.234,5». Il separatore delle migliaia è il punto."""
@@ -97,7 +104,7 @@ def numero_it(valore: float, decimali: int = 0) -> str:
 
 
 def percento_it(valore: float, decimali: int = 1) -> str:
-    return f"{numero_it(valore, decimali)} %"
+    return f"{numero_it(valore, decimali)}{PERCENTO}"
 
 
 # --- lettura dei JSON della pipeline ------------------------------------
@@ -1149,11 +1156,11 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
     totale_i = sum(pop_primo.values())
     totale_f = sum(pop_ultimo.values())
     durata = int(anno_pop_f) - int(anno_pop_i)
-    fuori["crescita_provinciale"] = f"{numero_it(((totale_f / totale_i) ** (1 / durata) - 1) * 100, 2)} %"
+    fuori["crescita_provinciale"] = f"{numero_it(((totale_f / totale_i) ** (1 / durata) - 1) * 100, 2)}{PERCENTO}"
     peggiori = sorted(crescita_pop.items(), key=lambda kv: kv[1])[:5]
     fuori["cadute_peggiori"] = ", ".join(comuni[c]["comune"] for c, _ in peggiori)
     fuori["caduta_peggiore_comune"] = comuni[peggiori[0][0]]["comune"]
-    fuori["caduta_peggiore_tasso"] = f"{numero_it(peggiori[0][1], 1)} %"
+    fuori["caduta_peggiore_tasso"] = f"{numero_it(peggiori[0][1], 1)}{PERCENTO}"
 
     addetti = metriche["addetti"]
     add_i = valori(addetti, addetti["periods"][0])
@@ -1228,7 +1235,7 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
     fuori["artefatto_pearson"] = numero_it(
         pearson([red_f[c] for c in comuni_comuni], [crescita_red[c] for c in comuni_comuni]), 2
     )
-    fuori["crescita_reddito_mediana"] = f"{numero_it(mediana(list(crescita_red.values())), 2)} %"
+    fuori["crescita_reddito_mediana"] = f"{numero_it(mediana(list(crescita_red.values())), 2)}{PERCENTO}"
 
     intensita = valori(metriche["addetti_per_100_abitanti"])
     ordinata = sorted(intensita.items(), key=lambda kv: kv[1], reverse=True)
@@ -1437,11 +1444,11 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
     if controllo:
         fuori["capoluoghi_confrontati"] = numero_it(len(controllo["capoluoghi"]))
         fuori["capoluoghi_in_calo"] = numero_it(controllo["in_calo"])
-        fuori["capoluoghi_mediana"] = f"{numero_it(controllo['mediana'], 1)} %"
+        fuori["capoluoghi_mediana"] = f"{numero_it(controllo['mediana'], 1)}{PERCENTO}"
         posizione = [v["nome"] for v in controllo["capoluoghi"]].index("Brescia") + 1
         fuori["capoluoghi_rango_brescia"] = numero_it(posizione)
         fuori["capoluoghi_peggiori"] = ", ".join(
-            f"{v['nome']} ({numero_it(v['variazione'], 0)} %)" for v in controllo["capoluoghi"][:4]
+            f"{v['nome']} ({numero_it(v['variazione'], 0)}{PERCENTO})" for v in controllo["capoluoghi"][:4]
         )
 
     fuori["moran_crescita_popolazione"] = numero_it(moran(crescita_pop), 2)
@@ -1497,8 +1504,8 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
             # Il verbo lo decide il segno, non chi scrive la frase: sull'ozono
             # «−1,8 %» va detto come «non si muove», e se un domani si muovesse
             # il testo non deve continuare a dire di no.
-            fuori[f"{breve}_variazione"] = f"{numero_it(misura['variazione'], 1)} %"
-            fuori[f"{breve}_variazione_assoluta"] = f"{numero_it(abs(misura['variazione']), 1)} %"
+            fuori[f"{breve}_variazione"] = f"{numero_it(misura['variazione'], 1)}{PERCENTO}"
+            fuori[f"{breve}_variazione_assoluta"] = f"{numero_it(abs(misura['variazione']), 1)}{PERCENTO}"
 
         temperatura = aria["temperatura"]
         fuori["clima_base_i"], fuori["clima_base_f"] = aria["base"]
@@ -1520,7 +1527,7 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         fuori["pioggia_in_calo"] = numero_it(
             aria["pioggia"]["stazioni"] - aria["pioggia"]["in_aumento"]
         )
-        fuori["pioggia_mediana"] = f"{numero_it(aria['pioggia']['mediana'], 1)} %"
+        fuori["pioggia_mediana"] = f"{numero_it(aria['pioggia']['mediana'], 1)}{PERCENTO}"
 
     # --- settima storia: il turismo fra le province ----------------------
     turismo = turismo_confronto()
@@ -1540,10 +1547,10 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
 
         _tur("presenze", 0)
         _tur("per_abitante", 1)
-        _tur("estera", 1, " %")
-        _tur("campeggi", 1, " %")
+        _tur("estera", 1, PERCENTO)
+        _tur("campeggi", 1, PERCENTO)
         _tur("permanenza", 2)
-        _tur("ripresa", 1, " %")
+        _tur("ripresa", 1, PERCENTO)
 
         # Le province davanti a Brescia per presenze: sono la frase «decima
         # dietro a queste», e vanno prese dai dati e non da una lista scritta.
@@ -1571,7 +1578,7 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
             iniziale, finale = serie[primo_anno]["presenze"], serie[ultimo_anno]["presenze"]
             durata_tur = int(ultimo_anno) - int(primo_anno)
             fuori["tur_crescita"] = (
-                f"{numero_it(((finale / iniziale) ** (1 / durata_tur) - 1) * 100, 2)} %"
+                f"{numero_it(((finale / iniziale) ** (1 / durata_tur) - 1) * 100, 2)}{PERCENTO}"
             )
             fuori["tur_presenze_primo"] = numero_it(iniziale)
             fuori["tur_estera_primo"] = percento_it(serie[primo_anno]["estera"])
@@ -1586,11 +1593,11 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
                 # due crescite simili, «+2,3 %» accanto a «+62,1 %» no.
                 variazione = (arrivo / partenza - 1) * 100
                 fuori[f"tur_{chiave}_variazione"] = (
-                    f"{'+' if variazione > 0 else ''}{numero_it(variazione, 1)} %"
+                    f"{'+' if variazione > 0 else ''}{numero_it(variazione, 1)}{PERCENTO}"
                 )
         if "2020" in serie and "2019" in serie:
             fuori["tur_caduta_2020"] = (
-                f"{numero_it((serie['2020']['presenze'] / serie['2019']['presenze'] - 1) * 100, 1)} %"
+                f"{numero_it((serie['2020']['presenze'] / serie['2019']['presenze'] - 1) * 100, 1)}{PERCENTO}"
             )
 
         ripresa = misure_tur["ripresa"]["valori"]
@@ -1616,9 +1623,9 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         fuori["casa_prezzo_ultimo"] = numero_it(correnti[-1])
         fuori["casa_prezzo_primo_reale"] = numero_it(reali[0])
         nominale = (correnti[-1] / correnti[0] - 1) * 100
-        fuori["casa_nominale"] = f"{'+' if nominale > 0 else ''}{numero_it(nominale, 1)} %"
+        fuori["casa_nominale"] = f"{'+' if nominale > 0 else ''}{numero_it(nominale, 1)}{PERCENTO}"
         fuori["casa_reale"] = percento_it((reali[-1] / reali[0] - 1) * 100)
-        fuori["casa_inflazione"] = f"+{numero_it((reali[0] / correnti[0] - 1) * 100, 1)} %"
+        fuori["casa_inflazione"] = f"+{numero_it((reali[0] / correnti[0] - 1) * 100, 1)}{PERCENTO}"
 
         volumi = dict(zip(dati_casa["anni_ntn"], dati_casa["ntn"]))
         fondo = dati_casa["fondo_ntn"]
@@ -1626,7 +1633,7 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         fuori["casa_ntn_fondo"] = numero_it(volumi[fondo])
         fuori["casa_ntn_ultimo"] = numero_it(volumi[dati_casa["anni_ntn"][-1]])
         variazione_ntn = (volumi[dati_casa["anni_ntn"][-1]] / volumi[fondo] - 1) * 100
-        fuori["casa_ntn_variazione"] = f"+{numero_it(variazione_ntn, 1)} %"
+        fuori["casa_ntn_variazione"] = f"+{numero_it(variazione_ntn, 1)}{PERCENTO}"
         fuori["casa_ntn_anno_primo"] = dati_casa["anni_ntn"][0]
 
         zone = dati_casa["zone"]
@@ -1696,15 +1703,15 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         fuori["sal_corrente_ultimo"] = numero_it(correnti[-1])
         fuori["sal_reale_primo"] = numero_it(reali[0])
         nominale = (correnti[-1] / correnti[0] - 1) * 100
-        fuori["sal_nominale"] = f"{'+' if nominale > 0 else ''}{numero_it(nominale, 1)} %"
+        fuori["sal_nominale"] = f"{'+' if nominale > 0 else ''}{numero_it(nominale, 1)}{PERCENTO}"
         fuori["sal_reale"] = percento_it((reali[-1] / reali[0] - 1) * 100)
-        fuori["sal_inflazione"] = f"+{numero_it((reali[0] / correnti[0] - 1) * 100, 1)} %"
+        fuori["sal_inflazione"] = f"+{numero_it((reali[0] / correnti[0] - 1) * 100, 1)}{PERCENTO}"
         # Le stesse cifre **senza segno**, per le frasi in cui il segno lo porta
         # gia' la parola: «sono saliti del 25,4 %», «ne vale il 5,7 % in meno».
         # Con il segno si leggerebbero «saliti del +25,4 %» e «vale il -5,7 % in
         # meno», che e' una doppia negazione.
-        fuori["sal_nominale_nudo"] = f"{numero_it(abs(nominale), 1)} %"
-        fuori["sal_reale_nudo"] = f"{numero_it(abs((reali[-1] / reali[0] - 1) * 100), 1)} %"
+        fuori["sal_nominale_nudo"] = f"{numero_it(abs(nominale), 1)}{PERCENTO}"
+        fuori["sal_reale_nudo"] = f"{numero_it(abs((reali[-1] / reali[0] - 1) * 100), 1)}{PERCENTO}"
 
         # La forma della caduta: dodici anni fermi, poi cinque in discesa.
         svolta = "2019"
@@ -1716,11 +1723,11 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
             fuori["sal_anni_prima"] = numero_it(int(svolta) - int(anni[0]))
             fuori["sal_anni_dopo"] = numero_it(int(anni[-1]) - int(svolta))
             fuori["sal_reale_svolta"] = numero_it(reali[i])
-            fuori["sal_reale_dopo_nudo"] = f"{numero_it(abs((reali[-1] / reali[i] - 1) * 100), 1)} %"
+            fuori["sal_reale_dopo_nudo"] = f"{numero_it(abs((reali[-1] / reali[i] - 1) * 100), 1)}{PERCENTO}"
         picco = max(range(len(reali)), key=lambda i: reali[i])
         fuori["sal_anno_picco"] = anni[picco]
         fuori["sal_dal_picco"] = percento_it((reali[-1] / reali[picco] - 1) * 100)
-        fuori["sal_dal_picco_nudo"] = f"{numero_it(abs((reali[-1] / reali[picco] - 1) * 100), 1)} %"
+        fuori["sal_dal_picco_nudo"] = f"{numero_it(abs((reali[-1] / reali[picco] - 1) * 100), 1)}{PERCENTO}"
 
         # Il controllo: giornate ferme, quindi non e' composizione.
         fuori["sal_giornate_primo"] = numero_it(giorni[0], 1)
@@ -1745,7 +1752,7 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         # `percento_it` non mette il piu' da sola (c'e' un test che lo fissa), e
         # qui serve: la cifra vive in una frase dove l'unico segno che conta e'
         # quello, perche' e' l'unica provincia che cresce.
-        fuori["sal_migliore"] = f"+{numero_it(migliore[1], 1)} %"
+        fuori["sal_migliore"] = f"+{numero_it(migliore[1], 1)}{PERCENTO}"
         fuori["sal_provincia_peggiore"] = nomi[peggiore[0]]
         fuori["sal_peggiore"] = percento_it(peggiore[1], 1)
         in_crescita = [c for c, v in variazioni.items() if v > 0]
