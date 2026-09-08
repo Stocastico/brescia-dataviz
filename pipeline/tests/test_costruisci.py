@@ -70,9 +70,18 @@ def test_le_percentuali_non_mettono_il_segno_piu_da_sole() -> None:
     """Il `+` lo aggiunge chi chiama, dove il segno è parte della notizia
     (`+2,3 %` in ventun anni). Questa funzione formatta e basta, e il test lo
     fissa perché la differenza fra le due cose non è ovvia leggendo il nome."""
-    assert C.percento_it(2.3) == "2,3 %"
-    assert C.percento_it(-30.8) == "-30,8 %"
-    assert C.percento_it(0.0) == "0,0 %"
+    assert C.percento_it(2.3) == "2,3\u00a0%"
+    assert C.percento_it(-30.8) == "-30,8\u00a0%"
+    assert C.percento_it(0.0) == "0,0\u00a0%"
+
+
+def test_lo_spazio_prima_del_percento_non_manda_a_capo() -> None:
+    """Uno spazio normale lascia che il `%` scenda di riga da solo, staccato dal
+    numero: succedeva nel titolo della storia dei salari. Lo spazio unificatore
+    è anche la convenzione tipografica italiana, quindi la resa giusta e il
+    comportamento giusto sono la stessa scelta."""
+    assert " " not in C.percento_it(25.4)
+    assert C.percento_it(25.4) == "25,4" + C.PERCENTO
 
 
 # --- la contiguità e Moran -----------------------------------------------
