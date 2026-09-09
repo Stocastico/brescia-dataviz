@@ -807,6 +807,148 @@ def background_migratorio() -> dict[str, Any]:
     return {"anni": anni, "provincia": per_anno, "comuni": per_comune}
 
 
+GRUPPI_BACKGROUND = ("italiani dalla nascita", "italiani acquisiti", "stranieri")
+CLASSI_BACKGROUND = ("9-24 anni", "25-49 anni", "50-64 anni", "65 anni e più")
+LAUREA = "titolo universitario o accademico"
+NESSUN_TITOLO = "nessun titolo di studio"
+
+
+def istruzione_background() -> dict[str, Any]:
+    """Il titolo di studio per gruppo e per classe d'età, per la decima storia.
+
+    La tabella è **provinciale** e copre i **9 anni e più**, che è la
+    popolazione su cui la fonte pubblica il titolo: nessuna cifra che ne esce
+    si somma a una di `background_migratorio()`, che conta tutti.
+
+    Le classi ci sono tutte e l'aggregato no, e non è una dimenticanza. I
+    divari specifici hanno **segno opposto** — positivo fra i 25 e i 49,
+    negativo sopra i 65 — quindi nessuna media li rappresenta, standardizzata
+    o no: la standardizzazione per età sposta l'aggregato di mezzo punto e
+    continua a non descrivere né l'una né l'altra classe. La conclusione
+    dell'analisi era «pubblicare le classi», e questa funzione la applica
+    restituendo le classi.
+    """
+    import csv
+
+    path = PROCESSED / "background_migratorio_istruzione.csv"
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as handle:
+        righe = list(csv.DictReader(handle))
+    if not righe:
+        return {}
+
+    ultimo = max(riga["anno"] for riga in righe)
+    conti: dict[tuple[str, str], dict[str, float]] = {}
+    for riga in righe:
+        if riga["anno"] != ultimo or not riga["valore"]:
+            continue
+        chiave = (riga["classe_eta"], riga["gruppo"])
+        conti.setdefault(chiave, {})[riga["titolo"]] = float(riga["valore"])
+
+    classi = []
+    for classe in CLASSI_BACKGROUND:
+        for gruppo in GRUPPI_BACKGROUND:
+            voci = conti.get((classe, gruppo))
+            if not voci or not voci.get("totale"):
+                continue
+            totale = voci["totale"]
+            classi.append(
+                {
+                    "classe": classe,
+                    "gruppo": gruppo,
+                    "popolazione": totale,
+                    "laurea": voci.get(LAUREA, 0.0) / totale * 100,
+                    "nessun_titolo": voci.get(NESSUN_TITOLO, 0.0) / totale * 100,
+                }
+            )
+    return {"anno": ultimo, "classi": classi} if classi else {}
+
+
+def flussi_estero() -> dict[str, Any]:
+    """Arrivi e partenze verso l'estero, in **lordo**, per la decima storia.
+
+    Il bilancio demografico è già letto da `scomposizione_demografica()`, ma lì
+    l'estero entra come **saldo** (`immigrati − emigrati`), che è quello che la
+    prima storia deve dire. Qui servono i due numeri separati, perché la cosa da
+    vedere è che si muovono in modo diverso: chi arriva cresce, chi parte sta
+    fermo. Un saldo che sale non distingue fra i due, ed è il motivo per cui
+    questa funzione esiste invece di riusare quella.
+
+    ⚠️ `emigrati_estero` sono **cancellazioni anagrafiche di residenti**, senza
+    distinzione di cittadinanza: non dicono quanti italiani se ne vanno. E
+    sottostimano, perché chi si trasferisce all'estero spesso non si cancella.
+    Le due cose stanno nel testo della storia, non solo qui.
+    """
+    import csv
+
+    path = PROCESSED / "bilancio_demografico_comuni.csv"
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as handle:
+        righe = list(csv.DictReader(handle))
+
+    per_anno: dict[str, dict[str, float]] = {}
+    for riga in righe:
+        if riga["indicatore"] not in {"immigrati_estero", "emigrati_estero"} or not riga["valore"]:
+            continue
+        conti = per_anno.setdefault(riga["anno"], {})
+        conti[riga["indicatore"]] = conti.get(riga["indicatore"], 0.0) + float(riga["valore"])
+
+    anni = sorted(per_anno)
+    if not anni:
+        return {}
+    return {
+        "anni": anni,
+        "arrivi": [per_anno[anno].get("immigrati_estero", 0.0) for anno in anni],
+        "partenze": [per_anno[anno].get("emigrati_estero", 0.0) for anno in anni],
+    }
+
+
+def background_incorporato() -> dict[str, Any]:
+    """Quello che le figure della decima storia disegnano.
+
+    Compone le tre letture già scritte invece di rileggere i CSV: lo stock, il
+    titolo di studio e i flussi lordi. Le variazioni sono calcolate qui e non
+    nel javascript perché una sottrazione fatta nel browser è una cifra che
+    `verifica_cifre.py` non può controllare.
+    """
+    stock = background_migratorio()
+    if not stock:
+        return {}
+    primo, ultimo = stock["anni"][0], stock["anni"][-1]
+    prima, dopo = stock["provincia"][primo], stock["provincia"][ultimo]
+
+    def variazione(voce: str) -> float:
+        return dopo.get(voce, 0.0) - prima.get(voce, 0.0)
+
+    return {
+        "anno_primo": primo,
+        "anno_ultimo": ultimo,
+        # L'ordine è quello del racconto: prima chi cala, poi chi cresce di più,
+        # poi la voce che sembra ferma e non lo è.
+        "variazioni": [
+            {"nome": "italiani dalla nascita", "valore": variazione("italiani_dalla_nascita")},
+            {"nome": "italiani per acquisizione", "valore": variazione("italiani_acquisiti")},
+            {"nome": "stranieri", "valore": variazione("stranieri")},
+        ],
+        "nati_qui": [
+            {
+                "nome": "cittadinanza straniera",
+                "totale": dopo.get("stranieri_nati_in_italia", 0.0),
+                "minorenni": dopo.get("stranieri_nati_in_italia_minorenni", 0.0),
+            },
+            {
+                "nome": "cittadinanza acquisita",
+                "totale": dopo.get("italiani_acquisiti_nati_in_italia", 0.0),
+                "minorenni": dopo.get("italiani_acquisiti_nati_in_italia_minorenni", 0.0),
+            },
+        ],
+        "istruzione": istruzione_background(),
+        "flussi": flussi_estero(),
+    }
+
+
 def scomposizione_province() -> dict[str, Any]:
     """Le stesse componenti su tutte le province: il paragone che mancava.
 
@@ -1311,6 +1453,37 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         fuori["bg_quota_mediana"] = percento_it(mediana(list(quote.values())))
         fuori["bg_quota_massima"] = percento_it(max(quote.values()))
         fuori["bg_comune_massimo"] = comuni[max(quote, key=quote.get)]["comune"]
+
+        # --- le cifre della decima storia -------------------------------
+        # I nati qui, che sono la spina della storia. Le due voci si sommano:
+        # contano la stessa generazione divisa dal passaporto, non due
+        # popolazioni diverse.
+        nati_stranieri = dopo["stranieri_nati_in_italia"]
+        nati_acquisiti = dopo["italiani_acquisiti_nati_in_italia"]
+        nati_qui = nati_stranieri + nati_acquisiti
+        fuori["bg_nati_qui_totale"] = numero_it(nati_qui)
+        fuori["bg_nati_qui_acquisiti"] = numero_it(nati_acquisiti)
+        fuori["bg_nati_qui_senza_quota"] = percento_it(nati_stranieri / nati_qui * 100)
+        fuori["bg_nati_qui_acquisiti_minorenni"] = numero_it(
+            dopo["italiani_acquisiti_nati_in_italia_minorenni"]
+        )
+        fuori["bg_nati_qui_acquisiti_quota_minori"] = percento_it(
+            dopo["italiani_acquisiti_nati_in_italia_minorenni"] / nati_acquisiti * 100
+        )
+
+        # Il serbatoio con due rubinetti. «Almeno», e non «esattamente»:
+        # nascite, morti e partenze muovono lo stesso stock, e questa tabella
+        # non le separa. La parola sta anche nel testo della storia.
+        fuori["bg_ingresso_implicito"] = numero_it(
+            (dopo["stranieri"] - prima["stranieri"])
+            + (dopo["italiani_acquisiti"] - prima["italiani_acquisiti"])
+        )
+        crescita_totale = dopo["popolazione_residente"] - prima["popolazione_residente"]
+        fuori["bg_acquisiti_su_crescita"] = numero_it(
+            (dopo["italiani_acquisiti"] - prima["italiani_acquisiti"]) / crescita_totale, 1
+        )
+
+        fuori["bg_quota_minima"] = percento_it(min(quote.values()))
 
         per_comune = demografia["comuni"]
         in_calo = {
@@ -1837,6 +2010,7 @@ def dati_incorporati(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict
         "capoluoghi": controllo_capoluoghi(),
         "casa": casa(),
         "salari": salari(),
+        "background": background_incorporato(),
         "metriche": sunto_metriche(metriche),
     }
 
