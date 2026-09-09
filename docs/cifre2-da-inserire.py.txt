@@ -1,0 +1,42 @@
+    # Il titolo di studio per classe d'età. Le due classi agli estremi bastano
+    # al testo, e sono quelle in cui il divario ha segno opposto: è il punto.
+    istruzione = istruzione_background()
+    if istruzione:
+        per_chiave = {
+            (riga["classe"], riga["gruppo"]): riga for riga in istruzione["classi"]
+        }
+
+        def laurea(classe: str, gruppo: str) -> float:
+            return per_chiave[(classe, gruppo)]["laurea"]
+
+        fuori["bg_istruzione_anno"] = istruzione["anno"]
+        for etichetta, classe in (("2549", "25-49 anni"), ("65", "65 anni e più")):
+            nascita = laurea(classe, "italiani dalla nascita")
+            stranieri = laurea(classe, "stranieri")
+            fuori[f"bg_laurea_{etichetta}_nascita"] = percento_it(nascita)
+            fuori[f"bg_laurea_{etichetta}_stranieri"] = percento_it(stranieri)
+            # Il divario in punti, con il segno: è la cifra su cui la storia
+            # dice che nessuna media rappresenta le due classi.
+            fuori[f"bg_divario_{etichetta}"] = numero_it(nascita - stranieri, 1)
+            fuori[f"bg_divario_{etichetta}_nudo"] = numero_it(abs(nascita - stranieri), 1)
+
+    # I flussi lordi con l'estero. Chi arriva cresce, chi parte sta fermo: il
+    # saldo della prima storia non distingue fra i due, e questa storia sì.
+    flussi = flussi_estero()
+    if flussi:
+        anni_flussi = flussi["anni"]
+        fuori["bg_flussi_anno_primo"] = anni_flussi[0]
+        fuori["bg_flussi_anno_ultimo"] = anni_flussi[-1]
+        fuori["bg_partenze_primo"] = numero_it(flussi["partenze"][0])
+        fuori["bg_partenze_ultimo"] = numero_it(flussi["partenze"][-1])
+        fuori["bg_arrivi_primo"] = numero_it(flussi["arrivi"][0])
+        fuori["bg_arrivi_ultimo"] = numero_it(flussi["arrivi"][-1])
+        fuori["bg_partenze_totale"] = numero_it(sum(flussi["partenze"]))
+        fuori["bg_arrivi_totale"] = numero_it(sum(flussi["arrivi"]))
+        fuori["bg_partenze_media"] = numero_it(
+            sum(flussi["partenze"]) / len(anni_flussi)
+        )
+        fuori["bg_rapporto_flussi"] = numero_it(
+            sum(flussi["arrivi"]) / sum(flussi["partenze"]), 1
+        )
+
