@@ -71,6 +71,7 @@ METRICHE_USATE = [
 PAGINE = {
     "racconto.html": "index.html",
     "esplora.html": "esplora.html",
+    "tabelle.html": "tabelle.html",
     "metodologia.html": "metodologia.html",
     "dati.html": "dati.html",
 }
@@ -1840,6 +1841,152 @@ def dati_incorporati(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict
     }
 
 
+# --- il registro delle figure -------------------------------------------
+#
+# Le figure del racconto si numerano da sé. Numerarle a mano avrebbe i due
+# difetti che questo progetto già rifiuta per le cifre: una figura infilata in
+# mezzo rinomina tutte quelle dopo, e la pagina delle tabelle ripeterebbe
+# diciannove titoli e diciannove didascalie che poi divergono. Qui il racconto
+# resta l'unica fonte: si legge il suo modello, si contano le
+# `<figure class="fig">` nell'ordine in cui stanno nel documento, e da quella
+# lista escono sia il «Fig. N» dentro il racconto sia i blocchi della pagina
+# delle tabelle.
+
+FIGURA = re.compile(r'<figure class="fig"(?P<attributi>[^>]*)>(?P<corpo>.*?)</figure>', re.S)
+_TITOLO = re.compile(r"<h3>(?P<titolo>.*?)</h3>", re.S)
+_ID = re.compile(r'\bid="(?P<id>[a-z0-9-]+)"')
+
+# Le due figure della casa si scambiano di posto in un pannello, e le loro
+# tabelle-specchio finiscono in un contenitore condiviso che sta **fuori** da
+# entrambe: il perché è nel commento accanto a `#tabelle-casa` in
+# racconto.html. Sulla pagina delle tabelle quel contenitore va ricreato una
+# volta, sotto la seconda delle due, o quelle due tabelle non hanno dove
+# andare.
+CONTENITORI_CONDIVISI = {"fig-casa-prezzo": "tabelle-casa"}
+
+# L'altra delle due resta senza tabella propria, e una sezione vuota sarebbe
+# peggio del problema: rimanda a quella dove le sue righe stanno davvero.
+TABELLA_ALTROVE = {"fig-casa-forbice": "fig-casa-prezzo"}
+
+# I grafici che stanno nel testo e non in una figura: sono controlli dentro un
+# `<details>`, non figure, e non prendono un «Fig. N». La loro tabella però
+# deve stare sulla pagina delle tabelle, o la riga «tutti i dati dei grafici si
+# possono vedere anche come tabelle» diventa falsa.
+GRAFICI_FUORI_FIGURA = (("fonti-turismo", "Lo scarto fra le due fonti sul turismo"),)
+
+
+class Figura:
+    """Una figura del racconto, con il numero che le tocca."""
+
+    __slots__ = ("numero", "ancora", "titolo", "corpo", "contenitori")
+
+    def __init__(
+        self, numero: int, ancora: str, titolo: str, corpo: str, contenitori: tuple[str, ...]
+    ) -> None:
+        self.numero = numero
+        self.ancora = ancora
+        self.titolo = titolo
+        self.corpo = corpo
+        self.contenitori = contenitori
+
+    def __repr__(self) -> str:  # pragma: no cover - serve ai messaggi dei test
+        return f"Figura({self.numero}, {self.ancora!r})"
+
+
+def figure(sorgente: str) -> list[Figura]:
+    """Le figure del racconto, nell'ordine del documento.
+
+    L'ancora è l'`id` già scritto nel modello quando c'è — due figure ce
+    l'hanno perché il javascript le cerca per nome — e `fig-N` altrimenti. Il
+    corpo torna con il titolo già numerato, così che il racconto e la pagina
+    delle tabelle mostrino la stessa dicitura senza ricalcolarla due volte.
+    """
+    trovate: list[Figura] = []
+    for numero, incontro in enumerate(FIGURA.finditer(sorgente), start=1):
+        attributi, corpo = incontro.group("attributi"), incontro.group("corpo")
+        proprio = _ID.search(attributi)
+        ancora = proprio.group("id") if proprio else f"fig-{numero}"
+        titolo = _TITOLO.search(corpo)
+        if titolo is None:
+            raise SystemExit(
+                f"racconto.html: la figura {numero} ({ancora}) non ha un <h3>. "
+                "Ogni figura porta un titolo: è quello che la pagina delle tabelle ripete."
+            )
+        trovate.append(
+            Figura(
+                numero,
+                ancora,
+                titolo.group("titolo").strip(),
+                numera(corpo, numero),
+                tuple(dict.fromkeys(_ID.findall(corpo))),
+            )
+        )
+    return trovate
+
+
+def numera(corpo: str, numero: int) -> str:
+    """Mette «Fig. N» in testa al titolo della figura."""
+    return _TITOLO.sub(
+        # Lo spazio dopo lo `</span>` non è decorativo: senza, il titolo copiato
+        # o letto da uno screen reader diventa «Fig. 1Reddito di partenza».
+        lambda m: f'<h3><span class="fignum">Fig. {numero}</span> {m.group("titolo")}</h3>',
+        corpo,
+        count=1,
+    )
+
+
+def racconto_numerato(sorgente: str, trovate: list[Figura]) -> str:
+    """Il modello del racconto con le figure numerate e ancorate."""
+    passo = iter(trovate)
+
+    def riscrivi(incontro: re.Match[str]) -> str:
+        fig = next(passo)
+        attributi = incontro.group("attributi")
+        if f'id="{fig.ancora}"' not in attributi:
+            attributi = f' id="{fig.ancora}"' + attributi
+        return f'<figure class="fig"{attributi}>{fig.corpo}</figure>'
+
+    return FIGURA.sub(riscrivi, sorgente)
+
+
+def blocchi_tabelle(trovate: list[Figura]) -> str:
+    """I blocchi della pagina delle tabelle, uno per grafico.
+
+    Ogni blocco ripete il corpo della figura così com'è nel racconto: i
+    contenitori che il javascript cerca ci sono per costruzione, e una figura
+    nuova compare qui da sé senza che nessuno la ricopi.
+    """
+    numero_di = {fig.ancora: fig.numero for fig in trovate}
+    pezzi: list[str] = []
+    for fig in trovate:
+        condiviso = CONTENITORI_CONDIVISI.get(fig.ancora)
+        altrove = TABELLA_ALTROVE.get(fig.ancora)
+        nota = ""
+        if altrove is not None:
+            nota = (
+                '<p class="altrove">Le righe di questa figura stanno insieme a quelle della '
+                f'<a href="#{altrove}">Fig. {numero_di[altrove]}</a>: le due serie condividono '
+                "la tabella perché nel racconto condividono il pannello.</p>\n"
+            )
+        pezzi.append(
+            f'<section class="tab-blocco" id="{fig.ancora}">\n'
+            f"{fig.corpo.strip()}\n"
+            + (f'<div id="{condiviso}"></div>\n' if condiviso else "")
+            + nota
+            + f'<p class="rimando"><a href="index.html#{fig.ancora}">'
+            f"Vedi la Fig. {fig.numero} nel racconto</a></p>\n"
+            "</section>"
+        )
+    for identificativo, titolo in GRAFICI_FUORI_FIGURA:
+        pezzi.append(
+            f'<section class="tab-blocco" id="{identificativo}-tabella">\n'
+            f"<h3>{titolo}</h3>\n"
+            f'<div id="{identificativo}"></div>\n'
+            "</section>"
+        )
+    return "\n".join(pezzi)
+
+
 def sostituisci(testo: str, valori_cifre: dict[str, str], comuni_pagina: str) -> str:
     mancanti: list[str] = []
 
@@ -1910,6 +2057,7 @@ def costruisci(uscita: Path, data_build: str | None) -> int:
 
     stile = (MODELLI / "stile.css").read_text(encoding="utf-8")
     grafici = (MODELLI / "grafici.js").read_text(encoding="utf-8")
+    disegno_figure = (MODELLI / "figure.js").read_text(encoding="utf-8")
 
     # Due blocchi di dati, e la differenza è solo negli indicatori. Le pagine
     # del racconto portano i quindici che le nove storie citano; la pagina che
@@ -1922,14 +2070,25 @@ def costruisci(uscita: Path, data_build: str | None) -> int:
     comune_a_tutte["metriche"] = sunto_metriche(metriche_tutte)
     dati_completi = json.dumps(comune_a_tutte, ensure_ascii=False, separators=(",", ":"))
 
+    # Il racconto detta la numerazione, e la detta a due pagine: dentro di sé
+    # diventa il «Fig. N» sul titolo, e sulla pagina delle tabelle diventa
+    # l'elenco dei blocchi. Si legge una volta sola, prima del giro.
+    trovate = figure((MODELLI / "racconto.html").read_text(encoding="utf-8"))
+    blocchi = blocchi_tabelle(trovate)
+
     uscita.mkdir(parents=True, exist_ok=True)
     for modello, destinazione in PAGINE.items():
         sorgente = (MODELLI / modello).read_text(encoding="utf-8")
+        if modello == "racconto.html":
+            sorgente = racconto_numerato(sorgente, trovate)
+        elif modello == "tabelle.html":
+            sorgente = sorgente.replace("{{BLOCCHI_TABELLE}}", blocchi)
         pagina = sostituisci(sorgente, valori_cifre, modello)
         suoi_dati = dati_completi if modello in PAGINE_CON_TUTTI_GLI_INDICATORI else dati
         pagina = (
             pagina.replace("/*{{STILE}}*/", stile)
             .replace("/*{{GRAFICI}}*/", grafici)
+            .replace("/*{{FIGURE}}*/", disegno_figure)
             .replace("/*{{DATI}}*/", f"window.DATI={suoi_dati};")
             .replace("{{BUILD_DATE}}", data_build or date.today().isoformat())
             .replace("{{DATA_DATE}}", data_dei_dati())

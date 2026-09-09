@@ -345,6 +345,16 @@ details.deep .d-lab{flex:0 0 auto;font-size:.64rem;text-transform:uppercase;lett
 details.deep .d-body{padding:2px 18px 16px}
 details.deep .d-body .fig{margin:12px 0;box-shadow:none}
 
+/* La tabella-specchio non è un approfondimento editoriale: è lo stesso
+   grafico in righe e colonne, e sotto ogni figura ce n'è una. Con il vestito
+   delle card grigie stavano in fila tre scatole identiche che dicevano cose di
+   natura diversa, quindi questa perde la scatola e resta una riga. */
+.metric-expl.specchio{background:none;border:0;border-top:1px solid var(--line);
+  border-radius:0;margin:14px 0 0}
+.metric-expl.specchio>summary{padding:9px 2px;font-size:.8rem}
+.metric-expl.specchio .me-lab{color:var(--muted)}
+.metric-expl.specchio .me-body{padding:0 2px 10px}
+
 /* TABELLE-SPECCHIO */
 /* La tabella tiene la sua larghezza naturale e scorre dentro il contenitore:
    su telefono una colonna «fonte» lunga la farebbe sbordare dalla pagina. */
@@ -496,3 +506,39 @@ footer.foot .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px}
 footer.foot p,footer.foot li{font-size:.86rem;color:#a9bccd}
 footer.foot ul{margin:.4em 0;padding-left:1.1em}
 .fine{font-size:.78rem;color:#7d93a8;margin-top:30px;border-top:1px solid #21384a;padding-top:18px}
+
+/* IL NUMERO DELLA FIGURA */
+/* Non lo scrive nessuno a mano: `costruisci.py` conta le figure nel modello
+   del racconto e ci mette lui il «Fig. N», così che infilarne una in mezzo
+   rinumeri anche le altre e i rimandi restino veri. */
+.fignum{margin-right:.6em;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;
+  font-weight:700;color:var(--muted);vertical-align:.12em;white-space:nowrap}
+/* Ora che ogni figura è un bersaglio (`index.html#fig-7` dalla pagina delle
+   tabelle) le serve lo stesso scarto delle storie, o atterra sotto la barra. */
+.fig[id]{scroll-margin-top:var(--navh,62px)}
+
+/* La riga che manda alla pagina delle tabelle, una volta sola sotto la prima
+   figura: ripetuta sotto tutte e diciannove sarebbe rumore. */
+p.tuttetabelle{font-size:.82rem;color:var(--muted);margin:-18px 0 30px}
+
+/* LA PAGINA DELLE TABELLE */
+/* Riusa lo stesso javascript del racconto: i grafici vengono disegnati e poi
+   spenti qui, e resta la tabella. Costa un po' di lavoro al browser e
+   risparmia di mantenere due volte le stesse righe. */
+.solo-tabelle svg,
+.solo-tabelle .controls,
+.solo-tabelle .legend,
+.solo-tabelle .fig .src{display:none}
+.solo-tabelle .metric-expl>summary{display:none}
+.solo-tabelle .metric-expl{background:none;border:0;margin:0}
+.solo-tabelle .metric-expl .me-body{padding:0}
+/* La tabella scorre dentro il suo riquadro anche qui, e un po' più alta che
+   nel racconto. Senza il tetto la tabella dei 205 comuni da sola fa settemila
+   pixel, e venti tabelle così sono una pagina che non si sfoglia. */
+.solo-tabelle .rankwrap{max-height:30rem}
+.tab-blocco{max-width:940px;margin:0 auto;padding:26px 22px;border-top:1px solid var(--line);
+  scroll-margin-top:var(--navh,62px)}
+.tab-blocco>h3{margin:0 0 4px;font-size:1.06rem}
+.tab-blocco>.cap{font-size:.86rem;color:var(--muted);margin:0 0 14px}
+p.rimando{font-size:.8rem;margin:14px 0 0}
+p.altrove{font-size:.84rem;color:var(--muted);margin:0}

@@ -220,7 +220,10 @@
 
   function tabellaSpecchio(contenitore, intestazioni, righe, riassunto) {
     const dettagli = document.createElement("details");
-    dettagli.className = "metric-expl";
+    /* `specchio` la distingue dagli approfondimenti scritti a mano, che
+       portano la stessa classe e lo stesso vestito: sotto una figura ce ne
+       stanno tre di fila, e una sola delle tre e' un grafico in tabella. */
+    dettagli.className = "metric-expl specchio";
     const titolo = document.createElement("summary");
     const etichetta = document.createElement("span");
     etichetta.className = "me-lab";
@@ -1062,6 +1065,9 @@
   // --- scrollytelling ---------------------------------------------------
 
   function scrollytelling(radice, alCambio) {
+    /* La pagina delle tabelle riusa questo stesso script ma non ha i passi:
+       senza la radice non c'e' niente da far scorrere, e non e' un errore. */
+    if (!radice) return;
     const passiTesto = Array.prototype.slice.call(radice.querySelectorAll(".step"));
     if (!passiTesto.length) return;
 

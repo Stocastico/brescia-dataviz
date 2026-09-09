@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le tabelle · Come cambia Brescia</title>
+<meta name="description" content="I numeri dietro ogni figura del racconto, in tabella: una sezione per grafico, con il rimando alla figura.">
+<style>/*{{STILE}}*/</style>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Salta al contenuto</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Come cambia Brescia</p>
+    <h1>Le tabelle</h1>
+    <p class="lede">Ogni figura del racconto disegna dei numeri, e qui ci sono quei numeri. Una
+    sezione per grafico, nello stesso ordine in cui compaiono nel racconto, con il rimando alla
+    figura da cui vengono.</p>
+    <div class="quicklinks">
+      <a class="primary" href="index.html">Torna al racconto</a>
+      <a href="dati/processed/">Le tabelle in CSV</a>
+      <a href="dati.html">Le fonti</a>
+    </div>
+    <p class="meta">{{N_TABELLE}} tabelle CSV · {{N_INDICATORI}} indicatori · {{c:comuni}} comuni</p>
+    <p class="freshness">Pagina costruita il {{BUILD_DATE}} · dati aggiornati al {{DATA_DATE}}</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Indice">
+  <div class="wrap">
+    <span class="brand">Come cambia Brescia</span>
+    <a class="pagina" href="index.html">Il racconto</a>
+    <a class="pagina" href="esplora.html">Esplora</a>
+    <a class="pagina" href="tabelle.html">Tabelle</a>
+    <a class="pagina" href="metodologia.html">Metodo</a>
+    <a class="pagina" href="dati.html">Dati</a>
+  </div>
+</nav>
+
+<main id="contenuto">
+<section class="story sx">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">·</div>
+      <div>
+        <p class="eyebrow">I numeri</p>
+        <h2 class="story-title">Gli stessi grafici, in righe e colonne</h2>
+      </div>
+    </div>
+    <p class="question">Queste tabelle sono generate dagli stessi dati e dallo stesso codice che
+    disegnano le figure: non sono una trascrizione, sono la stessa sorgente letta in un altro
+    modo. Se una figura cambia, la sua tabella cambia con lei.</p>
+    <p>Le trovi anche sotto ogni figura nel racconto, richiudibili. Qui stanno tutte aperte e
+    tutte insieme, per confrontarle e per copiarle. Chi vuole i dati grezzi, e non quelli che
+    finiscono nei grafici, li trova nelle <a href="dati/processed/">{{N_TABELLE}} tabelle in
+    CSV</a>; le fonti e le avvertenze stanno nella <a href="dati.html">pagina dei dati</a>.</p>
+  </div></div>
+</section>
+
+<div class="solo-tabelle">
+{{BLOCCHI_TABELLE}}
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="fine">Pagina costruita il {{BUILD_DATE}} · dati aggiornati al {{DATA_DATE}} ·
+    {{N_INDICATORI}} indicatori · Fonti pubbliche, nessuna chiave API, nessun tracciamento.</p>
+    <p class="fine">Testi e dati <a href="https://creativecommons.org/licenses/by/4.0/deed.it">CC BY 4.0</a>, codice <a href="https://github.com/Stocastico/brescia-dataviz/blob/main/LICENSE">MIT</a>.</p>
+  </div>
+</footer>
+
+<script>/*{{DATI}}*/</script>
+<script>/*{{GRAFICI}}*/</script>
+<script>/*{{FIGURE}}*/</script>
+<script>
+(function () {
+  "use strict";
+  /* Nel racconto le tabelle-specchio stanno richiuse, e qui il contrario: chi
+     arriva su questa pagina è venuto per i numeri, non per aprire venti
+     pieghevoli. Il CSS spegne il `summary`, questo apre il `details`: senza
+     l'attributo il browser tiene il corpo nascosto comunque. */
+  var pieghevoli = document.querySelectorAll(".solo-tabelle details");
+  for (var i = 0; i < pieghevoli.length; i++) pieghevoli[i].open = true;
+})();
+</script>
+</body>
+</html>

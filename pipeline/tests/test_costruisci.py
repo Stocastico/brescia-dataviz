@@ -31,7 +31,7 @@ import costruisci as C
 
 pytestmark = servono_tabelle
 
-SEGNAPOSTO = re.compile(r"\{\{(c:[a-z0-9_]+|BUILD_DATE|DATA_DATE|N_[A-Z]+|STILE|GRAFICI|DATI)\}\}")
+SEGNAPOSTO = re.compile(r"\{\{(c:[a-z0-9_]+|BUILD_DATE|DATA_DATE|N_[A-Z]+|STILE|GRAFICI|FIGURE|DATI|BLOCCHI_TABELLE)\}\}")
 
 
 # --- le funzioni pure ----------------------------------------------------
@@ -361,6 +361,94 @@ def test_la_data_dei_dati_e_una_data_iso() -> None:
 
 
 # --- la costruzione intera -----------------------------------------------
+
+
+# --- il registro delle figure --------------------------------------------
+
+
+@pytest.fixture(scope="module")
+def racconto() -> str:
+    return (C.MODELLI / "racconto.html").read_text(encoding="utf-8")
+
+
+def test_le_figure_del_racconto_sono_numerate_di_seguito(racconto) -> None:
+    trovate = C.figure(racconto)
+    assert len(trovate) >= 15
+    assert [f.numero for f in trovate] == list(range(1, len(trovate) + 1))
+
+
+def test_ogni_figura_ha_un_titolo_e_almeno_un_contenitore(racconto) -> None:
+    for fig in C.figure(racconto):
+        assert fig.titolo.strip(), fig
+        assert fig.contenitori, fig
+
+
+def test_le_ancore_delle_figure_sono_tutte_diverse(racconto) -> None:
+    """I rimandi «Fig. N» puntano a `#ancora`: due uguali ne romperebbero uno."""
+    ancore = [f.ancora for f in C.figure(racconto)]
+    assert len(set(ancore)) == len(ancore)
+
+
+def test_una_figura_con_un_id_proprio_lo_tiene(racconto) -> None:
+    """Due figure ce l'hanno perché il javascript le cerca per nome: se la
+    numerazione lo sovrascrivesse, lo scrollytelling della casa si spegnerebbe."""
+    per_ancora = {f.ancora: f for f in C.figure(racconto)}
+    assert "fig-casa-prezzo" in per_ancora
+    assert "fig-casa-forbice" in per_ancora
+
+
+def test_una_figura_senza_titolo_ferma_la_costruzione() -> None:
+    with pytest.raises(SystemExit, match="non ha un <h3>"):
+        C.figure('<figure class="fig"><div id="grafico"></div></figure>')
+
+
+def test_il_racconto_numerato_mette_un_fig_n_per_figura(racconto) -> None:
+    trovate = C.figure(racconto)
+    numerato = C.racconto_numerato(racconto, trovate)
+    assert numerato.count('class="fignum"') == len(trovate)
+    for fig in trovate:
+        assert f'>Fig. {fig.numero}</span> ' in numerato, fig
+        assert f'id="{fig.ancora}"' in numerato, fig
+
+
+def test_il_racconto_numerato_non_tocca_il_resto(racconto) -> None:
+    """La numerazione è chirurgica: aggiunge, e non riscrive il racconto."""
+    numerato = C.racconto_numerato(racconto, C.figure(racconto))
+    assert len(numerato) > len(racconto)
+    senza = numerato.replace('<span class="fignum">', "")
+    senza = re.sub(r"Fig\. \d+</span> ", "", senza)
+    senza = re.sub(r'<figure class="fig" id="fig-\d+"', '<figure class="fig"', senza)
+    assert senza == racconto
+
+
+def test_ogni_grafico_del_racconto_ha_un_blocco_nella_pagina_delle_tabelle(racconto) -> None:
+    """La riga «tutti i dati dei grafici si possono vedere anche come tabelle»
+    è vera solo se ogni contenitore che il javascript riempie esiste anche
+    sulla pagina delle tabelle. Questo test è quello che la tiene vera."""
+    disegno = (C.MODELLI / "figure.js").read_text(encoding="utf-8")
+    cercati = set(re.findall(r'getElementById\("([a-z0-9-]+)"\)', disegno))
+    pagina = (C.MODELLI / "tabelle.html").read_text(encoding="utf-8")
+    pagina = pagina.replace("{{BLOCCHI_TABELLE}}", C.blocchi_tabelle(C.figure(racconto)))
+    presenti = set(re.findall(r'id="([a-z0-9-]+)"', pagina))
+    # Gli unici che possono mancare sono le radici dello scrollytelling: non
+    # sono grafici, sono i passi del racconto, e `scrollytelling()` senza
+    # radice non fa niente invece di rompersi.
+    assert cercati - presenti <= {"scrolly-popolazione", "scrolly-casa"}
+
+
+def test_la_pagina_delle_tabelle_rimanda_a_ogni_figura(racconto) -> None:
+    trovate = C.figure(racconto)
+    blocchi = C.blocchi_tabelle(trovate)
+    for fig in trovate:
+        assert f'href="index.html#{fig.ancora}"' in blocchi, fig
+
+
+def test_la_figura_che_condivide_la_tabella_dice_dove_sta(racconto) -> None:
+    """Le due serie della casa hanno una tabella sola: la seconda sezione
+    sarebbe vuota, e invece rimanda alla prima."""
+    blocchi = C.blocchi_tabelle(C.figure(racconto))
+    assert 'class="altrove"' in blocchi
+    assert 'href="#fig-casa-prezzo"' in blocchi
 
 
 @pytest.fixture(scope="module")
