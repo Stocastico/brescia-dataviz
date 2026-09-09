@@ -18,8 +18,10 @@ apre da disco, si manda per email, si archivia.
 | `modelli/esplora.html` | lo strumento: i diciannove indicatori su tutti i comuni, a scelta di chi legge |
 | `modelli/metodologia.html` | le regole del progetto, per un lettore che non ha letto il repository |
 | `modelli/dati.html` | fonti, tabelle scaricabili e avvertenze |
+| `modelli/tabelle.html` | le tabelle-specchio di ogni figura, tutte insieme e tutte aperte |
 | `modelli/stile.css` | la tavolozza e l'impaginazione, in variabili CSS |
 | `modelli/grafici.js` | mappe, dispersioni, serie e barre in SVG, senza librerie |
+| `modelli/figure.js` | quale grafico va in quale contenitore: lo stesso file per il racconto e per le tabelle |
 
 ## Le tre regole che tengono in piedi tutto il resto
 
@@ -84,6 +86,23 @@ ne accorgerebbe più, e il pannello diventerebbe una diapositiva.
 Le tabelle-specchio dell'ottava storia stanno **fuori** dal pannello
 (`#tabelle-casa`, via l'opzione `tabellaIn` di `serie()`): la figura spenta è
 `display:none`, e con lei sparirebbe dalla tastiera anche la sua tabella.
+
+## Le figure si numerano da sé
+
+`figure()` legge `modelli/racconto.html`, conta le `<figure class="fig">`
+nell'ordine del documento e da quella lista escono due cose: il `Fig. N` sul
+titolo dentro il racconto e i blocchi di `tabelle.html`. Nessuno scrive un
+numero a mano, per gli stessi due motivi delle cifre — una figura infilata in
+mezzo rinumera le altre, e i titoli non si ripetono in due file che poi
+divergono.
+
+`tabelle.html` non ridisegna niente: incorpora lo stesso `figure.js` del
+racconto, e `.solo-tabelle` spegne gli SVG e apre i pieghevoli. Una figura
+nuova compare lì da sé. Due casi non automatici, entrambi dichiarati in
+`costruisci.py`: `CONTENITORI_CONDIVISI` per la coppia della casa, che ha una
+tabella sola in due, e `GRAFICI_FUORI_FIGURA` per i grafici che stanno in un
+`<details>` invece che in una figura — senza quella riga la pagina
+prometterebbe tutti i dati e non li avrebbe.
 
 ## Le due pagine che fanno cose diverse
 

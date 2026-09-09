@@ -113,7 +113,7 @@ jobs:
 
       - name: Controlla che i segnaposto siano tutti sostituiti
         run: |
-          if grep -rlE '\{\{(c:[a-z0-9_]+|BUILD_DATE|DATA_DATE|N_[A-Z]+)\}\}' _site; then
+          if grep -rlE '\{\{(c:[a-z0-9_]+|BUILD_DATE|DATA_DATE|N_[A-Z]+|BLOCCHI_TABELLE)\}\}' _site; then
             echo "segnaposto non sostituiti: vedi i file elencati sopra"
             exit 1
           fi
