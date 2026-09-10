@@ -498,3 +498,21 @@ def test_senza_i_json_del_sito_la_costruzione_si_ferma_invece_di_pubblicare(
     monkeypatch.setattr(C, "DATI_WEB", tmp_path / "vuota")
     assert C.costruisci(tmp_path / "uscita", None) == 1
     assert "manca web/src/data" in capsys.readouterr().err
+
+
+def test_le_conclusioni_hanno_una_riga_per_storia(racconto) -> None:
+    """La testata dice «N storie» e il riquadro dice «le conclusioni in N
+    righe», e N è contato dal modello — ma nessuno controllava che le righe
+    fossero davvero N.
+
+    È lo stesso errore che il commento in `cifre()` racconta di aver già preso
+    una volta («la testata diceva otto storie quando erano nove»), spostato di
+    un riquadro: aggiungere una storia senza aggiungere la sua riga fa dire
+    alla pagina un numero che il suo stesso elenco smentisce."""
+    storie = len(re.findall(r'class="story s\d', racconto))
+    riquadro = re.search(
+        r'<span class="t-lab">Le conclusioni.*?</ul>', racconto, re.S
+    )
+    assert riquadro, "il riquadro delle conclusioni non c'è più"
+    righe = len(re.findall(r"<li>", riquadro.group(0)))
+    assert righe == storie, f"{storie} storie ma {righe} righe di conclusione"

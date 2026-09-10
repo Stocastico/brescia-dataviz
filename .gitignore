@@ -9,6 +9,9 @@ __pycache__/
 .pytest_cache/
 *.egg-info/
 .venv/
+# `uv run` scrive un lockfile suo, e la CI installa con pip: il file non
+# serve a nessuno e ricompare a ogni esecuzione dei test in locale.
+pipeline/uv.lock
 
 # Uscite degli script di analisi: si rigenerano con `--save`.
 analysis/output/

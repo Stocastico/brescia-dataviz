@@ -1,5 +1,10 @@
 # Handoff — 9 settembre 2026
 
+> **Chiuso il 10 settembre 2026.** La decima storia è stata finita: i sette
+> passi qui sotto sono tutti fatti, e il file `cifre2-da-inserire.py.txt` che
+> accompagnava questo handoff è stato innestato e rimosso. Il documento resta
+> come registro delle decisioni, non come lista di cose da fare.
+
 Due lavori: uno chiuso e mergiato, uno a metà su un branch.
 
 ## Chiuso: le figure numerate e la pagina delle tabelle

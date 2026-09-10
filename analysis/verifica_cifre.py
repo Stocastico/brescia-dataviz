@@ -1186,6 +1186,20 @@ def bg_quota_laurea(gruppo: str, classe: str) -> float:
     totale = bg_istruzione(gruppo, classe, "totale")
     return bg_istruzione(gruppo, classe, "titolo universitario o accademico") / totale * 100
 
+# I flussi lordi con l'estero. `decomposizione` usa il saldo; la storia delle
+# origini usa i due numeri separati, perche' la cosa da vedere e' che si
+# muovono in modo diverso.
+ANNI_BILANCIO = ("2019", "2020", "2021", "2022", "2023", "2024")
+
+
+def flusso_estero(indicatore: str, anno: str) -> float:
+    return sum(
+        float(r["valore"])
+        for r in bilancio
+        if r["indicatore"] == indicatore and r["anno"] == anno and r["valore"]
+    )
+
+
 
 # --- retribuzioni INPS e infortuni INAIL ---------------------------------
 
@@ -2772,6 +2786,97 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         2.5,
         lambda: bg_quota_laurea("italiani dalla nascita", "9 anni e più")
         - bg_quota_laurea("stranieri", "9 anni e più"),
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "nati in Italia da genitori stranieri: 53.224 in tutto",
+        53224,
+        lambda: bg("stranieri_nati_in_italia") + bg("italiani_acquisiti_nati_in_italia"),
+        0,
+    ),
+    (
+        "sito storia delle origini",
+        "e il 49,9 % di loro non ha la cittadinanza",
+        49.9,
+        lambda: bg("stranieri_nati_in_italia")
+        / (bg("stranieri_nati_in_italia") + bg("italiani_acquisiti_nati_in_italia"))
+        * 100,
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "fra chi la cittadinanza ce l'ha i minorenni sono il 68,0 %",
+        68.0,
+        lambda: bg("italiani_acquisiti_nati_in_italia_minorenni")
+        / bg("italiani_acquisiti_nati_in_italia")
+        * 100,
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "ingresso implicito nel biennio: almeno 16.017 persone",
+        16017,
+        lambda: (bg("stranieri") - bg("stranieri", BG_PRIMO))
+        + (bg("italiani_acquisiti") - bg("italiani_acquisiti", BG_PRIMO)),
+        0,
+    ),
+    (
+        "sito storia delle origini",
+        "la crescita degli acquisiti vale 2,0 volte quella della provincia",
+        2.0,
+        lambda: (bg("italiani_acquisiti") - bg("italiani_acquisiti", BG_PRIMO))
+        / (bg("popolazione_residente") - bg("popolazione_residente", BG_PRIMO)),
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "il comune piu' basso sta allo 0,6 %",
+        0.6,
+        lambda: min(bg_quote().values()),
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "partenze per l'estero nel 2019: 4.644",
+        4644,
+        lambda: flusso_estero("emigrati_estero", "2019"),
+        0,
+    ),
+    (
+        "sito storia delle origini",
+        "e nel 2024: 4.638, cioe' ferme",
+        4638,
+        lambda: flusso_estero("emigrati_estero", "2024"),
+        0,
+    ),
+    (
+        "sito storia delle origini",
+        "arrivi dall'estero nel 2019: 9.211",
+        9211,
+        lambda: flusso_estero("immigrati_estero", "2019"),
+        0,
+    ),
+    (
+        "sito storia delle origini",
+        "e nel 2024: 11.077, cioe' in crescita",
+        11077,
+        lambda: flusso_estero("immigrati_estero", "2024"),
+        0,
+    ),
+    (
+        "sito storia delle origini",
+        "in sei anni 26.642 partenze, media 4.440 l'anno",
+        26642,
+        lambda: sum(flusso_estero("emigrati_estero", a) for a in ANNI_BILANCIO),
+        0,
+    ),
+    (
+        "sito storia delle origini",
+        "contro 54.459 arrivi: uno che parte ogni 2,0 che arrivano",
+        2.0,
+        lambda: sum(flusso_estero("immigrati_estero", a) for a in ANNI_BILANCIO)
+        / sum(flusso_estero("emigrati_estero", a) for a in ANNI_BILANCIO),
         0.05,
     ),
 (
