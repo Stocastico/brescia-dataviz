@@ -118,3 +118,72 @@ def test_la_costruzione_gira_comunque_a_ogni_push(workflow: dict) -> None:
     passi = " ".join(str(p.get("run", "")) for p in workflow["jobs"]["costruisci"]["steps"])
     assert "verifica_cifre" in passi
     assert "pytest" in passi
+
+
+# --- i due workflow non si pestano i piedi -------------------------------
+
+VERIFICA = WORKFLOW.parent / "verifica.yml"
+
+
+@pytest.fixture(scope="module")
+def verifica() -> dict:
+    if not VERIFICA.exists():
+        pytest.skip(f"manca {VERIFICA.name}")
+    return yaml.safe_load(VERIFICA.read_text(encoding="utf-8"))
+
+
+# Il lancio a mano non conta come sovrapposizione, e la ragione e' che non e'
+# un evento del repository: e' una voce di menu che si sceglie una per volta.
+# Che entrambi i workflow lo accettino non fa girare niente due volte — fa che
+# «Verifica» si possa lanciare su un ramo senza PR, che e' proprio cio' che
+# serve da quando i push non la attivano piu'.
+A_MANO = {"workflow_dispatch"}
+
+
+def eventi(workflow: dict, automatici: bool = True) -> set[str]:
+    """Gli eventi che attivano un workflow, come nomi."""
+    trigger = workflow[CHIAVE_TRIGGER]
+    if isinstance(trigger, str):
+        nomi = {trigger}
+    else:
+        nomi = set(trigger)
+    return nomi - A_MANO if automatici else nomi
+
+
+def test_i_due_workflow_non_girano_sullo_stesso_evento(workflow: dict, verifica: dict) -> None:
+    """La suite gira una volta per ciclo, non quattro.
+
+    I due workflow eseguono **gli stessi sei passi** — checkout, python,
+    install, `build --offline web`, `pytest --cov`, `verifica_cifre.py` — e
+    «Pubblica il sito» ci aggiunge la costruzione e l'artefatto. Finché non si
+    attivano sullo stesso evento, ogni percorso è controllato una volta sola:
+    la PR da «Verifica», `main` e il lancio a mano da «Pubblica il sito».
+
+    Quando invece si sovrapponevano, un ciclo PR→merge faceva girare la stessa
+    suite quattro volte per trentadue minuti: `push:` senza filtri contava sia
+    per il ramo della PR (dove `pull_request` già la faceva girare) sia per
+    `main` (dove la fa girare il workflow che pubblica).
+
+    Se un giorno «Verifica» deve tornare a girare sui push, la scelta è
+    legittima ma va fatta togliendo i test da «Pubblica il sito», non
+    lasciandoli in due posti: questo test è lì per rendere la sovrapposizione
+    una decisione invece di una svista."""
+    comuni = eventi(verifica) & eventi(workflow)
+    assert not comuni, (
+        "«Verifica» e «Pubblica il sito» si attivano entrambi su "
+        f"{sorted(comuni)}, e girano la stessa suite: un evento, un'esecuzione."
+    )
+
+
+def test_la_verifica_gira_sulle_pull_request(verifica: dict) -> None:
+    """L'altra metà del vincolo. Senza questa riga il test qui sopra si
+    soddisferebbe anche svuotando i trigger di «Verifica», che è il modo più
+    silenzioso di non avere CI."""
+    assert "pull_request" in eventi(verifica), "le PR non sono più controllate"
+
+
+def test_la_verifica_si_puo_lanciare_a_mano(verifica: dict) -> None:
+    """Il ripiego di quando i push non la attivano: su un ramo senza PR
+    aperta il controllo si chiede da Actions, e senza questa riga non ci
+    sarebbe modo di averlo."""
+    assert "workflow_dispatch" in eventi(verifica, automatici=False)

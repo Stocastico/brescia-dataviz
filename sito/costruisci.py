@@ -906,6 +906,99 @@ def flussi_estero() -> dict[str, Any]:
     }
 
 
+# Le voci della condizione professionale che la storia pubblica, nell'ordine in
+# cui vanno lette: prima chi lavora, poi chi cerca, poi le tre ragioni per cui
+# si sta fuori dalle forze di lavoro. `non forze di lavoro` e `forze di lavoro`
+# restano fuori: sono somme delle altre, e in una composizione in percentuale
+# farebbero arrivare il totale a duecento.
+CONDIZIONI = (
+    ("occupati", "occupato"),
+    ("in cerca", "in cerca di occupazione"),
+    (
+        "in pensione",
+        "percettore/rice di una o più pensioni per effetto di attività lavorativa "
+        "precedente o di redditi da capitale",
+    ),
+    ("casalinghe e casalinghi", "casalinga/o"),
+    ("studenti", "studente/ssa"),
+)
+CITTADINANZE = (("italiani", "italiano-a"), ("stranieri", "straniero-a/apolide"))
+
+
+def occupazione_cittadinanza() -> dict[str, Any]:
+    """La condizione professionale per cittadinanza, nel **comune** di Brescia.
+
+    ⚠️ Il perimetro non è quello del resto della storia. Il censimento pubblica
+    questo incrocio per il solo capoluogo (`REF_AREA` è il comune), non per i
+    205 comuni: sono 200.000 abitanti su 1.260.000, e nel capoluogo la quota di
+    origine straniera è più alta della mediana provinciale. Nessuna cifra che
+    esce da qui descrive la provincia, e la storia lo dice.
+
+    La funzione torna le **quote sul totale del gruppo** e non un tasso solo,
+    perché il tasso solo qui inganna. Il tasso di occupazione si calcola sui 15
+    anni e più, e in quella popolazione ci stanno i pensionati: fra gli italiani
+    sono più di un quarto, fra gli stranieri meno di uno su venticinque. Il
+    tasso di occupazione degli stranieri risulta più alto, ed è vero, ma quello
+    che misura è in gran parte **chi è andato in pensione**. La tabella non ha
+    la classe d'età, quindi non si può correggere per struttura: si può
+    mostrare la composizione, che è meglio comunque — è la stessa scelta fatta
+    sul titolo di studio, dove le classi si pubblicano invece di standardizzarle.
+
+    Il tasso di **disoccupazione** invece regge, perché si calcola dentro le
+    forze di lavoro e la pensione non ci entra.
+    """
+    import csv
+
+    path = PROCESSED / "censimento_lavoro_brescia.csv"
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as handle:
+        righe = [
+            r
+            for r in csv.DictReader(handle)
+            if r["tavola"] == "condizione_professionale_cittadinanza"
+            and r["sesso"] == "totale"
+            and r["valore"]
+        ]
+    if not righe:
+        return {}
+
+    conti: dict[tuple[str, str], dict[str, float]] = {}
+    for riga in righe:
+        conti.setdefault((riga["anno"], riga["cittadinanza"]), {})[
+            riga["condizione_professionale"]
+        ] = float(riga["valore"])
+
+    anni = sorted({anno for anno, _ in conti})
+    primo, ultimo = anni[0], anni[-1]
+
+    def gruppo(anno: str, codice: str) -> dict[str, Any] | None:
+        voci = conti.get((anno, codice))
+        if not voci or not voci.get("totale"):
+            return None
+        totale, forze = voci["totale"], voci.get("forze di lavoro")
+        cerca = voci.get("in cerca di occupazione")
+        return {
+            "totale": totale,
+            "quote": {
+                nome: voci.get(chiave, 0.0) / totale * 100 for nome, chiave in CONDIZIONI
+            },
+            "occupati": voci.get("occupato", 0.0),
+            # Il tasso di disoccupazione è sulle forze di lavoro, non sulla
+            # popolazione: è la definizione, ed è anche la ragione per cui è
+            # l'unico dei due tassi che questa tabella regge.
+            "disoccupazione": (cerca / forze * 100) if forze and cerca is not None else None,
+        }
+
+    per_anno = {
+        anno: {nome: g for nome, codice in CITTADINANZE if (g := gruppo(anno, codice))}
+        for anno in (primo, ultimo)
+    }
+    if not all(len(v) == len(CITTADINANZE) for v in per_anno.values()):
+        return {}
+    return {"anno_primo": primo, "anno_ultimo": ultimo, "gruppi": per_anno}
+
+
 def background_incorporato() -> dict[str, Any]:
     """Quello che le figure della decima storia disegnano.
 
@@ -947,6 +1040,7 @@ def background_incorporato() -> dict[str, Any]:
         ],
         "istruzione": istruzione_background(),
         "flussi": flussi_estero(),
+        "occupazione": occupazione_cittadinanza(),
     }
 
 
@@ -1566,6 +1660,43 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         )
         fuori["bg_rapporto_flussi"] = numero_it(
             sum(flussi["arrivi"]) / sum(flussi["partenze"]), 1
+        )
+
+    # Il lavoro per cittadinanza, nel solo capoluogo. Le cifre portano `occ_` e
+    # non `bg_` perché il perimetro è diverso da quello del resto della storia,
+    # e il prefisso è il primo posto dove la differenza si vede.
+    occupazione = occupazione_cittadinanza()
+    if occupazione:
+        primo, ultimo = occupazione["anno_primo"], occupazione["anno_ultimo"]
+        fuori["occ_anno_primo"] = primo
+        fuori["occ_anno_ultimo"] = ultimo
+        for nome in ("italiani", "stranieri"):
+            prima = occupazione["gruppi"][primo][nome]
+            dopo = occupazione["gruppi"][ultimo][nome]
+            fuori[f"occ_pop_{nome}"] = numero_it(dopo["totale"])
+            fuori[f"occ_occupati_{nome}"] = numero_it(dopo["occupati"])
+            fuori[f"occ_quota_occupati_{nome}"] = percento_it(dopo["quote"]["occupati"])
+            fuori[f"occ_pensione_{nome}"] = percento_it(dopo["quote"]["in pensione"])
+            fuori[f"occ_casalinghe_{nome}"] = percento_it(
+                dopo["quote"]["casalinghe e casalinghi"]
+            )
+            fuori[f"occ_disocc_{nome}"] = percento_it(dopo["disoccupazione"])
+            fuori[f"occ_disocc_{nome}_primo"] = percento_it(prima["disoccupazione"])
+        # Quante volte la disoccupazione straniera vale quella italiana: è la
+        # cifra che sopravvive alla composizione, e quindi quella che la storia
+        # usa per dire qualcosa.
+        fuori["occ_rapporto_disocc"] = numero_it(
+            occupazione["gruppi"][ultimo]["stranieri"]["disoccupazione"]
+            / occupazione["gruppi"][ultimo]["italiani"]["disoccupazione"],
+            1,
+        )
+        # E quante volte i pensionati italiani valgono quelli stranieri: è
+        # l'altra faccia, cioè la ragione per cui il tasso di occupazione dice
+        # meno di quanto sembri.
+        fuori["occ_rapporto_pensione"] = numero_it(
+            occupazione["gruppi"][ultimo]["italiani"]["quote"]["in pensione"]
+            / occupazione["gruppi"][ultimo]["stranieri"]["quote"]["in pensione"],
+            1,
         )
 
     scomposizione = decomposizione()
