@@ -92,7 +92,7 @@ abbozzati.
 | | Asse | Perché questo | Forma prevalente | Cosa manca |
 |---|---|---|---|---|
 | **1** | **Il lavoro e le imprese** — unità locali per classe di addetti e settore | È la domanda che ha originato il progetto, ed è l'unico asse con dati completi su tutti i 205 comuni e sei anni. La struttura dimensionale è stabile (micro-unità al 92,7 %) e la crescita sta nella fascia intermedia: il fenomeno da spiegare c'è. | coropletica sui comuni + serie per classe | niente: già scaricato |
-| **2** | **Chi vive nel bresciano** — popolazione, origini, istruzione, redditi | Completamente mappabile, serie annuale, e la distinzione fra stranieri, seconde generazioni e italiani per acquisizione è materiale che nessuno racconta bene. Il reddito per classi di importo permette di parlare di disuguaglianza, non solo di livello. | coropletica + composizioni | il background migratorio (un download) |
+| **2** | **Chi vive nel bresciano** — popolazione, origini, istruzione, redditi | Completamente mappabile, serie annuale, e la distinzione fra stranieri, seconde generazioni e italiani per acquisizione è materiale che nessuno racconta bene. Il reddito per classi di importo permette di parlare di disuguaglianza, non solo di livello. | coropletica + composizioni | ✅ **Fatto** (10 settembre 2026): è diventato la **nona storia**, «Cinquantatremila nati qui» |
 | **3** | **Le due economie: manifattura e Garda** | È *la* storia della provincia: 12,2 milioni di presenze concentrate al 68,8 % in dieci comuni, otto sul lago, mentre la manifattura sta a ovest e a nord. Due economie che si toccano poco, sullo stesso territorio. Nasce dall'incrocio di dati già scaricati. | mappa bivariata, indici di concentrazione | ✅ niente, ed è diventato la **quarta storia**; il turismo confrontato con le altre 106 province è poi diventato la **settima** |
 | **4** | **L'aria e il clima** | Profondità che nessun altro asse ha: PM10 dal 2000, NO₂ dal 1992, temperature dal 1990. In pianura padana è l'asse con il significato più immediato per chi ci vive. | ⚠️ **non una coropletica** | ✅ niente, ed è diventato la **sesta storia** |
 
@@ -116,6 +116,25 @@ abbozzati.
 > le stazioni tenute insieme dalle anomalie invece che dalle medie. La lettura è
 > `analysis/aria_e_clima.py`, la storia è la sesta del sito, e le due decisioni
 > di metodo — panel bilanciato e anomalie — sono in MET-16.
+
+> **Nota sull'asse 2.** ✅ **Fatto** (10 settembre 2026), e la forma che ha
+> preso è meno di quella prevista qui, per una ragione che vale la pena
+> scrivere. «Origini» nella riga sopra prometteva **da dove vengono**, e a
+> grana comunale il censimento non lo dà: pubblica la cittadinanza come
+> «Unione europea» o «fuori dall'Unione», non per paese. La serie per singolo
+> paese esiste (`demo.istat.it/app/?i=P03`, verificata in FONTI.md §4-quater)
+> e non è stata scaricata, quindi la storia dichiara quel buco invece di
+> aggirarlo. Anche «redditi» è rimasto fuori: né il MEF né l'INPS incrociano
+> la cittadinanza, e il censimento su occupazione × cittadinanza è scaricato
+> ma perde l'incrocio nel CSV.
+>
+> Quello che invece si è rivelato più ricco del previsto sono le **seconde
+> generazioni**: 53.224 persone nate in Italia da genitori stranieri, metà
+> senza cittadinanza e di quelle il 94,5 % minorenne. E una decisione di
+> metodo che non era in programma: sull'istruzione i divari per classe d'età
+> hanno **segno opposto**, quindi la storia pubblica le classi e rinuncia
+> all'aggregato — la standardizzazione per età lo sposta di mezzo punto e
+> continua a non descrivere nessuna delle due.
 
 ### Di contorno
 

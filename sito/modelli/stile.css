@@ -94,8 +94,10 @@
      l'intervallo delle tinte base (2,35-5,20) ma dentro quello delle scure
      (3,45-8,73), e la regola guarda che un colore non sia il **piu' debole** del
      gruppo, non che non sia il piu' forte.
-     Non e' scritto come variabile finche' non c'e' una decima storia: una
-     variabile senza consumatore e' CSS morto.
+     Non e' stato scritto come variabile finche' non c'e' stata una decima
+     storia, perche' una variabile senza consumatore e' CSS morto. La decima
+     storia e' arrivata il 10 settembre 2026 — «Cinquantatremila nati qui» — e
+     con lei la variabile, qui sotto.
 
      ⚠️ **E il bruno e' l'ultimo che questo asse concede.** Verso il chiaro la
      strada e' chiusa dal contrasto, non dal gusto: il viola sta a luminosita'
@@ -110,6 +112,7 @@
      l'intervallo della famiglia (2,35-5,20 e 3,45-8,73) e sopra la mediana
      (3,72 e 5,83), quindi non e' il colore piu' debole del gruppo. */
   --indaco:#4a63b5; --indaco-d:#2f458e;
+  --bruno:#6d4e22; --bruno-d:#513815;
   --oro:#e7b57e;
 
   /* Rampe dei grafici, le stesse dell'originale.
@@ -223,24 +226,26 @@ h3{font-size:1.12rem;margin:2rem 0 .4rem}
 .s3 .badge-num{color:var(--green)} .s4 .badge-num{color:var(--amber)}
 .s5 .badge-num{color:var(--viola)} .s6 .badge-num{color:var(--oliva)}
 .s7 .badge-num{color:var(--prugna)} .s8 .badge-num{color:var(--alloro)}
-.s9 .badge-num{color:var(--indaco)}
+.s9 .badge-num{color:var(--indaco)} .s10 .badge-num{color:var(--bruno)}
 .sx .badge-num{color:var(--ink2)}
 .s1 .question{border-color:var(--coral)} .s2 .question{border-color:var(--sea)}
 .s3 .question{border-color:var(--green)} .s4 .question{border-color:var(--amber)}
 .s5 .question{border-color:var(--viola)} .s6 .question{border-color:var(--oliva)}
 .s7 .question{border-color:var(--prugna)} .s8 .question{border-color:var(--alloro)}
-.s9 .question{border-color:var(--indaco)}
+.s9 .question{border-color:var(--indaco)} .s10 .question{border-color:var(--bruno)}
 .s1 .takeaway{border-left-color:var(--coral)} .s3 .takeaway{border-left-color:var(--green)}
 .s4 .takeaway{border-left-color:var(--amber)} .s5 .takeaway{border-left-color:var(--viola)}
 .s6 .takeaway{border-left-color:var(--oliva)}
 .s7 .takeaway{border-left-color:var(--prugna)}
 .s8 .takeaway{border-left-color:var(--alloro)}
 .s9 .takeaway{border-left-color:var(--indaco)}
+.s10 .takeaway{border-left-color:var(--bruno)}
 .s1 .kn .big{color:var(--coral-d)} .s3 .kn .big{color:var(--green-d)}
 .s4 .kn .big{color:var(--amber-d)} .s5 .kn .big{color:var(--viola-d)}
 .s6 .kn .big{color:var(--oliva-d)}
 .s7 .kn .big{color:var(--prugna-d)} .s8 .kn .big{color:var(--alloro-d)}
 .s9 .kn .big{color:var(--indaco-d)}
+.s10 .kn .big{color:var(--bruno-d)}
 .s1 .step.active>div{border-left-color:var(--coral)}
 .s3 .step.active>div{border-left-color:var(--green)}
 .s4 .step.active>div{border-left-color:var(--amber)}
@@ -248,6 +253,7 @@ h3{font-size:1.12rem;margin:2rem 0 .4rem}
 .s7 .step.active>div{border-left-color:var(--prugna)}
 .s8 .step.active>div{border-left-color:var(--alloro)}
 .s9 .step.active>div{border-left-color:var(--indaco)}
+.s10 .step.active>div{border-left-color:var(--bruno)}
 
 /* FIGURE */
 .fig{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px;margin:30px 0}

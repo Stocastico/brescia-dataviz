@@ -105,6 +105,7 @@ IMPONIBILE = "AGGINCR"  # codice MEF, non etichetta: le etichette cambiano lingu
 FONTE_TURISMO = "Regione Lombardia: flussi turistici per comune"
 FONTE_OMI = "Agenzia delle Entrate: OMI, quotazioni immobiliari"
 FONTE_PREZZI = "ISTAT: indice dei prezzi al consumo (NIC), medie annue"
+FONTE_CENSIMENTO = "ISTAT: censimento permanente, background migratorio"
 
 
 def _indicatori() -> list[dict[str, Any]]:
@@ -115,6 +116,7 @@ def _indicatori() -> list[dict[str, Any]]:
     geo = {r["codice_istat"]: r for r in _leggi("comuni_geometria.csv")}
     quotazioni = _leggi("quotazioni_comuni.csv")
     indice_prezzi = {r["anno"]: float(r["indice"]) for r in _leggi("indice_prezzi.csv")}
+    background = _leggi("background_migratorio_comuni.csv")
 
     addetti = _serie(imprese, lambda r: r["indicatore"] == "addetti" and r["classe_addetti"] == "totale")
     unita = _serie(imprese, lambda r: r["indicatore"] == "unita_locali" and r["classe_addetti"] == "totale")
@@ -175,6 +177,32 @@ def _indicatori() -> list[dict[str, Any]]:
         for codice, per_anno in prezzo_case_reale.items()
         if ultimo_quotato in per_anno
     }
+
+    # Background migratorio: quanta popolazione ha un'origine straniera, che
+    # non è «quanti stranieri» — è la distinzione su cui la decima storia si
+    # regge, perché chi ha preso la cittadinanza esce dalla prima voce e non
+    # dalla seconda.
+    #
+    # Il numeratore è una **sottrazione** e non la somma di stranieri e
+    # acquisiti, e la ragione non è di stile. Su nove coppie comune-anno la
+    # fonte non pubblica la riga degli stranieri o quella degli acquisiti:
+    # sommando, quei nove casi sparirebbero dalla mappa (Magasa, 102 abitanti,
+    # perdeva tutti e tre gli anni). E qui l'assenza **è uno zero
+    # dimostrabile**, non un dato soppresso: l'identità fra le tre componenti e
+    # il totale chiude su tutte e 615 le coppie, comprese quelle incomplete —
+    # se la fonte sopprimesse un valore piccolo, non chiuderebbe. Sottrarre
+    # usa quell'identità invece di assumere uno zero, e vale anche il giorno in
+    # cui una voce in più manca. `test_web.py` fissa l'identità, perché il
+    # giorno in cui smette di valere questa riga diventa sbagliata in silenzio.
+    bg_popolazione = _serie(background, lambda r: r["indicatore"] == "popolazione_residente")
+    bg_dalla_nascita = _serie(background, lambda r: r["indicatore"] == "italiani_dalla_nascita")
+    origine_straniera: Valori = {}
+    for codice, per_anno in bg_popolazione.items():
+        for anno, totale in per_anno.items():
+            nativi = bg_dalla_nascita.get(codice, {}).get(anno)
+            if totale is None or nativi is None:
+                continue
+            origine_straniera.setdefault(codice, {})[anno] = totale - nativi
 
     superficie: Valori = {
         codice: {anno: float(riga["area_kmq"]) for anno in popolazione.get(codice, {})}
@@ -290,6 +318,21 @@ def _indicatori() -> list[dict[str, Any]]:
                 "Variazione netta: non distingue saldo naturale da migrazione",
             ],
             "values": _crescita(popolazione, "2018–2024"),
+        },
+        {
+            "id": "quota_background",
+            "label": "Quota di popolazione di origine straniera",
+            "unit": "%",
+            "kind": "sequential",
+            "theme": "popolazione",
+            "source": FONTE_CENSIMENTO,
+            "confidence": "derivato",
+            "assumptions": [
+                "Stranieri più italiani per acquisizione: è l'origine, non la cittadinanza di oggi",
+                "Tre anni soli (2021-2023): descrive un livello, non una tendenza",
+                "Il paese di origine non è nella fonte a questa grana, e non è un proxy di reddito",
+            ],
+            "values": _rapporto(origine_straniera, bg_popolazione, 100),
         },
         {
             "id": "reddito_medio",

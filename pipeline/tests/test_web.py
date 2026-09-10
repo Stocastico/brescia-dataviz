@@ -10,10 +10,12 @@ Girano solo se `web/src/data/` è stata costruita (`build web`).
 
 from __future__ import annotations
 
+import csv
 import json
 
 import pytest
 
+from brescia_pipeline.config import PROCESSED_DIR
 from brescia_pipeline.datasets.confini import GEOJSON_PATH
 from brescia_pipeline.web import WEB_DATA_DIR
 
@@ -158,3 +160,61 @@ def test_i_prezzi_delle_case_ci_sono_e_dichiarano_le_due_assenze() -> None:
     # ventun anni di inflazione: nel capoluogo la variazione reale è negativa
     valori = list(reale["values"]["017029"].values())
     assert valori and valori[0] < 0
+
+
+def test_il_background_migratorio_e_nel_registro() -> None:
+    """La decima storia disegna una coropletica, e una coropletica di questo
+    progetto legge il registro: l'indicatore non è un accessorio della storia,
+    è la sua condizione. Niente skip — `background_migratorio_comuni.csv` è
+    versionata, quindi se manca è un errore e non una tabella non costruita."""
+    assert "quota_background" in [riga["id"] for riga in registro()]
+
+    quota = indicatore("quota_background")
+    assert quota["unit"] == "%"
+    assert quota["confidence"] == "derivato"
+    # Tre anni, e sono quelli del censimento permanente: la finestra corta è
+    # dichiarata nella storia, e qui è fissata perché non si allarghi per
+    # sbaglio con una tabella rigenerata male.
+    assert quota["periods"] == ["2021", "2022", "2023"]
+    assert len(quota["values"]) == 205
+
+    # La quota è stranieri più italiani per acquisizione sulla popolazione: sta
+    # fra zero e cento per costruzione, e se ne esce il numeratore ha preso
+    # dentro una voce che non doveva.
+    for codice, per_anno in quota["values"].items():
+        for anno, valore in per_anno.items():
+            assert valore is not None, (codice, anno)
+            assert 0.0 <= valore <= 100.0, (codice, anno, valore)
+
+
+def test_le_tre_componenti_del_background_sommano_al_totale() -> None:
+    """L'identità che regge `quota_background`, controllata sulla tabella e non
+    sull'indicatore.
+
+    Italiani dalla nascita più stranieri più italiani per acquisizione fa la
+    popolazione residente, su **ogni** coppia comune-anno. Nove coppie hanno una
+    componente non pubblicata, e l'identità chiude anche lì: quindi lì
+    l'assenza è uno zero, non un valore soppresso, ed è quello che autorizza
+    `web.py` a ricavare il numeratore per sottrazione.
+
+    Se un giorno la fonte cominciasse a sopprimere i valori piccoli l'identità
+    si romperebbe e la quota diventerebbe sbagliata **in silenzio**, perché
+    resterebbe fra zero e cento. Questo test è l'allarme."""
+    path = PROCESSED_DIR / "background_migratorio_comuni.csv"
+
+    per_coppia: dict[tuple[str, str], dict[str, str]] = {}
+    with path.open(encoding="utf-8") as handle:
+        for riga in csv.DictReader(handle):
+            per_coppia.setdefault((riga["codice_istat"], riga["anno"]), {})[riga["indicatore"]] = riga["valore"]
+
+    assert per_coppia, "tabella vuota"
+    rotte = []
+    for chiave, voci in per_coppia.items():
+        totale = voci.get("popolazione_residente")
+        if not totale:
+            continue
+        parti = ("italiani_dalla_nascita", "stranieri", "italiani_acquisiti")
+        somma = sum(int(voci[p]) for p in parti if voci.get(p))
+        if somma != int(totale):
+            rotte.append((chiave, totale, {p: voci.get(p) for p in parti}))
+    assert not rotte, f"l'identità non chiude su {len(rotte)} coppie: {rotte[:5]}"

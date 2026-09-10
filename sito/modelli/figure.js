@@ -482,4 +482,81 @@
       descrizione: "Mappa dei comuni della provincia di Brescia per variazione reale del prezzo delle case fra il 2004 e il 2025"
     });
   }
+
+  // --- storia 9: le origini -------------------------------------------
+  var background = DATI.background;
+  if (background) {
+    /* Le barre dei nati qui non impilano il totale e la parte minorenne:
+       `barre()` non sa impilare, e soprattutto non sarebbe quello il punto. I
+       due gruppi hanno quasi lo stesso numero di persone, e sta nel testo e
+       nelle cifre chiave; cio' che li separa e' l'eta'. Le barre misurano
+       quella, e la nota porta gli assoluti per chi li vuole. */
+    G.barre(document.getElementById("barre-nati-qui"), {
+      voci: background.nati_qui.map(function (v) {
+        return {
+          nome: v.nome,
+          valore: v.totale ? v.minorenni / v.totale * 100 : 0,
+          nota: G.num(v.minorenni, 0) + " su " + G.num(v.totale, 0)
+        };
+      }),
+      decimali: 1,
+      larghezzaEtichette: 200,
+      etichettaVoci: "nati in Italia da genitori stranieri",
+      unita: "% minorenni",
+      descrizione: "Quota di minorenni fra i nati in Italia da genitori stranieri, per cittadinanza"
+    });
+
+    G.barre(document.getElementById("barre-stock"), {
+      voci: background.variazioni.map(function (v) {
+        return { nome: v.nome, valore: v.valore };
+      }),
+      conSegno: true,
+      larghezzaEtichette: 200,
+      etichettaVoci: "gruppo",
+      unita: "persone",
+      descrizione: "Barre divergenti: la variazione dello stock per gruppo di cittadinanza fra il 2021 e il 2023"
+    });
+
+    G.mappa(document.getElementById("mappa-origini"), {
+      metrica: "quota_background",
+      decimali: 1,
+      descrizione: "Mappa dei 205 comuni della provincia di Brescia colorati per quota di popolazione di origine straniera"
+    });
+
+    /* Dodici barre e non tre: le classi d'eta' stanno separate perche' il
+       divario cambia segno, e un aggregato lo nasconderebbe. L'etichetta porta
+       la classe davanti al gruppo cosi' che le tre righe di una stessa classe
+       restino vicine e confrontabili a colpo d'occhio. */
+    var istruzione = background.istruzione;
+    if (istruzione && istruzione.classi.length) {
+      G.barre(document.getElementById("barre-istruzione"), {
+        voci: istruzione.classi.map(function (r) {
+          return {
+            nome: r.classe + " · " + r.gruppo,
+            valore: r.laurea,
+            nota: G.num(r.popolazione, 0) + " persone"
+          };
+        }),
+        decimali: 1,
+        larghezzaEtichette: 290,
+        etichettaVoci: "classe d'età e gruppo",
+        unita: "% laureati",
+        descrizione: "Quota di laureati per gruppo di cittadinanza e classe d'età"
+      });
+    }
+
+    var flussi = background.flussi;
+    if (flussi && flussi.anni.length) {
+      G.serie(document.getElementById("serie-flussi"), {
+        periodi: flussi.anni,
+        unita: "persone",
+        decimali: 0,
+        linee: [
+          { nome: "arrivi dall'estero", valori: flussi.arrivi },
+          { nome: "partenze per l'estero", valori: flussi.partenze }
+        ],
+        descrizione: "Iscrizioni e cancellazioni anagrafiche da e per l'estero in provincia di Brescia"
+      });
+    }
+  }
 })();

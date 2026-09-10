@@ -40,7 +40,8 @@
     <a href="#turismo">6 · La decima provincia turistica</a>
     <a href="#aria">7 · L'aria e il clima</a>
     <a href="#svuota">8 · Dove si svuota</a>
-    <a href="#diversa">9 · Brescia è diversa?</a>
+    <a href="#origini">9 · Le origini</a>
+    <a href="#diversa">10 · Brescia è diversa?</a>
     <a href="#limiti">Cosa non si può dire</a>
     <a class="pagina" href="esplora.html">Esplora</a>
     <a class="pagina" href="tabelle.html">Tabelle</a>
@@ -119,6 +120,9 @@
           temperatura sale in tutte le stazioni della provincia.</li>
         <li><strong>Metà della provincia si svuota</strong>, e non a caso: i comuni che perdono
           abitanti confinano fra loro e sono quelli in montagna.</li>
+        <li><strong>{{c:bg_nati_qui_totale}} persone sono nate qui da genitori stranieri</strong>,
+          e metà non ha la cittadinanza: la provincia cresce perché diventa italiana gente che
+          c'era già.</li>
         <li><strong>«Territorio di microimprese» descrive l'Italia, non Brescia</strong>, che è
           fra le meno frammentate del paese.</li>
 </ul>
@@ -1206,16 +1210,218 @@
       non un movimento di persone · I confini sul Garda passano dentro il lago, quindi due comuni
       su sponde opposte risultano contigui: conta per l'indice di Moran.</p>
 
-      <p class="nextcap">E quasi tutto quanto sopra misura Brescia contro sé stessa.
-    <a href="#diversa">→ Brescia è diversa?</a></p>
+      <p class="nextcap">E la gente che è arrivata, chi è diventata?
+    <a href="#origini">→ Cinquantatremila nati qui</a></p>
     </div>
   </div>
 </section>
 
-<section class="story s9" id="diversa">
+<section class="story s9" id="origini">
   <div class="wrap"><div class="narrow">
     <div class="story-head">
       <div class="badge-num">9</div>
+      <div>
+        <p class="eyebrow">Le origini · censimento permanente, {{c:bg_anno_iniziale}}–{{c:bg_anno_finale}}</p>
+        <h2 class="story-title">{{c:bg_nati_qui_totale}} nati qui, e metà non ha la
+        cittadinanza</h2>
+      </div>
+    </div>
+    <p class="question">Quante persone di origine straniera vivono nel bresciano, e quante di
+    loro sono arrivate da qualche parte?</p>
+
+    <p>Le due metà della domanda non danno lo stesso numero, ed è tutta la storia. La
+    <a href="#svuota">storia precedente</a> ha contato i <strong>movimenti</strong>: chi si
+    iscrive e chi si cancella, anno per anno. Questa conta chi <strong>c'è</strong> al 31
+    dicembre e con quale cittadinanza. Sono la stessa provincia guardata come film e come
+    fotografia, e le loro cifre non si sommano fra loro.</p>
+
+    <div class="keynums">
+      <div class="kn"><div class="big">{{c:bg_nati_qui_totale}}</div>
+        <div class="lbl">nati in Italia da genitori stranieri</div></div>
+      <div class="kn"><div class="big">{{c:bg_nati_qui_quota_minori}}</div>
+        <div class="lbl">di chi fra loro non ha la cittadinanza è minorenne</div></div>
+      <div class="kn"><div class="big">{{c:bg_quota_background}}</div>
+        <div class="lbl">della provincia ha un'origine straniera</div></div>
+    </div>
+
+    <p><strong>Cominciamo dai nati qui</strong>, perché è la cifra che il censimento produce e
+    che quasi nessuno riporta. Nel {{c:bg_anno_finale}} le persone nate in Italia da genitori
+    stranieri residenti in provincia sono <strong>{{c:bg_nati_qui_totale}}</strong>. Di queste,
+    {{c:bg_nati_qui_acquisiti}} hanno la cittadinanza italiana e
+    <strong>{{c:bg_nati_qui_stranieri}} no</strong>: il {{c:bg_nati_qui_senza_quota}}, cioè
+    praticamente metà. Non è una stima e non è una proiezione: è una riga di censimento.</p>
+
+    <p>E il gruppo senza cittadinanza è fatto quasi solo di bambini e ragazzi:
+    <strong>{{c:bg_nati_qui_minorenni}} su {{c:bg_nati_qui_stranieri}}</strong> sono minorenni,
+    il {{c:bg_nati_qui_quota_minori}}. Fra chi la cittadinanza ce l'ha la quota di minorenni è
+    molto più bassa, {{c:bg_nati_qui_acquisiti_quota_minori}}, e la differenza dice come si
+    diventa italiani in Italia: non alla nascita, ma più tardi.</p>
+
+    <figure class="fig">
+      <h3>Nati in Italia da genitori stranieri, {{c:bg_anno_finale}}</h3>
+      <p class="cap">I due gruppi sono quasi identici per numero, {{c:bg_nati_qui_stranieri}}
+      e {{c:bg_nati_qui_acquisiti}}, e le barre non misurano quello: misurano quanti di loro
+      sono minorenni. È lì che si vede che descrivono due momenti diversi della stessa vita.</p>
+      <div id="barre-nati-qui"></div>
+    </figure>
+
+    <p><strong>Adesso il paradosso dello stock.</strong> Fra il {{c:bg_anno_iniziale}} e il
+    {{c:bg_anno_finale}} gli stranieri residenti passano da {{c:bg_stranieri_iniziale}} a
+    {{c:bg_stranieri}}: <strong>{{c:bg_var_stranieri}} persone in due anni</strong>, su
+    centocinquantatremila. «Gli stranieri sono fermi» sembra la lettura ovvia, ed è un numero
+    giusto dentro una frase falsa.</p>
+
+    <p>Nello stesso biennio <strong>{{c:bg_var_acquisiti}} persone hanno preso la cittadinanza
+    italiana</strong>, e prendendola sono <em>uscite</em> dal conteggio degli stranieri. Perché
+    lo stock si sia mosso di appena {{c:bg_var_stranieri}}, almeno
+    <strong>{{c:bg_ingresso_implicito}} persone</strong> devono esserci entrate. Un serbatoio
+    che resta al livello di prima con due rubinetti aperti non è un serbatoio fermo.</p>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">attenzione</span>
+        <span>Perché «almeno» e non «esattamente»</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Lo stock degli stranieri non si muove solo per ingressi e acquisizioni di
+        cittadinanza: ci nascono dentro delle persone, ce ne muoiono, e ce ne partono. Questa
+        tabella conta il livello a fine anno, non i movimenti, quindi non può separare le quattro
+        cause.</p>
+        <p>{{c:bg_ingresso_implicito}} è il <b>minimo</b> compatibile con quello che si vede:
+        quanto sarebbe dovuto entrare se nient'altro si fosse mosso. La scomposizione vera dei
+        flussi sta nella <a href="#svuota">storia precedente</a>, che legge il bilancio
+        demografico e non il censimento.</p>
+      </div>
+    </details>
+
+    <figure class="fig">
+      <h3>Chi cresce e chi cala, {{c:bg_anno_iniziale}}–{{c:bg_anno_finale}}</h3>
+      <p class="cap">La popolazione della provincia cresce di {{c:bg_var_popolazione}}. Le tre
+      componenti che la compongono si muovono di più, e in direzioni diverse.</p>
+      <div id="barre-stock"></div>
+    </figure>
+
+    <p>La barra che conta è quella di mezzo. Gli italiani <strong>dalla nascita</strong> calano
+    di {{c:bg_calo_dalla_nascita}}, gli italiani <strong>per acquisizione</strong> crescono di
+    {{c:bg_var_acquisiti}}, e la popolazione totale cresce di {{c:bg_var_popolazione}}: la
+    crescita dei nuovi cittadini vale <strong>{{c:bg_acquisiti_su_crescita}} volte</strong> la
+    crescita dell'intera provincia. Senza di loro il conto sarebbe negativo, ed è lo stesso
+    risultato che la <a href="#svuota">storia precedente</a> ottiene sui flussi, con una fonte
+    diversa e un metodo diverso.</p>
+
+    <p><strong>Dove.</strong> Nel {{c:bg_anno_finale}} la popolazione di origine straniera,
+    stranieri più italiani per acquisizione, è il {{c:bg_quota_background}} della provincia, ma
+    la provincia non è un posto solo. Il comune mediano sta al {{c:bg_quota_mediana}}, il
+    capoluogo al {{c:bg_quota_capoluogo}}, e fra il minimo e il massimo si passa da
+    {{c:bg_quota_minima}} a {{c:bg_quota_massima}}, che è {{c:bg_comune_massimo}}. Cinquanta volte
+    di scarto fra due comuni della stessa provincia.</p>
+
+    <figure class="fig">
+      <h3>Quota di popolazione di origine straniera, {{c:bg_anno_finale}}</h3>
+      <p class="cap">Stranieri più italiani per acquisizione, sulla popolazione residente. Non è
+      «quanti stranieri»: chi ha preso la cittadinanza esce dalla prima voce e non da questa.</p>
+      <div id="mappa-origini"></div>
+    </figure>
+
+    <p><strong>Il titolo di studio, e perché una media qui non serve a niente.</strong> Fra gli
+    adulti di {{c:bg_istruzione_anno}} il divario di laurea sembra una domanda semplice: quanto
+    sono distanti i due gruppi? La risposta è che dipende dall'età, e non di poco. Fra i
+    <strong>25 e i 49 anni</strong> gli italiani dalla nascita laureati sono il
+    {{c:bg_laurea_2549_nascita}} e gli stranieri il {{c:bg_laurea_2549_stranieri}}:
+    <strong>{{c:bg_divario_2549_nudo}} punti</strong> di distanza. Sopra i
+    <strong>65</strong> il rapporto si <em>capovolge</em>: {{c:bg_laurea_65_nascita}} contro
+    {{c:bg_laurea_65_stranieri}}, {{c:bg_divario_65_nudo}} punti nell'altra direzione.</p>
+
+    <figure class="fig">
+      <h3>Laureati per gruppo e classe d'età, {{c:bg_istruzione_anno}}</h3>
+      <p class="cap">Quota di popolazione con titolo universitario, sui residenti di 9 anni e più. Le classi stanno separate perché il divario cambia segno, e un
+      aggregato lo nasconderebbe.</p>
+      <div id="barre-istruzione"></div>
+    </figure>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">la metrica, in chiaro</span>
+        <span>Perché non standardizziamo per età</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Quando due gruppi hanno età diverse e si vuole un numero solo, la mossa standard è la
+        <b>standardizzazione per età</b>: si ricalcola la media di ciascun gruppo come se avesse
+        la struttura per età dell'altro. Qui è stata provata, e <b>non serve</b>.</p>
+        <p>Non perché sbagli il conto, ma perché non c'è niente da salvare. La
+        standardizzazione ripara le sintesi rovinate dalla <i>composizione</i>: due gruppi con lo
+        stesso divario in ogni classe che sembrano diversi solo perché uno è più giovane. Qui i
+        divari specifici hanno <b>segno opposto</b>, positivo fra i 25 e i 49 e negativo sopra i
+        65, e allora nessun numero solo li rappresenta, standardizzato o no. Sull'aggregato la
+        standardizzazione sposta il risultato di mezzo punto e continua a non descrivere né
+        l'una né l'altra classe.</p>
+        <p>Il rimedio non è una media migliore: è <b>pubblicare le classi</b>, che è quello che
+        fa la figura qui sopra.</p>
+      </div>
+    </details>
+
+    <p><strong>E chi se ne va?</strong> È la domanda che manca a quasi tutti i ritratti di
+    territorio, e il bilancio demografico la regge, con un limite di cui diciamo fra due righe.
+    Fra il {{c:bg_flussi_anno_primo}} e il {{c:bg_flussi_anno_ultimo}} hanno lasciato la
+    provincia per l'estero <strong>{{c:bg_partenze_totale}} residenti</strong>, una media di
+    {{c:bg_partenze_media}} l'anno. Ne sono arrivati {{c:bg_arrivi_totale}}: <strong>uno che
+    parte ogni {{c:bg_rapporto_flussi}} che arrivano</strong>.</p>
+
+    <p>La cosa da vedere però non è il rapporto, è la <strong>forma</strong>. Chi parte è fermo:
+    {{c:bg_partenze_primo}} nel {{c:bg_flussi_anno_primo}}, {{c:bg_partenze_ultimo}} nel
+    {{c:bg_flussi_anno_ultimo}}, e in mezzo mai uno scarto largo. Chi arriva no:
+    {{c:bg_arrivi_primo}} e {{c:bg_arrivi_ultimo}}. Il saldo che la
+    <a href="#svuota">storia precedente</a> usa sale per una ragione sola, e non è che le
+    partenze rallentino.</p>
+
+    <figure class="fig">
+      <h3>Arrivi e partenze verso l'estero, {{c:bg_flussi_anno_primo}}–{{c:bg_flussi_anno_ultimo}}</h3>
+      <p class="cap">Iscrizioni e cancellazioni anagrafiche da e per l'estero, tutta la
+      provincia. Il {{c:bg_flussi_anno_primo}} e il 2020 vanno letti sapendo che in mezzo c'è la
+      chiusura delle frontiere.</p>
+      <div id="serie-flussi"></div>
+    </figure>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">controllo</span>
+        <span>«Partenze» non vuol dire «italiani che emigrano»</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Due cose che questa serie <b>non</b> dice, e che vanno sapute prima di riusarla.</p>
+        <p><b>Non distingue la cittadinanza.</b> Sono cancellazioni anagrafiche di
+        <i>residenti</i>: dentro ci sono italiani che vanno a lavorare all'estero e stranieri che
+        tornano o ripartono, mescolati. La fonte che le separerebbe è il bilancio demografico
+        della popolazione straniera, che questo progetto non ha ancora scaricato.</p>
+        <p><b>Sottostima, e non di poco.</b> Cancellarsi dall'anagrafe è un adempimento che chi
+        si trasferisce all'estero spesso salta, perché costa qualcosa e non serve a niente
+        nell'immediato. Il numero vero delle partenze è più alto di
+        {{c:bg_partenze_media}} l'anno; di quanto, questa fonte non lo sa.</p>
+      </div>
+    </details>
+
+    <div class="takeaway">
+      <span class="t-lab">In una riga</span>
+      <p>La provincia cresce solo perché diventa italiana gente che qui c'era già: gli italiani
+      dalla nascita calano di {{c:bg_calo_dalla_nascita}}, i nuovi cittadini crescono di
+      {{c:bg_var_acquisiti}}, e {{c:bg_nati_qui_stranieri}} persone nate in Italia aspettano
+      ancora un passaporto, e il {{c:bg_nati_qui_quota_minori}} di loro sono minorenni.</p>
+    </div>
+
+    <p class="conf"><span class="dot derivato"></span><b>derivato</b> · ISTAT: censimento
+    permanente, background migratorio, e bilancio demografico comunale · I conteggi sono
+    osservati; quote, variazioni e l'ingresso implicito sono calcolati qui · Due finestre
+    diverse: il censimento copre {{c:bg_anno_iniziale}}–{{c:bg_anno_finale}}, il bilancio
+    {{c:bg_flussi_anno_primo}}–{{c:bg_flussi_anno_ultimo}}, e nessuna cifra dell'uno si somma a
+    una dell'altro · Il titolo di studio è sui <b>9 anni e più</b>, quindi i suoi totali non sono
+    quelli della popolazione · Le tabelle di questa storia sono le due <b>marginali</b>
+    versionate, non la distribuzione congiunta da 422 MB che sta fuori dal repository · Il paese
+    di origine non è disponibile a questa grana, e non sarebbe comunque un indicatore di reddito
+    o di disagio.</p>
+
+    <p class="nextcap">E quasi tutto quanto sopra misura Brescia contro sé stessa.
+    <a href="#diversa">→ Brescia è diversa?</a></p>
+  </div></div>
+</section>
+
+<section class="story s10" id="diversa">
+  <div class="wrap"><div class="narrow">
+    <div class="story-head">
+      <div class="badge-num">10</div>
       <div>
         <p class="eyebrow">Il controllo · {{c:province_italiane}} province italiane a confronto</p>
         <h2 class="story-title">Brescia è diversa?</h2>
@@ -1340,6 +1546,28 @@
       quanti residenti sono nati all'estero e con quale cittadinanza, non da quanti anni sono qui.
       «Immigrazione recente» è una frase che questi dati non sostengono, e la serie comincia nel
       {{c:bg_anno_iniziale}}: tre anni non dicono una tendenza.</li>
+
+      <li><strong>Non sappiamo da dove vengono.</strong> È la domanda che tutti fanno per prima, e
+      la <a href="#origini">storia delle origini</a> non la tocca: a grana comunale il censimento
+      pubblica la cittadinanza solo come «Unione europea» o «fuori dall'Unione», non per paese. La
+      serie per singolo paese esiste, in un'altra fonte che questo progetto non ha ancora
+      scaricato. E quando ci sarà resterà vera la cautela che vale per tutto il tema: il paese di
+      origine <strong>non è un indicatore</strong> di reddito, di disagio o di trasformazione
+      urbana, e una mappa che lo colorasse come se lo fosse direbbe una cosa che i dati non
+      dicono.</li>
+
+      <li><strong>Sulle partenze la fonte sottostima, e non dice chi parte.</strong> Le
+      {{c:bg_partenze_media}} cancellazioni per l'estero all'anno sono <em>residenti</em>, senza
+      distinzione di cittadinanza: dentro ci sono italiani che vanno a lavorare fuori e stranieri
+      che tornano o ripartono, e la fonte non li separa. E sono meno di quante siano davvero,
+      perché cancellarsi dall'anagrafe è un adempimento che chi si trasferisce spesso salta. La
+      cifra è un minimo, e va letta come tale.</li>
+
+      <li><strong>Il titolo di studio ha una popolazione sua.</strong> Le cifre sull'istruzione
+      della <a href="#origini">storia delle origini</a> sono sui residenti di <strong>9 anni e
+      più</strong>, che è la popolazione su cui la fonte lo pubblica, e sono
+      <strong>provinciali</strong> e non comunali. Nessuno dei loro totali coincide con quelli
+      dello stock, e confrontarli fra loro è l'errore che questa riga esiste per prevenire.</li>
       <li><strong>I reati solo a scala provinciale.</strong> Qualunque mappa comunale della
       sicurezza sarebbe inventata.</li>
       <li><strong>Niente agricoltura, e non è un dettaglio.</strong> Il registro delle imprese non
