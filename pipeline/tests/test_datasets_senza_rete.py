@@ -25,7 +25,7 @@ import pytest
 from conftest import cache_o_salta
 
 from brescia_pipeline import fetch, sdmx
-from brescia_pipeline.datasets import imprese, province, turismo_confronto
+from brescia_pipeline.datasets import imprese, lavoro, province, turismo_confronto
 
 COMUNI = {"017029": "Brescia", "017184": "Sirmione"}
 
@@ -39,7 +39,7 @@ def scritte(monkeypatch):
         catturate[nome] = (list(righe), colonne)
         return Path(nome)
 
-    for modulo in (imprese, province, turismo_confronto):
+    for modulo in (imprese, lavoro, province, turismo_confronto):
         monkeypatch.setattr(modulo, "write_csv", finto)
     return catturate
 
@@ -323,3 +323,104 @@ def test_le_107_province_si_leggono_per_nome_dallelenco_ufficiale(monkeypatch) -
     assert per_nome["Brescia"][0] == "017"
     # il nome bilingue è il caso che la normalizzazione esiste per risolvere
     assert "Bolzano/Bozen" in per_nome
+
+
+# --- lavoro: l'incrocio fra le dimensioni di una tavola censuaria ---------
+
+
+# Le dimensioni della famiglia `DF_DCSS_ISTR_LAV_PEN_2_*`, nell'ordine in cui
+# il server le dichiara: `FREQ` e `REF_AREA` sono fissate dalla chiave.
+DIMENSIONI_ISTR_LAV = [
+    "FREQ", "REF_AREA", "INDICATOR", "GENDER", "AGE_NOCLASS", "CITIZENSHIP",
+    "EDU_ATTAIN", "CUR_ACT_STAT", "LOC_DEST", "REAS_COMMUTING",
+]
+
+
+def _record_censimento(valore, **dimensioni):
+    record = {
+        "REF_AREA": "017029: Brescia",
+        "INDICATOR": "RESPOP_AV: popolazione residente al 31 dicembre",
+        "TIME_PERIOD": "2021",
+        "OBS_VALUE": valore,
+    }
+    record.update(dimensioni)
+    return record
+
+
+def _censimento_finto(monkeypatch, risposta, dimensioni=DIMENSIONI_ISTR_LAV):
+    _niente_rete(
+        monkeypatch,
+        lavoro,
+        lambda nome: risposta if "condizione_professionale_cittadinanza" in nome else [],
+    )
+    monkeypatch.setattr(sdmx, "dimensions", lambda dataflow: dimensioni)
+
+
+def test_il_censimento_tiene_le_dimensioni_di_unosservazione_sulla_stessa_riga(
+    monkeypatch, scritte
+) -> None:
+    """Una riga per dimensione valorizzata perdeva l'incrocio.
+
+    In quella forma la stessa osservazione si spezzava in tante righe quante le
+    sue dimensioni, senza niente che le ricollegasse: quattordici righe
+    `AGE_NOCLASS / 15 anni e più` di fila, e nessun modo di sapere quale
+    cittadinanza e quale condizione professionale descrivesse ciascun valore.
+    L'incrocio occupazione × cittadinanza era irrecuperabile dal CSV pubblicato
+    anche se il dato era stato scaricato per intero.
+    """
+    risposta = [
+        _record_censimento(
+            "6603",
+            AGE_NOCLASS="Y_GE15: 15 anni e più",
+            CITIZENSHIP="FRN: straniero-a",
+            CUR_ACT_STAT="1: occupato/a",
+        ),
+        _record_censimento(
+            "2028",
+            AGE_NOCLASS="Y_GE15: 15 anni e più",
+            CITIZENSHIP="ITL: italiano-a",
+            CUR_ACT_STAT="2: in cerca di occupazione",
+        ),
+    ]
+    _censimento_finto(monkeypatch, risposta)
+    lavoro.build(COMUNI)
+
+    righe, colonne = scritte["censimento_lavoro_brescia.csv"]
+    assert colonne == lavoro.CENSIMENTO_COLUMNS
+    assert len(righe) == 2, "un'osservazione è ancora più di una riga"
+
+    incrocio = {(r["cittadinanza"], r["condizione_professionale"]): r["valore"] for r in righe}
+    assert incrocio == {
+        ("straniero-a", "occupato/a"): "6603.0",
+        ("italiano-a", "in cerca di occupazione"): "2028.0",
+    }
+    # le dimensioni che questa tavola non usa restano colonne vuote, non righe
+    assert {r["classe_eta"] for r in righe} == {""}
+
+
+def test_il_censimento_riporta_lindicatore_che_dice_cosa_si_conta(
+    monkeypatch, scritte
+) -> None:
+    """`INDICATOR` era l'unica dimensione che il modulo buttava, e senza di essa
+    le sette tavole sembrano contare la stessa cosa: `occupati_settore` conta
+    occupati, le tavole `ISTR_LAV` la popolazione residente, `pendolarismo` chi
+    si sposta ogni giorno. Sommarle a caso è un errore che il CSV invitava a
+    fare."""
+    risposta = [_record_censimento("42", CITIZENSHIP="ITL: italiano-a")]
+    _censimento_finto(monkeypatch, risposta)
+    lavoro.build(COMUNI)
+
+    righe, _ = scritte["censimento_lavoro_brescia.csv"]
+    assert {r["indicatore"] for r in righe} == {"popolazione residente al 31 dicembre"}
+
+
+def test_una_dimensione_non_dichiarata_ferma_il_build(monkeypatch, scritte) -> None:
+    """In forma larga una dimensione ignota non si perde in silenzio: fa
+    collassare osservazioni diverse su righe identiche. Meglio un errore che
+    nomina la dimensione, che è come `INDICATOR` è rimasta fuori per mesi."""
+    risposta = [_record_censimento("42", CITIZENSHIP="ITL: italiano-a")]
+    _censimento_finto(monkeypatch, risposta, DIMENSIONI_ISTR_LAV + ["MARITAL_STATUS"])
+
+    with pytest.raises(RuntimeError, match="MARITAL_STATUS"):
+        lavoro.build(COMUNI)
+    assert not scritte, "ha scritto una tabella con una dimensione appiattita"
