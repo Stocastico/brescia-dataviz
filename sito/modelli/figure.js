@@ -545,6 +545,33 @@
       });
     }
 
+    /* Dieci barre: la composizione della popolazione 15+ nei due gruppi, non
+       un tasso. Il tasso di occupazione sui 15+ misura in gran parte chi e'
+       andato in pensione, e la tavola non ha la classe d'eta' con cui
+       correggerlo: la composizione si mostra invece di riassumerla. */
+    var occ = background.occupazione;
+    if (occ && occ.gruppi[occ.anno_ultimo]) {
+      var ultimo = occ.gruppi[occ.anno_ultimo];
+      var vociOcc = [];
+      Object.keys(ultimo.italiani.quote).forEach(function (voce) {
+        ["italiani", "stranieri"].forEach(function (gruppo) {
+          vociOcc.push({
+            nome: voce + " · " + gruppo,
+            valore: ultimo[gruppo].quote[voce],
+            nota: G.num(ultimo[gruppo].quote[voce] / 100 * ultimo[gruppo].totale, 0) + " persone"
+          });
+        });
+      });
+      G.barre(document.getElementById("barre-occupazione"), {
+        voci: vociOcc,
+        decimali: 1,
+        larghezzaEtichette: 290,
+        etichettaVoci: "condizione e gruppo",
+        unita: "% del gruppo",
+        descrizione: "Condizione professionale della popolazione di 15 anni e piu' nel comune di Brescia, per cittadinanza"
+      });
+    }
+
     var flussi = background.flussi;
     if (flussi && flussi.anni.length) {
       G.serie(document.getElementById("serie-flussi"), {

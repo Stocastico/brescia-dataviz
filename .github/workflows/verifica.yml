@@ -11,9 +11,24 @@
 
 name: Verifica
 
+# ⚠️ I trigger sono due e non tre, e la riga che manca è `push`. Con `push:`
+# senza filtri più `pull_request:` questa suite girava **due volte** su ogni
+# ramo con una PR aperta — GitHub considera i due eventi distinti — e una terza
+# volta sul push a `main`, dove il job `costruisci` di «Pubblica il sito»
+# esegue già gli stessi sei passi. Un ciclo PR→merge faceva girare la stessa
+# suite quattro volte, trentadue minuti, per due esecuzioni di lavoro utile.
+#
+# Quello che resta copre tutto ciò che conta: la PR è controllata una volta,
+# `main` lo controlla il workflow che pubblica, e quei test lì **devono**
+# girare perché sono il cancello della pubblicazione.
+#
+# La conseguenza da sapere: un push su un ramo **senza PR aperta** non fa
+# girare niente. Il controllo arriva quando la PR si apre, e `workflow_dispatch`
+# resta per lanciarlo a mano prima. `test_workflow_deploy.py` fissa che i due
+# workflow non si attivino sullo stesso evento, così la duplicazione non torna.
 on:
-  push:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   test:

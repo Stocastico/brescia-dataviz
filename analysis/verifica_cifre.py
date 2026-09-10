@@ -1199,6 +1199,33 @@ def flusso_estero(indicatore: str, anno: str) -> float:
         if r["indicatore"] == indicatore and r["anno"] == anno and r["valore"]
     )
 
+# La condizione professionale per cittadinanza, comune di Brescia. Lettura
+# indipendente da quella di `costruisci.py`: qui si filtra e si divide a mano.
+lavoro_citt = [
+    r for r in leggi("censimento_lavoro_brescia.csv")
+    if r["tavola"] == "condizione_professionale_cittadinanza" and r["sesso"] == "totale"
+]
+PENSIONE = (
+    "percettore/rice di una o più pensioni per effetto di attività lavorativa "
+    "precedente o di redditi da capitale"
+)
+
+
+def occ(anno: str, cittadinanza: str, condizione: str) -> float:
+    for r in lavoro_citt:
+        if r["anno"] == anno and r["cittadinanza"] == cittadinanza and r["condizione_professionale"] == condizione:
+            return float(r["valore"])
+    raise AssertionError(f"manca {anno}/{cittadinanza}/{condizione}")
+
+
+def occ_disoccupazione(anno: str, cittadinanza: str) -> float:
+    return occ(anno, cittadinanza, "in cerca di occupazione") / occ(anno, cittadinanza, "forze di lavoro") * 100
+
+
+def occ_quota(anno: str, cittadinanza: str, condizione: str) -> float:
+    return occ(anno, cittadinanza, condizione) / occ(anno, cittadinanza, "totale") * 100
+
+
 
 
 # --- retribuzioni INPS e infortuni INAIL ---------------------------------
@@ -2877,6 +2904,64 @@ VERIFICHE: list[tuple[str, str, float, object, float]] = [
         2.0,
         lambda: sum(flusso_estero("immigrati_estero", a) for a in ANNI_BILANCIO)
         / sum(flusso_estero("emigrati_estero", a) for a in ANNI_BILANCIO),
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "comune di Brescia 2024: occupati il 50,8 % degli italiani 15+",
+        50.8,
+        lambda: occ_quota("2024", "italiano-a", "occupato"),
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "e il 58,4 % degli stranieri, che pero' e' composizione",
+        58.4,
+        lambda: occ_quota("2024", "straniero-a/apolide", "occupato"),
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "pensionati: 26,8 % fra gli italiani contro 3,5 % fra gli stranieri",
+        26.8,
+        lambda: occ_quota("2024", "italiano-a", PENSIONE),
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "cioe' 7,7 volte tanto",
+        7.7,
+        lambda: occ_quota("2024", "italiano-a", PENSIONE)
+        / occ_quota("2024", "straniero-a/apolide", PENSIONE),
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "disoccupazione 2024: 4,5 % fra gli italiani",
+        4.5,
+        lambda: occ_disoccupazione("2024", "italiano-a"),
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "e 10,4 % fra gli stranieri: 2,3 volte tanto",
+        2.3,
+        lambda: occ_disoccupazione("2024", "straniero-a/apolide")
+        / occ_disoccupazione("2024", "italiano-a"),
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "nel 2018 erano 8,2 % e 20,6 %: il rapporto tiene mentre i livelli crollano",
+        20.6,
+        lambda: occ_disoccupazione("2018", "straniero-a/apolide"),
+        0.05,
+    ),
+    (
+        "sito storia delle origini",
+        "casalinghe: 16,0 % fra gli stranieri contro 6,9 % fra gli italiani",
+        16.0,
+        lambda: occ_quota("2024", "straniero-a/apolide", "casalinga/o"),
         0.05,
     ),
 (

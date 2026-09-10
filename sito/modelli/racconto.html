@@ -1356,6 +1356,61 @@
       </div>
     </details>
 
+    <p><strong>Il lavoro, e un tasso che non misura quello che sembra.</strong> Sull'altro asse
+    dell'integrazione il censimento porta la condizione professionale per cittadinanza, ma solo
+    per il <strong>comune di Brescia</strong>: {{c:occ_pop_italiani}} italiani e
+    {{c:occ_pop_stranieri}} stranieri di 15 anni e più, non i {{c:comuni}} comuni. Da qui in
+    fondo al paragrafo si parla della città, non della provincia.</p>
+
+    <p>La prima cifra che salta all'occhio dice che gli stranieri lavorano di più: occupati il
+    {{c:occ_quota_occupati_stranieri}} contro il {{c:occ_quota_occupati_italiani}}. È vera, e
+    <strong>non significa quasi niente</strong>, perché quel tasso si calcola sui 15 anni e più e
+    lì dentro ci sono i pensionati: fra gli italiani sono il
+    <strong>{{c:occ_pensione_italiani}}</strong>, fra gli stranieri il
+    {{c:occ_pensione_stranieri}}, cioè <strong>{{c:occ_rapporto_pensione}} volte meno</strong>.
+    Una popolazione arrivata da poco non ha ancora una generazione in pensione, e il tasso di
+    occupazione sui 15 anni e più misura in buona parte proprio quello.</p>
+
+    <figure class="fig">
+      <h3>Chi fa cosa, comune di Brescia, {{c:occ_anno_ultimo}}</h3>
+      <p class="cap">La composizione della popolazione di 15 anni e più nei due gruppi, in quote
+      sul proprio totale. Le due asimmetrie grosse non sono fra gli occupati: sono le pensioni e
+      il lavoro domestico.</p>
+      <div id="barre-occupazione"></div>
+    </figure>
+
+    <p>La cifra che invece regge è il <strong>tasso di disoccupazione</strong>, perché si calcola
+    dentro le forze di lavoro e la pensione non ci entra: nel {{c:occ_anno_ultimo}} è il
+    {{c:occ_disocc_italiani}} fra gli italiani e il <strong>{{c:occ_disocc_stranieri}} fra gli
+    stranieri</strong>, {{c:occ_rapporto_disocc}} volte tanto. E il rapporto tiene mentre i
+    livelli crollano: nel {{c:occ_anno_primo}} erano {{c:occ_disocc_italiani_primo}} e
+    {{c:occ_disocc_stranieri_primo}}. Sei anni di mercato del lavoro in miglioramento hanno
+    dimezzato entrambi e <strong>lasciato il divario dov'era</strong>.</p>
+
+    <p>C'è una terza asimmetria che il grafico mostra e che non riguarda il lavoro pagato: le
+    <strong>casalinghe e i casalinghi</strong> sono il {{c:occ_casalinghe_stranieri}} fra gli
+    stranieri e il {{c:occ_casalinghe_italiani}} fra gli italiani. È la voce che, insieme alle
+    pensioni, spiega perché due popolazioni con tassi di occupazione simili stiano fuori dal
+    lavoro per ragioni opposte.</p>
+
+    <details class="metric-expl">
+      <summary><span class="me-lab">la metrica, in chiaro</span>
+        <span>Perché non correggiamo il tasso per l'età</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Sarebbe la mossa giusta e <b>questa tavola non la permette</b>: pubblica la condizione
+        professionale per cittadinanza e per sesso, non per classe d'età. Un tasso di occupazione
+        standardizzato per età, qui, non si può calcolare.</p>
+        <p>Il ripiego non è un tasso aggiustato a occhio, è <b>mostrare la composizione</b>: se il
+        {{c:occ_pensione_italiani}} di un gruppo è in pensione e il {{c:occ_pensione_stranieri}}
+        dell'altro no, il lettore vede da sé perché i due tassi di occupazione non sono
+        confrontabili. È la stessa scelta fatta sul titolo di studio, dove le classi si pubblicano
+        invece di riassumerle.</p>
+        <p>E vale la pena dire cosa <b>non</b> serve correggere: il tasso di disoccupazione. Il suo
+        denominatore sono le forze di lavoro, cioè chi lavora o cerca lavoro, e i pensionati ne
+        stanno fuori per definizione. Il {{c:occ_rapporto_disocc}} a uno resta.</p>
+      </div>
+    </details>
+
     <p><strong>E chi se ne va?</strong> È la domanda che manca a quasi tutti i ritratti di
     territorio, e il bilancio demografico la regge, con un limite di cui diciamo fra due righe.
     Fra il {{c:bg_flussi_anno_primo}} e il {{c:bg_flussi_anno_ultimo}} hanno lasciato la
@@ -1403,9 +1458,11 @@
     </div>
 
     <p class="conf"><span class="dot derivato"></span><b>derivato</b> · ISTAT: censimento
-    permanente, background migratorio, e bilancio demografico comunale · I conteggi sono
-    osservati; quote, variazioni e l'ingresso implicito sono calcolati qui · Due finestre
-    diverse: il censimento copre {{c:bg_anno_iniziale}}–{{c:bg_anno_finale}}, il bilancio
+    permanente, background migratorio e condizione professionale, e bilancio demografico
+    comunale · I conteggi sono osservati; quote, variazioni, tassi e l'ingresso implicito sono
+    calcolati qui · <b>Due perimetri</b>: tutto è provinciale tranne il lavoro, che il censimento
+    pubblica per il solo comune di Brescia, e che nel testo è marcato come tale · Tre finestre
+    diverse: il lavoro copre {{c:occ_anno_primo}}–{{c:occ_anno_ultimo}}, e per il resto il censimento copre {{c:bg_anno_iniziale}}–{{c:bg_anno_finale}}, il bilancio
     {{c:bg_flussi_anno_primo}}–{{c:bg_flussi_anno_ultimo}}, e nessuna cifra dell'uno si somma a
     una dell'altro · Il titolo di studio è sui <b>9 anni e più</b>, quindi i suoi totali non sono
     quelli della popolazione · Le tabelle di questa storia sono le due <b>marginali</b>
@@ -1562,6 +1619,22 @@
       che tornano o ripartono, e la fonte non li separa. E sono meno di quante siano davvero,
       perché cancellarsi dall'anagrafe è un adempimento che chi si trasferisce spesso salta. La
       cifra è un minimo, e va letta come tale.</li>
+
+      <li><strong>Sul lavoro si vede la città, non la provincia.</strong> L'incrocio fra
+      condizione professionale e cittadinanza il censimento lo pubblica per il solo
+      <strong>comune di Brescia</strong>: {{c:occ_pop_italiani}} italiani e
+      {{c:occ_pop_stranieri}} stranieri di 15 anni e più, su una provincia di
+      {{c:popolazione_provinciale}} abitanti. E il capoluogo non è un campione della provincia:
+      la sua quota di popolazione di origine straniera è {{c:bg_quota_capoluogo}} contro una
+      mediana comunale di {{c:bg_quota_mediana}}. Nessuna di quelle cifre si estende ai
+      {{c:comuni}} comuni.</li>
+
+      <li><strong>Il tasso di occupazione, da solo, misura le pensioni.</strong> Si calcola sui
+      15 anni e più, e in quella popolazione i pensionati italiani sono il
+      {{c:occ_pensione_italiani}} contro il {{c:occ_pensione_stranieri}} degli stranieri. La
+      tavola non ha la classe d'età, quindi un tasso standardizzato non si può calcolare: la
+      <a href="#origini">storia delle origini</a> pubblica la composizione e usa il tasso di
+      <em>disoccupazione</em>, che è l'unico dei due che la pensione non deforma.</li>
 
       <li><strong>Il titolo di studio ha una popolazione sua.</strong> Le cifre sull'istruzione
       della <a href="#origini">storia delle origini</a> sono sui residenti di <strong>9 anni e
