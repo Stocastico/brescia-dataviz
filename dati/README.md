@@ -155,7 +155,7 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
 |---|---|---|
 | `imprese_classe_addetti.csv` | 9.488 | Unità locali e addetti per **comune × anno × classe dimensionale** (0-9, 10-49, 50-249, 250+, totale), 2018–2023. La tabella che regge l'asse principale del progetto. |
 | `imprese_settore.csv` | 1.800 | Gli stessi indicatori per **divisione Ateco**, per la provincia e per il comune di Brescia. Il dettaglio settoriale su tutti i comuni sarebbe un prodotto cartesiano da milioni di righe. |
-| `censimento_lavoro_brescia.csv` | 18.453 | Comune di Brescia: occupati per settore e posizione professionale, condizione professionale per età e cittadinanza, titolo di studio, pendolarismo. Formato lungo con `dimensione`/`modalita`, perché le tavole censuarie non hanno tutte le stesse dimensioni. |
+| `censimento_lavoro_brescia.csv` | 2.649 | Comune di Brescia: occupati per settore e posizione professionale, condizione professionale per età e cittadinanza, titolo di studio, pendolarismo. Una riga per osservazione, con le dimensioni in colonna: le tavole non hanno tutte le stesse dimensioni, e quelle che una tavola non usa restano vuote. |
 | `tasso_occupazione_provincia.csv` | 384 | Tasso di occupazione della **provincia**, 2018–2025, per sesso, età, titolo di studio e cittadinanza. |
 
 ### Popolazione e redditi
@@ -198,10 +198,10 @@ coincidono con lo `Shape_Area` di ISTAT entro lo 0,01 %.
 | `background_migratorio_istruzione.csv` | 270 | Il **titolo di studio** dei tre gruppi, per classe d'età, a grana **provinciale** e non comunale: per comune sarebbero 55.000 righe che nessuna storia legge. Popolazione dei **9 anni e più**, che è quella su cui la fonte lo pubblica. |
 | `migrazioni_comuni.csv` | ⏳ **fuori da git** | La distribuzione **congiunta** completa da cui vengono le due righe qui sopra: 1,8 milioni di righe e 422 MB, dieci tavole censuarie per sesso, età, cittadinanza, cittadinanza precedente, luogo di nascita dei genitori e titolo di studio. È l'unica che tiene gli incroci fini, e si rigenera in venti minuti ([`SCARICHI-LOCALI.md`](SCARICHI-LOCALI.md)). |
 
-> A differenza di `censimento_lavoro_brescia.csv`, queste tabelle tengono
-> **una riga per osservazione con tutte le dimensioni in colonna**: dentro
-> ciascuna famiglia le dimensioni sono fisse, e appiattirle distruggerebbe la
-> distribuzione congiunta — che è l'informazione per cui valgono la pena.
+> Come `censimento_lavoro_brescia.csv`, queste tabelle tengono **una riga per
+> osservazione con tutte le dimensioni in colonna**: appiattirle su una riga
+> per dimensione distruggerebbe la distribuzione congiunta — che è
+> l'informazione per cui valgono la pena.
 
 > **Le tre tabelle del background non si sommano fra loro, e la ragione non è
 > ovvia.** `background_migratorio_comuni.csv` conta tutta la popolazione;

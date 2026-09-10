@@ -24,22 +24,32 @@ CENSIMENTO = {
     "pendolarismo": "DF_DCSS_ISTR_LAV_PEN_2_TV_5",
 }
 
-# Dimensioni da riportare come colonne, quando presenti nella tavola.
-DIMENSIONI = [
-    "GENDER",
-    "AGE_CLASS",
-    "AGE_NOCLASS",
-    "CITIZENSHIP",
-    "EDU_ATTAIN",
-    "EMPLOYMENT_STATUS",
-    "BRANCH_ECON_ACT",
-    "PROF_STATUS",
-    "CUR_ACT_STAT",
-    "LOC_DEST",
-    "REAS_COMMUTING",
-]
+# Le dimensioni delle sette tavole e il nome della colonna che le riporta. È
+# l'unione: ciascuna tavola ne valorizza un sottoinsieme, e le altre restano
+# celle vuote. I nomi sono quelli che `tasso_occupazione_provincia.csv` usa già
+# per gli stessi concetti — `citizenship` accanto a `cittadinanza` nello stesso
+# modulo sarebbe un dizionario da tenere a mente per leggere due file.
+DIMENSIONI = {
+    "GENDER": "sesso",
+    "AGE_CLASS": "classe_eta",
+    "AGE_NOCLASS": "eta",
+    "CITIZENSHIP": "cittadinanza",
+    "EDU_ATTAIN": "titolo_studio",
+    "EMPLOYMENT_STATUS": "posizione_professionale",
+    "BRANCH_ECON_ACT": "settore_attivita",
+    "CUR_ACT_STAT": "condizione_professionale",
+    "LOC_DEST": "luogo_destinazione",
+    "REAS_COMMUTING": "motivo_spostamento",
+}
 
-CENSIMENTO_COLUMNS = ["tavola", "anno", "dimensione", "modalita", "codice_modalita", "valore"]
+# Le dimensioni che non diventano una colonna omonima: `FREQ` e `REF_AREA` sono
+# fissate dalla chiave (annuale, comune di Brescia), `INDICATOR` finisce in
+# `indicatore`. Tutto il resto va dichiarato in `DIMENSIONI`, o il build si
+# ferma: in forma larga una dimensione non riportata non sparisce, appiattisce
+# osservazioni diverse su righe identiche.
+DIMENSIONI_FUORI_COLONNA = {"FREQ", "REF_AREA", "INDICATOR"}
+
+CENSIMENTO_COLUMNS = ["tavola", "anno", "indicatore"] + list(DIMENSIONI.values()) + ["valore"]
 OCCUPAZIONE_COLUMNS = [
     "territorio", "anno", "indicatore", "sesso", "eta", "titolo_studio", "cittadinanza", "valore",
 ]
@@ -51,27 +61,34 @@ def _censimento() -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for tavola, dataflow in CENSIMENTO.items():
         chiave = sdmx.key(dataflow, {"FREQ": "A", "REF_AREA": COMUNE_BRESCIA})
+        ignote = set(sdmx.dimensions(dataflow)) - DIMENSIONI_FUORI_COLONNA - set(DIMENSIONI)
+        if ignote:
+            raise RuntimeError(
+                f"{tavola}: dimensioni non dichiarate {sorted(ignote)}. "
+                "Aggiungerle a DIMENSIONI, o le loro modalità si appiattiscono "
+                "su righe indistinguibili"
+            )
         path = sdmx_csv(dataflow, chiave, dest_name=f"istat_cens_{tavola}.csv")
         for record in read_sdmx(path):
             value = to_number(record.get("OBS_VALUE"))
             if value is None:
                 continue
-            # Una riga per dimensione valorizzata: la tavola resta leggibile
-            # anche se le dimensioni cambiano da una all'altra.
-            for dim in DIMENSIONI:
-                if dim not in record or not record[dim]:
-                    continue
-                code, label = split_code(record[dim])
-                rows.append(
-                    {
-                        "tavola": tavola,
-                        "anno": record.get("TIME_PERIOD", ""),
-                        "dimensione": dim,
-                        "modalita": label,
-                        "codice_modalita": code,
-                        "valore": fmt(value, 1),
-                    }
-                )
+            row = {
+                "tavola": tavola,
+                "anno": record.get("TIME_PERIOD", ""),
+                # Non è decorazione: `occupati_settore` conta occupati, le
+                # tavole ISTR_LAV la popolazione residente, `pendolarismo` chi
+                # si sposta ogni giorno. Senza, le sette tavole sembrano
+                # contare la stessa cosa.
+                "indicatore": split_code(record.get("INDICATOR", ""))[1],
+                "valore": fmt(value, 1),
+            }
+            # Una riga per osservazione, con le sue dimensioni in colonna: le
+            # modalità per etichetta, come nelle altre tavole censuarie, e le
+            # colonne che questa tavola non usa restano vuote.
+            for dim, colonna in DIMENSIONI.items():
+                row[colonna] = split_code(record.get(dim, ""))[1]
+            rows.append(row)
     return rows
 
 
@@ -102,7 +119,8 @@ def _tasso_occupazione() -> list[dict[str, str]]:
 
 def build(comuni: dict[str, str]) -> None:
     censimento = _censimento()
-    censimento.sort(key=lambda r: (r["tavola"], r["anno"], r["dimensione"], r["codice_modalita"]))
+    chiavi = ["tavola", "anno", "indicatore"] + list(DIMENSIONI.values())
+    censimento.sort(key=lambda r: tuple(r[k] for k in chiavi))
     write_csv("censimento_lavoro_brescia.csv", censimento, CENSIMENTO_COLUMNS)
 
     occupazione = _tasso_occupazione()

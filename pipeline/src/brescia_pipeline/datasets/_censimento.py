@@ -26,12 +26,13 @@ invece di tre moduli quasi identici.
 > sta scritto qui e non in una nota a piè di pagina.
 
 Nota sulla forma tidy: qui ogni osservazione resta **una riga con tutte le sue
-dimensioni in colonna**, non una riga per dimensione valorizzata come in
-`lavoro.py`. Quella forma lì è imposta da tavole che cambiano dimensioni una
-per una; qui le dimensioni sono fisse dentro la famiglia, e appiattirle
-distruggerebbe la distribuzione congiunta — cioè proprio l'informazione per cui
-queste tavole valgono la pena (quanti stranieri *e* nati in Italia *e* con
-quale titolo di studio, non tre totali separati).
+dimensioni in colonna**, ed è la stessa forma di `lavoro.py`. Lì per un po' è
+stata una riga per dimensione valorizzata, e l'incrocio non si ricomponeva:
+quattordici righe di fila dicevano `15 anni e più` senza dire di quale
+cittadinanza e di quale condizione professionale. Appiattire distrugge la
+distribuzione congiunta — cioè proprio l'informazione per cui queste tavole
+valgono la pena (quanti stranieri *e* nati in Italia *e* con quale titolo di
+studio, non tre totali separati).
 """
 
 from __future__ import annotations
