@@ -262,6 +262,37 @@ def test_la_decomposizione_del_capoluogo_ha_divisioni_con_un_nome() -> None:
         assert isinstance(divisione["variazione"], (int, float))
 
 
+# --- i costruttori si leggono una volta sola -----------------------------
+
+# I costruttori senza argomenti sono chiamati due volte per ogni costruzione:
+# da `cifre()` per i numeri del testo e da `dati_incorporati()` per le serie
+# dei grafici. Senza cache la pagina rilegge venti CSV due volte, e il patto
+# che la cache impone — quello che tornano è di sola lettura — vale la pena
+# scriverlo in un test invece che solo in un commento.
+COSTRUTTORI_IN_CACHE = (
+    "contiguita", "confronto_province", "turismo_confronto", "controllo_capoluoghi",
+    "clima", "decomposizione", "scomposizione_demografica", "scomposizione_province",
+    "background_migratorio", "istruzione_background", "flussi_estero",
+    "occupazione_cittadinanza", "background_incorporato", "indice_prezzi",
+    "salari", "casa",
+)
+
+
+@pytest.mark.parametrize("nome", COSTRUTTORI_IN_CACHE)
+def test_ogni_costruttore_senza_argomenti_e_in_cache(nome: str) -> None:
+    funzione = getattr(C, nome)
+    assert hasattr(funzione, "cache_info"), f"{nome} rileggerebbe i CSV a ogni chiamata"
+
+
+def test_la_cache_serve_la_seconda_chiamata_invece_di_rileggere() -> None:
+    C.casa.cache_clear()
+    prima = C.casa()
+    dopo = C.casa()
+    assert C.casa.cache_info().hits == 1
+    # Lo stesso oggetto, non una copia: è il motivo per cui va letto e basta.
+    assert prima is dopo
+
+
 # --- le cifre del racconto -----------------------------------------------
 
 

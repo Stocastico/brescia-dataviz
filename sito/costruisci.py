@@ -29,6 +29,7 @@ meccanismo le date invecchiano in silenzio e il sito mente.
 from __future__ import annotations
 
 import argparse
+import functools
 import json
 import math
 import re
@@ -163,8 +164,17 @@ def pearson(x: list[float], y: list[float]) -> float:
 
 
 # --- due calcoli che il racconto cita e che nessun JSON contiene --------
+#
+# Da qui in giù i costruttori senza argomenti portano `@functools.cache`, e la
+# ragione è che vengono chiamati **due volte**: una da `cifre()`, che ne ricava
+# i numeri del testo, e una da `dati_incorporati()`, che ne ricava le serie dei
+# grafici. Rileggere venti CSV due volte raddoppiava il tempo di costruzione
+# senza cambiare una cifra. Il patto che la cache impone: **quello che tornano
+# è di sola lettura**. Chi ne modificasse un dizionario lo modificherebbe
+# anche per l'altro chiamante, e la pagina e il testo direbbero cose diverse.
 
 
+@functools.cache
 def contiguita() -> dict[str, set[str]]:
     """Vicini per vertice condiviso, come in `analysis/autocorrelazione_spaziale.py`."""
     geo = json.loads((DATI_WEB / "comuni.geojson").read_text(encoding="utf-8"))
@@ -199,6 +209,7 @@ def moran(valori_indicatore: dict[str, float]) -> float:
     return numeratore / denominatore if denominatore else 0.0
 
 
+@functools.cache
 def confronto_province() -> dict[str, Any]:
     """Dove sta Brescia fra le 107 province, sugli stessi indicatori.
 
@@ -280,6 +291,7 @@ def confronto_province() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def turismo_confronto() -> dict[str, Any]:
     """Il turismo bresciano fra le 107 province, e la serie lunga dal 2008.
 
@@ -427,6 +439,7 @@ def turismo_confronto() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def controllo_capoluoghi() -> dict[str, Any]:
     """La classe ≥250 nei comuni capoluogo: il controllo di MET-9."""
     import csv
@@ -460,6 +473,7 @@ def controllo_capoluoghi() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def clima() -> dict[str, Any]:
     """Aria e clima per la sesta storia: centraline, non comuni.
 
@@ -625,6 +639,7 @@ def clima() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def decomposizione() -> dict[str, Any]:
     """La scomposizione settore × classe del capoluogo, per la terza storia.
 
@@ -698,6 +713,7 @@ def decomposizione() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def scomposizione_demografica() -> dict[str, Any]:
     """Da dove viene la variazione di popolazione, per la prima storia.
 
@@ -776,6 +792,7 @@ def scomposizione_demografica() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def background_migratorio() -> dict[str, Any]:
     """Lo stock per background migratorio, dalle marginali versionate.
 
@@ -798,6 +815,12 @@ def background_migratorio() -> dict[str, Any]:
     with path.open(encoding="utf-8") as handle:
         righe = list(csv.DictReader(handle))
 
+    # L'ultimo anno si cerca **una volta**: dentro il giro era un `max()` su
+    # tutte le righe per ogni riga, cioè centoventi milioni di confronti su una
+    # tabella da settemila righe, e da solo faceva quasi tutto il tempo di
+    # costruzione del sito.
+    ultimo_anno = max(riga["anno"] for riga in righe) if righe else ""
+
     per_anno: dict[str, dict[str, float]] = {}
     per_comune: dict[str, dict[str, float]] = {}
     for riga in righe:
@@ -806,7 +829,7 @@ def background_migratorio() -> dict[str, Any]:
         anno, indicatore = riga["anno"], riga["indicatore"]
         conti = per_anno.setdefault(anno, {})
         conti[indicatore] = conti.get(indicatore, 0.0) + float(riga["valore"])
-        if anno == max(r["anno"] for r in righe):
+        if anno == ultimo_anno:
             per_comune.setdefault(riga["codice_istat"], {})[indicatore] = float(riga["valore"])
 
     anni = sorted(per_anno)
@@ -821,6 +844,7 @@ LAUREA = "titolo universitario o accademico"
 NESSUN_TITOLO = "nessun titolo di studio"
 
 
+@functools.cache
 def istruzione_background() -> dict[str, Any]:
     """Il titolo di studio per gruppo e per classe d'età, per la decima storia.
 
@@ -873,6 +897,7 @@ def istruzione_background() -> dict[str, Any]:
     return {"anno": ultimo, "classi": classi} if classi else {}
 
 
+@functools.cache
 def flussi_estero() -> dict[str, Any]:
     """Arrivi e partenze verso l'estero, in **lordo**, per la decima storia.
 
@@ -932,6 +957,7 @@ CONDIZIONI = (
 CITTADINANZE = (("italiani", "italiano-a"), ("stranieri", "straniero-a/apolide"))
 
 
+@functools.cache
 def occupazione_cittadinanza() -> dict[str, Any]:
     """La condizione professionale per cittadinanza, nel **comune** di Brescia.
 
@@ -1006,6 +1032,7 @@ def occupazione_cittadinanza() -> dict[str, Any]:
     return {"anno_primo": primo, "anno_ultimo": ultimo, "gruppi": per_anno}
 
 
+@functools.cache
 def background_incorporato() -> dict[str, Any]:
     """Quello che le figure della decima storia disegnano.
 
@@ -1051,6 +1078,7 @@ def background_incorporato() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def scomposizione_province() -> dict[str, Any]:
     """Le stesse componenti su tutte le province: il paragone che mancava.
 
@@ -1114,6 +1142,7 @@ def scomposizione_province() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def indice_prezzi() -> dict[str, float]:
     """`anno -> indice dei prezzi al consumo`, base 2015 = 100 (MET-20).
 
@@ -1130,6 +1159,7 @@ def indice_prezzi() -> dict[str, float]:
         return {r["anno"]: float(r["indice"]) for r in csv.DictReader(handle)}
 
 
+@functools.cache
 def salari() -> dict[str, Any]:
     """Le retribuzioni per la nona storia: il capoluogo di provincia e le altre.
 
@@ -1217,6 +1247,7 @@ def salari() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def casa() -> dict[str, Any]:
     """L'asse casa per l'ottava storia: il capoluogo, le sue zone, la provincia.
 
