@@ -122,11 +122,26 @@
      assoluti: con il massimo, un solo comune fuori scala (qui Magasa, che perde
      il 2,9 % di abitanti l'anno) allarga la scala fino a schiacciare tutti gli
      altri in due classi pallide. I valori oltre l'estremo finiscono nella
-     classe di fondo — sono fuori scala, ed è giusto che si vedano come tali. */
+     classe di fondo — sono fuori scala, ed è giusto che si vedano come tali.
+
+     ⚠️ Perché il passo si divide per `quante / 2 - 1`. Nove classi hanno otto
+     rotture, e stanno a mezzo passo dallo zero: ±0,5 ±1,5 ±2,5 ±3,5. La più
+     esterna è quindi a 3,5 passi, cioè `(quante - 2) / 2`, ed è lei che deve
+     cadere sull'estremo. Il codice divideva per `quante / 2` — 4,5 — e
+     l'ultima rottura finiva a 3,5/4,5 = 0,78 × estremo: la scala saturava
+     molto prima del 95º percentile che questo commento promette, e nelle due
+     classi di fondo cadeva il 23 % dei comuni sulla variazione reale del
+     prezzo delle case e il 32 % sulla crescita del reddito. Le mappe non
+     mentivano — la legenda ha sempre stampato le soglie vere — ma
+     distinguevano meno di quanto potessero. */
   function rottureSimmetriche(valori, quante) {
     const assoluti = valori.map(Math.abs).sort(function (a, b) { return a - b; });
     const estremo = assoluti[Math.floor(assoluti.length * 0.95)] || assoluti[assoluti.length - 1];
-    const passo = estremo / (quante / 2);
+    /* Tutti i valori a zero — una serie che non si muove — darebbero un passo
+       nullo, cioè otto rotture sovrapposte e `NaN` sui colori. Con un passo
+       qualunque le rotture restano simmetriche e ogni comune cade nel neutro,
+       che è esattamente quello che quella serie dice. */
+    const passo = estremo ? estremo / (quante / 2 - 1) : 1;
     const rotture = [];
     for (let i = -quante / 2 + 1; i <= quante / 2 - 1; i++) rotture.push(i * passo);
     return rotture;
@@ -472,8 +487,14 @@
     return gruppo;
   }
 
+  /* Le tacche di un asse. Con un intervallo nullo — una serie di un punto
+     solo, o tutta allo stesso valore — `log10(0)` è `-Infinity` e il passo
+     diventa zero: l'asse usciva senza nemmeno una tacca, quindi senza il
+     numero che il lettore cerca. Una tacca sola, sul valore, dice quello che
+     c'è da dire. */
   function passi(minimo, massimo, quanti) {
     const grezzo = (massimo - minimo) / quanti;
+    if (!(grezzo > 0)) return [minimo];
     const potenza = Math.pow(10, Math.floor(Math.log10(grezzo)));
     const passo = [1, 2, 2.5, 5, 10].map(function (m) { return m * potenza; })
       .filter(function (p) { return p >= grezzo; })[0] || potenza * 10;
@@ -592,7 +613,13 @@
         if (v > yMax) yMax = v;
       });
     });
-    const margine = (yMax - yMin) * 0.1;
+    /* Una serie piatta — tutte le linee sullo stesso valore, o un punto solo —
+       darebbe `yMax === yMin`, quindi margine zero e una divisione per zero in
+       `sy()`: nessun errore, e una linea disegnata a `NaN`, cioè invisibile.
+       Il margine di riserva apre un riquadro attorno al valore e la linea si
+       vede, dritta, che è quello che quella serie è. */
+    let margine = (yMax - yMin) * 0.1;
+    if (!(margine > 0)) margine = Math.abs(yMax) * 0.1 || 1;
     yMin -= margine; yMax += margine;
 
     /* Il margine sinistro si misura sull'etichetta piu' lunga invece di essere
@@ -777,7 +804,11 @@
     const sinistra = opzioni.larghezzaEtichette || 275;
     const larghezza = LARGHEZZA - sinistra - 70;
 
-    const estremo = Math.max.apply(null, voci.map(function (v) { return Math.abs(v.valore); }));
+    /* `|| 1` per il caso in cui tutte le voci valgano zero: senza, la scala
+       diventa `Infinity` e le barre escono larghe `NaN`, cioè invisibili. Con
+       un estremo di comodo restano tutte alla lunghezza minima, che è quello
+       che uno zero deve sembrare. */
+    const estremo = Math.max.apply(null, voci.map(function (v) { return Math.abs(v.valore); })) || 1;
     const zero = opzioni.conSegno ? sinistra + larghezza / 2 : sinistra;
     const scalaLarghezza = opzioni.conSegno ? larghezza / 2 / estremo : larghezza / estremo;
 
@@ -787,16 +818,33 @@
     });
     contenitore.appendChild(svg);
 
+    const decimali = opzioni.decimali === undefined ? 0 : opzioni.decimali;
+    /* Le note per voce. Tre chiamate di `figure.js` le passano da sempre — i
+       nati qui, i laureati per classe, la condizione professionale — e sono
+       gli **assoluti** dietro una percentuale: «25.102 su 26.560», «144.178
+       persone». Fino a settembre 2026 `barre()` non le leggeva, quindi quei
+       numeri non arrivavano né al suggerimento né alla tabella, ed erano dati
+       calcolati e mai mostrati. Adesso ci arrivano in entrambi, come in
+       `colonne()`: chi legge col mouse e chi legge la tabella devono vedere la
+       stessa cosa. */
+    const conNote = voci.some(function (v) { return v.nota; });
+
     voci.forEach(function (voce, indice) {
       const y = indice * ALTEZZA_RIGA + 10;
       const lunghezza = Math.abs(voce.valore) * scalaLarghezza;
       const x = voce.valore < 0 ? zero - lunghezza : zero;
-      el("rect", {
+      const barra = el("rect", {
         x: x, y: y, width: Math.max(lunghezza, 1), height: ALTEZZA_RIGA - 10,
         rx: 4,
         fill: voce.colore ? css(voce.colore)
           : voce.valore < 0 ? css("--div-neg-3") : css("--div-pos-4"),
       }, svg);
+      barra.addEventListener("mousemove", function (evento) {
+        mostraSuggerimento(evento, "<b>" + voce.nome + "</b>" +
+          num(voce.valore, decimali) + " " + (opzioni.unita || "") +
+          (voce.nota ? "<br>" + voce.nota : ""));
+      });
+      barra.addEventListener("mouseleave", nascondiSuggerimento);
       const etichetta = el("text", { x: sinistra - 10, y: y + 12, "text-anchor": "end",
         fill: css("--ink2"), "font-size": 11.5 }, svg);
       etichetta.textContent = voce.nome;
@@ -810,15 +858,20 @@
         fill: fuoriASinistra ? css("--card") : css("--ink"),
         "font-size": 11.5, "font-weight": 600,
       }, svg);
-      numero.textContent = num(voce.valore, opzioni.decimali === undefined ? 0 : opzioni.decimali);
+      numero.textContent = num(voce.valore, decimali);
     });
 
     if (opzioni.conSegno) {
       el("line", { x1: zero, x2: zero, y1: 4, y2: ALTEZZA - 26, stroke: css("--line") }, svg);
     }
 
-    tabellaSpecchio(contenitore, [opzioni.etichettaVoci || "voce", opzioni.unita || "valore"],
-      voci.map(function (v) { return [v.nome, num(v.valore, opzioni.decimali === undefined ? 0 : opzioni.decimali)]; }));
+    const intestazioni = [opzioni.etichettaVoci || "voce", opzioni.unita || "valore"];
+    if (conNote) intestazioni.push(opzioni.colonnaNota || "in cifre");
+    tabellaSpecchio(contenitore, intestazioni, voci.map(function (v) {
+      const riga = [v.nome, num(v.valore, decimali)];
+      if (conNote) riga.push(v.nota || "");
+      return riga;
+    }));
   }
 
   /* Colonne attorno allo zero: per le anomalie, dove il segno è metà del
@@ -889,7 +942,9 @@
     // La rampa divergente scelta sull'estremo **osservato**, non su quello con
     // il margine: cosi' il valore piu' caldo della serie prende davvero la
     // classe di fondo calda, e un −0,1 °C il neutro.
-    const passoClasse = osservato / 4;
+    // `|| 1`: con una serie tutta a zero la divisione darebbe `NaN`, e
+    // `Math.round(NaN)` manda ogni colonna fuori dalla rampa.
+    const passoClasse = osservato / 4 || 1;
     const larghezzaColonna = Math.max(3, riquadro.larghezza / voci.length - 3);
 
     voci.forEach(function (voce, indice) {
@@ -1055,7 +1110,12 @@
     }, svg);
     asse.textContent = opzioni.etichetta;
 
+    /* `slice()` prima di ordinare: `codici` è l'ordine in cui i punti sono
+       stati disposti, e `disposti` ci fa ancora riferimento. Ordinarlo sul
+       posto oggi non si vede — la tabella è l'ultima cosa che si costruisce —
+       ma lega la disposizione dei punti a una riga che parla d'altro. */
     const righe = codici
+      .slice()
       .sort(function (a, b) { return opzioni.valori[b] - opzioni.valori[a]; })
       .map(function (c) { return [opzioni.nomi[c] || c, num(opzioni.valori[c], opzioni.decimali)]; });
     tabellaSpecchio(contenitore, ["provincia", opzioni.etichetta], righe,

@@ -37,7 +37,7 @@ import shutil
 from pathlib import Path
 from typing import Any, Callable
 
-from .config import PROCESSED_DIR, PROJECT_ROOT
+from .config import PROCESSED_DIR, PROJECT_ROOT, TABELLE_NON_VERSIONATE
 from .datasets.confini import GEOJSON_PATH
 from .tidy import to_number
 
@@ -586,7 +586,12 @@ def build(comuni: dict[str, str]) -> None:
     if GEOJSON_PATH.exists():
         shutil.copyfile(GEOJSON_PATH, WEB_DATA_DIR / "comuni.geojson")
 
-    tabelle = sorted(p.name for p in PROCESSED_DIR.glob("*.csv"))
+    # Solo le tabelle che chi clona si ritrova: questo file è versionato, e un
+    # elenco che dipende da cosa c'è sul disco di chi lo rigenera fa stampare
+    # al sito un numero di tabelle che la sua cartella non contiene.
+    tabelle = sorted(
+        p.name for p in PROCESSED_DIR.glob("*.csv") if p.name not in TABELLE_NON_VERSIONATE
+    )
     _scrivi_json(
         WEB_DATA_DIR / "manifest.json",
         {

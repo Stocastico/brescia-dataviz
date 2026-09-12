@@ -137,7 +137,7 @@ def main(argv: list[str] | None = None) -> int:
         variazioni.append((finale - iniziale, ateco, iniziale, finale))
     variazioni.sort()
 
-    print(f"Le divisioni che fanno il calo della classe ≥250 nel capoluogo")
+    print("Le divisioni che fanno il calo della classe ≥250 nel capoluogo")
     intestazione = f"  {'div':>4} {'settore':44} {primo:>9} {ultimo:>9} {'var.':>9}"
     print(intestazione)
     print("  " + "-" * (len(intestazione) - 2))
@@ -152,7 +152,7 @@ def main(argv: list[str] | None = None) -> int:
           f"su {grande[1] - grande[0]:+,.0f}: il resto della classe, nel complesso, tiene.")
 
     # --- 3. sparito o ricomposto? ---------------------------------------
-    print(f"\nSparito o ricomposto? Per ogni divisione: la classe ≥250 contro il totale")
+    print("\nSparito o ricomposto? Per ogni divisione: la classe ≥250 contro il totale")
     intestazione = (f"  {'div':>4} {'≥250 capoluogo':>16} {'totale capoluogo':>18} "
                     f"{'unità locali':>14} {'totale provincia':>18}")
     print(intestazione)

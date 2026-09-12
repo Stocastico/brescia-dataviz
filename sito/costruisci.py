@@ -29,6 +29,7 @@ meccanismo le date invecchiano in silenzio e il sito mente.
 from __future__ import annotations
 
 import argparse
+import functools
 import json
 import math
 import re
@@ -47,6 +48,13 @@ PROCESSED = RADICE / "dati" / "processed"
 CAPOLUOGO = "017029"
 # La provincia, non il comune: le tabelle INPS e INAIL stanno a questa grana.
 PROVINCIA_CODICE = "017"
+
+# Le tabelle che stanno in `dati/processed/` ma non in git, ricopiate qui
+# perché questo script è di sola libreria standard e non importa la pipeline.
+# La definizione che conta è `brescia_pipeline.config.TABELLE_NON_VERSIONATE`,
+# ed è quella che tiene il manifesto pulito; qui serve solo a poterlo
+# controllare. Un test tiene le due liste uguali.
+TABELLE_NON_VERSIONATE = frozenset({"migrazioni_comuni.csv"})
 
 # Gli indicatori che finiscono nel documento. Tenerli espliciti invece di
 # incorporare tutto: il file autocontenuto pesa quanto ci si mette dentro.
@@ -156,8 +164,17 @@ def pearson(x: list[float], y: list[float]) -> float:
 
 
 # --- due calcoli che il racconto cita e che nessun JSON contiene --------
+#
+# Da qui in giù i costruttori senza argomenti portano `@functools.cache`, e la
+# ragione è che vengono chiamati **due volte**: una da `cifre()`, che ne ricava
+# i numeri del testo, e una da `dati_incorporati()`, che ne ricava le serie dei
+# grafici. Rileggere venti CSV due volte raddoppiava il tempo di costruzione
+# senza cambiare una cifra. Il patto che la cache impone: **quello che tornano
+# è di sola lettura**. Chi ne modificasse un dizionario lo modificherebbe
+# anche per l'altro chiamante, e la pagina e il testo direbbero cose diverse.
 
 
+@functools.cache
 def contiguita() -> dict[str, set[str]]:
     """Vicini per vertice condiviso, come in `analysis/autocorrelazione_spaziale.py`."""
     geo = json.loads((DATI_WEB / "comuni.geojson").read_text(encoding="utf-8"))
@@ -192,6 +209,7 @@ def moran(valori_indicatore: dict[str, float]) -> float:
     return numeratore / denominatore if denominatore else 0.0
 
 
+@functools.cache
 def confronto_province() -> dict[str, Any]:
     """Dove sta Brescia fra le 107 province, sugli stessi indicatori.
 
@@ -219,10 +237,15 @@ def confronto_province() -> dict[str, Any]:
     anni = sorted({c[1] for c in valori})
     primo, ultimo = anni[0], anni[-1]
 
+    # Il numeratore può mancare tanto quanto il denominatore: ASIA sopprime le
+    # celle piccole, e la classe 0-9 di una provincia minuscola è una di
+    # quelle. Prima il numeratore assente non era previsto e la riga sollevava
+    # `TypeError` a metà costruzione; ora la provincia esce da quella misura e
+    # resta nelle altre, che è la stessa regola di MET-3 applicata al rango.
     def quota(codice: str, sopra: tuple, sotto: tuple) -> float | None:
         alto = valori.get((codice, ultimo) + sopra)
         basso = valori.get((codice, ultimo) + sotto)
-        return None if not basso else alto / basso * 100
+        return None if alto is None or not basso else alto / basso * 100
 
     misure: dict[str, dict[str, float]] = {}
     for codice in nomi:
@@ -231,12 +254,14 @@ def confronto_province() -> dict[str, Any]:
         iniziale_add = valori.get((codice, primo, "classe_addetti", "totale", "addetti"))
         if not (totale_ul and totale_add and iniziale_add):
             continue
-        misure.setdefault("ul_micro", {})[codice] = quota(
-            codice, ("classe_addetti", "0-9", "unita_locali"),
-            ("classe_addetti", "totale", "unita_locali"))
-        misure.setdefault("addetti_micro", {})[codice] = quota(
-            codice, ("classe_addetti", "0-9", "addetti"),
-            ("classe_addetti", "totale", "addetti"))
+        ul_micro = quota(codice, ("classe_addetti", "0-9", "unita_locali"),
+                         ("classe_addetti", "totale", "unita_locali"))
+        addetti_micro = quota(codice, ("classe_addetti", "0-9", "addetti"),
+                              ("classe_addetti", "totale", "addetti"))
+        if ul_micro is not None:
+            misure.setdefault("ul_micro", {})[codice] = ul_micro
+        if addetti_micro is not None:
+            misure.setdefault("addetti_micro", {})[codice] = addetti_micro
         misure.setdefault("dimensione", {})[codice] = totale_add / totale_ul
         manifattura = valori.get((codice, ultimo, "sezione", "C", "addetti"))
         if manifattura is not None:
@@ -273,6 +298,7 @@ def confronto_province() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def turismo_confronto() -> dict[str, Any]:
     """Il turismo bresciano fra le 107 province, e la serie lunga dal 2008.
 
@@ -420,6 +446,7 @@ def turismo_confronto() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def controllo_capoluoghi() -> dict[str, Any]:
     """La classe ≥250 nei comuni capoluogo: il controllo di MET-9."""
     import csv
@@ -453,6 +480,7 @@ def controllo_capoluoghi() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def clima() -> dict[str, Any]:
     """Aria e clima per la sesta storia: centraline, non comuni.
 
@@ -618,6 +646,7 @@ def clima() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def decomposizione() -> dict[str, Any]:
     """La scomposizione settore × classe del capoluogo, per la terza storia.
 
@@ -691,6 +720,7 @@ def decomposizione() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def scomposizione_demografica() -> dict[str, Any]:
     """Da dove viene la variazione di popolazione, per la prima storia.
 
@@ -769,6 +799,7 @@ def scomposizione_demografica() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def background_migratorio() -> dict[str, Any]:
     """Lo stock per background migratorio, dalle marginali versionate.
 
@@ -791,6 +822,12 @@ def background_migratorio() -> dict[str, Any]:
     with path.open(encoding="utf-8") as handle:
         righe = list(csv.DictReader(handle))
 
+    # L'ultimo anno si cerca **una volta**: dentro il giro era un `max()` su
+    # tutte le righe per ogni riga, cioè centoventi milioni di confronti su una
+    # tabella da settemila righe, e da solo faceva quasi tutto il tempo di
+    # costruzione del sito.
+    ultimo_anno = max(riga["anno"] for riga in righe) if righe else ""
+
     per_anno: dict[str, dict[str, float]] = {}
     per_comune: dict[str, dict[str, float]] = {}
     for riga in righe:
@@ -799,7 +836,7 @@ def background_migratorio() -> dict[str, Any]:
         anno, indicatore = riga["anno"], riga["indicatore"]
         conti = per_anno.setdefault(anno, {})
         conti[indicatore] = conti.get(indicatore, 0.0) + float(riga["valore"])
-        if anno == max(r["anno"] for r in righe):
+        if anno == ultimo_anno:
             per_comune.setdefault(riga["codice_istat"], {})[indicatore] = float(riga["valore"])
 
     anni = sorted(per_anno)
@@ -814,6 +851,7 @@ LAUREA = "titolo universitario o accademico"
 NESSUN_TITOLO = "nessun titolo di studio"
 
 
+@functools.cache
 def istruzione_background() -> dict[str, Any]:
     """Il titolo di studio per gruppo e per classe d'età, per la decima storia.
 
@@ -866,6 +904,7 @@ def istruzione_background() -> dict[str, Any]:
     return {"anno": ultimo, "classi": classi} if classi else {}
 
 
+@functools.cache
 def flussi_estero() -> dict[str, Any]:
     """Arrivi e partenze verso l'estero, in **lordo**, per la decima storia.
 
@@ -925,6 +964,7 @@ CONDIZIONI = (
 CITTADINANZE = (("italiani", "italiano-a"), ("stranieri", "straniero-a/apolide"))
 
 
+@functools.cache
 def occupazione_cittadinanza() -> dict[str, Any]:
     """La condizione professionale per cittadinanza, nel **comune** di Brescia.
 
@@ -999,6 +1039,7 @@ def occupazione_cittadinanza() -> dict[str, Any]:
     return {"anno_primo": primo, "anno_ultimo": ultimo, "gruppi": per_anno}
 
 
+@functools.cache
 def background_incorporato() -> dict[str, Any]:
     """Quello che le figure della decima storia disegnano.
 
@@ -1044,6 +1085,7 @@ def background_incorporato() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def scomposizione_province() -> dict[str, Any]:
     """Le stesse componenti su tutte le province: il paragone che mancava.
 
@@ -1107,6 +1149,7 @@ def scomposizione_province() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def indice_prezzi() -> dict[str, float]:
     """`anno -> indice dei prezzi al consumo`, base 2015 = 100 (MET-20).
 
@@ -1123,6 +1166,7 @@ def indice_prezzi() -> dict[str, float]:
         return {r["anno"]: float(r["indice"]) for r in csv.DictReader(handle)}
 
 
+@functools.cache
 def salari() -> dict[str, Any]:
     """Le retribuzioni per la nona storia: il capoluogo di provincia e le altre.
 
@@ -1210,6 +1254,7 @@ def salari() -> dict[str, Any]:
     }
 
 
+@functools.cache
 def casa() -> dict[str, Any]:
     """L'asse casa per l'ottava storia: il capoluogo, le sue zone, la provincia.
 
@@ -1775,18 +1820,30 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
             "crescita": "crescita_confronto",
         }
         decimali = {"dimensione": 2}
+        # Quattro delle cinque misure sono quote, e vanno scritte con il segno
+        # di percentuale come in tutte le altre storie. Il modello non può
+        # aggiungerlo a mano — nel racconto non si scrivono unità — quindi lo
+        # porta la cifra: senza, la pagina diceva «il 92,7 delle unità locali»
+        # e «crescono dell'1,3 l'anno». Gli addetti per unità locale sono
+        # addetti, e restano nudi.
+        senza_unita = {"dimensione"}
+
+        def scrivi(nome: str, valore: float, quanti: int, nuda: bool) -> None:
+            fuori[nome] = numero_it(valore, quanti) + ("" if nuda else PERCENTO)
+
         for chiave, prefisso in etichette.items():
             misura = confronto["misure"][chiave]
             quanti = decimali.get(chiave, 1)
-            fuori[f"{prefisso}_brescia"] = numero_it(misura["brescia"], quanti)
-            fuori[f"{prefisso}_mediana"] = numero_it(misura["mediana"], quanti)
+            nuda = chiave in senza_unita
+            scrivi(f"{prefisso}_brescia", misura["brescia"], quanti, nuda)
+            scrivi(f"{prefisso}_mediana", misura["mediana"], quanti, nuda)
             fuori[f"{prefisso}_rango"] = numero_it(misura["rango"])
             if misura["bergamo"] is not None:
-                fuori[f"{prefisso}_bergamo"] = numero_it(misura["bergamo"], quanti)
+                scrivi(f"{prefisso}_bergamo", misura["bergamo"], quanti, nuda)
             fuori[f"{prefisso}_max_nome"] = confronto["nomi"][misura["estremo_alto"][0]]
-            fuori[f"{prefisso}_max"] = numero_it(misura["estremo_alto"][1], quanti)
+            scrivi(f"{prefisso}_max", misura["estremo_alto"][1], quanti, nuda)
             fuori[f"{prefisso}_min_nome"] = confronto["nomi"][misura["estremo_basso"][0]]
-            fuori[f"{prefisso}_min"] = numero_it(misura["estremo_basso"][1], quanti)
+            scrivi(f"{prefisso}_min", misura["estremo_basso"][1], quanti, nuda)
 
     controllo = controllo_capoluoghi()
     if controllo:
@@ -1819,7 +1876,6 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         fuori["manifattura_alloggio_pearson"] = numero_it(
             pearson([manifattura[c] for c in comuni_entrambi], [alloggio[c] for c in comuni_entrambi]), 2
         )
-        addetti_sezioni = {c: 0.0 for c in manifattura}
         fuori["manifattura_provinciale"] = percento_it(
             sum(manifattura[c] * add_f[c] for c in manifattura if c in add_f)
             / sum(add_f[c] for c in manifattura if c in add_f)
@@ -1828,7 +1884,6 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
             sum(alloggio[c] * add_f[c] for c in alloggio if c in add_f)
             / sum(add_f[c] for c in alloggio if c in add_f)
         )
-        del addetti_sezioni
         specializzazione = valori(metriche["specializzazione"])
         fuori["moran_specializzazione"] = numero_it(moran(specializzazione), 2)
 
@@ -2447,10 +2502,18 @@ def costruisci(uscita: Path, data_build: str | None) -> int:
         peso = (uscita / destinazione).stat().st_size / 1024
         print(f"  {destinazione:20} {peso:8.0f} KB")
 
+    # Le tabelle copiate sono quelle che il **manifesto** dichiara, non quelle
+    # che la cartella contiene. La pagina scrive «{{N_TABELLE}} tabelle»
+    # accanto al link a questa cartella, e i due numeri venivano da due elenchi
+    # diversi: bastava una tabella non versionata sul disco di chi costruisce
+    # — la congiunta delle migrazioni, 422 MB — perché la frase e la cartella
+    # non coincidessero, e perché il sito se la portasse dietro. Con il
+    # manifesto come elenco unico, una tabella dichiarata e assente ferma la
+    # costruzione invece di pubblicare un link rotto.
     tabelle = uscita / "dati" / "processed"
     tabelle.mkdir(parents=True, exist_ok=True)
-    for csv_path in sorted(PROCESSED.glob("*.csv")):
-        shutil.copyfile(csv_path, tabelle / csv_path.name)
+    for nome_tabella in sorted(manifesto["tabelle"]):
+        shutil.copyfile(PROCESSED / nome_tabella, tabelle / nome_tabella)
     geo_uscita = uscita / "dati" / "geo"
     geo_uscita.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(RADICE / "dati" / "geo" / "comuni_brescia.geojson", geo_uscita / "comuni_brescia.geojson")

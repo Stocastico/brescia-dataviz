@@ -15,7 +15,7 @@ import json
 
 import pytest
 
-from brescia_pipeline.config import PROCESSED_DIR
+from brescia_pipeline.config import PROCESSED_DIR, TABELLE_NON_VERSIONATE
 from brescia_pipeline.datasets.confini import GEOJSON_PATH
 from brescia_pipeline.web import WEB_DATA_DIR
 
@@ -122,11 +122,84 @@ def test_i_valori_assenti_non_diventano_zeri() -> None:
     assert len(con_dato_2024) == 132
 
 
+# Gli indicatori di crescita portano l'intervallo **nel nome** — «Crescita
+# degli addetti, 2018–2023» — e quel nome è scritto a mano in `web.py` mentre
+# l'intervallo lo decidono i dati. Sono la stessa cosa detta due volte, quindi
+# possono divergere: il giorno che ASIA pubblica il 2024, l'etichetta continua
+# a dire 2023 e nessuno se ne accorge, perché la mappa si disegna lo stesso.
+CRESCITE = ("crescita_addetti", "crescita_popolazione", "crescita_reddito",
+            "variazione_prezzo_reale")
+
+
+@pytest.mark.parametrize("id_metrica", CRESCITE)
+def test_letichetta_di_una_crescita_dice_gli_anni_che_copre(id_metrica: str) -> None:
+    metrica = indicatore(id_metrica)
+    # Il periodo di una crescita è uno solo, ed è l'intervallo: «2018–2023».
+    assert len(metrica["periods"]) == 1
+    intervallo = metrica["periods"][0]
+    assert intervallo in metrica["label"], (
+        f"{id_metrica}: l'etichetta dice {metrica['label']!r} e i dati coprono {intervallo!r}"
+    )
+
+    # E l'intervallo dichiarato deve essere quello che i comuni hanno davvero:
+    # un comune che entra o esce dalla fonte a metà accorcerebbe il suo tasso
+    # senza che il nome cambi.
+    primo, ultimo = intervallo.replace("\u2013", "-").split("-")
+    fonte = indicatore(SORGENTE_DELLE_CRESCITE[id_metrica])
+    anni_veri = sorted(
+        anno
+        for per_comune in fonte["values"].values()
+        for anno, valore in per_comune.items()
+        if valore is not None
+    )
+    assert (anni_veri[0], anni_veri[-1]) == (primo, ultimo)
+
+
+# Da quale serie di livello si ricava ciascuna crescita.
+SORGENTE_DELLE_CRESCITE = {
+    "crescita_addetti": "addetti",
+    "crescita_popolazione": "popolazione",
+    "crescita_reddito": "reddito_medio",
+    "variazione_prezzo_reale": "prezzo_case",
+}
+
+
 def test_il_manifesto_elenca_le_tabelle() -> None:
     manifesto = json.loads((WEB_DATA_DIR / "manifest.json").read_text(encoding="utf-8"))
     assert manifesto["comuni"] == 205
     assert "comuni_sintesi.csv" in manifesto["tabelle"]
     assert manifesto["indicatori"] == len(registro())
+
+
+def test_il_manifesto_versionato_elenca_le_tabelle_versionate() -> None:
+    """Il conto «N tabelle» che il sito stampa in nove punti deve valere per
+    chi clona, non per chi costruisce.
+
+    `manifest.json` è versionato e il suo elenco si ricava da
+    `dati/processed/`, che però può contenere anche l'unica tabella che git
+    non porta (`config.TABELLE_NON_VERSIONATE`). Costruito sulla macchina di
+    chi l'ha rigenerata il manifesto ne contava una in più, e il sito
+    scriveva «40 tabelle» accanto a una cartella che ne conteneva 39. È il
+    genere di divergenza che nessun test coglieva, perché quelli sul
+    manifesto lo rigenerano prima di guardarlo.
+    """
+    manifesto = json.loads((WEB_DATA_DIR / "manifest.json").read_text(encoding="utf-8"))
+    sul_disco = sorted(
+        percorso.name
+        for percorso in PROCESSED_DIR.glob("*.csv")
+        if percorso.name not in TABELLE_NON_VERSIONATE
+    )
+    assert manifesto["tabelle"] == sul_disco
+    assert not (set(manifesto["tabelle"]) & TABELLE_NON_VERSIONATE)
+
+
+def test_le_due_liste_delle_tabelle_non_versionate_coincidono() -> None:
+    """`sito/costruisci.py` è di sola libreria standard e non importa la
+    pipeline, quindi la lista sta scritta due volte. Due liste che divergono
+    sono peggio di una sola sbagliata: questo test le tiene insieme."""
+    import costruisci as C
+
+    assert C.TABELLE_NON_VERSIONATE == TABELLE_NON_VERSIONATE
 
 
 def test_i_prezzi_delle_case_ci_sono_e_dichiarano_le_due_assenze() -> None:

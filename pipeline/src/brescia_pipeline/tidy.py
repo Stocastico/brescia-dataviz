@@ -27,6 +27,22 @@ def to_number(raw: Any) -> float | None:
     grandezza — errore silenzioso, perché il risultato resta un numero
     plausibile. Qui il separatore decimale è, per definizione, l'ultimo fra
     virgola e punto; l'altro è separatore di migliaia e va rimosso.
+
+    ⚠️ **Un punto solo seguito da tre cifre resta ambiguo, e qui vale come
+    decimale.** `702.557` esce 702,557 e non 702.557: con un separatore solo
+    non c'è niente nella stringa che dica quale delle due convenzioni la fonte
+    stia usando, e la scelta ricade su quella dell'SDMX di ISTAT, che è la
+    fonte di quasi tutte le tabelle di questo progetto (`3.90` è tre virgola
+    nove). La regola è documentata dai test, non dedotta.
+
+    Chi aggiunge una fonte che scrive le migliaia col punto **non deve passare
+    di qui**: deve scrivere il proprio parser, come fa `datasets/inps.py` con
+    `intero()`. Quella funzione esiste esattamente per questo, e il suo
+    docstring racconta il caso vero — in un solo anno 106 valori su 321 hanno
+    la forma ambigua, Torino compreso, e letti da `to_number` sarebbero
+    settecento lavoratori invece di settecentomila. Un parser che conosce il
+    formato della sua fonte non ha ambiguità da risolvere; questo sì, e
+    l'unico modo di non sbagliare è non chiederglielo.
     """
     if raw is None:
         return None

@@ -274,7 +274,7 @@ def parte_zone(righe: list[dict[str, str]]) -> None:
               f"{spearman([zone[k][primo] for k in resto], [variazioni[k] for k in resto]):+.2f}")
     print("  Il segno regge in tutti e tre i conti, la forza cala: la convergenza c'è,")
     print("  e una parte di quella misurata la fa una zona sola.")
-    print(f"  ⚠️ Tredici zone sono poche: è una descrizione di questa città, non una legge "
+    print("  ⚠️ Tredici zone sono poche: è una descrizione di questa città, non una legge "
           "urbana.")
 
 

@@ -262,6 +262,172 @@ def test_la_decomposizione_del_capoluogo_ha_divisioni_con_un_nome() -> None:
         assert isinstance(divisione["variazione"], (int, float))
 
 
+def test_le_due_ragioni_del_calo_coprono_tutti_i_comuni_che_calano(contesto) -> None:
+    """«A tirare più giù è il saldo naturale in 81 di quei comuni, la
+    migrazione interna in 12»: 81 + 12 deve fare i 93 comuni che perdono
+    abitanti.
+
+    Le componenti da cui `cifre()` sceglie la più negativa sono **tre** —
+    c'è anche la migrazione estera — ma la frase ne pubblica due, perché
+    oggi l'estera non è mai la ragione per cui un comune si svuota. Se un
+    giorno lo diventasse, i due numeri non sommerebbero più al terzo e la
+    pagina lo direbbe senza che niente fallisca.
+    """
+    valori = C.cifre(*contesto)
+
+    def quanti(nome: str) -> int:
+        return int(valori[nome].replace(".", ""))
+
+    assert (
+        quanti("comuni_calo_per_naturale") + quanti("comuni_calo_per_interna")
+        == quanti("comuni_in_calo")
+    )
+
+
+# --- la scala divergente delle mappe -------------------------------------
+
+# `rottureSimmetriche()` sta nel javascript, e la sua aritmetica è l'unica cosa
+# del disegno che decide **quanti comuni** finiscono nelle due classi di fondo.
+# Con nove classi e otto rotture, le due esterne devono cadere su ±estremo:
+# servono 3,5 passi per lato, non 4,5. Con 4,5 l'ultima rottura cadeva a
+# 0,78 × estremo e la mappa saturava molto prima del 95º percentile — fino al
+# 32 % dei comuni su una delle serie. Qui si rifà il conto in Python, perché
+# una formula che vive in una stringa non la controlla nessuno.
+def _rotture_simmetriche(valori: list[float], quante: int = 9) -> list[float]:
+    assoluti = sorted(abs(v) for v in valori)
+    estremo = assoluti[int(len(assoluti) * 0.95)] or assoluti[-1]
+    passo = estremo / (quante / 2 - 1) if estremo else 1.0
+    # `quante` classi hanno `quante - 1` rotture, a mezzo passo dallo zero:
+    # con nove classi sono ±0,5 ±1,5 ±2,5 ±3,5 passi.
+    return [(i + 0.5) * passo for i in range(-(quante // 2), quante // 2)]
+
+
+def test_la_formula_delle_rotture_e_quella_scritta_nel_javascript() -> None:
+    grafici = (C.MODELLI / "grafici.js").read_text(encoding="utf-8")
+    assert "estremo / (quante / 2 - 1)" in grafici, (
+        "la scala divergente non divide per il numero di intervalli fra le rotture"
+    )
+
+
+@pytest.mark.parametrize(
+    "id_metrica",
+    ["crescita_popolazione", "crescita_addetti", "variazione_prezzo_reale", "specializzazione"],
+)
+def test_la_scala_divergente_satura_al_novantacinquesimo_percentile(id_metrica: str) -> None:
+    metrica = C.leggi_metrica(id_metrica)
+    if metrica is None:
+        pytest.skip(f"{id_metrica} non costruito")
+    periodo = metrica["periods"][-1]
+    valori = [
+        per_comune[periodo]
+        for per_comune in metrica["values"].values()
+        if per_comune.get(periodo) is not None
+    ]
+    rotture = _rotture_simmetriche(valori)
+    assoluti = sorted(abs(v) for v in valori)
+    estremo = assoluti[int(len(assoluti) * 0.95)]
+
+    # L'ultima rottura **è** l'estremo: è quello che il commento promette.
+    assert rotture[-1] == pytest.approx(estremo)
+    assert rotture[0] == pytest.approx(-estremo)
+
+    # E quindi nelle due classi di fondo ci finisce la coda, non un quarto
+    # della provincia: il 95º percentile degli assoluti ne lascia fuori il 5 %
+    # per costruzione, con un margine per i pari merito.
+    fuori = sum(1 for v in valori if v < rotture[0] or v > rotture[-1])
+    assert fuori / len(valori) <= 0.12, f"{id_metrica}: {fuori} comuni su {len(valori)} saturano"
+
+
+def test_una_serie_tutta_a_zero_non_rompe_la_scala() -> None:
+    """Il caso che non capita e che romperebbe in silenzio: un passo nullo
+    darebbe otto rotture sovrapposte e ogni comune nella classe più calda."""
+    rotture = _rotture_simmetriche([0.0] * 10)
+    assert len(rotture) == 8
+    assert rotture[3] < 0 < rotture[4]
+
+
+# --- l'impaginato -------------------------------------------------------
+
+# Le tabelle larghe scorrono **dentro** un contenitore, non trascinandosi
+# dietro la pagina. La regola vale per tutte: `table.rank` sta in `.rankwrap`,
+# `table.ritratto` in `.ritrattowrap`, e `table.fonti` — quattro colonne di
+# prosa, larghe 512 px anche stringendole — non ce l'aveva: su un telefono
+# spingeva `dati.html` a 484 px e la pagina scorreva di lato.
+TABELLE_LARGHE = {"rank": "rankwrap", "ritratto": "ritrattowrap", "fonti": "fontiwrap"}
+
+
+@pytest.mark.parametrize(("tabella", "involucro"), sorted(TABELLE_LARGHE.items()))
+def test_ogni_tabella_larga_ha_il_suo_contenitore_che_scorre(tabella, involucro) -> None:
+    stile = (C.MODELLI / "stile.css").read_text(encoding="utf-8")
+    regola = stile[stile.index(f".{involucro}{{"):]
+    regola = regola[:regola.index("}")]
+    assert "overflow" in regola, f".{involucro} non scorre"
+    assert "max-width:100%" in regola, f".{involucro} può essere più largo della pagina"
+    assert f'table.{tabella}{{' in stile.replace(" ", "")
+
+
+def test_la_tabella_delle_fonti_sta_dentro_il_suo_contenitore() -> None:
+    pagina = (C.MODELLI / "dati.html").read_text(encoding="utf-8")
+    apertura = pagina.index('<table class="fonti">')
+    chiusura = pagina.index("</table>", apertura)
+    # Aperta prima della tabella e chiusa subito dopo: fra `</table>` e
+    # `</div>` non ci deve stare nient'altro che spazi.
+    assert pagina.rindex('<div class="fontiwrap">', 0, apertura) < apertura
+    assert pagina[chiusura + len("</table>"):].lstrip().startswith("</div>")
+
+
+# --- i grafici e quello che le figure passano loro ------------------------
+
+
+def test_le_note_delle_barre_arrivano_al_lettore() -> None:
+    """`figure.js` passa una `nota` a tre chiamate di `barre()` — gli assoluti
+    dietro le percentuali dei nati qui, dei laureati e della condizione
+    professionale — e per un po' `barre()` non le leggeva: erano numeri
+    calcolati e mai mostrati, con un commento che diceva il contrario. Devono
+    arrivare al suggerimento **e** alla tabella-specchio, che è l'alternativa
+    accessibile allo stesso grafico.
+    """
+    grafici = (C.MODELLI / "grafici.js").read_text(encoding="utf-8")
+    disegno = (C.MODELLI / "figure.js").read_text(encoding="utf-8")
+    corpo = grafici[grafici.index("function barre("):grafici.index("function colonne(")]
+
+    assert disegno.count("nota:") >= 3, "nessuna figura passa più note a barre()"
+    assert "voce.nota" in corpo, "barre() ignora la nota"
+    assert "mostraSuggerimento" in corpo, "barre() non ha suggerimento"
+    assert "v.nota" in corpo, "la nota non entra nella tabella-specchio"
+
+
+# --- i costruttori si leggono una volta sola -----------------------------
+
+# I costruttori senza argomenti sono chiamati due volte per ogni costruzione:
+# da `cifre()` per i numeri del testo e da `dati_incorporati()` per le serie
+# dei grafici. Senza cache la pagina rilegge venti CSV due volte, e il patto
+# che la cache impone — quello che tornano è di sola lettura — vale la pena
+# scriverlo in un test invece che solo in un commento.
+COSTRUTTORI_IN_CACHE = (
+    "contiguita", "confronto_province", "turismo_confronto", "controllo_capoluoghi",
+    "clima", "decomposizione", "scomposizione_demografica", "scomposizione_province",
+    "background_migratorio", "istruzione_background", "flussi_estero",
+    "occupazione_cittadinanza", "background_incorporato", "indice_prezzi",
+    "salari", "casa",
+)
+
+
+@pytest.mark.parametrize("nome", COSTRUTTORI_IN_CACHE)
+def test_ogni_costruttore_senza_argomenti_e_in_cache(nome: str) -> None:
+    funzione = getattr(C, nome)
+    assert hasattr(funzione, "cache_info"), f"{nome} rileggerebbe i CSV a ogni chiamata"
+
+
+def test_la_cache_serve_la_seconda_chiamata_invece_di_rileggere() -> None:
+    C.casa.cache_clear()
+    prima = C.casa()
+    dopo = C.casa()
+    assert C.casa.cache_info().hits == 1
+    # Lo stesso oggetto, non una copia: è il motivo per cui va letto e basta.
+    assert prima is dopo
+
+
 # --- le cifre del racconto -----------------------------------------------
 
 
@@ -299,6 +465,42 @@ def test_nessuna_cifra_contiene_una_lineetta_lunga(contesto) -> None:
     valori = C.cifre(*contesto)
     colpevoli = [k for k, v in valori.items() if "—" in str(v)]
     assert not colpevoli, colpevoli
+
+
+# Le percentuali della decima storia. Ogni altra storia passa da
+# `percento_it()`; il blocco del confronto fra province usava `numero_it()`, e
+# la pagina leggeva «il 92,7 delle unità locali» e «crescono dell'1,3 l'anno».
+# Il segno di percentuale non è decorazione: senza, la cifra cambia
+# significato, e il modello non può metterlo perché il racconto non scrive
+# unità a mano.
+CIFRE_IN_PERCENTO = (
+    "ul_micro_brescia", "ul_micro_mediana", "ul_micro_bergamo",
+    "ul_micro_max", "ul_micro_min",
+    "addetti_micro_brescia", "addetti_micro_mediana", "addetti_micro_bergamo",
+    "addetti_micro_max", "addetti_micro_min",
+    "manifattura_confronto_brescia", "manifattura_confronto_mediana",
+    "manifattura_confronto_bergamo", "manifattura_confronto_max",
+    "manifattura_confronto_min",
+    "crescita_confronto_brescia", "crescita_confronto_mediana",
+    "crescita_confronto_bergamo", "crescita_confronto_max",
+    "crescita_confronto_min",
+)
+
+# Gli addetti per unità locale sono addetti, non per cento: qui il segno
+# sarebbe sbagliato, e il test lo dice invece di lasciarlo all'attenzione.
+CIFRE_SENZA_PERCENTO = ("dimensione_brescia", "dimensione_mediana", "dimensione_bergamo")
+
+
+def test_le_quote_del_confronto_fra_province_portano_il_segno_di_percento(contesto) -> None:
+    valori = C.cifre(*contesto)
+    nude = [k for k in CIFRE_IN_PERCENTO if k in valori and not valori[k].endswith(C.PERCENTO)]
+    assert not nude, f"quote senza il percento: {nude}"
+
+
+def test_gli_addetti_per_unita_locale_non_prendono_il_percento(contesto) -> None:
+    valori = C.cifre(*contesto)
+    sbagliate = [k for k in CIFRE_SENZA_PERCENTO if k in valori and "%" in valori[k]]
+    assert not sbagliate, f"addetti scritti come percentuale: {sbagliate}"
 
 
 def test_il_racconto_non_cita_cifre_che_non_esistono(contesto) -> None:
@@ -490,6 +692,23 @@ def test_le_tabelle_e_la_geometria_sono_copiate_accanto_al_sito(sito_costruito) 
     tabelle = sorted((sito_costruito / "dati" / "processed").glob("*.csv"))
     assert len(tabelle) >= 30
     assert (sito_costruito / "dati" / "geo" / "comuni_brescia.geojson").exists()
+
+
+def test_le_tabelle_copiate_sono_esattamente_quelle_che_il_sito_dichiara(sito_costruito) -> None:
+    """«{{N_TABELLE}} tabelle» sta accanto al link alla cartella che le porta.
+
+    Le due cose venivano da due elenchi diversi — il manifesto e una `glob()`
+    sul disco — e bastava una tabella non versionata sul disco di chi
+    costruisce perché il numero scritto e la cartella linkata non
+    coincidessero. Adesso la copia segue il manifesto, e questo test è la
+    ragione per cui deve continuare a farlo.
+    """
+    manifesto = json.loads((C.DATI_WEB / "manifest.json").read_text(encoding="utf-8"))
+    copiate = sorted(p.name for p in (sito_costruito / "dati" / "processed").glob("*.csv"))
+    assert copiate == sorted(manifesto["tabelle"])
+    # E nessuna delle tabelle che git non porta: la più grande pesa 422 MB, e
+    # una `glob()` sul disco di chi costruisce se la portava dietro.
+    assert not (set(copiate) & C.TABELLE_NON_VERSIONATE)
 
 
 def test_senza_i_json_del_sito_la_costruzione_si_ferma_invece_di_pubblicare(

@@ -13,7 +13,6 @@ errore silenzioso e plausibile se non la si conosce.
 from __future__ import annotations
 
 import csv
-import io
 
 import pytest
 

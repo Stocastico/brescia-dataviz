@@ -143,7 +143,7 @@ def serbatoio(dati) -> None:
     print(f"  stranieri {ULTIMO}: {ultimo:>12,.0f}   ({ultimo - primo:+,.0f})")
     print(f"  nuovi italiani per acquisizione nel biennio: {usciti:+,.0f}")
     print(f"\n  Lo stock si muove di {ultimo - primo:+,.0f} mentre {usciti:,.0f} persone ne")
-    print(f"  escono per cittadinanza: l'ingresso implicito è di almeno")
+    print("  escono per cittadinanza: l'ingresso implicito è di almeno")
     print(f"  {usciti + (ultimo - primo):,.0f} persone in due anni.")
     print("\n  ⚠️ «Almeno», e non «esattamente»: nascite, morte e migrazione in")
     print("  uscita muovono lo stesso stock, e questa tabella non le separa.")
@@ -230,7 +230,7 @@ def mostra_divari(istr, righe) -> None:
 
     giovani = quota("italiani dalla nascita", "25-49 anni") - quota("stranieri", "25-49 anni")
     anziani = quota("italiani dalla nascita", "65 anni e più") - quota("stranieri", "65 anni e più")
-    print(f"\n  Divario italiani dalla nascita - stranieri:")
+    print("\n  Divario italiani dalla nascita - stranieri:")
     print(f"    25-49 anni:    {giovani:+.1f} punti")
     print(f"    65 anni e più: {anziani:+.1f} punti")
     print("\n  I due hanno segno opposto, quindi nessuna media li rappresenta: la")
