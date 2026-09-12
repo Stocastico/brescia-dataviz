@@ -48,6 +48,13 @@ CAPOLUOGO = "017029"
 # La provincia, non il comune: le tabelle INPS e INAIL stanno a questa grana.
 PROVINCIA_CODICE = "017"
 
+# Le tabelle che stanno in `dati/processed/` ma non in git, ricopiate qui
+# perché questo script è di sola libreria standard e non importa la pipeline.
+# La definizione che conta è `brescia_pipeline.config.TABELLE_NON_VERSIONATE`,
+# ed è quella che tiene il manifesto pulito; qui serve solo a poterlo
+# controllare. Un test tiene le due liste uguali.
+TABELLE_NON_VERSIONATE = frozenset({"migrazioni_comuni.csv"})
+
 # Gli indicatori che finiscono nel documento. Tenerli espliciti invece di
 # incorporare tutto: il file autocontenuto pesa quanto ci si mette dentro.
 METRICHE_USATE = [
@@ -2459,10 +2466,18 @@ def costruisci(uscita: Path, data_build: str | None) -> int:
         peso = (uscita / destinazione).stat().st_size / 1024
         print(f"  {destinazione:20} {peso:8.0f} KB")
 
+    # Le tabelle copiate sono quelle che il **manifesto** dichiara, non quelle
+    # che la cartella contiene. La pagina scrive «{{N_TABELLE}} tabelle»
+    # accanto al link a questa cartella, e i due numeri venivano da due elenchi
+    # diversi: bastava una tabella non versionata sul disco di chi costruisce
+    # — la congiunta delle migrazioni, 422 MB — perché la frase e la cartella
+    # non coincidessero, e perché il sito se la portasse dietro. Con il
+    # manifesto come elenco unico, una tabella dichiarata e assente ferma la
+    # costruzione invece di pubblicare un link rotto.
     tabelle = uscita / "dati" / "processed"
     tabelle.mkdir(parents=True, exist_ok=True)
-    for csv_path in sorted(PROCESSED.glob("*.csv")):
-        shutil.copyfile(csv_path, tabelle / csv_path.name)
+    for nome_tabella in sorted(manifesto["tabelle"]):
+        shutil.copyfile(PROCESSED / nome_tabella, tabelle / nome_tabella)
     geo_uscita = uscita / "dati" / "geo"
     geo_uscita.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(RADICE / "dati" / "geo" / "comuni_brescia.geojson", geo_uscita / "comuni_brescia.geojson")

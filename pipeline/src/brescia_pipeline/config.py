@@ -35,6 +35,15 @@ PROCESSED_DIR = PROJECT_ROOT / "dati" / "processed"
 # versionati nel repository (oggi gli archivi OMI, dietro SPID).
 INPUT_DIR = PROJECT_ROOT / "dati" / "input"
 
+# L'eccezione dichiarata alla regola «`dati/processed/` si versiona»: la
+# congiunta delle migrazioni pesa 422 MB e sta fuori da git (`.gitignore`).
+# Chi la rigenera se la trova sul disco, e da lì finiva sia nel manifesto —
+# che invece è versionato — sia fra le tabelle copiate accanto al sito. Il
+# conto «N tabelle», che il sito stampa in nove punti, diventava così diverso
+# sulla macchina di chi costruisce e su quella di chi clona: era 40 nel
+# manifesto e 39 nella cartella. Dichiararla qui la tiene fuori da entrambi.
+TABELLE_NON_VERSIONATE = frozenset({"migrazioni_comuni.csv"})
+
 
 def ensure_dirs() -> None:
     RAW_DIR.mkdir(parents=True, exist_ok=True)

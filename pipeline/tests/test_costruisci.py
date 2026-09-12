@@ -528,6 +528,23 @@ def test_le_tabelle_e_la_geometria_sono_copiate_accanto_al_sito(sito_costruito) 
     assert (sito_costruito / "dati" / "geo" / "comuni_brescia.geojson").exists()
 
 
+def test_le_tabelle_copiate_sono_esattamente_quelle_che_il_sito_dichiara(sito_costruito) -> None:
+    """«{{N_TABELLE}} tabelle» sta accanto al link alla cartella che le porta.
+
+    Le due cose venivano da due elenchi diversi — il manifesto e una `glob()`
+    sul disco — e bastava una tabella non versionata sul disco di chi
+    costruisce perché il numero scritto e la cartella linkata non
+    coincidessero. Adesso la copia segue il manifesto, e questo test è la
+    ragione per cui deve continuare a farlo.
+    """
+    manifesto = json.loads((C.DATI_WEB / "manifest.json").read_text(encoding="utf-8"))
+    copiate = sorted(p.name for p in (sito_costruito / "dati" / "processed").glob("*.csv"))
+    assert copiate == sorted(manifesto["tabelle"])
+    # E nessuna delle tabelle che git non porta: la più grande pesa 422 MB, e
+    # una `glob()` sul disco di chi costruisce se la portava dietro.
+    assert not (set(copiate) & C.TABELLE_NON_VERSIONATE)
+
+
 def test_senza_i_json_del_sito_la_costruzione_si_ferma_invece_di_pubblicare(
     tmp_path, monkeypatch, capsys
 ) -> None:

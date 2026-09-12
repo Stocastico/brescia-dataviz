@@ -15,7 +15,7 @@ import json
 
 import pytest
 
-from brescia_pipeline.config import PROCESSED_DIR
+from brescia_pipeline.config import PROCESSED_DIR, TABELLE_NON_VERSIONATE
 from brescia_pipeline.datasets.confini import GEOJSON_PATH
 from brescia_pipeline.web import WEB_DATA_DIR
 
@@ -127,6 +127,37 @@ def test_il_manifesto_elenca_le_tabelle() -> None:
     assert manifesto["comuni"] == 205
     assert "comuni_sintesi.csv" in manifesto["tabelle"]
     assert manifesto["indicatori"] == len(registro())
+
+
+def test_il_manifesto_versionato_elenca_le_tabelle_versionate() -> None:
+    """Il conto «N tabelle» che il sito stampa in nove punti deve valere per
+    chi clona, non per chi costruisce.
+
+    `manifest.json` è versionato e il suo elenco si ricava da
+    `dati/processed/`, che però può contenere anche l'unica tabella che git
+    non porta (`config.TABELLE_NON_VERSIONATE`). Costruito sulla macchina di
+    chi l'ha rigenerata il manifesto ne contava una in più, e il sito
+    scriveva «40 tabelle» accanto a una cartella che ne conteneva 39. È il
+    genere di divergenza che nessun test coglieva, perché quelli sul
+    manifesto lo rigenerano prima di guardarlo.
+    """
+    manifesto = json.loads((WEB_DATA_DIR / "manifest.json").read_text(encoding="utf-8"))
+    sul_disco = sorted(
+        percorso.name
+        for percorso in PROCESSED_DIR.glob("*.csv")
+        if percorso.name not in TABELLE_NON_VERSIONATE
+    )
+    assert manifesto["tabelle"] == sul_disco
+    assert not (set(manifesto["tabelle"]) & TABELLE_NON_VERSIONATE)
+
+
+def test_le_due_liste_delle_tabelle_non_versionate_coincidono() -> None:
+    """`sito/costruisci.py` è di sola libreria standard e non importa la
+    pipeline, quindi la lista sta scritta due volte. Due liste che divergono
+    sono peggio di una sola sbagliata: questo test le tiene insieme."""
+    import costruisci as C
+
+    assert C.TABELLE_NON_VERSIONATE == TABELLE_NON_VERSIONATE
 
 
 def test_i_prezzi_delle_case_ci_sono_e_dichiarano_le_due_assenze() -> None:
