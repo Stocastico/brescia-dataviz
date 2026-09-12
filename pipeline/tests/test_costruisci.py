@@ -262,6 +262,57 @@ def test_la_decomposizione_del_capoluogo_ha_divisioni_con_un_nome() -> None:
         assert isinstance(divisione["variazione"], (int, float))
 
 
+# --- l'impaginato -------------------------------------------------------
+
+# Le tabelle larghe scorrono **dentro** un contenitore, non trascinandosi
+# dietro la pagina. La regola vale per tutte: `table.rank` sta in `.rankwrap`,
+# `table.ritratto` in `.ritrattowrap`, e `table.fonti` — quattro colonne di
+# prosa, larghe 512 px anche stringendole — non ce l'aveva: su un telefono
+# spingeva `dati.html` a 484 px e la pagina scorreva di lato.
+TABELLE_LARGHE = {"rank": "rankwrap", "ritratto": "ritrattowrap", "fonti": "fontiwrap"}
+
+
+@pytest.mark.parametrize(("tabella", "involucro"), sorted(TABELLE_LARGHE.items()))
+def test_ogni_tabella_larga_ha_il_suo_contenitore_che_scorre(tabella, involucro) -> None:
+    stile = (C.MODELLI / "stile.css").read_text(encoding="utf-8")
+    regola = stile[stile.index(f".{involucro}{{"):]
+    regola = regola[:regola.index("}")]
+    assert "overflow" in regola, f".{involucro} non scorre"
+    assert "max-width:100%" in regola, f".{involucro} può essere più largo della pagina"
+    assert f'table.{tabella}{{' in stile.replace(" ", "")
+
+
+def test_la_tabella_delle_fonti_sta_dentro_il_suo_contenitore() -> None:
+    pagina = (C.MODELLI / "dati.html").read_text(encoding="utf-8")
+    apertura = pagina.index('<table class="fonti">')
+    chiusura = pagina.index("</table>", apertura)
+    # Aperta prima della tabella e chiusa subito dopo: fra `</table>` e
+    # `</div>` non ci deve stare nient'altro che spazi.
+    assert pagina.rindex('<div class="fontiwrap">', 0, apertura) < apertura
+    assert pagina[chiusura + len("</table>"):].lstrip().startswith("</div>")
+
+
+# --- i grafici e quello che le figure passano loro ------------------------
+
+
+def test_le_note_delle_barre_arrivano_al_lettore() -> None:
+    """`figure.js` passa una `nota` a tre chiamate di `barre()` — gli assoluti
+    dietro le percentuali dei nati qui, dei laureati e della condizione
+    professionale — e per un po' `barre()` non le leggeva: erano numeri
+    calcolati e mai mostrati, con un commento che diceva il contrario. Devono
+    arrivare al suggerimento **e** alla tabella-specchio, che è l'alternativa
+    accessibile allo stesso grafico.
+    """
+    grafici = (C.MODELLI / "grafici.js").read_text(encoding="utf-8")
+    disegno = (C.MODELLI / "figure.js").read_text(encoding="utf-8")
+    corpo = grafici[grafici.index("function barre("):grafici.index("function colonne(")]
+
+    assert disegno.count("nota:") >= 3, "nessuna figura passa più note a barre()"
+    assert "voce.nota" in corpo, "barre() ignora la nota"
+    assert "mostraSuggerimento" in corpo, "barre() non ha suggerimento"
+    assert "v.nota" in corpo, "la nota non entra nella tabella-specchio"
+
+
 # --- i costruttori si leggono una volta sola -----------------------------
 
 # I costruttori senza argomenti sono chiamati due volte per ogni costruzione:

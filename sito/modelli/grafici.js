@@ -787,16 +787,33 @@
     });
     contenitore.appendChild(svg);
 
+    const decimali = opzioni.decimali === undefined ? 0 : opzioni.decimali;
+    /* Le note per voce. Tre chiamate di `figure.js` le passano da sempre — i
+       nati qui, i laureati per classe, la condizione professionale — e sono
+       gli **assoluti** dietro una percentuale: «25.102 su 26.560», «144.178
+       persone». Fino a settembre 2026 `barre()` non le leggeva, quindi quei
+       numeri non arrivavano né al suggerimento né alla tabella, ed erano dati
+       calcolati e mai mostrati. Adesso ci arrivano in entrambi, come in
+       `colonne()`: chi legge col mouse e chi legge la tabella devono vedere la
+       stessa cosa. */
+    const conNote = voci.some(function (v) { return v.nota; });
+
     voci.forEach(function (voce, indice) {
       const y = indice * ALTEZZA_RIGA + 10;
       const lunghezza = Math.abs(voce.valore) * scalaLarghezza;
       const x = voce.valore < 0 ? zero - lunghezza : zero;
-      el("rect", {
+      const barra = el("rect", {
         x: x, y: y, width: Math.max(lunghezza, 1), height: ALTEZZA_RIGA - 10,
         rx: 4,
         fill: voce.colore ? css(voce.colore)
           : voce.valore < 0 ? css("--div-neg-3") : css("--div-pos-4"),
       }, svg);
+      barra.addEventListener("mousemove", function (evento) {
+        mostraSuggerimento(evento, "<b>" + voce.nome + "</b>" +
+          num(voce.valore, decimali) + " " + (opzioni.unita || "") +
+          (voce.nota ? "<br>" + voce.nota : ""));
+      });
+      barra.addEventListener("mouseleave", nascondiSuggerimento);
       const etichetta = el("text", { x: sinistra - 10, y: y + 12, "text-anchor": "end",
         fill: css("--ink2"), "font-size": 11.5 }, svg);
       etichetta.textContent = voce.nome;
@@ -810,15 +827,20 @@
         fill: fuoriASinistra ? css("--card") : css("--ink"),
         "font-size": 11.5, "font-weight": 600,
       }, svg);
-      numero.textContent = num(voce.valore, opzioni.decimali === undefined ? 0 : opzioni.decimali);
+      numero.textContent = num(voce.valore, decimali);
     });
 
     if (opzioni.conSegno) {
       el("line", { x1: zero, x2: zero, y1: 4, y2: ALTEZZA - 26, stroke: css("--line") }, svg);
     }
 
-    tabellaSpecchio(contenitore, [opzioni.etichettaVoci || "voce", opzioni.unita || "valore"],
-      voci.map(function (v) { return [v.nome, num(v.valore, opzioni.decimali === undefined ? 0 : opzioni.decimali)]; }));
+    const intestazioni = [opzioni.etichettaVoci || "voce", opzioni.unita || "valore"];
+    if (conNote) intestazioni.push(opzioni.colonnaNota || "in cifre");
+    tabellaSpecchio(contenitore, intestazioni, voci.map(function (v) {
+      const riga = [v.nome, num(v.valore, decimali)];
+      if (conNote) riga.push(v.nota || "");
+      return riga;
+    }));
   }
 
   /* Colonne attorno allo zero: per le anomalie, dove il segno è metà del

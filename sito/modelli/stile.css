@@ -437,8 +437,15 @@ table.rank td.num,table.rank th.num{text-align:right;font-variant-numeric:tabula
   .step>div{opacity:1}
 }
 
-/* TABELLE DI DOCUMENTAZIONE */
-table.fonti{width:100%;border-collapse:collapse;font-size:.86rem;margin:22px 0}
+/* TABELLE DI DOCUMENTAZIONE
+   Quattro colonne di prosa non si stringono sotto una certa larghezza: su un
+   telefono la tabella delle fonti spingeva la **pagina intera** a 484 px e
+   `dati.html` scorreva di lato, che è l'unica cosa che una pagina non deve
+   fare. Il contenitore scorre al posto suo, come per `table.rank` e
+   `table.ritratto`, e il `min-width` tiene le colonne leggibili invece di
+   spezzare le parole. */
+.fontiwrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:22px 0}
+table.fonti{width:100%;min-width:32rem;border-collapse:collapse;font-size:.86rem;margin:0}
 table.fonti th,table.fonti td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);
   vertical-align:top;color:var(--ink2)}
 table.fonti th{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
