@@ -37,6 +37,35 @@ def test_to_number_riconosce_i_separatori(raw: str, atteso: float) -> None:
 
 
 @pytest.mark.parametrize(
+    ("raw", "atteso"),
+    [
+        # Un punto solo seguito da tre cifre non dice quale convenzione sia:
+        # qui vale come decimale, che è quella dell'SDMX. Il test la fissa
+        # perché è una scelta, non una deduzione — e perché è la forma su cui
+        # una fonte italiana sbaglierebbe di mille volte.
+        ("702.557", 702.557),
+        ("0.123", 0.123),
+        ("3.900", 3.9),
+    ],
+)
+def test_un_punto_solo_e_sempre_decimale(raw: str, atteso: float) -> None:
+    assert to_number(raw) == pytest.approx(atteso)
+
+
+def test_le_migliaia_col_punto_hanno_il_loro_parser_e_non_passano_di_qui() -> None:
+    """La fonte che scrive `702.557` per settecentomila è l'INPS, e ha un
+    parser suo. Se qualcuno un giorno la facesse passare da `to_number`, il
+    numero uscirebbe mille volte più piccolo senza un errore: questo test
+    tiene i due comportamenti visibili uno accanto all'altro."""
+    from brescia_pipeline.datasets.inps import intero
+
+    assert intero("702.557") == 702_557
+    assert to_number("702.557") == pytest.approx(702.557)  # mille volte meno
+    with pytest.raises(RuntimeError, match="forma non prevista"):
+        intero("702,557")
+
+
+@pytest.mark.parametrize(
     "raw",
     ["", "  ", "Dato riservato", "n.d.", "..", "-", None, "non un numero"],
 )

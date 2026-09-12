@@ -237,10 +237,15 @@ def confronto_province() -> dict[str, Any]:
     anni = sorted({c[1] for c in valori})
     primo, ultimo = anni[0], anni[-1]
 
+    # Il numeratore può mancare tanto quanto il denominatore: ASIA sopprime le
+    # celle piccole, e la classe 0-9 di una provincia minuscola è una di
+    # quelle. Prima il numeratore assente non era previsto e la riga sollevava
+    # `TypeError` a metà costruzione; ora la provincia esce da quella misura e
+    # resta nelle altre, che è la stessa regola di MET-3 applicata al rango.
     def quota(codice: str, sopra: tuple, sotto: tuple) -> float | None:
         alto = valori.get((codice, ultimo) + sopra)
         basso = valori.get((codice, ultimo) + sotto)
-        return None if not basso else alto / basso * 100
+        return None if alto is None or not basso else alto / basso * 100
 
     misure: dict[str, dict[str, float]] = {}
     for codice in nomi:
@@ -249,12 +254,14 @@ def confronto_province() -> dict[str, Any]:
         iniziale_add = valori.get((codice, primo, "classe_addetti", "totale", "addetti"))
         if not (totale_ul and totale_add and iniziale_add):
             continue
-        misure.setdefault("ul_micro", {})[codice] = quota(
-            codice, ("classe_addetti", "0-9", "unita_locali"),
-            ("classe_addetti", "totale", "unita_locali"))
-        misure.setdefault("addetti_micro", {})[codice] = quota(
-            codice, ("classe_addetti", "0-9", "addetti"),
-            ("classe_addetti", "totale", "addetti"))
+        ul_micro = quota(codice, ("classe_addetti", "0-9", "unita_locali"),
+                         ("classe_addetti", "totale", "unita_locali"))
+        addetti_micro = quota(codice, ("classe_addetti", "0-9", "addetti"),
+                              ("classe_addetti", "totale", "addetti"))
+        if ul_micro is not None:
+            misure.setdefault("ul_micro", {})[codice] = ul_micro
+        if addetti_micro is not None:
+            misure.setdefault("addetti_micro", {})[codice] = addetti_micro
         misure.setdefault("dimensione", {})[codice] = totale_add / totale_ul
         manifattura = valori.get((codice, ultimo, "sezione", "C", "addetti"))
         if manifattura is not None:

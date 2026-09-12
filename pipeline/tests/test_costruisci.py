@@ -284,6 +284,68 @@ def test_le_due_ragioni_del_calo_coprono_tutti_i_comuni_che_calano(contesto) -> 
     )
 
 
+# --- la scala divergente delle mappe -------------------------------------
+
+# `rottureSimmetriche()` sta nel javascript, e la sua aritmetica è l'unica cosa
+# del disegno che decide **quanti comuni** finiscono nelle due classi di fondo.
+# Con nove classi e otto rotture, le due esterne devono cadere su ±estremo:
+# servono 3,5 passi per lato, non 4,5. Con 4,5 l'ultima rottura cadeva a
+# 0,78 × estremo e la mappa saturava molto prima del 95º percentile — fino al
+# 32 % dei comuni su una delle serie. Qui si rifà il conto in Python, perché
+# una formula che vive in una stringa non la controlla nessuno.
+def _rotture_simmetriche(valori: list[float], quante: int = 9) -> list[float]:
+    assoluti = sorted(abs(v) for v in valori)
+    estremo = assoluti[int(len(assoluti) * 0.95)] or assoluti[-1]
+    passo = estremo / (quante / 2 - 1) if estremo else 1.0
+    # `quante` classi hanno `quante - 1` rotture, a mezzo passo dallo zero:
+    # con nove classi sono ±0,5 ±1,5 ±2,5 ±3,5 passi.
+    return [(i + 0.5) * passo for i in range(-(quante // 2), quante // 2)]
+
+
+def test_la_formula_delle_rotture_e_quella_scritta_nel_javascript() -> None:
+    grafici = (C.MODELLI / "grafici.js").read_text(encoding="utf-8")
+    assert "estremo / (quante / 2 - 1)" in grafici, (
+        "la scala divergente non divide per il numero di intervalli fra le rotture"
+    )
+
+
+@pytest.mark.parametrize(
+    "id_metrica",
+    ["crescita_popolazione", "crescita_addetti", "variazione_prezzo_reale", "specializzazione"],
+)
+def test_la_scala_divergente_satura_al_novantacinquesimo_percentile(id_metrica: str) -> None:
+    metrica = C.leggi_metrica(id_metrica)
+    if metrica is None:
+        pytest.skip(f"{id_metrica} non costruito")
+    periodo = metrica["periods"][-1]
+    valori = [
+        per_comune[periodo]
+        for per_comune in metrica["values"].values()
+        if per_comune.get(periodo) is not None
+    ]
+    rotture = _rotture_simmetriche(valori)
+    assoluti = sorted(abs(v) for v in valori)
+    estremo = assoluti[int(len(assoluti) * 0.95)]
+
+    # L'ultima rottura **è** l'estremo: è quello che il commento promette.
+    assert rotture[-1] == pytest.approx(estremo)
+    assert rotture[0] == pytest.approx(-estremo)
+
+    # E quindi nelle due classi di fondo ci finisce la coda, non un quarto
+    # della provincia: il 95º percentile degli assoluti ne lascia fuori il 5 %
+    # per costruzione, con un margine per i pari merito.
+    fuori = sum(1 for v in valori if v < rotture[0] or v > rotture[-1])
+    assert fuori / len(valori) <= 0.12, f"{id_metrica}: {fuori} comuni su {len(valori)} saturano"
+
+
+def test_una_serie_tutta_a_zero_non_rompe_la_scala() -> None:
+    """Il caso che non capita e che romperebbe in silenzio: un passo nullo
+    darebbe otto rotture sovrapposte e ogni comune nella classe più calda."""
+    rotture = _rotture_simmetriche([0.0] * 10)
+    assert len(rotture) == 8
+    assert rotture[3] < 0 < rotture[4]
+
+
 # --- l'impaginato -------------------------------------------------------
 
 # Le tabelle larghe scorrono **dentro** un contenitore, non trascinandosi
