@@ -1775,18 +1775,30 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
             "crescita": "crescita_confronto",
         }
         decimali = {"dimensione": 2}
+        # Quattro delle cinque misure sono quote, e vanno scritte con il segno
+        # di percentuale come in tutte le altre storie. Il modello non può
+        # aggiungerlo a mano — nel racconto non si scrivono unità — quindi lo
+        # porta la cifra: senza, la pagina diceva «il 92,7 delle unità locali»
+        # e «crescono dell'1,3 l'anno». Gli addetti per unità locale sono
+        # addetti, e restano nudi.
+        senza_unita = {"dimensione"}
+
+        def scrivi(nome: str, valore: float, quanti: int, nuda: bool) -> None:
+            fuori[nome] = numero_it(valore, quanti) + ("" if nuda else PERCENTO)
+
         for chiave, prefisso in etichette.items():
             misura = confronto["misure"][chiave]
             quanti = decimali.get(chiave, 1)
-            fuori[f"{prefisso}_brescia"] = numero_it(misura["brescia"], quanti)
-            fuori[f"{prefisso}_mediana"] = numero_it(misura["mediana"], quanti)
+            nuda = chiave in senza_unita
+            scrivi(f"{prefisso}_brescia", misura["brescia"], quanti, nuda)
+            scrivi(f"{prefisso}_mediana", misura["mediana"], quanti, nuda)
             fuori[f"{prefisso}_rango"] = numero_it(misura["rango"])
             if misura["bergamo"] is not None:
-                fuori[f"{prefisso}_bergamo"] = numero_it(misura["bergamo"], quanti)
+                scrivi(f"{prefisso}_bergamo", misura["bergamo"], quanti, nuda)
             fuori[f"{prefisso}_max_nome"] = confronto["nomi"][misura["estremo_alto"][0]]
-            fuori[f"{prefisso}_max"] = numero_it(misura["estremo_alto"][1], quanti)
+            scrivi(f"{prefisso}_max", misura["estremo_alto"][1], quanti, nuda)
             fuori[f"{prefisso}_min_nome"] = confronto["nomi"][misura["estremo_basso"][0]]
-            fuori[f"{prefisso}_min"] = numero_it(misura["estremo_basso"][1], quanti)
+            scrivi(f"{prefisso}_min", misura["estremo_basso"][1], quanti, nuda)
 
     controllo = controllo_capoluoghi()
     if controllo:

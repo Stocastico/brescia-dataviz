@@ -301,6 +301,42 @@ def test_nessuna_cifra_contiene_una_lineetta_lunga(contesto) -> None:
     assert not colpevoli, colpevoli
 
 
+# Le percentuali della decima storia. Ogni altra storia passa da
+# `percento_it()`; il blocco del confronto fra province usava `numero_it()`, e
+# la pagina leggeva «il 92,7 delle unità locali» e «crescono dell'1,3 l'anno».
+# Il segno di percentuale non è decorazione: senza, la cifra cambia
+# significato, e il modello non può metterlo perché il racconto non scrive
+# unità a mano.
+CIFRE_IN_PERCENTO = (
+    "ul_micro_brescia", "ul_micro_mediana", "ul_micro_bergamo",
+    "ul_micro_max", "ul_micro_min",
+    "addetti_micro_brescia", "addetti_micro_mediana", "addetti_micro_bergamo",
+    "addetti_micro_max", "addetti_micro_min",
+    "manifattura_confronto_brescia", "manifattura_confronto_mediana",
+    "manifattura_confronto_bergamo", "manifattura_confronto_max",
+    "manifattura_confronto_min",
+    "crescita_confronto_brescia", "crescita_confronto_mediana",
+    "crescita_confronto_bergamo", "crescita_confronto_max",
+    "crescita_confronto_min",
+)
+
+# Gli addetti per unità locale sono addetti, non per cento: qui il segno
+# sarebbe sbagliato, e il test lo dice invece di lasciarlo all'attenzione.
+CIFRE_SENZA_PERCENTO = ("dimensione_brescia", "dimensione_mediana", "dimensione_bergamo")
+
+
+def test_le_quote_del_confronto_fra_province_portano_il_segno_di_percento(contesto) -> None:
+    valori = C.cifre(*contesto)
+    nude = [k for k in CIFRE_IN_PERCENTO if k in valori and not valori[k].endswith(C.PERCENTO)]
+    assert not nude, f"quote senza il percento: {nude}"
+
+
+def test_gli_addetti_per_unita_locale_non_prendono_il_percento(contesto) -> None:
+    valori = C.cifre(*contesto)
+    sbagliate = [k for k in CIFRE_SENZA_PERCENTO if k in valori and "%" in valori[k]]
+    assert not sbagliate, f"addetti scritti come percentuale: {sbagliate}"
+
+
 def test_il_racconto_non_cita_cifre_che_non_esistono(contesto) -> None:
     """L'invariante che la costruzione fa valere, controllato prima di
     costruire: ogni `{{c:nome}}` nei modelli ha un valore calcolato."""
