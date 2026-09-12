@@ -188,9 +188,6 @@ def main(argv: list[str] | None = None) -> int:
             "2017",  # base corta: la serie ha una tendenza propria da trent'anni
         ),
     ]
-    ultimo_periodo = max(
-        max(serie) for _, serie, _, _ in mensili if serie
-    )
     for nome, serie, da, base_da in mensili:
         dati = scostamenti(serie, da, base_da)
         if not dati:

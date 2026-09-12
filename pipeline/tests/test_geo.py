@@ -8,7 +8,6 @@ anello sbagliato non rompe il GeoJSON, ci lascia dentro buchi che non esistono.
 
 from __future__ import annotations
 
-import math
 import struct
 
 import pytest

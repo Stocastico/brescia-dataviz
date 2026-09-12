@@ -1869,7 +1869,6 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
         fuori["manifattura_alloggio_pearson"] = numero_it(
             pearson([manifattura[c] for c in comuni_entrambi], [alloggio[c] for c in comuni_entrambi]), 2
         )
-        addetti_sezioni = {c: 0.0 for c in manifattura}
         fuori["manifattura_provinciale"] = percento_it(
             sum(manifattura[c] * add_f[c] for c in manifattura if c in add_f)
             / sum(add_f[c] for c in manifattura if c in add_f)
@@ -1878,7 +1877,6 @@ def cifre(metriche: dict[str, dict[str, Any]], comuni: dict[str, dict[str, str]]
             sum(alloggio[c] * add_f[c] for c in alloggio if c in add_f)
             / sum(add_f[c] for c in alloggio if c in add_f)
         )
-        del addetti_sezioni
         specializzazione = valori(metriche["specializzazione"])
         fuori["moran_specializzazione"] = numero_it(moran(specializzazione), 2)
 
