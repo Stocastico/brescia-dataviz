@@ -122,6 +122,48 @@ def test_i_valori_assenti_non_diventano_zeri() -> None:
     assert len(con_dato_2024) == 132
 
 
+# Gli indicatori di crescita portano l'intervallo **nel nome** — «Crescita
+# degli addetti, 2018–2023» — e quel nome è scritto a mano in `web.py` mentre
+# l'intervallo lo decidono i dati. Sono la stessa cosa detta due volte, quindi
+# possono divergere: il giorno che ASIA pubblica il 2024, l'etichetta continua
+# a dire 2023 e nessuno se ne accorge, perché la mappa si disegna lo stesso.
+CRESCITE = ("crescita_addetti", "crescita_popolazione", "crescita_reddito",
+            "variazione_prezzo_reale")
+
+
+@pytest.mark.parametrize("id_metrica", CRESCITE)
+def test_letichetta_di_una_crescita_dice_gli_anni_che_copre(id_metrica: str) -> None:
+    metrica = indicatore(id_metrica)
+    # Il periodo di una crescita è uno solo, ed è l'intervallo: «2018–2023».
+    assert len(metrica["periods"]) == 1
+    intervallo = metrica["periods"][0]
+    assert intervallo in metrica["label"], (
+        f"{id_metrica}: l'etichetta dice {metrica['label']!r} e i dati coprono {intervallo!r}"
+    )
+
+    # E l'intervallo dichiarato deve essere quello che i comuni hanno davvero:
+    # un comune che entra o esce dalla fonte a metà accorcerebbe il suo tasso
+    # senza che il nome cambi.
+    primo, ultimo = intervallo.replace("\u2013", "-").split("-")
+    fonte = indicatore(SORGENTE_DELLE_CRESCITE[id_metrica])
+    anni_veri = sorted(
+        anno
+        for per_comune in fonte["values"].values()
+        for anno, valore in per_comune.items()
+        if valore is not None
+    )
+    assert (anni_veri[0], anni_veri[-1]) == (primo, ultimo)
+
+
+# Da quale serie di livello si ricava ciascuna crescita.
+SORGENTE_DELLE_CRESCITE = {
+    "crescita_addetti": "addetti",
+    "crescita_popolazione": "popolazione",
+    "crescita_reddito": "reddito_medio",
+    "variazione_prezzo_reale": "prezzo_case",
+}
+
+
 def test_il_manifesto_elenca_le_tabelle() -> None:
     manifesto = json.loads((WEB_DATA_DIR / "manifest.json").read_text(encoding="utf-8"))
     assert manifesto["comuni"] == 205

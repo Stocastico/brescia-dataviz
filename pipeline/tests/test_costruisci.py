@@ -262,6 +262,28 @@ def test_la_decomposizione_del_capoluogo_ha_divisioni_con_un_nome() -> None:
         assert isinstance(divisione["variazione"], (int, float))
 
 
+def test_le_due_ragioni_del_calo_coprono_tutti_i_comuni_che_calano(contesto) -> None:
+    """«A tirare più giù è il saldo naturale in 81 di quei comuni, la
+    migrazione interna in 12»: 81 + 12 deve fare i 93 comuni che perdono
+    abitanti.
+
+    Le componenti da cui `cifre()` sceglie la più negativa sono **tre** —
+    c'è anche la migrazione estera — ma la frase ne pubblica due, perché
+    oggi l'estera non è mai la ragione per cui un comune si svuota. Se un
+    giorno lo diventasse, i due numeri non sommerebbero più al terzo e la
+    pagina lo direbbe senza che niente fallisca.
+    """
+    valori = C.cifre(*contesto)
+
+    def quanti(nome: str) -> int:
+        return int(valori[nome].replace(".", ""))
+
+    assert (
+        quanti("comuni_calo_per_naturale") + quanti("comuni_calo_per_interna")
+        == quanti("comuni_in_calo")
+    )
+
+
 # --- l'impaginato -------------------------------------------------------
 
 # Le tabelle larghe scorrono **dentro** un contenitore, non trascinandosi
