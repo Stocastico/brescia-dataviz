@@ -17,14 +17,7 @@
     <h1>Come cambia Brescia</h1>
     <p class="lede">Un ritratto in numeri, comune per comune. {{c:storie}} storie che raccontano
     Brescia e provincia attraverso i dati.</p>
-    <div class="quicklinks">
-      <a class="primary" href="#redditi">Comincia a leggere</a>
-      <a href="esplora.html">Esplora i comuni</a>
-      <a href="metodologia.html">Come è stato fatto</a>
-      <a href="dati.html">Scarica i dati</a>
-    </div>
-    <p class="meta">{{c:popolazione_provinciale}} abitanti · {{c:addetti_provinciali}} addetti ·
-    {{N_TABELLE}} tabelle aperte · {{N_INDICATORI}} indicatori</p>
+    <p class="meta">{{c:popolazione_provinciale}} abitanti · {{c:addetti_provinciali}} addetti</p>
     <p class="freshness">Pagina costruita il {{BUILD_DATE}} · dati aggiornati al {{DATA_DATE}}</p>
   </div>
 </header>
@@ -61,8 +54,8 @@
         <h2 class="story-title">Dove comincia il racconto</h2>
       </div>
     </div>
-    <p class="question">Brescia è una provincia grande e molto varia. Che significa qui un
-    «numero medio»?</p>
+    <p class="question">Brescia è una provincia grande e molto varia. La media ci dice
+    qualcosa?</p>
 
     <p><strong>Il territorio.</strong> La provincia di Brescia include il Garda e la Val
     Camonica, la Bassa agricola e la Val Trompia delle acciaierie, una città di duecentomila
@@ -82,12 +75,13 @@
     <p><strong>La distanza fra le parti.</strong> Il capoluogo pesa
     {{c:quota_capoluogo}} della popolazione e {{c:quota_addetti_capoluogo}} degli addetti (le persone che lavorano): molto,
     ma non abbastanza da essere la provincia. Il comune mediano ha
-    {{c:popolazione_mediana}} abitanti, cioè un cinquantesimo della città. Ogni media provinciale
-    che leggerete altrove nasconde questa distanza.</p>
+    {{c:popolazione_mediana}} abitanti, cioè un cinquantesimo della città. Bisogna tenerlo a
+    mente ogni volta che qui compare il valore medio della provincia: quel numero nasconde
+    questa distanza.</p>
 
     <details class="metric-expl">
       <summary><span class="me-lab">il metodo</span>
-        <span>Le due regole che valgono per tutta la pagina</span><span class="me-tgl"></span></summary>
+        <span>Le due regole che valgono per tutto il progetto</span><span class="me-tgl"></span></summary>
       <div class="me-body">
         <p>Ogni numero è <strong>riproducibile</strong>: viene da una tabella pubblica e da uno
         script pubblico, e nessuna cifra di questo testo è scritta a mano. Sono tutte ricalcolate
@@ -102,7 +96,7 @@
       <ul>
         <li><strong>I redditi convergono</strong>: chi partiva sotto cresce più in fretta. Ma i due estremi si allontanano.</li>
         <li><strong>Gli stipendi fanno lo stesso.</strong> {{c:sal_nominale}} in
-          {{c:sal_anni}} anni, il {{c:sal_reale_nudo}} in meno una volta scontati i prezzi. Non capita solo a Brescia: succede in {{c:sal_province_in_calo}} province su {{c:sal_province}}.</li>
+          {{c:sal_anni}} anni, il {{c:sal_reale_nudo}} in meno al netto dell'inflazione. Non capita solo a Brescia: succede in {{c:sal_province_in_calo}} province su {{c:sal_province}}.</li>
         <li><strong>La casa costa come nel {{c:casa_anno_primo}} e vale un terzo in meno.</strong>
           In euro correnti il metro quadro del capoluogo fa {{c:casa_nominale}} in ventun anni; in
           euro di oggi fa {{c:casa_reale}}, mentre le compravendite {{c:casa_ntn_variazione}}.</li>
@@ -154,7 +148,10 @@
     <figure class="fig">
       <h3>Reddito di partenza e crescita successiva</h3>
       <p class="cap">La nuvola scende: i comuni che partivano poveri corrono di più. Il secondo
-      pulsante mostra lo stesso conto fatto male, e serve.</p>
+      pulsante rifà lo stesso conto mettendo sull'asse il reddito di arrivo invece di quello di
+      partenza: i valori che ne escono ingannano, perché la nuvola sembra dire il contrario. Il
+      riquadro qui sotto spiega perché. L'asse orizzontale è lo stesso nelle due viste, così si
+      vede anche di quanto la provincia si è spostata a destra.</p>
       <div id="comandi-reddito"></div>
       <div id="scatter-reddito"></div>
     </figure>
@@ -213,6 +210,25 @@
     demografica. I comuni ricchi stanno vicino ad altri comuni ricchi: la sponda del Garda e la
     cintura della città da una parte, l'alta valle dall'altra.</p>
 
+    <details class="metric-expl">
+      <summary><span class="me-lab">la metrica</span>
+        <span>Che cos'è l'indice di Moran</span><span class="me-tgl"></span></summary>
+      <div class="me-body">
+        <p>Misura una cosa sola: <b>quanto un comune somiglia ai comuni con cui confina</b>. Vale
+        circa <b>0</b> quando i valori sono sparsi a caso sulla mappa, sale verso <b>+1</b> quando
+        i simili stanno vicini fra loro, scende verso <b>−1</b> quando i vicini sono
+        sistematicamente diversi, cioè quando la mappa è una scacchiera.</p>
+        <p>Serve a sapere se l'unità del fenomeno è davvero il comune. Un indice alto dice che non
+        lo è: la cosa che cambia è la valle, o la sponda, e i confini comunali la tagliano invece
+        di descriverla. È il motivo per cui torna più volte in questa pagina, e ogni volta con lo
+        stesso significato.</p>
+        <p>Due comuni sono vicini se i loro poligoni condividono almeno un punto di confine. Sul
+        Garda i confini passano dentro il lago, quindi due comuni su sponde opposte risultano
+        contigui: amministrativamente è giusto, economicamente è discutibile, e va ricordato
+        quando l'indicatore riguarda il turismo.</p>
+      </div>
+    </details>
+
     <div class="takeaway">
       <span class="t-lab">In una riga</span>
       <p>Il grosso dei comuni bresciani si sta avvicinando nei redditi, la cima si stacca, e
@@ -251,7 +267,7 @@
 
     <p>Nello stesso periodo i prezzi al consumo salgono del {{c:sal_inflazione}}. In euro di oggi
     quei {{c:sal_corrente_primo}} del {{c:sal_anno_primo}} valevano
-    <strong>{{c:sal_reale_primo}}</strong>: la retribuzione di oggi ne vale
+    <strong>{{c:sal_reale_primo}}</strong>: quella di oggi vale
     <strong>il {{c:sal_reale_nudo}} in meno</strong>.</p>
 
     <figure class="fig">
@@ -298,8 +314,11 @@
       <div id="sciame-salari"></div>
     </figure>
 
-    <p>È la seconda volta che questo report mostra lo stesso divario. Lo ha trovato sui <a href="#redditi">redditi dichiarati</a>, adesso sulle buste paga. Più avanti vedremo lo stesso pattern quando parleremo della <a href="#casa">casa</a>: tre misure diverse, tre fonti diverse, la
-    stessa differenza: una crescita teorica smentita da un'analisi più attenta dei dati. Il deflatore è una costante di questo racconto.</p>
+    <p>È la seconda volta che questa pagina mostra lo stesso divario: prima sui
+    <a href="#redditi">redditi dichiarati</a>, adesso sulle buste paga, e fra poco sulla
+    <a href="#casa">casa</a>. Tre misure diverse, tre fonti diverse, sempre la stessa distanza fra
+    una crescita in euro correnti e quello che quegli euro comprano. L'inflazione è una costante
+    di questo racconto.</p>
 
     <div class="takeaway">
       <span class="t-lab">In una riga</span>
@@ -341,7 +360,7 @@
     <strong>{{c:casa_inflazione}}</strong>, quindi quei {{c:casa_prezzo_primo}} € del
     {{c:casa_anno_primo}} sono <strong>{{c:casa_prezzo_primo_reale}} € di oggi</strong>. Il metro
     quadro non è fermo: <strong>ha perso {{c:casa_reale}}</strong>. Il mercato sembra immobile, ma 
-    lo si stava misurando con un righello che si accorcia.</p>
+    lo stavamo misurando con un righello che si accorcia.</p>
 
     <div class="keynums">
       <div class="kn"><div class="big">{{c:casa_nominale}}</div>
@@ -581,8 +600,8 @@
     <p>Sono <strong>{{c:divisione_prima}}</strong> ({{c:divisione_prima_variazione}} addetti) e
     <strong>{{c:divisione_seconda}}</strong> ({{c:divisione_seconda_variazione}}). Insieme fanno
     {{c:due_divisioni_variazione}} addetti, cioè più dell'intero calo: il resto della classe, nel
-    complesso, tiene. La manifattura grande, cioè le divisioni dalla 10 alla 33, passa da
-    {{c:manifattura_grandi_iniziale}} addetti a {{c:manifattura_grandi_variazione}} di differenza.
+    complesso, tiene. La manifattura grande, cioè le divisioni dalla 10 alla 33, parte da
+    {{c:manifattura_grandi_iniziale}} addetti e si muove di {{c:manifattura_grandi_variazione}}.
     Immobile.</p>
 
     <p>Resta la domanda vera: quegli addetti sono spariti, o si sono spostati? Basta guardare la
@@ -754,7 +773,7 @@
     direbbe una cosa falsa. <strong>Brescia è decima perché è grande.</strong> Per abitante fa
     {{c:tur_per_abitante}} notti contro una mediana di {{c:tur_per_abitante_mediana}}: sopra la
     media, lontanissima dalle province che di turismo vivono. È l'errore che torneremo a vedere nella
-    <a href="#diversa">storia del confronto</a> col segno rovesciato: là un valore relativo fa
+    <a href="#diversa">storia del confronto</a>, col segno rovesciato: là un valore relativo fa
     sembrare Brescia ordinaria, qui un valore assoluto la fa sembrare eccezionale.</p>
 
     <figure class="fig">
@@ -889,9 +908,8 @@
     <p>Due delle tre righe crollano. Il <strong>PM10</strong> passa da {{c:pm10_inizio}} a
     {{c:pm10_fine}} microgrammi per metro cubo fra i primi e gli ultimi tre anni,
     {{c:pm10_variazione}}; il <strong>biossido di azoto</strong> da {{c:no2_inizio}} a
-    {{c:no2_fine}}, {{c:no2_variazione}}. Sono cali molto grandi e non
-    vanno interpretati: è quello che le stesse centraline, nello stesso posto, hanno respirato
-    prima e dopo.</p>
+    {{c:no2_fine}}, {{c:no2_variazione}}. Sono cali molto grandi e non sono una nostra lettura:
+    è quello che le stesse centraline, nello stesso posto, hanno respirato prima e dopo.</p>
 
     <div class="keynums">
       <div class="kn"><div class="big">{{c:pm10_variazione}}</div>
@@ -950,6 +968,14 @@
     <p>Gli anni più caldi della serie sono {{c:temp_anni_caldi}}, e stanno tutti in fondo:
     {{c:temp_anomalia_massima}} sopra la base nel più caldo dei tre. Non è una tendenza che si
     intravede fra il rumore: negli ultimi anni le colonne stanno da una parte sola.</p>
+
+    <figure class="fig">
+      <h3>Gli stessi anni, senza numeri</h3>
+      <p class="cap">Una striscia per anno, dal più freddo in blu al più caldo in rosso: sono
+      gli scostamenti della figura qui sopra, con l'asse tolto. I gradi stanno nella tabella e
+      nel suggerimento; qui la cosa da vedere è che il rosso sta tutto a destra.</p>
+      <div id="strisce-clima"></div>
+    </figure>
 
     <details class="metric-expl">
       <summary><span class="me-lab">la metrica, in chiaro</span>
@@ -1173,8 +1199,8 @@
       montagna bresciana: fra le {{c:province_confrontate}} province italiane è positivo in
       <strong>{{c:province_naturale_positivo}}</strong>.</p>
 
-      <p>Che risponde anche alla domanda che questa storia non poteva porsi: Brescia si svuota più
-      o meno delle altre? <strong>Meno.</strong> Su {{c:province_confrontate}} province è la
+      <p>E così si risponde anche alla domanda che questa storia da sola non poteva porsi:
+      Brescia si svuota più o meno delle altre? <strong>Meno.</strong> Su {{c:province_confrontate}} province è la
       <strong>{{c:rango_crescita_provincia}}ª per crescita</strong>
       ({{c:crescita_provinciale_mille}} abitanti ogni mille contro una mediana di
       −{{c:mediana_province_mille}}), e solo {{c:province_in_crescita}} crescono. Anche il saldo
@@ -1215,7 +1241,7 @@
       </div>
     </div>
     <p class="question">Quante persone di origine straniera vivono nel bresciano, e quante di
-    loro sono arrivate da qualche parte?</p>
+    loro sono davvero arrivate da fuori?</p>
 
     <p>Le due metà della domanda non danno lo stesso numero, ed è tutta la storia. La
     <a href="#svuota">storia precedente</a> ha contato i <strong>movimenti</strong>: chi si
@@ -1255,15 +1281,13 @@
 
     <p><strong>Adesso il paradosso dello stock.</strong> Fra il {{c:bg_anno_iniziale}} e il
     {{c:bg_anno_finale}} gli stranieri residenti passano da {{c:bg_stranieri_iniziale}} a
-    {{c:bg_stranieri}}: <strong>{{c:bg_var_stranieri}} persone in due anni</strong>, su
-    centocinquantatremila. «Gli stranieri sono fermi» sembra la lettura ovvia, ed è un numero
-    giusto dentro una frase falsa.</p>
-
-    <p>Nello stesso biennio <strong>{{c:bg_var_acquisiti}} persone hanno preso la cittadinanza
-    italiana</strong>, e prendendola sono <em>uscite</em> dal conteggio degli stranieri. Perché
-    lo stock si sia mosso di appena {{c:bg_var_stranieri}}, almeno
-    <strong>{{c:bg_ingresso_implicito}} persone</strong> devono esserci entrate. Un serbatoio
-    che resta al livello di prima con due rubinetti aperti non è un serbatoio fermo.</p>
+    {{c:bg_stranieri}}: <strong>{{c:bg_var_stranieri}} persone in due anni</strong>, e
+    «gli stranieri sono fermi» sembra la lettura ovvia. Ma nello stesso biennio
+    <strong>{{c:bg_var_acquisiti}} persone hanno preso la cittadinanza italiana</strong>, e
+    prendendola sono <em>uscite</em> da quel conteggio: perché lo stock si sia mosso di appena
+    {{c:bg_var_stranieri}}, almeno <strong>{{c:bg_ingresso_implicito}} persone</strong> devono
+    esserci entrate. Un serbatoio che resta al livello di prima con due rubinetti aperti non è
+    un serbatoio fermo, e la frase è falsa pur essendo il numero giusto.</p>
 
     <details class="metric-expl">
       <summary><span class="me-lab">attenzione</span>
@@ -1280,20 +1304,13 @@
       </div>
     </details>
 
-    <figure class="fig">
-      <h3>Chi cresce e chi cala, {{c:bg_anno_iniziale}}–{{c:bg_anno_finale}}</h3>
-      <p class="cap">La popolazione della provincia cresce di {{c:bg_var_popolazione}}. Le tre
-      componenti che la compongono si muovono di più, e in direzioni diverse.</p>
-      <div id="barre-stock"></div>
-    </figure>
-
-    <p>La barra che conta è quella di mezzo. Gli italiani <strong>dalla nascita</strong> calano
-    di {{c:bg_calo_dalla_nascita}}, gli italiani <strong>per acquisizione</strong> crescono di
-    {{c:bg_var_acquisiti}}, e la popolazione totale cresce di {{c:bg_var_popolazione}}: la
-    crescita dei nuovi cittadini vale <strong>{{c:bg_acquisiti_su_crescita}} volte</strong> la
-    crescita dell'intera provincia. Senza di loro il conto sarebbe negativo, ed è lo stesso
-    risultato che la <a href="#svuota">storia precedente</a> ottiene sui flussi, con una fonte
-    diversa e un metodo diverso.</p>
+    <p>Gli italiani <strong>dalla nascita</strong> calano di {{c:bg_calo_dalla_nascita}}, gli
+    italiani <strong>per acquisizione</strong> crescono di {{c:bg_var_acquisiti}}, e la
+    popolazione totale cresce di {{c:bg_var_popolazione}}: la crescita dei nuovi cittadini vale
+    <strong>{{c:bg_acquisiti_su_crescita}} volte</strong> quella dell'intera provincia. Senza di
+    loro il conto sarebbe negativo, ed è lo stesso risultato che la
+    <a href="#svuota">storia precedente</a> ottiene sui flussi, con una fonte diversa e un
+    metodo diverso.</p>
 
     <p><strong>Dove.</strong> Nel {{c:bg_anno_finale}} la popolazione di origine straniera,
     stranieri più italiani per acquisizione, è il {{c:bg_quota_background}} della provincia, ma
@@ -1331,33 +1348,26 @@
       <div class="me-body">
         <p>Quando due gruppi hanno età diverse e si vuole un numero solo, la mossa standard è la
         <b>standardizzazione per età</b>: si ricalcola la media di ciascun gruppo come se avesse
-        la struttura per età dell'altro. Qui è stata provata, e <b>non serve</b>.</p>
-        <p>Non perché sbagli il conto, ma perché non c'è niente da salvare. La
-        standardizzazione ripara le sintesi rovinate dalla <i>composizione</i>: due gruppi con lo
-        stesso divario in ogni classe che sembrano diversi solo perché uno è più giovane. Qui i
-        divari specifici hanno <b>segno opposto</b>, positivo fra i 25 e i 49 e negativo sopra i
-        65, e allora nessun numero solo li rappresenta, standardizzato o no. Sull'aggregato la
-        standardizzazione sposta il risultato di mezzo punto e continua a non descrivere né
-        l'una né l'altra classe.</p>
+        la struttura per età dell'altro. Qui è stata provata e <b>non serve</b>, perché ripara le
+        sintesi rovinate dalla <i>composizione</i>, non quelle rovinate dal segno. I divari
+        specifici sono <b>opposti</b>, positivo fra i 25 e i 49 e negativo sopra i 65: nessun
+        numero solo li rappresenta, standardizzato o no.</p>
         <p>Il rimedio non è una media migliore: è <b>pubblicare le classi</b>, che è quello che
         fa la figura qui sopra.</p>
       </div>
     </details>
 
-    <p><strong>Il lavoro, e un tasso che non misura quello che sembra.</strong> Sull'altro asse
-    dell'integrazione il censimento porta la condizione professionale per cittadinanza, ma solo
-    per il <strong>comune di Brescia</strong>: {{c:occ_pop_italiani}} italiani e
-    {{c:occ_pop_stranieri}} stranieri di 15 anni e più, non i {{c:comuni}} comuni. Da qui in
-    fondo al paragrafo si parla della città, non della provincia.</p>
-
-    <p>La prima cifra che salta all'occhio dice che gli stranieri lavorano di più: occupati il
-    {{c:occ_quota_occupati_stranieri}} contro il {{c:occ_quota_occupati_italiani}}. È vera, e
-    <strong>non significa quasi niente</strong>, perché quel tasso si calcola sui 15 anni e più e
-    lì dentro ci sono i pensionati: fra gli italiani sono il
-    <strong>{{c:occ_pensione_italiani}}</strong>, fra gli stranieri il
-    {{c:occ_pensione_stranieri}}, cioè <strong>{{c:occ_rapporto_pensione}} volte meno</strong>.
-    Una popolazione arrivata da poco non ha ancora una generazione in pensione, e il tasso di
-    occupazione sui 15 anni e più misura in buona parte proprio quello.</p>
+    <p><strong>Il lavoro, e un tasso che non misura quello che sembra.</strong> La condizione
+    professionale per cittadinanza il censimento la pubblica solo per il <strong>comune di
+    Brescia</strong>, quindi da qui in fondo si parla della città. La prima cifra dice che gli
+    stranieri lavorano di più: occupati il {{c:occ_quota_occupati_stranieri}} contro il
+    {{c:occ_quota_occupati_italiani}}. È vera e <strong>non significa quasi niente</strong>,
+    perché quel tasso si calcola sui 15 anni e più, e lì dentro ci sono i pensionati: il
+    <strong>{{c:occ_pensione_italiani}}</strong> fra gli italiani contro il
+    {{c:occ_pensione_stranieri}} fra gli stranieri, cioè
+    <strong>{{c:occ_rapporto_pensione}} volte meno</strong>. Una popolazione arrivata da poco non
+    ha ancora una generazione in pensione, ed è in buona parte quello che il tasso sta
+    misurando.</p>
 
     <figure class="fig">
       <h3>Chi fa cosa, comune di Brescia, {{c:occ_anno_ultimo}}</h3>
@@ -1373,45 +1383,24 @@
     stranieri</strong>, {{c:occ_rapporto_disocc}} volte tanto. E il rapporto tiene mentre i
     livelli crollano: nel {{c:occ_anno_primo}} erano {{c:occ_disocc_italiani_primo}} e
     {{c:occ_disocc_stranieri_primo}}. Sei anni di mercato del lavoro in miglioramento hanno
-    dimezzato entrambi e <strong>lasciato il divario dov'era</strong>.</p>
+    dimezzato entrambi e <strong>lasciato il divario dov'era</strong>. L'altra asimmetria grossa
+    del grafico non riguarda il lavoro pagato: le <strong>casalinghe e i casalinghi</strong> sono
+    il {{c:occ_casalinghe_stranieri}} fra gli stranieri contro il
+    {{c:occ_casalinghe_italiani}} fra gli italiani, ed è la voce che, insieme alle pensioni,
+    spiega perché due popolazioni con tassi di occupazione simili stiano fuori dal lavoro per
+    ragioni opposte.</p>
 
-    <p>C'è una terza asimmetria che il grafico mostra e che non riguarda il lavoro pagato: le
-    <strong>casalinghe e i casalinghi</strong> sono il {{c:occ_casalinghe_stranieri}} fra gli
-    stranieri e il {{c:occ_casalinghe_italiani}} fra gli italiani. È la voce che, insieme alle
-    pensioni, spiega perché due popolazioni con tassi di occupazione simili stiano fuori dal
-    lavoro per ragioni opposte.</p>
-
-    <details class="metric-expl">
-      <summary><span class="me-lab">la metrica, in chiaro</span>
-        <span>Perché non correggiamo il tasso per l'età</span><span class="me-tgl"></span></summary>
-      <div class="me-body">
-        <p>Sarebbe la mossa giusta e <b>questa tavola non la permette</b>: pubblica la condizione
-        professionale per cittadinanza e per sesso, non per classe d'età. Un tasso di occupazione
-        standardizzato per età, qui, non si può calcolare.</p>
-        <p>Il ripiego non è un tasso aggiustato a occhio, è <b>mostrare la composizione</b>: se il
-        {{c:occ_pensione_italiani}} di un gruppo è in pensione e il {{c:occ_pensione_stranieri}}
-        dell'altro no, il lettore vede da sé perché i due tassi di occupazione non sono
-        confrontabili. È la stessa scelta fatta sul titolo di studio, dove le classi si pubblicano
-        invece di riassumerle.</p>
-        <p>E vale la pena dire cosa <b>non</b> serve correggere: il tasso di disoccupazione. Il suo
-        denominatore sono le forze di lavoro, cioè chi lavora o cerca lavoro, e i pensionati ne
-        stanno fuori per definizione. Il {{c:occ_rapporto_disocc}} a uno resta.</p>
-      </div>
-    </details>
-
-    <p><strong>E chi se ne va?</strong> È la domanda che manca a quasi tutti i ritratti di
-    territorio, e il bilancio demografico la regge, con un limite di cui diciamo fra due righe.
-    Fra il {{c:bg_flussi_anno_primo}} e il {{c:bg_flussi_anno_ultimo}} hanno lasciato la
-    provincia per l'estero <strong>{{c:bg_partenze_totale}} residenti</strong>, una media di
-    {{c:bg_partenze_media}} l'anno. Ne sono arrivati {{c:bg_arrivi_totale}}: <strong>uno che
-    parte ogni {{c:bg_rapporto_flussi}} che arrivano</strong>.</p>
-
-    <p>La cosa da vedere però non è il rapporto, è la <strong>forma</strong>. Chi parte è fermo:
-    {{c:bg_partenze_primo}} nel {{c:bg_flussi_anno_primo}}, {{c:bg_partenze_ultimo}} nel
-    {{c:bg_flussi_anno_ultimo}}, e in mezzo mai uno scarto largo. Chi arriva no:
-    {{c:bg_arrivi_primo}} e {{c:bg_arrivi_ultimo}}. Il saldo che la
-    <a href="#svuota">storia precedente</a> usa sale per una ragione sola, e non è che le
-    partenze rallentino.</p>
+    <p><strong>E chi se ne va?</strong> Fra il {{c:bg_flussi_anno_primo}} e il
+    {{c:bg_flussi_anno_ultimo}} hanno lasciato la provincia per l'estero
+    <strong>{{c:bg_partenze_totale}} residenti</strong>, contro {{c:bg_arrivi_totale}} arrivi:
+    uno che parte ogni {{c:bg_rapporto_flussi}} che arrivano. Ma la cosa da vedere non è il
+    rapporto, è la <strong>forma</strong>. Chi parte è fermo: {{c:bg_partenze_primo}} nel
+    {{c:bg_flussi_anno_primo}}, {{c:bg_partenze_ultimo}} nel {{c:bg_flussi_anno_ultimo}}, e in
+    mezzo mai uno scarto largo. Chi arriva no: {{c:bg_arrivi_primo}} e {{c:bg_arrivi_ultimo}}. Il
+    saldo che la <a href="#svuota">storia precedente</a> usa sale per una ragione sola, e non è
+    che le partenze rallentino. Sono cancellazioni anagrafiche di residenti, senza distinzione di
+    cittadinanza, e <a href="#limiti">sottostimano</a>: cancellarsi dall'anagrafe è un
+    adempimento che chi si trasferisce spesso salta.</p>
 
     <figure class="fig">
       <h3>Arrivi e partenze verso l'estero, {{c:bg_flussi_anno_primo}}–{{c:bg_flussi_anno_ultimo}}</h3>
@@ -1421,28 +1410,11 @@
       <div id="serie-flussi"></div>
     </figure>
 
-    <details class="metric-expl">
-      <summary><span class="me-lab">controllo</span>
-        <span>«Partenze» non vuol dire «italiani che emigrano»</span><span class="me-tgl"></span></summary>
-      <div class="me-body">
-        <p>Due cose che questa serie <b>non</b> dice, e che vanno sapute prima di riusarla.</p>
-        <p><b>Non distingue la cittadinanza.</b> Sono cancellazioni anagrafiche di
-        <i>residenti</i>: dentro ci sono italiani che vanno a lavorare all'estero e stranieri che
-        tornano o ripartono, mescolati. La fonte che le separerebbe è il bilancio demografico
-        della popolazione straniera, che questo progetto non ha ancora scaricato.</p>
-        <p><b>Sottostima, e non di poco.</b> Cancellarsi dall'anagrafe è un adempimento che chi
-        si trasferisce all'estero spesso salta, perché costa qualcosa e non serve a niente
-        nell'immediato. Il numero vero delle partenze è più alto di
-        {{c:bg_partenze_media}} l'anno; di quanto, questa fonte non lo sa.</p>
-      </div>
-    </details>
-
     <div class="takeaway">
       <span class="t-lab">In una riga</span>
-      <p>La provincia cresce solo perché diventa italiana gente che qui c'era già: gli italiani
-      dalla nascita calano di {{c:bg_calo_dalla_nascita}}, i nuovi cittadini crescono di
-      {{c:bg_var_acquisiti}}, e {{c:bg_nati_qui_stranieri}} persone nate in Italia aspettano
-      ancora un passaporto, e il {{c:bg_nati_qui_quota_minori}} di loro sono minorenni.</p>
+      <p>La provincia cresce solo perché diventa italiana gente che qui c'era già, e
+      {{c:bg_nati_qui_stranieri}} persone nate in Italia aspettano ancora un passaporto, il
+      {{c:bg_nati_qui_quota_minori}} delle quali minorenni.</p>
     </div>
 
     <p class="conf"><span class="dot derivato"></span><b>derivato</b> · ISTAT: censimento
@@ -1553,103 +1525,92 @@
     tutto il resto.</p>
 
     <ul class="elenco">
-      <li><strong>Dove va chi parte.</strong> La scomposizione della <a href="#svuota">storia sulla popolazione</a> dice quante
-      persone entrano ed escono da ogni comune, non da dove a dove: «chi lascia la Valle Camonica
-      scende a Brescia» è una frase che questi dati <em>non</em> sostengono. Servirebbero le
-      matrici origine-destinazione, che non sono pubblicate a grana comunale.</li>
+      <li><strong>Dove va chi parte.</strong> La scomposizione della
+      <a href="#svuota">storia sulla popolazione</a> dice quante persone entrano ed escono da ogni
+      comune, non da dove a dove: «chi lascia la Valle Camonica scende a Brescia» è una frase che
+      questi dati <em>non</em> sostengono. Servirebbero le matrici origine-destinazione, che non
+      sono pubblicate a grana comunale.</li>
+
       <li><strong>Se il reddito che cresce sia reddito di chi ci abitava.</strong> Un comune può
       diventare più ricco perché chi ci vive guadagna di più o perché ci si trasferisce gente più
       ricca. Con dati aggregati per comune i due casi sono indistinguibili.</li>
+
       <li><strong>Il confronto non copre l'aria.</strong> Brescia è collocata fra le
       {{c:province_confrontate}} province su imprese, demografia, turismo e retribuzioni, e la
-      convergenza dei redditi è replicata su Bergamo. Sull'aria no: l'unità è la centralina, non
-      il comune, e le reti delle altre province non sono confrontabili. La <a href="#aria">storia dell'aria</a> resta
-      misurata contro sé stessa.</li>
-      <li><strong>Il turismo ha due fonti, e non danno lo stesso numero.</strong> I comuni vengono da
-      Regione Lombardia, il confronto fra province da ISTAT: sulle presenze provinciali del
-      {{c:anno_pop_finale}} distano il 10,6 %, e la distanza cresce ogni anno. Sono due
-      rilevazioni con due perimetri, nessuna sbagliata. Qui le cifre comunali vengono tutte dalla
-      prima e non si mescolano con la seconda.</li>
-      <li><strong>L'aggiustamento statistico non si sa a cosa attribuirlo.</strong> Vale
-      {{c:aggiustamento_provinciale}} persone in sei anni, abbastanza da cambiare il segno di un
-      comune piccolo, ed è una rettifica anagrafica, non un fenomeno. Qui resta una voce a parte
-      proprio perché non si può dire di quale movimento reale sia il residuo.</li>
-      <li><strong>Le quotazioni non sono prezzi di vendita.</strong> Questa voce diceva «niente sui
-      prezzi delle case», e dalla <a href="#casa">storia della casa</a> era falsa. Resta il limite vero, che l'Agenzia
-      dichiara da sé chiamandole «indicazioni di valore di larga massima»: sono
-      <em>quotazioni</em> per zona, e nessuna è il prezzo a cui una casa è passata di mano.</li>
+      convergenza dei redditi è replicata su Bergamo. Sull'aria no: l'unità è la centralina e le
+      reti delle altre province non sono confrontabili, quindi la
+      <a href="#aria">storia dell'aria</a> resta misurata contro sé stessa.</li>
 
-      <li><strong>Stock e flussi non si sottraggono.</strong> La <a href="#svuota">storia sulla popolazione</a> porta due misure dello
-      stesso fenomeno: le componenti annuali del bilancio anagrafico
+      <li><strong>Il turismo ha due fonti, e non danno lo stesso numero.</strong> I comuni vengono
+      da Regione Lombardia, il confronto fra province da ISTAT: sulle presenze provinciali del
+      {{c:anno_pop_finale}} distano il 10,6 %, e la distanza cresce ogni anno. Nessuna delle due
+      è sbagliata, e qui non si mescolano.</li>
+
+      <li><strong>Le quotazioni non sono prezzi di vendita.</strong> È l'Agenzia a chiamarle
+      «indicazioni di valore di larga massima»: sono quotazioni <em>per zona</em>, e nessuna è il
+      prezzo a cui una casa è passata di mano.</li>
+
+      <li><strong>Stock e flussi non si sottraggono.</strong> Il bilancio anagrafico
       ({{c:anno_pop_iniziale}}–{{c:anno_pop_finale}}) e lo stock censuario
-      ({{c:bg_anno_iniziale}}–{{c:bg_anno_finale}}). Due perimetri e due intervalli: stanno
+      ({{c:bg_anno_iniziale}}–{{c:bg_anno_finale}}) hanno due perimetri e due intervalli: stanno
       accanto perché si confermano, ma una cifra dell'una meno una dell'altra non è nulla. I
       {{c:bg_var_acquisiti}} nuovi cittadini non sono persone <em>arrivate</em>: erano già qui, e
-      hanno cambiato riga.</li>
+      hanno cambiato riga. Dentro il bilancio, poi, l'<strong>aggiustamento statistico</strong>
+      vale {{c:aggiustamento_provinciale}} persone in sei anni ed è una rettifica anagrafica, non
+      un movimento: resta una voce a parte perché non si sa di quale movimento reale sia il
+      residuo.</li>
 
       <li><strong>Sul background migratorio si sa chi, non quando.</strong> Il censimento dice
-      quanti residenti sono nati all'estero e con quale cittadinanza, non da quanti anni sono qui.
-      «Immigrazione recente» è una frase che questi dati non sostengono, e la serie comincia nel
+      quanti residenti sono nati all'estero e con quale cittadinanza, non da quanti anni sono qui:
+      «immigrazione recente» è una frase che questi dati non sostengono. E la serie comincia nel
       {{c:bg_anno_iniziale}}: tre anni non dicono una tendenza.</li>
 
-      <li><strong>Non sappiamo da dove vengono.</strong> È la domanda che tutti fanno per prima, e
-      la <a href="#origini">storia delle origini</a> non la tocca: a grana comunale il censimento
-      pubblica la cittadinanza solo come «Unione europea» o «fuori dall'Unione», non per paese. La
-      serie per singolo paese esiste, in un'altra fonte che questo progetto non ha ancora
-      scaricato. E quando ci sarà resterà vera la cautela che vale per tutto il tema: il paese di
-      origine <strong>non è un indicatore</strong> di reddito, di disagio o di trasformazione
-      urbana, e una mappa che lo colorasse come se lo fosse direbbe una cosa che i dati non
-      dicono.</li>
+      <li><strong>Non sappiamo da dove vengono.</strong> A grana comunale il censimento pubblica
+      la cittadinanza solo come «Unione europea» o «fuori dall'Unione», non per paese, e la serie
+      per singolo paese sta in un'altra fonte che questo progetto non ha ancora scaricato. Quando
+      ci sarà, varrà comunque la cautela di sempre: il paese di origine <strong>non è un
+      indicatore</strong> di reddito o di disagio, e una mappa che lo colorasse come se lo fosse
+      direbbe una cosa che i dati non dicono.</li>
 
       <li><strong>Sulle partenze la fonte sottostima, e non dice chi parte.</strong> Le
       {{c:bg_partenze_media}} cancellazioni per l'estero all'anno sono <em>residenti</em>, senza
       distinzione di cittadinanza: dentro ci sono italiani che vanno a lavorare fuori e stranieri
-      che tornano o ripartono, e la fonte non li separa. E sono meno di quante siano davvero,
-      perché cancellarsi dall'anagrafe è un adempimento che chi si trasferisce spesso salta. La
-      cifra è un minimo, e va letta come tale.</li>
+      che tornano o ripartono. E sono meno di quante siano davvero, perché cancellarsi
+      dall'anagrafe è un adempimento che chi si trasferisce spesso salta. La cifra è un
+      minimo.</li>
 
       <li><strong>Sul lavoro si vede la città, non la provincia.</strong> L'incrocio fra
       condizione professionale e cittadinanza il censimento lo pubblica per il solo
       <strong>comune di Brescia</strong>: {{c:occ_pop_italiani}} italiani e
-      {{c:occ_pop_stranieri}} stranieri di 15 anni e più, su una provincia di
-      {{c:popolazione_provinciale}} abitanti. E il capoluogo non è un campione della provincia:
-      la sua quota di popolazione di origine straniera è {{c:bg_quota_capoluogo}} contro una
-      mediana comunale di {{c:bg_quota_mediana}}. Nessuna di quelle cifre si estende ai
-      {{c:comuni}} comuni.</li>
-
-      <li><strong>Il tasso di occupazione, da solo, misura le pensioni.</strong> Si calcola sui
-      15 anni e più, e in quella popolazione i pensionati italiani sono il
-      {{c:occ_pensione_italiani}} contro il {{c:occ_pensione_stranieri}} degli stranieri. La
-      tavola non ha la classe d'età, quindi un tasso standardizzato non si può calcolare: la
+      {{c:occ_pop_stranieri}} stranieri di 15 anni e più, e il capoluogo non è un campione della
+      provincia. Dentro quella tavola il <strong>tasso di occupazione</strong>, da solo, misura in
+      buona parte le pensioni, e senza la classe d'età non si può standardizzare: la
       <a href="#origini">storia delle origini</a> pubblica la composizione e usa il tasso di
-      <em>disoccupazione</em>, che è l'unico dei due che la pensione non deforma.</li>
+      <em>disoccupazione</em>, che la pensione non deforma.</li>
 
       <li><strong>Il titolo di studio ha una popolazione sua.</strong> Le cifre sull'istruzione
       della <a href="#origini">storia delle origini</a> sono sui residenti di <strong>9 anni e
-      più</strong>, che è la popolazione su cui la fonte lo pubblica, e sono
-      <strong>provinciali</strong> e non comunali. Nessuno dei loro totali coincide con quelli
-      dello stock, e confrontarli fra loro è l'errore che questa riga esiste per prevenire.</li>
-      <li><strong>I reati solo a scala provinciale.</strong> Qualunque mappa comunale della
-      sicurezza sarebbe inventata.</li>
+      più</strong> e sono <strong>provinciali</strong>: nessuno dei loro totali coincide con
+      quelli dello stock, e confrontarli fra loro è l'errore che questa riga esiste per
+      prevenire.</li>
+
       <li><strong>Niente agricoltura, e non è un dettaglio.</strong> Il registro delle imprese non
       la osserva, quindi in tutta la parte settoriale i comuni della Bassa appaiono meno
       specializzati di quanto siano.</li>
+
       <li><strong>Nulla su singole persone o singole imprese.</strong> Tutte le tabelle pubblicate
-      qui sono aggregate, e dove il numero è troppo piccolo la fonte lo sopprime: sulle presenze
-      turistiche del {{c:anno_pop_finale}} mancano decine di comuni, e <strong>un dato mancante
-      non è uno zero</strong>. Una fonte fa eccezione a monte: l'INAIL pubblica un record per
-      singolo infortunio, e la pipeline lo <strong>aggrega prima di scrivere</strong> proprio
-      perché questa riga resti vera.</li>
+      qui sono aggregate, e dove il numero è troppo piccolo la fonte lo sopprime:
+      <strong>un dato mancante non è uno zero</strong>. Una fonte fa eccezione a monte: l'INAIL
+      pubblica un record per singolo infortunio, e la pipeline lo <strong>aggrega prima di
+      scrivere</strong> proprio perché questa riga resti vera.</li>
+
       <li><strong>L'aria si misura dove c'è una centralina.</strong> Le stazioni sono poche e non
       stanno a caso: nascono dove il problema era grosso. Dicono cosa hanno respirato loro, non
-      cosa respira la provincia, e per quasi tutti i {{c:comuni}} comuni non c'è nessun dato.
-      Nessuna variazione è attribuita a una causa: la meteorologia governa la dispersione quanto
-      le emissioni, e separarle richiede una normalizzazione che queste medie mensili non
-      sostengono.</li>
-      <li><strong>Sulla pioggia non sappiamo.</strong> Stessa fonte e stesso metodo della
-      temperatura, e il segno non è concorde: {{c:pioggia_in_aumento}} stazioni in aumento e
-      {{c:pioggia_in_calo}} in calo su {{c:pioggia_stazioni}}. È scritto nella <a href="#aria">storia dell'aria</a> invece
-      che taciuto, ed è l'unico modo onesto di riportarlo.</li>
+      cosa respira la provincia, e nessuna variazione è attribuita a una causa, perché la
+      meteorologia governa la dispersione quanto le emissioni. Dalla stessa rete arriva la
+      pioggia, e lì il segno non è concorde: {{c:pioggia_in_aumento}} stazioni in aumento e
+      {{c:pioggia_in_calo}} in calo su {{c:pioggia_stazioni}}, cioè non lo sappiamo.</li>
+
       <li><strong>Niente cause.</strong> Nessuna correlazione di questa pagina dimostra che una
       cosa ne provochi un'altra. Con {{c:comuni}} comuni e sei anni si descrive; non si stabilisce
       un meccanismo.</li>
