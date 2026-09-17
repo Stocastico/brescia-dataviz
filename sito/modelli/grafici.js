@@ -513,7 +513,13 @@
 
     const xs = punti.map(function (p) { return p.x; });
     const ys = punti.map(function (p) { return p.y; });
-    const xMin = Math.min.apply(null, xs), xMax = Math.max.apply(null, xs);
+    /* `dominioX` fissa l'asse orizzontale invece di lasciarlo alla nuvola. Serve
+       dove la stessa figura si ridisegna con due variabili diverse: nella prima
+       storia il pulsante scambia il reddito iniziale con quello finale, e con
+       due assi ricalcolati le due nuvole uscivano quasi sovrapposte, cioè
+       nascondevano proprio lo spostamento che il confronto deve mostrare. */
+    const xMin = opzioni.dominioX ? opzioni.dominioX[0] : Math.min.apply(null, xs);
+    const xMax = opzioni.dominioX ? opzioni.dominioX[1] : Math.max.apply(null, xs);
     const yMin = Math.min.apply(null, ys), yMax = Math.max.apply(null, ys);
     const margineX = (xMax - xMin) * 0.05, margineY = (yMax - yMin) * 0.08;
 
@@ -532,8 +538,11 @@
     });
     contenitore.appendChild(svg);
 
+    /* Sei intervalli e non cinque quando il dominio e' fissato: essendo piu'
+       largo della nuvola che sta disegnando, con cinque `passi()` sceglieva il
+       gradino subito sopra e l'asse dei redditi usciva con due tacche sole. */
     assi(svg, riquadro, sx, sy,
-      passi(xMin, xMax, 5), passi(yMin, yMax, 5),
+      passi(xMin, xMax, opzioni.dominioX ? 6 : 5), passi(yMin, yMax, 5),
       opzioni.decimaliX || 0, opzioni.decimaliY === undefined ? 1 : opzioni.decimaliY,
       opzioni.formattaX, opzioni.formattaY);
 
@@ -737,12 +746,17 @@
       });
     });
 
-    /* Le etichette in ordine di altezza, spinte in giu' quando si accavallano:
-       tredici pixel sono l'altezza di riga a corpo 12. */
+    /* Le etichette in ordine di altezza, spinte in giu' quando si accavallano.
+       Il passo e' 20 px e non 13, cioe' l'altezza di riga a corpo 12: dove due
+       linee finiscono allo stesso valore per costruzione, e i salari e la casa
+       lo fanno entrambi perche' nell'ultimo anno l'inflazione da scontare e'
+       zero, «euro correnti» e «euro 2025» uscivano appiccicate e si leggevano
+       come un'etichetta sola. */
+    const PASSO_ETICHETTE = 20;
     etichette.sort(function (a, b) { return a.y - b.y; });
     etichette.forEach(function (etichetta, indice) {
-      if (indice > 0 && etichetta.y - etichette[indice - 1].y < 13) {
-        etichetta.y = etichette[indice - 1].y + 13;
+      if (indice > 0 && etichetta.y - etichette[indice - 1].y < PASSO_ETICHETTE) {
+        etichetta.y = etichette[indice - 1].y + PASSO_ETICHETTE;
       }
       const testo = el("text", { x: etichetta.x, y: etichetta.y + 4, fill: etichetta.colore,
         "font-size": 12, "font-weight": 600 }, svg);
@@ -807,8 +821,16 @@
     /* `|| 1` per il caso in cui tutte le voci valgano zero: senza, la scala
        diventa `Infinity` e le barre escono larghe `NaN`, cioè invisibili. Con
        un estremo di comodo restano tutte alla lunghezza minima, che è quello
-       che uno zero deve sembrare. */
-    const estremo = Math.max.apply(null, voci.map(function (v) { return Math.abs(v.valore); })) || 1;
+       che uno zero deve sembrare.
+
+       `massimo` fissa l'estremo invece di prenderlo dalla voce più alta. Serve
+       alle barre che sono **quote di un intero**: con l'estremo automatico un
+       94,5 % riempiva tutta la larghezza e un 68 % ne riempiva i due terzi,
+       cioè la figura mostrava il rapporto fra le due quote e non le quote. Con
+       `massimo: 100` la barra piena è il cento per cento, ed è la sola lettura
+       che il lettore si aspetta da una percentuale. */
+    const estremo = opzioni.massimo
+      || Math.max.apply(null, voci.map(function (v) { return Math.abs(v.valore); })) || 1;
     const zero = opzioni.conSegno ? sinistra + larghezza / 2 : sinistra;
     const scalaLarghezza = opzioni.conSegno ? larghezza / 2 / estremo : larghezza / estremo;
 
@@ -858,7 +880,7 @@
         fill: fuoriASinistra ? css("--card") : css("--ink"),
         "font-size": 11.5, "font-weight": 600,
       }, svg);
-      numero.textContent = num(voce.valore, decimali);
+      numero.textContent = num(voce.valore, decimali) + (opzioni.suffisso || "");
     });
 
     if (opzioni.conSegno) {
@@ -990,6 +1012,73 @@
       [opzioni.etichettaX || "periodo", opzioni.etichettaY || "valore"].concat(opzioni.colonnaNota ? [opzioni.colonnaNota] : []),
       voci.map(function (voce) {
         const riga = [voce.etichetta, num(voce.valore, decimali)];  // num() dà «n.d.» sul null
+        if (opzioni.colonnaNota) riga.push(voce.nota || "");
+        return riga;
+      })
+    );
+  }
+
+  /* Le strisce del riscaldamento. Stessi numeri delle colonne, tolto tutto
+     quello che non e' il colore: niente asse verticale, niente altezze, una
+     banda per anno. E' il grafico che di questo tema hanno visto tutti, e fa
+     una cosa che le colonne non fanno: si legge da lontano e in un colpo solo,
+     perche' l'occhio confronta tinte molto prima che lunghezze. Le colonne
+     restano sopra perche' sono quelle che portano i gradi; qui i gradi stanno
+     nel suggerimento e nella tabella. */
+  function strisce(contenitore, opzioni) {
+    const ALTEZZA = 168;
+    const riquadro = { sinistra: 8, alto: 10, larghezza: LARGHEZZA - 16, altezza: ALTEZZA - 44 };
+    const voci = opzioni.voci;
+    const decimali = opzioni.decimali === undefined ? 2 : opzioni.decimali;
+
+    const valori = voci.filter(function (v) { return v.valore !== null && v.valore !== undefined; })
+      .map(function (v) { return v.valore; });
+    /* La stessa rampa e lo stesso estremo delle colonne: le due figure stanno
+       nella stessa storia e devono dare lo stesso colore allo stesso anno. */
+    const osservato = Math.max.apply(null, valori.map(Math.abs)) || 1;
+    const passoClasse = osservato / 4 || 1;
+
+    const svg = el("svg", {
+      viewBox: "0 0 " + LARGHEZZA + " " + ALTEZZA,
+      role: "img", "aria-label": opzioni.descrizione,
+    }, null);
+    contenitore.appendChild(svg);
+    const riempimentoAssente = tratteggioAssenza(svg);
+
+    const larghezzaStriscia = riquadro.larghezza / voci.length;
+    voci.forEach(function (voce, indice) {
+      const x = riquadro.sinistra + indice * larghezzaStriscia;
+      const assente = voce.valore === null || voce.valore === undefined;
+      let classe = 4 + Math.round(voce.valore / passoClasse);
+      classe = Math.max(0, Math.min(DIVERGENTE.length - 1, classe));
+      const banda = el("rect", {
+        x: x, y: riquadro.alto, width: larghezzaStriscia + 0.5, height: riquadro.altezza,
+        fill: assente ? riempimentoAssente : css(DIVERGENTE[classe]),
+      }, svg);
+      banda.addEventListener("mousemove", function (evento) {
+        mostraSuggerimento(evento, "<b>" + voce.etichetta + "</b>" +
+          (assente ? "nessun dato" : num(voce.valore, decimali) + " " + (opzioni.unita || "")) +
+          (voce.nota ? "<br>" + voce.nota : ""));
+      });
+      banda.addEventListener("mouseleave", nascondiSuggerimento);
+    });
+
+    // Solo il primo e l'ultimo anno: in mezzo le strisce sono la figura, e una
+    // fila di date sotto le trasformerebbe in un grafico a barre senza barre.
+    [[0, "start"], [voci.length - 1, "end"]].forEach(function (coppia) {
+      const testo = el("text", {
+        x: riquadro.sinistra + (coppia[0] + (coppia[1] === "start" ? 0 : 1)) * larghezzaStriscia,
+        y: riquadro.alto + riquadro.altezza + 18,
+        "text-anchor": coppia[1], fill: css("--muted"), "font-size": 11,
+      }, svg);
+      testo.textContent = voci[coppia[0]].etichetta;
+    });
+
+    tabellaSpecchio(
+      contenitore,
+      [opzioni.etichettaX || "periodo", opzioni.etichettaY || "valore"].concat(opzioni.colonnaNota ? [opzioni.colonnaNota] : []),
+      voci.map(function (voce) {
+        const riga = [voce.etichetta, num(voce.valore, decimali)];
         if (opzioni.colonnaNota) riga.push(voce.nota || "");
         return riga;
       })
@@ -1183,7 +1272,8 @@
 
   window.GRAFICI = {
     el: el, css: css, num: num, nomeComune: nomeComune, metrica: metrica, valoriDi: valoriDi,
-    mappa: mappa, scatter: scatter, serie: serie, barre: barre, colonne: colonne, sciame: sciame,
+    mappa: mappa, scatter: scatter, serie: serie, barre: barre, colonne: colonne,
+    strisce: strisce, sciame: sciame,
     scrollytelling: scrollytelling, comandi: comandi, tabellaSpecchio: tabellaSpecchio,
   };
 })();

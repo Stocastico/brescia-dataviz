@@ -113,6 +113,21 @@
     var crescitaR = G.valoriDi("crescita_reddito");
     var contenitoreReddito = document.getElementById("scatter-reddito");
 
+    /* Un asse orizzontale solo per le due viste, non uno per ciascuna. I redditi
+       dell'ultimo anno stanno tutti piu' a destra di quelli del primo, e con
+       due assi ricalcolati le due nuvole uscivano nello stesso posto: si vedeva
+       cambiare la pendenza e non si vedeva che nel frattempo tutta la provincia
+       si era spostata. Con il dominio comune il pulsante fa vedere le due cose
+       insieme, ed e' la ragione per cui la seconda vista esiste. */
+    var estremiReddito = Object.keys(crescitaR).reduce(function (fin, c) {
+      [redditoI[c], redditoF[c]].forEach(function (v) {
+        if (!v) return;
+        if (v < fin[0]) fin[0] = v;
+        if (v > fin[1]) fin[1] = v;
+      });
+      return fin;
+    }, [Infinity, -Infinity]);
+
     function disegnaReddito(quale) {
       contenitoreReddito.innerHTML = "";
       var base = quale === "iniziale" ? redditoI : redditoF;
@@ -124,6 +139,7 @@
       });
       G.scatter(contenitoreReddito, {
         punti: punti,
+        dominioX: estremiReddito,
         etichettaX: "reddito medio " + (quale === "iniziale" ? annoI : annoF) + " (euro)",
         etichettaY: "crescita %/anno",
         decimaliX: 0, decimaliY: 2,
@@ -357,6 +373,19 @@
       colonnaNota: "stazioni",
       descrizione: "Scostamento annuo della temperatura media dalla base 2004-2013, una colonna per anno"
     });
+
+    /* Le stesse `vociClima` delle colonne, non una seconda lavorazione: se un
+       giorno la soglia del panel cambia, le due figure cambiano insieme o non
+       cambia nessuna delle due. */
+    G.strisce(document.getElementById("strisce-clima"), {
+      voci: vociClima,
+      unita: "°C",
+      decimali: 2,
+      etichettaX: "anno",
+      etichettaY: "scostamento (°C)",
+      colonnaNota: "stazioni",
+      descrizione: "Una striscia per anno, dal blu al rosso secondo lo scostamento della temperatura media dalla base 2004-2013"
+    });
   }
 
   // --- storia 9: i salari -----------------------------------------------
@@ -490,31 +519,27 @@
        `barre()` non sa impilare, e soprattutto non sarebbe quello il punto. I
        due gruppi hanno quasi lo stesso numero di persone, e sta nel testo e
        nelle cifre chiave; cio' che li separa e' l'eta'. Le barre misurano
-       quella, e la nota porta gli assoluti per chi li vuole. */
+       quella, e la nota porta gli assoluti per chi li vuole.
+
+       `massimo: 100` e il `%` accanto alla cifra perche' queste due barre sono
+       quote di un intero: senza l'estremo fisso la barra piena era il 94,5 % e
+       la figura si leggeva come un confronto fra le due quote invece che come
+       due quote. */
     G.barre(document.getElementById("barre-nati-qui"), {
       voci: background.nati_qui.map(function (v) {
         return {
           nome: v.nome,
           valore: v.totale ? v.minorenni / v.totale * 100 : 0,
-          nota: G.num(v.minorenni, 0) + " su " + G.num(v.totale, 0)
+          nota: G.num(v.minorenni, 0) + " minorenni su " + G.num(v.totale, 0)
         };
       }),
       decimali: 1,
+      massimo: 100,
+      suffisso: " %",
       larghezzaEtichette: 200,
       etichettaVoci: "nati in Italia da genitori stranieri",
       unita: "% minorenni",
       descrizione: "Quota di minorenni fra i nati in Italia da genitori stranieri, per cittadinanza"
-    });
-
-    G.barre(document.getElementById("barre-stock"), {
-      voci: background.variazioni.map(function (v) {
-        return { nome: v.nome, valore: v.valore };
-      }),
-      conSegno: true,
-      larghezzaEtichette: 200,
-      etichettaVoci: "gruppo",
-      unita: "persone",
-      descrizione: "Barre divergenti: la variazione dello stock per gruppo di cittadinanza fra il 2021 e il 2023"
     });
 
     G.mappa(document.getElementById("mappa-origini"), {
