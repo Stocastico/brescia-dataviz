@@ -1,13 +1,19 @@
-"""Il deploy non deve poter partire da solo.
+"""Il deploy parte da `main`, e da nient'altro.
 
 Un workflow non ha test, e per questo è il posto dove una riga cambiata di
-soppiatto non se ne accorge nessuno finché il sito non è online. Qui si fissa
-l'unica proprietà che conta per chi non ha ancora finito l'analisi:
+soppiatto non se ne accorge nessuno finché il sito non è online. Finché
+l'analisi era in corso la proprietà fissata qui era che *nessun* evento
+automatico arrivasse al job che pubblica. Adesso che il sito è online quella
+regola è caduta apposta, e al suo posto ne restano tre:
 
-    **nessun evento automatico può arrivare al job che pubblica.**
+    **pubblica `main`, e soltanto `main`** — non un altro ramo, non un lancio
+    a mano distratto;
+    **pubblica solo ciò che è verde** — `pubblica` dipende da `costruisci`, che
+    esegue test e ricalcolo delle cifre citate;
+    **niente si annulla a metà** — una pubblicazione partita arriva in fondo.
 
-Costruire e verificare a ogni push serve e resta; pubblicare è una decisione, e
-si prende a mano.
+Il cancello non è sparito: si è spostato da «qualcuno lo chiede a mano» a
+«la costruzione è verde».
 
 Il test si salta dove manca PyYAML, che non è una dipendenza della pipeline: in
 CI viene installato accanto a pytest apposta per farlo girare.
@@ -48,18 +54,49 @@ def test_il_workflow_si_puo_lanciare_a_mano(workflow: dict) -> None:
     assert "workflow_dispatch" in workflow[CHIAVE_TRIGGER]
 
 
-def test_solo_il_lancio_a_mano_arriva_al_job_che_pubblica(pubblica: dict) -> None:
-    """La condizione del job deve nominare `workflow_dispatch`.
+def test_un_push_arriva_al_job_che_pubblica(pubblica: dict) -> None:
+    """La condizione del job deve nominare l'evento `push`.
 
-    È il cardine: qualunque altro evento — un push su `main`, uno schedule
-    aggiunto un domani, un `repository_dispatch` — costruisce e si ferma.
+    È il cardine di adesso: un merge su `main` manda il sito online senza che
+    nessuno debba andare in Actions. Se questa riga sparisce, il sito smette di
+    aggiornarsi e non se ne accorge nessuno, perché la CI resta verde.
     """
     condizione = str(pubblica.get("if", ""))
-    assert "workflow_dispatch" in condizione, (
-        "il job «pubblica» non è più ristretto al lancio manuale: "
+    assert "push" in condizione, (
+        "il job «pubblica» non si attiva più sui push: "
         f"if = {condizione!r}"
     )
     assert "github.event_name" in condizione
+
+
+def test_pubblica_solo_main(workflow: dict) -> None:
+    """L'altra metà: `push` senza filtro pubblicherebbe ogni ramo.
+
+    Un ramo di lavoro spinto in remoto metterebbe online un sito a metà, e lo
+    farebbe in silenzio. Il filtro sui rami è ciò che rende «push» sinonimo di
+    «main».
+    """
+    push = workflow[CHIAVE_TRIGGER]["push"]
+    assert push and "branches" in push, (
+        f"il trigger push non filtra i rami: push = {push!r}"
+    )
+    assert list(push["branches"]) == ["main"], (
+        f"pubblicano anche rami diversi da main: {push['branches']!r}"
+    )
+
+
+def test_si_pubblica_solo_cio_che_e_verde(pubblica: dict) -> None:
+    """Il cancello che ha preso il posto della conferma a mano.
+
+    `needs: costruisci` è l'unica cosa che impedisce a un push rosso — un test
+    rotto, una cifra citata che non torna più — di finire online. Senza,
+    «pubblica a ogni push» diventa «pubblica qualunque cosa».
+    """
+    needs = pubblica.get("needs")
+    needs = [needs] if isinstance(needs, str) else list(needs or [])
+    assert "costruisci" in needs, (
+        f"il job «pubblica» non dipende più dalla costruzione: needs = {needs!r}"
+    )
 
 
 def test_il_lancio_a_mano_chiede_una_conferma_scritta(workflow: dict, pubblica: dict) -> None:
@@ -77,16 +114,23 @@ def test_il_lancio_a_mano_chiede_una_conferma_scritta(workflow: dict, pubblica: 
     assert ingressi["conferma"].get("default") != "pubblica"
 
 
-def test_le_due_condizioni_valgono_insieme_e_non_in_alternativa(pubblica: dict) -> None:
-    """`&&`, non `||`.
+def test_il_lancio_a_mano_resta_una_via_per_costruire_senza_pubblicare(pubblica: dict) -> None:
+    """La condizione è un `||`, e le due metà non sono intercambiabili.
 
-    Con un `or` in mezzo la condizione resterebbe leggibile e sarebbe rovesciata:
-    ogni push la soddisferebbe passando dalla seconda metà. È il modo più facile
-    di rompere questo cancello senza che nessun altro test se ne accorga.
+    Il push pubblica da solo; il lancio a mano no, gli serve la conferma
+    scritta. È ciò che tiene in piedi «Run workflow» come modo di provare una
+    build da un ramo senza mandarla online — e se qualcuno un domani
+    semplificasse la condizione a `true`, quella via sparirebbe in silenzio.
     """
     condizione = str(pubblica["if"])
-    assert "&&" in condizione
-    assert "||" not in condizione
+    assert "||" in condizione, (
+        f"le due vie non sono più distinte: if = {condizione!r}"
+    )
+    prima, seconda = (m.strip() for m in condizione.split("||", 1))
+    assert "push" in prima and "conferma" not in prima
+    assert "conferma" in seconda, (
+        f"il lancio a mano non chiede più la conferma: {seconda!r}"
+    )
 
 
 def test_solo_il_job_che_pubblica_tocca_pages(workflow: dict) -> None:
@@ -101,19 +145,30 @@ def test_solo_il_job_che_pubblica_tocca_pages(workflow: dict) -> None:
 
 
 def test_un_push_non_puo_annullare_una_pubblicazione_in_corso(workflow: dict) -> None:
-    """`cancel-in-progress` è comodo fra due build e pericoloso su un deploy:
-    un push che arriva a metà pubblicazione lascerebbe il sito a metà. I due
-    generi di esecuzione stanno quindi in gruppi di concorrenza diversi."""
-    gruppo = str(workflow["concurrency"]["group"])
-    assert "github.event_name" in gruppo, (
-        "build e pubblicazioni condividono il gruppo di concorrenza: "
-        f"group = {gruppo!r}"
+    """`cancel-in-progress` è comodo fra due build e pericoloso su un deploy.
+
+    Finché pubblicava solo il lancio a mano, bastava tenere i due generi di
+    esecuzione in gruppi di concorrenza diversi: le build si annullavano fra
+    loro e le pubblicazioni stavano per conto proprio. Adesso che **ogni**
+    esecuzione su `main` può arrivare al deploy quella separazione non esiste
+    più, e l'unica forma sicura è non annullare niente che sia già partito.
+
+    I push che arrivano durante una pubblicazione si accodano invece di
+    ucciderla; fra due in attesa GitHub tiene la più recente.
+    """
+    concorrenza = workflow["concurrency"]
+    assert concorrenza.get("cancel-in-progress") is False, (
+        "una pubblicazione può essere annullata a metà e lasciare il sito "
+        f"monco: cancel-in-progress = {concorrenza.get('cancel-in-progress')!r}"
     )
 
 
 def test_la_costruzione_gira_comunque_a_ogni_push(workflow: dict) -> None:
-    """Togliere il deploy automatico non deve togliere i controlli: se una cifra
-    citata smette di tornare, si vuole saperlo al push, non alla pubblicazione."""
+    """I controlli stanno prima del deploy, non accanto.
+
+    Adesso che il push pubblica, questi due passi sono l'unica cosa che separa
+    un commit sbagliato dal sito online: se una cifra citata smette di tornare,
+    `costruisci` è rosso e `pubblica` non parte."""
     assert "push" in workflow[CHIAVE_TRIGGER]
     passi = " ".join(str(p.get("run", "")) for p in workflow["jobs"]["costruisci"]["steps"])
     assert "verifica_cifre" in passi

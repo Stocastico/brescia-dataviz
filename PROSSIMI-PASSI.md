@@ -28,7 +28,7 @@ nessuno può prendere al posto tuo perché riguarda due repository insieme.
 | | Cosa | Perché tocca a te | Tempo | Blocca |
 |---|---|---|---|---|
 | ✅ 2 | ~~**Correggere la sorgente di GitHub Pages**~~ (§7) — **fatta il 4 settembre 2026**: *Source* è su «GitHub Actions», e il workflow ha finalmente dove pubblicare | serviva il tuo accesso da proprietario del repo | 2 min | niente più |
-| 🙋 9 | **Pubblicare**, quando l'analisi sarà finita (§7): *Actions → «Pubblica il sito» → Run workflow → conferma = `pubblica`* | è la decisione di pubblicare, e non la prende un workflow | 1 min | che il sito diventi visibile. Prima di allora si costruisce a ogni push e resta un artefatto da scaricare |
+| ✅ 9 | ~~**Pubblicare**, quando l'analisi sarà finita (§7)~~ — **la voce cade** (19 settembre 2026): la pubblicazione è automatica, ogni push su `main` che costruisce verde va online | non è più una decisione da prendere a mano: si prende facendo merge | — | niente |
 | ✅ 3 | ~~**Scaricare le quotazioni OMI**~~ — **fatta il 4 settembre 2026**: 22 semestri (2004–2025) più le compravendite comunali 2011–2025, in [`dati/input/omi/`](dati/input/omi/PROVENIENZA.md). Restano da chiedere solo i perimetri KML, se un giorno si scenderà sotto il capoluogo | serviva il tuo SPID: era l'unico scarico del progetto con un login | 1 h | niente più: l'asse «casa e prezzi» ha i dati, gli manca la pipeline (🤖) |
 | ✗ 4 | ~~**Scaricare gli open data del Comune di Brescia**~~ — **la voce cade** (4 settembre 2026): il portale è dismesso, non irraggiungibile ([perché](dati/SCARICHI-MANUALI.md) §2) | non era la nostra rete: `comune.brescia.it/opendata` risponde `410 Gone`. I dataset sono su `dati.lombardia.it`, quindi 🤖; il turismo cittadino 2005–2013 non è migrato e resta perduto | — | niente, tranne l'estensione indietro della settima storia, che va dichiarata come non disponibile |
 | ✗ 6 | ~~**Esportare a mano il commercio estero provinciale**~~ — **decisa il 7 settembre 2026: non si fa.** L'export a mano resterebbe l'unico dato del progetto che nessuno può rigenerare con un comando, e il ripiego regionale è già scaricato e già dichiarato (MET-10). Le istruzioni restano in [`dati/SCARICHI-MANUALI.md`](dati/SCARICHI-MANUALI.md) §3 se un giorno la decisione cambia | il databrowser ISTAT è una SPA senza API | — | niente |
@@ -809,20 +809,25 @@ poco e rende il lavoro verificabile da chiunque. Qui esistono già:
 > ISTAT, perché la pubblicazione non deve poter fallire per un host che quel
 > giorno non risponde.
 >
-> **Costruire non è pubblicare**, e i due verbi stanno in due job separati.
-> `costruisci` parte a ogni push su `main`: dati, test, ricalcolo delle cifre,
-> sito, e l'artefatto scaricabile dalla pagina dell'esecuzione — così il sito si
-> rilegge mentre l'analisi va avanti, senza che esista un indirizzo pubblico.
-> `pubblica` **non parte da nessun evento automatico**: ci si arriva solo da
-> *Actions → «Pubblica il sito» → Run workflow*, scrivendo `pubblica` nella
-> casella di conferma.
+> **Costruire non è pubblicare**, e i due verbi stanno in due job separati —
+> ma non sono più due decisioni. `costruisci` parte a ogni push su `main`: dati,
+> test, ricalcolo delle cifre, sito, e l'artefatto scaricabile dalla pagina
+> dell'esecuzione. `pubblica` gli va dietro **su ogni push a `main`**, purché
+> quella costruzione sia verde.
 >
-> Non c'è nessuna variabile da impostare prima e nessuno stato da ricordarsi di
-> richiudere dopo: la decisione si prende nel momento in cui si pubblica e vale
-> per quella esecuzione sola. ⏳ **Era una variabile di repository `PUBBLICA`**,
-> che una volta aperta faceva pubblicare ogni push; è stata sostituita ad agosto
-> 2026 perché il progetto voleva l'opposto — nessuna pubblicazione finché
-> l'analisi non è finita.
+> ✅ **Il cancello manuale è caduto** (19 settembre 2026). Finché l'analisi era
+> in corso `pubblica` non era raggiungibile da nessun evento automatico e ci si
+> arrivava solo da *Run workflow* scrivendo `pubblica`. Adesso che il sito è
+> online quella prudenza costava più di quanto rendesse: `main` **è** il sito, e
+> un merge su `main` è già la decisione di pubblicare. Il lancio a mano resta,
+> con la sua conferma scritta, ma ha cambiato mestiere: serve a costruire
+> **senza** pubblicare, per provare il sito da un ramo.
+>
+> ⏳ Prima ancora **era una variabile di repository `PUBBLICA`**, che una volta
+> aperta faceva pubblicare ogni push; sostituita ad agosto 2026 dal cancello
+> sull'evento. Il giro è tornato al punto di partenza, ma con una differenza che
+> conta: quello che protegge il sito adesso non è uno stato da ricordarsi di
+> richiudere, è la costruzione verde.
 >
 > ✅ **Il clic su Pages è stato fatto** (4 settembre 2026): *Source =
 > «GitHub Actions»*. Fino a quel momento Pages era attivo ma con *Deploy from a
@@ -831,8 +836,7 @@ poco e rende il lavoro verificabile da chiunque. Qui esistono già:
 > (<https://stefanomasneri.com/brescia-dataviz/>, dove reindirizza
 > `stocastico.github.io/brescia-dataviz` perché il dominio personalizzato è
 > impostato sul sito utente) serviva il **README** invece del racconto. Adesso
-> `deploy-pages` ha dove pubblicare, e l'unica cosa che manca al sito online è
-> la decisione di pubblicarlo.
+> `deploy-pages` ha dove pubblicare.
 
 Un solo workflow, `.github/workflows/deploy-pages.yml`. Struttura del sito
 **pubblicata oggi**. Non c'è nessun `app/` e non ci sarà: il pannello
@@ -861,29 +865,37 @@ in tre file:
 5. il controllo che nessun segnaposto sia sopravvissuto, poi
    `upload-pages-artifact`. **Qui finisce il job che gira sempre.**
 6. Il job `pubblica`, dietro
-   `if: github.event_name == 'workflow_dispatch' && inputs.conferma == 'pubblica'`:
+   `if: github.event_name == 'push' || inputs.conferma == 'pubblica'`:
    `configure-pages` con `enablement: true` e `deploy-pages`. È l'unico posto
-   che tocca le impostazioni di Pages, e da un push non è raggiungibile.
+   che tocca le impostazioni di Pages. Ci arriva ogni push su `main`; il lancio
+   a mano solo se lo si chiede scrivendolo.
 
 Dettagli che costano tempo se non li sai:
 
-- **Il cancello è l'evento, non una variabile.** Nessun push, nessuno
-  `schedule` aggiunto un domani e nessun `repository_dispatch` può soddisfare
-  quella condizione. È una proprietà che vale la pena non perdere per sbaglio,
-  quindi ha un test: `pipeline/tests/test_workflow_deploy.py` legge il workflow
-  e fallisce se il job `pubblica` smette di essere ristretto al lancio manuale.
-  Se un giorno vorrai il deploy automatico, la modifica è una riga e quel test
-  ti dirà che l'hai fatta — che è il suo mestiere.
-- **La conferma è scritta, non un clic.** Un input obbligatorio in cui digitare
-  `pubblica`: «Run workflow» da solo costruisce e basta. Serviva perché il
-  bottone è a un clic di distanza da chiunque abbia accesso in scrittura.
+- **Il cancello adesso è la costruzione verde.** Non c'è più niente da
+  chiedere a mano: quello che separa un commit sbagliato dal sito online è
+  `needs: costruisci`, e cioè i test del contratto, il ricalcolo di ogni cifra
+  citata e il controllo dei segnaposto. Se uno di quelli è rosso, `pubblica` non
+  parte. Vale la pena non perderlo per sbaglio, quindi ha un test:
+  `pipeline/tests/test_workflow_deploy.py` legge il workflow e fallisce se
+  `pubblica` smette di dipendere dalla costruzione, se il filtro sui rami smette
+  di essere `[main]`, o se una pubblicazione torna annullabile a metà.
+- **Il push pubblica, il lancio a mano no.** La condizione è un `||` e le due
+  metà non sono intercambiabili: `push` da solo basta, `workflow_dispatch` ha
+  ancora bisogno della conferma digitata. È ciò che tiene in piedi «Run
+  workflow» come modo di costruire da un ramo **senza** mandare niente online.
+- **Il ramo è filtrato, e non è un dettaglio.** `push: branches: [main]`: senza
+  quel filtro ogni ramo spinto in remoto pubblicherebbe, e in silenzio.
 - **Se vuoi anche un'approvazione umana** sopra a tutto questo, l'ambiente
   `github-pages` accetta dei «required reviewers»: *Settings → Environments →
   github-pages*. Le due cose convivono.
-- **Un push non può annullare una pubblicazione a metà.** I due generi di
-  esecuzione stanno in gruppi di concorrenza diversi
-  (`pages-${{ github.event_name }}`): due build si annullano a vicenda senza
-  danno, un deploy interrotto lascerebbe il sito monco.
+- **Un push non può annullare una pubblicazione a metà.** Finché pubblicava
+  solo il lancio a mano bastava tenere i due generi di esecuzione in gruppi di
+  concorrenza diversi. Adesso che ogni esecuzione su `main` può arrivare al
+  deploy quella separazione non ha più senso, e il gruppo è uno solo (`pages`)
+  con `cancel-in-progress: false`: niente che sia già partito viene ucciso. I
+  push che arrivano durante una pubblicazione si accodano, e fra due in attesa
+  GitHub tiene la più recente.
 - **Le versioni delle action** sono allineate a `donostia-dataviz`, che il
   deploy ce l'ha funzionante: checkout v7, setup-python v7, configure-pages v6,
   upload-pages-artifact v5, deploy-pages v5. Restare indietro di un major è il

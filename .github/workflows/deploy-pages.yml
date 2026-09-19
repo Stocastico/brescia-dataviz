@@ -1,28 +1,23 @@
-# Costruisce il sito a ogni push, e lo pubblica **solo quando lo dici tu**.
+# Costruisce il sito a ogni push su `main`, e lo pubblica.
 #
-# I due verbi sono separati apposta, perché sono due decisioni diverse:
+# I due verbi restano due job separati, perché restano due responsabilità
+# diverse — ma non sono più due decisioni: dal momento in cui il sito è online,
+# `main` **è** il sito, e un push su `main` è già la decisione di pubblicare.
 #
 #   costruisci  gira a ogni push su `main` e a ogni lancio manuale: dati, test,
-#               ricalcolo delle cifre citate, sito, artefatto. Non tocca Pages e
-#               non manda niente online. L'artefatto è scaricabile dalla pagina
-#               dell'esecuzione, quindi il sito si rilegge prima che esista un
-#               indirizzo pubblico — ed è il modo di controllarlo mentre
-#               l'analisi va avanti.
-#   pubblica    non parte da nessun evento automatico. Ci si arriva **solo** da
-#               Actions → «Pubblica il sito» → Run workflow, scrivendo
-#               `pubblica` nella casella di conferma.
+#               ricalcolo delle cifre citate, sito, artefatto. Non tocca Pages.
+#               Se uno qualunque dei suoi passi è rosso, `pubblica` non parte:
+#               è il cancello che è rimasto, e adesso è l'unico.
+#   pubblica    gira dopo `costruisci`, su ogni push a `main`. A mano ci si
+#               arriva solo scrivendo `pubblica` nella casella di conferma,
+#               così «Run workflow» resta anche un modo di costruire e basta,
+#               per provare il sito da un ramo senza mandarlo online.
 #
-# 🙋 Come si pubblica, quando l'analisi sarà finita:
-#    Actions → «Pubblica il sito» → Run workflow → conferma = pubblica → Run.
-#    Non c'è nessuna variabile da impostare prima e nessuno stato da ricordarsi
-#    di richiudere dopo: la decisione si prende nel momento in cui si pubblica,
-#    e vale per quella esecuzione sola.
+# 🙋 Come si pubblica: si fa merge su `main`. Non c'è altro da fare.
 #
-#    Se un giorno vorrai che ogni push pubblichi davvero, la modifica è una
-#    riga: togliere `github.event_name == 'workflow_dispatch' &&` dalla
-#    condizione del job `pubblica`. Il test
-#    `pipeline/tests/test_workflow_deploy.py` fallirà, ed è il suo mestiere:
-#    serve a rendere quella riga una scelta e non una svista.
+# 🙋 Come si costruisce **senza** pubblicare, da un ramo qualsiasi:
+#    Actions → «Pubblica il sito» → Run workflow → lascia conferma = `no` →
+#    Run. Il sito esce come artefatto scaricabile dalla pagina dell'esecuzione.
 #
 # 🙋 Da fare una volta sola, e lo può fare solo il proprietario del repository:
 #    Settings → Pages → Source = «GitHub Actions».
@@ -38,7 +33,7 @@ on:
   workflow_dispatch:
     inputs:
       conferma:
-        description: 'Scrivi «pubblica» per mandare il sito online. Qualunque altra cosa costruisce e basta.'
+        description: 'Scrivi «pubblica» per mandare online anche questo lancio a mano. Qualunque altra cosa costruisce e basta.'
         required: true
         default: 'no'
   push:
@@ -49,13 +44,19 @@ permissions:
   pages: write
   id-token: write
 
-# Due build che si accavallano si annullano a vicenda senza danno; una
-# pubblicazione annullata a metà lascerebbe il sito monco. I due generi di
-# esecuzione stanno quindi in gruppi separati, così un push che arriva mentre
-# stai pubblicando non tocca la pubblicazione.
+# Un gruppo solo, e `cancel-in-progress: false`.
+#
+# Finché pubblicava solo il lancio a mano, le build si potevano annullare fra
+# loro senza danno e i due generi stavano in gruppi separati. Adesso **ogni**
+# esecuzione su `main` può arrivare al deploy, quindi annullarne una a metà
+# lascerebbe il sito monco: non si annulla più niente che sia già partito.
+#
+# I push che arrivano mentre una pubblicazione è in corso si mettono in coda;
+# fra due in attesa GitHub tiene la più recente, che è quella che si vuole
+# online.
 concurrency:
-  group: pages-${{ github.event_name }}
-  cancel-in-progress: ${{ github.event_name != 'workflow_dispatch' }}
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   costruisci:
@@ -102,13 +103,15 @@ jobs:
           EVENTO: ${{ github.event_name }}
           CONFERMA: ${{ inputs.conferma }}
         run: |
-          if [ "$EVENTO" = "workflow_dispatch" ] && [ "$CONFERMA" = "pubblica" ]; then
+          if [ "$EVENTO" = "push" ]; then
+            echo "Push su main: se questa costruzione è verde, il sito va online."
+          elif [ "$CONFERMA" = "pubblica" ]; then
             echo "Conferma ricevuta: il job «pubblica» girerà e il sito finirà online."
           else
             echo "Niente va online: questa esecuzione costruisce e verifica soltanto."
             echo "Il sito sta fra gli artefatti di questa pagina: scaricalo e aprilo."
-            echo "Per pubblicare davvero, quando l'analisi sarà finita:"
-            echo "  Actions -> «Pubblica il sito» -> Run workflow -> conferma = pubblica"
+            echo "Per pubblicare: fai merge su main, oppure rilancia a mano con"
+            echo "  conferma = pubblica"
           fi
 
       - name: Controlla che i segnaposto siano tutti sostituiti
@@ -122,19 +125,19 @@ jobs:
         with:
           path: _site
 
-  # Il cancello, e non è una variabile: è l'evento stesso. Nessun push, nessuno
-  # schedule e nessun `repository_dispatch` può soddisfare questa condizione —
-  # ci si arriva solo da «Run workflow» scrivendo la conferma.
+  # Ogni push su `main` arriva qui, purché `costruisci` sia verde. Il lancio a
+  # mano no, se non lo si chiede scrivendolo: serve a provare una build senza
+  # mandarla online.
   pubblica:
     needs: costruisci
-    if: github.event_name == 'workflow_dispatch' && inputs.conferma == 'pubblica'
+    if: github.event_name == 'push' || inputs.conferma == 'pubblica'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       # Sta qui e non nella costruzione: è l'unico passo che tocca le
-      # impostazioni di Pages, e senza conferma non deve girare.
+      # impostazioni di Pages, e non deve girare su una build che non pubblica.
       - uses: actions/configure-pages@v6
         with:
           enablement: true
