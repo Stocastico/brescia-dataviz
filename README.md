@@ -35,12 +35,16 @@ si sovrappongono (`indice_prezzi.csv`, MET-20). Ed è anche **l'ottava storia de
 | | Cosa | Tempo |
 |---|---|---|
 | 🙋 | **Rileggere i testi del sito** — sono nove storie, e nessuno script controlla se una frase dice più di quanto il dato sostenga | 1 h |
-| 🙋 | **Pubblicare**, quando sarai pronto: *Actions → «Pubblica il sito» → Run workflow → conferma = `pubblica`* | 1 min |
+| 🤖 | **Pubblicare** — non è più una voce di questo elenco: dal momento in cui un commit arriva su `main`, se la costruzione è verde il sito va online da solo | — |
 
 ✅ **La sorgente di Pages è su «GitHub Actions»** (4 settembre 2026). Era il
 passaggio che mancava perché l'indirizzo pubblico servisse il racconto invece di
-questo README: adesso il workflow ha dove pubblicare, e resta solo la decisione
-di farlo.
+questo README: adesso il workflow ha dove pubblicare.
+
+✅ **E la pubblicazione è automatica** (19 settembre 2026). Il cancello manuale
+è caduto: `main` **è** il sito, e ogni push ce lo porta. Quello che resta a
+proteggerlo non è più una conferma da digitare, è la costruzione — test, cifre
+citate, segnaposto — che deve essere verde perché il deploy parta.
 
 ✅ **E questo elenco adesso è vuoto** (7 settembre 2026). Portava tre voci che
 non bloccavano la pubblicazione e che nessuno poteva fare al posto tuo: due si
