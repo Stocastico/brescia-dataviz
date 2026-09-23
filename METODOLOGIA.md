@@ -32,6 +32,14 @@
 > arriveranno da revisioni esterne, come è successo nel progetto gemello, dove
 > le tre più importanti sono arrivate **dopo** la pubblicazione.
 >
+> ⚠️ **Le storie sono diventate dieci, e questo documento è rimasto a otto**
+> (settembre 2026). Dopo la chiusura della versione 1.1 sono arrivate la nona
+> storia (i salari, via INPS) — già ripresa in una nota di MET-22 — e la
+> decima (il background migratorio, «Cinquantatremila nati qui»), che invece
+> MET-26 dava ancora per non scritta: vedi la correzione lì. Nessuna nuova
+> regola è nata da queste due; se ne nascesse una, questo blocco cadrebbe come
+> gli altri prima di lui.
+>
 > Prima di MET-22, l'ultima arrivata era **MET-21**, da una rilettura dei
 > grafici: la linea del massimo e quella del minimo di un insieme sono
 > **inviluppi**, non serie, e chiamarle «la più cara» e «la più economica» fa
@@ -498,7 +506,7 @@ nella sezione dei limiti del sito.
 
 ## MET-16 — Quando la rete di misura cambia, la media misura la rete
 
-> Nata dalla sesta storia, ed è la prima regola del progetto che non nasce da un
+> Nata dalla storia sull'aria e sul clima, ed è la prima regola del progetto che non nasce da un
 > errore commesso ma da uno **evitato guardando il disegno prima del risultato**.
 
 Le centraline dell'aria e le stazioni meteorologiche non sono i 205 comuni: sono
@@ -771,7 +779,7 @@ e la frase che la accompagna dice con cosa è stata deflazionata.
 
 ## MET-21 — Un estremo ricalcolato ogni anno è un inviluppo, non una serie
 
-> Nata rileggendo l'ottava storia, settembre 2026. Il conto era giusto, il
+> Nata rileggendo la storia della casa, settembre 2026. Il conto era giusto, il
 > grafico era giusto, e le tre parole sotto le linee dicevano un'altra cosa.
 
 Il grafico delle zone OMI del capoluogo ha tre linee: la più cara, la mediana e
@@ -861,20 +869,27 @@ bilanciato non ha dato un numero.
 > qualcosa che prima era un'opinione. Se non fa nessuna delle tre, è un
 > grafico, non una storia.**
 
-**La nona è la prima a farle tutte e tre** (settembre 2026). *Misura per la
-prima volta* i salari, che nessuna fonte del progetto conteneva prima dell'INPS;
-*sorprende*, perché su 103 province ne cresce **una** in termini reali;
-*corregge* la frase «le retribuzioni crescono», che è vera e incompleta. Il
-criterio esigente di questa regola serviva proprio a questo: la storia c'era
-prima che i dati arrivassero, e non si poteva scriverla.
+**La storia sugli stipendi è la prima a farle tutte e tre** (settembre 2026).
+*Misura per la prima volta* i salari, che nessuna fonte del progetto conteneva
+prima dell'INPS; *sorprende*, perché su 103 province ne cresce **una** in
+termini reali; *corregge* la frase «le retribuzioni crescono», che è vera e
+incompleta. Il criterio esigente di questa regola serviva proprio a questo: la
+storia c'era prima che i dati arrivassero, e non si poteva scriverla.
 
 ⚠️ E porta con sé una cosa che la regola non prevedeva: **il terzo incontro con
-lo stesso divario**. La seconda storia lo trova sui redditi dichiarati,
-l'ottava sul prezzo delle case, la nona sulle buste paga. Tre fonti diverse, tre
-misure diverse, la stessa distanza fra quello che è scritto e quello che compra.
-Quando lo stesso divario compare tre volte in un documento, smette di essere un
-risultato per diventare **una proprietà del righello**, e la pagina lo dice
-invece di ripeterlo tre volte come se fosse una scoperta nuova.
+lo stesso divario**. La storia sui redditi lo trova sui redditi dichiarati,
+quella sulla casa sul prezzo delle case, quella sugli stipendi sulle buste
+paga. Tre fonti diverse, tre misure diverse, la stessa distanza fra quello che
+è scritto e quello che compra. Quando lo stesso divario compare tre volte in
+un documento, smette di essere un risultato per diventare **una proprietà del
+righello**, e la pagina lo dice invece di ripeterlo tre volte come se fosse una
+scoperta nuova.
+
+⚠️ **E resta da fare lo stesso conto sulla decima** (background migratorio,
+«Cinquantatremila nati qui», settembre 2026): misura per la prima volta lo
+stock invece dei flussi su quell'asse, ma se corregga o sorprenda qualcosa non
+è stato ancora verificato con questa regola. Lasciato aperto invece di deciso a
+tavolino, per lo stesso motivo per cui il criterio esiste.
 
 Il criterio è deliberatamente esigente perché il costo di una storia in più non
 è scriverla: è che ogni storia debole abbassa la fiducia in quelle forti, e il
@@ -910,7 +925,7 @@ no.
 
 ## MET-24 — Se il risultato dipende da come si misura, la misura entra nel titolo
 
-L'ottava storia si intitola **«La casa costa come nel 2004, e vale un terzo in
+La storia della casa si intitola **«La casa costa come nel 2004, e vale un terzo in
 meno»**. Sono due affermazioni contraddittorie sullo stesso dato, e sono
 entrambe vere: la prima in euro correnti, la seconda in euro del 2025. Il
 titolo le tiene insieme invece di scegliere.
@@ -931,9 +946,15 @@ quel riquadro esiste perché la coincidenza non era ovvia prima di controllare.
 
 ## MET-25 — Una correzione si aggiunge, non si sostituisce
 
-La quinta storia corregge le quattro che la precedono, e sta al quinto posto.
-La seconda dichiara nel proprio testo che l'aggettivo «bresciana» le è stato
-tolto da un controllo su Bergamo. La terza si intitola «Il crollo che non c'è
+«Brescia è diversa?» corregge le quattro che la precedono, ed è nata al quinto
+posto. ⚠️ Non ci sta più: il riordino del 7 settembre 2026 — lo stesso che ha
+rotto i ventidue riferimenti ordinali di cui parla MET-22 — l'ha spostata in
+fondo al racconto, decima e ultima, come storia di chiusura invece che di metà
+percorso. Resta un buon esempio della regola qui sotto per un motivo che questo
+stesso paragrafo dimostra: la posizione non è una proprietà della storia, e
+infatti è cambiata senza che il resto cambiasse. La storia sui redditi
+dichiara nel proprio testo che l'aggettivo «bresciana» le è stato tolto da un
+controllo su Bergamo. La storia sul crollo si intitola «Il crollo che non c'è
 stato» e riporta il numero sbagliato prima di smontarlo.
 
 Nessuna di queste correzioni è stata applicata riscrivendo in silenzio il testo
@@ -951,12 +972,18 @@ quanto averlo.
 
 ## MET-26 — Una storia non si scrive finché non si sa cosa chiedere alla tabella
 
-Il [`BRIEF.md`](BRIEF.md) elenca **dodici** storie candidate. Ne sono state
-scritte otto. Le quattro rimaste non sono state scartate perché deboli:
+Il [`BRIEF.md`](BRIEF.md) elenca **dodici** storie candidate. Al momento in cui
+questa regola è stata scritta ne erano state scritte otto, e ~~quattro~~ **tre**
+rimanevano fuori non perché scartate per debolezza:
 
-- **il background migratorio** ha i dati — 1,8 milioni di righe e 422 MB — e
+- ~~**il background migratorio** ha i dati — 1,8 milioni di righe e 422 MB — e
   non ha una forma decisa. Finché non si sa quali marginali servono, la tabella
-  resta fuori da git e l'asse 2 del brief resta senza storia;
+  resta fuori da git e l'asse 2 del brief resta senza storia~~ — **la forma è
+  stata decisa il 7 settembre 2026** (due marginali versionate, non la
+  congiunta: [`dati/SCARICHI-LOCALI.md`](dati/SCARICHI-LOCALI.md)), ed **è
+  diventata la decima storia** il 10 settembre: «Cinquantatremila nati qui». Il
+  caso non contraddice la regola, la conferma: è rimasto senza storia esattamente
+  finché non è stato chiaro cosa chiedere alla tabella, non un giorno di più;
 - **gli atenei** hanno una fonte che risponde, e una complicazione che nessuna
   API risolve: Brescia ha due atenei, e la statale da sola sottostima;
 - **i progetti PNRR** cambierebbero gli obblighi di licenza del progetto
@@ -968,11 +995,11 @@ scritte otto. Le quattro rimaste non sono state scartate perché deboli:
 > è chiaro cosa le si vuole chiedere; prima di allora resta una tabella, e
 > dirlo è più onesto che pubblicarne una lettura debole.**
 
-Il caso limite che tiene in piedi la regola è l'ottava storia, che ha fatto il
-percorso opposto: le quotazioni OMI sono state acquisite a settembre 2026
-**senza** una domanda, e per due settimane sono state un dato senza lettura.
-La storia è arrivata quando è arrivato il deflatore, cioè quando la domanda è
-diventata «fermo rispetto a cosa?».
+Il caso limite che tiene in piedi la regola è la storia della casa, che ha
+fatto il percorso opposto: le quotazioni OMI sono state acquisite a settembre
+2026 **senza** una domanda, e per due settimane sono state un dato senza
+lettura. La storia è arrivata quando è arrivato il deflatore, cioè quando la
+domanda è diventata «fermo rispetto a cosa?».
 
 ## MET-27 — Un numero dichiarato e l'elenco che lo mostra vengono dalla stessa sorgente
 

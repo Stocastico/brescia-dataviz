@@ -224,7 +224,7 @@ settoriale (Moran 0,44) è la variabile economica più raggruppata nello spazio
 fra quelle misurate — dietro solo alla densità abitativa, che però è geografia,
 non economia.
 
-**La quinta storia corregge le altre**, e vale la pena leggerla per prima: fino
+**«Brescia è diversa?» corregge le altre** (`#diversa`), e vale la pena leggerla per prima: fino
 a poco fa questo progetto misurava Brescia solo contro sé stessa, e ripeteva che
 è «un territorio di microimprese». Confrontata con le altre 106 province, Brescia
 è la **101ª per frammentazione**, cioè fra le meno frammentate d'Italia: il
