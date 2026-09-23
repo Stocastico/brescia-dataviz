@@ -14,7 +14,7 @@ apre da disco, si manda per email, si archivia.
 | File | Cos'è |
 |---|---|
 | `costruisci.py` | assembla `_site/`: incorpora i dati, sostituisce le cifre e le date, copia i CSV |
-| `modelli/racconto.html` | il documento narrativo: nove storie e la sezione dei limiti. L'ordine è: redditi, stipendi, casa, crollo, due economie, turismo, aria e clima, popolazione, confronto |
+| `modelli/racconto.html` | il documento narrativo: dieci storie e la sezione dei limiti. L'ordine è: redditi, stipendi, casa, crollo, due economie, turismo, aria e clima, popolazione, background migratorio, confronto |
 | `modelli/esplora.html` | lo strumento: i diciannove indicatori su tutti i comuni, a scelta di chi legge |
 | `modelli/metodologia.html` | le regole del progetto, per un lettore che non ha letto il repository |
 | `modelli/dati.html` | fonti, tabelle scaricabili e avvertenze |
@@ -42,7 +42,7 @@ vuole controllare.
 
 ## Lo scrollytelling, e quando vale la pena
 
-Due storie su nove ce l'hanno, e non è una svista: costa attenzione al lettore,
+Due storie su dieci ce l'hanno, e non è una svista: costa attenzione al lettore,
 e la si spende dove una figura va **letta più volte**.
 
 > ⚠️ **Indicate per nome e non per posizione.** L'ordine delle storie è cambiato
@@ -106,7 +106,7 @@ prometterebbe tutti i dati e non li avrebbe.
 
 ## Le due pagine che fanno cose diverse
 
-`racconto.html` sceglie. Otto storie, quindici indicatori, e per ognuna una
+`racconto.html` sceglie. Dieci storie, quindici indicatori, e per ognuna una
 figura tagliata su quella frase.
 
 `esplora.html` non sceglie: tutti e diciannove gli indicatori del registro, su

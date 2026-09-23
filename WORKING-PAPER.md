@@ -37,9 +37,16 @@ costruendone uno.** Brescia, il comune e i suoi 205 comuni, 1990–2025.
 > [`METODOLOGIA.md`](METODOLOGIA.md) dichiaravano mancanti — sono scritte
 > (MET-22…MET-26); §5, §9 e §10 sono aggiornate.
 >
-> Le storie sono **otto** e sono chiuse. Il documento non aspetta altro: le
-> revisioni successive verranno da lettori esterni, che è il modo in cui, nel
-> progetto gemello, sono arrivate le tre regole più importanti.
+> Le storie erano **otto** quando questa versione si è chiusa, ed **§7 copre
+> solo quelle**. Il documento non aspettava altro: le revisioni successive
+> sarebbero venute da lettori esterni, come nel progetto gemello.
+>
+> ⚠️ **Non è più vero** (settembre 2026): sono arrivate una nona storia (i
+> salari, via INPS) e una decima (il background migratorio, «Cinquantatremila
+> nati qui»), nessuna delle due ripresa in §7 o nella sintesi qui sotto. Questo
+> documento resta la lettura fedele delle **prime otto**; un lettore che cerchi
+> i risultati sulle ultime due li trova nel sito (`#salari`, `#origini`) e in
+> [`METODOLOGIA.md`](METODOLOGIA.md), non qui.
 
 ---
 
@@ -52,10 +59,11 @@ forze di lavoro, commercio estero, indice dei prezzi al consumo), MEF
 (dichiarazioni dei redditi per classi di importo), ARPA Lombardia (qualità
 dell'aria dal 1992 e clima dal 1990), Regione Lombardia (flussi turistici),
 Agenzia delle Entrate (quotazioni immobiliari OMI e volumi di compravendita dal
-2004), ISTAT `demo.istat.it` (bilancio demografico comunale). **Trentuno**
+2004), ISTAT `demo.istat.it` (bilancio demografico comunale). **Trentanove**
 tabelle tidy, tutte ricostruibili con `requests` e la libreria standard di
 Python, senza chiavi API — e da lì un sito statico autocontenuto, costruito
-senza alcuna dipendenza a runtime, con **otto storie**.
+senza alcuna dipendenza a runtime, arrivato oggi a **dieci storie** (questo
+documento ne analizza otto: vedi la nota di versione qui sopra).
 
 Il problema metodologico centrale **non** è l'N piccolo — 205 comuni sono
 abbastanza — ma tre altre cose: la **eterogeneità delle grane** (alcuni assi si
@@ -1045,18 +1053,27 @@ quando è arrivato il dato che nessuno riusciva a scaricare. Cinque su tredici,
 e il resto resta materiale di contorno che entra solo se un asse portante lo
 richiama.
 
-**La regola ha funzionato, e si vede da quello che non è stato scritto.** Il
-[`BRIEF.md`](BRIEF.md) elenca dodici storie candidate: ne sono state scritte
-otto. Le quattro rimaste non sono state scartate perché deboli — il background
-migratorio, gli atenei, il PNRR, il pendolarismo sono tutti temi buoni — ma
-perché per nessuna di esse era chiaro **cosa chiedere alla tabella** (MET-26).
-Il caso che tiene in piedi la regola è l'ottavo asse: le quotazioni OMI sono
-state acquisite senza una domanda, e per due settimane sono state un dato senza
-lettura. La storia è arrivata quando è arrivato il deflatore, cioè quando la
-domanda è diventata «fermo rispetto a cosa?».
+**La regola ha funzionato, e si vede da quello che non è stato scritto — per un
+po'.** Il [`BRIEF.md`](BRIEF.md) elenca dodici storie candidate: a questa
+versione ne erano state scritte otto. ~~Le quattro rimaste non sono state
+scartate perché deboli — il background migratorio, gli atenei, il PNRR, il
+pendolarismo sono tutti temi buoni — ma perché per nessuna di esse era chiaro
+**cosa chiedere alla tabella** (MET-26).~~ **Non più per il background
+migratorio**: la forma è stata decisa il 7 settembre 2026 (due marginali
+versionate, non la congiunta da 422 MB) ed è diventata la decima storia il 10
+settembre, «Cinquantatremila nati qui» — il caso non smentisce la regola, la
+conferma: è rimasto senza storia esattamente finché non è stato chiaro cosa
+chiederle, non un giorno di più. Restano fuori per lo stesso motivo gli atenei,
+il PNRR, il pendolarismo. Il caso che tiene in piedi la regola dall'altro lato
+è il quinto asse, la casa: le quotazioni OMI sono state acquisite senza una domanda, e
+per due settimane sono state un dato senza lettura. La storia è arrivata
+quando è arrivato il deflatore, cioè quando la domanda è diventata «fermo
+rispetto a cosa?».
 
-**Il progetto si ferma qui.** Le storie sono otto, i cinque assi hanno tutti la
-loro, e ogni cifra citata è ricalcolata a ogni push. Quello che resta —
+**A questa versione il progetto si è fermato a otto** (poi arrivate una nona,
+i salari, e la decima appena descritta — vedi la nota di versione in testa al
+documento). I cinque assi hanno tutti la loro storia, e ogni cifra citata è
+ricalcolata a ogni push. Quello che resta —
 scaricare nuove fonti, aggiungere un pannello interattivo, scendere sotto il
 comune — è lavoro **dopo la pubblicazione**, non prima: aggiungerlo adesso
 allontanerebbe la pubblicazione invece di avvicinarla, che è la definizione
@@ -1110,14 +1127,15 @@ E soprattutto, la parte che questo documento considera il proprio contributo:
 | Documento | Cosa contiene |
 |---|---|
 | [`FONTI.md`](FONTI.md) | Registro delle fonti con stato di accesso verificato; note tecniche SDMX e ricette collaudate |
-| [`METODOLOGIA.md`](METODOLOGIA.md) | Le quindici decisioni metodologiche per esteso |
+| [`METODOLOGIA.md`](METODOLOGIA.md) | Le ventisette decisioni metodologiche per esteso |
 | [`BRIEF.md`](BRIEF.md) | La domanda, gli assi, le storie candidate |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | Consegna: cosa resta da scaricare, decisioni aperte, come si costruiscono analisi e sito |
 | [`pipeline/`](pipeline/README.md) | Il codice, con le trappole documentate |
-| [`dati/`](dati/README.md) | Le trenta tabelle prodotte |
-| [`analysis/`](analysis/README.md) | I quattordici script che leggono quelle tabelle, e le verifiche di `verifica_cifre.py` |
+| [`dati/`](dati/README.md) | Le trentanove tabelle prodotte |
+| [`analysis/`](analysis/README.md) | I sedici script che leggono quelle tabelle, e le verifiche di `verifica_cifre.py` |
 
-*Versione 1 — settembre 2026. La §7 riporta risultati veri con i loro controlli,
-e di quelli elencati in §6.2 ne resta fuori uno solo: la rottura Covid trattata
-in modo sistematico. Il confronto esterno sul turismo, che era l'altro, è la
-§7.8. Resta provvisorio il titolo, che cambierà quando sarà chiara la tesi.*
+*Versione 1.1 — settembre 2026. La §7 riporta risultati veri con i loro
+controlli, e di quelli elencati in §6.2 ne resta fuori uno solo: la rottura
+Covid trattata in modo sistematico. Il confronto esterno sul turismo, che era
+l'altro, è la §7.8. Il titolo non è più provvisorio: vedi §Versione 1.1 in testa
+al documento.*
