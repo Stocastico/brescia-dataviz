@@ -37,7 +37,7 @@ costruendone uno.** Brescia, il comune e i suoi 205 comuni, 1990–2025.
 > [`METODOLOGIA.md`](METODOLOGIA.md) dichiaravano mancanti — sono scritte
 > (MET-22…MET-26); §5, §9 e §10 sono aggiornate.
 >
-> Le storie sono **otto** e sono chiuse. Il documento non aspetta altro: le
+> Le storie sono **dieci** e sono chiuse. Il documento non aspetta altro: le
 > revisioni successive verranno da lettori esterni, che è il modo in cui, nel
 > progetto gemello, sono arrivate le tre regole più importanti.
 
@@ -1110,14 +1110,15 @@ E soprattutto, la parte che questo documento considera il proprio contributo:
 | Documento | Cosa contiene |
 |---|---|
 | [`FONTI.md`](FONTI.md) | Registro delle fonti con stato di accesso verificato; note tecniche SDMX e ricette collaudate |
-| [`METODOLOGIA.md`](METODOLOGIA.md) | Le quindici decisioni metodologiche per esteso |
+| [`METODOLOGIA.md`](METODOLOGIA.md) | Le ventisette decisioni metodologiche per esteso |
 | [`BRIEF.md`](BRIEF.md) | La domanda, gli assi, le storie candidate |
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | Consegna: cosa resta da scaricare, decisioni aperte, come si costruiscono analisi e sito |
 | [`pipeline/`](pipeline/README.md) | Il codice, con le trappole documentate |
-| [`dati/`](dati/README.md) | Le trenta tabelle prodotte |
-| [`analysis/`](analysis/README.md) | I quattordici script che leggono quelle tabelle, e le verifiche di `verifica_cifre.py` |
+| [`dati/`](dati/README.md) | Le trentanove tabelle prodotte |
+| [`analysis/`](analysis/README.md) | I sedici script che leggono quelle tabelle, e le verifiche di `verifica_cifre.py` |
 
-*Versione 1 — settembre 2026. La §7 riporta risultati veri con i loro controlli,
-e di quelli elencati in §6.2 ne resta fuori uno solo: la rottura Covid trattata
-in modo sistematico. Il confronto esterno sul turismo, che era l'altro, è la
-§7.8. Resta provvisorio il titolo, che cambierà quando sarà chiara la tesi.*
+*Versione 1.1 — settembre 2026. La §7 riporta risultati veri con i loro
+controlli, e di quelli elencati in §6.2 ne resta fuori uno solo: la rottura
+Covid trattata in modo sistematico. Il confronto esterno sul turismo, che era
+l'altro, è la §7.8. Il titolo non è più provvisorio: vedi §Versione 1.1 in testa
+al documento.*

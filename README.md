@@ -10,7 +10,7 @@ monte.
 
 **Stato: tutti e cinque i temi hanno la loro storia, e i quattro assi economici
 hanno anche un termine di paragone nazionale.** Dati scaricati e
-puliti in **39 tabelle**, sedici analisi fatte, nove storie scritte in un
+puliti in **39 tabelle**, sedici analisi fatte, dieci storie scritte in un
 documento narrativo autocontenuto ([`sito/`](sito/README.md)) che si costruisce
 da solo e ha già il suo workflow di pubblicazione. La licenza è scelta (MIT per
 il codice, CC BY 4.0 per testi e dati: vedi in fondo).
@@ -26,7 +26,8 @@ quadro** in euro correnti è dove era vent'anni fa (**+2,3 %** dal 2004) — e i
 **euro 2025 ha perso il 30,8 %**. Si vende molto di più a un prezzo reale molto
 più basso. Per poterlo scrivere è servito il deflatore che al progetto mancava:
 l'indice ISTAT dei prezzi al consumo, che la fonte pubblica in tre basi che non
-si sovrappongono (`indice_prezzi.csv`, MET-20). Ed è anche **l'ottava storia del sito**.
+si sovrappongono (`indice_prezzi.csv`, MET-20). Ed è anche una delle storie
+del sito, quella sulla casa (`#casa`).
 
 ### Quello che richiede te
 
@@ -34,8 +35,10 @@ si sovrappongono (`indice_prezzi.csv`, MET-20). Ed è anche **l'ottava storia de
 
 | | Cosa | Tempo |
 |---|---|---|
-| 🙋 | **Rileggere i testi del sito** — sono nove storie, e nessuno script controlla se una frase dice più di quanto il dato sostenga | 1 h |
-| 🤖 | **Pubblicare** — non è più una voce di questo elenco: dal momento in cui un commit arriva su `main`, se la costruzione è verde il sito va online da solo | — |
+| ✅ | **Rileggere i testi del sito** — fatto (23 settembre 2026) | — |
+| ✅ | **Pubblicare** — non è più una voce di questo elenco: dal momento in cui un commit arriva su `main`, se la costruzione è verde il sito va online da solo | — |
+
+Da settembre 2026 questa tabella non ha più nessuna riga 🙋 aperta.
 
 ✅ **La sorgente di Pages è su «GitHub Actions»** (4 settembre 2026). Era il
 passaggio che mancava perché l'indirizzo pubblico servisse il racconto invece di
@@ -45,6 +48,11 @@ questo README: adesso il workflow ha dove pubblicare.
 è caduto: `main` **è** il sito, e ogni push ce lo porta. Quello che resta a
 proteggerlo non è più una conferma da digitare, è la costruzione — test, cifre
 citate, segnaposto — che deve essere verde perché il deploy parta.
+
+✅ **E i testi sono stati riletti** (23 settembre 2026). Era l'ultima voce
+rimasta in questo elenco: con la pubblicazione già automatica, rileggere il
+racconto riga per riga era anche l'ultimo passo prima che un merge su `main`
+lo mandasse online.
 
 ✅ **E questo elenco adesso è vuoto** (7 settembre 2026). Portava tre voci che
 non bloccavano la pubblicazione e che nessuno poteva fare al posto tuo: due si
@@ -109,21 +117,22 @@ di Brescia** non erano invisibili da qui, **non esistono più** — il portale �
 dismesso (`comune.brescia.it/opendata` risponde `410 Gone`) e i dataset sono
 migrati su `dati.lombardia.it`, che la pipeline già interroga. Il prezzo è una
 perdita vera, e va detta: il **flusso turistico cittadino 2005–2013** non è nella
-migrazione e nemmeno nell'Internet Archive, quindi la settima storia resta
-dichiarata dal 2019 salvo chiederlo all'ufficio statistica
+migrazione e nemmeno nell'Internet Archive, quindi la storia sul turismo
+(`#turismo`) resta dichiarata dal 2019 salvo chiederlo all'ufficio statistica
 ([dettagli](dati/SCARICHI-MANUALI.md) §2).
 
 Nessuna delle quattro tocca i quattro assi portanti, che hanno già tutti i dati
 che servono: sono estensioni e finiture.
 
-**Il sito non si pubblica da solo**, ed è voluto finché l'analisi non è finita:
-ogni push su `main` lo ricostruisce e lo verifica lasciandolo come artefatto da
-scaricare, ma per mandarlo online serve quel lancio a mano con la conferma
-scritta. Il lavoro che resta è in
+**Il sito si pubblica da solo** (19 settembre 2026): ogni push su `main` lo
+ricostruisce, lo verifica e — se la costruzione è verde — lo manda online. Il
+lancio a mano resta disponibile solo per costruire **senza** pubblicare, da un
+ramo qualsiasi. Il lavoro rimasto è in
 [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md), che distingue riga per riga **cosa può
-fare una sessione di lavoro e cosa richiede te**: dopo il 7 settembre 2026 la
-colonna 🤖 sugli scarichi è vuota, e l'unico dato che non si scarica da qui resta
-l'export a mano del commercio estero provinciale.
+fare una sessione di lavoro e cosa richiede te**: dopo il 23 settembre 2026
+quella colonna 🙋 è vuota, e l'unico dato che non si scarica da qui resta
+l'export a mano del commercio estero provinciale, per una scelta già presa
+(non lo si fa).
 
 ## I documenti
 
@@ -136,8 +145,8 @@ l'export a mano del commercio estero provinciale.
 | [`PROSSIMI-PASSI.md`](PROSSIMI-PASSI.md) | **Cosa resta da fare, e chi lo può fare.** Lo stato in una pagina, cosa manca da scaricare, le decisioni aperte, come si costruiscono analisi, sito statico e deploy — e in testa l'elenco completo delle cose che **richiedono te** (un login SPID, una macchina italiana, una decisione di disegno), con una stima dei tempi. |
 | [`pipeline/`](pipeline/README.md) | **La pipeline**: da fonti pubbliche a tabelle tidy. `requests` e libreria standard, niente build step, niente chiavi API. |
 | [`dati/`](dati/README.md) | **Le tabelle prodotte**: 39 CSV su territorio, imprese, lavoro, popolazione e bilancio demografico, famiglie e abitazioni, redditi, **retribuzioni**, **infortuni sul lavoro**, ambiente, sicurezza, turismo, **università**, **background migratorio** e — da settembre 2026 — **quotazioni immobiliari OMI in due grane, più i volumi di compravendita comunali e quelli provinciali trimestrali**, più le tabelle di confronto con le altre 106 province e i **confini dei 205 comuni** in GeoJSON. Versionati; le risposte grezze no, con l'eccezione degli **input curati** in `dati/input/`, che nessun URL restituisce. |
-| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: diciassette script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
-| [`sito/`](sito/README.md) | **Il documento narrativo e lo strumento**: nove storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`; accanto, `esplora.html`, che mette tutti e **diciannove** gli indicatori su tutti i comuni e lascia scegliere a chi legge. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
+| [`analysis/`](analysis/README.md) | **Le letture delle tabelle**: sedici script, uno per analisi, libreria standard soltanto. Comprende `verifica_cifre.py`, che ricalcola dai dati **ogni cifra citata** in questi documenti e nel sito. |
+| [`sito/`](sito/README.md) | **Il documento narrativo e lo strumento**: dieci storie in un unico file HTML autocontenuto, con mappe e grafici in SVG disegnati a mano e la lingua grafica del progetto gemello `donostia-dataviz`; accanto, `esplora.html`, che mette tutti e **diciannove** gli indicatori su tutti i comuni e lascia scegliere a chi legge. Nessuna cifra del testo è scritta a mano: sono segnaposto calcolati in fase di costruzione. |
 
 ## Come leggere il registro
 
@@ -234,9 +243,9 @@ il lavoro: **Brescia è la decima provincia italiana per presenze turistiche**,
 con più di cinque volte le notti della provincia mediana, e la **sesta** per
 quota di clienti stranieri (72,0 % contro una mediana del 37,7 %). Per abitante
 però è solo ventinovesima: è decima perché è grande, non perché sia intensamente
-turistica — ed è la settima storia del sito, oltre alla §7.8 del working paper.
+turistica — ed è una delle storie del sito (`#turismo`), oltre alla §7.8 del working paper.
 
-**La sesta storia dura vent'anni**, che è tre volte il resto del progetto, e
+**La storia sull'aria e sul clima dura vent'anni** (`#aria`), che è tre volte il resto del progetto, e
 dice due cose opposte. L'aria è **molto** migliorata: tenendo solo le centraline
 osservate in tutti gli anni della serie — perché la rete apre e chiude stazioni,
 e mediare quelle che ci sono ogni anno misura anche il cambio della rete — il
