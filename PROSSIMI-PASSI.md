@@ -1091,6 +1091,11 @@ allargare il progetto.
 
 ### Se hai tempo, e vuoi allargare il progetto
 
+> 📎 **Panoramica ragionata** (6 ottobre 2026): cosa è stato fatto, buchi nei dati
+> (valore aggiunto provinciale, finanza locale, sanità), fonti da prendere con più
+> fatica, storie non coperte e confronti con l'Italia sono in
+> [`docs/briefing-incontro.md`](docs/briefing-incontro.md).
+
 Non c'è più niente che **tocca a te**: pubblicazione, testi e tavolozza sono
 tutti chiusi. Quello che resta è facoltativo, ed è 🤖 — bastano la rete e
 questo repository:
