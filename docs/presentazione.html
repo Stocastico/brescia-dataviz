@@ -5,45 +5,49 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Come cambia Brescia: presentazione</title>
 <style>
-/* Tavolozza e caratteri ripresi da sito/modelli/stile.css. Autocontenuta: si apre da disco. */
+/* Tavolozza e caratteri ripresi da sito/modelli/stile.css. Autocontenuta: si apre da disco.
+   Le dimensioni seguono la larghezza E l'altezza dello schermo (min(vw,vh)), cosi' il testo
+   resta grande sul proiettore e non esce dalla slide su un portatile. */
 :root{
-  --ink:#14233a; --ink2:#3a4a63; --muted:#5f6e84; --line:#e2e7ef;
+  --ink:#14233a; --ink2:#2c3b52; --muted:#5f6e84; --line:#e2e7ef;
   --bg:#f7f5f0; --card:#fff;
   --sea:#1f6f8b; --sea-d:#0f4c5c; --coral:#d1495b; --coral-d:#a63446;
   --amber:#e0902f; --amber-d:#b9741f; --green:#2a9d6f; --green-d:#1d7a55;
+  --u:min(.85vw,1.5vh);           /* unita' di scala: 1u = 1% della dimensione limitante */
 }
 *{box-sizing:border-box;margin:0}
 html,body{height:100%;background:var(--bg);color:var(--ink);
   font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-h1,h2,h3{font-family:"Libre Franklin","Inter",system-ui,sans-serif;line-height:1.15;font-weight:700}
+h1,h2,h3{font-family:"Libre Franklin","Inter",system-ui,sans-serif;line-height:1.1;font-weight:800}
 .deck{height:100vh;position:relative;overflow:hidden}
-.slide{position:absolute;inset:0;padding:clamp(24px,5vw,72px) clamp(24px,7vw,110px) 70px;
-  display:none;flex-direction:column;justify-content:center;gap:1.4rem;overflow-y:auto}
+.slide{position:absolute;inset:0;padding:calc(var(--u)*4) calc(var(--u)*7) calc(var(--u)*7);
+  display:none;flex-direction:column;justify-content:center;gap:calc(var(--u)*2.4);overflow-y:auto}
 .slide.on{display:flex}
-.kick{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sea);font-weight:700}
-h1{font-size:clamp(2.2rem,5.5vw,4.2rem)} h2{font-size:clamp(1.6rem,3.6vw,2.8rem)}
-h3{font-size:1.05rem;margin-bottom:.3rem}
-p,li{font-size:clamp(1rem,1.75vw,1.3rem);line-height:1.5;color:var(--ink2)}
-ul{padding-left:1.2em;display:grid;gap:.5rem}
+.kick{font-size:calc(var(--u)*1.7);letter-spacing:.14em;text-transform:uppercase;color:var(--sea);font-weight:700}
+h1{font-size:calc(var(--u)*8.5)} h2{font-size:calc(var(--u)*5.4)}
+h3{font-size:calc(var(--u)*2.8);margin-bottom:.4rem}
+p,li{font-size:calc(var(--u)*2.7);line-height:1.35;color:var(--ink2)}
+ul{padding-left:1.1em;display:grid;gap:calc(var(--u)*1.2)}
 b,strong{color:var(--ink)}
-.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;
+.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.tight{gap:calc(var(--u)*1.6)}.tight ul{gap:calc(var(--u)*.8)}.tight li{font-size:calc(var(--u)*2.4)}.tight .key{padding:calc(var(--u)*1.4) calc(var(--u)*3)}.tight .key p{font-size:calc(var(--u)*2.8)}
+.lead{font-size:calc(var(--u)*3.4);line-height:1.3;color:var(--ink);max-width:28em}
+.grid{display:grid;gap:calc(var(--u)*1.6);grid-template-columns:repeat(auto-fit,minmax(calc(var(--u)*27),1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:calc(var(--u)*1.6) calc(var(--u)*2);
   box-shadow:0 1px 2px rgba(20,35,58,.05)}
-.card p,.card li{font-size:clamp(.9rem,1.35vw,1.05rem)}
-.num{font-family:"Libre Franklin",sans-serif;font-weight:800;font-size:clamp(2rem,4.2vw,3.2rem);
+.card p,.card li{font-size:calc(var(--u)*2.3)}
+.num{font-family:"Libre Franklin",sans-serif;font-weight:800;font-size:calc(var(--u)*6.6);
   color:var(--sea-d);line-height:1}
 .num.c{color:var(--coral-d)} .num.a{color:var(--amber-d)} .num.g{color:var(--green-d)}
-.lbl{font-size:.9rem;color:var(--muted);margin-top:.35rem;line-height:1.35}
-.key{border-left:6px solid var(--coral);background:var(--card);padding:1rem 1.4rem;border-radius:0 12px 12px 0}
-.key p{color:var(--ink);font-size:clamp(1.05rem,1.9vw,1.4rem)}
-.big3{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.big3 .card{border-top:6px solid var(--coral)}
+.lbl{font-size:calc(var(--u)*2.1);color:var(--ink2);margin-top:.5rem;line-height:1.3}
+.key{border-left:calc(var(--u)*.9) solid var(--coral);background:var(--card);padding:calc(var(--u)*2) calc(var(--u)*3);border-radius:0 14px 14px 0}
+.key p{color:var(--ink);font-size:calc(var(--u)*3.2);font-weight:600;line-height:1.3}
+.big3{display:grid;gap:calc(var(--u)*1.6);grid-template-columns:repeat(auto-fit,minmax(calc(var(--u)*30),1fr))}
+.big3 .card{border-top:calc(var(--u)*.9) solid var(--coral)}
 .big3 .card:nth-child(2){border-top-color:var(--amber)} .big3 .card:nth-child(3){border-top-color:var(--sea)}
-.big3 h3{font-size:1.35rem}
-small,.note{font-size:.85rem;color:var(--muted)}
-table{border-collapse:collapse;width:100%;background:var(--card);border-radius:10px;overflow:hidden}
-th,td{padding:.55rem .8rem;text-align:left;border-bottom:1px solid var(--line);font-size:clamp(.85rem,1.3vw,1rem);vertical-align:top}
-th{background:#eef2f7;color:var(--ink);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em}
+.big3 h3{font-size:calc(var(--u)*3.6)}
+.big3 p{font-size:calc(var(--u)*2.5)}
+.note{font-size:calc(var(--u)*1.8);color:var(--muted);line-height:1.4}
 .bar{position:fixed;left:0;right:0;bottom:0;height:54px;display:flex;align-items:center;justify-content:space-between;
   padding:0 clamp(16px,4vw,48px);background:var(--bg);border-top:1px solid var(--line);z-index:5}
 .bar button{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:.35rem .9rem;
@@ -64,10 +68,9 @@ th{background:#eef2f7;color:var(--ink);font-size:.8rem;text-transform:uppercase;
 
 <!-- 1 -->
 <section class="slide on">
-  <div class="kick">Analisi esplorativa dei dati · 205 comuni · ITC47</div>
+  <div class="kick">Analisi esplorativa dei dati · 205 comuni</div>
   <h1>Come cambia Brescia</h1>
-  <p>La provincia raccontata attraverso i suoi comuni: lavoro, popolazione, redditi, casa, ambiente, turismo.
-  Cosa abbiamo fatto, cosa non abbiamo (ancora), cosa si può fare in più.</p>
+  <p class="lead">La provincia raccontata attraverso i suoi comuni: lavoro, popolazione, redditi, casa, ambiente, turismo.</p>
   <p class="note">Brescia Dataviz · codice MIT, testi e dati CC BY 4.0 · tutto riproducibile da un comando</p>
 </section>
 
@@ -77,111 +80,103 @@ th{background:#eef2f7;color:var(--ink);font-size:.8rem;text-transform:uppercase;
   <h2>Che cosa è, e che cosa non è</h2>
   <div class="big3">
     <div class="card"><h3>Esplorativa</h3>
-      <p>Descrive e confronta. Cerca cosa è cambiato e dove, e controlla che la frase che ne esce regga.
-      <b>Non testa ipotesi.</b></p></div>
+      <p>Descrive e confronta. Non testa ipotesi.</p></div>
     <div class="card"><h3>Nessun nesso causale</h3>
-      <p>Nessuna politica, nessuna causa. Sono correlazioni su serie di 6–11 anni: non c'è un disegno che permetta
-      di dire «X ha prodotto Y».</p></div>
-    <div class="card"><h3>Relazioni fra comuni, non fra persone</h3>
-      <p>Se i comuni più poveri crescono di più, non significa che i poveri guadagnino di più.
-      Unità di analisi: il comune. E i comuni vicini si somigliano: non sono 205 osservazioni indipendenti.</p></div>
+      <p>Nessuna causa, nessuna politica valutata.</p></div>
+    <div class="card"><h3>Fra comuni, non fra persone</h3>
+      <p>Il comune è l'unità. Non si dice nulla sui singoli.</p></div>
   </div>
-  <div class="key"><p>Questi sono i fatti e i loro limiti. Per decidere cosa fare servono altri dati e altre domande.</p></div>
+  <div class="key"><p>Questi sono i fatti e i loro limiti. Per decidere cosa fare servono altri dati.</p></div>
 </section>
 
 <!-- 3 -->
 <section class="slide">
   <div class="kick">Cosa è stato fatto</div>
-  <h2>Dai dati aperti a un racconto che si controlla</h2>
-  <div class="grid">
-    <div class="card"><div class="num">39</div><div class="lbl">tabelle pulite e versionate (ISTAT, Agenzia delle Entrate, MEF, INPS, INAIL, ARPA, Regione Lombardia, MUR)</div></div>
-    <div class="card"><div class="num">16</div><div class="lbl">analisi riproducibili, 27 regole di metodo scritte</div></div>
-    <div class="card"><div class="num">10</div><div class="lbl">storie nel sito, ciascuna con grafici e tabella-specchio dei numeri</div></div>
-    <div class="card"><div class="num">452</div><div class="lbl">test automatici, copertura 85 %; nessuna cifra del testo è scritta a mano</div></div>
+  <h2>Dai dati aperti a un racconto</h2>
+  <div class="grid g4">
+    <div class="card"><div class="num">39</div><div class="lbl">tabelle di dati pubblici</div></div>
+    <div class="card"><div class="num">16</div><div class="lbl">analisi riproducibili</div></div>
+    <div class="card"><div class="num">10</div><div class="lbl">storie nel sito</div></div>
+    <div class="card"><div class="num">452</div><div class="lbl">test automatici</div></div>
   </div>
-  <ul>
-    <li>Soggetto: la <b>provincia</b>, attraverso i <b>205 comuni</b>, con il capoluogo a parte.</li>
-    <li>Un sito autocontenuto (un file HTML), una pagina che esplora i 19 indicatori su tutti i comuni, un working paper.</li>
-  </ul>
+  <p class="lead">Nessuna cifra del testo è scritta a mano: ogni numero viene da una tabella.</p>
 </section>
 
 <!-- 4 -->
 <section class="slide">
   <div class="kick">Cosa abbiamo trovato</div>
   <h2>Alcuni risultati, descrittivi</h2>
-  <div class="grid">
-    <div class="card"><div class="num c">−30,8 %</div><div class="lbl"><b>Casa, capoluogo:</b> prezzo al m² in euro 2025 dal 2004. In euro correnti +2,3 %. I volumi di compravendita: +134,5 % dal 2013.</div></div>
-    <div class="card"><div class="num a">10ª</div><div class="lbl"><b>Turismo:</b> provincia italiana per presenze (11 mln nel 2024), 6ª per quota di stranieri. Sirmione supera la città.</div></div>
-    <div class="card"><div class="num">−0,45</div><div class="lbl"><b>Redditi:</b> i comuni più bassi nel 2012 crescono di più. Uguale a Bergamo (−0,48): non è un fatto bresciano.</div></div>
-    <div class="card"><div class="num g">93 / 205</div><div class="lbl"><b>Comuni che perdono abitanti</b> (2018–24), tutti contigui in montagna. Saldo naturale −10.163, migrazione interna −66: non partono, ci si muore.</div></div>
-    <div class="card"><div class="num">53.224</div><div class="lbl"><b>Nati qui:</b> metà non ha la cittadinanza.</div></div>
-    <div class="card"><div class="num a">+25 % / −6 %</div><div class="lbl"><b>Stipendi:</b> nominali e reali (INPS, 107 province).</div></div>
+  <div class="grid g3">
+    <div class="card"><div class="num c">−30,8 %</div><div class="lbl"><b>Casa:</b> prezzo reale al m² dal 2004. I volumi: +134,5 %.</div></div>
+    <div class="card"><div class="num a">10ª</div><div class="lbl"><b>Turismo:</b> provincia italiana per presenze.</div></div>
+    <div class="card"><div class="num">−0,45</div><div class="lbl"><b>Redditi:</b> i comuni più bassi crescono di più.</div></div>
+    <div class="card"><div class="num g">93/205</div><div class="lbl"><b>Comuni in calo.</b> Non emigrano: saldo naturale −10.163, migrazione −66.</div></div>
+    <div class="card"><div class="num">53.224</div><div class="lbl"><b>Nati qui,</b> e metà non ha la cittadinanza.</div></div>
+    <div class="card"><div class="num a">+25 %</div><div class="lbl"><b>Stipendi</b> nominali. In termini reali: −6 %.</div></div>
   </div>
-  <p class="note">Più: il «crollo» dei grandi addetti nel capoluogo non c'è (è un cambio di registrazione), la provincia è due economie contigue (manifattura/turismo), l'aria è migliorata e il clima no.</p>
 </section>
 
 <!-- 5 -->
 <section class="slide">
-  <div class="kick">Il metodo</div>
-  <h2>Il numero giusto, la frase falsa</h2>
-  <ul>
-    <li>Tesi del working paper: <b>undici episodi</b> in cui un dato corretto stava per produrre un'affermazione falsa. Otto scoperti dopo averli commessi.</li>
-    <li><b>Ogni indicatore si confronta con le 107 province italiane.</b> Esempio: «il 92,7 % delle unità locali è sotto i dieci addetti» sembrava un dato bresciano. È la mediana italiana (94,4 %): Brescia è 101ª su 107. Il tratto vero è il <b>settore</b>, 15ª per quota manifatturiera.</li>
-    <li>Un salto improvviso in un registro amministrativo è, fino a prova contraria, <b>un cambio di come si conta</b>.</li>
-    <li>Gli euro si deflazionano, i trend si dichiarano con la finestra che hanno (6–11 anni sull'economia, 20 sull'aria).</li>
-  </ul>
-  <div class="key"><p>Metà del valore del lavoro sta nelle correzioni, non nei titoli.</p></div>
-</section>
-
-<!-- 6 -->
-<section class="slide">
   <div class="kick">Cosa manca</div>
   <h2>I buchi, dichiarati</h2>
-  <div class="grid">
-    <div class="card"><h3>Nel quadro macro</h3><ul>
-      <li><b>PIL e valore aggiunto provinciali</b>: la prima domanda per una provincia manifatturiera (da verificare presso ISTAT/Eurostat)</li>
-      <li>Produttività, export provinciale (solo serie regionale)</li></ul></div>
-    <div class="card"><h3>Nei servizi</h3><ul>
-      <li>Finanza locale, sanità, scuola, trasporti: assenti</li>
-      <li>Sicurezza: reati provinciali, percezione dal 2022 soltanto</li></ul></div>
-    <div class="card"><h3>Nella grana</h3><ul>
-      <li>Niente sotto il comune: nessuna mappa di quartiere</li>
-      <li>Aria: le centraline esistono in 11 comuni su 205</li>
-      <li>Confronto con l'Italia fatto per l'economia, non per l'ambiente</li></ul></div>
+  <div class="big3">
+    <div class="card"><h3>Il quadro macro</h3>
+      <p>PIL e valore aggiunto provinciali. Export solo regionale.</p></div>
+    <div class="card"><h3>I servizi</h3>
+      <p>Finanza locale, sanità, scuola, trasporti: assenti.</p></div>
+    <div class="card"><h3>La grana</h3>
+      <p>Niente sotto il comune. Aria: centraline in 11 comuni su 205.</p></div>
   </div>
   <p class="note">Chiuse per scelta: sezioni di censimento, OpenPNRR (licenza ODbL), elettorale, open data comunali storici (portale dismesso).</p>
 </section>
 
-<!-- 7 -->
+<!-- 6 -->
 <section class="slide">
   <div class="kick">Cosa si potrebbe fare in più</div>
-  <h2>Dati da prendere con più fatica, e storie</h2>
-  <table>
-    <tr><th>Dato</th><th>Perché</th><th>Sforzo</th></tr>
-    <tr><td>Valore aggiunto per provincia (ISTAT, Eurostat NUTS3)</td><td>Brescia nel quadro macro</td><td>da verificare, probabilmente basso</td></tr>
-    <tr><td>INPS salari per settore</td><td>Il taglio più interessante in una provincia manifatturiera</td><td>medio: va intercettato l'id interno</td></tr>
-    <tr><td>Migrazioni interne per comune</td><td>Chi arriva, da dove</td><td>basso: venti minuti</td></tr>
-    <tr><td>Cassa integrazione, consumo di suolo, emissioni per comune</td><td>Congiuntura, cemento, mappa dell'aria</td><td>da verificare</td></tr>
-    <tr><td>Sanità (ATS), dati del Comune su dati.lombardia.it</td><td>Salute, Caffaro, grana cittadina</td><td>alto / da esplorare</td></tr>
-  </table>
-  <div class="grid">
-    <div class="card"><h3>Storie mature</h3><p>Imprese straniere · case vuote dove i prezzi sono caduti · Brescia e Bergamo · il Garda contro il resto · dove si lavora e dove si vive (Odolo 89,6 addetti ogni 100 abitanti, Limone 133)</p></div>
-    <div class="card"><h3>Storie più lontane</h3><p>Lavoro da casa dopo il 2021 · affitti · distretti veri (divisione Ateco) · isola di calore · Caffaro (serve il dato sanitario)</p></div>
+  <h2>Dati e storie</h2>
+  <div class="big3">
+    <div class="card"><h3>Dati più difficili</h3>
+      <p>Valore aggiunto per provincia · salari INPS per settore · migrazioni per comune · cassa integrazione · sanità</p></div>
+    <div class="card"><h3>Storie mature</h3>
+      <p>Imprese straniere · case vuote dove i prezzi sono caduti · Brescia e Bergamo · il Garda contro il resto</p></div>
+    <div class="card"><h3>Storie lontane</h3>
+      <p>Lavoro da casa · affitti · isola di calore · Caffaro (serve il dato sanitario)</p></div>
   </div>
+  <p class="note">Le fonti non ancora verificate sono da controllare prima di promettere. Dettagli: docs/briefing-incontro.md</p>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <div class="kick">Come leggere i trend</div>
+  <h2>Confrontare con l'Italia, senza esagerare</h2>
+  <ul>
+    <li><b>Indici base 100:</b> Brescia, Lombardia, Italia.</li>
+    <li><b>Shift-share:</b> cresce per com'è fatta o per come lavora?</li>
+    <li><b>Pari grado:</b> Bergamo, Vicenza, Treviso, Modena.</li>
+  </ul>
+  <div class="key"><p>Resta tutto descrittivo: nessun nesso causale, e relazioni fra comuni, non fra persone.</p></div>
 </section>
 
 <!-- 8 -->
-<section class="slide">
-  <div class="kick">Come leggere i trend, e dove andare</div>
-  <h2>Confrontare con l'Italia, senza esagerare</h2>
-  <ul>
-    <li><b>Indici base 100</b> per Brescia, Lombardia, Nord-Ovest, Italia, con deflatore sugli euro.</li>
-    <li><b>Shift-share</b>: Brescia cresce per com'è fatta (tanta manifattura) o per come lavora dentro ciascun settore?</li>
-    <li><b>Pari grado</b>: Bergamo, Vicenza, Treviso, Modena, Reggio Emilia. Più informativi della media nazionale.</li>
-    <li><b>Convergenza e dispersione</b> estese oltre il reddito: prezzi, presenze, addetti.</li>
-  </ul>
-  <div class="key"><p>Resta tutto descrittivo: fatti, confronti e limiti dichiarati. Nessun nesso causale, e relazioni fra comuni, non fra persone.</p></div>
-  <p class="note">Dettagli e fonti: docs/briefing-incontro.md · WORKING-PAPER.md §7–8 · FONTI.md</p>
+<section class="slide tight">
+  <div class="kick">Per decidere, non solo descrivere</div>
+  <h2>Perché sia davvero utile</h2>
+  <div class="grid g2">
+    <div class="card" style="border-top:calc(var(--u)*.9) solid var(--coral)"><h3>Cosa serve</h3>
+      <ul>
+        <li><b>Una domanda di decisione:</b> quale scelta, su quale indicatore</li>
+        <li><b>Un effetto da isolare:</b> interventi con data e luogo, e chi non li ha avuti</li>
+        <li><b>Dati che mancano:</b> servizi, spesa pubblica, grana sotto il comune</li>
+      </ul></div>
+    <div class="card" style="border-top:calc(var(--u)*.9) solid var(--sea)"><h3>Cosa fare per averlo</h3>
+      <ul>
+        <li><b>Scegliere con chi decide</b> una o due domande precise</li>
+        <li><b>Chiedere i dati agli enti:</b> Comune, ATS, Regione, INPS, anche anonimizzati</li>
+        <li><b>Un disegno causale,</b> con un gruppo di confronto, validato da esperti</li>
+      </ul></div>
+  </div>
+  <div class="key"><p>Oggi descrive cosa è cambiato. Domani può aiutare a valutare scelte.</p></div>
 </section>
 
 </main>
